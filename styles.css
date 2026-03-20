@@ -39,6 +39,45 @@ body.home-page {
   overflow-y: hidden;
 }
 
+.three-body-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+  z-index: 0;
+}
+
+.three-body-bodies {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.three-body-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  opacity: 0;
+  transform: translate3d(0, 0, 0);
+  will-change: transform, width, height, opacity;
+}
+
+body.home-page.logo-awake .three-body-canvas {
+  opacity: 1;
+}
+
+body.home-page.logo-awake .three-body-dot {
+  opacity: 1;
+}
+
 a {
   color: inherit;
 }
@@ -49,7 +88,9 @@ a {
 }
 
 .site-shell {
+  position: relative;
   padding: 0.9rem 0 2rem;
+  z-index: 1;
 }
 
 .site-header,
@@ -74,6 +115,18 @@ a {
   width: 22px;
   height: 22px;
   object-fit: contain;
+}
+
+.brand-mark {
+  overflow: visible;
+}
+
+.site-brand-mark .brand-mark-body {
+  fill: var(--text);
+}
+
+.brand-mark-body {
+  fill: var(--text);
 }
 
 .site-nav {
@@ -129,12 +182,20 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.7rem;
+  gap: 0.72rem;
 }
 
 .wordmark-mark {
   color: var(--accent);
   font-weight: 300;
+}
+
+.animated-reference-mark {
+  transition: opacity 0.12s linear;
+}
+
+body.home-page.gravity-live .animated-reference-mark {
+  opacity: 0;
 }
 
 .page-title {
@@ -438,5 +499,11 @@ a {
 
   .home-hero {
     padding-top: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .three-body-canvas {
+    display: none;
   }
 }
