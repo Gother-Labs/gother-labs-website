@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Göther Labs | Evaluation-Driven Optimization</title>
+    <meta
+      name="description"
+      content="Göther Labs designs governed improvement loops for optimization-heavy systems so teams can improve algorithms, policies, and code with measurable confidence."
+    >
+    <meta property="og:title" content="Göther Labs | Evaluation-Driven Optimization">
+    <meta
+      property="og:description"
+      content="Optimization you can explain, measure, and trust."
+    >
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gother-labs.github.io/gother-labs-website/">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="./">
+          <span class="brand-mark">GL</span>
+          <span class="brand-copy">
+            <strong>Göther Labs</strong>
+            <span>Evaluation-driven optimization</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Primary">
+          <a href="#what">What we do</a>
+          <a href="#approach">Approach</a>
+          <a href="#focus">Focus areas</a>
+          <a href="./careers/">Careers</a>
+          <a class="nav-cta" href="mailto:contact@gotherlabs.com">Contact</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow">Governed improvement loops for real systems</p>
+            <h1>Optimization you can explain, measure, and trust.</h1>
+            <p class="hero-body">
+              Göther Labs helps teams improve algorithms, policies, heuristics,
+              and code under an executable definition of success. We design
+              evaluation-driven loops that search for better outcomes while
+              respecting real-world constraints.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="mailto:contact@gotherlabs.com">
+                Talk to us
+              </a>
+              <a class="button button-secondary" href="./careers/">See careers</a>
+            </div>
+          </div>
+
+          <div class="hero-panel" aria-label="Operating model summary">
+            <p class="panel-kicker">Operating model</p>
+            <ol class="timeline">
+              <li>
+                <strong>Define the evaluator</strong>
+                <span>Score the thing that matters and make constraints explicit.</span>
+              </li>
+              <li>
+                <strong>Generate candidates</strong>
+                <span>Search for better policies, heuristics, or code inside a controlled budget.</span>
+              </li>
+              <li>
+                <strong>Gate improvements</strong>
+                <span>Keep only changes that are measurable, reproducible, and safe to roll out.</span>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="band metrics-band" aria-label="Key outcomes">
+          <article>
+            <p class="metric-value">Clearer</p>
+            <p class="metric-label">decision logic than black-box trial and error</p>
+          </article>
+          <article>
+            <p class="metric-value">Safer</p>
+            <p class="metric-label">iteration through tests, constraints, and review gates</p>
+          </article>
+          <article>
+            <p class="metric-value">Measurable</p>
+            <p class="metric-label">progress against the metrics your team actually owns</p>
+          </article>
+        </section>
+
+        <section class="content-section" id="what">
+          <div class="section-heading">
+            <p class="eyebrow">What we do</p>
+            <h2>We turn optimization debt into governed progress.</h2>
+          </div>
+          <div class="card-grid">
+            <article class="info-card">
+              <h3>Better policies and heuristics</h3>
+              <p>
+                We work on systems that make repeated decisions: routing,
+                planning, ranking, pricing, allocation, and related operating
+                policies.
+              </p>
+            </article>
+            <article class="info-card">
+              <h3>Better code under constraints</h3>
+              <p>
+                We search for stronger implementations without losing traceability,
+                reproducibility, or confidence in behavior.
+              </p>
+            </article>
+            <article class="info-card">
+              <h3>Better improvement loops</h3>
+              <p>
+                We do not ship vague "AI optimization". We set up the evaluator,
+                candidate generation, logging, and decision gates that make
+                improvement defensible.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="content-section" id="approach">
+          <div class="section-heading">
+            <p class="eyebrow">Approach</p>
+            <h2>A disciplined path from baseline to trusted uplift.</h2>
+          </div>
+          <div class="approach-grid">
+            <article class="approach-step">
+              <span>01</span>
+              <h3>Frame the target</h3>
+              <p>
+                We make the objective executable: the score, the tests, the
+                constraints, and the compute budget.
+              </p>
+            </article>
+            <article class="approach-step">
+              <span>02</span>
+              <h3>Search systematically</h3>
+              <p>
+                Candidates are generated and evaluated with evidence, not
+                intuition alone.
+              </p>
+            </article>
+            <article class="approach-step">
+              <span>03</span>
+              <h3>Keep what survives contact with reality</h3>
+              <p>
+                Only robust improvements make it through logging, comparisons,
+                and rollout gates.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="content-section" id="focus">
+          <div class="section-heading">
+            <p class="eyebrow">Focus areas</p>
+            <h2>Where this tends to matter most.</h2>
+          </div>
+          <div class="focus-layout">
+            <article class="focus-card">
+              <h3>Operational decision systems</h3>
+              <p>
+                Teams running recurring decisions where a policy exists, but
+                results have plateaued and local fixes keep accumulating.
+              </p>
+            </article>
+            <article class="focus-card">
+              <h3>High-impact legacy logic</h3>
+              <p>
+                Critical paths where everyone knows the baseline is not ideal,
+                but changing it safely has felt too risky or too expensive.
+              </p>
+            </article>
+            <article class="focus-card">
+              <h3>Engineering loops that need evidence</h3>
+              <p>
+                Environments where improvements must be inspectable, auditable,
+                and understandable to both technical and business owners.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="contact-panel">
+          <div>
+            <p class="eyebrow">Start the conversation</p>
+            <h2>If you have a system that should be performing better, let's inspect it.</h2>
+          </div>
+          <div class="contact-actions">
+            <a class="button button-primary" href="mailto:contact@gotherlabs.com">
+              contact@gotherlabs.com
+            </a>
+            <p>Initial conversations are exploratory, concrete, and low ceremony.</p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© <span id="year">2026</span> Göther Labs</p>
+        <nav aria-label="Footer">
+          <a href="./">Home</a>
+          <a href="./careers/">Careers</a>
+          <a href="mailto:contact@gotherlabs.com">Contact</a>
+        </nav>
+      </footer>
+    </div>
+
+    <script src="./scripts.js"></script>
+  </body>
+</html>
