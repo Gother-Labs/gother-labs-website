@@ -12,7 +12,7 @@
   --panel-dark-line: rgba(255, 255, 255, 0.08);
   --panel-dark-text: rgba(255, 255, 255, 0.86);
   --panel-dark-muted: rgba(255, 255, 255, 0.56);
-  --max-width: 760px;
+  --max-width: 1120px;
 }
 
 *,
@@ -83,7 +83,7 @@ a {
 }
 
 .page-shell {
-  width: min(calc(100% - 2rem), 1120px);
+  width: min(calc(100% - 2rem), 1440px);
   margin: 0 auto;
 }
 
@@ -103,12 +103,17 @@ a {
 
 .site-header {
   padding: 0.4rem 0 1.6rem;
+  justify-content: flex-end;
 }
 
 .brand {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
+}
+
+.nav-brand {
+  margin-right: 0.3rem;
 }
 
 .brand-image {
@@ -134,6 +139,7 @@ a {
   align-items: center;
   gap: 1.1rem;
   flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .site-nav a,
@@ -149,9 +155,18 @@ a {
 }
 
 .home-main {
+  max-width: none;
   min-height: calc(100vh - 108px);
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.site-main:not(.home-main) {
+  min-height: calc(100vh - 108px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .hero {
@@ -160,7 +175,7 @@ a {
 }
 
 .home-hero {
-  width: 100%;
+  width: min(100%, 1320px);
   padding: 1.2rem 0 0;
 }
 
@@ -201,6 +216,7 @@ body.home-page.gravity-live .animated-reference-mark {
 .page-title {
   letter-spacing: -0.05em;
   line-height: 1.06;
+  max-width: 12ch;
 }
 
 .eyebrow {
@@ -322,6 +338,27 @@ body.home-page.gravity-live .animated-reference-mark {
 
 .page-hero {
   text-align: left;
+}
+
+.page-hero .intro {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.contact-title {
+  max-width: none;
+}
+
+.company-title {
+  max-width: 22ch;
+}
+
+.company-intro {
+  max-width: 44ch;
+}
+
+.page-contact-address {
+  margin-top: 2.4rem;
 }
 
 .section-title {

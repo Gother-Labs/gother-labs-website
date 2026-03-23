@@ -20,14 +20,11 @@
   <body>
     <div class="page-shell site-shell">
       <header class="site-header">
-        <a class="brand" href="../">
-          <img src="../assets/gother-mark.svg" alt="Göther Labs mark" class="brand-image">
-        </a>
         <nav class="site-nav" aria-label="Primary">
-          <a href="../">Home</a>
+          <a class="brand nav-brand" href="../" aria-label="Göther Labs home">
+            <img src="../assets/gother-mark.svg" alt="" class="brand-image">
+          </a>
           <a href="./">Company</a>
-          <a href="../evolther/">Evölther</a>
-          <a href="../careers/">Careers</a>
           <a href="../contact/">Contact</a>
         </nav>
       </header>
@@ -35,11 +32,32 @@
       <main class="site-main">
         <section class="hero compact-hero page-hero">
           <p class="eyebrow">Company</p>
-          <h1 class="page-title">Göther builds governed search systems for important algorithms.</h1>
-          <p class="intro">
-            We are interested in the gap between acceptable legacy behavior and
-            what is actually achievable when a kernel is evaluated seriously.
+          <h1 class="page-title company-title">Göther makes important kernels governable.</h1>
+          <p class="intro company-intro">
+            We work in the gap between tolerated legacy behavior and what
+            becomes achievable when a kernel is evaluated under explicit
+            constraints and taken seriously.
           </p>
+        </section>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <section class="feature-section page-hero" aria-label="What we are building">
+          <div class="feature-copy">
+            <p class="eyebrow">What We Are Building</p>
+            <h2 class="section-title">Evölther is the internal system behind this work.</h2>
+            <p class="section-text">
+              We use the name Evölther for the governed improvement loop that
+              sits behind our work on important kernels: constraints stay
+              explicit, evidence remains inspectable, and deployment is a
+              decision rather than a vibe.
+            </p>
+            <p class="section-text">
+              It matters to what Göther is building, but it is not yet a public
+              product surface. For now, the right level of visibility is inside
+              the company story, not as a standalone public page.
+            </p>
+          </div>
         </section>
 
         <div class="divider" aria-hidden="true"></div>
@@ -82,12 +100,6 @@
 
       <footer class="site-footer">
         <p>© <span id="year">2026</span> Göther Labs</p>
-        <nav aria-label="Footer">
-          <a href="../">Home</a>
-          <a href="../evolther/">Evölther</a>
-          <a href="../careers/">Careers</a>
-          <a href="../contact/">Contact</a>
-        </nav>
       </footer>
     </div>
 
