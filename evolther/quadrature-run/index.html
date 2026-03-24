@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quadrature Run | Göther Labs</title>
+    <meta
+      name="description"
+      content="A quadrature run rendered as one governed surface: score, code evolution, and numerical object synchronized in-page."
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="icon" href="../../assets/gother-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="./surface.css">
+  </head>
+  <body class="quadrature-surface-page">
+    <div class="page-shell site-shell">
+      <header class="site-header">
+        <nav class="site-nav" aria-label="Primary">
+          <a class="brand nav-brand" href="../../" aria-label="Göther Labs home">
+            <img src="../../assets/gother-mark.svg" alt="" class="brand-image">
+          </a>
+          <a href="../../company/">Company</a>
+          <a href="../">Evolther</a>
+          <a href="../../contact/">Contact</a>
+        </nav>
+      </header>
+
+      <main class="site-main">
+        <section class="hero compact-hero page-hero quadrature-hero">
+          <h1 class="page-title">A quadrature run, read as one governed surface.</h1>
+          <div class="signal-strip quadrature-strip" aria-label="Run signals">
+            <p>100 generations</p>
+            <p id="signal-gains">7 real gains</p>
+            <p id="signal-seed">Seed 688.676</p>
+            <p id="signal-best">Best 114.515</p>
+          </div>
+        </section>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <section class="quadrature-surface" aria-label="Quadrature run surface">
+          <div class="quadrature-summary">
+            <div class="quadrature-summary-copy">
+              <p class="eyebrow">Run Snapshot</p>
+            </div>
+            <div class="quadrature-metrics" role="group" aria-label="Current run step">
+              <div class="quadrature-metric">
+                <span class="quadrature-metric-label">STEP</span>
+                <strong class="quadrature-metric-value" id="metric-step">0 / 7</strong>
+              </div>
+              <div class="quadrature-metric">
+                <span class="quadrature-metric-label">GEN</span>
+                <strong class="quadrature-metric-value" id="metric-gen">0</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="quadrature-stage">
+            <section class="quadrature-code" aria-labelledby="quadrature-code-title">
+              <div class="quadrature-section-head">
+                <h2 class="quadrature-section-title" id="quadrature-code-title">Code evolution</h2>
+                <span class="quadrature-section-tag" id="editor-badge">seed</span>
+              </div>
+
+              <div class="quadrature-editor">
+                <div class="quadrature-editor-head">
+                  <span class="quadrature-editor-title">domains/quadrature/program.py :: quadrature_rule</span>
+                </div>
+                <div class="quadrature-editor-body" id="editor-body">
+                  <div class="quadrature-editor-focus" id="editor-focus"></div>
+                </div>
+              </div>
+            </section>
+
+            <aside class="quadrature-visual" aria-labelledby="quadrature-visual-title">
+              <div class="quadrature-score-pulse">
+                <div class="quadrature-score-head">
+                  <h2 class="quadrature-section-title" id="quadrature-visual-title">Numerical object</h2>
+                  <span class="quadrature-score-label" id="score-mini-label">best-so-far</span>
+                </div>
+                <svg
+                  class="quadrature-score-svg"
+                  id="score-mini-svg"
+                  viewBox="0 0 340 108"
+                  preserveAspectRatio="none"
+                  aria-label="Best-so-far score pulse"
+                ></svg>
+              </div>
+
+              <div class="quadrature-rule">
+                <svg
+                  class="quadrature-rule-svg"
+                  id="rule-svg"
+                  viewBox="0 0 340 180"
+                  preserveAspectRatio="none"
+                  aria-label="Quadrature rule"
+                ></svg>
+              </div>
+
+              <div class="quadrature-integrands" id="integrands-grid"></div>
+            </aside>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© <span id="year">2026</span> Göther Labs</p>
+      </footer>
+    </div>
+
+    <script src="../../scripts.js"></script>
+    <script src="./surface-data.js"></script>
+    <script src="./surface.js"></script>
+  </body>
+</html>
