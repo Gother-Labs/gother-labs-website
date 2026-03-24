@@ -54,6 +54,7 @@ function initializeThreeBodySystem() {
   let phaseStartTime = performance.now();
   let collapseSourceState = null;
   let collapseReferenceState = null;
+  let referenceState = null;
   let wakeTimeoutId = 0;
   let gravityTimeoutId = 0;
   let collapseTimeoutId = 0;
@@ -139,8 +140,10 @@ function initializeThreeBodySystem() {
     phase = "idle";
     collapseSourceState = null;
     collapseReferenceState = null;
+    referenceState = null;
 
     const previewState = createStateFromReferenceGlyph(referenceMark);
+    referenceState = cloneSystemState(previewState);
     target.radii = previewState.radii.slice();
     syncBodyNodes(bodyNodes, previewState.positions, target.radii);
     render(0);
@@ -149,6 +152,7 @@ function initializeThreeBodySystem() {
   function scheduleWakeSequence() {
     wakeTimeoutId = window.setTimeout(() => {
       state = createStateFromReferenceGlyph(referenceMark);
+      referenceState = cloneSystemState(state);
       history = state.positions.map((position) => [copyVector(position)]);
       target.radii = state.radii.slice();
       phase = "settling";
@@ -175,6 +179,8 @@ function initializeThreeBodySystem() {
   function handleViewportChange() {
     resizeCanvas();
 
+    const nextReferenceState = createStateFromReferenceGlyph(referenceMark);
+
     if (!isAwake) {
       resetToReference();
       scheduleWakeSequence();
@@ -182,6 +188,24 @@ function initializeThreeBodySystem() {
     }
 
     if (state) {
+      if (referenceState) {
+        const transform = createReferenceTransform(referenceState, nextReferenceState);
+        applyTransformToState(state, transform);
+        applyTransformToHistory(history, transform);
+
+        if (collapseSourceState) {
+          applyTransformToState(collapseSourceState, transform);
+        }
+
+        if (collapseReferenceState) {
+          collapseReferenceState = cloneSystemState(nextReferenceState);
+        }
+
+        referenceState = cloneSystemState(nextReferenceState);
+      } else {
+        referenceState = cloneSystemState(nextReferenceState);
+      }
+
       target.radii = state.radii.slice();
       syncBodyNodes(bodyNodes, state.positions, target.radii);
     }
@@ -201,6 +225,7 @@ function initializeThreeBodySystem() {
       radii: target.radii.slice(),
     };
     collapseReferenceState = createStateFromReferenceGlyph(referenceMark);
+    referenceState = cloneSystemState(collapseReferenceState);
 
     resetTimeoutId = window.setTimeout(() => {
       resetToReference();
@@ -495,6 +520,77 @@ function easeInOutCubic(value) {
 
 function copyVector(vector) {
   return { x: vector.x, y: vector.y };
+}
+
+function cloneSystemState(systemState) {
+  return {
+    positions: systemState.positions.map(copyVector),
+    radii: systemState.radii.slice(),
+  };
+}
+
+function createReferenceTransform(previousReferenceState, nextReferenceState) {
+  const previousCenter = getCentroid(previousReferenceState.positions);
+  const nextCenter = getCentroid(nextReferenceState.positions);
+  const previousRadius = getReferenceRadius(previousReferenceState.positions, previousCenter);
+  const nextRadius = getReferenceRadius(nextReferenceState.positions, nextCenter);
+  const scale = previousRadius > 0 ? nextRadius / previousRadius : 1;
+
+  return {
+    fromCenter: previousCenter,
+    toCenter: nextCenter,
+    scale,
+  };
+}
+
+function applyTransformToState(systemState, transform) {
+  systemState.positions = systemState.positions.map((position) =>
+    transformPoint(position, transform)
+  );
+
+  if (systemState.radii) {
+    systemState.radii = systemState.radii.map((radius) => radius * transform.scale);
+  }
+}
+
+function applyTransformToHistory(history, transform) {
+  history.forEach((trail, index) => {
+    history[index] = trail.map((point) => transformPoint(point, transform));
+  });
+}
+
+function transformPoint(point, transform) {
+  return {
+    x:
+      transform.toCenter.x +
+      (point.x - transform.fromCenter.x) * transform.scale,
+    y:
+      transform.toCenter.y +
+      (point.y - transform.fromCenter.y) * transform.scale,
+  };
+}
+
+function getCentroid(points) {
+  const totals = points.reduce(
+    (accumulator, point) => ({
+      x: accumulator.x + point.x,
+      y: accumulator.y + point.y,
+    }),
+    { x: 0, y: 0 }
+  );
+
+  return {
+    x: totals.x / points.length,
+    y: totals.y / points.length,
+  };
+}
+
+function getReferenceRadius(points, center) {
+  const distances = points.map((point) =>
+    Math.hypot(point.x - center.x, point.y - center.y)
+  );
+
+  return Math.max(...distances, 0);
 }
 
 function getViewportMetrics() {
