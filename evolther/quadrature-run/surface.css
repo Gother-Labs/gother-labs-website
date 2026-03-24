@@ -1,0 +1,308 @@
+:root {
+  --surface-panel: #f8fbff;
+  --surface-panel-strong: #f4f8fc;
+  --surface-delete: #cb3d3d;
+  --surface-insert: #15803d;
+  --surface-focus: rgba(10, 132, 255, 0.07);
+  --surface-mono: "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+.quadrature-surface-page .site-main {
+  max-width: 1320px;
+}
+
+.quadrature-hero {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.quadrature-hero .page-title {
+  max-width: 14ch;
+}
+
+.quadrature-strip {
+  justify-content: flex-start;
+  margin-top: 1.15rem;
+}
+
+.quadrature-surface {
+  --surface-scale: 0.8;
+  display: grid;
+  gap: 1.15rem;
+}
+
+.quadrature-summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(220px, 0.7fr);
+  gap: 1rem;
+  align-items: end;
+  padding-bottom: 0.95rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.quadrature-summary-copy {
+  min-height: 1px;
+}
+
+.quadrature-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.quadrature-metric {
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.quadrature-metric-label {
+  display: block;
+  margin-bottom: 0.42rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.quadrature-metric-value {
+  display: block;
+  font-size: 1.16rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.quadrature-stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.78fr) minmax(320px, 0.82fr);
+  gap: 1.35rem;
+  align-items: start;
+  width: calc(100% / var(--surface-scale));
+  transform: scale(var(--surface-scale));
+  transform-origin: top center;
+  margin: 0 auto -16rem;
+}
+
+.quadrature-section-head,
+.quadrature-score-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.quadrature-section-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.quadrature-section-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.58rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1;
+}
+
+.quadrature-section-tag.is-phase {
+  color: var(--accent);
+  border-color: rgba(10, 132, 255, 0.16);
+  background: rgba(10, 132, 255, 0.05);
+}
+
+.quadrature-editor {
+  margin-top: 0.85rem;
+  border-top: 1px solid var(--line);
+  background: #fff;
+}
+
+.quadrature-editor-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 0.15rem 0.85rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.quadrature-editor-title {
+  color: var(--muted);
+  font-family: var(--surface-mono);
+  font-size: 0.86rem;
+}
+
+.quadrature-editor-body {
+  position: relative;
+  height: 1180px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(248, 251, 255, 0.42), rgba(255, 255, 255, 0));
+  --editor-font-size: 12.16px;
+  --editor-ln-col: 34px;
+  --editor-pm-col: 14px;
+  --editor-gap-col: 0.45rem;
+  --editor-pad-x: 0.55rem;
+}
+
+.quadrature-editor-focus {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  border-radius: 14px;
+  background: var(--surface-focus);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.quadrature-editor-line {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  display: grid;
+  grid-template-columns: var(--editor-ln-col) var(--editor-pm-col) minmax(0, 1fr);
+  gap: var(--editor-gap-col);
+  align-items: center;
+  height: 24px;
+  padding: 0 var(--editor-pad-x);
+  border-radius: 10px;
+  font-family: var(--surface-mono);
+  font-size: var(--editor-font-size);
+  line-height: 1;
+  white-space: pre;
+  pointer-events: none;
+  will-change: transform, opacity, height;
+}
+
+.quadrature-editor-line.equal {
+  color: #17212b;
+  background: rgba(248, 251, 255, 0.82);
+}
+
+.quadrature-editor-line.delete {
+  color: var(--surface-delete);
+  background: rgba(203, 61, 61, 0.08);
+}
+
+.quadrature-editor-line.insert {
+  color: var(--surface-insert);
+  background: rgba(21, 128, 61, 0.08);
+}
+
+.quadrature-editor-line .ln {
+  color: #8b96a3;
+  text-align: right;
+}
+
+.quadrature-editor-line .pm {
+  font-weight: 600;
+  opacity: 0.95;
+}
+
+.quadrature-editor-line.delete .code {
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+}
+
+.quadrature-visual {
+  display: grid;
+  gap: 1rem;
+  padding-left: 1.2rem;
+  border-left: 1px solid var(--line);
+}
+
+.quadrature-score-pulse,
+.quadrature-rule,
+.quadrature-mini-chart {
+  background: #fff;
+}
+
+.quadrature-score-label {
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.quadrature-score-svg {
+  display: block;
+  width: 100%;
+  height: 108px;
+  margin-top: 0.45rem;
+}
+
+.quadrature-rule-svg {
+  display: block;
+  width: 100%;
+  height: 240px;
+}
+
+.quadrature-integrands {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.quadrature-mini-chart {
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.quadrature-mini-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.45rem;
+}
+
+.quadrature-mini-head strong {
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.quadrature-mini-head span {
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.quadrature-mini-svg {
+  display: block;
+  width: 100%;
+  height: 132px;
+}
+
+@media (max-width: 1100px) {
+  .quadrature-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .quadrature-visual {
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding-top: 1rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .quadrature-surface {
+    --surface-scale: 1;
+  }
+
+  .quadrature-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .quadrature-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .quadrature-editor-body {
+    height: 980px;
+  }
+
+  .quadrature-editor-line {
+    font-size: 0.7rem;
+    grid-template-columns: 28px 12px minmax(0, 1fr);
+  }
+}
