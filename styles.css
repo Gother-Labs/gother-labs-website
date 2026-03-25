@@ -350,6 +350,11 @@ body.home-page.gravity-live .animated-reference-mark {
   max-width: 78ch;
 }
 
+.company-hero-intro,
+.company-thesis-title {
+  max-width: none;
+}
+
 .page-contact-address {
   margin-top: 2.4rem;
 }
@@ -365,6 +370,14 @@ body.home-page.gravity-live .animated-reference-mark {
 .section-text {
   margin: 1rem 0 0;
   max-width: 66ch;
+}
+
+.section-text.company-thesis-text {
+  max-width: none;
+}
+
+.page-hero .intro.company-hero-intro {
+  max-width: none;
 }
 
 .run-surface {
