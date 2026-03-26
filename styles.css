@@ -72,6 +72,10 @@ body.home-page {
   overflow-y: hidden;
 }
 
+body.not-found-page {
+  overflow-y: hidden;
+}
+
 a {
   color: inherit;
 }
@@ -161,6 +165,14 @@ a {
   justify-content: center;
 }
 
+.not-found-main {
+  max-width: none;
+  min-height: calc(100dvh - 108px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .site-main:not(.home-main) {
   padding-top: 1.25rem;
 }
@@ -173,6 +185,38 @@ a {
 .home-hero {
   width: min(100%, 1320px);
   padding: 1.2rem 0 0;
+}
+
+.not-found-hero {
+  width: min(100%, 1320px);
+  padding: 0;
+  text-align: center;
+}
+
+.not-found-title {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.36em;
+  flex-wrap: nowrap;
+  font-size: clamp(2rem, 4vw, 2.95rem);
+  letter-spacing: -0.05em;
+  line-height: 1.05;
+  margin-top: 0;
+  white-space: nowrap;
+}
+
+.not-found-title .wordmark-mark-wrap {
+  transform: translateY(-0.015em);
+}
+
+.not-found-code {
+  letter-spacing: -0.06em;
+}
+
+.not-found-intro {
+  margin: 1.15rem auto 0;
+  max-width: 38ch;
 }
 
 .compact-hero {
@@ -599,9 +643,20 @@ a {
     justify-content: center;
   }
 
+  .not-found-main {
+    min-height: calc(100dvh - 88px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .home-hero {
     width: 100%;
     padding-top: 0;
+  }
+
+  .not-found-hero {
+    width: 100%;
   }
 }
 
@@ -637,5 +692,10 @@ a {
     --display-size: 2.75rem;
     --display-size-wide: 2.75rem;
     --display-line-height: 1.04;
+  }
+
+  .not-found-title {
+    flex-wrap: wrap;
+    white-space: normal;
   }
 }

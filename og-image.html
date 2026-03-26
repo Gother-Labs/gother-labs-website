@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=1200, initial-scale=1">
+    <title>Göther Labs OG Image</title>
+    <style>
+      @font-face {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 300 700;
+        font-display: block;
+        src: url("/assets/fonts/inter-latin.woff2") format("woff2");
+      }
+
+      html,
+      body {
+        margin: 0;
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+        background: #000000;
+        color: #ffffff;
+        font-family: "Inter", sans-serif;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body {
+        display: grid;
+        place-items: center;
+      }
+
+      .frame {
+        width: 1200px;
+        height: 630px;
+        display: grid;
+        place-items: center;
+      }
+
+      .wordmark {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.28em;
+        font-size: 112px;
+        font-weight: 600;
+        line-height: 1;
+        letter-spacing: -0.06em;
+      }
+
+      .mark {
+        color: #0a84ff;
+        font-weight: 300;
+        transform: translateY(-0.015em);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="frame">
+      <h1 class="wordmark">
+        <span class="mark" aria-hidden="true">∴</span>
+        <span>Göther Labs</span>
+      </h1>
+    </main>
+  </body>
+</html>

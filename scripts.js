@@ -4,20 +4,23 @@ if (yearNode) {
   yearNode.textContent = new Date().getFullYear().toString();
 }
 
-const homePage = document.body.classList.contains("home-page");
+const animatedSymbolPage =
+  document.body.classList.contains("home-page") ||
+  document.body.classList.contains("not-found-page");
 const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-if (homePage && !reducedMotionQuery.matches) {
+if (animatedSymbolPage && !reducedMotionQuery.matches) {
   initializeThreeBodySystem();
 }
 
 function initializeThreeBodySystem() {
-  const referenceGeometry = document.querySelector(".home-hero .animated-reference-geometry");
+  const symbolScope = document.querySelector(".animated-symbol-scope");
+  const referenceGeometry = symbolScope?.querySelector(".animated-reference-geometry");
   const bodyNodes = Array.from(
-    document.querySelectorAll(".home-hero .live-geometry-dot")
+    symbolScope?.querySelectorAll(".live-geometry-dot") || []
   );
   const trailNodes = Array.from(
-    document.querySelectorAll(".home-hero .live-trail")
+    symbolScope?.querySelectorAll(".live-trail") || []
   );
 
   if (
