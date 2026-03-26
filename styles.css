@@ -15,6 +15,28 @@
   --max-width: 1120px;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --text: #ffffff;
+    --muted: #d7d7d7;
+    --muted-soft: #c2c2c2;
+    --line: rgba(255, 255, 255, 0.18);
+    --line-strong: rgba(255, 255, 255, 0.32);
+    --accent: #0b84fe;
+    --accent-soft: rgba(11, 132, 254, 0.12);
+    --panel: #000000;
+    --panel-dark: #000000;
+    --panel-dark-line: rgba(255, 255, 255, 0.12);
+    --panel-dark-text: rgba(255, 255, 255, 0.92);
+    --panel-dark-muted: rgba(255, 255, 255, 0.62);
+  }
+
+  .brand-image:not(.site-brand-mark) {
+    filter: invert(1);
+  }
+}
+
 *,
 *::before,
 *::after {
@@ -37,45 +59,6 @@ body {
 
 body.home-page {
   overflow-y: hidden;
-}
-
-.three-body-canvas {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.9s ease;
-  z-index: 0;
-}
-
-.three-body-bodies {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.three-body-dot {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-radius: 999px;
-  background: var(--accent);
-  opacity: 0;
-  transform: translate3d(0, 0, 0);
-  will-change: transform, width, height, opacity;
-}
-
-body.home-page.logo-awake .three-body-canvas {
-  opacity: 1;
-}
-
-body.home-page.logo-awake .three-body-dot {
-  opacity: 1;
 }
 
 a {
@@ -161,7 +144,7 @@ a {
 
 .home-main {
   max-width: none;
-  min-height: calc(100vh - 108px);
+  min-height: calc(100dvh - 108px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -189,7 +172,7 @@ a {
 .career-title,
 .page-title {
   margin: 0;
-  font-size: clamp(3rem, 8vw, 4.6rem);
+  font-size: clamp(3rem, 5.8rem + 0.9vw, 4.6rem);
   font-weight: 600;
   letter-spacing: -0.06em;
   line-height: 1;
@@ -202,17 +185,48 @@ a {
   gap: 0.72rem;
 }
 
-.wordmark-mark {
-  color: var(--accent);
-  font-weight: 300;
+.wordmark-mark-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.78em;
+  height: 0.78em;
+  flex: 0 0 auto;
 }
 
-.animated-reference-mark {
-  transition: opacity 0.12s linear;
+.animated-reference-geometry {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  opacity: 1;
+  z-index: 1;
 }
 
-body.home-page.gravity-live .animated-reference-mark {
+.geometry-dot {
+  fill: var(--accent);
+}
+
+.source-geometry {
   opacity: 0;
+  pointer-events: none;
+}
+
+.live-geometry-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.live-trail {
+  fill: none;
+  stroke: var(--accent);
+  stroke-opacity: 0.12;
+  stroke-width: 1.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .page-title {
@@ -229,6 +243,10 @@ body.home-page.gravity-live .animated-reference-mark {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+.company-manifesto-inline {
+  color: var(--accent);
 }
 
 .intro,
@@ -563,7 +581,7 @@ body.home-page.gravity-live .animated-reference-mark {
   }
 
   .home-main {
-    min-height: calc(100svh - 88px);
+    min-height: calc(100dvh - 88px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -579,6 +597,10 @@ body.home-page.gravity-live .animated-reference-mark {
   .page-title {
     font-size: clamp(2.85rem, 5.5vw, 3.95rem);
   }
+
+  .wordmark {
+    font-size: clamp(2.9rem, 3.4rem + 1vw, 4.05rem);
+  }
 }
 
 @media (max-width: 1024px) {
@@ -590,10 +612,8 @@ body.home-page.gravity-live .animated-reference-mark {
   .page-hero .intro {
     max-width: 70ch;
   }
-}
 
-@media (prefers-reduced-motion: reduce) {
-  .three-body-canvas {
-    display: none;
+  .wordmark {
+    font-size: clamp(2.65rem, 2.9rem + 1vw, 3.55rem);
   }
 }

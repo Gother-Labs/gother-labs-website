@@ -12,21 +12,19 @@ if (homePage && !reducedMotionQuery.matches) {
 }
 
 function initializeThreeBodySystem() {
-  const canvas = document.querySelector(".three-body-canvas");
-  const referenceMark = document.querySelector(".home-hero .animated-reference-mark");
-  const bodyNodes = Array.from(document.querySelectorAll(".three-body-dot"));
+  const referenceGeometry = document.querySelector(".home-hero .animated-reference-geometry");
+  const bodyNodes = Array.from(
+    document.querySelectorAll(".home-hero .live-geometry-dot")
+  );
+  const trailNodes = Array.from(
+    document.querySelectorAll(".home-hero .live-trail")
+  );
 
   if (
-    !(canvas instanceof HTMLCanvasElement) ||
-    !(referenceMark instanceof HTMLElement) ||
-    bodyNodes.length !== 3
+    !(referenceGeometry instanceof SVGElement) ||
+    bodyNodes.length !== 3 ||
+    trailNodes.length !== 3
   ) {
-    return;
-  }
-
-  const context = canvas.getContext("2d");
-
-  if (!context) {
     return;
   }
 
@@ -37,15 +35,11 @@ function initializeThreeBodySystem() {
   const resetDelayMs = 220;
   const integratorStep = 1 / 240;
   const simulationSpeed = 1;
-  const bodyColor = "#0a84ff";
-  const trailColor = "rgba(10, 132, 255, 0.08)";
   const historyLength = 240;
   const gravityStrength = 2200;
   const softening = 12;
-  const target = { width: 0, height: 0, radii: [] };
   let state = null;
   let history = [];
-  let deviceScale = 1;
   let accumulator = 0;
   let lastFrameTime = performance.now();
   let isAwake = false;
@@ -60,7 +54,6 @@ function initializeThreeBodySystem() {
   let collapseTimeoutId = 0;
   let resetTimeoutId = 0;
 
-  resizeCanvas();
   resetToReference();
   scheduleWakeSequence();
 
@@ -73,6 +66,23 @@ function initializeThreeBodySystem() {
   function frame(now) {
     const elapsedSeconds = Math.min((now - lastFrameTime) / 1000, 0.05);
     lastFrameTime = now;
+
+    if (phase === "idle" || phase === "settling") {
+      const pinnedReferenceState = createStateFromReferenceGlyph(referenceGeometry);
+      referenceState = cloneSystemState(pinnedReferenceState);
+
+      if (!state || phase === "idle") {
+        state = {
+          positions: pinnedReferenceState.positions.map(copyVector),
+          velocities: pinnedReferenceState.positions.map(() => ({ x: 0, y: 0 })),
+          masses: pinnedReferenceState.positions.map(() => 1),
+          radii: pinnedReferenceState.radii.slice(),
+        };
+      } else {
+        state.positions = pinnedReferenceState.positions.map(copyVector);
+        state.radii = pinnedReferenceState.radii.slice();
+      }
+    }
 
     if (isAwake && gravityActive && phase === "gravity") {
       accumulator += elapsedSeconds * simulationSpeed;
@@ -92,38 +102,20 @@ function initializeThreeBodySystem() {
         x: position.x + (collapseReferenceState.positions[index].x - position.x) * easedProgress,
         y: position.y + (collapseReferenceState.positions[index].y - position.y) * easedProgress,
       }));
-      target.radii = collapseSourceState.radii.map((radius) => radius * (1 - easedProgress));
+      state.radii = collapseSourceState.radii.map((radius) => radius * (1 - easedProgress));
     }
 
     render(isAwake ? 1 : 0);
     requestAnimationFrame(frame);
   }
 
-  function resizeCanvas() {
-    const viewport = getViewportMetrics();
-
-    deviceScale = window.devicePixelRatio || 1;
-    canvas.width = Math.round(viewport.width * deviceScale);
-    canvas.height = Math.round(viewport.height * deviceScale);
-    canvas.style.width = `${viewport.width}px`;
-    canvas.style.height = `${viewport.height}px`;
-    canvas.style.left = `${viewport.offsetLeft}px`;
-    canvas.style.top = `${viewport.offsetTop}px`;
-    context.setTransform(deviceScale, 0, 0, deviceScale, 0, 0);
-
-    target.width = viewport.width;
-    target.height = viewport.height;
-  }
-
   function render(progress) {
-    context.clearRect(0, 0, target.width, target.height);
-
     if (progress <= 0 || !state) {
       return;
     }
 
-    drawTrails(context, history, progress, trailColor);
-    syncBodyNodes(bodyNodes, state.positions, target.radii);
+    drawTrails(trailNodes, history);
+    syncBodyNodes(bodyNodes, state.positions, state.radii);
   }
 
   function resetToReference() {
@@ -142,22 +134,23 @@ function initializeThreeBodySystem() {
     collapseReferenceState = null;
     referenceState = null;
 
-    const previewState = createStateFromReferenceGlyph(referenceMark);
+    const previewState = createStateFromReferenceGlyph(referenceGeometry);
     referenceState = cloneSystemState(previewState);
-    target.radii = previewState.radii.slice();
-    syncBodyNodes(bodyNodes, previewState.positions, target.radii);
+    syncBodyNodes(bodyNodes, previewState.positions, previewState.radii);
+    drawTrails(trailNodes, []);
     render(0);
   }
 
   function scheduleWakeSequence() {
     wakeTimeoutId = window.setTimeout(() => {
-      state = createStateFromReferenceGlyph(referenceMark);
+      if (!state) {
+        state = createStateFromReferenceGlyph(referenceGeometry);
+      }
       referenceState = cloneSystemState(state);
       history = state.positions.map((position) => [copyVector(position)]);
-      target.radii = state.radii.slice();
       phase = "settling";
       phaseStartTime = performance.now();
-      syncBodyNodes(bodyNodes, state.positions, target.radii);
+      syncBodyNodes(bodyNodes, state.positions, state.radii);
       isAwake = true;
       render(1);
       requestAnimationFrame(() => {
@@ -177,9 +170,7 @@ function initializeThreeBodySystem() {
   }
 
   function handleViewportChange() {
-    resizeCanvas();
-
-    const nextReferenceState = createStateFromReferenceGlyph(referenceMark);
+    const nextReferenceState = createStateFromReferenceGlyph(referenceGeometry);
 
     if (!isAwake) {
       resetToReference();
@@ -206,8 +197,7 @@ function initializeThreeBodySystem() {
         referenceState = cloneSystemState(nextReferenceState);
       }
 
-      target.radii = state.radii.slice();
-      syncBodyNodes(bodyNodes, state.positions, target.radii);
+      syncBodyNodes(bodyNodes, state.positions, state.radii);
     }
   }
 
@@ -222,9 +212,9 @@ function initializeThreeBodySystem() {
     phaseStartTime = performance.now();
     collapseSourceState = {
       positions: state.positions.map(copyVector),
-      radii: target.radii.slice(),
+      radii: state.radii.slice(),
     };
-    collapseReferenceState = createStateFromReferenceGlyph(referenceMark);
+    collapseReferenceState = createStateFromReferenceGlyph(referenceGeometry);
     referenceState = cloneSystemState(collapseReferenceState);
 
     resetTimeoutId = window.setTimeout(() => {
@@ -234,9 +224,8 @@ function initializeThreeBodySystem() {
   }
 }
 
-function createStateFromReferenceGlyph(referenceMark) {
-  const glyphPoints = rasterizeThereforeGlyph(referenceMark);
-
+function createStateFromReferenceGlyph(referenceGeometry) {
+  const glyphPoints = geometryPointsFromReferenceMark(referenceGeometry);
   return {
     positions: glyphPoints.map((point) => ({ x: point.x, y: point.y })),
     velocities: glyphPoints.map(() => ({ x: 0, y: 0 })),
@@ -245,163 +234,29 @@ function createStateFromReferenceGlyph(referenceMark) {
   };
 }
 
-function rasterizeThereforeGlyph(referenceMark) {
-  const rect = referenceMark.getBoundingClientRect();
-  const viewport = getViewportMetrics();
-  const computedStyle = window.getComputedStyle(referenceMark);
-  const color = computedStyle.color;
-  const fontSize = parseFloat(computedStyle.fontSize);
-  const fontFamily = computedStyle.fontFamily;
-  const fontWeight = computedStyle.fontWeight;
-  const fontStyle = computedStyle.fontStyle;
-  const letterSpacing = computedStyle.letterSpacing;
-  const offscreen = document.createElement("canvas");
-  const width = Math.max(64, Math.ceil(rect.width * 6));
-  const height = Math.max(64, Math.ceil(rect.height * 6));
-  const padding = Math.ceil(Math.max(width, height) * 0.18);
-  const xOffset = rect.width * 0 + 0.27;
-  const yOffset = rect.height * -0.107;
-  const context = offscreen.getContext("2d");
+function geometryPointsFromReferenceMark(referenceGeometry) {
+  const circles = Array.from(referenceGeometry.querySelectorAll(".source-geometry-dot"));
+  const viewBox = referenceGeometry.viewBox.baseVal;
 
-  if (!context) {
-    return fallbackGlyphPoints(rect);
+  if (circles.length !== 3 || !viewBox || !viewBox.width || !viewBox.height) {
+    return null;
   }
 
-  offscreen.width = width + padding * 2;
-  offscreen.height = height + padding * 2;
-  context.clearRect(0, 0, offscreen.width, offscreen.height);
-  context.fillStyle = color;
-  context.textAlign = "left";
-  context.textBaseline = "top";
-  context.font = `${fontStyle} ${fontWeight} ${fontSize * 6}px ${fontFamily}`;
+  const rawPoints = circles
+    .map((circle) => {
+      const cx = parseFloat(circle.getAttribute("cx") || "0");
+      const cy = parseFloat(circle.getAttribute("cy") || "0");
+      const r = parseFloat(circle.getAttribute("r") || "0");
 
-  if (context.letterSpacing !== undefined) {
-    context.letterSpacing = letterSpacing;
-  }
+      return {
+        x: cx,
+        y: cy,
+        radius: r,
+      };
+    })
+    .sort((a, b) => a.y - b.y || a.x - b.x);
 
-  context.fillText("∴", padding, padding);
-
-  const imageData = context.getImageData(0, 0, offscreen.width, offscreen.height);
-  const components = findOpaqueComponents(imageData, offscreen.width, offscreen.height, 12);
-
-  if (components.length !== 3) {
-    return fallbackGlyphPoints(rect, color);
-  }
-
-  const scaleX = rect.width / width;
-  const scaleY = rect.height / height;
-
-  return components
-    .sort((a, b) => a.centerY - b.centerY || a.centerX - b.centerX)
-    .map((component) => ({
-      x: viewport.offsetLeft + rect.left + (component.centerX - padding) * scaleX + xOffset,
-      y: viewport.offsetTop + rect.top + (component.centerY - padding) * scaleY + yOffset,
-      radius: (((component.maxX - component.minX + 1) * scaleX) + ((component.maxY - component.minY + 1) * scaleY)) / 4,
-    }));
-}
-
-function findOpaqueComponents(imageData, width, height, alphaThreshold) {
-  const visited = new Uint8Array(width * height);
-  const components = [];
-
-  for (let y = 0; y < height; y += 1) {
-    for (let x = 0; x < width; x += 1) {
-      const index = y * width + x;
-      const alpha = imageData.data[index * 4 + 3];
-
-      if (visited[index] || alpha < alphaThreshold) {
-        continue;
-      }
-
-      const queue = [index];
-      visited[index] = 1;
-      let count = 0;
-      let sumX = 0;
-      let sumY = 0;
-      let minX = x;
-      let maxX = x;
-      let minY = y;
-      let maxY = y;
-
-      while (queue.length > 0) {
-        const current = queue.pop();
-        const currentX = current % width;
-        const currentY = Math.floor(current / width);
-
-        count += 1;
-        sumX += currentX;
-        sumY += currentY;
-        minX = Math.min(minX, currentX);
-        maxX = Math.max(maxX, currentX);
-        minY = Math.min(minY, currentY);
-        maxY = Math.max(maxY, currentY);
-
-        const neighbors = [
-          current - 1,
-          current + 1,
-          current - width,
-          current + width,
-        ];
-
-        neighbors.forEach((neighbor) => {
-          if (neighbor < 0 || neighbor >= width * height || visited[neighbor]) {
-            return;
-          }
-
-          const neighborX = neighbor % width;
-          const neighborY = Math.floor(neighbor / width);
-
-          if (Math.abs(neighborX - currentX) + Math.abs(neighborY - currentY) !== 1) {
-            return;
-          }
-
-          const neighborAlpha = imageData.data[neighbor * 4 + 3];
-
-          if (neighborAlpha < alphaThreshold) {
-            return;
-          }
-
-          visited[neighbor] = 1;
-          queue.push(neighbor);
-        });
-      }
-
-      components.push({
-        centerX: sumX / count,
-        centerY: sumY / count,
-        minX,
-        maxX,
-        minY,
-        maxY,
-      });
-    }
-  }
-
-  return components;
-}
-
-function fallbackGlyphPoints(rect) {
-  const width = rect.width;
-  const height = rect.height;
-  const radius = Math.min(width, height) * 0.11;
-
-  return [
-    {
-      x: rect.left + width * 0.50,
-      y: rect.top + height * 0.16,
-      radius,
-    },
-    {
-      x: rect.left + width * 0.18,
-      y: rect.top + height * 0.72,
-      radius,
-    },
-    {
-      x: rect.left + width * 0.82,
-      y: rect.top + height * 0.72,
-      radius,
-    },
-  ];
+  return rawPoints;
 }
 
 function stepThreeBodyState(state, dt, gravityStrength, softening) {
@@ -469,44 +324,30 @@ function recordHistory(history, positions, maxLength) {
   });
 }
 
-function drawTrails(context, history, progress, color) {
-  context.save();
-  context.lineCap = "round";
-  context.lineJoin = "round";
-  context.strokeStyle = color;
-  context.lineWidth = 1.2;
-  context.globalAlpha = 0.32 * progress;
+function drawTrails(trailNodes, history) {
+  trailNodes.forEach((trailNode, index) => {
+    const trail = history[index];
 
-  history.forEach((trail) => {
-    if (trail.length < 2) {
+    if (!trail || trail.length < 2) {
+      trailNode.setAttribute("d", "");
       return;
     }
 
-    context.beginPath();
+    const commands = trail.map((point, pointIndex) =>
+      `${pointIndex === 0 ? "M" : "L"} ${point.x.toFixed(3)} ${point.y.toFixed(3)}`
+    );
 
-    trail.forEach((point, index) => {
-      if (index === 0) {
-        context.moveTo(point.x, point.y);
-      } else {
-        context.lineTo(point.x, point.y);
-      }
-    });
-
-    context.stroke();
+    trailNode.setAttribute("d", commands.join(" "));
   });
-
-  context.restore();
 }
 
 function syncBodyNodes(bodyNodes, positions, radii) {
   bodyNodes.forEach((node, index) => {
     const position = positions[index];
     const radius = radii[index] || radii[0] || 0;
-    const diameter = radius * 2;
-
-    node.style.width = `${diameter}px`;
-    node.style.height = `${diameter}px`;
-    node.style.transform = `translate3d(${position.x - radius}px, ${position.y - radius}px, 0)`;
+    node.setAttribute("cx", position.x.toFixed(3));
+    node.setAttribute("cy", position.y.toFixed(3));
+    node.setAttribute("r", radius.toFixed(3));
   });
 }
 
@@ -591,22 +432,4 @@ function getReferenceRadius(points, center) {
   );
 
   return Math.max(...distances, 0);
-}
-
-function getViewportMetrics() {
-  if (window.visualViewport) {
-    return {
-      width: window.visualViewport.width,
-      height: window.visualViewport.height,
-      offsetLeft: window.visualViewport.offsetLeft,
-      offsetTop: window.visualViewport.offsetTop,
-    };
-  }
-
-  return {
-    width: window.innerWidth,
-    height: window.innerHeight,
-    offsetLeft: 0,
-    offsetTop: 0,
-  };
 }

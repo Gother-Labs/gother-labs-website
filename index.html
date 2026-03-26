@@ -25,12 +25,6 @@
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body class="home-page">
-    <canvas class="three-body-canvas" aria-hidden="true"></canvas>
-    <div class="three-body-bodies" aria-hidden="true">
-      <span class="three-body-dot"></span>
-      <span class="three-body-dot"></span>
-      <span class="three-body-dot"></span>
-    </div>
     <div class="page-shell site-shell">
       <header class="site-header">
         <nav class="site-nav" aria-label="Primary">
@@ -54,7 +48,25 @@
       <main class="site-main home-main">
         <section class="hero home-hero">
           <h1 class="wordmark">
-            <span aria-hidden="true" class="wordmark-mark animated-reference-mark">∴</span>
+            <span aria-hidden="true" class="wordmark-mark-wrap">
+              <svg
+                class="animated-reference-geometry live-symbol-svg"
+                viewBox="0 0 64 64"
+                focusable="false"
+              >
+                <g class="source-geometry" aria-hidden="true">
+                  <circle class="source-geometry-dot" cx="34.5" cy="34.5" r="3.6" />
+                  <circle class="source-geometry-dot" cx="21" cy="58" r="3.6" />
+                  <circle class="source-geometry-dot" cx="48" cy="58" r="3.6" />
+                </g>
+                <path class="live-trail" d="" />
+                <path class="live-trail" d="" />
+                <path class="live-trail" d="" />
+                <circle class="geometry-dot live-geometry-dot" cx="34.2" cy="28.4" r="3.34" />
+                <circle class="geometry-dot live-geometry-dot" cx="20.9" cy="50.6" r="3.34" />
+                <circle class="geometry-dot live-geometry-dot" cx="47.5" cy="50.6" r="3.34" />
+              </svg>
+            </span>
             <span>Göther Labs</span>
           </h1>
           <p class="intro">
