@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: block;
+  src: url("/assets/fonts/inter-latin.woff2") format("woff2");
+}
+
 :root {
   --bg: #ffffff;
   --text: #0a0a0a;
@@ -13,6 +21,9 @@
   --panel-dark-text: rgba(255, 255, 255, 0.86);
   --panel-dark-muted: rgba(255, 255, 255, 0.56);
   --max-width: 1120px;
+  --display-size: 4.15rem;
+  --display-size-wide: 4.15rem;
+  --display-line-height: 1.02;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -172,10 +183,10 @@ a {
 .career-title,
 .page-title {
   margin: 0;
-  font-size: clamp(3rem, 5.8rem + 0.9vw, 4.6rem);
+  font-size: var(--display-size);
   font-weight: 600;
   letter-spacing: -0.06em;
-  line-height: 1;
+  line-height: var(--display-line-height);
 }
 
 .wordmark {
@@ -183,6 +194,7 @@ a {
   align-items: center;
   justify-content: center;
   gap: 0.72rem;
+  font-size: var(--display-size-wide);
 }
 
 .wordmark-mark-wrap {
@@ -230,9 +242,9 @@ a {
 }
 
 .page-title {
-  font-size: clamp(2.95rem, 6.1vw, 4.2rem);
+  font-size: var(--display-size);
   letter-spacing: -0.05em;
-  line-height: 1.02;
+  line-height: var(--display-line-height);
   max-width: none;
 }
 
@@ -594,26 +606,36 @@ a {
 }
 
 @media (max-width: 1280px) {
-  .page-title {
-    font-size: clamp(2.85rem, 5.5vw, 3.95rem);
+  :root {
+    --display-size: 3.85rem;
+    --display-size-wide: 3.85rem;
   }
 
-  .wordmark {
-    font-size: clamp(2.9rem, 3.4rem + 1vw, 4.05rem);
+  .page-title {
+    letter-spacing: -0.05em;
   }
 }
 
 @media (max-width: 1024px) {
+  :root {
+    --display-size: 3.35rem;
+    --display-size-wide: 3.35rem;
+    --display-line-height: 1.03;
+  }
+
   .page-title {
-    font-size: clamp(2.7rem, 5.1vw, 3.45rem);
-    line-height: 1.03;
+    letter-spacing: -0.05em;
   }
 
   .page-hero .intro {
     max-width: 70ch;
   }
+}
 
-  .wordmark {
-    font-size: clamp(2.65rem, 2.9rem + 1vw, 3.55rem);
+@media (max-width: 720px) {
+  :root {
+    --display-size: 2.75rem;
+    --display-size-wide: 2.75rem;
+    --display-line-height: 1.04;
   }
 }
