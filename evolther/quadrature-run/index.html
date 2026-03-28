@@ -29,12 +29,6 @@
       <main class="site-main">
         <section class="hero compact-hero page-hero quadrature-hero">
           <h1 class="page-title">A quadrature run, read as one governed surface.</h1>
-          <div class="signal-strip quadrature-strip" aria-label="Run signals">
-            <p>100 generations</p>
-            <p id="signal-gains">7 real gains</p>
-            <p id="signal-seed">Seed 688.676</p>
-            <p id="signal-best">Best 114.515</p>
-          </div>
         </section>
 
         <div class="divider" aria-hidden="true"></div>
@@ -42,16 +36,40 @@
         <section class="quadrature-surface" aria-label="Quadrature run surface">
           <div class="quadrature-summary">
             <div class="quadrature-summary-copy">
-              <p class="eyebrow">Run Snapshot</p>
+              <p class="eyebrow">Domain Abstract</p>
+              <p class="quadrature-summary-text">
+                This domain evolves a one-dimensional quadrature rule on the interval <code>[0,1]</code>. What
+                you are seeing here is one accepted run rendered as a governed surface: the editable code, the
+                best-so-far numerical objective, and the rule’s behavior against analytic integrands read together.
+              </p>
             </div>
-            <div class="quadrature-metrics" role="group" aria-label="Current run step">
-              <div class="quadrature-metric">
-                <span class="quadrature-metric-label">STEP</span>
-                <strong class="quadrature-metric-value" id="metric-step">0 / 7</strong>
-              </div>
-              <div class="quadrature-metric">
-                <span class="quadrature-metric-label">GEN</span>
-                <strong class="quadrature-metric-value" id="metric-gen">0</strong>
+            <div class="quadrature-summary-panel">
+              <p class="eyebrow">Run Snapshot</p>
+              <div class="quadrature-metrics" role="group" aria-label="Current run step">
+                <div class="quadrature-metric">
+                  <span class="quadrature-metric-label">STEP</span>
+                  <strong class="quadrature-metric-value" id="metric-step">0 / 7</strong>
+                </div>
+                <div class="quadrature-metric">
+                  <span class="quadrature-metric-label">GEN</span>
+                  <strong class="quadrature-metric-value" id="metric-gen">0</strong>
+                </div>
+                <div class="quadrature-metric">
+                  <span class="quadrature-metric-label">GENERATIONS</span>
+                  <strong class="quadrature-metric-value">100</strong>
+                </div>
+                <div class="quadrature-metric">
+                  <span class="quadrature-metric-label">GAINS</span>
+                  <strong class="quadrature-metric-value" id="signal-gains">7</strong>
+                </div>
+                <div class="quadrature-metric">
+                  <span class="quadrature-metric-label">SEED</span>
+                  <strong class="quadrature-metric-value quadrature-metric-value--numeric" id="signal-seed">688.676</strong>
+                </div>
+                <div class="quadrature-metric">
+                  <span class="quadrature-metric-label">BEST</span>
+                  <strong class="quadrature-metric-value quadrature-metric-value--numeric" id="signal-best">114.515</strong>
+                </div>
               </div>
             </div>
           </div>

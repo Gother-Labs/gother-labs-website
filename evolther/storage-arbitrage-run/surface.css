@@ -5,27 +5,38 @@
   --surface-insert: #15803d;
   --surface-focus: rgba(10, 10, 10, 0.03);
   --surface-mono: "SFMono-Regular", Menlo, Consolas, monospace;
+  --charge: #17864b;
+  --discharge: #cb3d3d;
+  --soc: #0a84ff;
+  --price: var(--text);
+  --price-area: color-mix(in srgb, var(--accent) 8%, transparent);
 }
 
-.quadrature-surface-page .site-main {
+.storage-surface-page .site-main {
   max-width: var(--max-width);
 }
 
-.quadrature-hero {
+.storage-hero {
   display: grid;
   gap: 0.9rem;
 }
 
-.quadrature-hero .page-title {
+.storage-hero .page-title {
   max-width: none;
 }
 
-.quadrature-surface {
+@media (prefers-color-scheme: dark) {
+  :root {
+    --price-area: color-mix(in srgb, var(--accent) 16%, transparent);
+  }
+}
+
+.storage-surface {
   display: grid;
   gap: 1.35rem;
 }
 
-.quadrature-summary {
+.storage-summary {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(420px, 1fr);
   gap: 1.8rem;
@@ -34,48 +45,34 @@
   align-items: start;
 }
 
-.quadrature-summary .eyebrow {
-  margin-bottom: 0;
-}
-
-.quadrature-summary-copy {
-  display: grid;
-  gap: 0.75rem;
-  align-content: start;
-}
-
-.quadrature-summary-text {
-  max-width: 62ch;
-  margin: 0;
-  color: var(--muted);
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-.quadrature-summary-text code {
-  color: var(--text);
-  font-family: var(--surface-mono);
-  font-size: 0.92em;
-}
-
-.quadrature-summary-panel {
+.storage-summary-copy,
+.storage-summary-panel {
   display: grid;
   gap: 0.85rem;
 }
 
-.quadrature-metrics {
+.storage-summary-text {
+  max-width: 64ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.68;
+  text-wrap: pretty;
+}
+
+.storage-metrics {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.9rem;
 }
 
-.quadrature-metric {
+.storage-metric {
   min-height: 76px;
-  padding: 0.9rem 0 0.75rem;
+  padding: 0.95rem 0 0.8rem;
   border-top: 1px solid var(--line);
 }
 
-.quadrature-metric-label {
+.storage-metric-label {
   display: block;
   margin-bottom: 0.42rem;
   color: var(--muted);
@@ -84,41 +81,42 @@
   letter-spacing: 0.12em;
 }
 
-.quadrature-metric-value {
+.storage-metric-value {
   display: block;
-  font-size: 1.08rem;
+  font-size: 1.14rem;
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 1.2;
 }
 
-.quadrature-metric-value--numeric {
+.storage-metric-value--numeric {
   letter-spacing: -0.03em;
 }
 
-.quadrature-stage {
+.storage-stage {
   display: grid;
   grid-template-columns: minmax(0, 1.55fr) minmax(320px, 0.9fr);
   gap: 2rem;
   align-items: start;
 }
 
-.quadrature-section-head,
-.quadrature-score-head {
+.storage-section-head,
+.storage-score-head,
+.storage-dispatch-head {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 1rem;
 }
 
-.quadrature-section-title {
+.storage-section-title {
   margin: 0;
   font-size: 1rem;
   font-weight: 500;
   letter-spacing: -0.02em;
 }
 
-.quadrature-section-tag {
+.storage-section-tag {
   display: inline-flex;
   align-items: center;
   padding: 0.35rem 0.58rem;
@@ -129,13 +127,13 @@
   line-height: 1;
 }
 
-.quadrature-section-tag.is-phase {
+.storage-section-tag.is-phase {
   color: var(--accent);
   border-color: rgba(10, 132, 255, 0.16);
   background: rgba(10, 132, 255, 0.05);
 }
 
-.quadrature-editor {
+.storage-editor {
   position: relative;
   margin-top: 0.85rem;
   border: 1px solid var(--line);
@@ -144,7 +142,7 @@
   overflow: hidden;
 }
 
-.quadrature-editor-head {
+.storage-editor-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -153,18 +151,18 @@
   border-bottom: 1px solid var(--line);
 }
 
-.quadrature-editor-title {
+.storage-editor-title {
   color: var(--muted);
   font-family: var(--surface-mono);
   font-size: 0.86rem;
 }
 
-.quadrature-editor-body {
+.storage-editor-body {
   position: relative;
   height: 420px;
   overflow: hidden;
   background: linear-gradient(180deg, color-mix(in srgb, var(--surface-panel) 96%, transparent), transparent);
-  --editor-font-size: 12.16px;
+  --editor-font-size: 12px;
   --editor-line-height: 24px;
   --editor-ln-col: 34px;
   --editor-pm-col: 14px;
@@ -172,7 +170,7 @@
   --editor-pad-x: 0.55rem;
 }
 
-.quadrature-editor-focus {
+.storage-editor-focus {
   position: absolute;
   left: 12px;
   right: 12px;
@@ -183,7 +181,7 @@
   transition: opacity 180ms ease;
 }
 
-.quadrature-editor-line {
+.storage-editor-line {
   position: absolute;
   left: 12px;
   right: 12px;
@@ -204,118 +202,216 @@
   transition: background-color 220ms ease, color 220ms ease;
 }
 
-.quadrature-editor-line.equal {
+.storage-editor-line.equal {
   color: var(--text);
   background: color-mix(in srgb, var(--surface-panel-strong) 72%, transparent);
 }
 
-.quadrature-editor-line.delete {
+.storage-editor-line.delete {
   color: var(--surface-delete);
   background: rgba(203, 61, 61, 0.06);
 }
 
-.quadrature-editor-line.insert {
+.storage-editor-line.insert {
   color: var(--surface-insert);
   background: rgba(21, 128, 61, 0.06);
 }
 
-.quadrature-editor-line .ln {
+.storage-editor-line .ln {
   color: var(--muted);
   text-align: right;
 }
 
-.quadrature-editor-line .pm {
+.storage-editor-line .pm {
   font-weight: 600;
   opacity: 0.95;
 }
 
-.quadrature-editor-line.delete .code {
+.storage-editor-line.delete .code {
   text-decoration: line-through;
   text-decoration-thickness: 1.5px;
 }
 
-.quadrature-visual {
+.storage-visual {
   display: grid;
   gap: 1rem;
   padding-left: 1.2rem;
   border-left: 1px solid var(--line);
 }
 
-.quadrature-score-pulse,
-.quadrature-rule,
-.quadrature-mini-chart {
+.storage-score-pulse,
+.storage-dispatch,
+.storage-scenario-card {
   background: var(--surface-panel);
   border: 1px solid var(--line);
   border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.05);
 }
 
-.quadrature-score-pulse,
-.quadrature-rule {
+.storage-score-pulse,
+.storage-dispatch {
   padding: 0.8rem 0.8rem 0.55rem;
 }
 
-.quadrature-score-label {
+.storage-score-label,
+.storage-dispatch-head span {
   color: var(--muted);
   font-size: 0.76rem;
 }
 
-.quadrature-score-svg {
+.storage-score-svg {
   display: block;
   width: 100%;
   height: 108px;
   margin-top: 0.35rem;
 }
 
-.quadrature-rule-svg {
+.storage-dispatch-svg {
   display: block;
   width: 100%;
-  height: 240px;
-  margin-top: 0.35rem;
+  height: 300px;
+  margin-top: 0.45rem;
 }
 
-.quadrature-integrands {
+.storage-dispatch-head strong {
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+
+.storage-dispatch-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 0.65rem 1rem;
+}
+
+.storage-dispatch-head strong {
+  margin: 0;
+  max-width: 10ch;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  font-size: 1.02rem;
+  text-wrap: balance;
+}
+
+.storage-dispatch-head span {
+  max-width: 10ch;
+  text-align: right;
+  line-height: 1.04;
+  font-size: 0.81rem;
+  text-wrap: balance;
+}
+
+.storage-dispatch-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.42rem 0.7rem;
+  margin-top: 0.55rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid color-mix(in srgb, var(--line) 78%, transparent);
+}
+
+.storage-legend-item {
+  position: relative;
+  padding-left: 0.78rem;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.storage-legend-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  transform: translateY(-50%);
+  background: currentColor;
+}
+
+.storage-legend-item--price {
+  color: var(--price);
+}
+
+.storage-legend-item--charge {
+  color: var(--charge);
+}
+
+.storage-legend-item--discharge {
+  color: var(--discharge);
+}
+
+.storage-legend-item--soc {
+  color: var(--soc);
+}
+
+.storage-scenario-grid {
   display: grid;
   gap: 0.75rem;
 }
 
-.quadrature-mini-chart {
-  padding: 0.8rem 0.8rem 0.4rem;
+.storage-scenario-card {
+  padding: 0.84rem 0.84rem 0.56rem;
 }
 
-.quadrature-mini-head {
+.storage-scenario-head {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 0.45rem;
+  gap: 0.75rem;
 }
 
-.quadrature-mini-head strong {
+.storage-scenario-head strong {
   font-size: 0.84rem;
   font-weight: 600;
+  letter-spacing: -0.02em;
 }
 
-.quadrature-mini-head span {
+.storage-scenario-head span,
+.storage-scenario-meta {
   color: var(--muted);
   font-size: 0.76rem;
 }
 
-.quadrature-mini-svg {
-  display: block;
-  width: 100%;
-  height: 132px;
+.storage-scenario-meter {
+  position: relative;
+  height: 6px;
+  margin-top: 0.65rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--line) 74%, transparent);
+  overflow: hidden;
+}
+
+.storage-scenario-meter-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 60%, #18a957));
+}
+
+.storage-scenario-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  gap: 0.75rem;
+  letter-spacing: -0.01em;
 }
 
 @media (max-width: 1100px) {
-  .quadrature-summary {
+  .storage-summary {
     grid-template-columns: 1fr;
   }
 
-  .quadrature-stage {
+  .storage-stage {
     grid-template-columns: 1fr;
   }
 
-  .quadrature-visual {
+  .storage-visual {
     padding-left: 0;
     border-left: 0;
     border-top: 1px solid var(--line);
@@ -324,25 +420,34 @@
 }
 
 @media (max-width: 760px) {
-  .quadrature-metrics {
+  .storage-metrics {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .quadrature-editor-body {
-    height: 980px;
+  .storage-editor-body {
+    height: 920px;
   }
 
-  .quadrature-editor-line {
+  .storage-dispatch-head {
+    grid-template-columns: 1fr;
+  }
+
+  .storage-dispatch-head span {
+    max-width: none;
+    text-align: left;
+  }
+
+  .storage-editor-line {
     font-size: 0.7rem;
     grid-template-columns: 28px 12px minmax(0, 1fr);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .quadrature-editor,
-  .quadrature-editor-body,
-  .quadrature-editor-focus,
-  .quadrature-editor-line {
+  .storage-editor,
+  .storage-editor-body,
+  .storage-editor-focus,
+  .storage-editor-line {
     transition: none;
   }
 }
