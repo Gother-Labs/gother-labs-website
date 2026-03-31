@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Evölther 2 | Göther Labs</title>
+    <meta
+      name="description"
+      content="Experimental scrollytelling version of Evölther: pseudo run logic on the left, animated run atlas on the right."
+    >
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" href="../assets/gother-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="./page.css">
+  </head>
+  <body class="evolther-2-page">
+    <a class="skip-link" href="#site-main">Skip to content</a>
+    <div class="page-shell site-shell">
+      <header class="site-header">
+        <nav class="site-nav" aria-label="Primary">
+          <a class="brand nav-brand" href="../" aria-label="Göther Labs home">
+            <img src="../assets/gother-mark.svg" alt="" class="brand-image">
+          </a>
+          <a href="../company/">Company</a>
+          <a href="../evolther/">Evölther</a>
+          <a href="./">Evölther 2</a>
+          <a href="../contact/">Contact</a>
+        </nav>
+      </header>
+
+      <main class="site-main evolther-2-main" id="site-main">
+        <section class="hero compact-hero page-hero evolther-2-hero" aria-labelledby="evolther-2-title">
+          <h1 class="page-title" id="evolther-2-title">A governed run.</h1>
+          <p class="intro evolther-2-intro">
+            Seed. Islands. EVOLVE blocks. Preflight. Subprocess. Niche winners. Evidence.
+          </p>
+        </section>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <section class="story-shell" aria-labelledby="story-title">
+          <h2 class="visually-hidden" id="story-title">Evölther scrollytelling run walkthrough</h2>
+
+          <aside class="story-code" aria-labelledby="story-code-title">
+            <div class="story-panel-head">
+              <h3 class="story-panel-title story-panel-title--eyebrow" id="story-code-title">Pseudo run contract</h3>
+            </div>
+
+            <div class="story-code-window" role="img" aria-label="Pseudocode for the Evölther run loop">
+              <div class="story-code-line" data-code="run" data-indent="0">
+                <span class="story-code-ln">01</span>
+                <span class="story-code-text">run():</span>
+              </div>
+              <div class="story-code-line" data-code="manifest" data-indent="1">
+                <span class="story-code-ln">02</span>
+                <span class="story-code-text">initialize_manifest_and_telemetry()</span>
+              </div>
+              <div class="story-code-line" data-code="seed" data-indent="1">
+                <span class="story-code-ln">03</span>
+                <span class="story-code-text">evaluate_seed_and_seed_islands()</span>
+              </div>
+              <div class="story-code-line" data-code="loop" data-indent="1">
+                <span class="story-code-ln">04</span>
+                <span class="story-code-text">for generation in budget:</span>
+              </div>
+              <div class="story-code-line" data-code="schedule" data-indent="2">
+                <span class="story-code-ln">05</span>
+                <span class="story-code-text">worker_plan = schedule_parallel_workers()</span>
+              </div>
+              <div class="story-code-line" data-code="sample" data-indent="2">
+                <span class="story-code-ln">06</span>
+                <span class="story-code-text">parent, inspirations = sample_local_archive()</span>
+              </div>
+              <div class="story-code-line" data-code="proposal" data-indent="2">
+                <span class="story-code-ln">07</span>
+                <span class="story-code-text">proposal = propose_patchproposal(parent, inspirations)</span>
+              </div>
+              <div class="story-code-line" data-code="validate" data-indent="2">
+                <span class="story-code-ln">08</span>
+                <span class="story-code-text">vetted = preflight_patchproposal(proposal)</span>
+              </div>
+              <div class="story-code-line" data-code="materialize" data-indent="2">
+                <span class="story-code-ln">09</span>
+                <span class="story-code-text">candidate = materialize_candidate(vetted)</span>
+              </div>
+              <div class="story-code-line" data-code="evaluate" data-indent="2">
+                <span class="story-code-ln">10</span>
+                <span class="story-code-text">result = evaluate_in_subprocess(candidate)</span>
+              </div>
+              <div class="story-code-line" data-code="ledger" data-indent="2">
+                <span class="story-code-ln">11</span>
+                <span class="story-code-text">ledger.append_attempt(candidate, result)</span>
+              </div>
+              <div class="story-code-line" data-code="archive" data-indent="2">
+                <span class="story-code-ln">12</span>
+                <span class="story-code-text">archive.update_niche(island, candidate, result)</span>
+              </div>
+              <div class="story-code-line" data-code="migration" data-indent="1">
+                <span class="story-code-ln">13</span>
+                <span class="story-code-text">if migration_step(): migrate_ring_elite()</span>
+              </div>
+              <div class="story-code-line" data-code="evidence" data-indent="1">
+                <span class="story-code-ln">14</span>
+                <span class="story-code-text">emit_summary_manifest_and_replay()</span>
+              </div>
+            </div>
+
+            <div class="story-subcode">
+              <p class="story-subcode-label" data-subcode-label>initialize_manifest_and_telemetry()</p>
+              <pre class="story-subcode-block" data-subcode-block></pre>
+            </div>
+          </aside>
+
+          <div class="story-scenes" data-scene-column>
+            <article class="story-scene is-active" data-scene="run">
+              <p class="story-scene-index">01</p>
+              <h3>Run contract</h3>
+              <p>The run begins before any island, candidate, or evaluator exists.</p>
+            </article>
+
+            <article class="story-scene" data-scene="manifest">
+              <p class="story-scene-index">02</p>
+              <h3>Manifest and telemetry</h3>
+              <p>The experiment writes its identity, configuration, seed, and evidence surfaces before search starts.</p>
+            </article>
+
+            <article class="story-scene" data-scene="seed">
+              <p class="story-scene-index">03</p>
+              <h3>Seed and islands</h3>
+              <p>The seed is measured once, then becomes the starting state of every island.</p>
+            </article>
+
+            <article class="story-scene" data-scene="loop">
+              <p class="story-scene-index">04</p>
+              <h3>Generation loop</h3>
+              <p>The seeded system now enters its repeated search budget.</p>
+            </article>
+
+            <article class="story-scene" data-scene="workers">
+              <p class="story-scene-index">05</p>
+              <h3>Parallel workers</h3>
+              <p>A generation is a bounded wave of workers, not a single serial attempt.</p>
+            </article>
+
+            <article class="story-scene" data-scene="sampling">
+              <p class="story-scene-index">06</p>
+              <h3>Local archive sampling</h3>
+              <p>Parent and inspirations are sampled from the island archive, not a global best list.</p>
+            </article>
+
+            <article class="story-scene" data-scene="proposal">
+              <p class="story-scene-index">07</p>
+              <h3>Bounded patch proposal</h3>
+              <p>The proposer returns a PatchProposal scoped to EVOLVE blocks only.</p>
+            </article>
+
+            <article class="story-scene" data-scene="preflight">
+              <p class="story-scene-index">08</p>
+              <h3>Preflight gate</h3>
+              <p>Unsafe proposals stop here before any candidate workspace exists.</p>
+            </article>
+
+            <article class="story-scene" data-scene="runtime">
+              <p class="story-scene-index">09</p>
+              <h3>Workspace and subprocess</h3>
+              <p>The candidate is materialized minimally and judged in a clean subprocess.</p>
+            </article>
+
+            <article class="story-scene" data-scene="ledger">
+              <p class="story-scene-index">10</p>
+              <h3>History versus archive</h3>
+              <p>Every attempt survives in history, even when it never enters the live archive.</p>
+            </article>
+
+            <article class="story-scene" data-scene="archive">
+              <p class="story-scene-index">11</p>
+              <h3>Niche-local acceptance</h3>
+              <p>Only niche winners stay. Thresholds adapt early, then freeze.</p>
+            </article>
+
+            <article class="story-scene" data-scene="migration">
+              <p class="story-scene-index">12</p>
+              <h3>Migration and pressure</h3>
+              <p>Islands stay separate except for explicit ring migration and pressure shifts.</p>
+            </article>
+
+            <article class="story-scene" data-scene="evidence">
+              <p class="story-scene-index">13</p>
+              <h3>Evidence layer</h3>
+              <p>The run closes as evidence: manifest, telemetry, summary, replay.</p>
+            </article>
+          </div>
+
+          <aside class="story-visual" aria-live="polite">
+            <div class="story-panel-head story-panel-head--visual">
+              <div></div>
+            </div>
+
+            <div class="story-visual-copy">
+              <h3 class="story-panel-title" data-scene-title>Seed and islands</h3>
+              <p class="story-visual-line" data-scene-line>
+                The seed is measured first, then copied into the local starting state of each island.
+              </p>
+            </div>
+
+            <div class="story-canvas" aria-hidden="true">
+              <svg id="evolther-story-svg" viewBox="0 0 920 760" preserveAspectRatio="xMidYMid meet"></svg>
+              <div class="story-marker story-marker--candidate"></div>
+              <div class="story-marker story-marker--ghost"></div>
+              <div class="story-marker story-marker--migrant"></div>
+            </div>
+
+          </aside>
+        </section>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <section class="story-links" aria-labelledby="story-links-title">
+          <p class="eyebrow">Concrete Surfaces</p>
+          <h2 class="story-links-title" id="story-links-title">If this format works, the domain runs sit here.</h2>
+          <div class="story-link-row">
+            <a href="../evolther/quadrature-run/">Quadrature</a>
+            <a href="../evolther/storage-arbitrage-run/">Battery dispatch</a>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© <span id="year">2026</span> Göther Labs</p>
+      </footer>
+    </div>
+
+    <script src="../scripts.js"></script>
+    <script src="./page.js"></script>
+  </body>
+</html>
