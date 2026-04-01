@@ -1,0 +1,2010 @@
+.evolther-2-page {
+  color-scheme: light;
+  --accent: #fff;
+}
+
+.evolther-2-page .site-main {
+  max-width: none;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0.8rem;
+  left: 0.8rem;
+  z-index: 10;
+  padding: 0.7rem 0.95rem;
+  background: var(--text);
+  color: var(--bg);
+  text-decoration: none;
+  transform: translateY(-160%);
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+.evolther-2-page a {
+  touch-action: manipulation;
+}
+
+.evolther-2-page a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.evolther-2-page .site-nav a:hover,
+.evolther-2-page .story-link-row a:hover {
+  color: var(--accent);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.evolther-2-main {
+  display: grid;
+}
+
+.evolther-2-hero {
+  display: grid;
+  gap: 0.65rem;
+  max-width: 64ch;
+}
+
+.evolther-2-hero .page-title {
+  max-width: 12ch;
+  font-size: clamp(2.8rem, 4.9vw, 4.35rem);
+  line-height: 0.98;
+  text-wrap: pretty;
+}
+
+.evolther-2-intro {
+  margin: 0;
+  max-width: 48ch;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.54;
+  text-wrap: pretty;
+}
+
+.story-shell {
+  display: grid;
+  position: relative;
+  min-height: 100vh;
+  padding: 0.85rem 0 2rem;
+  grid-template-columns: minmax(460px, 1.08fr) minmax(500px, 0.92fr);
+  gap: 1.5rem;
+  align-items: start;
+  isolation: isolate;
+}
+
+.story-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: clamp(460px, 46%, 660px);
+  background: #fff;
+  z-index: -2;
+}
+
+.story-shell::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: clamp(460px, 46%, 660px);
+  width: 1px;
+  background: color-mix(in srgb, black 14%, transparent);
+  z-index: -1;
+}
+
+.story-code,
+.story-visual {
+  position: sticky;
+  top: 1.2rem;
+  align-self: start;
+  z-index: 1;
+}
+
+.story-code {
+  grid-column: 1;
+  grid-row: 1;
+  padding: 0 2.5rem 0 1.2rem;
+  color: #0b0b0b;
+}
+
+.story-visual {
+  grid-column: 2;
+  grid-row: 1;
+  padding: 0 0 0 0.15rem;
+}
+
+.story-panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.story-panel-head .eyebrow {
+  margin-bottom: 0;
+}
+
+.story-code .story-panel-head {
+  display: grid;
+  justify-content: start;
+  gap: 0.35rem;
+}
+
+.story-panel-title {
+  margin: 0;
+  font-size: clamp(1.28rem, 2.2vw, 2rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+  text-wrap: pretty;
+  max-width: 20ch;
+}
+
+.story-code .story-panel-title {
+  color: #000;
+  font-size: clamp(1.22rem, 1.9vw, 1.78rem);
+}
+
+.story-panel-title--eyebrow {
+  font-size: 0.78rem !important;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  max-width: none;
+  white-space: nowrap;
+  color: #000;
+}
+
+.story-code-window,
+.story-subcode {
+  border-top: 1px solid color-mix(in srgb, black 14%, transparent);
+}
+
+.story-canvas,
+.story-legend {
+  border-top: 1px solid var(--line);
+}
+
+.story-code-window {
+  margin-top: 0.95rem;
+  padding-top: 0.8rem;
+}
+
+.story-code-line {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: baseline;
+  min-height: 34px;
+  padding: 0.18rem 0;
+  color: color-mix(in srgb, black 58%, white 42%);
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.86rem;
+  line-height: 1.4;
+  transition: color 180ms ease, transform 180ms ease;
+  font-variant-numeric: tabular-nums;
+}
+
+.story-code-text {
+  display: block;
+}
+
+.story-code-line[data-indent="1"] .story-code-text {
+  padding-left: 1.2rem;
+}
+
+.story-code-line[data-indent="2"] .story-code-text {
+  padding-left: 2.4rem;
+}
+
+.story-code-line.is-active {
+  color: #000;
+  transform: translateX(6px);
+}
+
+.story-code-line.is-active .story-code-text {
+  text-decoration: underline;
+  text-decoration-color: #000;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.35em;
+}
+
+.story-code-ln {
+  color: color-mix(in srgb, black 44%, white 56%);
+  text-align: right;
+}
+
+.story-subcode {
+  margin-top: 1rem;
+  padding-top: 0.9rem;
+}
+
+.story-subcode-label {
+  margin: 0 0 0.65rem;
+  color: #000;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.story-subcode-block {
+  margin: 0;
+  color: color-mix(in srgb, black 58%, white 42%);
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.83rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.story-scenes {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-row: 1;
+  width: 1px;
+  gap: 68vh;
+  justify-self: center;
+  opacity: 0;
+  pointer-events: none;
+  padding-top: 12vh;
+  padding-bottom: 36vh;
+}
+
+.story-scene {
+  display: grid;
+  gap: 0.45rem;
+  align-content: center;
+  min-height: 64vh;
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--line);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.story-scene:not(.is-active) {
+  opacity: 0.55;
+}
+
+.story-scene.is-active {
+  transform: translateX(4px);
+}
+
+.story-scene-index {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.story-scene h3 {
+  margin: 0;
+  max-width: 11ch;
+  font-size: 1.28rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+}
+
+.story-scene p:last-child {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.58;
+}
+
+.story-panel-head--visual {
+  margin-bottom: 0.2rem;
+}
+
+.story-visual-copy {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.story-visual-line {
+  margin: 0;
+  max-width: 66ch;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.58;
+  text-wrap: pretty;
+}
+
+.story-canvas {
+  position: relative;
+  aspect-ratio: 920 / 760;
+  margin-top: 0.95rem;
+  overflow: hidden;
+  background: none;
+}
+
+#evolther-story-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#evolther-story-svg text {
+  fill: var(--muted);
+  font-family: "Inter", sans-serif;
+}
+
+.svg-section-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.svg-label {
+  fill: var(--text) !important;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.story-island-top {
+  fill: color-mix(in srgb, var(--bg) 91%, var(--accent) 9%);
+  stroke: var(--line-strong);
+  stroke-width: 1.1;
+}
+
+.story-island-side {
+  fill: color-mix(in srgb, var(--bg) 82%, var(--text) 18%);
+  stroke: var(--line-strong);
+  stroke-width: 1;
+}
+
+.story-island {
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.story-island.is-visible {
+  opacity: 0.42;
+}
+
+.story-island.is-active {
+  opacity: 1;
+}
+
+.story-island.is-active .story-island-top,
+.story-island.is-active .story-island-side {
+  stroke: var(--accent);
+}
+
+.story-island-label.is-hidden {
+  display: none;
+}
+
+.story-island-label.is-generic text:first-child::after {
+  content: "";
+}
+
+.story-cell {
+  fill: transparent;
+  stroke: color-mix(in srgb, var(--text) 16%, transparent);
+  stroke-width: 1;
+  transition: fill 180ms ease, stroke 180ms ease, stroke-width 180ms ease;
+}
+
+.story-cell.is-occupied {
+  fill: color-mix(in srgb, var(--text) 15%, transparent);
+}
+
+.story-cell.is-parent,
+.story-cell.is-inspiration {
+  fill: color-mix(in srgb, var(--accent) 14%, var(--bg));
+  stroke: var(--accent);
+  stroke-width: 1.6;
+}
+
+.story-cell.is-seed {
+  fill: color-mix(in srgb, var(--accent) 10%, var(--bg));
+  stroke: color-mix(in srgb, var(--accent) 58%, var(--line));
+  stroke-width: 1.4;
+}
+
+.story-cell.is-parent {
+  fill: color-mix(in srgb, var(--accent) 22%, var(--bg));
+  stroke-width: 2;
+}
+
+.story-cell.is-accepted {
+  fill: color-mix(in srgb, var(--accent) 26%, var(--bg));
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.story-cell.is-migrant-target {
+  fill: color-mix(in srgb, var(--accent) 20%, var(--bg));
+  stroke: var(--accent);
+  stroke-width: 1.7;
+}
+
+.story-node,
+.story-ledger {
+  opacity: 0;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.story-node.is-visible,
+.story-ledger.is-visible {
+  opacity: 0.38;
+}
+
+.story-node-glyph {
+  transform-origin: center;
+  transition: transform 260ms ease, filter 260ms ease;
+}
+
+.story-glyph-halo {
+  fill: color-mix(in srgb, var(--accent) 11%, transparent);
+  opacity: 0;
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.story-node .story-glyph-stroke,
+.story-ledger .story-glyph-stroke {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 20%, transparent);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.story-node .story-glyph-soft,
+.story-ledger .story-glyph-soft {
+  stroke-dasharray: 5 8;
+}
+
+.story-node .story-glyph-fill,
+.story-ledger .story-glyph-fill {
+  fill: color-mix(in srgb, var(--accent) 8%, transparent);
+  stroke: color-mix(in srgb, var(--text) 16%, transparent);
+  stroke-width: 1;
+  transition: fill 220ms ease, stroke 220ms ease;
+}
+
+.story-node .story-glyph-dot {
+  fill: color-mix(in srgb, var(--text) 28%, transparent);
+}
+
+.story-node-label {
+  fill: color-mix(in srgb, var(--muted) 92%, var(--text)) !important;
+}
+
+.story-node-sublabel {
+  fill: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.story-node.is-visible .story-glyph-halo,
+.story-ledger.is-visible .story-glyph-halo {
+  opacity: 0.22;
+}
+
+.story-node.is-visible .story-glyph-stroke,
+.story-ledger.is-visible .story-glyph-stroke,
+.story-node.is-visible .story-glyph-fill,
+.story-ledger.is-visible .story-glyph-fill {
+  stroke: color-mix(in srgb, var(--text) 26%, transparent);
+}
+
+.story-node.is-active .story-glyph-stroke,
+.story-ledger.is-active .story-glyph-stroke {
+  stroke: var(--accent);
+}
+
+.story-node.is-active .story-glyph-fill,
+.story-ledger.is-active .story-glyph-fill {
+  fill: color-mix(in srgb, var(--accent) 14%, transparent);
+  stroke: color-mix(in srgb, var(--accent) 78%, white 22%);
+}
+
+.story-node.is-active .story-glyph-dot,
+.story-ledger.is-active .story-glyph-dot {
+  fill: var(--accent);
+}
+
+.story-node.is-active,
+.story-node.is-visible.is-active,
+.story-ledger.is-active {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.story-node.is-active .story-glyph-halo,
+.story-ledger.is-active .story-glyph-halo {
+  opacity: 0.42;
+  transform: scale(1.04);
+}
+
+.story-node.is-active .story-node-glyph,
+.story-ledger.is-active {
+  filter: drop-shadow(0 0 18px color-mix(in srgb, var(--accent) 16%, transparent));
+}
+
+.story-node--entry .story-glyph-halo {
+  display: none;
+}
+
+.story-node--entry .story-glyph-stroke {
+  stroke: white;
+  stroke-width: 1;
+}
+
+.story-node--entry .story-glyph-dot {
+  fill: white;
+}
+
+.story-node--entry.is-visible .story-glyph-stroke,
+.story-node--entry.is-active .story-glyph-stroke {
+  stroke: color-mix(in srgb, white 82%, transparent);
+}
+
+.story-node--entry.is-visible .story-glyph-dot,
+.story-node--entry.is-active .story-glyph-dot {
+  fill: color-mix(in srgb, white 88%, transparent);
+}
+
+.story-node--entry.is-active {
+  transform: none;
+}
+
+.story-node--entry.is-active .story-node-glyph {
+  animation: none;
+  filter: none;
+}
+
+.story-node.is-active .svg-section-label {
+  fill: var(--accent);
+}
+
+.story-node.story-node--entry.is-active .story-node-label {
+  fill: color-mix(in srgb, white 74%, transparent) !important;
+}
+
+.story-node.story-node--entry .story-node-sublabel {
+  fill: color-mix(in srgb, white 70%, transparent);
+}
+
+.story-shell[data-active-scene="run"] .story-node--entry .story-glyph-stroke {
+  stroke: white;
+}
+
+.story-shell[data-active-scene="run"] .story-node--entry .story-glyph-dot {
+  fill: white;
+}
+
+.story-shell[data-active-scene="run"] .story-node.story-node--entry.is-active .story-node-label,
+.story-shell[data-active-scene="run"] .story-node.story-node--entry .story-node-sublabel {
+  fill: white !important;
+}
+
+.story-node--entry .story-node-glyph,
+.story-node--entry.is-active .story-node-glyph {
+  animation: none !important;
+}
+
+.story-shell[data-active-scene="manifest"] .story-node--entry .story-glyph-stroke {
+  stroke: white;
+}
+
+.story-shell[data-active-scene="manifest"] .story-node--entry .story-glyph-dot {
+  fill: white;
+}
+
+.story-shell[data-active-scene="manifest"] .story-node.story-node--entry.is-active .story-node-label,
+.story-shell[data-active-scene="manifest"] .story-node.story-node--entry .story-node-label {
+  fill: white !important;
+}
+
+.story-shell[data-active-scene="manifest"] .story-node.story-node--entry .story-node-sublabel {
+  display: none;
+}
+
+.story-shell[data-active-scene="manifest"] .story-node--telemetry .story-glyph-halo,
+.story-shell[data-active-scene="manifest"] .story-ledger .story-glyph-halo {
+  display: none;
+}
+
+.story-shell[data-active-scene="manifest"] .story-node--telemetry .story-glyph-stroke,
+.story-shell[data-active-scene="manifest"] .story-node--telemetry .story-glyph-fill,
+.story-shell[data-active-scene="manifest"] .story-ledger .story-glyph-stroke {
+  stroke: color-mix(in srgb, var(--text) 72%, transparent);
+}
+
+.story-shell[data-active-scene="manifest"] .story-node--telemetry .story-glyph-dot {
+  fill: color-mix(in srgb, var(--text) 82%, transparent);
+}
+
+.story-shell[data-active-scene="manifest"] .story-node--telemetry .story-node-label,
+.story-shell[data-active-scene="manifest"] .story-node--telemetry .story-node-sublabel,
+.story-shell[data-active-scene="manifest"] .story-ledger-label,
+.story-shell[data-active-scene="manifest"] .story-ledger .svg-section-label {
+  fill: color-mix(in srgb, var(--text) 78%, transparent) !important;
+}
+
+.story-shell[data-active-scene="manifest"] .story-node--telemetry.is-active .story-node-glyph,
+.story-shell[data-active-scene="manifest"] .story-ledger.is-active {
+  animation: none;
+  filter: none;
+}
+
+.story-shell[data-active-scene="manifest"] .story-node--telemetry .story-glyph-soft,
+.story-shell[data-active-scene="manifest"] .story-ledger .story-glyph-soft {
+  animation: none;
+}
+
+.story-track,
+.story-ring,
+.story-sample-link,
+.story-worker-line,
+.story-seed-ray,
+.story-threshold {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.story-track {
+  stroke: url(#story-flow-gradient);
+  stroke-width: 2.2;
+  opacity: 0.1;
+  stroke-dasharray: 10 12;
+  transition: opacity 180ms ease, stroke-width 180ms ease, filter 180ms ease;
+}
+
+.story-track:not(.is-visible):not(.is-active),
+.story-ring:not(.is-visible):not(.is-active),
+.story-sample-link:not(.is-visible):not(.is-active),
+.story-worker-line:not(.is-visible):not(.is-active),
+.story-seed-ray:not(.is-visible):not(.is-active),
+.story-threshold:not(.is-visible):not(.is-active) {
+  opacity: 0;
+}
+
+.story-track.is-visible,
+.story-ring.is-visible,
+.story-sample-link.is-visible,
+.story-worker-line.is-visible,
+.story-seed-ray.is-visible,
+.story-threshold.is-visible {
+  opacity: 0.22;
+}
+
+.story-track.is-active {
+  opacity: 1;
+  stroke-width: 3.1;
+  filter: drop-shadow(0 0 12px color-mix(in srgb, var(--accent) 18%, transparent));
+}
+
+.story-track[data-track="bootstrap"] {
+  stroke: color-mix(in srgb, var(--text) 28%, transparent);
+  stroke-width: 1.8;
+  stroke-dasharray: 8 10;
+}
+
+.story-track[data-track="bootstrap"].is-visible,
+.story-track[data-track="bootstrap"].is-active {
+  opacity: 0.72;
+  stroke-width: 1.8;
+  filter: none;
+}
+
+.story-track[data-track="seedOrigin"],
+.story-track[data-track="seedLedger"] {
+  stroke: color-mix(in srgb, var(--text) 28%, transparent);
+  stroke-width: 1.8;
+  stroke-dasharray: 8 10;
+}
+
+.story-track[data-track="seedOrigin"].is-visible,
+.story-track[data-track="seedOrigin"].is-active,
+.story-track[data-track="seedLedger"].is-visible,
+.story-track[data-track="seedLedger"].is-active {
+  opacity: 0.72;
+  stroke-width: 1.8;
+  filter: none;
+}
+
+.story-ring {
+  stroke: color-mix(in srgb, var(--text) 18%, transparent);
+  stroke-width: 1.5;
+  stroke-dasharray: 7 10;
+  opacity: 0.45;
+}
+
+.story-ring.is-active {
+  stroke: var(--accent);
+  opacity: 1;
+}
+
+.story-worker-line {
+  stroke: color-mix(in srgb, var(--text) 22%, transparent);
+  stroke-width: 1.4;
+  stroke-dasharray: 5 10;
+  opacity: 0.16;
+  transition: opacity 180ms ease, stroke 180ms ease;
+}
+
+.story-worker-line.is-active {
+  stroke: var(--accent);
+  opacity: 0.9;
+}
+
+.story-seed-ray {
+  stroke: color-mix(in srgb, var(--accent) 48%, transparent);
+  stroke-width: 1.6;
+  stroke-dasharray: 5 9;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.story-seed-ray.is-active {
+  opacity: 0.9;
+}
+
+.story-threshold {
+  stroke: color-mix(in srgb, var(--accent) 38%, transparent);
+  stroke-width: 1.1;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.story-threshold.is-active {
+  opacity: 1;
+}
+
+.story-sample-link {
+  stroke: color-mix(in srgb, var(--accent) 62%, transparent);
+  stroke-width: 1.8;
+  stroke-dasharray: 6 8;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.story-sample-link.is-active {
+  opacity: 1;
+}
+
+.story-marker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--accent);
+  background: var(--bg);
+  transform: translate(-50%, -50%) rotate(45deg);
+  opacity: 0;
+  pointer-events: none;
+  transition: left 280ms ease, top 280ms ease, opacity 180ms ease;
+}
+
+.story-marker--ghost {
+  width: 10px;
+  height: 10px;
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+.story-marker--migrant {
+  width: 12px;
+  height: 12px;
+  border-width: 0;
+  background: var(--accent);
+}
+
+.story-ledger-label {
+  fill: var(--text) !important;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.story-ledger-entry {
+  fill: color-mix(in srgb, var(--text) 10%, transparent);
+  stroke: color-mix(in srgb, var(--text) 8%, transparent);
+  stroke-width: 1;
+  transition: fill 180ms ease, stroke 180ms ease, opacity 180ms ease;
+}
+
+.story-ledger-entry.is-active {
+  fill: color-mix(in srgb, var(--accent) 18%, var(--bg));
+}
+
+.story-ledger-entry.is-failed {
+  fill: color-mix(in srgb, var(--text) 18%, transparent);
+}
+
+.story-ledger-entry.is-accepted {
+  fill: color-mix(in srgb, var(--accent) 30%, var(--bg));
+  stroke: var(--accent);
+  stroke-width: 1;
+}
+
+.story-shell[data-active-scene="manifest"] .story-ledger-entry {
+  fill: color-mix(in srgb, var(--text) 12%, transparent);
+  stroke: transparent;
+}
+
+.story-shell[data-active-scene="seed"] .story-node--telemetry .story-glyph-halo,
+.story-shell[data-active-scene="seed"] .story-node--seed .story-glyph-halo,
+.story-shell[data-active-scene="seed"] .story-ledger .story-glyph-halo {
+  display: none;
+}
+
+.story-shell[data-active-scene="seed"] .story-node--telemetry .story-glyph-stroke,
+.story-shell[data-active-scene="seed"] .story-node--telemetry .story-glyph-fill,
+.story-shell[data-active-scene="seed"] .story-node--seed .story-glyph-stroke,
+.story-shell[data-active-scene="seed"] .story-ledger .story-glyph-stroke {
+  stroke: color-mix(in srgb, var(--text) 72%, transparent);
+}
+
+.story-shell[data-active-scene="seed"] .story-node--telemetry .story-glyph-dot,
+.story-shell[data-active-scene="seed"] .story-node--seed .story-glyph-dot {
+  fill: color-mix(in srgb, var(--text) 82%, transparent);
+}
+
+.story-shell[data-active-scene="seed"] .story-node--telemetry .story-node-label,
+.story-shell[data-active-scene="seed"] .story-node--telemetry .story-node-sublabel,
+.story-shell[data-active-scene="seed"] .story-node--seed .story-node-label,
+.story-shell[data-active-scene="seed"] .story-node--seed .story-node-sublabel,
+.story-shell[data-active-scene="seed"] .story-ledger-label,
+.story-shell[data-active-scene="seed"] .story-ledger .svg-section-label {
+  fill: color-mix(in srgb, var(--text) 78%, transparent) !important;
+}
+
+.story-shell[data-active-scene="seed"] .story-node--telemetry .story-node-sublabel {
+  display: none;
+}
+
+.story-shell[data-active-scene="seed"] .story-node--telemetry.is-active .story-node-glyph,
+.story-shell[data-active-scene="seed"] .story-node--seed.is-active .story-node-glyph,
+.story-shell[data-active-scene="seed"] .story-ledger.is-active {
+  animation: none;
+  filter: none;
+}
+
+.story-shell[data-active-scene="seed"] .story-node--telemetry .story-glyph-soft,
+.story-shell[data-active-scene="seed"] .story-node--seed .story-glyph-soft,
+.story-shell[data-active-scene="seed"] .story-ledger .story-glyph-soft {
+  animation: none;
+}
+
+.story-shell[data-active-scene="seed"] .story-track[data-track="seedOrigin"],
+.story-shell[data-active-scene="seed"] .story-track[data-track="seedLedger"],
+.story-shell[data-active-scene="seed"] .story-seed-ray {
+  color: color-mix(in srgb, white 82%, transparent);
+  marker-end: url(#story-arrow-soft);
+}
+
+.story-shell[data-active-scene="seed"] .story-seed-ray {
+  stroke: color-mix(in srgb, white 72%, transparent);
+  opacity: 0.96;
+}
+
+.story-shell[data-active-scene="seed"] .story-track[data-track="seedOrigin"],
+.story-shell[data-active-scene="seed"] .story-track[data-track="seedLedger"] {
+  stroke: color-mix(in srgb, white 26%, transparent);
+  opacity: 0.82;
+}
+
+.story-shell[data-active-scene="seed"] .story-island-top {
+  fill: color-mix(in srgb, black 92%, transparent);
+  stroke: color-mix(in srgb, white 20%, transparent);
+}
+
+.story-shell[data-active-scene="seed"] .story-island-side {
+  fill: color-mix(in srgb, black 86%, transparent);
+  stroke: color-mix(in srgb, white 18%, transparent);
+}
+
+.story-shell[data-active-scene="seed"] .story-island.is-active .story-island-top,
+.story-shell[data-active-scene="seed"] .story-island.is-active .story-island-side {
+  stroke: color-mix(in srgb, white 22%, transparent);
+}
+
+.story-shell[data-active-scene="seed"] .story-cell.is-seed {
+  fill: color-mix(in srgb, white 18%, transparent);
+  stroke: color-mix(in srgb, white 72%, transparent);
+}
+
+.story-shell[data-active-scene="seed"] .story-cell {
+  fill: color-mix(in srgb, black 94%, transparent);
+  stroke: color-mix(in srgb, white 12%, transparent);
+}
+
+.story-shell[data-active-scene="seed"] .story-cell.is-occupied:not(.is-seed) {
+  fill: color-mix(in srgb, black 94%, transparent);
+  stroke: color-mix(in srgb, white 12%, transparent);
+}
+
+.story-shell[data-active-scene="seed"] .story-ledger-entry {
+  fill: color-mix(in srgb, var(--text) 10%, transparent);
+  stroke: transparent;
+}
+
+.story-shell[data-active-scene="seed"] .story-ledger-entry.is-accepted {
+  fill: color-mix(in srgb, white 16%, transparent);
+  stroke: color-mix(in srgb, white 24%, transparent);
+}
+
+.story-shell[data-active-scene="seed"] .story-island-label[data-island-label="02"] text:first-child {
+  fill: color-mix(in srgb, var(--text) 88%, transparent) !important;
+}
+
+.story-shell[data-active-scene="seed"] .story-island-label[data-island-label="02"] text:first-child {
+  font-size: 17px;
+}
+
+.story-shell[data-active-scene="loop"] .story-node--loop .story-glyph-halo {
+  display: none;
+}
+
+.story-shell[data-active-scene="loop"] .story-node--loop .story-glyph-stroke,
+.story-shell[data-active-scene="loop"] .story-node--loop .story-glyph-fill {
+  stroke: color-mix(in srgb, var(--text) 82%, transparent);
+  fill: none;
+}
+
+.story-shell[data-active-scene="loop"] .story-node--loop .story-loop-curve {
+  color: color-mix(in srgb, var(--text) 82%, transparent);
+  marker-end: url(#story-arrow-loop);
+}
+
+.story-shell[data-active-scene="loop"] .story-node--loop .story-glyph-dot {
+  fill: color-mix(in srgb, var(--text) 86%, transparent);
+}
+
+.story-shell[data-active-scene="loop"] .story-node--loop .story-node-label,
+.story-shell[data-active-scene="loop"] .story-node--loop .story-node-sublabel {
+  fill: color-mix(in srgb, var(--text) 82%, transparent) !important;
+}
+
+.story-shell[data-active-scene="loop"] .story-node--loop.is-active .story-node-glyph {
+  animation: none;
+  filter: none;
+}
+
+.story-shell[data-active-scene="loop"] .story-node--loop .story-glyph-soft {
+  animation: none;
+}
+
+.story-shell[data-active-scene="loop"] .story-ledger .story-glyph-halo {
+  display: none;
+}
+
+.story-shell[data-active-scene="loop"] .story-ledger-label,
+.story-shell[data-active-scene="loop"] .story-ledger .svg-section-label {
+  fill: color-mix(in srgb, var(--text) 78%, transparent) !important;
+}
+
+.story-shell[data-active-scene="loop"] .story-ledger-entry,
+.story-shell[data-active-scene="loop"] .story-ledger-entry.is-active,
+.story-shell[data-active-scene="loop"] .story-ledger-entry.is-accepted,
+.story-shell[data-active-scene="loop"] .story-ledger-entry.is-failed {
+  fill: color-mix(in srgb, var(--text) 10%, transparent);
+  stroke: transparent;
+}
+
+.story-shell[data-active-scene="loop"] .story-ledger-entry.is-accepted {
+  fill: color-mix(in srgb, white 14%, transparent);
+  stroke: color-mix(in srgb, white 18%, transparent);
+}
+
+.story-shell[data-active-scene="loop"] .story-island-top {
+  fill: color-mix(in srgb, black 92%, transparent);
+  stroke: color-mix(in srgb, white 20%, transparent);
+}
+
+.story-shell[data-active-scene="loop"] .story-island-side {
+  fill: color-mix(in srgb, black 86%, transparent);
+  stroke: color-mix(in srgb, white 18%, transparent);
+}
+
+.story-shell[data-active-scene="loop"] .story-island.is-active .story-island-top,
+.story-shell[data-active-scene="loop"] .story-island.is-active .story-island-side {
+  stroke: color-mix(in srgb, white 22%, transparent);
+}
+
+.story-shell[data-active-scene="loop"] .story-island.is-visible {
+  opacity: 0.38;
+}
+
+.story-shell[data-active-scene="loop"] .story-island-label text {
+  fill: color-mix(in srgb, var(--text) 78%, transparent) !important;
+}
+
+.story-shell[data-active-scene="loop"] .story-cell {
+  fill: color-mix(in srgb, black 94%, transparent);
+  stroke: color-mix(in srgb, white 12%, transparent);
+}
+
+.story-shell[data-active-scene="loop"] .story-cell.is-occupied:not(.is-seed) {
+  fill: color-mix(in srgb, black 94%, transparent);
+  stroke: color-mix(in srgb, white 12%, transparent);
+}
+
+.story-shell[data-active-scene="loop"] .story-cell.is-seed {
+  fill: color-mix(in srgb, white 16%, transparent);
+  stroke: color-mix(in srgb, white 56%, transparent);
+}
+
+.story-shell[data-active-scene="workers"] .story-canvas {
+  background: none;
+}
+
+.story-shell[data-active-scene="workers"] .story-island-top {
+  fill: color-mix(in srgb, black 92%, transparent);
+  stroke: color-mix(in srgb, white 20%, transparent);
+}
+
+.story-shell[data-active-scene="workers"] .story-island-side {
+  fill: color-mix(in srgb, black 86%, transparent);
+  stroke: color-mix(in srgb, white 18%, transparent);
+}
+
+.story-shell[data-active-scene="workers"] .story-island.is-active .story-island-top,
+.story-shell[data-active-scene="workers"] .story-island.is-active .story-island-side {
+  stroke: color-mix(in srgb, white 22%, transparent);
+}
+
+.story-shell[data-active-scene="workers"] .story-island-label text {
+  fill: color-mix(in srgb, var(--text) 78%, transparent) !important;
+}
+
+.story-shell[data-active-scene="workers"] .story-cell,
+.story-shell[data-active-scene="workers"] .story-cell.is-occupied {
+  fill: color-mix(in srgb, black 94%, transparent);
+  stroke: color-mix(in srgb, white 12%, transparent);
+}
+
+.story-shell[data-active-scene="workers"] .story-cell.is-seed {
+  fill: color-mix(in srgb, white 18%, transparent);
+  stroke: color-mix(in srgb, white 72%, transparent);
+}
+
+.story-shell[data-active-scene="workers"] .story-ledger .story-glyph-halo {
+  display: none;
+}
+
+.story-shell[data-active-scene="workers"] .story-ledger-label,
+.story-shell[data-active-scene="workers"] .story-ledger .svg-section-label {
+  fill: color-mix(in srgb, var(--text) 78%, transparent) !important;
+}
+
+.story-shell[data-active-scene="workers"] .story-ledger-entry,
+.story-shell[data-active-scene="workers"] .story-ledger-entry.is-active,
+.story-shell[data-active-scene="workers"] .story-ledger-entry.is-accepted,
+.story-shell[data-active-scene="workers"] .story-ledger-entry.is-failed {
+  fill: color-mix(in srgb, var(--text) 10%, transparent);
+  stroke: transparent;
+}
+
+.story-shell[data-active-scene="workers"] .story-ledger-entry.is-accepted {
+  fill: color-mix(in srgb, white 14%, transparent);
+  stroke: color-mix(in srgb, white 18%, transparent);
+}
+
+.story-shell[data-active-scene="workers"] .story-node[data-node^="worker"] .story-glyph-halo {
+  display: none;
+}
+
+.story-shell[data-active-scene="workers"] .story-node[data-node^="worker"] .story-glyph-stroke {
+  stroke: color-mix(in srgb, white 78%, transparent);
+}
+
+.story-shell[data-active-scene="workers"] .story-node[data-node^="worker"] .story-glyph-dot {
+  fill: color-mix(in srgb, white 84%, transparent);
+}
+
+.story-shell[data-active-scene="workers"] .story-node[data-node^="worker"].is-active .story-node-glyph {
+  animation: none;
+  filter: none;
+}
+
+.story-shell[data-active-scene="workers"] .story-worker-line {
+  stroke: color-mix(in srgb, white 28%, transparent);
+  stroke-width: 1.6;
+  stroke-dasharray: 6 8;
+  opacity: 0.84;
+}
+
+.story-shell[data-active-scene="workers"] .story-worker-line:not(.is-visible):not(.is-active) {
+  opacity: 0;
+}
+
+.story-shell[data-active-scene="workers"] .story-worker-line.is-active {
+  stroke: color-mix(in srgb, white 44%, transparent);
+  opacity: 1;
+}
+
+.story-shell[data-active-scene="sampling"] .story-island-top {
+  fill: color-mix(in srgb, black 92%, transparent);
+  stroke: color-mix(in srgb, white 20%, transparent);
+}
+
+.story-shell[data-active-scene="sampling"] .story-island-side {
+  fill: color-mix(in srgb, black 86%, transparent);
+  stroke: color-mix(in srgb, white 18%, transparent);
+}
+
+.story-shell[data-active-scene="sampling"] .story-island.is-active .story-island-top,
+.story-shell[data-active-scene="sampling"] .story-island.is-active .story-island-side {
+  stroke: color-mix(in srgb, white 22%, transparent);
+}
+
+.story-shell[data-active-scene="sampling"] .story-cell,
+.story-shell[data-active-scene="sampling"] .story-cell.is-occupied {
+  fill: color-mix(in srgb, black 94%, transparent);
+  stroke: color-mix(in srgb, white 12%, transparent);
+}
+
+.story-shell[data-active-scene="sampling"] .story-cell:not(.is-parent):not(.is-inspiration):not(.is-seed) {
+  fill: color-mix(in srgb, black 96%, transparent);
+  stroke: color-mix(in srgb, white 10%, transparent);
+}
+
+.story-shell[data-active-scene="sampling"] .story-cell.is-seed {
+  fill: color-mix(in srgb, white 18%, transparent);
+  stroke: color-mix(in srgb, white 76%, transparent);
+}
+
+.story-shell[data-active-scene="sampling"] .story-cell.is-parent {
+  fill: color-mix(in srgb, white 22%, transparent);
+  stroke: color-mix(in srgb, white 88%, transparent);
+  stroke-width: 2;
+}
+
+.story-shell[data-active-scene="sampling"] .story-cell.is-inspiration {
+  fill: color-mix(in srgb, white 10%, transparent);
+  stroke: color-mix(in srgb, white 34%, transparent);
+  stroke-width: 1.4;
+}
+
+.story-shell[data-active-scene="sampling"] .story-sample-link {
+  stroke: color-mix(in srgb, white 42%, transparent);
+  stroke-width: 1.6;
+  opacity: 0.9;
+}
+
+.story-shell[data-active-scene="sampling"] .story-sample-link.is-active {
+  stroke: color-mix(in srgb, white 52%, transparent);
+  opacity: 1;
+}
+
+.story-shell[data-active-scene="sampling"] .story-node[data-node="worker02"] .story-glyph-halo {
+  display: none;
+}
+
+.story-shell[data-active-scene="sampling"] .story-node[data-node="worker02"] .story-glyph-stroke {
+  stroke: color-mix(in srgb, white 78%, transparent);
+}
+
+.story-shell[data-active-scene="sampling"] .story-node[data-node="worker02"] .story-glyph-dot {
+  fill: color-mix(in srgb, white 84%, transparent);
+}
+
+.story-shell[data-active-scene="sampling"] .story-node[data-node="worker02"].is-active .story-node-glyph {
+  animation: none;
+  filter: none;
+}
+
+.story-shell[data-active-scene="sampling"] .story-worker-line {
+  stroke: color-mix(in srgb, white 28%, transparent);
+  stroke-width: 1.6;
+  stroke-dasharray: 6 8;
+  opacity: 0.84;
+}
+
+.story-shell[data-active-scene="sampling"] .story-worker-line:not(.is-visible):not(.is-active) {
+  opacity: 0;
+}
+
+.story-shell[data-active-scene="sampling"] .story-worker-line.is-active {
+  stroke: color-mix(in srgb, white 44%, transparent);
+  opacity: 1;
+  animation: none;
+}
+
+.story-shell[data-active-scene="proposal"] .story-island-top {
+  fill: color-mix(in srgb, black 92%, transparent);
+  stroke: color-mix(in srgb, white 20%, transparent);
+}
+
+.story-shell[data-active-scene="proposal"] .story-island-side {
+  fill: color-mix(in srgb, black 86%, transparent);
+  stroke: color-mix(in srgb, white 18%, transparent);
+}
+
+.story-shell[data-active-scene="proposal"] .story-island.is-active .story-island-top,
+.story-shell[data-active-scene="proposal"] .story-island.is-active .story-island-side {
+  stroke: color-mix(in srgb, white 22%, transparent);
+}
+
+.story-shell[data-active-scene="proposal"] .story-cell,
+.story-shell[data-active-scene="proposal"] .story-cell.is-occupied {
+  fill: color-mix(in srgb, black 94%, transparent);
+  stroke: color-mix(in srgb, white 12%, transparent);
+}
+
+.story-shell[data-active-scene="proposal"] .story-cell:not(.is-parent):not(.is-seed) {
+  fill: color-mix(in srgb, black 96%, transparent);
+  stroke: color-mix(in srgb, white 10%, transparent);
+}
+
+.story-shell[data-active-scene="proposal"] .story-cell.is-seed {
+  fill: color-mix(in srgb, white 18%, transparent);
+  stroke: color-mix(in srgb, white 76%, transparent);
+}
+
+.story-shell[data-active-scene="proposal"] .story-cell.is-parent {
+  fill: color-mix(in srgb, white 22%, transparent);
+  stroke: color-mix(in srgb, white 88%, transparent);
+  stroke-width: 2;
+}
+
+.story-shell[data-active-scene="proposal"] .story-node--proposal .story-glyph-halo {
+  display: none;
+}
+
+.story-shell[data-active-scene="proposal"] .story-node--proposal .story-glyph-fill {
+  fill: color-mix(in srgb, black 94%, transparent);
+}
+
+.story-shell[data-active-scene="proposal"] .story-node--proposal .story-glyph-stroke {
+  stroke: color-mix(in srgb, white 82%, transparent);
+}
+
+.story-shell[data-active-scene="proposal"] .story-node--proposal .story-glyph-soft {
+  stroke: color-mix(in srgb, white 38%, transparent);
+}
+
+.story-shell[data-active-scene="proposal"] .story-node--proposal.is-active .story-node-glyph {
+  animation: none;
+  filter: none;
+}
+
+.story-shell[data-active-scene="proposal"] .story-node--proposal .story-glyph-soft {
+  animation: none;
+}
+
+
+.story-shell[data-active-scene="proposal"] .story-track[data-track="proposal"] {
+  display: none;
+}
+
+.story-shell[data-active-scene="proposal"] .story-track[data-track="proposal"].is-active {
+  display: none;
+}
+
+.story-shell[data-active-scene="proposal"] .story-node--worker01,
+.story-shell[data-active-scene="proposal"] .story-node--worker02,
+.story-shell[data-active-scene="proposal"] .story-node--worker03 {
+  transform: none;
+}
+
+.story-shell[data-active-scene="proposal"] .story-node--worker01 .story-glyph-halo,
+.story-shell[data-active-scene="proposal"] .story-node--worker02 .story-glyph-halo,
+.story-shell[data-active-scene="proposal"] .story-node--worker03 .story-glyph-halo {
+  display: none;
+}
+
+.story-shell[data-active-scene="proposal"] .story-node--worker01 .story-glyph-stroke,
+.story-shell[data-active-scene="proposal"] .story-node--worker02 .story-glyph-stroke,
+.story-shell[data-active-scene="proposal"] .story-node--worker03 .story-glyph-stroke {
+  stroke: color-mix(in srgb, white 52%, transparent);
+}
+
+.story-shell[data-active-scene="proposal"] .story-node--worker01 .story-glyph-dot,
+.story-shell[data-active-scene="proposal"] .story-node--worker02 .story-glyph-dot,
+.story-shell[data-active-scene="proposal"] .story-node--worker03 .story-glyph-dot {
+  fill: color-mix(in srgb, white 42%, transparent);
+}
+
+.story-shell[data-active-scene="proposal"] .story-node--worker01.is-active .story-node-glyph,
+.story-shell[data-active-scene="proposal"] .story-node--worker02.is-active .story-node-glyph,
+.story-shell[data-active-scene="proposal"] .story-node--worker03.is-active .story-node-glyph,
+.story-shell[data-active-scene="proposal"] .story-node--worker01 .story-node-glyph,
+.story-shell[data-active-scene="proposal"] .story-node--worker02 .story-node-glyph,
+.story-shell[data-active-scene="proposal"] .story-node--worker03 .story-node-glyph {
+  animation: none !important;
+  filter: none;
+}
+
+.story-shell[data-active-scene="proposal"] .story-worker-line {
+  stroke: color-mix(in srgb, white 28%, transparent);
+  opacity: 0;
+}
+
+.story-shell[data-active-scene="proposal"] .story-worker-line.is-visible,
+.story-shell[data-active-scene="proposal"] .story-worker-line.is-active {
+  stroke: color-mix(in srgb, white 34%, transparent);
+  opacity: 1;
+}
+
+.story-shell[data-active-scene="proposal"] .story-worker-line.is-active {
+  animation: story-flow-drift 2.2s linear infinite reverse;
+}
+
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-island-top {
+  fill: color-mix(in srgb, black 92%, transparent);
+  stroke: color-mix(in srgb, white 20%, transparent);
+}
+
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-island-side {
+  fill: color-mix(in srgb, black 86%, transparent);
+  stroke: color-mix(in srgb, white 18%, transparent);
+}
+
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-island.is-active .story-island-top,
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-island.is-active .story-island-side {
+  stroke: color-mix(in srgb, white 22%, transparent);
+}
+
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-island-label text {
+  fill: color-mix(in srgb, var(--text) 78%, transparent) !important;
+}
+
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-cell,
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-cell.is-occupied {
+  fill: color-mix(in srgb, black 94%, transparent);
+  stroke: color-mix(in srgb, white 12%, transparent);
+}
+
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-cell:not(.is-parent):not(.is-seed):not(.is-accepted):not(.is-migrant-target) {
+  fill: color-mix(in srgb, black 96%, transparent);
+  stroke: color-mix(in srgb, white 10%, transparent);
+}
+
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-cell.is-seed {
+  fill: color-mix(in srgb, white 18%, transparent);
+  stroke: color-mix(in srgb, white 72%, transparent);
+}
+
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-cell.is-parent {
+  fill: color-mix(in srgb, white 22%, transparent);
+  stroke: color-mix(in srgb, white 88%, transparent);
+  stroke-width: 2;
+}
+
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-cell.is-accepted,
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-cell.is-migrant-target {
+  fill: color-mix(in srgb, white 18%, transparent);
+  stroke: color-mix(in srgb, white 74%, transparent);
+}
+
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-node .story-glyph-halo,
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-ledger .story-glyph-halo {
+  display: none;
+}
+
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-node .story-glyph-stroke,
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-ledger .story-glyph-stroke {
+  stroke: color-mix(in srgb, white 78%, transparent);
+}
+
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-node .story-glyph-fill,
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-ledger .story-glyph-fill {
+  fill: color-mix(in srgb, black 94%, transparent);
+  stroke: color-mix(in srgb, white 34%, transparent);
+}
+
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-node .story-glyph-dot,
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-ledger .story-glyph-dot {
+  fill: color-mix(in srgb, white 84%, transparent);
+}
+
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-node .story-node-label,
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-node .story-node-sublabel,
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-ledger-label,
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-ledger .svg-section-label {
+  fill: color-mix(in srgb, white 78%, transparent) !important;
+}
+
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-node.is-active .story-node-glyph,
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-ledger.is-active {
+  animation: none;
+  filter: none;
+}
+
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-node .story-glyph-soft,
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-ledger .story-glyph-soft {
+  animation: none;
+}
+
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-track {
+  stroke: color-mix(in srgb, white 28%, transparent);
+  stroke-width: 1.7;
+  stroke-dasharray: 6 8;
+  filter: none;
+}
+
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-track.is-visible {
+  opacity: 0.58;
+}
+
+:is(
+  .story-shell[data-active-scene="preflight"],
+  .story-shell[data-active-scene="runtime"],
+  .story-shell[data-active-scene="ledger"],
+  .story-shell[data-active-scene="archive"],
+  .story-shell[data-active-scene="migration"],
+  .story-shell[data-active-scene="evidence"]
+) .story-track.is-active {
+  stroke: color-mix(in srgb, white 44%, transparent);
+  opacity: 1;
+  filter: none;
+}
+
+.story-shell[data-active-scene="preflight"] .story-track[data-track="proposalGate02"].is-active,
+.story-shell[data-active-scene="preflight"] .story-track[data-track="proposalGate03"].is-active,
+.story-shell[data-active-scene="preflight"] .story-track[data-track="materialize"].is-active,
+.story-shell[data-active-scene="runtime"] .story-track[data-track="judge"].is-active,
+.story-shell[data-active-scene="ledger"] .story-track[data-track="ledger"].is-active,
+.story-shell[data-active-scene="archive"] .story-track[data-track="archive"].is-active,
+.story-shell[data-active-scene="migration"] .story-track[data-track="migrate"].is-active,
+.story-shell[data-active-scene="evidence"] .story-track[data-track="evidence"].is-active {
+  animation: story-flow-drift 2.2s linear infinite;
+}
+
+.story-shell[data-active-scene="migration"] .story-ring {
+  stroke: color-mix(in srgb, white 18%, transparent);
+}
+
+.story-shell[data-active-scene="migration"] .story-ring.is-active {
+  stroke: color-mix(in srgb, white 32%, transparent);
+  opacity: 0.9;
+}
+
+.story-shell[data-active-scene="migration"] .story-cell.is-migrant-target {
+  fill: color-mix(in srgb, white 8%, transparent);
+  stroke: color-mix(in srgb, white 76%, transparent);
+  stroke-width: 1.9;
+  animation: story-target-bloom 1.8s ease-in-out infinite;
+}
+
+.story-shell[data-active-scene="archive"] .story-threshold {
+  stroke: color-mix(in srgb, white 28%, transparent);
+}
+
+.story-shell[data-active-scene="archive"] .story-threshold.is-active {
+  opacity: 0.88;
+}
+
+.story-shell[data-active-scene="ledger"] .story-ledger-entry {
+  fill: color-mix(in srgb, var(--text) 10%, transparent);
+  stroke: transparent;
+}
+
+.story-shell[data-active-scene="ledger"] .story-ledger-entry.is-accepted {
+  fill: color-mix(in srgb, white 16%, transparent);
+  stroke: color-mix(in srgb, white 22%, transparent);
+}
+
+.story-shell[data-active-scene="archive"] .story-ledger-entry {
+  fill: color-mix(in srgb, var(--text) 10%, transparent);
+  stroke: transparent;
+}
+
+.story-shell[data-active-scene="archive"] .story-ledger-entry.is-accepted {
+  fill: color-mix(in srgb, white 16%, transparent);
+  stroke: color-mix(in srgb, white 22%, transparent);
+}
+
+.story-shell[data-active-scene="evidence"] .story-ledger-entry {
+  fill: color-mix(in srgb, var(--text) 10%, transparent);
+  stroke: transparent;
+}
+
+.story-shell[data-active-scene="evidence"] .story-ledger-entry.is-accepted {
+  fill: color-mix(in srgb, white 16%, transparent);
+  stroke: color-mix(in srgb, white 22%, transparent);
+}
+
+.story-shell[data-active-scene="evidence"] .story-cell,
+.story-shell[data-active-scene="evidence"] .story-cell.is-occupied,
+.story-shell[data-active-scene="evidence"] .story-cell:not(.is-parent):not(.is-seed):not(.is-accepted):not(.is-migrant-target) {
+  fill: color-mix(in srgb, white 6%, black 94%);
+  stroke: color-mix(in srgb, white 14%, transparent);
+}
+
+@keyframes story-flow-drift {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -44;
+  }
+}
+
+@keyframes story-target-bloom {
+  0%,
+  100% {
+    fill: color-mix(in srgb, white 4%, transparent);
+    stroke: color-mix(in srgb, white 54%, transparent);
+  }
+
+  50% {
+    fill: color-mix(in srgb, white 16%, transparent);
+    stroke: color-mix(in srgb, white 86%, transparent);
+  }
+}
+
+@keyframes story-node-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.035);
+  }
+}
+
+.story-track.is-active,
+.story-ring.is-active,
+.story-worker-line.is-active,
+.story-seed-ray.is-active,
+.story-sample-link.is-active {
+  animation: story-flow-drift 2.2s linear infinite;
+}
+
+.story-node.is-active .story-glyph-soft,
+.story-ledger.is-active .story-glyph-soft {
+  animation: story-flow-drift 2.6s linear infinite;
+}
+
+.story-node.is-active .story-node-glyph {
+  animation: story-node-breathe 2.6s ease-in-out infinite;
+}
+
+.story-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 1.35rem;
+  margin-top: 0.95rem;
+  padding-top: 0.9rem;
+}
+
+.story-legend div {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.story-legend strong {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.story-key {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  transform: rotate(45deg);
+}
+
+.story-key--occupied {
+  background: color-mix(in srgb, var(--text) 14%, transparent);
+}
+
+.story-key--parent {
+  border: 1px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 16%, var(--bg));
+}
+
+.story-key--candidate {
+  border: 2px solid var(--accent);
+  background: var(--bg);
+}
+
+.story-key--accepted {
+  border: 1px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 26%, var(--bg));
+}
+
+.story-key--ledger {
+  background: color-mix(in srgb, var(--text) 16%, transparent);
+}
+
+.story-key--gate {
+  transform: none;
+  border: 1px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, var(--bg));
+}
+
+.story-links {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.story-links-title {
+  margin: 0;
+  font-size: clamp(1.22rem, 3vw, 1.8rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.story-link-row {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  padding-top: 0.95rem;
+  border-top: 1px solid var(--line);
+}
+
+.story-link-row a {
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 1260px) {
+  .story-shell {
+    grid-template-columns: minmax(340px, 0.9fr) minmax(420px, 1.1fr);
+    gap: 1.55rem;
+  }
+
+  .story-shell::before {
+    width: clamp(340px, 39%, 500px);
+  }
+
+  .story-shell::after {
+    left: clamp(340px, 39%, 500px);
+  }
+}
+
+@media (max-width: 1100px) {
+  .story-shell {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "visual"
+      "scenes"
+      "code";
+    gap: 2rem;
+    min-height: auto;
+    padding: 0.8rem 0 0;
+  }
+
+  .story-shell::before,
+  .story-shell::after {
+    display: none;
+  }
+
+  .story-code,
+  .story-visual {
+    position: static;
+  }
+
+  .story-code,
+  .story-visual {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .story-visual {
+    grid-area: visual;
+    order: 1;
+    padding: 0;
+  }
+
+  .story-scenes {
+    grid-area: scenes;
+    order: 2;
+  }
+
+  .story-code {
+    grid-area: code;
+    order: 3;
+    padding: 0;
+    color: var(--text);
+  }
+
+  .story-scenes {
+    grid-column: auto;
+    grid-row: auto;
+    width: auto;
+    max-width: none;
+    opacity: 1;
+    pointer-events: auto;
+    gap: 2.2rem;
+    justify-self: stretch;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .story-scene {
+    min-height: auto;
+    padding-top: 0.9rem;
+  }
+
+  .story-code-window,
+  .story-subcode {
+    border-top-color: var(--line);
+  }
+
+  .story-code-line,
+  .story-subcode-block {
+    color: var(--muted);
+  }
+
+  .story-code-ln {
+    color: var(--muted);
+  }
+
+  .story-code-line.is-active {
+    color: var(--text);
+  }
+
+  .story-subcode-label {
+    color: var(--text);
+  }
+
+  .story-panel-meta {
+    justify-items: start;
+  }
+
+}
+
+@media (max-width: 720px) {
+  .evolther-2-hero .page-title {
+    max-width: 9ch;
+    font-size: clamp(2.6rem, 13vw, 4rem);
+  }
+
+  .story-canvas {
+    aspect-ratio: 920 / 760;
+  }
+
+  .story-scenes {
+    gap: 1.7rem;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .story-code-line,
+  .story-scene,
+  .story-cell,
+  .story-track,
+  .story-ring,
+  .story-marker {
+    transition: none !important;
+  }
+}
