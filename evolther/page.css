@@ -1,5 +1,6 @@
 .evolther-2-page {
   color-scheme: light;
+  --accent: #fff;
 }
 
 .evolther-2-page .site-main {
@@ -80,8 +81,8 @@
   position: relative;
   min-height: 100vh;
   padding: 0.85rem 0 2rem;
-  grid-template-columns: minmax(400px, 0.92fr) minmax(520px, 1.08fr);
-  gap: 2rem;
+  grid-template-columns: minmax(460px, 1.08fr) minmax(500px, 0.92fr);
+  gap: 1.5rem;
   align-items: start;
   isolation: isolate;
 }
@@ -90,10 +91,8 @@
   content: "";
   position: absolute;
   inset: 0 auto 0 0;
-  width: clamp(400px, 40%, 560px);
-  background:
-    radial-gradient(circle at 16% 10%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 34%),
-    linear-gradient(180deg, #141920 0%, #171c23 38%, #10151b 100%);
+  width: clamp(460px, 46%, 660px);
+  background: #fff;
   z-index: -2;
 }
 
@@ -102,9 +101,9 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  left: clamp(400px, 40%, 560px);
+  left: clamp(460px, 46%, 660px);
   width: 1px;
-  background: var(--panel-dark-line);
+  background: color-mix(in srgb, black 14%, transparent);
   z-index: -1;
 }
 
@@ -120,7 +119,7 @@
   grid-column: 1;
   grid-row: 1;
   padding: 0 2.5rem 0 1.2rem;
-  color: var(--panel-dark-text);
+  color: #0b0b0b;
 }
 
 .story-visual {
@@ -157,7 +156,7 @@
 }
 
 .story-code .story-panel-title {
-  color: var(--panel-dark-text);
+  color: #000;
   font-size: clamp(1.22rem, 1.9vw, 1.78rem);
 }
 
@@ -169,11 +168,12 @@
   text-transform: uppercase;
   max-width: none;
   white-space: nowrap;
+  color: #000;
 }
 
 .story-code-window,
 .story-subcode {
-  border-top: 1px solid var(--panel-dark-line);
+  border-top: 1px solid color-mix(in srgb, black 14%, transparent);
 }
 
 .story-canvas,
@@ -193,7 +193,7 @@
   align-items: baseline;
   min-height: 34px;
   padding: 0.18rem 0;
-  color: var(--panel-dark-muted);
+  color: color-mix(in srgb, black 58%, white 42%);
   font-family: "SFMono-Regular", Menlo, Consolas, monospace;
   font-size: 0.86rem;
   line-height: 1.4;
@@ -214,19 +214,19 @@
 }
 
 .story-code-line.is-active {
-  color: var(--panel-dark-text);
+  color: #000;
   transform: translateX(6px);
 }
 
 .story-code-line.is-active .story-code-text {
   text-decoration: underline;
-  text-decoration-color: color-mix(in srgb, var(--accent) 88%, white 12%);
+  text-decoration-color: #000;
   text-decoration-thickness: 1.5px;
   text-underline-offset: 0.35em;
 }
 
 .story-code-ln {
-  color: var(--panel-dark-muted);
+  color: color-mix(in srgb, black 44%, white 56%);
   text-align: right;
 }
 
@@ -237,7 +237,7 @@
 
 .story-subcode-label {
   margin: 0 0 0.65rem;
-  color: var(--panel-dark-text);
+  color: #000;
   font-size: 0.88rem;
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -245,7 +245,7 @@
 
 .story-subcode-block {
   margin: 0;
-  color: var(--panel-dark-muted);
+  color: color-mix(in srgb, black 58%, white 42%);
   font-family: "SFMono-Regular", Menlo, Consolas, monospace;
   font-size: 0.83rem;
   line-height: 1.5;
@@ -1687,12 +1687,56 @@
   opacity: 0.9;
 }
 
+.story-shell[data-active-scene="migration"] .story-cell.is-migrant-target {
+  fill: color-mix(in srgb, white 8%, transparent);
+  stroke: color-mix(in srgb, white 76%, transparent);
+  stroke-width: 1.9;
+  animation: story-target-bloom 1.8s ease-in-out infinite;
+}
+
 .story-shell[data-active-scene="archive"] .story-threshold {
   stroke: color-mix(in srgb, white 28%, transparent);
 }
 
 .story-shell[data-active-scene="archive"] .story-threshold.is-active {
   opacity: 0.88;
+}
+
+.story-shell[data-active-scene="ledger"] .story-ledger-entry {
+  fill: color-mix(in srgb, var(--text) 10%, transparent);
+  stroke: transparent;
+}
+
+.story-shell[data-active-scene="ledger"] .story-ledger-entry.is-accepted {
+  fill: color-mix(in srgb, white 16%, transparent);
+  stroke: color-mix(in srgb, white 22%, transparent);
+}
+
+.story-shell[data-active-scene="archive"] .story-ledger-entry {
+  fill: color-mix(in srgb, var(--text) 10%, transparent);
+  stroke: transparent;
+}
+
+.story-shell[data-active-scene="archive"] .story-ledger-entry.is-accepted {
+  fill: color-mix(in srgb, white 16%, transparent);
+  stroke: color-mix(in srgb, white 22%, transparent);
+}
+
+.story-shell[data-active-scene="evidence"] .story-ledger-entry {
+  fill: color-mix(in srgb, var(--text) 10%, transparent);
+  stroke: transparent;
+}
+
+.story-shell[data-active-scene="evidence"] .story-ledger-entry.is-accepted {
+  fill: color-mix(in srgb, white 16%, transparent);
+  stroke: color-mix(in srgb, white 22%, transparent);
+}
+
+.story-shell[data-active-scene="evidence"] .story-cell,
+.story-shell[data-active-scene="evidence"] .story-cell.is-occupied,
+.story-shell[data-active-scene="evidence"] .story-cell:not(.is-parent):not(.is-seed):not(.is-accepted):not(.is-migrant-target) {
+  fill: color-mix(in srgb, white 6%, black 94%);
+  stroke: color-mix(in srgb, white 14%, transparent);
 }
 
 @keyframes story-flow-drift {
@@ -1702,6 +1746,19 @@
 
   to {
     stroke-dashoffset: -44;
+  }
+}
+
+@keyframes story-target-bloom {
+  0%,
+  100% {
+    fill: color-mix(in srgb, white 4%, transparent);
+    stroke: color-mix(in srgb, white 54%, transparent);
+  }
+
+  50% {
+    fill: color-mix(in srgb, white 16%, transparent);
+    stroke: color-mix(in srgb, white 86%, transparent);
   }
 }
 

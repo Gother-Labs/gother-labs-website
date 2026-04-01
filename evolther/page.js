@@ -721,9 +721,9 @@
     state.points.worker01 = { x: 338, y: 492 };
     state.points.worker02 = { x: 480, y: 492 };
     state.points.worker03 = { x: 622, y: 492 };
-    state.points.accept = cellCenter(island02, 4, 1);
+    state.points.accept = cellCenter(island02, 3, 1);
     state.points.migrateMid = { x: 716, y: 474 };
-    state.points.migrateTarget = cellCenter(island03, 1, 2);
+    state.points.migrateTarget = cellCenter(island03, 4, 1);
 
     const proposalIn = { x: state.points.proposal.x + 5, y: state.points.proposal.y + 18 };
     const proposalOut = { x: state.points.proposal.x + 34, y: state.points.proposal.y - 3 };
@@ -742,10 +742,12 @@
       materialize: `M ${state.points.gate.x + 10} ${state.points.gate.y + 22} C ${state.points.gate.x + 52} ${state.points.gate.y + 86}, ${state.points.workspace02.x - 40} ${state.points.workspace02.y - 88}, ${state.points.workspace02.x} ${state.points.workspace02.y - 18}`,
       judgeGhost: `M ${state.points.workspace01.x + 4} ${state.points.workspace01.y + 28} C ${state.points.workspace01.x + 24} ${state.points.workspace01.y + 88}, ${state.points.runner.x - 108} ${state.points.runner.y - 92}, ${state.points.runner.x - 26} ${state.points.runner.y - 12}`,
       judge: `M ${state.points.workspace02.x} ${state.points.workspace02.y + 28} C ${state.points.workspace02.x - 16} ${state.points.workspace02.y + 92}, ${state.points.runner.x + 42} ${state.points.runner.y - 96}, ${state.points.runner.x + 6} ${state.points.runner.y - 14}`,
-      ledger: `M ${state.points.runner.x - 18} ${state.points.runner.y + 10} C ${state.points.runner.x - 166} ${state.points.runner.y + 84}, ${state.points.ledger.x + 150} ${state.points.ledger.y + 60}, ${state.points.ledger.x + 18} ${state.points.ledger.y + 6}`,
-      archive: `M ${state.points.ledger.x + 40} ${state.points.ledger.y + 112} C ${state.points.ledger.x + 146} ${state.points.ledger.y + 184}, ${state.points.accept.x - 136} ${state.points.accept.y + 70}, ${state.points.accept.x + 12} ${state.points.accept.y + 6}`,
+      ledger: `M ${state.points.runner.x - 18} ${state.points.runner.y + 10} C ${state.points.runner.x - 166} ${state.points.runner.y + 84}, ${state.points.ledger.x + 156} ${state.points.ledger.y + 78}, ${state.points.ledger.x + 22} ${state.points.ledger.y + 30}`,
+      archiveA: `M ${state.points.ledger.x + 50} ${state.points.ledger.y + 38} C ${state.points.ledger.x + 152} ${state.points.ledger.y + 108}, ${state.points.inspirationA.x - 140} ${state.points.inspirationA.y + 60}, ${state.points.inspirationA.x + 8} ${state.points.inspirationA.y + 4}`,
+      archiveB: `M ${state.points.ledger.x + 46} ${state.points.ledger.y + 62} C ${state.points.ledger.x + 144} ${state.points.ledger.y + 148}, ${state.points.inspirationB.x - 128} ${state.points.inspirationB.y + 56}, ${state.points.inspirationB.x + 8} ${state.points.inspirationB.y + 4}`,
+      archiveC: `M ${state.points.ledger.x + 42} ${state.points.ledger.y + 86} C ${state.points.ledger.x + 136} ${state.points.ledger.y + 188}, ${state.points.inspirationC.x - 122} ${state.points.inspirationC.y + 42}, ${state.points.inspirationC.x + 8} ${state.points.inspirationC.y + 4}`,
       evidence: `M ${state.points.ledger.x + 38} ${state.points.ledger.y - 12} C ${state.points.ledger.x + 102} ${state.points.ledger.y - 98}, ${state.points.telemetry.x - 48} ${state.points.telemetry.y + 44}, ${state.points.telemetry.x - 12} ${state.points.telemetry.y + 10}`,
-      migrate: `M ${state.points.accept.x + 12} ${state.points.accept.y - 2} C ${state.points.accept.x + 78} ${state.points.accept.y + 76}, ${state.points.migrateTarget.x - 88} ${state.points.migrateTarget.y - 78}, ${state.points.migrateTarget.x + 10} ${state.points.migrateTarget.y - 4}`,
+      migrate: `M ${state.points.accept.x + 10} ${state.points.accept.y - 4} C ${state.points.accept.x + 92} ${state.points.accept.y + 84}, ${state.points.migrateTarget.x - 106} ${state.points.migrateTarget.y - 94}, ${state.points.migrateTarget.x + 8} ${state.points.migrateTarget.y - 4}`,
     };
 
     Object.entries(trackDefs).forEach(([key, d]) => {
@@ -857,7 +859,7 @@
   const scenes = [
     {
       id: "run",
-      count: "01 / 13",
+      count: "01 / 12",
       title: "Run contract",
       line: "A governed entrypoint.",
       generation: "—",
@@ -903,7 +905,7 @@
     },
     {
       id: "manifest",
-      count: "02 / 13",
+      count: "02 / 12",
       title: "Manifest and telemetry",
       line: "The run writes its identity, resolved configuration, and evidence surface.",
       generation: "000",
@@ -949,7 +951,7 @@
     },
     {
       id: "seed",
-      count: "03 / 13",
+      count: "03 / 12",
       title: "Seed and islands",
       line: "The seed is measured first, then copied into the local starting state of every island.",
       generation: "000",
@@ -995,7 +997,7 @@
     },
     {
       id: "loop",
-      count: "04 / 13",
+      count: "04 / 12",
       title: "Generation loop",
       line: "The run enters its repeated generation budget.",
       generation: "001",
@@ -1041,7 +1043,7 @@
     },
     {
       id: "workers",
-      count: "05 / 13",
+      count: "05 / 12",
       title: "Parallel workers",
       line: "A worker is assigned to an island under bounded concurrency.",
       generation: "037",
@@ -1087,7 +1089,7 @@
     },
     {
       id: "sampling",
-      count: "06 / 13",
+      count: "06 / 12",
       title: "Parent and inspirations",
       line: "Parent and inspirations are sampled from the live archive.",
       generation: "037",
@@ -1133,7 +1135,7 @@
     },
     {
       id: "proposal",
-      count: "07 / 13",
+      count: "07 / 12",
       title: "Bounded patch proposal",
       line: "The worker turns island context into a bounded proposal.",
       generation: "037",
@@ -1179,7 +1181,7 @@
     },
     {
       id: "preflight",
-      count: "08 / 13",
+      count: "08 / 12",
       title: "Preflight and candidate lab",
       line: "The PatchProposal is checked first; only vetted edits materialize as a candidate lab.",
       generation: "037",
@@ -1224,58 +1226,12 @@
       markers: { candidate: null, ghost: null, migrant: null },
     },
     {
-      id: "runtime",
-      count: "09 / 13",
-      title: "Subprocess runner",
-      line: "One surviving candidate is judged in a clean subprocess.",
-      generation: "037",
-      island: "02",
-      operator: "mutate",
-      candidate: "c-024",
-      state: "single candidate judged",
-      ledger: "result.json returned",
-      code: ["run", "loop", "materialize", "evaluate"],
-      subcodeLabel: "evaluate_in_subprocess()",
-      subcode: [
-        "evaluate_in_subprocess(candidate):",
-        "  materialize minimal workspace",
-        "  run domain eval_script in a clean process",
-        "  parse result contract into EvaluationResult",
-      ],
-      visibleIslands: ["02"],
-      activeIslands: ["02"],
-      visibleNodes: ["workspace02", "runner"],
-      activeNodes: ["workspace02", "runner"],
-      visibleTracks: ["judge"],
-      activeTracks: ["judge"],
-      visibleRings: [],
-      activeRings: [],
-      visibleSampleLinks: [],
-      activeSampleLinks: [],
-      visibleWorkerLines: [],
-      activeWorkerLines: [],
-      visibleSeedRays: [],
-      activeSeedRays: [],
-      visibleThresholds: [],
-      activeThresholds: [],
-      seedCells: ["02|2-1"],
-      parentCells: ["02|2-1"],
-      inspirationCells: [],
-      acceptedCells: [],
-      migrantTargetCells: [],
-      visibleLedgerEntries: [],
-      ledgerActive: [],
-      ledgerFailed: [],
-      ledgerAccepted: [],
-      markers: { candidate: null, ghost: null, migrant: null },
-    },
-    {
       id: "ledger",
-      count: "10 / 13",
+      count: "09 / 12",
       title: "History ledger",
       line: "Every evaluated attempt enters history, whether it survives or not.",
       generation: "037",
-      island: "02",
+      island: "none",
       operator: "mutate",
       candidate: "c-024",
       state: "full attempt history",
@@ -1288,9 +1244,9 @@
         "  keep failures for audit and replay context",
         "  do not confuse history with live archive",
       ],
-      visibleIslands: ["02"],
-      activeIslands: ["02"],
-      visibleNodes: ["runner", "ledger"],
+      visibleIslands: [],
+      activeIslands: [],
+      visibleNodes: ["workspace02", "runner", "ledger"],
       activeNodes: ["runner", "ledger"],
       visibleTracks: ["judge", "ledger"],
       activeTracks: ["ledger"],
@@ -1310,14 +1266,14 @@
       acceptedCells: [],
       migrantTargetCells: [],
       visibleLedgerEntries: ["seed", "attemptA", "attemptB", "attemptC", "attemptD"],
-      ledgerActive: ["seed", "attemptA", "attemptB", "attemptC", "attemptD"],
-      ledgerFailed: ["attemptA", "attemptB", "attemptC"],
-      ledgerAccepted: ["attemptD"],
+      ledgerActive: [],
+      ledgerFailed: [],
+      ledgerAccepted: ["seed", "attemptA"],
       markers: { candidate: null, ghost: null, migrant: null },
     },
     {
       id: "archive",
-      count: "11 / 13",
+      count: "10 / 12",
       title: "Niche-local acceptance",
       line: "The live archive keeps only the current niche winner, not the full history.",
       generation: "037",
@@ -1338,8 +1294,8 @@
       activeIslands: ["02"],
       visibleNodes: ["ledger"],
       activeNodes: ["ledger"],
-      visibleTracks: ["archive"],
-      activeTracks: ["archive"],
+      visibleTracks: ["archiveA", "archiveB", "archiveC"],
+      activeTracks: ["archiveA", "archiveB", "archiveC"],
       visibleRings: [],
       activeRings: [],
       visibleSampleLinks: [],
@@ -1353,17 +1309,17 @@
       seedCells: ["02|2-1"],
       parentCells: [],
       inspirationCells: [],
-      acceptedCells: ["02|4-1"],
+      acceptedCells: ["02|1-1", "02|2-2", "02|3-1"],
       migrantTargetCells: [],
-      visibleLedgerEntries: ["seed", "attemptA", "attemptB", "attemptC", "attemptD"],
-      ledgerActive: ["seed", "attemptA", "attemptB", "attemptC", "attemptD"],
-      ledgerFailed: ["attemptA", "attemptB", "attemptC"],
-      ledgerAccepted: ["attemptD"],
+      visibleLedgerEntries: ["seed", "attemptA", "attemptB", "attemptC"],
+      ledgerActive: [],
+      ledgerFailed: [],
+      ledgerAccepted: ["seed", "attemptA", "attemptB", "attemptC"],
       markers: { candidate: null, ghost: null, migrant: null },
     },
     {
       id: "migration",
-      count: "12 / 13",
+      count: "11 / 12",
       title: "Migration and pressure",
       line: "Islands stay local except for explicit ring migration under the same niche rules.",
       generation: "038",
@@ -1386,8 +1342,8 @@
       activeNodes: [],
       visibleTracks: ["migrate"],
       activeTracks: ["migrate"],
-      visibleRings: ["02-03"],
-      activeRings: ["02-03"],
+      visibleRings: [],
+      activeRings: [],
       visibleSampleLinks: [],
       activeSampleLinks: [],
       visibleWorkerLines: [],
@@ -1396,20 +1352,20 @@
       activeSeedRays: [],
       visibleThresholds: [],
       activeThresholds: [],
-      seedCells: [],
+      seedCells: ["02|2-1", "03|2-1"],
       parentCells: [],
       inspirationCells: [],
-      acceptedCells: ["02|4-1"],
-      migrantTargetCells: ["03|1-2"],
-      visibleLedgerEntries: ["seed", "attemptD"],
-      ledgerActive: ["seed", "attemptD"],
+      acceptedCells: ["02|1-1", "02|2-2", "02|3-1", "03|1-1", "03|2-2", "03|3-1"],
+      migrantTargetCells: ["03|4-1"],
+      visibleLedgerEntries: [],
+      ledgerActive: [],
       ledgerFailed: [],
-      ledgerAccepted: ["attemptD"],
+      ledgerAccepted: [],
       markers: { candidate: null, ghost: null, migrant: null },
     },
     {
       id: "evidence",
-      count: "13 / 13",
+      count: "12 / 12",
       title: "Evidence layer",
       line: "The run closes as manifest, telemetry, summaries, and replayable artifacts.",
       generation: "040",
@@ -1448,10 +1404,10 @@
       acceptedCells: [],
       migrantTargetCells: [],
       visibleLedgerEntries: ["seed", "attemptA", "attemptB", "attemptC", "attemptD"],
-      ledgerActive: ["seed", "attemptA", "attemptB", "attemptC", "attemptD"],
-      ledgerFailed: ["attemptA", "attemptC"],
-      ledgerAccepted: ["seed", "attemptD"],
-      markers: { candidate: "telemetry", ghost: null, migrant: null },
+      ledgerActive: [],
+      ledgerFailed: [],
+      ledgerAccepted: ["seed", "attemptA", "attemptB", "attemptC", "attemptD"],
+      markers: { candidate: null, ghost: null, migrant: null },
     },
   ];
 
@@ -1543,7 +1499,7 @@
 
     scene.visibleIslands.forEach((id) => state.islandMap.get(id)?.classList.add("is-visible"));
     scene.activeIslands.forEach((id) => state.islandMap.get(id)?.classList.add("is-active"));
-    if (scene.id === "seed" || scene.id === "loop" || scene.id === "workers") {
+    if (scene.id === "seed" || scene.id === "loop" || scene.id === "workers" || scene.id === "evidence") {
       state.islandLabelMap.forEach((group, id) => {
         if (id === "02") {
           group.classList.add("is-generic");
@@ -1565,6 +1521,19 @@
       });
       ["w01", "w03"].forEach((id) => {
         state.workerLineMap.get(id)?.classList.remove("is-visible", "is-active");
+      });
+    }
+    if (scene.id === "migration") {
+      state.islandLabelMap.forEach((group, id) => {
+        if (id === "02") {
+          group.classList.add("is-generic");
+          const title = group.querySelector("text:first-child");
+          if (title) {
+            title.textContent = "Island";
+          }
+        } else if (id === "03") {
+          group.classList.add("is-hidden");
+        }
       });
     }
     scene.visibleNodes.forEach((id) => state.nodeMap.get(id)?.classList.add("is-visible"));
