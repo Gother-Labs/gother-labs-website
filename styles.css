@@ -69,7 +69,7 @@ body {
 }
 
 body.home-page {
-  overflow-y: hidden;
+  overflow-y: auto;
 }
 
 body.not-found-page {
@@ -187,6 +187,12 @@ a {
   padding: 1.2rem 0 0;
 }
 
+.home-mark {
+  width: 3.9rem;
+  height: 3.9rem;
+  margin: 0 auto 1.3rem;
+}
+
 .not-found-hero {
   width: min(100%, 1320px);
   padding: 0;
@@ -292,6 +298,11 @@ a {
   max-width: none;
 }
 
+.home-title {
+  max-width: 14ch;
+  margin-inline: auto;
+}
+
 .eyebrow {
   margin: 0 0 0.85rem;
   font-size: 0.82rem;
@@ -299,6 +310,10 @@ a {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--muted);
+}
+
+.home-kicker {
+  margin-bottom: 1rem;
 }
 
 .company-manifesto-inline {
@@ -326,6 +341,10 @@ a {
   max-width: 52ch;
 }
 
+.home-support-line {
+  max-width: none;
+}
+
 .home-link {
   display: inline-flex;
   justify-content: center;
@@ -348,6 +367,14 @@ a {
   align-self: center;
 }
 
+.home-links {
+  display: flex;
+  gap: 0.85rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
 .home-links a {
   display: inline-flex;
   align-items: center;
@@ -359,6 +386,22 @@ a {
   font-size: 0.95rem;
   text-decoration: none;
   color: var(--text);
+}
+
+.home-links a.home-link-primary {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+}
+
+.home-links a.home-link-primary:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
+}
+
+.home-links a.home-link-secondary {
+  background: transparent;
 }
 
 .home-links a:hover {
@@ -549,6 +592,10 @@ a {
   letter-spacing: -0.02em;
   color: var(--accent);
   text-decoration: none;
+}
+
+.contact-block a + a {
+  margin-left: 1rem;
 }
 
 .site-footer {

@@ -3,18 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Quadrature Run | Göther Labs</title>
+    <title>Research Surface | Göther Labs</title>
     <meta
       name="description"
-      content="A quadrature run rendered as one governed surface: score, code evolution, and numerical object synchronized in-page."
+      content="This route is quarantined from the public Göther Labs site."
     >
     <meta name="robots" content="noindex, nofollow">
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="../../assets/gother-mark.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../../styles.css">
-    <link rel="stylesheet" href="./surface.css">
   </head>
-  <body class="quadrature-surface-page">
+  <body>
     <div class="page-shell site-shell">
       <header class="site-header">
         <nav class="site-nav" aria-label="Primary">
@@ -22,104 +21,41 @@
             <img src="../../assets/gother-mark.svg" alt="" class="brand-image">
           </a>
           <a href="../../company/">Company</a>
-          <a href="../">Evölther</a>
           <a href="../../contact/">Contact</a>
         </nav>
       </header>
 
       <main class="site-main">
-        <section class="hero compact-hero page-hero quadrature-hero">
-          <h1 class="page-title">A quadrature run, read as one governed surface.</h1>
+        <section class="hero compact-hero page-hero">
+          <p class="eyebrow">Quarantined Route</p>
+          <h1 class="page-title">This proof surface is not part of the public site.</h1>
+          <p class="intro">
+            Public Göther Labs positioning now begins with a bounded technical discovery study. Work-in-progress proof routes are being held outside the public entry layer.
+          </p>
         </section>
 
         <div class="divider" aria-hidden="true"></div>
 
-        <section class="quadrature-surface" aria-label="Quadrature run surface">
-          <div class="quadrature-summary">
-            <div class="quadrature-summary-copy">
-              <p class="eyebrow">Domain Abstract</p>
-              <p class="quadrature-summary-text">
-                This domain evolves a one-dimensional quadrature rule on the interval <code>[0,1]</code>. What
-                you are seeing here is one accepted run rendered as a governed surface: the editable code, the
-                best-so-far numerical objective, and the rule’s behavior against analytic integrands read together.
-              </p>
-            </div>
-            <div class="quadrature-summary-panel">
-              <p class="eyebrow">Run Snapshot</p>
-              <div class="quadrature-metrics" role="group" aria-label="Current run step">
-                <div class="quadrature-metric">
-                  <span class="quadrature-metric-label">STEP</span>
-                  <strong class="quadrature-metric-value" id="metric-step">0 / 7</strong>
-                </div>
-                <div class="quadrature-metric">
-                  <span class="quadrature-metric-label">GEN</span>
-                  <strong class="quadrature-metric-value" id="metric-gen">0</strong>
-                </div>
-                <div class="quadrature-metric">
-                  <span class="quadrature-metric-label">GENERATIONS</span>
-                  <strong class="quadrature-metric-value">100</strong>
-                </div>
-                <div class="quadrature-metric">
-                  <span class="quadrature-metric-label">GAINS</span>
-                  <strong class="quadrature-metric-value" id="signal-gains">7</strong>
-                </div>
-                <div class="quadrature-metric">
-                  <span class="quadrature-metric-label">SEED</span>
-                  <strong class="quadrature-metric-value quadrature-metric-value--numeric" id="signal-seed">688.676</strong>
-                </div>
-                <div class="quadrature-metric">
-                  <span class="quadrature-metric-label">BEST</span>
-                  <strong class="quadrature-metric-value quadrature-metric-value--numeric" id="signal-best">114.515</strong>
-                </div>
-              </div>
-            </div>
-          </div>
+        <section class="content-blocks" aria-label="Quarantine notice">
+          <article class="content-block">
+            <h2>Why this route changed</h2>
+            <p>
+              Public proof and work-in-progress routes are being quarantined so the website stays clear about the first commercial offer and does not overstate evidence.
+            </p>
+          </article>
 
-          <div class="quadrature-stage">
-            <section class="quadrature-code" aria-labelledby="quadrature-code-title">
-              <div class="quadrature-section-head">
-                <h2 class="quadrature-section-title" id="quadrature-code-title">Code evolution</h2>
-                <span class="quadrature-section-tag" id="editor-badge">seed</span>
-              </div>
+          <article class="content-block">
+            <h2>Next step</h2>
+            <p>
+              If you want to discuss a study, use Contact. If you want the broader lab framing, continue to Company.
+            </p>
+          </article>
+        </section>
 
-              <div class="quadrature-editor">
-                <div class="quadrature-editor-head">
-                  <span class="quadrature-editor-title">domains/quadrature/program.py :: quadrature_rule</span>
-                </div>
-                <div class="quadrature-editor-body" id="editor-body">
-                  <div class="quadrature-editor-focus" id="editor-focus"></div>
-                </div>
-              </div>
-            </section>
-
-            <aside class="quadrature-visual" aria-labelledby="quadrature-visual-title">
-              <div class="quadrature-score-pulse">
-                <div class="quadrature-score-head">
-                  <h2 class="quadrature-section-title" id="quadrature-visual-title">Numerical object</h2>
-                  <span class="quadrature-score-label" id="score-mini-label">best-so-far</span>
-                </div>
-                <svg
-                  class="quadrature-score-svg"
-                  id="score-mini-svg"
-                  viewBox="0 0 340 108"
-                  preserveAspectRatio="none"
-                  aria-label="Best-so-far score pulse"
-                ></svg>
-              </div>
-
-              <div class="quadrature-rule">
-                <svg
-                  class="quadrature-rule-svg"
-                  id="rule-svg"
-                  viewBox="0 0 340 180"
-                  preserveAspectRatio="none"
-                  aria-label="Quadrature rule"
-                ></svg>
-              </div>
-
-              <div class="quadrature-integrands" id="integrands-grid"></div>
-            </aside>
-          </div>
+        <section class="contact-block">
+          <a href="../../contact/#study-inquiries">Discuss a study</a>
+          <a href="../../company/">Company</a>
+          <a href="../../contact/#research-collaborations">Research and collaborations</a>
         </section>
       </main>
 
@@ -129,7 +65,5 @@
     </div>
 
     <script src="../../scripts.js"></script>
-    <script src="./surface-data.js"></script>
-    <script src="./surface.js"></script>
   </body>
 </html>
