@@ -4,16 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Route Unavailable | Göther Labs</title>
-    <meta
-      name="description"
-      content="This route is not part of the public Göther Labs site."
-    >
+    <meta name="description" content="This route is not part of the public Göther Labs site.">
     <meta name="robots" content="noindex, nofollow">
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="../assets/gother-mark.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../styles.css">
   </head>
-  <body>
+  <body class="not-found-page">
     <div class="page-shell site-shell">
       <header class="site-header">
         <nav class="site-nav" aria-label="Primary">
@@ -25,24 +22,36 @@
         </nav>
       </header>
 
-      <main class="site-main holding-main">
-        <section class="hero compact-hero page-hero holding-hero">
-          <p class="eyebrow">Non-public route</p>
-          <h1 class="page-title">This route is not part of the public site.</h1>
-          <p class="intro">
-            The current public website is focused on Göther Labs and its first engagement layer.
+      <main class="site-main not-found-main">
+        <section class="hero not-found-hero page-hero animated-symbol-scope">
+          <h1 class="page-title not-found-title">
+            <span aria-hidden="true" class="wordmark-mark-wrap">
+              <svg
+                class="animated-reference-geometry live-symbol-svg"
+                viewBox="0 0 64 64"
+                focusable="false"
+              >
+                <g class="source-geometry" aria-hidden="true">
+                  <circle class="source-geometry-dot" cx="34.5" cy="34.5" r="3.6" />
+                  <circle class="source-geometry-dot" cx="21" cy="58" r="3.6" />
+                  <circle class="source-geometry-dot" cx="48" cy="58" r="3.6" />
+                </g>
+                <path class="live-trail" d=""></path>
+                <path class="live-trail" d=""></path>
+                <path class="live-trail" d=""></path>
+                <circle class="geometry-dot live-geometry-dot" cx="34.2" cy="28.4" r="3.34" />
+                <circle class="geometry-dot live-geometry-dot" cx="20.9" cy="50.6" r="3.34" />
+                <circle class="geometry-dot live-geometry-dot" cx="47.5" cy="50.6" r="3.34" />
+              </svg>
+            </span>
+            <span class="not-found-code">404</span>
+            <span>Not public.</span>
+          </h1>
+          <p class="intro not-found-intro">
+            This route is quarantined from the public site.
           </p>
-          <div class="holding-links">
-            <a href="../">Home</a>
-            <a href="../company/">Company</a>
-            <a href="../contact/">Contact</a>
-          </div>
         </section>
       </main>
-
-      <footer class="site-footer">
-        <p>© <span id="year">2026</span> Göther Labs</p>
-      </footer>
     </div>
 
     <script src="../scripts.js"></script>
