@@ -160,9 +160,6 @@ a {
 .home-main {
   max-width: none;
   min-height: calc(100dvh - 108px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .not-found-main {
@@ -183,14 +180,14 @@ a {
 }
 
 .home-hero {
-  width: min(100%, 1320px);
-  padding: 1.2rem 0 0;
+  width: min(100%, 1040px);
+  padding: 4rem 0 2.6rem;
 }
 
-.home-mark {
-  width: 3.9rem;
-  height: 3.9rem;
-  margin: 0 auto 1.3rem;
+.home-mark.wordmark-mark-wrap {
+  width: clamp(7.5rem, 14vw, 10.5rem);
+  height: clamp(7.5rem, 14vw, 10.5rem);
+  margin: 0 auto 2rem;
 }
 
 .not-found-hero {
@@ -299,7 +296,7 @@ a {
 }
 
 .home-title {
-  max-width: 14ch;
+  max-width: 11ch;
   margin-inline: auto;
 }
 
@@ -313,7 +310,9 @@ a {
 }
 
 .home-kicker {
-  margin-bottom: 1rem;
+  margin-bottom: 1.15rem;
+  letter-spacing: 0.08em;
+  color: var(--text);
 }
 
 .company-manifesto-inline {
@@ -343,6 +342,10 @@ a {
 
 .home-support-line {
   max-width: none;
+}
+
+.home-intro {
+  max-width: 52ch;
 }
 
 .home-link {
@@ -375,6 +378,15 @@ a {
   margin-top: 2rem;
 }
 
+.home-hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
 .home-links a {
   display: inline-flex;
   align-items: center;
@@ -388,25 +400,27 @@ a {
   color: var(--text);
 }
 
-.home-links a.home-link-primary {
+.home-link-primary {
   background: var(--text);
   border-color: var(--text);
   color: var(--bg);
 }
 
-.home-links a.home-link-primary:hover {
+.home-link-primary:hover {
   background: var(--accent);
   border-color: var(--accent);
   color: #ffffff;
 }
 
-.home-links a.home-link-secondary {
-  background: transparent;
+.home-link-tertiary {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.96rem;
+  letter-spacing: -0.01em;
 }
 
-.home-links a:hover {
-  border-color: var(--line-strong);
-  color: var(--accent);
+.home-link-tertiary:hover {
+  color: var(--text);
 }
 
 .divider {
@@ -456,6 +470,11 @@ a {
   margin-top: 3.25rem;
 }
 
+.home-first-engagement {
+  margin-top: 0;
+  padding-bottom: 2rem;
+}
+
 .page-hero {
   text-align: left;
   max-width: none;
@@ -474,6 +493,19 @@ a {
 
 .page-contact-address {
   margin-top: 2.4rem;
+}
+
+.company-callout-blocks {
+  gap: 1.2rem;
+}
+
+.company-callout {
+  max-width: 46rem;
+}
+
+.company-callout h2 {
+  font-size: 1.45rem;
+  letter-spacing: -0.04em;
 }
 
 .section-title {
@@ -598,6 +630,47 @@ a {
   margin-left: 1rem;
 }
 
+.contact-route-grid {
+  gap: 1.9rem;
+}
+
+.holding-main {
+  max-width: 760px;
+}
+
+.holding-hero {
+  padding-top: 2.4rem;
+}
+
+.holding-hero .page-title {
+  max-width: 14ch;
+}
+
+.holding-hero .intro {
+  max-width: 42ch;
+}
+
+.holding-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.7rem;
+}
+
+.holding-links a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.holding-links a:hover {
+  color: var(--text);
+}
+
+.home-soft-note {
+  margin-top: 1.35rem;
+  color: var(--muted);
+}
+
 .site-footer {
   margin-top: 3.2rem;
   padding: 1rem 0 0;
@@ -685,9 +758,6 @@ a {
 
   .home-main {
     min-height: calc(100dvh - 88px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
   .not-found-main {
@@ -699,7 +769,19 @@ a {
 
   .home-hero {
     width: 100%;
-    padding-top: 0;
+    padding-top: 1.2rem;
+  }
+
+  .home-mark {
+    margin-bottom: 1.5rem;
+  }
+
+  .home-hero-actions {
+    gap: 0.9rem;
+  }
+
+  .holding-links {
+    gap: 0.8rem;
   }
 
   .not-found-hero {
@@ -715,6 +797,13 @@ a {
 
   .page-title {
     letter-spacing: -0.05em;
+  }
+}
+
+@media (min-width: 860px) {
+  .contact-route-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
   }
 }
 
