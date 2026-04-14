@@ -332,6 +332,11 @@ a {
   text-wrap: balance;
 }
 
+.home-hero .subintro {
+  width: max-content;
+  max-width: 100%;
+}
+
 .home-support-line {
   max-width: none;
 }
