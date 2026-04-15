@@ -1,0 +1,1073 @@
+window.STORAGE_SURFACE_DATA = {
+  "meta": {
+    "generations": 100,
+    "evaluationsTotal": 400,
+    "evaluationsValid": 233,
+    "seedScore": 73.49410019269389,
+    "bestScore": 24.856174643178733
+  },
+  "steps": [
+    {
+      "label": "seed",
+      "generation": 0,
+      "score": 73.49410019269389,
+      "oracle_capture_ratio": 0.8408027499534445,
+      "regret_mean_eur": 39.35070847472299,
+      "code": "def dispatch_policy(ctx: DispatchContext) -> DispatchPlan:\n    \"\"\"\n    Build a deterministic battery dispatch plan for a fixed price horizon.\n\n    Contract:\n        * Preserve the signature exactly.\n        * Return exactly one charge/discharge decision per price step.\n        * Keep charge/discharge within the battery power limit whenever possible.\n        * Keep the policy deterministic and side-effect free.\n\n    Baseline heuristic:\n        * Use daily price quantiles as charge/discharge anchors.\n        * Require enough future spread before charging.\n        * Force the terminal state of charge back to the target in the last step.\n    \"\"\"\n    prices = np.asarray(ctx.prices_eur_per_mwh, dtype=float)\n    horizon = int(prices.size)\n    if horizon == 0:\n        return DispatchPlan(charge_mw=[], discharge_mw=[], soc_mwh=[])\n\n    spec = ctx.spec\n    low_anchor = float(np.quantile(prices, 0.35))\n    high_anchor = float(np.quantile(prices, 0.75))\n    spread_floor = max(float(high_anchor - low_anchor), 4.0)\n    charge_trigger = low_anchor + 0.10 * spread_floor\n    discharge_trigger = high_anchor - 0.10 * spread_floor\n\n    soc = float(spec.initial_soc_mwh)\n    charge_plan: list[float] = []\n    discharge_plan: list[float] = []\n    soc_trace: list[float] = []\n\n    for step, price in enumerate(prices.tolist()):\n        remaining_prices = prices[step + 1 :]\n        remaining_steps = horizon - step - 1\n        future_peak = float(np.max(remaining_prices)) if remaining_prices.size else float(price)\n        future_floor = float(np.min(remaining_prices)) if remaining_prices.size else float(price)\n        target_soc = float(spec.final_soc_target_mwh)\n\n        charge_limit = min(\n            float(spec.power_mw),\n            max(float(spec.capacity_mwh) - soc, 0.0) / max(float(spec.charge_efficiency), 1e-9),\n        )\n        discharge_limit = min(\n            float(spec.power_mw),\n            max(soc - float(spec.min_soc_mwh), 0.0) * max(float(spec.discharge_efficiency), 1e-9),\n        )\n        terminal_floor = max(\n            float(spec.min_soc_mwh),\n            target_soc - remaining_steps * float(spec.power_mw) * float(spec.charge_efficiency),\n        )\n        terminal_ceiling = min(\n            float(spec.capacity_mwh),\n            target_soc + remaining_steps * float(spec.power_mw) / max(float(spec.discharge_efficiency), 1e-9),\n        )\n        charge_limit = min(\n            charge_limit,\n            max(terminal_ceiling - soc, 0.0) / max(float(spec.charge_efficiency), 1e-9),\n        )\n        discharge_limit = min(\n            discharge_limit,\n            max(soc - terminal_floor, 0.0) * max(float(spec.discharge_efficiency), 1e-9),\n        )\n\n        charge_power = 0.0\n        discharge_power = 0.0\n        profitable_charge = future_peak >= price / max(float(spec.round_trip_efficiency), 1e-9) + 2.0\n        profitable_discharge = price >= future_floor + 2.0\n        max_future_charge_gain = remaining_steps * float(spec.power_mw) * float(spec.charge_efficiency)\n        max_future_discharge_relief = (\n            remaining_steps * float(spec.power_mw) / max(float(spec.discharge_efficiency), 1e-9)\n        )\n        required_charge_now = max(0.0, target_soc - (soc + max_future_charge_gain))\n        required_discharge_now = max(0.0, (soc - target_soc) - max_future_discharge_relief)\n\n        if required_discharge_now > 0.0 and discharge_limit > 0.0:\n            discharge_power = min(\n                discharge_limit,\n                required_discharge_now * max(float(spec.discharge_efficiency), 1e-9),\n            )\n        elif required_charge_now > 0.0 and charge_limit > 0.0:\n            charge_power = min(\n                charge_limit,\n                required_charge_now / max(float(spec.charge_efficiency), 1e-9),\n            )\n        elif price <= charge_trigger and profitable_charge and charge_limit > 0.0:\n            charge_power = charge_limit\n        elif price >= discharge_trigger and profitable_discharge and discharge_limit > 0.0:\n            discharge_power = discharge_limit\n\n        if step == horizon - 1:\n            if soc < target_soc:\n                charge_power = min(\n                    float(spec.power_mw),\n                    max(target_soc - soc, 0.0) / max(float(spec.charge_efficiency), 1e-9),\n                )\n                discharge_power = 0.0\n            elif soc > target_soc:\n                discharge_power = min(\n                    float(spec.power_mw),\n                    max(soc - target_soc, 0.0) * max(float(spec.discharge_efficiency), 1e-9),\n                )\n                charge_power = 0.0\n\n        soc += float(spec.charge_efficiency) * charge_power\n        soc -= discharge_power / max(float(spec.discharge_efficiency), 1e-9)\n        soc = float(np.clip(soc, float(spec.min_soc_mwh), float(spec.capacity_mwh)))\n\n        charge_plan.append(float(charge_power))\n        discharge_plan.append(float(discharge_power))\n        soc_trace.append(float(soc))\n\n    return DispatchPlan(charge_mw=charge_plan, discharge_mw=discharge_plan, soc_mwh=soc_trace)"
+    },
+    {
+      "label": "gen19",
+      "generation": 19,
+      "score": 68.26968870100414,
+      "oracle_capture_ratio": 0.7850968333556725,
+      "regret_mean_eur": 42.31712699965372,
+      "code": "def dispatch_policy(ctx: DispatchContext) -> DispatchPlan:\n    prices = np.asarray(ctx.prices_eur_per_mwh, dtype=float)\n    horizon = prices.size\n    if horizon == 0:\n        return DispatchPlan(charge_mw=[], discharge_mw=[], soc_mwh=[])\n    spec = ctx.spec\n    p_max = float(spec.power_mw)\n    c_max = float(spec.capacity_mwh)\n    n_ch = float(spec.charge_efficiency)\n    n_di = float(spec.discharge_efficiency)\n    target = float(spec.final_soc_target_mwh)\n    soc = float(spec.initial_soc_mwh)\n    low_anchor = float(np.quantile(prices, 0.35))\n    high_anchor = float(np.quantile(prices, 0.75))\n    charge_plan, discharge_plan, soc_trace = [], [], []\n    for step in range(horizon):\n        price = prices[step]\n        rem = horizon - step - 1\n        f_min = float(np.min(prices[step + 1:])) if rem > 0 else price\n        f_max = float(np.max(prices[step + 1:])) if rem > 0 else price\n        t_min = max(0.0, target - rem * p_max * n_ch)\n        t_max = min(c_max, target + rem * p_max / n_di)\n        ch_lim = min(p_max, (t_max - soc) / n_ch if n_ch > 0 else 0.0, (c_max - soc) / n_ch if n_ch > 0 else 0.0)\n        di_lim = min(p_max, (soc - t_min) * n_di, (soc - 0.0) * n_di)\n        ch_p, di_p = 0.0, 0.0\n        if rem == 0:\n            if soc < target: ch_p = min(p_max, (target - soc) / n_ch if n_ch > 0 else 0.0)\n            elif soc > target: di_p = min(p_max, (soc - target) * n_di)\n        elif soc < t_min:\n            ch_p = min(ch_lim, p_max)\n        elif soc > t_max:\n            di_p = min(di_lim, p_max)\n        elif price <= low_anchor and f_max > price / (n_ch * n_di) + 1.0:\n            ch_p = ch_lim\n        elif price >= high_anchor and price > f_min * (n_ch * n_di) + 1.0:\n            di_p = di_lim\n        soc += (ch_p * n_ch) - (di_p / n_di if n_di > 0 else 0.0)\n        soc = float(np.clip(soc, 0.0, c_max))\n        charge_plan.append(float(ch_p))\n        discharge_plan.append(float(di_p))\n        soc_trace.append(float(soc))\n    return DispatchPlan(charge_mw=charge_plan, discharge_mw=discharge_plan, soc_mwh=soc_trace)"
+    },
+    {
+      "label": "gen31",
+      "generation": 31,
+      "score": 56.89775450155823,
+      "oracle_capture_ratio": 0.7964271539304769,
+      "regret_mean_eur": 35.65314742901665,
+      "code": "def dispatch_policy(ctx: DispatchContext) -> DispatchPlan:\n    prices = np.asarray(ctx.prices_eur_per_mwh, dtype=float)\n    horizon = prices.size\n    if horizon == 0:\n        return DispatchPlan(charge_mw=[], discharge_mw=[], soc_mwh=[])\n    spec = ctx.spec\n    p_max = float(spec.power_mw)\n    c_max = float(spec.capacity_mwh)\n    n_ch = float(spec.charge_efficiency)\n    n_di = float(spec.discharge_efficiency)\n    target = float(spec.final_soc_target_mwh)\n    soc = float(spec.initial_soc_mwh)\n    low_anchor = float(np.percentile(prices, 25))\n    high_anchor = float(np.percentile(prices, 75))\n    charge_plan, discharge_plan, soc_trace = [], [], []\n    for step in range(horizon):\n        price = prices[step]\n        rem = horizon - step - 1\n        f_min = float(np.min(prices[step + 1:])) if rem > 0 else price\n        f_max = float(np.max(prices[step + 1:])) if rem > 0 else price\n        t_min = max(0.0, target - rem * p_max * n_ch)\n        t_max = min(c_max, target + rem * p_max / n_di)\n        ch_lim = min(p_max, (t_max - soc) / n_ch if n_ch > 0 else 0.0, (c_max - soc) / n_ch if n_ch > 0 else 0.0)\n        di_lim = min(p_max, (soc - t_min) * n_di, (soc - 0.0) * n_di)\n        ch_p, di_p = 0.0, 0.0\n        if rem == 0:\n            if soc < target: ch_p = min(p_max, (target - soc) / n_ch if n_ch > 0 else 0.0)\n            elif soc > target: di_p = min(p_max, (soc - target) * n_di)\n        elif soc < t_min:\n            ch_p = min(ch_lim, p_max)\n        elif soc > t_max:\n            di_p = min(di_lim, p_max)\n        elif price <= low_anchor and f_max > price / (n_ch * n_di):\n            ch_p = ch_lim\n        elif price >= high_anchor and price > f_min * (n_ch * n_di):\n            di_p = di_lim\n        soc += (ch_p * n_ch) - (di_p / n_di if n_di > 0 else 0.0)\n        soc = float(np.clip(soc, 0.0, c_max))\n        charge_plan.append(float(ch_p))\n        discharge_plan.append(float(di_p))\n        soc_trace.append(float(soc))\n    return DispatchPlan(charge_mw=charge_plan, discharge_mw=discharge_plan, soc_mwh=soc_trace)"
+    },
+    {
+      "label": "gen39",
+      "generation": 39,
+      "score": 45.76422663971612,
+      "oracle_capture_ratio": 0.8301880011702903,
+      "regret_mean_eur": 26.336746043975094,
+      "code": "def dispatch_policy(ctx: DispatchContext) -> DispatchPlan:\n    prices = np.asarray(ctx.prices_eur_per_mwh, dtype=float)\n    horizon = int(prices.size)\n    if horizon == 0:\n        return DispatchPlan(charge_mw=[], discharge_mw=[], soc_mwh=[])\n    spec = ctx.spec\n    c_eff = float(spec.charge_efficiency)\n    d_eff = float(spec.discharge_efficiency)\n    p_mw = float(spec.power_mw)\n    cap = float(spec.capacity_mwh)\n    min_soc = float(spec.min_soc_mwh)\n    t_soc = float(spec.final_soc_target_mwh)\n    soc = float(spec.initial_soc_mwh)\n    charge_plan, discharge_plan, soc_trace = [], [], []\n    for step, price in enumerate(prices):\n        rem_steps = horizon - step - 1\n        rem_prices = prices[step + 1 :] if rem_steps > 0 else np.array([price])\n        t_min = max(min_soc, t_soc - rem_steps * p_mw * c_eff)\n        t_max = min(cap, t_soc + rem_steps * p_mw / d_eff)\n        c_lim = max(0.0, min(p_mw, (cap - soc) / c_eff, (t_max - soc) / c_eff))\n        d_lim = max(0.0, min(p_mw, (soc - min_soc) * d_eff, (soc - t_min) * d_eff))\n        c_p, d_p = 0.0, 0.0\n        q_low = float(np.percentile(rem_prices, 20))\n        q_high = float(np.percentile(rem_prices, 80))\n        if soc < t_min:\n            c_p = min(c_lim, (t_min - soc) / c_eff)\n        elif soc > t_max:\n            d_p = min(d_lim, (soc - t_max) * d_eff)\n        elif price < q_low:\n            c_p = c_lim\n        elif price > q_high:\n            d_p = d_lim\n        soc += c_p * c_eff - d_p / d_eff\n        soc = float(np.clip(soc, min_soc, cap))\n        charge_plan.append(c_p)\n        discharge_plan.append(d_p)\n        soc_trace.append(soc)\n    return DispatchPlan(charge_mw=charge_plan, discharge_mw=discharge_plan, soc_mwh=soc_trace)"
+    },
+    {
+      "label": "gen55",
+      "generation": 55,
+      "score": 26.462099025450215,
+      "oracle_capture_ratio": 0.9230488563505825,
+      "regret_mean_eur": 15.249643819252125,
+      "code": "def dispatch_policy(ctx: DispatchContext) -> DispatchPlan:\n    prices = np.asarray(ctx.prices_eur_per_mwh, dtype=float)\n    horizon = prices.size\n    if horizon == 0:\n        return DispatchPlan(charge_mw=[], discharge_mw=[], soc_mwh=[])\n    spec = ctx.spec\n    p_max = float(spec.power_mw)\n    c_max = float(spec.capacity_mwh)\n    n_ch = float(spec.charge_efficiency)\n    n_di = float(spec.discharge_efficiency)\n    target = float(spec.final_soc_target_mwh)\n    soc = float(spec.initial_soc_mwh)\n    charge_plan, discharge_plan, soc_trace = [], [], []\n    for step in range(horizon):\n        price = prices[step]\n        rem = horizon - step - 1\n        lookahead = prices[step + 1:step + 6]\n        f_avg = float(np.mean(lookahead)) if lookahead.size > 0 else price\n        t_min = target - (rem * p_max * n_ch)\n        t_max = target + (rem * p_max / n_di)\n        t_min = max(0.0, t_min)\n        t_max = min(c_max, t_max)\n        ch_lim = max(0.0, min(p_max, (c_max - soc) / n_ch if n_ch > 0 else 0.0, (t_max - soc) / n_ch if n_ch > 0 else 0.0))\n        di_lim = max(0.0, min(p_max, (soc - 0.0) * n_di, (soc - t_min) * n_di))\n        ch_p, di_p = 0.0, 0.0\n        if rem == 0:\n            if soc < target: ch_p = min(p_max, (target - soc) / n_ch if n_ch > 0 else 0.0)\n            elif soc > target: di_p = min(p_max, (soc - target) * n_di)\n        elif soc < t_min:\n            ch_p = ch_lim\n        elif soc > t_max:\n            di_p = di_lim\n        elif price < f_avg * 0.95:\n            ch_p = ch_lim\n        elif price > f_avg * 1.05:\n            di_p = di_lim\n        soc += (ch_p * n_ch) - (di_p / n_di if n_di > 0 else 0.0)\n        soc = float(np.clip(soc, 0.0, c_max))\n        charge_plan.append(float(ch_p))\n        discharge_plan.append(float(di_p))\n        soc_trace.append(float(soc))\n    return DispatchPlan(charge_mw=charge_plan, discharge_mw=discharge_plan, soc_mwh=soc_trace)"
+    },
+    {
+      "label": "gen60",
+      "generation": 60,
+      "score": 24.856174643178733,
+      "oracle_capture_ratio": 0.9264171261662062,
+      "regret_mean_eur": 14.680167087950181,
+      "code": "def dispatch_policy(ctx: DispatchContext) -> DispatchPlan:\n    prices = np.asarray(ctx.prices_eur_per_mwh, dtype=float)\n    horizon = prices.size\n    if horizon == 0:\n        return DispatchPlan(charge_mw=[], discharge_mw=[], soc_mwh=[])\n    spec = ctx.spec\n    p_max = float(spec.power_mw)\n    c_max = float(spec.capacity_mwh)\n    n_ch = float(spec.charge_efficiency)\n    n_di = float(spec.discharge_efficiency)\n    target = float(spec.final_soc_target_mwh)\n    soc = float(spec.initial_soc_mwh)\n    charge_plan, discharge_plan, soc_trace = [], [], []\n    efficiency_spread = n_ch * n_di\n    for step in range(horizon):\n        price = prices[step]\n        rem = horizon - step - 1\n        lookahead = prices[step + 1:step + 6]\n        f_avg = float(np.mean(lookahead)) if lookahead.size > 0 else price\n        t_min = max(0.0, target - (rem * p_max * n_ch))\n        t_max = min(c_max, target + (rem * p_max / n_di))\n        ch_lim = max(0.0, min(p_max, (c_max - soc) / n_ch if n_ch > 0 else 0.0, (t_max - soc) / n_ch if n_ch > 0 else 0.0))\n        di_lim = max(0.0, min(p_max, (soc - 0.0) * n_di, (soc - t_min) * n_di))\n        ch_p, di_p = 0.0, 0.0\n        if rem == 0:\n            if soc < target: ch_p = min(p_max, (target - soc) / n_ch if n_ch > 0 else 0.0)\n            elif soc > target: di_p = min(p_max, (soc - target) * n_di)\n        elif soc < t_min:\n            ch_p = ch_lim\n        elif soc > t_max:\n            di_p = di_lim\n        elif price < f_avg * (0.5 + 0.5 * efficiency_spread):\n            ch_p = ch_lim\n        elif price > f_avg * (1.5 - 0.5 * efficiency_spread):\n            di_p = di_lim\n        soc += (ch_p * n_ch) - (di_p / n_di if n_di > 0 else 0.0)\n        soc = float(np.clip(soc, 0.0, c_max))\n        charge_plan.append(float(ch_p))\n        discharge_plan.append(float(di_p))\n        soc_trace.append(float(soc))\n    return DispatchPlan(charge_mw=charge_plan, discharge_mw=discharge_plan, soc_mwh=soc_trace)"
+    }
+  ],
+  "focusScenario": {
+    "id": "omie_20250915",
+    "market_date": "2025-09-15",
+    "title": "OMIE 2025-09-15",
+    "note": "Best recorded policy",
+    "prices_eur_per_mwh": [
+      97.03,
+      94.95,
+      90,
+      89,
+      87.82,
+      94.17,
+      97.33,
+      120.83,
+      124,
+      84.2,
+      35.1,
+      7.63,
+      8,
+      4.5,
+      2.5,
+      3.52,
+      4.96,
+      16,
+      43.99,
+      94.17,
+      110,
+      110.96,
+      98.5,
+      85.97
+    ]
+  },
+  "dispatchSnapshots": {
+    "seed": {
+      "id": "omie_20250115",
+      "market_date": "2025-01-15",
+      "title": "OMIE 2025-01-15",
+      "note": "Baseline winter spread",
+      "prices_eur_per_mwh": [
+        132.4,
+        122.4,
+        118.6,
+        118.42,
+        118.13,
+        118.13,
+        135.56,
+        167.32,
+        225,
+        160,
+        138.92,
+        132.7,
+        126,
+        122.4,
+        115.58,
+        117.81,
+        135,
+        143.2,
+        167.32,
+        178.97,
+        168.78,
+        150.97,
+        138.77,
+        123.9
+      ],
+      "charge_mw": [
+        0,
+        1,
+        1,
+        0.105263,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0.3241,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ],
+      "discharge_mw": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0.705,
+        0,
+        0
+      ],
+      "soc_mwh": [
+        2,
+        2.95,
+        3.9,
+        4,
+        4,
+        4,
+        4,
+        2.947368,
+        1.894737,
+        0.842105,
+        0.842105,
+        0.842105,
+        1.792105,
+        2.742105,
+        3.692105,
+        4,
+        4,
+        4,
+        2.947368,
+        1.894737,
+        0.842105,
+        0.1,
+        1.05,
+        2
+      ]
+    },
+    "gen19": {
+      "id": "omie_20240715",
+      "market_date": "2024-07-15",
+      "title": "OMIE 2024-07-15",
+      "note": "First feasible summer breakthrough",
+      "prices_eur_per_mwh": [
+        89.61,
+        75,
+        60.31,
+        60.31,
+        59.79,
+        59.92,
+        66.56,
+        89.87,
+        82.15,
+        62.01,
+        39.49,
+        15.84,
+        6.06,
+        3.74,
+        3.9,
+        7.48,
+        5.99,
+        14,
+        40,
+        60,
+        80,
+        108.78,
+        109.37,
+        94.7
+      ],
+      "charge_mw": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0.210526,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.110803
+      ],
+      "discharge_mw": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.9,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "soc_mwh": [
+        0.947368,
+        0.947368,
+        0.947368,
+        0.947368,
+        0.947368,
+        0.947368,
+        0.947368,
+        0,
+        0,
+        0,
+        0.95,
+        1.9,
+        2.85,
+        3.8,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        2.947368,
+        1.894737,
+        2
+      ]
+    },
+    "gen31": {
+      "id": "omie_20250715",
+      "market_date": "2025-07-15",
+      "title": "OMIE 2025-07-15",
+      "note": "Percentile-driven summer spread",
+      "prices_eur_per_mwh": [
+        113.16,
+        109.48,
+        107.41,
+        107.22,
+        105.43,
+        107.38,
+        113.16,
+        118.81,
+        107.4,
+        72.97,
+        30.5,
+        39.87,
+        46.2,
+        45,
+        35,
+        29.95,
+        29.95,
+        49,
+        50.08,
+        72.84,
+        112.92,
+        135.87,
+        135.05,
+        120.05
+      ],
+      "charge_mw": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0.210526,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.110803
+      ],
+      "discharge_mw": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.9,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0
+      ],
+      "soc_mwh": [
+        0.947368,
+        0.947368,
+        0.947368,
+        0.947368,
+        0.947368,
+        0.947368,
+        0,
+        0,
+        0,
+        0,
+        0.95,
+        1.9,
+        1.9,
+        2.85,
+        3.8,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        2.947368,
+        1.894737,
+        2
+      ]
+    },
+    "gen39": {
+      "id": "omie_20250915",
+      "market_date": "2025-09-15",
+      "title": "OMIE 2025-09-15",
+      "note": "Late-run capture lift",
+      "prices_eur_per_mwh": [
+        97.03,
+        94.95,
+        90,
+        89,
+        87.82,
+        94.17,
+        97.33,
+        120.83,
+        124,
+        84.2,
+        35.1,
+        7.63,
+        8,
+        4.5,
+        2.5,
+        3.52,
+        4.96,
+        16,
+        43.99,
+        94.17,
+        110,
+        110.96,
+        98.5,
+        85.97
+      ],
+      "charge_mw": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0.210526,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "discharge_mw": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0.9,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0.8025,
+        0
+      ],
+      "soc_mwh": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        0.947368,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.95,
+        1.9,
+        2.85,
+        3.8,
+        4,
+        4,
+        4,
+        2.947368,
+        1.894737,
+        1.05,
+        2
+      ]
+    },
+    "gen55": {
+      "id": "omie_20250415",
+      "market_date": "2025-04-15",
+      "title": "OMIE 2025-04-15",
+      "note": "Spring repricing sharpened",
+      "prices_eur_per_mwh": [
+        14,
+        7.5,
+        5.64,
+        4.5,
+        3.6,
+        7.08,
+        20.08,
+        34.45,
+        35,
+        18.74,
+        5.5,
+        3.52,
+        0.08,
+        0,
+        -0.01,
+        -0.01,
+        -0.01,
+        0,
+        2.55,
+        7.5,
+        33.47,
+        35,
+        21.96,
+        21.46
+      ],
+      "charge_mw": [
+        0,
+        1,
+        1,
+        1,
+        0.213296,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0.210526,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.110803
+      ],
+      "discharge_mw": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0.8,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "soc_mwh": [
+        0.947368,
+        1.897368,
+        2.847368,
+        3.797368,
+        4,
+        4,
+        4,
+        2.947368,
+        1.894737,
+        0.842105,
+        0,
+        0,
+        0,
+        0.95,
+        1.9,
+        2.85,
+        3.8,
+        4,
+        4,
+        4,
+        2.947368,
+        1.894737,
+        1.894737,
+        2
+      ]
+    },
+    "gen60": {
+      "id": "omie_20250915",
+      "market_date": "2025-09-15",
+      "title": "OMIE 2025-09-15",
+      "note": "Best recorded policy",
+      "prices_eur_per_mwh": [
+        97.03,
+        94.95,
+        90,
+        89,
+        87.82,
+        94.17,
+        97.33,
+        120.83,
+        124,
+        84.2,
+        35.1,
+        7.63,
+        8,
+        4.5,
+        2.5,
+        3.52,
+        4.96,
+        16,
+        43.99,
+        94.17,
+        110,
+        110.96,
+        98.5,
+        85.97
+      ],
+      "charge_mw": [
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0.210526,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "discharge_mw": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0.6075,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0.8025,
+        0
+      ],
+      "soc_mwh": [
+        0.947368,
+        0.947368,
+        1.897368,
+        2.847368,
+        3.797368,
+        3.797368,
+        2.744737,
+        1.692105,
+        0.639474,
+        0,
+        0,
+        0,
+        0,
+        0.95,
+        1.9,
+        2.85,
+        3.8,
+        4,
+        4,
+        4,
+        2.947368,
+        1.894737,
+        1.05,
+        2
+      ]
+    }
+  },
+  "scenarios": [
+    {
+      "id": "omie_20240115",
+      "market_date": "2024-01-15",
+      "candidate_profit_eur": 103.7730193905818,
+      "oracle_profit_eur": 110.70045692520785,
+      "regret_eur": 6.927437534626051,
+      "oracle_capture_ratio": 0.9374217801168931
+    },
+    {
+      "id": "omie_20240415",
+      "market_date": "2024-04-15",
+      "candidate_profit_eur": 62.1569944598338,
+      "oracle_profit_eur": 68.1183752770083,
+      "regret_eur": 5.961380817174501,
+      "oracle_capture_ratio": 0.912484982313038
+    },
+    {
+      "id": "omie_20240715",
+      "market_date": "2024-07-15",
+      "candidate_profit_eur": 378.4019725761773,
+      "oracle_profit_eur": 382.78121883656513,
+      "regret_eur": 4.379246260387845,
+      "oracle_capture_ratio": 0.9885594014416428
+    },
+    {
+      "id": "omie_20241015",
+      "market_date": "2024-10-15",
+      "candidate_profit_eur": 140.31811911357343,
+      "oracle_profit_eur": 169.07099563711915,
+      "regret_eur": 28.752876523545723,
+      "oracle_capture_ratio": 0.8299360785379258
+    },
+    {
+      "id": "omie_20250115",
+      "market_date": "2025-01-15",
+      "candidate_profit_eur": 253.40577797783928,
+      "oracle_profit_eur": 268.91853185595585,
+      "regret_eur": 15.51275387811657,
+      "oracle_capture_ratio": 0.9423142995350507
+    },
+    {
+      "id": "omie_20250415",
+      "market_date": "2025-04-15",
+      "candidate_profit_eur": 154.30429362880886,
+      "oracle_profit_eur": 169.39402216066483,
+      "regret_eur": 15.089728531855968,
+      "oracle_capture_ratio": 0.9109193563067778
+    },
+    {
+      "id": "omie_20250715",
+      "market_date": "2025-07-15",
+      "candidate_profit_eur": 318.4595780470915,
+      "oracle_profit_eur": 345.9195609418283,
+      "regret_eur": 27.45998289473681,
+      "oracle_capture_ratio": 0.920617432503753
+    },
+    {
+      "id": "omie_20250915",
+      "market_date": "2025-09-15",
+      "candidate_profit_eur": 418.70932894736836,
+      "oracle_profit_eur": 432.06725921052634,
+      "regret_eur": 13.357930263157982,
+      "oracle_capture_ratio": 0.9690836785745682
+    }
+  ],
+  "scenarioSnapshots": {
+    "seed": {
+      "omie_20240115": {
+        "candidate_profit_eur": 75.91314127423828,
+        "regret_eur": 34.78731565096956,
+        "oracle_capture_ratio": 0.6857527365539892
+      },
+      "omie_20240415": {
+        "candidate_profit_eur": 61.78891966759003,
+        "regret_eur": 6.329455609418268,
+        "oracle_capture_ratio": 0.9070815241309107
+      },
+      "omie_20240715": {
+        "candidate_profit_eur": 312.1988725761773,
+        "regret_eur": 70.58234626038785,
+        "oracle_capture_ratio": 0.8156065585586524
+      },
+      "omie_20241015": {
+        "candidate_profit_eur": 148.1060443213297,
+        "regret_eur": 20.96495131578945,
+        "oracle_capture_ratio": 0.8759991254751525
+      },
+      "omie_20250115": {
+        "candidate_profit_eur": 255.52639847645443,
+        "regret_eur": 13.392133379501416,
+        "oracle_capture_ratio": 0.950200035352436
+      },
+      "omie_20250415": {
+        "candidate_profit_eur": 143.9264542936288,
+        "regret_eur": 25.467567867036024,
+        "oracle_capture_ratio": 0.8496548606486193
+      },
+      "omie_20250715": {
+        "candidate_profit_eur": 300.37163988919673,
+        "regret_eur": 45.54792105263158,
+        "oracle_capture_ratio": 0.8683279981952476
+      },
+      "omie_20250915": {
+        "candidate_profit_eur": 334.3332825484765,
+        "regret_eur": 97.73397666204983,
+        "oracle_capture_ratio": 0.7737991607125487
+      }
+    },
+    "gen19": {
+      "omie_20240115": {
+        "candidate_profit_eur": 63.22225484764558,
+        "regret_eur": 47.478202077562266,
+        "oracle_capture_ratio": 0.5711110559404484
+      },
+      "omie_20240415": {
+        "candidate_profit_eur": 44.06905263157894,
+        "regret_eur": 24.049322645429356,
+        "oracle_capture_ratio": 0.6469480878304709
+      },
+      "omie_20240715": {
+        "candidate_profit_eur": 312.1988725761773,
+        "regret_eur": 70.58234626038785,
+        "oracle_capture_ratio": 0.8156065585586524
+      },
+      "omie_20241015": {
+        "candidate_profit_eur": 141.92160664819957,
+        "regret_eur": 27.149388988919583,
+        "oracle_capture_ratio": 0.8394201862560098
+      },
+      "omie_20250115": {
+        "candidate_profit_eur": 252.0949307479226,
+        "regret_eur": 16.823601108033245,
+        "oracle_capture_ratio": 0.9374397852318906
+      },
+      "omie_20250415": {
+        "candidate_profit_eur": 126.88611329639889,
+        "regret_eur": 42.50790886426594,
+        "oracle_capture_ratio": 0.7490589790473919
+      },
+      "omie_20250715": {
+        "candidate_profit_eur": 303.68363988919674,
+        "regret_eur": 42.23592105263157,
+        "oracle_capture_ratio": 0.8779024784327413
+      },
+      "omie_20250915": {
+        "candidate_profit_eur": 364.35693421052633,
+        "regret_eur": 67.71032500000001,
+        "oracle_capture_ratio": 0.8432875355477747
+      }
+    },
+    "gen31": {
+      "omie_20240115": {
+        "candidate_profit_eur": 58.99052631578953,
+        "regret_eur": 51.709930609418315,
+        "oracle_capture_ratio": 0.5328842170511102
+      },
+      "omie_20240415": {
+        "candidate_profit_eur": 44.60063157894736,
+        "regret_eur": 23.51774369806094,
+        "oracle_capture_ratio": 0.6547518404186192
+      },
+      "omie_20240715": {
+        "candidate_profit_eur": 355.70887257617727,
+        "regret_eur": 27.07234626038786,
+        "oracle_capture_ratio": 0.9292746223477938
+      },
+      "omie_20241015": {
+        "candidate_profit_eur": 144.13615263157902,
+        "regret_eur": 24.93484300554013,
+        "oracle_capture_ratio": 0.852518506136568
+      },
+      "omie_20250115": {
+        "candidate_profit_eur": 215.09505789473693,
+        "regret_eur": 53.82347396121892,
+        "oracle_capture_ratio": 0.7998521203066472
+      },
+      "omie_20250415": {
+        "candidate_profit_eur": 130.5250052631579,
+        "regret_eur": 38.869016897506924,
+        "oracle_capture_ratio": 0.7705407994820449
+      },
+      "omie_20250715": {
+        "candidate_profit_eur": 315.94679778393356,
+        "regret_eur": 29.972763157894747,
+        "oracle_capture_ratio": 0.9133533730319022
+      },
+      "omie_20250915": {
+        "candidate_profit_eur": 396.742197368421,
+        "regret_eur": 35.325061842105356,
+        "oracle_capture_ratio": 0.91824175266913
+      }
+    },
+    "gen39": {
+      "omie_20240115": {
+        "candidate_profit_eur": 78.09947368421064,
+        "regret_eur": 32.60098324099721,
+        "oracle_capture_ratio": 0.705502721971389
+      },
+      "omie_20240415": {
+        "candidate_profit_eur": 39.864994459833795,
+        "regret_eur": 28.253380817174502,
+        "oracle_capture_ratio": 0.5852311406095626
+      },
+      "omie_20240715": {
+        "candidate_profit_eur": 354.0925567867036,
+        "regret_eur": 28.688662049861534,
+        "oracle_capture_ratio": 0.9250520646309174
+      },
+      "omie_20241015": {
+        "candidate_profit_eur": 147.50174847645434,
+        "regret_eur": 21.569247160664816,
+        "oracle_capture_ratio": 0.8724249119171252
+      },
+      "omie_20250115": {
+        "candidate_profit_eur": 217.03252077562334,
+        "regret_eur": 51.88601108033251,
+        "oracle_capture_ratio": 0.8070567665149799
+      },
+      "omie_20250415": {
+        "candidate_profit_eur": 130.07605789473686,
+        "regret_eur": 39.31796426592797,
+        "oracle_capture_ratio": 0.7678904853641404
+      },
+      "omie_20250715": {
+        "candidate_profit_eur": 341.9912714681441,
+        "regret_eur": 3.928289473684231,
+        "oracle_capture_ratio": 0.9886439221216957
+      },
+      "omie_20250915": {
+        "candidate_profit_eur": 427.61782894736837,
+        "regret_eur": 4.4494302631579785,
+        "oracle_capture_ratio": 0.9897019962325125
+      }
+    },
+    "gen55": {
+      "omie_20240115": {
+        "candidate_profit_eur": 103.7730193905818,
+        "regret_eur": 6.927437534626051,
+        "oracle_capture_ratio": 0.9374217801168931
+      },
+      "omie_20240415": {
+        "candidate_profit_eur": 62.1569944598338,
+        "regret_eur": 5.961380817174501,
+        "oracle_capture_ratio": 0.912484982313038
+      },
+      "omie_20240715": {
+        "candidate_profit_eur": 378.4019725761773,
+        "regret_eur": 4.379246260387845,
+        "oracle_capture_ratio": 0.9885594014416428
+      },
+      "omie_20241015": {
+        "candidate_profit_eur": 135.76230526315788,
+        "regret_eur": 33.30869037396127,
+        "oracle_capture_ratio": 0.8029899200129368
+      },
+      "omie_20250115": {
+        "candidate_profit_eur": 253.40577797783928,
+        "regret_eur": 15.51275387811657,
+        "oracle_capture_ratio": 0.9423142995350507
+      },
+      "omie_20250415": {
+        "candidate_profit_eur": 154.30429362880886,
+        "regret_eur": 15.089728531855968,
+        "oracle_capture_ratio": 0.9109193563067778
+      },
+      "omie_20250715": {
+        "candidate_profit_eur": 318.4595780470915,
+        "regret_eur": 27.45998289473681,
+        "oracle_capture_ratio": 0.920617432503753
+      },
+      "omie_20250915": {
+        "candidate_profit_eur": 418.70932894736836,
+        "regret_eur": 13.357930263157982,
+        "oracle_capture_ratio": 0.9690836785745682
+      }
+    },
+    "gen60": {
+      "omie_20240115": {
+        "candidate_profit_eur": 103.7730193905818,
+        "regret_eur": 6.927437534626051,
+        "oracle_capture_ratio": 0.9374217801168931
+      },
+      "omie_20240415": {
+        "candidate_profit_eur": 62.1569944598338,
+        "regret_eur": 5.961380817174501,
+        "oracle_capture_ratio": 0.912484982313038
+      },
+      "omie_20240715": {
+        "candidate_profit_eur": 378.4019725761773,
+        "regret_eur": 4.379246260387845,
+        "oracle_capture_ratio": 0.9885594014416428
+      },
+      "omie_20241015": {
+        "candidate_profit_eur": 140.31811911357343,
+        "regret_eur": 28.752876523545723,
+        "oracle_capture_ratio": 0.8299360785379258
+      },
+      "omie_20250115": {
+        "candidate_profit_eur": 253.40577797783928,
+        "regret_eur": 15.51275387811657,
+        "oracle_capture_ratio": 0.9423142995350507
+      },
+      "omie_20250415": {
+        "candidate_profit_eur": 154.30429362880886,
+        "regret_eur": 15.089728531855968,
+        "oracle_capture_ratio": 0.9109193563067778
+      },
+      "omie_20250715": {
+        "candidate_profit_eur": 318.4595780470915,
+        "regret_eur": 27.45998289473681,
+        "oracle_capture_ratio": 0.920617432503753
+      },
+      "omie_20250915": {
+        "candidate_profit_eur": 418.70932894736836,
+        "regret_eur": 13.357930263157982,
+        "oracle_capture_ratio": 0.9690836785745682
+      }
+    }
+  }
+};

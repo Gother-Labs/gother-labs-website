@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Storage Arbitrage Run | Göther Labs</title>
+    <meta
+      name="description"
+      content="A curated storage arbitrage run rendered as one governed surface: policy evolution, score improvement, and battery dispatch synchronized in-page."
+    >
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" href="../../assets/gother-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="./surface.css">
+  </head>
+  <body class="storage-surface-page">
+    <div class="page-shell site-shell">
+      <header class="site-header">
+        <nav class="site-nav" aria-label="Primary">
+          <a class="brand nav-brand" href="../../" aria-label="Göther Labs home">
+            <img src="../../assets/gother-mark.svg" alt="" class="brand-image">
+          </a>
+          <a href="../../company/">Company</a>
+          <a href="../../contact/">Contact</a>
+        </nav>
+      </header>
+
+      <main class="site-main">
+        <section class="hero compact-hero page-hero storage-hero">
+          <h1 class="page-title">A battery dispatch run, read as one governed surface.</h1>
+        </section>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <section class="storage-surface" aria-label="Storage arbitrage run surface">
+          <div class="storage-summary">
+            <div class="storage-summary-copy">
+              <p class="eyebrow">Domain Abstract</p>
+              <p class="storage-summary-text">
+                This domain evolves a single-battery dispatch policy against frozen Spanish OMIE day-ahead prices.
+                The surface below presents one curated run: code changes on the left, and on the right the evolving
+                dispatch behavior, score trajectory, and scenario-level oracle capture for the current best policy.
+              </p>
+            </div>
+
+            <div class="storage-summary-panel">
+              <p class="eyebrow">Run Snapshot</p>
+              <div class="storage-metrics" role="group" aria-label="Current run step">
+                <div class="storage-metric">
+                  <span class="storage-metric-label">STEP</span>
+                  <strong class="storage-metric-value" id="metric-step">0 / 5</strong>
+                </div>
+                <div class="storage-metric">
+                  <span class="storage-metric-label">GEN</span>
+                  <strong class="storage-metric-value" id="metric-gen">0</strong>
+                </div>
+                <div class="storage-metric">
+                  <span class="storage-metric-label">GENERATIONS</span>
+                  <strong class="storage-metric-value" id="metric-generations">100</strong>
+                </div>
+                <div class="storage-metric">
+                  <span class="storage-metric-label">VALID</span>
+                  <strong class="storage-metric-value" id="metric-valid">233 / 400</strong>
+                </div>
+                <div class="storage-metric">
+                  <span class="storage-metric-label">SEED</span>
+                  <strong class="storage-metric-value storage-metric-value--numeric" id="metric-seed">73.494</strong>
+                </div>
+                <div class="storage-metric">
+                  <span class="storage-metric-label">BEST</span>
+                  <strong class="storage-metric-value storage-metric-value--numeric" id="metric-best">24.856</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="storage-stage">
+            <section class="storage-code" aria-labelledby="storage-code-title">
+              <div class="storage-section-head">
+                <h2 class="storage-section-title" id="storage-code-title">Policy evolution</h2>
+                <span class="storage-section-tag" id="editor-badge">seed</span>
+              </div>
+
+              <div class="storage-editor">
+                <div class="storage-editor-head">
+                  <span class="storage-editor-title">domains/storage_arbitrage_es/program.py :: dispatch_policy</span>
+                </div>
+                <div class="storage-editor-body" id="editor-body">
+                  <div class="storage-editor-focus" id="editor-focus"></div>
+                </div>
+              </div>
+            </section>
+
+            <aside class="storage-visual" aria-labelledby="storage-visual-title">
+              <div class="storage-score-pulse">
+                <div class="storage-score-head">
+                  <h2 class="storage-section-title" id="storage-visual-title">Run improvement</h2>
+                  <span class="storage-score-label" id="score-mini-label">best 24.856</span>
+                </div>
+                <svg
+                  class="storage-score-svg"
+                  id="score-mini-svg"
+                  viewBox="0 0 340 108"
+                  preserveAspectRatio="none"
+                  aria-label="Best valid score improvement"
+                ></svg>
+              </div>
+
+              <div class="storage-dispatch">
+                <div class="storage-dispatch-head">
+                  <strong id="dispatch-scenario-title">OMIE 2025-09-15</strong>
+                  <span id="dispatch-scenario-meta">Best capture scenario</span>
+                </div>
+                <div class="storage-dispatch-legend" aria-hidden="true">
+                  <span class="storage-legend-item storage-legend-item--price">price</span>
+                  <span class="storage-legend-item storage-legend-item--charge">charge</span>
+                  <span class="storage-legend-item storage-legend-item--discharge">discharge</span>
+                  <span class="storage-legend-item storage-legend-item--soc">state of charge</span>
+                </div>
+                <svg
+                  class="storage-dispatch-svg"
+                  id="dispatch-svg"
+                  viewBox="0 0 340 300"
+                  preserveAspectRatio="none"
+                  aria-label="Price, dispatch, and state of charge"
+                ></svg>
+              </div>
+
+              <div class="storage-scenario-grid" id="scenario-grid"></div>
+            </aside>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© <span id="year">2026</span> Göther Labs</p>
+      </footer>
+    </div>
+
+    <script src="../../scripts.js"></script>
+    <script src="./surface-data.js"></script>
+    <script src="./surface.js"></script>
+  </body>
+</html>
