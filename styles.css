@@ -804,7 +804,18 @@ a {
 
 @media (min-width: 1180px) {
   .study-hero-grid {
-    grid-template-columns: minmax(0, 1.5fr) minmax(20rem, 0.72fr);
+    grid-template-columns: minmax(0, 1.28fr) minmax(22rem, 0.62fr);
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .study-hero-copy {
+    max-width: 48rem;
+  }
+
+  .study-hero-aside {
+    max-width: 24rem;
+    margin-left: auto;
   }
 }
 
