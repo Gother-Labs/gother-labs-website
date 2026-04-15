@@ -472,6 +472,85 @@ a {
   max-width: none;
 }
 
+.study-hero {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.study-hero-grid {
+  display: grid;
+  gap: 2.2rem;
+  align-items: end;
+}
+
+.study-hero-copy {
+  display: grid;
+  gap: 0;
+}
+
+.study-hero-aside {
+  max-width: 26rem;
+  padding: 1.1rem 0 0;
+  border-top: 1px solid var(--line);
+}
+
+.study-kicker {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.study-hero-aside p:last-child {
+  margin: 0.85rem 0 0;
+  color: var(--muted-soft);
+  font-size: 0.98rem;
+  line-height: 1.65;
+  text-wrap: pretty;
+}
+
+.study-panel {
+  position: relative;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.study-panel::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 5.25rem;
+  height: 1px;
+  background: var(--text);
+}
+
+.study-panel-muted::before {
+  width: 3rem;
+  background: var(--muted);
+}
+
+.study-sequence {
+  display: grid;
+  gap: 2rem;
+}
+
+.study-step {
+  position: relative;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.study-step-index {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
 .run-surface {
   display: grid;
   gap: 1rem;
@@ -556,6 +635,8 @@ a {
   padding: 1.3rem 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
+  display: grid;
+  gap: 0.75rem;
 }
 
 .study-process p {
@@ -563,6 +644,7 @@ a {
   color: var(--muted);
   font-size: 0.98rem;
   letter-spacing: -0.02em;
+  text-transform: uppercase;
 }
 
 .page-contact {
@@ -581,6 +663,11 @@ a {
   letter-spacing: -0.02em;
   color: var(--accent);
   text-decoration: none;
+}
+
+.study-cta-block {
+  display: grid;
+  gap: 0.25rem;
 }
 
 .site-footer {
@@ -693,14 +780,28 @@ a {
 }
 
 @media (min-width: 860px) {
+  .study-hero-grid {
+    grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.7fr);
+  }
+
   .study-contrast {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: start;
   }
 
+  .study-sequence {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.4rem;
+  }
+
   .study-steps {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     align-items: start;
+  }
+
+  .study-process {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    align-items: center;
   }
 }
 
