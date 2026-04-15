@@ -486,10 +486,11 @@ a {
 .study-hero-copy {
   display: grid;
   gap: 0;
+  max-width: 54rem;
 }
 
 .study-hero-aside {
-  max-width: 26rem;
+  max-width: 32rem;
   padding: 1.1rem 0 0;
   border-top: 1px solid var(--line);
 }
@@ -780,10 +781,6 @@ a {
 }
 
 @media (min-width: 860px) {
-  .study-hero-grid {
-    grid-template-columns: minmax(0, 1.45fr) minmax(18rem, 0.7fr);
-  }
-
   .study-contrast {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: start;
@@ -802,6 +799,12 @@ a {
   .study-process {
     grid-template-columns: repeat(5, minmax(0, 1fr));
     align-items: center;
+  }
+}
+
+@media (min-width: 1180px) {
+  .study-hero-grid {
+    grid-template-columns: minmax(0, 1.5fr) minmax(20rem, 0.72fr);
   }
 }
 
