@@ -472,6 +472,14 @@ a {
   max-width: none;
 }
 
+body.contact-page .site-main {
+  max-width: 1180px;
+}
+
+body.contact-page .divider {
+  margin: 2rem 0 2.4rem;
+}
+
 body.study-page .site-main {
   max-width: 1280px;
 }
@@ -657,6 +665,17 @@ body.study-page .site-main {
   padding-top: 0;
 }
 
+.contact-route-note {
+  margin-top: 0.95rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+}
+
+.contact-route-note span {
+  color: var(--text);
+}
+
 .contact-block p {
   margin: 0;
 }
@@ -811,6 +830,15 @@ body.study-page .site-main {
   .study-contrast {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 3rem;
+  }
+
+  body.contact-page .page-contact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3rem;
+  }
+
+  body.contact-page .page-contact-address {
+    max-width: 48rem;
   }
 
   .study-sequence {
