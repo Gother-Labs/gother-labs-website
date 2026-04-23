@@ -11,6 +11,7 @@
   --text: #0a0a0a;
   --muted: #6a6a6a;
   --muted-soft: #7a7a7a;
+  --focus-ring: #0a84ff;
   --line: rgba(10, 10, 10, 0.1);
   --line-strong: rgba(10, 10, 10, 0.16);
   --accent: #0a84ff;
@@ -32,6 +33,7 @@
     --text: #ffffff;
     --muted: #d7d7d7;
     --muted-soft: #c2c2c2;
+    --focus-ring: #5aa2ff;
     --line: rgba(255, 255, 255, 0.18);
     --line-strong: rgba(255, 255, 255, 0.32);
     --accent: #0b84fe;
@@ -78,6 +80,23 @@ body.not-found-page {
 
 a {
   color: inherit;
+}
+
+.skip-link {
+  position: absolute;
+  top: 0.8rem;
+  left: 0.8rem;
+  z-index: 10;
+  padding: 0.7rem 0.95rem;
+  background: var(--text);
+  color: var(--bg);
+  text-decoration: none;
+  transform: translateY(-160%);
+  transition: transform 180ms ease;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
 }
 
 .page-shell {
@@ -150,6 +169,16 @@ a {
   font-size: 0.95rem;
   line-height: 1;
   letter-spacing: -0.01em;
+}
+
+.brand:focus-visible,
+.site-nav a:focus-visible,
+.site-footer a:focus-visible,
+.home-link:focus-visible,
+.home-links a:focus-visible,
+.contact-block a:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 4px;
 }
 
 .site-main {
