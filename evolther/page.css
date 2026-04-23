@@ -66,8 +66,7 @@
   position: relative;
   min-height: 100vh;
   padding: 0.85rem 0 2rem;
-  max-width: 1320px;
-  margin: 0 auto;
+  width: 100%;
   grid-template-columns: minmax(460px, 1.08fr) minmax(500px, 0.92fr);
   gap: var(--story-gap);
   align-items: start;
