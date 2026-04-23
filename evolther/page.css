@@ -7,29 +7,12 @@
   max-width: none;
 }
 
-.skip-link {
-  position: absolute;
-  top: 0.8rem;
-  left: 0.8rem;
-  z-index: 10;
-  padding: 0.7rem 0.95rem;
-  background: var(--text);
-  color: var(--bg);
-  text-decoration: none;
-  transform: translateY(-160%);
-  transition: transform 180ms ease;
-}
-
-.skip-link:focus-visible {
-  transform: translateY(0);
-}
-
 .evolther-2-page a {
   touch-action: manipulation;
 }
 
 .evolther-2-page a:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--focus-ring);
   outline-offset: 4px;
 }
 
