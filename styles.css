@@ -355,6 +355,26 @@ a {
   max-width: 52ch;
 }
 
+.home-intro {
+  display: grid;
+  gap: 1rem;
+  margin: 1.9rem auto 0;
+  max-width: 66ch;
+  color: var(--muted-soft);
+}
+
+.home-intro p {
+  margin: 0;
+  font-size: 1.08rem;
+  font-weight: 300;
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+}
+
+.home-intro p + p {
+  font-size: 0.98rem;
+}
+
 .home-link {
   display: inline-flex;
   justify-content: center;
