@@ -13,6 +13,61 @@ if (animatedSymbolPage && !reducedMotionQuery.matches) {
   initializeThreeBodySystem();
 }
 
+initializeImpactCarousel();
+
+function initializeImpactCarousel() {
+  const carousel = document.querySelector(".impact-carousel");
+  const scroller = carousel?.querySelector(".impact-track");
+  const cards = Array.from(document.querySelectorAll(".impact-card"));
+
+  if (!carousel || !scroller || cards.length === 0) {
+    return;
+  }
+
+  carousel.addEventListener("wheel", handleImpactWheel, { passive: false });
+  carousel.addEventListener("keydown", handleImpactKeydown);
+
+  function handleImpactWheel(event) {
+    const maxScrollLeft = scroller.scrollWidth - scroller.clientWidth;
+
+    if (maxScrollLeft <= 0) {
+      return;
+    }
+
+    const horizontalIntent = Math.abs(event.deltaX) > Math.abs(event.deltaY);
+    const delta = horizontalIntent ? event.deltaX : event.deltaY;
+
+    if (delta === 0) {
+      return;
+    }
+
+    const nextScrollLeft = Math.max(
+      0,
+      Math.min(maxScrollLeft, scroller.scrollLeft + delta)
+    );
+
+    if (nextScrollLeft !== scroller.scrollLeft || horizontalIntent) {
+      event.preventDefault();
+    }
+
+    scroller.scrollLeft = nextScrollLeft;
+  }
+
+  function handleImpactKeydown(event) {
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") {
+      return;
+    }
+
+    event.preventDefault();
+    const cardWidth = cards[0]?.getBoundingClientRect().width || 1;
+    const direction = event.key === "ArrowRight" ? 1 : -1;
+    scroller.scrollBy({
+      left: cardWidth * direction,
+      behavior: reducedMotionQuery.matches ? "auto" : "smooth",
+    });
+  }
+}
+
 function initializeThreeBodySystem() {
   const symbolScope = document.querySelector(".animated-symbol-scope");
   const referenceGeometry = symbolScope?.querySelector(".animated-reference-geometry");

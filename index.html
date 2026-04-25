@@ -20,7 +20,7 @@
     <meta name="twitter:image" content="https://www.gotherlabs.com/assets/og-image.png">
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="./assets/gother-mark.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./styles.css?v=impact-frame-4">
   </head>
   <body class="home-page">
     <a class="skip-link" href="#site-main">Skip to content</a>
@@ -33,7 +33,7 @@
       </header>
 
       <main class="site-main home-main" id="site-main">
-        <section class="hero home-hero animated-symbol-scope">
+        <div class="home-wordmark-anchor animated-symbol-scope">
           <h1 class="wordmark">
             <span aria-hidden="true" class="wordmark-mark-wrap">
               <svg
@@ -56,15 +56,56 @@
             </span>
             <span>Göther Labs</span>
           </h1>
+        </div>
+
+        <section class="hero home-hero">
           <div class="home-intro" aria-label="Göther Labs positioning">
             <p>AI R&amp;D for governed optimization.</p>
             <p>Algorithmic Discovery, Evaluation-driven optimization.</p>
+          </div>
+        </section>
+
+        <section class="impact-section" aria-labelledby="impact-title">
+          <div class="impact-heading">
+            <h2 class="section-title" id="impact-title">Where governed optimization matters.</h2>
+            <p class="section-text">
+              Göther focuses on bounded technical systems where better decisions,
+              measurable improvement, and operational trust have to move together.
+            </p>
+          </div>
+
+          <div class="impact-carousel" aria-label="Optimization domains" tabindex="0">
+            <div class="impact-track">
+              <article class="impact-card">
+                <p class="impact-index">01</p>
+                <img class="impact-visual" src="./assets/impact/energy-systems.png" alt="" loading="lazy" decoding="async" />
+                <h3>Energy Systems</h3>
+              </article>
+
+              <article class="impact-card">
+                <p class="impact-index">02</p>
+                <img class="impact-visual" src="./assets/impact/operational-planning.png" alt="" loading="lazy" decoding="async" />
+                <h3>Operational Planning</h3>
+              </article>
+
+              <article class="impact-card">
+                <p class="impact-index">03</p>
+                <img class="impact-visual" src="./assets/impact/algorithmic-performance.png" alt="" loading="lazy" decoding="async" />
+                <h3>Algorithmic Performance</h3>
+              </article>
+
+              <article class="impact-card">
+                <p class="impact-index">04</p>
+                <img class="impact-visual" src="./assets/impact/scientific-workflows.png" alt="" loading="lazy" decoding="async" />
+                <h3>Scientific Workflows</h3>
+              </article>
+            </div>
           </div>
         </section>
       </main>
 
     </div>
 
-    <script src="./scripts.js"></script>
+    <script src="./scripts.js?v=ai-rd-direction"></script>
   </body>
 </html>
