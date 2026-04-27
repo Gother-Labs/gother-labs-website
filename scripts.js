@@ -35,18 +35,17 @@ function initializeImpactCarousel() {
     }
 
     const horizontalIntent = Math.abs(event.deltaX) > Math.abs(event.deltaY);
-    const delta = horizontalIntent ? event.deltaX : event.deltaY;
 
-    if (delta === 0) {
+    if (!horizontalIntent || event.deltaX === 0) {
       return;
     }
 
     const nextScrollLeft = Math.max(
       0,
-      Math.min(maxScrollLeft, scroller.scrollLeft + delta)
+      Math.min(maxScrollLeft, scroller.scrollLeft + event.deltaX)
     );
 
-    if (nextScrollLeft !== scroller.scrollLeft || horizontalIntent) {
+    if (nextScrollLeft !== scroller.scrollLeft) {
       event.preventDefault();
     }
 
