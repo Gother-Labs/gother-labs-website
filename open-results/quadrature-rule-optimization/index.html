@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quadrature rule optimization | Open Results | Göther Labs</title>
+    <meta name="description" content="A one-dimensional numerical integration result where candidate quadrature rules are evaluated against analytic integrands and retained only when the measured objective improves.">
+    <link rel="canonical" href="https://www.gotherlabs.com/open-results/quadrature-rule-optimization/">
+    <meta property="og:title" content="Quadrature rule optimization | Open Results | Göther Labs">
+    <meta property="og:description" content="A one-dimensional numerical integration result where candidate quadrature rules are evaluated against analytic integrands and retained only when the measured objective improves.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.gotherlabs.com/open-results/quadrature-rule-optimization/">
+    <meta property="og:image" content="https://www.gotherlabs.com/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.gotherlabs.com/assets/og-image.png">
+    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" href="../../assets/gother-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../styles.css?v=open-results-pipeline-v1">
+  </head>
+  <body>
+    <a class="skip-link" href="#site-main">Skip to content</a>
+    <div class="page-shell site-shell">
+      <header class="site-header">
+        <nav class="site-nav" aria-label="Primary">
+          <a class="brand nav-brand" href="../../" aria-label="Göther Labs home">
+            <img src="../../assets/gother-mark.svg" alt="" class="brand-image">
+          </a>
+          <a href="../../company/">Company</a>
+          <a href="../../domains/">Domains</a>
+          <a href="../../open-results/">Open Results</a>
+          <a href="../../contact/">Contact</a>
+        </nav>
+      </header>
+
+      <main class="site-main" id="site-main">
+        <section class="hero compact-hero page-hero open-result-detail-hero">
+          <p class="eyebrow">Scientific Computing</p>
+          <h1 class="page-title">Quadrature rule optimization</h1>
+          <p class="intro open-results-hero-intro">A one-dimensional numerical integration result where candidate quadrature rules are evaluated against analytic integrands and retained only when the measured objective improves.</p>
+        </section>
+
+        <section class="open-result-detail">
+          <aside class="open-result-side">
+            <div class="open-result-stat">
+              <span>Seed objective</span>
+              <strong>688.676</strong>
+            </div>
+            <div class="open-result-stat">
+              <span>Best objective</span>
+              <strong>114.515</strong>
+            </div>
+            <div class="open-result-stat">
+              <span>Objective reduction</span>
+              <strong>574.161</strong>
+            </div>
+            <a class="text-link" href="../../evolther/quadrature-run/">Open interactive surface</a>
+          </aside>
+          <article class="open-result-article">
+<h3>Problem</h3>
+<p>Numerical integration is useful only when the rule is stable enough to trust and small enough to inspect. This result asks whether an evaluation-driven loop can improve a compact one-dimensional quadrature rule against a frozen suite of analytic integrands.</p>
+<h3>Evaluation</h3>
+<p>Every candidate is scored by the same evaluation contract. The objective is lower-is-better and combines integration error across the public integrand suite. A candidate is accepted only when it improves the measured objective under that unchanged contract.</p>
+<h3>Result</h3>
+<p>The seed objective was 688.676231. The accepted result reached 114.514813, a reduction of 574.161418 objective units (83.371749%).</p>
+<h3>What changed</h3>
+<p>The accepted rule changes the placement and weighting of the quadrature nodes. The public trace keeps the curated sequence of accepted states so the improvement can be inspected without exposing non-public proposal context or uncurated intermediate material.</p>
+<h3>Limitations</h3>
+<p>This is a bounded numerical benchmark, not a universal integration method. The result should be interpreted against the frozen integrand suite and evaluation contract included with this bundle.</p>
+<h3>Reproducibility</h3>
+<p>The bundle includes the accepted candidate, the evaluation contract, metrics, a sanitized evolution trace, and provenance. Replaying the result should use the same contract and objective direction: lower is better.</p>
+          </article>
+        </section>
+
+        <section class="open-result-assets" aria-label="Public result figures">
+<figure class="open-result-figure">
+            <img src="./assets/objective-curve.svg" alt="">
+          </figure>
+<figure class="open-result-figure">
+            <img src="./assets/candidate-trace.svg" alt="">
+          </figure>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© <span id="year">2026</span> Göther Labs</p>
+      </footer>
+    </div>
+
+    <script src="../../scripts.js"></script>
+  </body>
+</html>

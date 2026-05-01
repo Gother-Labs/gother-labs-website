@@ -1,0 +1,9 @@
+{
+  "seed": 688.676231,
+  "best": 114.514813,
+  "improvement": 574.161418,
+  "improvement_pct": 83.371749,
+  "units": "objective",
+  "direction": "lower_is_better",
+  "validation_status": "curated-surface"
+}

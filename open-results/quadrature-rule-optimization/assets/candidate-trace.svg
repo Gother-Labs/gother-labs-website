@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" role="img" aria-label="Accepted quadrature candidate">
+  <rect width="960" height="360" fill="#000"/>
+  <path d="M 70 282 H 890" stroke="#444" stroke-width="2"/>
+  <path d="M 511.61 282.00 V 94.16" stroke="#fff" stroke-width="2"/>
+  <circle cx="511.61" cy="94.16" r="6" fill="#168cff"/>
+  <path d="M 613.43 282.00 V 94.01" stroke="#fff" stroke-width="2"/>
+  <circle cx="613.43" cy="94.01" r="6" fill="#168cff"/>
+  <path d="M 685.00 282.00 V 94.00" stroke="#fff" stroke-width="2"/>
+  <circle cx="685.00" cy="94.00" r="6" fill="#168cff"/>
+  <path d="M 756.57 282.00 V 94.12" stroke="#fff" stroke-width="2"/>
+  <circle cx="756.57" cy="94.12" r="6" fill="#168cff"/>
+  <path d="M 858.39 282.00 V 94.60" stroke="#fff" stroke-width="2"/>
+  <circle cx="858.39" cy="94.60" r="6" fill="#168cff"/>
+</svg>

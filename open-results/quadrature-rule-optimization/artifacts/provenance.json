@@ -1,0 +1,25 @@
+{
+  "exported_at": "2026-05-01T09:58:01.972449+00:00",
+  "exporter": "scripts/open_results/export_open_result.py",
+  "sanitization_policy": {
+    "excluded": [
+      "non-public generation context",
+      "operational run records",
+      "internal errors",
+      "credentials",
+      "sensitive configuration",
+      "uncurated intermediate material"
+    ],
+    "included": [
+      "problem statement",
+      "evaluation contract",
+      "accepted candidate",
+      "metrics",
+      "curated evolution trace",
+      "minimal provenance"
+    ]
+  },
+  "source_type": "curated_surface_data",
+  "source_path": "/Users/juanjosefernandezmorales/Göther-Labs/gother-labs-website/evolther/quadrature-run/surface-data.js",
+  "evolther_git_commit": "fc3485eadac3ba3eecc9c4fa89bea156c692d3b1"
+}
