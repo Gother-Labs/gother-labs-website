@@ -1,7 +1,7 @@
 {
-  "exported_at": "2026-05-01T10:35:35.591699+00:00",
+  "exported_at": "2026-05-01T10:35:35.673674+00:00",
   "exporter": "scripts/open_results/export_open_result.py",
-  "result_kind": "quadrature",
+  "result_kind": "storage-arbitrage",
   "sanitization_policy": {
     "excluded": [
       "non-public generation context",

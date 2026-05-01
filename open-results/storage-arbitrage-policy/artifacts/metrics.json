@@ -1,0 +1,11 @@
+{
+  "seed": 73.4941,
+  "best": 24.856175,
+  "improvement": 48.637926,
+  "improvement_pct": 66.179361,
+  "units": "objective",
+  "direction": "lower_is_better",
+  "validation_status": "curated-surface",
+  "oracle_capture_ratio": 0.926417,
+  "regret_mean_eur": 14.680167
+}

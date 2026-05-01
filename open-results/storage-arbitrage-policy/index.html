@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Storage arbitrage policy | Open Results | Göther Labs</title>
+    <meta name="description" content="A battery dispatch policy evolved against frozen OMIE day-ahead prices, showing objective improvement while preserving auditable operating behavior.">
+    <link rel="canonical" href="https://www.gotherlabs.com/open-results/storage-arbitrage-policy/">
+    <meta property="og:title" content="Storage arbitrage policy | Open Results | Göther Labs">
+    <meta property="og:description" content="A battery dispatch policy evolved against frozen OMIE day-ahead prices, showing objective improvement while preserving auditable operating behavior.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.gotherlabs.com/open-results/storage-arbitrage-policy/">
+    <meta property="og:image" content="https://www.gotherlabs.com/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.gotherlabs.com/assets/og-image.png">
+    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" href="../../assets/gother-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../styles.css?v=open-results-pipeline-v1">
+  </head>
+  <body>
+    <a class="skip-link" href="#site-main">Skip to content</a>
+    <div class="page-shell site-shell">
+      <header class="site-header">
+        <nav class="site-nav" aria-label="Primary">
+          <a class="brand nav-brand" href="../../" aria-label="Göther Labs home">
+            <img src="../../assets/gother-mark.svg" alt="" class="brand-image">
+          </a>
+          <a href="../../company/">Company</a>
+          <a href="../../domains/">Domains</a>
+          <a href="../../open-results/">Open Results</a>
+          <a href="../../contact/">Contact</a>
+        </nav>
+      </header>
+
+      <main class="site-main" id="site-main">
+        <section class="hero compact-hero page-hero open-result-detail-hero">
+          <p class="eyebrow">Energy &amp; Renewables</p>
+          <h1 class="page-title">Storage arbitrage policy</h1>
+          <p class="intro open-results-hero-intro">A battery dispatch policy evolved against frozen OMIE day-ahead prices, showing objective improvement while preserving auditable operating behavior.</p>
+        </section>
+
+        <section class="open-result-detail">
+          <aside class="open-result-side">
+            <div class="open-result-stat">
+              <span>Seed objective</span>
+              <strong>73.494</strong>
+            </div>
+            <div class="open-result-stat">
+              <span>Best objective</span>
+              <strong>24.856</strong>
+            </div>
+            <div class="open-result-stat">
+              <span>Objective reduction</span>
+              <strong>48.638</strong>
+            </div>
+            <a class="text-link" href="../../evolther/storage-arbitrage-run/">Open interactive surface</a>
+          </aside>
+          <article class="open-result-article">
+<h3>Problem</h3>
+<p>Storage arbitrage looks simple until the policy has to respect physical limits, terminal state-of-charge requirements, and price scenarios that change faster than a static playbook. This result asks whether an evaluation-driven loop can improve a deterministic dispatch policy without making the operating behavior opaque.</p>
+<h3>Evaluation</h3>
+<p>Every candidate is scored under the same frozen contract. The objective is lower-is-better and combines scenario regret against an oracle with validity checks for power, state of charge, and terminal constraints. A candidate is retained only when that objective improves under the unchanged evaluator.</p>
+<h3>Result</h3>
+<p>The seed objective was 73.4941. The accepted policy reached 24.856175, a reduction of 48.637926 objective units (66.179361%).</p>
+<h3>What changed</h3>
+<p>The accepted policy uses a short lookahead average and reintroduces round-trip efficiency into the spread gate. The result is still deterministic and bounded, but it reacts to near-term price structure instead of relying only on static daily quantiles.</p>
+<h3>Limitations</h3>
+<p>This is a bounded public dispatch benchmark, not a market trading system. It is scored against the frozen scenarios and battery assumptions included in the evaluation contract.</p>
+<h3>Reproducibility</h3>
+<p>The bundle includes the accepted policy, the evaluation contract, metrics, a sanitized evolution trace, dispatch traces, and provenance. Replaying the result should use the same scenario set and objective direction: lower is better.</p>
+          </article>
+        </section>
+
+        <section class="open-result-assets" aria-label="Public result figures">
+<figure class="open-result-figure">
+            <img src="./assets/objective-curve.svg" alt="">
+          </figure>
+<figure class="open-result-figure">
+            <img src="./assets/dispatch-trace.svg" alt="">
+          </figure>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© <span id="year">2026</span> Göther Labs</p>
+      </footer>
+    </div>
+
+    <script src="../../scripts.js"></script>
+  </body>
+</html>

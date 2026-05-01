@@ -1,0 +1,54 @@
+{
+  "schema_version": "open-result-evolution/v1",
+  "slug": "storage-arbitrage-policy",
+  "steps": [
+    {
+      "generation": 0,
+      "label": "seed",
+      "score": 73.4941,
+      "oracle_capture_ratio": 0.840803,
+      "regret_mean_eur": 39.350708,
+      "accepted": true
+    },
+    {
+      "generation": 19,
+      "label": "gen19",
+      "score": 68.269689,
+      "oracle_capture_ratio": 0.785097,
+      "regret_mean_eur": 42.317127,
+      "accepted": true
+    },
+    {
+      "generation": 31,
+      "label": "gen31",
+      "score": 56.897755,
+      "oracle_capture_ratio": 0.796427,
+      "regret_mean_eur": 35.653147,
+      "accepted": true
+    },
+    {
+      "generation": 39,
+      "label": "gen39",
+      "score": 45.764227,
+      "oracle_capture_ratio": 0.830188,
+      "regret_mean_eur": 26.336746,
+      "accepted": true
+    },
+    {
+      "generation": 55,
+      "label": "gen55",
+      "score": 26.462099,
+      "oracle_capture_ratio": 0.923049,
+      "regret_mean_eur": 15.249644,
+      "accepted": true
+    },
+    {
+      "generation": 60,
+      "label": "gen60",
+      "score": 24.856175,
+      "oracle_capture_ratio": 0.926417,
+      "regret_mean_eur": 14.680167,
+      "accepted": true
+    }
+  ]
+}
