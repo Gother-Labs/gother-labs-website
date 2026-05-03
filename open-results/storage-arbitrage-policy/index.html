@@ -15,7 +15,8 @@
     <meta name="twitter:image" content="https://www.gotherlabs.com/assets/og-image.png">
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="../../assets/gother-mark.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../../styles.css?v=open-results-pipeline-v1">
+    <link rel="stylesheet" href="../../styles.css?v=open-results-pipeline-v14">
+
   </head>
   <body>
     <a class="skip-link" href="#site-main">Skip to content</a>
@@ -40,21 +41,6 @@
         </section>
 
         <section class="open-result-detail">
-          <aside class="open-result-side">
-            <div class="open-result-stat">
-              <span>Seed objective</span>
-              <strong>73.494</strong>
-            </div>
-            <div class="open-result-stat">
-              <span>Best objective</span>
-              <strong>24.856</strong>
-            </div>
-            <div class="open-result-stat">
-              <span>Objective reduction</span>
-              <strong>48.638</strong>
-            </div>
-            <a class="text-link" href="../../evolther/storage-arbitrage-run/">Open interactive surface</a>
-          </aside>
           <article class="open-result-article">
 <h3>Problem</h3>
 <p>Storage arbitrage looks simple until the policy has to respect physical limits, terminal state-of-charge requirements, and price scenarios that change faster than a static playbook. This result asks whether an evaluation-driven loop can improve a deterministic dispatch policy without making the operating behavior opaque.</p>
@@ -71,13 +57,142 @@
           </article>
         </section>
 
+        
+
+        <section class="open-result-snapshot" aria-label="Result summary">
+            <div class="open-result-snapshot-primary">
+              <span>Oracle capture ratio</span>
+              <strong>92.642%</strong>
+              <p>Share of oracle value captured under the frozen dispatch scenarios.</p>
+            </div>
+            <div class="open-result-snapshot-cards">
+              <div>
+                <span>Objective reduction</span>
+                <strong>66.179%</strong>
+              </div>
+              <div>
+                <span>Mean regret</span>
+                <strong>€14.68</strong>
+              </div>
+              <div>
+                <span>Acceptance objective</span>
+                <strong>24.856</strong>
+              </div>
+            </div>
+          </section>
+
         <section class="open-result-assets" aria-label="Public result figures">
 <figure class="open-result-figure">
             <img src="./assets/objective-curve.svg" alt="">
+            
           </figure>
 <figure class="open-result-figure">
             <img src="./assets/dispatch-trace.svg" alt="">
+            
           </figure>
+        </section>
+
+        <section class="open-result-evidence" aria-label="Result evidence">
+          <div class="open-result-evidence-heading">
+            <p class="eyebrow">Evidence</p>
+            <h2>Acceptance score and observable behavior.</h2>
+            
+          </div>
+          <div class="open-result-metric-grid">
+            <div class="open-result-metric-card">
+              <span>Oracle capture ratio</span>
+              <strong>92.642%</strong>
+            </div>
+            <div class="open-result-metric-card">
+              <span>Mean regret</span>
+              <strong>€14.68</strong>
+            </div>
+            <div class="open-result-metric-card">
+              <span>Objective reduction</span>
+              <strong>48.638</strong>
+            </div>
+            <div class="open-result-metric-card">
+              <span>Objective reduction</span>
+              <strong>66.179%</strong>
+            </div>
+          </div>
+          <div class="open-result-data-grid open-result-data-grid-1">
+<div>
+              <h3>Dispatch readout</h3>
+              <div class="open-result-table-wrap">
+          <table class="open-result-table">
+            <tbody>
+              <tr>
+                <th>Oracle capture ratio</th>
+                <td>92.642%</td>
+              </tr>
+              <tr>
+                <th>Mean regret</th>
+                <td>€14.68</td>
+              </tr>
+              <tr>
+                <th>Dispatch trace</th>
+                <td><a href="./artifacts/dispatch_trace.json">Open JSON artifact</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="open-result-code" aria-label="Accepted candidate code">
+          <div class="open-result-code-heading">
+            <p class="eyebrow">Accepted implementation</p>
+            <h2>Replayable candidate code.</h2>
+          </div>
+          <pre><code>&quot;&quot;&quot;Accepted candidate exported for the Open Result bundle.
+
+This file contains only the accepted public storage dispatch policy. It omits
+non-public proposal context and operational run records.
+&quot;&quot;&quot;
+
+def dispatch_policy(ctx: DispatchContext) -&gt; DispatchPlan:
+    prices = np.asarray(ctx.prices_eur_per_mwh, dtype=float)
+    horizon = prices.size
+    if horizon == 0:
+        return DispatchPlan(charge_mw=[], discharge_mw=[], soc_mwh=[])
+    spec = ctx.spec
+    p_max = float(spec.power_mw)
+    c_max = float(spec.capacity_mwh)
+    n_ch = float(spec.charge_efficiency)
+    n_di = float(spec.discharge_efficiency)
+    target = float(spec.final_soc_target_mwh)
+    soc = float(spec.initial_soc_mwh)
+    charge_plan, discharge_plan, soc_trace = [], [], []
+    efficiency_spread = n_ch * n_di
+    for step in range(horizon):
+        price = prices[step]
+        rem = horizon - step - 1
+        lookahead = prices[step + 1:step + 6]
+        f_avg = float(np.mean(lookahead)) if lookahead.size &gt; 0 else price
+        t_min = max(0.0, target - (rem * p_max * n_ch))
+        t_max = min(c_max, target + (rem * p_max / n_di))
+        ch_lim = max(0.0, min(p_max, (c_max - soc) / n_ch if n_ch &gt; 0 else 0.0, (t_max - soc) / n_ch if n_ch &gt; 0 else 0.0))
+        di_lim = max(0.0, min(p_max, (soc - 0.0) * n_di, (soc - t_min) * n_di))
+        ch_p, di_p = 0.0, 0.0
+        if rem == 0:
+            if soc &lt; target: ch_p = min(p_max, (target - soc) / n_ch if n_ch &gt; 0 else 0.0)
+            elif soc &gt; target: di_p = min(p_max, (soc - target) * n_di)
+        elif soc &lt; t_min:
+            ch_p = ch_lim
+        elif soc &gt; t_max:
+            di_p = di_lim
+        elif price &lt; f_avg * (0.5 + 0.5 * efficiency_spread):
+            ch_p = ch_lim
+        elif price &gt; f_avg * (1.5 - 0.5 * efficiency_spread):
+            di_p = di_lim
+        soc += (ch_p * n_ch) - (di_p / n_di if n_di &gt; 0 else 0.0)
+        soc = float(np.clip(soc, 0.0, c_max))
+        charge_plan.append(float(ch_p))
+        discharge_plan.append(float(di_p))
+        soc_trace.append(float(soc))
+    return DispatchPlan(charge_mw=charge_plan, discharge_mw=discharge_plan, soc_mwh=soc_trace)</code></pre>
         </section>
       </main>
 

@@ -7,7 +7,7 @@ non-public proposal context and operational run records.
 # EVOLVE_START: quadrature_rule
 def quadrature_rule(spec: QuadratureSpec) -> QuadratureRule:
     """
-    Construct a quadrature rule using Gauss-Legendre nodes with enhanced endpoint clustering.
+    Construct a quadrature rule using Gauss-Legendre nodes with deterministic inward remapping.
     """
     n = max(1, int(spec.n_points))
     if n == 1:
