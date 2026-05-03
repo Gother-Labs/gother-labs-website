@@ -1775,6 +1775,7 @@ a {
 
 .formula-math {
   min-width: 0;
+  overflow-x: auto;
 }
 
 .equation-number {
@@ -1791,6 +1792,138 @@ a {
 
 .formula-block mjx-container[display="true"] {
   display: block !important;
+}
+
+.open-result-whitepaper-shell {
+  padding-top: clamp(2.7rem, 5vw, 4.4rem);
+}
+
+.open-result-whitepaper {
+  width: min(100%, 64rem);
+  max-width: 64rem;
+  min-width: 0;
+}
+
+.open-result-whitepaper * {
+  min-width: 0;
+}
+
+.open-result-whitepaper h3 {
+  margin-top: clamp(3rem, 6vw, 5rem);
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--line);
+  font-size: clamp(1.55rem, 2.5vw, 2.1rem);
+  letter-spacing: -0.04em;
+}
+
+.open-result-whitepaper h3:first-child {
+  margin-top: 0;
+  border-top: 0;
+}
+
+.open-result-whitepaper p {
+  max-width: 76ch;
+  font-size: clamp(1.02rem, 1.45vw, 1.18rem);
+  line-height: 1.62;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+
+.open-result-whitepaper figcaption {
+  overflow-wrap: anywhere;
+}
+
+.open-result-whitepaper .formula-block {
+  max-width: 54rem;
+  margin: 2rem auto 2.2rem;
+}
+
+.open-result-paper-table,
+.open-result-paper-asset,
+.open-result-paper-code {
+  width: min(100%, 48rem);
+  margin: 2rem auto 2.6rem;
+}
+
+.open-result-paper-table figcaption,
+.open-result-paper-asset figcaption,
+.open-result-paper-code figcaption {
+  max-width: 38rem;
+  margin: 0.72rem auto 0;
+  color: var(--muted);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(0.86rem, 1vw, 0.94rem);
+  font-style: italic;
+  line-height: 1.42;
+  text-align: center;
+}
+
+.open-result-whitepaper .open-result-table {
+  border-top: 1px solid var(--line);
+}
+
+.open-result-whitepaper .open-result-table th,
+.open-result-whitepaper .open-result-table td {
+  padding: 0.62rem 0.7rem 0.62rem 0;
+}
+
+.open-result-whitepaper .open-result-table th {
+  font-family: Inter, Arial, sans-serif;
+  font-size: 0.72rem;
+}
+
+.open-result-whitepaper .open-result-table td {
+  color: var(--muted-soft);
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.88rem;
+}
+
+.open-result-paper-asset img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.open-result-paper-code pre {
+  overflow: auto;
+  margin: 0;
+  padding: clamp(1rem, 2vw, 1.35rem);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  color: var(--muted-soft);
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: clamp(0.78rem, 1vw, 0.9rem);
+  line-height: 1.65;
+}
+
+.open-result-accepted-rule-svg {
+  margin-top: 0.2rem;
+}
+
+.open-result-rule-paper-axis {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 58%, transparent);
+  stroke-width: 1;
+}
+
+.open-result-accepted-node line {
+  stroke: color-mix(in srgb, var(--text) 70%, transparent);
+  stroke-width: 1.4;
+}
+
+.open-result-accepted-node circle {
+  fill: var(--bg);
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.open-result-accepted-node text {
+  fill: var(--muted);
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: 11px;
+  text-anchor: middle;
 }
 
 .open-result-assets {
@@ -2118,6 +2251,10 @@ a {
     width: 100%;
   }
 
+  :root {
+    --content-gutter: clamp(1rem, 5vw, 1.25rem);
+  }
+
   .site-footer {
     flex-direction: column;
     align-items: flex-start;
@@ -2125,13 +2262,16 @@ a {
 
   .site-header {
     justify-content: flex-end;
+    overflow-x: auto;
     padding-bottom: 1.1rem;
   }
 
   .site-nav {
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: 0.85rem;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    min-width: max-content;
+    padding-left: 0;
   }
 
   .site-main {
@@ -2149,6 +2289,7 @@ a {
   .page-hero .intro {
     margin-top: 1.9rem;
     max-width: 100%;
+    overflow-wrap: anywhere;
   }
 
   .page-title {
@@ -2429,6 +2570,55 @@ a {
 
   .open-result-code {
     gap: 2rem;
+  }
+
+  .open-result-whitepaper {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .open-result-whitepaper p,
+  .open-result-whitepaper figcaption {
+    overflow-wrap: anywhere;
+  }
+
+  .open-result-whitepaper .formula-block {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.35rem;
+    max-width: 100%;
+    margin: 1.6rem 0 1.9rem;
+    font-size: 0.96rem;
+    overflow-x: hidden;
+  }
+
+  .open-result-whitepaper .formula-math {
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+    scrollbar-width: thin;
+  }
+
+  .open-result-whitepaper .equation-number {
+    justify-self: end;
+  }
+
+  .open-result-paper-table,
+  .open-result-paper-asset,
+  .open-result-paper-code,
+  .open-result-primer-card {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .open-result-table-wrap {
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+
+  .open-result-primer-svg {
+    max-width: 100%;
+    width: 100%;
   }
 
   .not-found-hero {

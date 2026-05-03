@@ -15,7 +15,7 @@
     <meta name="twitter:image" content="https://www.gotherlabs.com/assets/og-image.png">
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="../../assets/gother-mark.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../../styles.css?v=open-results-pipeline-v14">
+    <link rel="stylesheet" href="../../styles.css?v=open-results-pipeline-v17">
     <script>
       window.MathJax = {
         tex: {
@@ -55,10 +55,13 @@
           <p class="intro open-results-hero-intro">A compact one-dimensional quadrature rule improved against a frozen analytic test suite. The public result separates the acceptance score from the interpretable numerical errors so the gain can be inspected, replayed, and challenged.</p>
         </section>
 
-        <section class="open-result-detail">
-          <article class="open-result-article">
-<h3>Problem</h3>
-<p>Numerical integration is the problem of estimating the area accumulated by a function over an interval. In this result the interval is deliberately simple: from 0 to 1. The exact quantity is an integral,</p>
+        <section class="open-result-detail open-result-whitepaper-shell">
+          <article class="open-result-article open-result-whitepaper">
+<h3>Abstract</h3>
+<p>This note reports a compact five-node quadrature rule for one-dimensional integrals on the unit interval. The rule is evaluated against a frozen suite of analytic integrands, and every reported improvement is measured under the same lower-is-better acceptance objective. The accepted candidate reduces the contracted objective from 688.676231 to 114.514813, while the largest public representative residual is reduced from 0.36338 to 0.001029.</p>
+<p>The result should be read as a bounded optimization artifact, not as a universal integration method. The purpose of the report is to make the problem, contract, candidate, metrics, and replay surface inspectable in one place.</p>
+<h3>1. Problem formulation</h3>
+<p>Let \(f_j\) denote an analytic test integrand on the unit interval. The exact quantity of interest is the integral</p>
 <div class="formula-block" id="eq-1">
   <div class="formula-math">\[
 I[f] = \int_0^1 f(x)\,dx.
@@ -88,7 +91,7 @@ I[f] = \int_0^1 f(x)\,dx.
               </svg>
               <figcaption>Figure 1. Exact integral represented as the area under f(x)=sin(πx) on the unit interval.</figcaption>
             </figure>
-<p>A quadrature rule approximates that integral by evaluating the function at a small number of selected points and combining those samples with weights:</p>
+<p>A quadrature rule \(r\) approximates this quantity by evaluating the integrand at a finite set of nodes and combining those evaluations with normalized weights:</p>
 <div class="formula-block" id="eq-2">
   <div class="formula-math">\[
 Q_r[f] = \sum_{i=1}^{n} w_i f(x_i),
@@ -139,7 +142,7 @@ Q_r[f] = \sum_{i=1}^{n} w_i f(x_i),
               </svg>
               <figcaption>Figure 2. A coarse quadrature rule replaces the continuous area with a small set of rectangle areas before any optimization is introduced.</figcaption>
             </figure>
-<p>The residual error for an integrand is the gap between the analytic integral and the quadrature estimate:</p>
+<p>For each public integrand, the observable residual is the absolute difference between the quadrature estimate and the analytic reference value:</p>
 <div class="formula-block" id="eq-3">
   <div class="formula-math">\[
 e_j(r) = \left|Q_r[f_j] - I_j\right|.
@@ -205,234 +208,221 @@ e_j(r) = \left|Q_r[f_j] - I_j\right|.
               </svg>
               <figcaption>Figure 3. Residual error visualized as the area left between the coarse quadrature rectangles and the exact surface.</figcaption>
             </figure>
-<p>This is a useful open result for Göther because the problem is small enough to inspect, but it still has the properties we care about in larger technical systems: a bounded search space, a frozen evaluation contract, a replayable objective, and a final candidate that has to remain legible.</p>
-<p>The task is to improve a compact one-dimensional quadrature rule for integrals on the unit interval against a fixed suite of analytic functions. The target is not to invent a universal integration method. The target is to show that an evaluation-driven loop can make a measured, replayable improvement without changing the problem after seeing candidates.</p>
-<h4>Evaluation contract</h4>
-<p>Every candidate is scored by the same evaluation contract. For each public integrand \(f_j\), the evaluator compares the candidate estimate against the analytic integral \(I_j\). The run objective is a lower-is-better aggregate over those errors:</p>
+<p>The notation used throughout the report is summarized below.</p>
+<figure class="open-result-paper-table">
+          <div class="open-result-table-wrap">
+            <table class="open-result-table">
+              <thead>
+                <tr>
+                  <th>Symbol</th>
+                  <th>Meaning</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>\(f_j\)</td>
+                  <td>Public analytic integrand indexed by j</td>
+                </tr>
+                <tr>
+                  <td>\(I_j\)</td>
+                  <td>Analytic reference integral for integrand j</td>
+                </tr>
+                <tr>
+                  <td>\(Q_r[f]\)</td>
+                  <td>Quadrature estimate produced by rule r</td>
+                </tr>
+                <tr>
+                  <td>\(e_j(r)\)</td>
+                  <td>Residual error for integrand j under rule r</td>
+                </tr>
+                <tr>
+                  <td>\(J(r)\)</td>
+                  <td>Frozen lower-is-better acceptance objective</td>
+                </tr>
+                <tr>
+                  <td>\(x_i\)</td>
+                  <td>Quadrature node on the unit interval</td>
+                </tr>
+                <tr>
+                  <td>\(w_i\)</td>
+                  <td>Normalized quadrature weight</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <figcaption>Table 1. Notation used in the evaluation contract.</figcaption>
+        </figure>
+<h3>2. Evaluation contract</h3>
+<p>The evaluation contract is fixed before candidate comparison. Each candidate rule is scored on the same public analytic integrand suite, with the same objective direction and the same aggregation rule. The run objective is</p>
 <div class="formula-block" id="eq-4">
   <div class="formula-math">\[
 J(r) = \sum_j \alpha_j \left| Q_r[f_j] - I_j \right|.
 \]</div>
   <span class="equation-number">(4)</span>
 </div>
-<p>This score is the acceptance contract. It is not meant to be the only value a reader should care about. In the report we therefore show both the contracted objective and the residual errors for representative integrands. The objective answers “was the candidate retained under the frozen rule?” The residual errors answer “what numerical behavior changed?”</p>
-<h3>Result</h3>
-<p>The seed rule started at an objective of 688.676231. The best retained candidate reached 114.514813, an 83.371749% reduction under the frozen acceptance contract. That percentage is not the headline scientific claim. The more interpretable readout is the residual error profile: the largest representative residual drops from 0.36338 in the seed to 0.001029 in the accepted five-node rule.</p>
-<p>The accepted change keeps the implementation intentionally small. It starts from Gauss-Legendre nodes, applies a deterministic inward remapping, maps the nodes back to the unit interval, and renormalizes the rule:</p>
-<pre><code>nodes, weights = np.polynomial.legendre.leggauss(n)
-
-alpha = 1.7
-nodes = np.sign(nodes) * (np.abs(nodes) ** alpha)
-
-mapped_nodes = 0.5 * (nodes + 1.0)
-mapped_weights = 0.5 * weights
-
-rule = QuadratureRule(
-    nodes=list(mapped_nodes),
-    weights=list(mapped_weights),
-)
-
-return _renormalize(rule)</code></pre>
-<p>The exponent \( \alpha = 1.7 \) compresses the Legendre nodes toward the midpoint before the rule is mapped from \([-1,1]\) to \([0,1]\). In this contract, that changed the error distribution enough to improve the retained objective while preserving a rule an engineer can read, replay, and compare.</p>
-<h4>What changed</h4>
-<p>The final candidate moves away from a degenerate seed toward a smooth, near-uniform weight distribution with endpoint-aware node placement. The public trace keeps a curated sequence of retained states so the improvement path can be inspected without exposing prompts, private run records, or uncurated proposal dumps.</p>
-<p>The most important distinction is that the trace can contain candidates that are interesting for the run history without being the final best candidate. The reported best objective is the best-so-far value under the frozen contract. That is the number that should be compared to the seed.</p>
-<h4>Limitations</h4>
-<p>This is a bounded numerical benchmark, not a universal integration method. The result should be interpreted against the frozen integrand suite and evaluation contract included with this bundle. It does not prove superiority on arbitrary integrands, discontinuous functions, high-dimensional integrals, or production workloads with different stability requirements.</p>
-<p>The score is also intentionally narrow. A lower objective is evidence that the candidate improved under this contract, not a claim that every downstream quantity of interest improved. For a real client setting, the contract would include the operational metrics that matter for that system.</p>
-<h3>Reproducibility</h3>
-<p>The bundle includes the accepted candidate, the evaluation contract, metrics, a sanitized evolution trace, and provenance. Replaying the result should use the same contract and objective direction: lower is better.</p>
-<p>The public source bundle lives in <a href="https://github.com/Gother-Labs/gother-labs-open-results/tree/main/results/quadrature-rule-optimization" target="_blank" rel="noreferrer">Göther Labs Open Results</a>.</p>
-<p>The public artifact is designed to be reviewable in layers: start with the problem and contract, inspect the objective curve, inspect the accepted rule, and then read the candidate implementation. Nothing in the website should be treated as a substitute for the replayable artifacts.</p>
-          </article>
-        </section>
-
-        <section class="open-result-rule-visual" aria-label="Accepted quadrature rule visual">
-          <div class="open-result-rule-copy">
-            <p class="eyebrow">Accepted rule</p>
-            <h2>Accepted five-node rule.</h2>
-            <p>The final candidate is not a black-box policy. It is a compact rule on the unit interval, with two nodes pulled in from the endpoints, a midpoint node, symmetric interior support, and near-uniform weights.</p>
+<p>Lower values of \(J(r)\) are preferred. This objective is the acceptance score used to retain candidates during the run. It is not a general-purpose measure of integration quality, so the report also exposes residual errors for representative integrands.</p>
+<h3>3. Accepted candidate</h3>
+<p>The accepted rule keeps five nodes on \([0,1]\) with near-uniform normalized weights. The implementation starts from Gauss-Legendre nodes, applies a deterministic inward remapping with exponent \(\alpha=1.7\), maps the nodes back to the unit interval, and renormalizes the resulting rule.</p>
+<figure class="open-result-primer-card open-result-paper-figure">
+          <svg class="open-result-primer-svg open-result-accepted-rule-svg" viewBox="0 0 560 270" role="img" aria-label="Accepted five node quadrature rule on the unit interval.">
+            <text class="open-result-axis-label open-result-figure-title" x="64" y="46">Accepted node distribution</text>
+            <path class="open-result-rule-paper-axis" d="M54 204 H506" />
+            <text class="open-result-axis-tick" x="54" y="232">0</text>
+            <text class="open-result-axis-tick" x="506" y="232">1</text>
+            <text class="open-result-axis-label" x="526" y="208">x</text>
+            <g>
+<g class="open-result-accepted-node">
+                <line x1="88.9" y1="204" x2="88.9" y2="102.1" />
+                <circle cx="88.9" cy="102.1" r="4.6" />
+                <text x="88.9" y="232">0.077</text>
+              </g>
+<g class="open-result-accepted-node">
+                <line x1="201.1" y1="204" x2="201.1" y2="102.0" />
+                <circle cx="201.1" cy="102.0" r="4.6" />
+                <text x="201.1" y="232">0.325</text>
+              </g>
+<g class="open-result-accepted-node">
+                <line x1="280.0" y1="204" x2="280.0" y2="102.0" />
+                <circle cx="280.0" cy="102.0" r="4.6" />
+                <text x="280.0" y="232">0.500</text>
+              </g>
+<g class="open-result-accepted-node">
+                <line x1="358.9" y1="204" x2="358.9" y2="102.0" />
+                <circle cx="358.9" cy="102.0" r="4.6" />
+                <text x="358.9" y="232">0.675</text>
+              </g>
+<g class="open-result-accepted-node">
+                <line x1="471.1" y1="204" x2="471.1" y2="102.2" />
+                <circle cx="471.1" cy="102.2" r="4.6" />
+                <text x="471.1" y="232">0.923</text>
+              </g>
+            </g>
+            <text class="open-result-axis-label" x="64" y="252">node labels shown as positions on [0,1]</text>
+          </svg>
+          <figcaption>Figure 4. Accepted five-node rule on the unit interval. Vertical stems encode normalized weights; labels report node positions.</figcaption>
+        </figure>
+<figure class="open-result-paper-table">
+          <div class="open-result-table-wrap">
+            <table class="open-result-table">
+              <thead>
+                <tr>
+                  <th>Node</th>
+                  <th>Weight</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>0.077103</td>
+                  <td>0.200018</td>
+                </tr>
+                <tr>
+                  <td>0.325440</td>
+                  <td>0.200223</td>
+                </tr>
+                <tr>
+                  <td>0.500000</td>
+                  <td>0.200232</td>
+                </tr>
+                <tr>
+                  <td>0.674560</td>
+                  <td>0.200073</td>
+                </tr>
+                <tr>
+                  <td>0.922897</td>
+                  <td>0.199454</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div class="open-result-rule-panel">
-            <div class="open-result-rule-axis" aria-hidden="true">
-              <span class="open-result-axis-end open-result-axis-start">0</span>
-              <span class="open-result-axis-line"></span>
-              <span class="open-result-axis-end open-result-axis-finish">1</span>
-<div class="open-result-node" style="--x: 7.710%; --bar: 5.794rem;">
-              <span class="open-result-node-pin" aria-hidden="true"></span>
-              <span class="open-result-node-label">0.077</span>
-              <span class="open-result-node-weight">0.200</span>
-            </div>
-<div class="open-result-node" style="--x: 32.544%; --bar: 5.800rem;">
-              <span class="open-result-node-pin" aria-hidden="true"></span>
-              <span class="open-result-node-label">0.325</span>
-              <span class="open-result-node-weight">0.200</span>
-            </div>
-<div class="open-result-node" style="--x: 50.000%; --bar: 5.800rem;">
-              <span class="open-result-node-pin" aria-hidden="true"></span>
-              <span class="open-result-node-label">0.500</span>
-              <span class="open-result-node-weight">0.200</span>
-            </div>
-<div class="open-result-node" style="--x: 67.456%; --bar: 5.795rem;">
-              <span class="open-result-node-pin" aria-hidden="true"></span>
-              <span class="open-result-node-label">0.675</span>
-              <span class="open-result-node-weight">0.200</span>
-            </div>
-<div class="open-result-node" style="--x: 92.290%; --bar: 5.777rem;">
-              <span class="open-result-node-pin" aria-hidden="true"></span>
-              <span class="open-result-node-label">0.923</span>
-              <span class="open-result-node-weight">0.199</span>
-            </div>
-            </div>
-            <div class="open-result-rule-summary">
-              <div>
-                <span>Left endpoint gap</span>
-                <strong>0.077</strong>
-              </div>
-              <div>
-                <span>Center node</span>
-                <strong>0.500</strong>
-              </div>
-              <div>
-                <span>Right endpoint gap</span>
-                <strong>0.077</strong>
-              </div>
-            </div>
+          <figcaption>Table 2. Accepted quadrature rule.</figcaption>
+        </figure>
+<h3>4. Results</h3>
+<p>The primary reported improvement is the reduction in the frozen acceptance objective. The result should be interpreted together with the residual readout, because the score answers whether the candidate was retained under the contract, while the residuals show the observable numerical behavior.</p>
+<figure class="open-result-paper-table">
+          <div class="open-result-table-wrap">
+            <table class="open-result-table">
+              <thead>
+                <tr>
+                  <th>Quantity</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Seed objective</td>
+                  <td>688.676231</td>
+                </tr>
+                <tr>
+                  <td>Accepted objective</td>
+                  <td>114.514813</td>
+                </tr>
+                <tr>
+                  <td>Absolute reduction</td>
+                  <td>574.161418</td>
+                </tr>
+                <tr>
+                  <td>Relative reduction</td>
+                  <td>83.372%</td>
+                </tr>
+                <tr>
+                  <td>Direction</td>
+                  <td>lower is better</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-        </section>
-
-        <section class="open-result-snapshot" aria-label="Result summary">
-            <div class="open-result-snapshot-primary">
-              <span>Max representative residual error</span>
-              <strong>0.00103</strong>
-              <p>Measured on the public analytic integrand readout.</p>
-            </div>
-            <div class="open-result-snapshot-cards">
-              <div>
-                <span>Accepted rule</span>
-                <strong>5 nodes</strong>
-              </div>
-              <div>
-                <span>Max error reduction</span>
-                <strong>99.717%</strong>
-              </div>
-              <div>
-                <span>Objective reduction</span>
-                <strong>83.372%</strong>
-              </div>
-              <div>
-                <span>Acceptance objective</span>
-                <strong>114.515</strong>
-              </div>
-            </div>
-          </section>
-
-        <section class="open-result-assets" aria-label="Public result figures">
-<figure class="open-result-figure">
-            <img src="./assets/objective-curve.svg" alt="">
-            <figcaption>Best-so-far objective over the curated public trace. The acceptance score is lower-is-better and should be read as the contract used to retain candidates.</figcaption>
-          </figure>
-<figure class="open-result-figure">
-            <img src="./assets/candidate-trace.svg" alt="">
-            <figcaption>Accepted quadrature rule: node positions, normalized weights, and residual error by representative integrand.</figcaption>
-          </figure>
-        </section>
-
-        <section class="open-result-evidence" aria-label="Result evidence">
-          <div class="open-result-evidence-heading">
-            <p class="eyebrow">Evidence</p>
-            <h2>Acceptance score and observable behavior.</h2>
-            <p>The objective is the evaluation contract used by the run, not a universal measure of integration quality. The scientific interpretation comes from reading it together with the residual errors and the replayable candidate.</p>
+          <figcaption>Table 3. Objective improvement under the frozen acceptance contract.</figcaption>
+        </figure>
+<figure class="open-result-paper-table">
+          <div class="open-result-table-wrap">
+            <table class="open-result-table">
+              <thead>
+                <tr>
+                  <th>Integrand</th>
+                  <th>Seed residual</th>
+                  <th>Accepted residual</th>
+                  <th>Reduction</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>sin(pi x)</td>
+                  <td>0.363380</td>
+                  <td>0.001029</td>
+                  <td>99.717%</td>
+                </tr>
+                <tr>
+                  <td>sqrt(x)</td>
+                  <td>0.040440</td>
+                  <td>0.000614</td>
+                  <td>98.482%</td>
+                </tr>
+                <tr>
+                  <td>log(1+x)</td>
+                  <td>0.019171</td>
+                  <td>0.000282</td>
+                  <td>98.529%</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div class="open-result-metric-grid">
-            <div class="open-result-metric-card">
-              <span>Max residual error</span>
-              <strong>0.00103</strong>
-            </div>
-            <div class="open-result-metric-card">
-              <span>Max error reduction</span>
-              <strong>99.717%</strong>
-            </div>
-            <div class="open-result-metric-card">
-              <span>Objective reduction</span>
-              <strong>83.372%</strong>
-            </div>
-            <div class="open-result-metric-card">
-              <span>Accepted rule</span>
-              <strong>5 nodes</strong>
-            </div>
-          </div>
-          <div class="open-result-data-grid open-result-data-grid-2">
-<div>
-              <h3>Accepted rule</h3>
-              <div class="open-result-table-wrap">
-          <table class="open-result-table">
-            <thead>
-              <tr>
-                <th>Node</th>
-                <th>Weight</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>0.077</td>
-                <td>0.200</td>
-              </tr>
-              <tr>
-                <td>0.325</td>
-                <td>0.200</td>
-              </tr>
-              <tr>
-                <td>0.500</td>
-                <td>0.200</td>
-              </tr>
-              <tr>
-                <td>0.675</td>
-                <td>0.200</td>
-              </tr>
-              <tr>
-                <td>0.923</td>
-                <td>0.199</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-            </div>
-<div>
-              <h3>Representative errors</h3>
-              <div class="open-result-table-wrap">
-          <table class="open-result-table">
-            <thead>
-              <tr>
-                <th>Integrand</th>
-                <th>Residual error</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>sin_pi</td>
-                <td>0.001</td>
-              </tr>
-              <tr>
-                <td>sqrt</td>
-                <td>0.001</td>
-              </tr>
-              <tr>
-                <td>log1p</td>
-                <td>0.000</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="open-result-code" aria-label="Accepted candidate code">
-          <div class="open-result-code-heading">
-            <p class="eyebrow">Accepted implementation</p>
-            <h2>Replayable candidate code.</h2>
-          </div>
+          <figcaption>Table 4. Representative residual errors.</figcaption>
+        </figure>
+<figure class="open-result-paper-asset">
+          <img src="./assets/objective-curve.svg" alt="">
+          <figcaption>Figure 5. Best-so-far objective over the curated public trace. The acceptance score is lower-is-better and should be read as the contract used to retain candidates.</figcaption>
+        </figure>
+<figure class="open-result-paper-asset">
+          <img src="./assets/candidate-trace.svg" alt="">
+          <figcaption>Figure 6. Accepted quadrature rule: node positions, normalized weights, and residual error by representative integrand.</figcaption>
+        </figure>
+<h3>5. Limitations</h3>
+<p>This is a bounded benchmark on a fixed analytic integrand suite. It does not establish superiority for arbitrary integrands, discontinuous functions, high-dimensional integration, or production workloads with different stability requirements.</p>
+<p>The contracted score is intentionally narrow. A lower objective is evidence that the accepted candidate improved under this contract, not evidence that every downstream quantity of interest improved.</p>
+<h3>6. Reproducibility</h3>
+<p>The public bundle includes the accepted candidate, the evaluation contract, metrics, sanitized evolution trace, and provenance. Replaying the result should use the same analytic integrand suite, the same objective definition, and the same lower-is-better direction.</p>
+<p>The source bundle is available in <a href="https://github.com/Gother-Labs/gother-labs-open-results/tree/main/results/quadrature-rule-optimization" target="_blank" rel="noreferrer">Göther Labs Open Results</a>.</p>
+<figure class="open-result-paper-code">
           <pre><code># EVOLVE_START: quadrature_rule
 def quadrature_rule(spec: QuadratureSpec) -&gt; QuadratureRule:
     &quot;&quot;&quot;
@@ -463,6 +453,9 @@ def quadrature_rule(spec: QuadratureSpec) -&gt; QuadratureRule:
 
     return _renormalize(rule)
 # EVOLVE_END</code></pre>
+          <figcaption>Listing 1. Accepted candidate implementation.</figcaption>
+        </figure>
+          </article>
         </section>
       </main>
 

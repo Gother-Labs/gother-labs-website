@@ -9,7 +9,7 @@ const RESULTS_ROOT = path.resolve(SITE_ROOT, "..", "gother-labs-open-results");
 const CATALOG_PATH = path.join(RESULTS_ROOT, "catalog.json");
 const OUT_ROOT = path.join(SITE_ROOT, "open-results");
 
-const CSS_VERSION = "open-results-pipeline-v14";
+const CSS_VERSION = "open-results-pipeline-v17";
 const SITE_URL = "https://www.gotherlabs.com";
 
 function escapeHtml(value) {
@@ -497,6 +497,182 @@ ${rows
         </div>`;
 }
 
+function paperTable({ caption, headers, rows }) {
+  return `<figure class="open-result-paper-table">
+          <div class="open-result-table-wrap">
+            <table class="open-result-table">
+              <thead>
+                <tr>
+${headers.map((header) => `                  <th>${escapeHtml(header)}</th>`).join("\n")}
+                </tr>
+              </thead>
+              <tbody>
+${rows
+  .map(
+    (row) => `                <tr>
+${row.map((cell) => `                  <td>${cell}</td>`).join("\n")}
+                </tr>`,
+  )
+  .join("\n")}
+              </tbody>
+            </table>
+          </div>
+          ${caption ? `<figcaption>${escapeHtml(caption)}</figcaption>` : ""}
+        </figure>`;
+}
+
+function integrandLabel(name) {
+  const labels = {
+    sin_pi: "sin(pi x)",
+    sqrt: "sqrt(x)",
+    log1p: "log(1+x)",
+  };
+  return labels[name] ?? name;
+}
+
+function acceptedRulePaperFigure(evolution) {
+  const bestStep = bestEvolutionStep(evolution);
+  const rule = bestStep?.rule;
+  if (!rule?.nodes?.length || !rule?.weights?.length) return "";
+
+  const left = 54;
+  const right = 506;
+  const axisY = 204;
+  const maxWeight = Math.max(...rule.weights.filter((value) => typeof value === "number"));
+  const marks = rule.nodes
+    .map((node, index) => {
+      const weight = rule.weights[index] ?? 0;
+      const x = left + node * (right - left);
+      const height = maxWeight > 0 ? 48 + (weight / maxWeight) * 54 : 48;
+      const top = axisY - height;
+      return `<g class="open-result-accepted-node">
+                <line x1="${x.toFixed(1)}" y1="${axisY}" x2="${x.toFixed(1)}" y2="${top.toFixed(1)}" />
+                <circle cx="${x.toFixed(1)}" cy="${top.toFixed(1)}" r="4.6" />
+                <text x="${x.toFixed(1)}" y="232">${formatMetric(node, { maximumFractionDigits: 3, minimumFractionDigits: 3 })}</text>
+              </g>`;
+    })
+    .join("\n");
+
+  return `<figure class="open-result-primer-card open-result-paper-figure">
+          <svg class="open-result-primer-svg open-result-accepted-rule-svg" viewBox="0 0 560 270" role="img" aria-label="Accepted five node quadrature rule on the unit interval.">
+            <text class="open-result-axis-label open-result-figure-title" x="64" y="46">Accepted node distribution</text>
+            <path class="open-result-rule-paper-axis" d="M${left} ${axisY} H${right}" />
+            <text class="open-result-axis-tick" x="${left}" y="232">0</text>
+            <text class="open-result-axis-tick" x="${right}" y="232">1</text>
+            <text class="open-result-axis-label" x="${right + 20}" y="${axisY + 4}">x</text>
+            <g>
+${marks}
+            </g>
+            <text class="open-result-axis-label" x="64" y="252">node labels shown as positions on [0,1]</text>
+          </svg>
+          <figcaption>Figure 4. Accepted five-node rule on the unit interval. Vertical stems encode normalized weights; labels report node positions.</figcaption>
+        </figure>`;
+}
+
+function acceptedRuleTable(evolution) {
+  const rule = bestEvolutionStep(evolution)?.rule;
+  if (!rule?.nodes?.length) return "";
+  return paperTable({
+    caption: "Table 2. Accepted quadrature rule.",
+    headers: ["Node", "Weight"],
+    rows: rule.nodes.map((node, index) => [
+      formatMetric(node, { maximumFractionDigits: 6, minimumFractionDigits: 6 }),
+      formatMetric(rule.weights?.[index], { maximumFractionDigits: 6, minimumFractionDigits: 6 }),
+    ]),
+  });
+}
+
+function objectiveSummaryTable(full) {
+  return paperTable({
+    caption: "Table 3. Objective improvement under the frozen acceptance contract.",
+    headers: ["Quantity", "Value"],
+    rows: [
+      ["Seed objective", formatMetric(full.metrics.seed, { maximumFractionDigits: 6, minimumFractionDigits: 6 })],
+      ["Accepted objective", formatMetric(full.metrics.best, { maximumFractionDigits: 6, minimumFractionDigits: 6 })],
+      ["Absolute reduction", formatMetric(full.metrics.improvement, { maximumFractionDigits: 6, minimumFractionDigits: 6 })],
+      ["Relative reduction", formatPercent(full.metrics.improvement_pct)],
+      ["Direction", "lower is better"],
+    ],
+  });
+}
+
+function residualErrorTable(evolution) {
+  const steps = Array.isArray(evolution?.steps) ? evolution.steps : [];
+  const seedErrors = steps[0]?.integrand_error ?? {};
+  const acceptedErrors = bestEvolutionStep(evolution)?.integrand_error ?? {};
+  const names = Array.from(new Set([...Object.keys(seedErrors), ...Object.keys(acceptedErrors)]));
+  return paperTable({
+    caption: "Table 4. Representative residual errors.",
+    headers: ["Integrand", "Seed residual", "Accepted residual", "Reduction"],
+    rows: names.map((name) => {
+      const seed = seedErrors[name];
+      const accepted = acceptedErrors[name];
+      const reduction = typeof seed === "number" && typeof accepted === "number" && seed > 0
+        ? formatPercent(((seed - accepted) / seed) * 100)
+        : "n/a";
+      return [
+        escapeHtml(integrandLabel(name)),
+        formatMetric(seed, { maximumFractionDigits: 6, minimumFractionDigits: 6 }),
+        formatMetric(accepted, { maximumFractionDigits: 6, minimumFractionDigits: 6 }),
+        reduction,
+      ];
+    }),
+  });
+}
+
+function notationTable() {
+  return paperTable({
+    caption: "Table 1. Notation used in the evaluation contract.",
+    headers: ["Symbol", "Meaning"],
+    rows: [
+      ["\\(f_j\\)", "Public analytic integrand indexed by j"],
+      ["\\(I_j\\)", "Analytic reference integral for integrand j"],
+      ["\\(Q_r[f]\\)", "Quadrature estimate produced by rule r"],
+      ["\\(e_j(r)\\)", "Residual error for integrand j under rule r"],
+      ["\\(J(r)\\)", "Frozen lower-is-better acceptance objective"],
+      ["\\(x_i\\)", "Quadrature node on the unit interval"],
+      ["\\(w_i\\)", "Normalized quadrature weight"],
+    ],
+  });
+}
+
+function paperAssetFigure({ src, caption, number }) {
+  return `<figure class="open-result-paper-asset">
+          <img src="./${escapeHtml(src)}" alt="">
+          <figcaption>Figure ${number}. ${escapeHtml(caption)}</figcaption>
+        </figure>`;
+}
+
+function implementationCodeFigure(candidateCode) {
+  return `<figure class="open-result-paper-code">
+          <pre><code>${escapeHtml(extractCandidateCode(candidateCode))}</code></pre>
+          <figcaption>Listing 1. Accepted candidate implementation.</figcaption>
+        </figure>`;
+}
+
+function quadratureWhitepaperInserts(full, evolution, candidateCode) {
+  const captions = full.website?.figure_captions ?? {};
+  return {
+    ...quadratureProblemVisuals(),
+    "notation-table": notationTable(),
+    "accepted-rule-figure": acceptedRulePaperFigure(evolution),
+    "accepted-rule-table": acceptedRuleTable(evolution),
+    "objective-summary-table": objectiveSummaryTable(full),
+    "residual-error-table": residualErrorTable(evolution),
+    "objective-curve": paperAssetFigure({
+      src: "assets/objective-curve.svg",
+      number: 5,
+      caption: captions["assets/objective-curve.svg"] || "Best-so-far objective over the curated public trace.",
+    }),
+    "candidate-trace": paperAssetFigure({
+      src: "assets/candidate-trace.svg",
+      number: 6,
+      caption: captions["assets/candidate-trace.svg"] || "Accepted rule, normalized weights, and representative residual errors.",
+    }),
+    "implementation-code": implementationCodeFigure(candidateCode),
+  };
+}
+
 function acceptedRuleVisual(full, evolution) {
   const bestStep = bestEvolutionStep(evolution);
   const rule = bestStep?.rule;
@@ -726,7 +902,20 @@ async function writeDetail(result) {
     )
     .join("\n");
 
-  const body = `        <section class="hero compact-hero page-hero open-result-detail-hero">
+  const isQuadratureWhitepaper = full.slug === "quadrature-rule-optimization";
+  const body = isQuadratureWhitepaper
+    ? `        <section class="hero compact-hero page-hero open-result-detail-hero">
+          <p class="eyebrow">${escapeHtml(full.domain)}</p>
+          <h1 class="page-title">${escapeHtml(full.title)}</h1>
+          <p class="intro open-results-hero-intro">${escapeHtml(full.summary)}</p>
+        </section>
+
+        <section class="open-result-detail open-result-whitepaper-shell">
+          <article class="open-result-article open-result-whitepaper">
+${markdownToHtml(articleWithoutTitle(article), quadratureWhitepaperInserts(full, evolution, candidateCode))}
+          </article>
+        </section>`
+    : `        <section class="hero compact-hero page-hero open-result-detail-hero">
           <p class="eyebrow">${escapeHtml(full.domain)}</p>
           <h1 class="page-title">${escapeHtml(full.title)}</h1>
           <p class="intro open-results-hero-intro">${escapeHtml(full.summary)}</p>
