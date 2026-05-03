@@ -9,7 +9,7 @@ const RESULTS_ROOT = path.resolve(SITE_ROOT, "..", "gother-labs-open-results");
 const CATALOG_PATH = path.join(RESULTS_ROOT, "catalog.json");
 const OUT_ROOT = path.join(SITE_ROOT, "open-results");
 
-const CSS_VERSION = "open-results-pipeline-v17";
+const CSS_VERSION = "open-results-pipeline-v20";
 const SITE_URL = "https://www.gotherlabs.com";
 
 function escapeHtml(value) {
@@ -278,8 +278,13 @@ async function copyIfExists(sourceRoot, outputRoot, relativeFile) {
 }
 
 function extractCandidateCode(code) {
-  const match = code.match(/# EVOLVE_START:[\s\S]*?# EVOLVE_END/);
-  return (match ? match[0] : code).trim();
+  const match = code.match(/# EVOLVE_START:[^\n]*\n?([\s\S]*?)\n?# EVOLVE_END/);
+  const candidateCode = match ? match[1] : code;
+  return candidateCode
+    .split("\n")
+    .filter((line) => !/^# EVOLVE_(START|END)/.test(line.trim()))
+    .join("\n")
+    .trim();
 }
 
 function bestEvolutionStep(evolution) {
@@ -397,6 +402,7 @@ function quadratureProblemVisuals() {
   const roughRectangles = roughRectangleData.map(({ x0, x1, y, height, cx }) => {
     return `<g class="open-result-rough-rect">
                 <rect x="${x0.toFixed(1)}" y="${y.toFixed(1)}" width="${(x1 - x0).toFixed(1)}" height="${height.toFixed(1)}" />
+                <rect class="open-result-rough-hatch" x="${x0.toFixed(1)}" y="${y.toFixed(1)}" width="${(x1 - x0).toFixed(1)}" height="${height.toFixed(1)}" />
                 <line x1="${cx.toFixed(1)}" y1="${plot.base}" x2="${cx.toFixed(1)}" y2="${y.toFixed(1)}" />
                 <circle cx="${cx.toFixed(1)}" cy="${y.toFixed(1)}" r="4" />
               </g>`;
@@ -443,6 +449,11 @@ function quadratureProblemVisuals() {
             </figure>`,
     "quadrature-rule": `<figure class="open-result-primer-card open-result-paper-figure">
               <svg class="open-result-primer-svg" viewBox="0 0 560 320" role="img" aria-label="A coarse rectangular quadrature rule approximating the area under sin pi x before optimization.">
+                <defs>
+                  <pattern id="roughRectangleHatch" patternUnits="userSpaceOnUse" width="12" height="12" patternTransform="rotate(62)">
+                    <line x1="0" y1="0" x2="0" y2="12" />
+                  </pattern>
+                </defs>
                 <text class="open-result-axis-label open-result-figure-title" x="64" y="54">Lower rectangle rule</text>
                 ${axes}
                 <g class="open-result-rough-rectangles">
@@ -457,6 +468,9 @@ ${roughRectangles}
     "residual-error": `<figure class="open-result-primer-card open-result-paper-figure">
               <svg class="open-result-primer-svg" viewBox="0 0 560 320" role="img" aria-label="Residual error shown as the area difference between a coarse quadrature rule and the exact integral.">
                 <defs>
+                  <pattern id="roughRectangleHatch" patternUnits="userSpaceOnUse" width="12" height="12" patternTransform="rotate(62)">
+                    <line x1="0" y1="0" x2="0" y2="12" />
+                  </pattern>
                   <pattern id="residualRegionHatch" patternUnits="userSpaceOnUse" width="12" height="12" patternTransform="rotate(62)">
                     <line x1="0" y1="0" x2="0" y2="12" />
                   </pattern>
@@ -530,64 +544,134 @@ function integrandLabel(name) {
   return labels[name] ?? name;
 }
 
+function integrandFunction(name) {
+  const functions = {
+    sin_pi: (x) => Math.sin(Math.PI * x),
+    sqrt: (x) => Math.sqrt(x),
+    log1p: (x) => Math.log1p(x),
+  };
+  return functions[name] ?? ((x) => x);
+}
+
+function svgPolyline(points) {
+  return points
+    .map(([x, y], index) => `${index === 0 ? "M" : "L"}${x.toFixed(1)} ${y.toFixed(1)}`)
+    .join(" ");
+}
+
 function acceptedRulePaperFigure(evolution) {
   const bestStep = bestEvolutionStep(evolution);
+  const baselineStep = Array.isArray(evolution?.steps) ? evolution.steps[0] : null;
   const rule = bestStep?.rule;
   if (!rule?.nodes?.length || !rule?.weights?.length) return "";
 
-  const left = 54;
+  const left = 92;
   const right = 506;
-  const axisY = 204;
-  const maxWeight = Math.max(...rule.weights.filter((value) => typeof value === "number"));
+  const top = 126;
+  const bottom = 292;
+  const width = right - left;
+  const height = bottom - top;
+  const yMax = 1;
+  const gaussLegendreReference = [
+    [0.04691, 0.118463],
+    [0.230765, 0.239314],
+    [0.5, 0.284444],
+    [0.769235, 0.239314],
+    [0.95309, 0.118463],
+  ];
+  const mapX = (node) => left + node * width;
+  const mapY = (weight) => bottom - (weight / yMax) * height;
+  const yTicks = [0, 0.25, 0.5, 0.75, 1]
+    .map((tick) => {
+      const y = mapY(tick);
+      return `<g>
+                <path class="open-result-objective-grid" d="M${left} ${y.toFixed(1)} H${right}" />
+                <text class="open-result-axis-tick open-result-objective-y-label" x="${left - 16}" y="${(y + 4).toFixed(1)}">${tick === 0 || tick === 1 ? tick.toFixed(0) : tick.toFixed(2)}</text>
+              </g>`;
+    })
+    .join("\n");
+  const referenceMarks = gaussLegendreReference
+    .map(([node, weight]) => {
+      const x = mapX(node);
+      const y = mapY(weight);
+      return `<g class="open-result-reference-node">
+                <line x1="${x.toFixed(1)}" y1="${bottom}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" />
+                <circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.2" />
+              </g>`;
+    })
+    .join("\n");
+  const baselineMarks = baselineStep?.rule?.nodes?.length
+    ? baselineStep.rule.nodes.map((node, index) => {
+      const weight = baselineStep.rule.weights?.[index] ?? 0;
+      const x = mapX(node);
+      const y = mapY(weight);
+      return `<g class="open-result-baseline-node">
+                <line x1="${x.toFixed(1)}" y1="${bottom}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" />
+                <circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${weight > 0 ? "4.2" : "3"}" />
+              </g>`;
+    }).join("\n")
+    : "";
+  const legend = `<g class="open-result-figure-legend" transform="translate(306 38)">
+              <rect x="0" y="0" width="194" height="72" />
+              <g transform="translate(13 17)">
+                <line class="open-result-legend-accepted-line" x1="0" y1="12" x2="0" y2="0" />
+                <circle class="open-result-legend-accepted-dot" cx="0" cy="0" r="3.8" />
+                <text x="16" y="4">accepted rule</text>
+              </g>
+              <g transform="translate(13 38)">
+                <line class="open-result-legend-baseline-line" x1="0" y1="12" x2="0" y2="0" />
+                <circle class="open-result-legend-baseline-dot" cx="0" cy="0" r="3.4" />
+                <text x="16" y="4">run baseline</text>
+              </g>
+              <g transform="translate(13 59)">
+                <line class="open-result-legend-reference-line" x1="0" y1="12" x2="0" y2="0" />
+                <circle class="open-result-legend-reference-dot" cx="0" cy="0" r="3.2" />
+                <text x="16" y="4">Gauss-Legendre reference</text>
+              </g>
+            </g>`;
   const marks = rule.nodes
     .map((node, index) => {
       const weight = rule.weights[index] ?? 0;
-      const x = left + node * (right - left);
-      const height = maxWeight > 0 ? 48 + (weight / maxWeight) * 54 : 48;
-      const top = axisY - height;
+      const x = mapX(node);
+      const y = mapY(weight);
       return `<g class="open-result-accepted-node">
-                <line x1="${x.toFixed(1)}" y1="${axisY}" x2="${x.toFixed(1)}" y2="${top.toFixed(1)}" />
-                <circle cx="${x.toFixed(1)}" cy="${top.toFixed(1)}" r="4.6" />
-                <text x="${x.toFixed(1)}" y="232">${formatMetric(node, { maximumFractionDigits: 3, minimumFractionDigits: 3 })}</text>
+                <line x1="${x.toFixed(1)}" y1="${bottom}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" />
+                <circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4.6" />
               </g>`;
     })
     .join("\n");
 
   return `<figure class="open-result-primer-card open-result-paper-figure">
-          <svg class="open-result-primer-svg open-result-accepted-rule-svg" viewBox="0 0 560 270" role="img" aria-label="Accepted five node quadrature rule on the unit interval.">
-            <text class="open-result-axis-label open-result-figure-title" x="64" y="46">Accepted node distribution</text>
-            <path class="open-result-rule-paper-axis" d="M${left} ${axisY} H${right}" />
-            <text class="open-result-axis-tick" x="${left}" y="232">0</text>
-            <text class="open-result-axis-tick" x="${right}" y="232">1</text>
-            <text class="open-result-axis-label" x="${right + 20}" y="${axisY + 4}">x</text>
+          <svg class="open-result-primer-svg open-result-accepted-rule-svg" viewBox="0 0 560 374" role="img" aria-label="Accepted five node quadrature rule compared with the run baseline and Gauss Legendre reference nodes and weights.">
+            <text class="open-result-axis-label open-result-figure-title" x="${left}" y="38">Node-position / weight comparison</text>
+            <text class="open-result-axis-label open-result-y-axis-title" x="${left}" y="70">normalized weight w_i</text>
+            ${legend}
+            ${yTicks}
+            <path class="open-result-rule-paper-axis" d="M${left} ${top} V${bottom} H${right}" />
+            <text class="open-result-axis-tick" x="${left}" y="${bottom + 22}">0</text>
+            <text class="open-result-axis-tick" x="${left + width / 2}" y="${bottom + 22}">0.5</text>
+            <text class="open-result-axis-tick" x="${right}" y="${bottom + 22}">1</text>
+            <text class="open-result-axis-label open-result-x-axis-title" x="${left + width / 2}" y="${bottom + 50}">node position x_i</text>
+            <g>
+${baselineMarks}
+            </g>
+            <g>
+${referenceMarks}
+            </g>
             <g>
 ${marks}
             </g>
-            <text class="open-result-axis-label" x="64" y="252">node labels shown as positions on [0,1]</text>
           </svg>
-          <figcaption>Figure 4. Accepted five-node rule on the unit interval. Vertical stems encode normalized weights; labels report node positions.</figcaption>
+          <figcaption>Figure 5. Accepted five-node rule compared with the fixed run baseline and the Gauss-Legendre construction reference in the same node-position and normalized-weight coordinates.</figcaption>
         </figure>`;
-}
-
-function acceptedRuleTable(evolution) {
-  const rule = bestEvolutionStep(evolution)?.rule;
-  if (!rule?.nodes?.length) return "";
-  return paperTable({
-    caption: "Table 2. Accepted quadrature rule.",
-    headers: ["Node", "Weight"],
-    rows: rule.nodes.map((node, index) => [
-      formatMetric(node, { maximumFractionDigits: 6, minimumFractionDigits: 6 }),
-      formatMetric(rule.weights?.[index], { maximumFractionDigits: 6, minimumFractionDigits: 6 }),
-    ]),
-  });
 }
 
 function objectiveSummaryTable(full) {
   return paperTable({
-    caption: "Table 3. Objective improvement under the frozen acceptance contract.",
+    caption: "Table 1. Objective improvement under the frozen acceptance contract.",
     headers: ["Quantity", "Value"],
     rows: [
-      ["Seed objective", formatMetric(full.metrics.seed, { maximumFractionDigits: 6, minimumFractionDigits: 6 })],
+      ["Baseline objective", formatMetric(full.metrics.seed, { maximumFractionDigits: 6, minimumFractionDigits: 6 })],
       ["Accepted objective", formatMetric(full.metrics.best, { maximumFractionDigits: 6, minimumFractionDigits: 6 })],
       ["Absolute reduction", formatMetric(full.metrics.improvement, { maximumFractionDigits: 6, minimumFractionDigits: 6 })],
       ["Relative reduction", formatPercent(full.metrics.improvement_pct)],
@@ -602,8 +686,8 @@ function residualErrorTable(evolution) {
   const acceptedErrors = bestEvolutionStep(evolution)?.integrand_error ?? {};
   const names = Array.from(new Set([...Object.keys(seedErrors), ...Object.keys(acceptedErrors)]));
   return paperTable({
-    caption: "Table 4. Representative residual errors.",
-    headers: ["Integrand", "Seed residual", "Accepted residual", "Reduction"],
+    caption: "Table 2. Representative residual errors.",
+    headers: ["Integrand", "Baseline residual", "Accepted residual", "Reduction"],
     rows: names.map((name) => {
       const seed = seedErrors[name];
       const accepted = acceptedErrors[name];
@@ -618,6 +702,286 @@ function residualErrorTable(evolution) {
       ];
     }),
   });
+}
+
+function residualLocationFigure(evolution) {
+  const bestStep = bestEvolutionStep(evolution);
+  const rule = bestStep?.rule;
+  const errors = bestStep?.integrand_error ?? {};
+  if (!rule?.nodes?.length || !rule?.weights?.length || !Object.keys(errors).length) return "";
+
+  const left = 56;
+  const right = 368;
+  const width = right - left;
+  const panelTop = 36;
+  const panelHeight = 118;
+  const amplitude = 70;
+  const names = Object.keys(errors);
+  const intervals = rule.nodes.map((node, index) => {
+    const previous = index === 0 ? 0 : (rule.nodes[index - 1] + node) / 2;
+    const next = index === rule.nodes.length - 1 ? 1 : (node + rule.nodes[index + 1]) / 2;
+    return [Math.max(0, previous), Math.min(1, next)];
+  });
+
+  const panels = names.map((name, panelIndex) => {
+    const fn = integrandFunction(name);
+    const top = panelTop + panelIndex * panelHeight;
+    const base = top + 82;
+    const maxY = Math.max(0.0001, ...Array.from({ length: 80 }, (_, index) => fn(index / 79)));
+    const mapX = (x) => left + x * width;
+    const mapY = (value) => base - (value / maxY) * amplitude;
+    const curve = svgPolyline(Array.from({ length: 90 }, (_, index) => {
+      const x = index / 89;
+      return [mapX(x), mapY(fn(x))];
+    }));
+    const cells = intervals.map(([x0, x1], index) => {
+      const node = rule.nodes[index];
+      const value = fn(node);
+      const y = mapY(value);
+      const cellX = mapX(x0);
+      const cellWidth = mapX(x1) - cellX;
+      const regionSamples = Array.from({ length: 18 }, (_, sampleIndex) => {
+        const t = sampleIndex / 17;
+        const x = x0 + (x1 - x0) * t;
+        return [mapX(x), mapY(fn(x))];
+      });
+      const highEdge = regionSamples
+        .slice()
+        .reverse()
+        .map(([x, curveY]) => `L${x.toFixed(1)} ${curveY.toFixed(1)}`)
+        .join(" ");
+      const residualRegion = `M${cellX.toFixed(1)} ${y.toFixed(1)} L${(cellX + cellWidth).toFixed(1)} ${y.toFixed(1)} ${highEdge} Z`;
+      return `<g class="open-result-residual-cell">
+                <rect x="${cellX.toFixed(1)}" y="${y.toFixed(1)}" width="${cellWidth.toFixed(1)}" height="${(base - y).toFixed(1)}" />
+                <path class="open-result-residual-cell-gap-fill" d="${residualRegion}" />
+                <path class="open-result-residual-cell-gap" d="${residualRegion}" />
+                <circle cx="${mapX(node).toFixed(1)}" cy="${y.toFixed(1)}" r="3.2" />
+              </g>`;
+    }).join("\n");
+    return `<g transform="translate(0 0)">
+              <text class="open-result-axis-label open-result-figure-title" x="${left}" y="${top}">${integrandLabel(name)}</text>
+              <text class="open-result-axis-label open-result-residual-value" x="408" y="${top + 28}">accepted residual</text>
+              <text class="open-result-axis-label open-result-residual-number" x="408" y="${top + 50}">${formatMetric(errors[name], { maximumFractionDigits: 6, minimumFractionDigits: 6 })}</text>
+              <path class="open-result-primer-grid" d="M${left} ${top + 12} V${base} H${right}" />
+              <text class="open-result-axis-tick" x="${left}" y="${base + 18}">0</text>
+              <text class="open-result-axis-tick" x="${right}" y="${base + 18}">1</text>
+              ${cells}
+              <path class="open-result-primer-curve" d="${curve}" />
+            </g>`;
+  }).join("\n");
+
+  return `<figure class="open-result-primer-card open-result-paper-figure">
+          <svg class="open-result-primer-svg open-result-residual-location-svg" viewBox="0 0 560 410" role="img" aria-label="Residual location diagnostics for the accepted rule on each public integrand.">
+            <defs>
+              <pattern id="acceptedResidualHatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(62)">
+                <line x1="0" y1="0" x2="0" y2="10" />
+              </pattern>
+            </defs>
+            ${panels}
+          </svg>
+          <figcaption>Figure 6. Residual location diagnostic for the accepted rule. Each panel overlays the integrand curve, the five sampled contribution cells, and the remaining local gap; Table 2 gives the measured residual values.</figcaption>
+        </figure>`;
+}
+
+function baselineResidualComparisonFigure(evolution) {
+  const steps = Array.isArray(evolution?.steps) ? evolution.steps : [];
+  const baselineStep = steps[0];
+  const acceptedStep = bestEvolutionStep(evolution);
+  const baselineRule = baselineStep?.rule;
+  const acceptedRule = acceptedStep?.rule;
+  const baselineErrors = baselineStep?.integrand_error ?? {};
+  const acceptedErrors = acceptedStep?.integrand_error ?? {};
+  const names = Array.from(new Set([...Object.keys(baselineErrors), ...Object.keys(acceptedErrors)]));
+  if (!baselineRule?.nodes?.length || !acceptedRule?.nodes?.length || !names.length) return "";
+
+  const baselineColumn = { left: 44, right: 246 };
+  const acceptedColumn = { left: 314, right: 516 };
+  const panelTop = 58;
+  const panelHeight = 160;
+  const amplitude = 66;
+
+  const acceptedIntervals = acceptedRule.nodes.map((node, index) => {
+    const previous = index === 0 ? 0 : (acceptedRule.nodes[index - 1] + node) / 2;
+    const next = index === acceptedRule.nodes.length - 1 ? 1 : (node + acceptedRule.nodes[index + 1]) / 2;
+    return [Math.max(0, previous), Math.min(1, next)];
+  });
+
+  const drawCurve = (fn, bounds, base, maxY) => svgPolyline(Array.from({ length: 90 }, (_, index) => {
+    const x = index / 89;
+    return [bounds.left + x * (bounds.right - bounds.left), base - (fn(x) / maxY) * amplitude];
+  }));
+
+  const baselinePanel = (fn, bounds, base, maxY) => {
+    const width = bounds.right - bounds.left;
+    const activeIndex = baselineRule.weights.findIndex((weight) => weight > 0.000001);
+    const node = activeIndex >= 0 ? baselineRule.nodes[activeIndex] : baselineRule.nodes[0];
+    const value = fn(node);
+    const y = base - (value / maxY) * amplitude;
+    const x = bounds.left + node * width;
+    return `<g class="open-result-baseline-residual-panel">
+              <rect x="${bounds.left.toFixed(1)}" y="${y.toFixed(1)}" width="${width.toFixed(1)}" height="${(base - y).toFixed(1)}" />
+              <line x1="${x.toFixed(1)}" y1="${base.toFixed(1)}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" />
+              <circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.4" />
+            </g>`;
+  };
+
+  const acceptedPanel = (fn, bounds, base, maxY) => {
+    const width = bounds.right - bounds.left;
+    const mapX = (x) => bounds.left + x * width;
+    const mapY = (value) => base - (value / maxY) * amplitude;
+    return acceptedIntervals.map(([x0, x1], index) => {
+      const node = acceptedRule.nodes[index];
+      const value = fn(node);
+      const y = mapY(value);
+      const cellX = mapX(x0);
+      const cellWidth = mapX(x1) - cellX;
+      const regionSamples = Array.from({ length: 14 }, (_, sampleIndex) => {
+        const t = sampleIndex / 13;
+        const x = x0 + (x1 - x0) * t;
+        return [mapX(x), mapY(fn(x))];
+      });
+      const highEdge = regionSamples
+        .slice()
+        .reverse()
+        .map(([x, curveY]) => `L${x.toFixed(1)} ${curveY.toFixed(1)}`)
+        .join(" ");
+      const residualRegion = `M${cellX.toFixed(1)} ${y.toFixed(1)} L${(cellX + cellWidth).toFixed(1)} ${y.toFixed(1)} ${highEdge} Z`;
+      return `<g class="open-result-accepted-residual-panel">
+                <rect x="${cellX.toFixed(1)}" y="${y.toFixed(1)}" width="${cellWidth.toFixed(1)}" height="${(base - y).toFixed(1)}" />
+                <path class="open-result-residual-cell-gap-fill" d="${residualRegion}" />
+                <path class="open-result-residual-cell-gap" d="${residualRegion}" />
+                <circle cx="${mapX(node).toFixed(1)}" cy="${y.toFixed(1)}" r="3" />
+              </g>`;
+    }).join("\n");
+  };
+
+  const panels = names.map((name, panelIndex) => {
+    const fn = integrandFunction(name);
+    const top = panelTop + panelIndex * panelHeight;
+    const plotTop = top + 32;
+    const base = top + 104;
+    const maxY = Math.max(0.0001, ...Array.from({ length: 80 }, (_, index) => fn(index / 79)));
+    const baselineCurve = drawCurve(fn, baselineColumn, base, maxY);
+    const acceptedCurve = drawCurve(fn, acceptedColumn, base, maxY);
+    return `<g>
+              <text class="open-result-axis-label open-result-figure-title" x="${baselineColumn.left}" y="${top}">${integrandLabel(name)}</text>
+              <text class="open-result-axis-label open-result-comparison-value" x="${baselineColumn.left}" y="${top + 18}">e = ${formatMetric(baselineErrors[name], { maximumFractionDigits: 6, minimumFractionDigits: 6 })}</text>
+              <text class="open-result-axis-label open-result-comparison-value" x="${acceptedColumn.left}" y="${top + 18}">e = ${formatMetric(acceptedErrors[name], { maximumFractionDigits: 6, minimumFractionDigits: 6 })}</text>
+              <path class="open-result-primer-grid" d="M${baselineColumn.left} ${plotTop} V${base} H${baselineColumn.right}" />
+              <path class="open-result-primer-grid" d="M${acceptedColumn.left} ${plotTop} V${base} H${acceptedColumn.right}" />
+              ${baselinePanel(fn, baselineColumn, base, maxY)}
+              ${acceptedPanel(fn, acceptedColumn, base, maxY)}
+              <path class="open-result-primer-curve" d="${baselineCurve}" />
+              <path class="open-result-primer-curve" d="${acceptedCurve}" />
+              <text class="open-result-axis-tick" x="${baselineColumn.left}" y="${base + 17}">0</text>
+              <text class="open-result-axis-tick" x="${baselineColumn.right}" y="${base + 17}">1</text>
+              <text class="open-result-axis-tick" x="${acceptedColumn.left}" y="${base + 17}">0</text>
+              <text class="open-result-axis-tick" x="${acceptedColumn.right}" y="${base + 17}">1</text>
+            </g>`;
+  }).join("\n");
+
+  return `<figure class="open-result-primer-card open-result-paper-figure open-result-objective-figure">
+          <svg class="open-result-primer-svg open-result-residual-comparison-svg" viewBox="0 0 560 560" role="img" aria-label="Baseline to accepted residual comparison for each public integrand.">
+            <defs>
+              <pattern id="comparisonResidualHatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(62)">
+                <line x1="0" y1="0" x2="0" y2="10" />
+              </pattern>
+            </defs>
+            <text class="open-result-axis-label open-result-figure-title" x="44" y="28">baseline</text>
+            <text class="open-result-axis-label open-result-figure-title" x="314" y="28">accepted</text>
+            ${panels}
+          </svg>
+          <figcaption>Figure 7. Baseline-to-accepted residual comparison. Each row uses the same integrand and axis scale on both sides; the left panel shows the effective run baseline contribution, and the right panel shows the accepted five-node rule.</figcaption>
+        </figure>`;
+}
+
+function objectiveCurveFigure(evolution) {
+  const steps = Array.isArray(evolution?.steps) ? evolution.steps : [];
+  const scored = steps.filter((step) => typeof step.score === "number");
+  if (!scored.length) return "";
+
+  const left = 82;
+  const right = 512;
+  const top = 74;
+  const bottom = 260;
+  const width = right - left;
+  const height = bottom - top;
+  const maxScore = Math.ceil(Math.max(...scored.map((step) => step.score)) / 100) * 100;
+  const minScore = 0;
+  const lastIndex = Math.max(...scored.map((step) => step.index ?? 0), 1);
+  const mapX = (index) => left + (index / lastIndex) * width;
+  const mapY = (score) => bottom - ((score - minScore) / (maxScore - minScore)) * height;
+  let best = Infinity;
+  const bestPoints = scored.map((step) => {
+    best = Math.min(best, step.score);
+    return [mapX(step.index ?? 0), mapY(best)];
+  });
+  const bestStep = bestEvolutionStep(evolution);
+  const baselineStep = scored[0];
+  const baselineX = mapX(baselineStep?.index ?? 0);
+  const baselineY = mapY(baselineStep?.score ?? scored[0]?.score ?? maxScore);
+  const acceptedX = mapX(bestStep?.index ?? 0);
+  const acceptedY = mapY(bestStep?.score ?? best);
+  const xTicks = [0, 20, 40, 60, lastIndex]
+    .map((value) => {
+      const x = mapX(value);
+      return `<g>
+                <path class="open-result-objective-x-tick" d="M${x.toFixed(1)} ${bottom} V${(bottom + 5).toFixed(1)}" />
+                <text class="open-result-axis-tick" x="${x.toFixed(1)}" y="${bottom + 22}">${value}</text>
+              </g>`;
+    }).join("\n");
+  const proposalDots = scored.map((step) => {
+    const x = mapX(step.index ?? 0);
+    const y = mapY(step.score);
+    return `<circle class="open-result-objective-proposal" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.1" />`;
+  }).join("\n");
+  const grid = [0, 200, 400, 600, maxScore]
+    .filter((value, index, values) => value <= maxScore && values.indexOf(value) === index)
+    .map((value) => {
+      const y = mapY(value);
+      return `<g>
+                <path class="open-result-objective-grid" d="M${left} ${y.toFixed(1)} H${right}" />
+                <text class="open-result-axis-tick open-result-objective-y-label" x="${left - 18}" y="${(y + 4).toFixed(1)}">${value}</text>
+              </g>`;
+    }).join("\n");
+
+  return `<figure class="open-result-primer-card open-result-paper-figure open-result-objective-figure">
+          <svg class="open-result-primer-svg open-result-objective-svg" viewBox="0 0 560 328" role="img" aria-label="Best so far objective curve across the curated public trace.">
+            <text class="open-result-axis-label open-result-figure-title" x="${left}" y="34">Best-so-far acceptance objective (lower is better)</text>
+            <g class="open-result-objective-legend" transform="translate(${left} 48)">
+              <g transform="translate(0 0)">
+                <circle class="open-result-objective-legend-proposal" cx="0" cy="0" r="2.4" />
+                <text x="12" y="4">scored candidate</text>
+              </g>
+              <g transform="translate(118 0)">
+                <line class="open-result-objective-legend-best" x1="0" y1="0" x2="16" y2="0" />
+                <text x="24" y="4">best-so-far objective</text>
+              </g>
+              <g transform="translate(286 0)">
+                <circle class="open-result-legend-baseline-dot" cx="0" cy="0" r="3.4" />
+                <text x="16" y="4">baseline</text>
+              </g>
+              <g transform="translate(374 0)">
+                <circle class="open-result-legend-accepted-dot" cx="0" cy="0" r="3.8" />
+                <text x="16" y="4">accepted</text>
+              </g>
+            </g>
+            ${grid}
+            <path class="open-result-rule-paper-axis" d="M${left} ${top} V${bottom} H${right}" />
+            ${xTicks}
+            <text class="open-result-axis-label open-result-x-axis-title" x="${left + width / 2}" y="306">candidate index</text>
+            <text class="open-result-axis-label open-result-objective-y-title" x="34" y="${top + height / 2}" transform="rotate(-90 34 ${top + height / 2})">J(r)</text>
+            <g>${proposalDots}</g>
+            <path class="open-result-objective-best" d="${svgPolyline(bestPoints)}" />
+            <g class="open-result-objective-baseline">
+              <circle cx="${baselineX.toFixed(1)}" cy="${baselineY.toFixed(1)}" r="4.2" />
+            </g>
+            <g class="open-result-objective-accepted">
+              <circle cx="${acceptedX.toFixed(1)}" cy="${acceptedY.toFixed(1)}" r="4.8" />
+            </g>
+          </svg>
+          <figcaption>Figure 4. Objective trace in paper form. Faint points are scored candidates; the solid step curve is the best-so-far acceptance objective retained under the frozen contract. The baseline and accepted markers show the reported comparison.</figcaption>
+        </figure>`;
 }
 
 function notationTable() {
@@ -651,24 +1015,13 @@ function implementationCodeFigure(candidateCode) {
 }
 
 function quadratureWhitepaperInserts(full, evolution, candidateCode) {
-  const captions = full.website?.figure_captions ?? {};
   return {
     ...quadratureProblemVisuals(),
-    "notation-table": notationTable(),
     "accepted-rule-figure": acceptedRulePaperFigure(evolution),
-    "accepted-rule-table": acceptedRuleTable(evolution),
     "objective-summary-table": objectiveSummaryTable(full),
     "residual-error-table": residualErrorTable(evolution),
-    "objective-curve": paperAssetFigure({
-      src: "assets/objective-curve.svg",
-      number: 5,
-      caption: captions["assets/objective-curve.svg"] || "Best-so-far objective over the curated public trace.",
-    }),
-    "candidate-trace": paperAssetFigure({
-      src: "assets/candidate-trace.svg",
-      number: 6,
-      caption: captions["assets/candidate-trace.svg"] || "Accepted rule, normalized weights, and representative residual errors.",
-    }),
+    "residual-location-figure": residualLocationFigure(evolution),
+    "objective-curve": objectiveCurveFigure(evolution),
     "implementation-code": implementationCodeFigure(candidateCode),
   };
 }

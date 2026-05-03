@@ -1344,6 +1344,10 @@ a {
   border: 0;
 }
 
+.open-result-objective-figure {
+  gap: 0.2rem;
+}
+
 .open-result-primer-card figcaption {
   max-width: 38rem;
   margin: 0 auto;
@@ -1437,6 +1441,14 @@ a {
   text-anchor: middle;
 }
 
+.open-result-x-axis-title {
+  text-anchor: middle;
+}
+
+.open-result-y-axis-title {
+  font-size: 11px;
+}
+
 .open-result-figure-title {
   fill: var(--text);
   font-size: 13px;
@@ -1482,6 +1494,12 @@ a {
   stroke-width: 1;
 }
 
+.open-result-rough-rect .open-result-rough-hatch {
+  fill: url("#roughRectangleHatch");
+  opacity: 0.72;
+  stroke: none;
+}
+
 .open-result-rough-rect line {
   stroke: color-mix(in srgb, var(--text) 70%, transparent);
   stroke-width: 1.5;
@@ -1498,6 +1516,12 @@ a {
   stroke: var(--figure-reference-stroke);
 }
 
+.open-result-rough-rectangles-muted .open-result-rough-rect .open-result-rough-hatch {
+  fill: url("#roughRectangleHatch");
+  opacity: 0.28;
+  stroke: none;
+}
+
 .open-result-rough-rectangles-muted .open-result-rough-rect line,
 .open-result-rough-rectangles-muted .open-result-rough-rect circle {
   opacity: 0.45;
@@ -1512,6 +1536,175 @@ a {
 .open-result-residual-hatch {
   fill: url("#residualRegionHatch");
   opacity: 0.92;
+}
+
+.open-result-residual-location-svg .open-result-primer-grid,
+.open-result-objective-svg .open-result-rule-paper-axis {
+  stroke: color-mix(in srgb, var(--text) 42%, transparent);
+}
+
+.open-result-residual-cell rect {
+  fill: var(--figure-reference-fill);
+  stroke: var(--figure-reference-stroke);
+  stroke-width: 0.8;
+}
+
+.open-result-residual-cell-gap-fill {
+  fill: var(--figure-area-fill);
+  stroke: var(--figure-area-stroke);
+  stroke-width: 0.7;
+}
+
+.open-result-residual-cell circle {
+  fill: var(--bg);
+  stroke: var(--accent);
+  stroke-width: 1.8;
+}
+
+.open-result-residual-location-svg pattern line {
+  stroke: rgb(255 255 255 / 0.64);
+}
+
+.open-result-residual-comparison-svg pattern line {
+  stroke: rgb(255 255 255 / 0.56);
+}
+
+.open-result-residual-cell-gap {
+  fill: url("#acceptedResidualHatch");
+  opacity: 0.88;
+  stroke: none;
+}
+
+.open-result-residual-comparison-svg .open-result-residual-cell-gap {
+  fill: url("#comparisonResidualHatch");
+}
+
+.open-result-baseline-residual-panel rect {
+  fill: color-mix(in srgb, var(--text) 10%, transparent);
+  stroke: color-mix(in srgb, var(--text) 40%, transparent);
+  stroke-width: 0.8;
+}
+
+.open-result-baseline-residual-panel line {
+  stroke: color-mix(in srgb, var(--text) 54%, transparent);
+  stroke-width: 1;
+}
+
+.open-result-baseline-residual-panel circle {
+  fill: var(--bg);
+  stroke: color-mix(in srgb, var(--text) 58%, transparent);
+  stroke-width: 1.6;
+}
+
+.open-result-accepted-residual-panel rect {
+  fill: var(--figure-reference-fill);
+  stroke: var(--figure-reference-stroke);
+  stroke-width: 0.75;
+}
+
+.open-result-accepted-residual-panel circle {
+  fill: var(--bg);
+  stroke: var(--accent);
+  stroke-width: 1.7;
+}
+
+.open-result-residual-value {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.open-result-residual-number {
+  fill: var(--text);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.open-result-comparison-value {
+  fill: var(--muted);
+  font-size: 10.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.open-result-objective-grid {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 16%, transparent);
+  stroke-width: 0.8;
+}
+
+.open-result-objective-x-tick {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 42%, transparent);
+  stroke-width: 0.8;
+}
+
+.open-result-objective-y-label {
+  text-anchor: end;
+}
+
+.open-result-objective-y-title {
+  text-anchor: middle;
+}
+
+.open-result-objective-direction {
+  font-size: 11px;
+  font-style: italic;
+  text-anchor: end;
+}
+
+.open-result-objective-legend text {
+  fill: var(--muted);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 9.8px;
+}
+
+.open-result-objective-legend-proposal {
+  fill: color-mix(in srgb, var(--text) 34%, transparent);
+}
+
+.open-result-objective-legend-best {
+  stroke: var(--text);
+  stroke-linecap: round;
+  stroke-width: 2;
+}
+
+.open-result-objective-proposal {
+  fill: color-mix(in srgb, var(--text) 30%, transparent);
+}
+
+.open-result-objective-best {
+  fill: none;
+  stroke: var(--text);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.open-result-objective-accepted circle {
+  fill: var(--bg);
+  stroke: var(--accent);
+  stroke-width: 2.2;
+}
+
+.open-result-objective-accepted text {
+  fill: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 12px;
+  font-style: italic;
+  text-anchor: middle;
+}
+
+.open-result-objective-baseline circle {
+  fill: var(--bg);
+  stroke: color-mix(in srgb, var(--text) 55%, transparent);
+  stroke-width: 1.8;
+}
+
+.open-result-objective-baseline text {
+  fill: var(--muted);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 12px;
+  font-style: italic;
 }
 
 .open-result-primer-bar {
@@ -1906,6 +2099,79 @@ a {
   fill: none;
   stroke: color-mix(in srgb, var(--text) 58%, transparent);
   stroke-width: 1;
+}
+
+.open-result-reference-axis {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 26%, transparent);
+  stroke-width: 1;
+}
+
+.open-result-reference-node line {
+  stroke: color-mix(in srgb, var(--text) 34%, transparent);
+  stroke-width: 1;
+}
+
+.open-result-reference-node circle {
+  fill: var(--bg);
+  stroke: color-mix(in srgb, var(--text) 42%, transparent);
+  stroke-width: 1.4;
+}
+
+.open-result-baseline-node line {
+  stroke: color-mix(in srgb, var(--text) 52%, transparent);
+  stroke-width: 1.1;
+}
+
+.open-result-baseline-node circle {
+  fill: var(--bg);
+  stroke: color-mix(in srgb, var(--text) 58%, transparent);
+  stroke-width: 1.7;
+}
+
+.open-result-figure-legend rect {
+  fill: var(--bg);
+  stroke: color-mix(in srgb, var(--text) 22%, transparent);
+  stroke-width: 0.8;
+}
+
+.open-result-figure-legend text {
+  fill: var(--muted);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 10px;
+}
+
+.open-result-legend-accepted-line {
+  stroke: color-mix(in srgb, var(--text) 70%, transparent);
+  stroke-width: 1.4;
+}
+
+.open-result-legend-accepted-dot {
+  fill: var(--bg);
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.open-result-legend-reference-line {
+  stroke: color-mix(in srgb, var(--text) 38%, transparent);
+  stroke-width: 1;
+}
+
+.open-result-legend-reference-dot {
+  fill: var(--bg);
+  stroke: color-mix(in srgb, var(--text) 44%, transparent);
+  stroke-width: 1.4;
+}
+
+.open-result-legend-baseline-line {
+  stroke: color-mix(in srgb, var(--text) 52%, transparent);
+  stroke-width: 1.1;
+}
+
+.open-result-legend-baseline-dot {
+  fill: var(--bg);
+  stroke: color-mix(in srgb, var(--text) 58%, transparent);
+  stroke-width: 1.7;
 }
 
 .open-result-accepted-node line {
