@@ -1338,14 +1338,10 @@ a {
 
 .open-result-primer-card {
   display: grid;
-  gap: 0.72rem;
-  width: min(100%, 48rem);
-  margin: 2.1rem auto 2.9rem;
-  border: 0;
-}
-
-.open-result-objective-figure {
   gap: 0.2rem;
+  width: min(100%, 48rem);
+  margin: 1.9rem auto 2.35rem;
+  border: 0;
 }
 
 .open-result-primer-card figcaption {
@@ -1409,7 +1405,7 @@ a {
 }
 
 .open-result-integral-hatch {
-  fill: url("#exactIntegralHatch");
+  fill: url("#conceptExactIntegralHatch");
   opacity: 0.92;
 }
 
@@ -1428,6 +1424,10 @@ a {
 .open-result-primer-curve.muted-curve {
   stroke: color-mix(in srgb, var(--text) 52%, transparent);
   stroke-width: 2;
+}
+
+.open-result-primer-curve.dashed-curve {
+  stroke-dasharray: 7 7;
 }
 
 .open-result-axis-label,
@@ -1452,6 +1452,12 @@ a {
 .open-result-figure-title {
   fill: var(--text);
   font-size: 13px;
+  font-style: italic;
+}
+
+.open-result-panel-subtitle {
+  fill: var(--muted);
+  font-size: 10px;
   font-style: italic;
 }
 
@@ -1511,6 +1517,54 @@ a {
   stroke-width: 2;
 }
 
+.open-result-concept-sample rect:first-child {
+  fill: var(--figure-area-fill);
+  stroke: var(--figure-area-stroke);
+  stroke-width: 0.8;
+}
+
+.open-result-concept-sample-hatches {
+  pointer-events: none;
+}
+
+.open-result-concept-sample-hatches .open-result-concept-sample rect:first-child {
+  fill: url("#conceptQuadratureHatch");
+  opacity: 0.86;
+  stroke: none;
+}
+
+.open-result-concept-sample-hatches .open-result-concept-sample line,
+.open-result-concept-sample-hatches .open-result-concept-sample circle {
+  display: none;
+}
+
+.open-result-concept-sample line {
+  stroke: color-mix(in srgb, var(--text) 54%, transparent);
+  stroke-width: 1.2;
+}
+
+.open-result-concept-sample circle {
+  fill: var(--bg);
+  stroke: color-mix(in srgb, var(--text) 58%, transparent);
+  stroke-width: 1.7;
+}
+
+.open-result-concept-sample.is-accepted circle,
+.open-result-concept-samples .open-result-concept-sample circle {
+  stroke: var(--accent);
+}
+
+.open-result-concept-samples-muted .open-result-concept-sample rect:first-child,
+.open-result-concept-samples-muted .open-result-concept-sample line,
+.open-result-concept-samples-muted .open-result-concept-sample circle {
+  opacity: 0.34;
+}
+
+.open-result-concept-samples-muted .open-result-concept-sample rect:first-child {
+  fill: var(--figure-reference-fill);
+  stroke: var(--figure-reference-stroke);
+}
+
 .open-result-rough-rectangles-muted .open-result-rough-rect rect {
   fill: var(--figure-reference-fill);
   stroke: var(--figure-reference-stroke);
@@ -1531,11 +1585,23 @@ a {
   fill: var(--figure-area-fill);
   stroke: var(--figure-area-stroke);
   stroke-width: 0.8;
+  opacity: 0.78;
+}
+
+.open-result-residual-region.open-result-residual-negative {
+  fill: var(--figure-area-fill);
+  stroke: var(--figure-area-stroke);
+}
+
+.open-result-residual-region.open-result-residual-positive {
+  fill: var(--figure-area-fill);
+  stroke: var(--figure-area-stroke);
 }
 
 .open-result-residual-hatch {
-  fill: url("#residualRegionHatch");
-  opacity: 0.92;
+  fill: url("#conceptResidualHatch");
+  opacity: 0.78;
+  stroke: none;
 }
 
 .open-result-residual-location-svg .open-result-primer-grid,
@@ -1565,47 +1631,10 @@ a {
   stroke: rgb(255 255 255 / 0.64);
 }
 
-.open-result-residual-comparison-svg pattern line {
-  stroke: rgb(255 255 255 / 0.56);
-}
-
 .open-result-residual-cell-gap {
   fill: url("#acceptedResidualHatch");
   opacity: 0.88;
   stroke: none;
-}
-
-.open-result-residual-comparison-svg .open-result-residual-cell-gap {
-  fill: url("#comparisonResidualHatch");
-}
-
-.open-result-baseline-residual-panel rect {
-  fill: color-mix(in srgb, var(--text) 10%, transparent);
-  stroke: color-mix(in srgb, var(--text) 40%, transparent);
-  stroke-width: 0.8;
-}
-
-.open-result-baseline-residual-panel line {
-  stroke: color-mix(in srgb, var(--text) 54%, transparent);
-  stroke-width: 1;
-}
-
-.open-result-baseline-residual-panel circle {
-  fill: var(--bg);
-  stroke: color-mix(in srgb, var(--text) 58%, transparent);
-  stroke-width: 1.6;
-}
-
-.open-result-accepted-residual-panel rect {
-  fill: var(--figure-reference-fill);
-  stroke: var(--figure-reference-stroke);
-  stroke-width: 0.75;
-}
-
-.open-result-accepted-residual-panel circle {
-  fill: var(--bg);
-  stroke: var(--accent);
-  stroke-width: 1.7;
 }
 
 .open-result-residual-value {
@@ -1618,6 +1647,21 @@ a {
   fill: var(--text);
   font-size: 14px;
   font-variant-numeric: tabular-nums;
+}
+
+.open-result-residual-number-baseline {
+  fill: var(--muted);
+}
+
+.open-result-residual-baseline-marker line {
+  stroke: color-mix(in srgb, var(--text) 54%, transparent);
+  stroke-width: 1.1;
+}
+
+.open-result-residual-baseline-marker circle {
+  fill: var(--bg);
+  stroke: color-mix(in srgb, var(--text) 58%, transparent);
+  stroke-width: 1.7;
 }
 
 .open-result-comparison-value {
@@ -2069,6 +2113,35 @@ a {
   color: var(--muted-soft);
   font-family: "SFMono-Regular", Menlo, Consolas, monospace;
   font-size: 0.88rem;
+}
+
+.open-result-contract-table {
+  width: min(100%, 42rem);
+}
+
+.open-result-contract-table .open-result-table {
+  margin: 0 auto;
+}
+
+.open-result-contract-table .open-result-table th,
+.open-result-contract-table .open-result-table td {
+  padding-right: 1.2rem;
+  text-align: center;
+}
+
+.open-result-contract-table .open-result-table th:first-child,
+.open-result-contract-table .open-result-table td:first-child {
+  width: 3.5rem;
+}
+
+.open-result-contract-table .open-result-table th:last-child,
+.open-result-contract-table .open-result-table td:last-child {
+  padding-right: 0;
+}
+
+.open-result-contract-table .open-result-table td {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1rem;
 }
 
 .open-result-paper-asset img {
