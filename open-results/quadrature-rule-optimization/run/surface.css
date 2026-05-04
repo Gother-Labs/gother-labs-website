@@ -9,7 +9,13 @@
 }
 
 .quadrature-surface-page .site-main {
-  max-width: var(--max-width);
+  width: min(1680px, calc(100vw - (var(--content-gutter) * 2)));
+  max-width: none;
+  margin-inline: auto;
+}
+
+.quadrature-surface-page .site-main > .page-hero {
+  padding-inline: 0;
 }
 
 .quadrature-surface-page {
@@ -22,10 +28,7 @@
 }
 
 .quadrature-hero .page-title {
-  max-width: 16ch;
-  font-size: clamp(3.8rem, 9vw, 8.2rem);
-  line-height: 0.9;
-  letter-spacing: -0.075em;
+  max-width: none;
 }
 
 .quadrature-surface {
@@ -35,8 +38,8 @@
 
 .quadrature-summary {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(420px, 1fr);
-  gap: 1.8rem;
+  grid-template-columns: minmax(0, 0.82fr) minmax(500px, 1fr);
+  gap: clamp(1.8rem, 3vw, 3.4rem);
   padding-bottom: 1.35rem;
   border-bottom: 1px solid var(--line);
   align-items: start;
@@ -118,8 +121,8 @@
 
 .quadrature-stage {
   display: grid;
-  grid-template-columns: minmax(0, 1.55fr) minmax(320px, 0.9fr);
-  gap: 2.4rem;
+  grid-template-columns: minmax(420px, 0.95fr) minmax(540px, 1.25fr);
+  gap: clamp(2rem, 3vw, 4.2rem);
   align-items: start;
 }
 
@@ -271,7 +274,7 @@
 
 .quadrature-score-pulse,
 .quadrature-rule {
-  padding: 0.8rem 0.8rem 0.55rem;
+  padding: 0.9rem 0.95rem 0.7rem;
 }
 
 .quadrature-score-label {
@@ -306,7 +309,7 @@
 }
 
 .quadrature-axis-title {
-  font-size: 10px;
+  font-size: 10.5px;
   text-anchor: middle;
 }
 
@@ -341,13 +344,13 @@
 }
 
 .quadrature-score-proposal {
-  fill: color-mix(in srgb, var(--text) 34%, transparent);
+  fill: color-mix(in srgb, var(--text) 28%, transparent);
 }
 
 .quadrature-score-best {
   fill: none;
   stroke: var(--text);
-  stroke-width: 1.9;
+  stroke-width: 2.3;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
@@ -355,7 +358,7 @@
 .quadrature-score-baseline {
   fill: var(--bg);
   stroke: color-mix(in srgb, var(--text) 55%, transparent);
-  stroke-width: 1.7;
+  stroke-width: 2;
 }
 
 .quadrature-score-accepted,
@@ -368,6 +371,67 @@
 
 .quadrature-score-current {
   fill: var(--accent);
+}
+
+.quadrature-score-title {
+  font-size: 13.5px;
+}
+
+.quadrature-score-subtitle,
+.quadrature-score-current-label,
+.quadrature-score-annotation {
+  fill: var(--muted);
+  font-family: var(--surface-serif);
+}
+
+.quadrature-score-subtitle {
+  font-size: 9.5px;
+  font-style: italic;
+}
+
+.quadrature-score-current-label {
+  font-size: 10px;
+  font-style: italic;
+  text-anchor: end;
+}
+
+.quadrature-score-annotation {
+  font-size: 10px;
+  font-style: italic;
+}
+
+.quadrature-score-accepted-label {
+  fill: var(--text);
+}
+
+.quadrature-score-y-tick {
+  text-anchor: end;
+}
+
+.quadrature-score-x-value {
+  text-anchor: middle;
+}
+
+.quadrature-score-x-label,
+.quadrature-score-y-label,
+.quadrature-rule-x-label,
+.quadrature-rule-y-label {
+  fill: color-mix(in srgb, var(--text) 78%, transparent);
+  font-size: 12px;
+}
+
+.quadrature-score-y-label {
+  font-size: 13px;
+}
+
+.quadrature-rule-x-value {
+  text-anchor: middle;
+}
+
+.quadrature-score-x-tick {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 42%, transparent);
+  stroke-width: 0.8;
 }
 
 .quadrature-rule-stem {
@@ -388,28 +452,11 @@
   stroke-width: 1.6;
 }
 
-.quadrature-mini-bars line {
-  stroke: color-mix(in srgb, var(--text) 52%, transparent);
-  stroke-width: 2;
-  stroke-linecap: round;
-}
-
-.quadrature-mini-bars line.is-estimate {
-  stroke: var(--accent);
-}
-
-.quadrature-mini-bars text {
-  fill: var(--muted);
-  font-family: var(--surface-serif);
-  font-size: 7.5px;
-  font-style: italic;
-}
-
 .quadrature-score-svg {
   display: block;
   width: 100%;
-  height: 132px;
-  margin-top: 0.35rem;
+  height: 270px;
+  margin-top: 0.5rem;
 }
 
 .quadrature-rule-svg {
@@ -436,22 +483,70 @@
   margin-bottom: 0.45rem;
 }
 
-.quadrature-mini-head strong {
+.quadrature-mini-head strong,
+.quadrature-mini-head span {
   font-family: var(--surface-serif);
-  font-size: 0.86rem;
   font-style: italic;
-  font-weight: 600;
 }
 
-.quadrature-mini-head span {
+.quadrature-mini-formula {
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.quadrature-mini-error {
   color: var(--muted);
-  font-size: 0.76rem;
+  font-size: 0.86rem;
+}
+
+.quadrature-mini-formula var,
+.quadrature-mini-error var {
+  font-family: var(--surface-serif);
+  font-style: italic;
+}
+
+.quadrature-mini-formula sub,
+.quadrature-mini-error sub {
+  position: relative;
+  bottom: -0.18em;
+  font-size: 0.68em;
+  line-height: 0;
 }
 
 .quadrature-mini-svg {
   display: block;
   width: 100%;
-  height: 132px;
+  height: 140px;
+}
+
+.quadrature-mini-svg pattern line {
+  stroke: color-mix(in srgb, var(--text) 44%, transparent);
+  stroke-width: 1;
+}
+
+.quadrature-mini-cell-area {
+  fill: color-mix(in srgb, var(--accent) 2%, transparent);
+  stroke: color-mix(in srgb, var(--text) 22%, transparent);
+  stroke-width: 0.8;
+}
+
+.quadrature-mini-gap-fill {
+  fill: color-mix(in srgb, var(--accent) 20%, transparent);
+  stroke: color-mix(in srgb, var(--accent) 60%, transparent);
+  stroke-width: 0.7;
+}
+
+.quadrature-mini-gap-hatch {
+  fill: var(--mini-hatch);
+  stroke: none;
+  opacity: 0.78;
+}
+
+.quadrature-mini-stem {
+  stroke: color-mix(in srgb, var(--accent) 48%, transparent);
+  stroke-width: 0.7;
 }
 
 @media (max-width: 1100px) {
@@ -464,6 +559,7 @@
   }
 
   .quadrature-visual {
+    order: -1;
     padding-left: 0;
     border-left: 0;
     border-top: 1px solid var(--line);

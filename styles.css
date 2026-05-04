@@ -1036,6 +1036,7 @@ a {
 
 .site-main:not(.home-main) > .feature-section,
 .site-main:not(.home-main) > .content-blocks,
+.site-main:not(.home-main) > .page-hero,
 .site-main:not(.home-main) > .page-contact-address {
   padding-inline: var(--content-gutter);
 }
@@ -1103,6 +1104,7 @@ a {
 .open-results-index {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-inline: var(--content-gutter);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }

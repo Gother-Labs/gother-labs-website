@@ -193,15 +193,40 @@
     return x;
   }
 
-  function integrandLabel(name) {
-    if (name === "sin_pi") return "f1(x) = sin(pi x)";
-    if (name === "sqrt") return "f2(x) = sqrt(x)";
-    if (name === "log1p") return "f3(x) = log(1+x)";
-    return name;
+  function integrandNotation(name) {
+    if (name === "sin_pi") {
+      return { index: 1, expression: "sin(&pi;x)" };
+    }
+    if (name === "sqrt") {
+      return { index: 2, expression: "&radic;x" };
+    }
+    if (name === "log1p") {
+      return { index: 3, expression: "log(1+x)" };
+    }
+    return { index: 0, expression: name };
   }
 
   function formatObjective(value) {
     return value >= 100 ? value.toFixed(1) : value.toFixed(3);
+  }
+
+  function weightAxis(maxWeight) {
+    if (maxWeight <= 0.25) {
+      return { max: 0.25, ticks: [0.1, 0.2, 0.25] };
+    }
+    if (maxWeight <= 0.35) {
+      return { max: 0.3, ticks: [0.1, 0.2, 0.3] };
+    }
+    if (maxWeight <= 0.55) {
+      return { max: 0.5, ticks: [0.25, 0.5] };
+    }
+    return { max: 1, ticks: [0.5, 1] };
+  }
+
+  function formatWeightTick(value) {
+    if (value === 1) return "1";
+    if (value === 0.25) return "0.25";
+    return value.toFixed(1);
   }
 
   function buildEditorLine(op) {
@@ -328,21 +353,22 @@
     const text = cssVar("--text", "#ffffff");
     const muted = cssVar("--muted", "#6a6a6a");
     const line = cssVar("--line-strong", "rgba(10,10,10,0.16)");
-    const width = 340;
-    const height = 180;
-    const left = 38;
-    const right = width - 18;
+    const width = 420;
+    const height = 190;
+    const left = 56;
+    const right = width - 20;
     const top = 38;
-    const bottom = 138;
-    const maxWeight = 0.25;
+    const bottom = 144;
+    const axis = weightAxis(Math.max(...weights, 0));
+    const maxWeight = axis.max;
     const lines = [];
     const xAt = (x) => left + (right - left) * x;
     const yAt = (w) => bottom - (Math.min(maxWeight, Math.max(0, w)) / maxWeight) * (bottom - top);
 
-    for (const tick of [0.1, 0.2, 0.25]) {
+    for (const tick of axis.ticks) {
       const y = yAt(tick);
       lines.push(`<line class="quadrature-paper-grid" x1="${left}" y1="${y.toFixed(1)}" x2="${right}" y2="${y.toFixed(1)}" />`);
-      lines.push(`<text class="quadrature-axis-tick" x="${left - 11}" y="${(y + 3).toFixed(1)}" text-anchor="end">${tick === 0.25 ? "0.25" : tick.toFixed(1)}</text>`);
+      lines.push(`<text class="quadrature-axis-tick" x="${left - 11}" y="${(y + 3).toFixed(1)}" text-anchor="end">${formatWeightTick(tick)}</text>`);
     }
 
     lines.push(`<line class="quadrature-paper-axis" x1="${left}" y1="${bottom}" x2="${right}" y2="${bottom}" />`);
@@ -366,11 +392,15 @@
         <text x="13" y="1">current candidate</text>
       </g>
       ${lines.join("")}
-      <text class="quadrature-axis-tick" x="${left}" y="${bottom + 17}">0</text>
-      <text class="quadrature-axis-tick" x="${xAt(0.5)}" y="${bottom + 17}">0.5</text>
-      <text class="quadrature-axis-tick" x="${right}" y="${bottom + 17}">1</text>
-      <text class="quadrature-axis-title" x="${left + (right - left) / 2}" y="${bottom + 34}">node position x_i</text>
-      <text class="quadrature-axis-title" x="12" y="${top + (bottom - top) / 2}" transform="rotate(-90 12 ${top + (bottom - top) / 2})">normalized weight w_i</text>
+      <text class="quadrature-axis-tick quadrature-rule-x-value" x="${left}" y="${bottom + 17}">0</text>
+      <text class="quadrature-axis-tick quadrature-rule-x-value" x="${xAt(0.5)}" y="${bottom + 17}">0.5</text>
+      <text class="quadrature-axis-tick quadrature-rule-x-value" x="${right}" y="${bottom + 17}">1</text>
+      <text class="quadrature-axis-title quadrature-rule-x-label" x="${left + (right - left) / 2}" y="${bottom + 35}">
+        <tspan>node position </tspan><tspan font-style="italic">x</tspan><tspan baseline-shift="sub" font-size="8">i</tspan>
+      </text>
+      <text class="quadrature-axis-title quadrature-rule-y-label" x="17" y="${top + (bottom - top) / 2}" transform="rotate(-90 17 ${top + (bottom - top) / 2})">
+        <tspan>normalized weight </tspan><tspan font-style="italic">w</tspan><tspan baseline-shift="sub" font-size="8">i</tspan>
+      </text>
     `;
   }
 
@@ -386,41 +416,77 @@
     for (const item of integrands) {
       const card = document.createElement("article");
       card.className = "quadrature-mini-chart";
+      const notation = integrandNotation(item.name);
 
       const xs = Array.from({ length: 40 }, (_, index) => index / 39);
       const width = 250;
-      const height = 100;
-      const pad = { left: 16, right: 10, top: 10, bottom: 18 };
+      const height = 108;
+      const pad = { left: 16, right: 10, top: 10, bottom: 12 };
       const plotW = width - pad.left - pad.right;
       const plotH = height - pad.top - pad.bottom;
       const values = xs.map((x) => sampleFunction(item.name, x));
       const maxVal = Math.max(...values);
-      const minVal = Math.min(...values);
-      const yFor = (value) => pad.top + plotH - ((value - minVal) / Math.max(1e-9, maxVal - minVal)) * plotH;
+      const yFor = (value) => pad.top + plotH - (Math.max(0, value) / Math.max(1e-9, maxVal)) * plotH;
       const xFor = (x) => pad.left + x * plotW;
       const path = xs.map((x, index) => `${index === 0 ? "M" : "L"} ${xFor(x)} ${yFor(values[index])}`).join(" ");
+      const intervals = nodes.map((x, index) => {
+        const previous = index === 0 ? 0 : (nodes[index - 1] + x) / 2;
+        const next = index === nodes.length - 1 ? 1 : (x + nodes[index + 1]) / 2;
+        return [Math.max(0, previous), Math.min(1, next)];
+      });
+      const areaCells = intervals.map(([x0, x1], index) => {
+        const node = nodes[index];
+        const cellX = xFor(x0);
+        const cellW = Math.max(1.5, xFor(x1) - cellX);
+        const y = yFor(sampleFunction(item.name, node));
+        const h = pad.top + plotH - y;
+        const regionSamples = Array.from({ length: 14 }, (_, sampleIndex) => {
+          const t = sampleIndex / 13;
+          const sampleX = x0 + (x1 - x0) * t;
+          return [xFor(sampleX), yFor(sampleFunction(item.name, sampleX))];
+        });
+        const curveEdge = regionSamples
+          .slice()
+          .reverse()
+          .map(([sx, sy]) => `L${sx.toFixed(1)} ${sy.toFixed(1)}`)
+          .join(" ");
+        const gapPath = `M${cellX.toFixed(1)} ${y.toFixed(1)} L${(cellX + cellW).toFixed(1)} ${y.toFixed(1)} ${curveEdge} Z`;
+        const nodeX = xFor(node);
+        return `
+          <g class="quadrature-mini-cell">
+            <rect class="quadrature-mini-cell-area" x="${cellX.toFixed(1)}" y="${y.toFixed(1)}" width="${cellW.toFixed(1)}" height="${h.toFixed(1)}" />
+            <path class="quadrature-mini-gap-fill" d="${gapPath}" />
+            <path class="quadrature-mini-gap-hatch" d="${gapPath}" />
+            <line class="quadrature-mini-stem" x1="${nodeX.toFixed(1)}" y1="${pad.top + plotH}" x2="${nodeX.toFixed(1)}" y2="${y.toFixed(1)}" />
+          </g>
+        `;
+      }).join("");
       const dots = nodes.map((x) => {
         const y = sampleFunction(item.name, x);
         return `<circle class="quadrature-mini-node" cx="${xFor(x)}" cy="${yFor(y)}" r="3.1" />`;
       }).join("");
-      const exactWidth = Math.max(0, Math.min(1, item.exact)) * 70;
-      const approxWidth = Math.max(0, Math.min(1, item.approx)) * 70;
 
       card.innerHTML = `
         <div class="quadrature-mini-head">
-          <strong>${integrandLabel(item.name)}</strong>
-          <span>e = ${item.error.toFixed(4)}</span>
+          <strong class="quadrature-mini-formula">
+            <var>f</var><sub>${notation.index}</sub><span>(</span><var>x</var><span>) = ${notation.expression}</span>
+          </strong>
+          <span class="quadrature-mini-error">
+            <var>e</var><sub>${notation.index}</sub><span> = ${item.error.toFixed(4)}</span>
+          </span>
         </div>
         <svg class="quadrature-mini-svg" viewBox="0 0 ${width} ${height}" aria-label="${item.name} quadrature view">
+          <defs>
+            <pattern id="quadratureMiniHatch${notation.index}" patternUnits="userSpaceOnUse" width="8" height="8" patternTransform="rotate(62)">
+              <line x1="0" y1="0" x2="0" y2="8" />
+            </pattern>
+          </defs>
           <line class="quadrature-paper-axis" x1="${pad.left}" y1="${pad.top + plotH}" x2="${pad.left + plotW}" y2="${pad.top + plotH}" />
+          <g class="quadrature-mini-areas" style="--mini-hatch: url(#quadratureMiniHatch${notation.index})">
+            ${areaCells}
+          </g>
           <path class="quadrature-mini-curve" d="${path}" />
           ${dots}
-          <g class="quadrature-mini-bars" transform="translate(${pad.left} ${height - 12})">
-            <line x1="0" y1="0" x2="${exactWidth.toFixed(1)}" y2="0" />
-            <line class="is-estimate" x1="86" y1="0" x2="${(86 + approxWidth).toFixed(1)}" y2="0" />
-            <text x="0" y="-5">exact</text>
-            <text x="86" y="-5">estimate</text>
-          </g>
         </svg>
       `;
       integrandsGrid.appendChild(card);
@@ -445,13 +511,9 @@
   }
 
   function renderMiniScore(stepIndex, morph, displayedBest) {
-    const accent = cssVar("--accent", "#0a84ff");
-    const bg = cssVar("--bg", "#ffffff");
-    const text = cssVar("--text", "#ffffff");
-    const muted = cssVar("--muted", "#d7d7d7");
-    const width = 340;
-    const height = 130;
-    const pad = { left: 34, right: 16, top: 34, bottom: 26 };
+    const width = 460;
+    const height = 250;
+    const pad = { left: 52, right: 14, top: 24, bottom: 42 };
     const plotW = width - pad.left - pad.right;
     const plotH = height - pad.top - pad.bottom;
     const xAt = (index) => pad.left + plotW * (index / Math.max(1, allSteps.length - 1));
@@ -469,32 +531,43 @@
     const markerX = mix(xAt(allSteps.findIndex((step) => step.index === previousStep.index)), xAt(allSteps.findIndex((step) => step.index === currentStep.index)), morph);
     const markerY = mix(yAt(previousStep.score), yAt(currentStep.score), morph);
     const acceptedIndex = allSteps.findIndex((step) => step === acceptedStep);
+    const acceptedX = xAt(acceptedIndex);
+    const acceptedY = yAt(acceptedStep.score);
+    const baselineX = xAt(0);
+    const baselineY = yAt(baselineStep.score);
+    const yTicks = [700, 400, 200];
+    const xTicks = [0, 40, allSteps.length - 1];
+    const grid = yTicks.map((value) => {
+      const y = yAt(value);
+      return `
+        <line class="quadrature-paper-grid" x1="${pad.left}" y1="${y.toFixed(1)}" x2="${pad.left + plotW}" y2="${y.toFixed(1)}" />
+        <text class="quadrature-axis-tick quadrature-score-y-tick" x="${pad.left - 12}" y="${(y + 3).toFixed(1)}">${value}</text>
+      `;
+    }).join("");
+    const xAxisTicks = xTicks.map((value) => {
+      const x = xAt(value);
+      return `
+        <line class="quadrature-score-x-tick" x1="${x.toFixed(1)}" y1="${pad.top + plotH}" x2="${x.toFixed(1)}" y2="${pad.top + plotH + 5}" />
+        <text class="quadrature-axis-tick quadrature-score-x-value" x="${x.toFixed(1)}" y="${height - 14}">${value}</text>
+      `;
+    }).join("");
 
     scoreMiniSvg.innerHTML = `
-      <text class="quadrature-figure-title" x="${pad.left}" y="17">Acceptance objective (lower is better)</text>
-      <g class="quadrature-score-legend" transform="translate(${pad.left} 28)">
-        <circle class="quadrature-score-proposal" cx="0" cy="0" r="2.2" />
-        <text x="10" y="3">scored candidate</text>
-        <line class="quadrature-score-best" x1="82" y1="0" x2="100" y2="0" />
-        <text x="108" y="3">best-so-far</text>
-        <circle class="quadrature-score-baseline" cx="190" cy="0" r="4" />
-        <text x="201" y="3">baseline</text>
-        <circle class="quadrature-score-accepted" cx="258" cy="0" r="4" />
-        <text x="269" y="3">accepted</text>
-      </g>
-      <line class="quadrature-paper-grid" x1="${pad.left}" y1="${yAt(700).toFixed(1)}" x2="${pad.left + plotW}" y2="${yAt(700).toFixed(1)}" />
-      <line class="quadrature-paper-grid" x1="${pad.left}" y1="${yAt(400).toFixed(1)}" x2="${pad.left + plotW}" y2="${yAt(400).toFixed(1)}" />
-      <line class="quadrature-paper-grid" x1="${pad.left}" y1="${yAt(200).toFixed(1)}" x2="${pad.left + plotW}" y2="${yAt(200).toFixed(1)}" />
+      ${grid}
       <line class="quadrature-paper-axis" x1="${pad.left}" y1="${pad.top + plotH}" x2="${pad.left + plotW}" y2="${pad.top + plotH}" />
       <line class="quadrature-paper-axis" x1="${pad.left}" y1="${pad.top}" x2="${pad.left}" y2="${pad.top + plotH}" />
-      <text class="quadrature-axis-title" x="10" y="${pad.top + plotH / 2}" transform="rotate(-90 10 ${pad.top + plotH / 2})">J(r)</text>
+      <text class="quadrature-axis-title quadrature-score-y-label" x="18" y="${pad.top + plotH / 2}" transform="rotate(-90 18 ${pad.top + plotH / 2})">
+        <tspan font-style="italic">J</tspan><tspan>(</tspan><tspan font-style="italic">r</tspan><tspan>)</tspan>
+      </text>
       ${proposalDots}
       <path class="quadrature-score-best" d="${linePath}" />
-      <circle class="quadrature-score-baseline" cx="${xAt(0).toFixed(1)}" cy="${yAt(baselineStep.score).toFixed(1)}" r="4.4" />
-      <circle class="quadrature-score-accepted" cx="${xAt(acceptedIndex).toFixed(1)}" cy="${yAt(acceptedStep.score).toFixed(1)}" r="4.7" />
-      <circle class="quadrature-score-current" cx="${markerX.toFixed(1)}" cy="${markerY.toFixed(1)}" r="3.2" />
-      <text class="quadrature-axis-tick" x="${pad.left}" y="${height - 5}">0</text>
-      <text class="quadrature-axis-tick" x="${pad.left + plotW}" y="${height - 5}">${allSteps.length - 1}</text>
+      <circle class="quadrature-score-baseline" cx="${baselineX.toFixed(1)}" cy="${baselineY.toFixed(1)}" r="5.4" />
+      <circle class="quadrature-score-accepted" cx="${acceptedX.toFixed(1)}" cy="${acceptedY.toFixed(1)}" r="5.8" />
+      <circle class="quadrature-score-current" cx="${markerX.toFixed(1)}" cy="${markerY.toFixed(1)}" r="3.8" />
+      ${xAxisTicks}
+      <text class="quadrature-axis-title quadrature-score-x-label" x="${pad.left + plotW / 2}" y="${height - 1}">
+        <tspan>candidate index </tspan><tspan font-style="italic">k</tspan>
+      </text>
     `;
     scoreMiniLabel.textContent = `best ${formatObjective(displayedBest)}`;
   }

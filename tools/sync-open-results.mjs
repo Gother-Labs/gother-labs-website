@@ -9,7 +9,7 @@ const RESULTS_ROOT = path.resolve(SITE_ROOT, "..", "gother-labs-open-results");
 const CATALOG_PATH = path.join(RESULTS_ROOT, "catalog.json");
 const OUT_ROOT = path.join(SITE_ROOT, "open-results");
 
-const CSS_VERSION = "open-results-pipeline-v21";
+const CSS_VERSION = "site-gutters-v1";
 const SITE_URL = "https://www.gotherlabs.com";
 
 function escapeHtml(value) {
@@ -42,9 +42,9 @@ function formatPercent(value) {
 
 function inlineMarkdown(value) {
   return escapeHtml(value)
-    .replace(/\[([^\]]+)\]\(((?:https?:\/\/|#)[^)\s]+)\)/g, (_match, label, href) => {
+    .replace(/\[([^\]]+)\]\(((?:https?:\/\/|#|\.{1,2}\/|\/)[^)\s]+)\)/g, (_match, label, href) => {
       const safeLabel = label;
-      return href.startsWith("#")
+      return href.startsWith("#") || href.startsWith("/") || href.startsWith("./") || href.startsWith("../")
         ? `<a href="${href}">${safeLabel}</a>`
         : `<a href="${href}" target="_blank" rel="noreferrer">${safeLabel}</a>`;
     })
