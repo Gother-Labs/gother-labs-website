@@ -2070,6 +2070,10 @@ a {
   overflow-wrap: anywhere;
 }
 
+.open-result-whitepaper [id] {
+  scroll-margin-top: 6rem;
+}
+
 .open-result-whitepaper .formula-block {
   max-width: 54rem;
   margin: 2rem auto 2.2rem;

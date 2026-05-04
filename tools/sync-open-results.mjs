@@ -42,7 +42,12 @@ function formatPercent(value) {
 
 function inlineMarkdown(value) {
   return escapeHtml(value)
-    .replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noreferrer">$1</a>')
+    .replace(/\[([^\]]+)\]\(((?:https?:\/\/|#)[^)\s]+)\)/g, (_match, label, href) => {
+      const safeLabel = label;
+      return href.startsWith("#")
+        ? `<a href="${href}">${safeLabel}</a>`
+        : `<a href="${href}" target="_blank" rel="noreferrer">${safeLabel}</a>`;
+    })
     .replace(/`([^`]+)`/g, "<code>$1</code>")
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
 }
@@ -443,7 +448,7 @@ function quadratureProblemVisuals() {
     .join("\n");
 
   return {
-    "exact-integral": `<figure class="open-result-primer-card open-result-paper-figure">
+    "exact-integral": `<figure class="open-result-primer-card open-result-paper-figure" id="fig-1">
               <svg class="open-result-primer-svg open-result-paper-chart-svg" viewBox="0 0 560 306" role="img" aria-label="Conceptual exact integral for an arbitrary function g on the unit interval.">
                 <defs>
                   <clipPath id="conceptExactPlotClip">
@@ -466,7 +471,7 @@ function quadratureProblemVisuals() {
               </svg>
               <figcaption>Figure 1. Conceptual setup for the exact integral. The shaded surface denotes \\(I[g]\\) for an arbitrary function \\(g\\), separate from the public integrand suite used by the evaluation contract.</figcaption>
             </figure>`,
-    "quadrature-rule": `<figure class="open-result-primer-card open-result-paper-figure">
+    "quadrature-rule": `<figure class="open-result-primer-card open-result-paper-figure" id="fig-2">
               <svg class="open-result-primer-svg open-result-paper-chart-svg" viewBox="0 0 560 306" role="img" aria-label="Conceptual quadrature rule showing weighted point evaluations of an arbitrary function.">
                 <defs>
                   <clipPath id="conceptQuadraturePlotClip">
@@ -490,7 +495,7 @@ ${quadratureCells.join("\n")}
               </svg>
               <figcaption>Figure 2. Quadrature replaces the continuous integral with weighted point evaluations. The blue cells are the estimate \\(Q_r[g]\\): each cell width represents \\(w_i\\), each height is \\(g(x_i)\\), and each area is one contribution \\(w_i g(x_i)\\).</figcaption>
             </figure>`,
-    "residual-error": `<figure class="open-result-primer-card open-result-paper-figure">
+    "residual-error": `<figure class="open-result-primer-card open-result-paper-figure" id="fig-3">
               <svg class="open-result-primer-svg open-result-paper-chart-svg" viewBox="0 0 560 306" role="img" aria-label="Conceptual residual between the exact integral and weighted quadrature estimate.">
                 <defs>
                   <clipPath id="conceptResidualPlotClip">
@@ -540,7 +545,9 @@ ${rows
 
 function paperTable({ caption, headers, rows, className = "" }) {
   const figureClass = ["open-result-paper-table", className].filter(Boolean).join(" ");
-  return `<figure class="${figureClass}">
+  const captionId = caption?.match(/^Table\s+(\d+)/)?.[1];
+  const idAttribute = captionId ? ` id="table-${captionId}"` : "";
+  return `<figure class="${figureClass}"${idAttribute}>
           <div class="open-result-table-wrap">
             <table class="open-result-table">
               <thead>
@@ -648,7 +655,7 @@ function ruleDistributionFigure({ rule, figureNumber, title, subtitle, markerCla
                 <circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${visibleRadius.toFixed(1)}" />
               </g>`;
     }).join("\n");
-  return `<figure class="open-result-primer-card open-result-paper-figure open-result-single-rule-figure">
+  return `<figure class="open-result-primer-card open-result-paper-figure open-result-single-rule-figure" id="fig-${figureNumber}">
           <svg class="open-result-primer-svg open-result-accepted-rule-svg open-result-paper-chart-svg" viewBox="0 0 560 280" role="img" aria-label="${escapeHtml(ariaLabel)}">
             <text class="open-result-axis-label open-result-objective-y-title" x="34" y="${top + panel.height / 2}" transform="rotate(-90 34 ${top + panel.height / 2})">normalized weight w<tspan baseline-shift="sub" font-size="8">i</tspan></text>
             <g class="open-result-objective-legend open-result-single-rule-legend" transform="translate(${panel.right - 92} 34)">
@@ -844,7 +851,7 @@ function residualLocationFigure(evolution) {
             </g>`;
   }).join("\n");
 
-  return `<figure class="open-result-primer-card open-result-paper-figure">
+  return `<figure class="open-result-primer-card open-result-paper-figure" id="fig-7">
           <svg class="open-result-primer-svg open-result-residual-location-svg open-result-paper-chart-svg" viewBox="0 0 560 456" role="img" aria-label="Residual location diagnostics for the run baseline and accepted rule on each public integrand.">
             <defs>
               <pattern id="acceptedResidualHatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(62)">
@@ -922,7 +929,7 @@ function objectiveCurveFigure(evolution) {
               </g>`;
     }).join("\n");
 
-  return `<figure class="open-result-primer-card open-result-paper-figure open-result-objective-figure">
+  return `<figure class="open-result-primer-card open-result-paper-figure open-result-objective-figure" id="fig-6">
           <svg class="open-result-primer-svg open-result-objective-svg" viewBox="0 0 560 328" role="img" aria-label="Best so far objective curve across the curated public trace.">
             <text class="open-result-axis-label open-result-figure-title" x="${left}" y="34">Best-so-far acceptance objective (lower is better)</text>
             <g class="open-result-objective-legend" transform="translate(${left} 48)">
@@ -962,14 +969,14 @@ function objectiveCurveFigure(evolution) {
 }
 
 function paperAssetFigure({ src, caption, number }) {
-  return `<figure class="open-result-paper-asset">
+  return `<figure class="open-result-paper-asset" id="fig-${number}">
           <img src="./${escapeHtml(src)}" alt="">
           <figcaption>Figure ${number}. ${escapeHtml(caption)}</figcaption>
         </figure>`;
 }
 
 function implementationCodeFigure(candidateCode) {
-  return `<figure class="open-result-paper-code">
+  return `<figure class="open-result-paper-code" id="listing-1">
           <pre><code>${escapeHtml(extractCandidateCode(candidateCode))}</code></pre>
           <figcaption>Listing 1. Accepted candidate implementation.</figcaption>
         </figure>`;

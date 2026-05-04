@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Quadrature rule optimization | Open Results | Göther Labs</title>
-    <meta name="description" content="A compact one-dimensional quadrature rule improved against a frozen analytic test suite. The public result separates the acceptance score from the interpretable numerical errors so the gain can be inspected, replayed, and challenged.">
+    <meta name="description" content="A compact five-node rule for estimating one-dimensional integrals, improved against a fixed public test suite. The report separates the acceptance score from direct residual errors so the gain can be inspected, replayed, and challenged.">
     <link rel="canonical" href="https://www.gotherlabs.com/open-results/quadrature-rule-optimization/">
     <meta property="og:title" content="Quadrature rule optimization | Open Results | Göther Labs">
-    <meta property="og:description" content="A compact one-dimensional quadrature rule improved against a frozen analytic test suite. The public result separates the acceptance score from the interpretable numerical errors so the gain can be inspected, replayed, and challenged.">
+    <meta property="og:description" content="A compact five-node rule for estimating one-dimensional integrals, improved against a fixed public test suite. The report separates the acceptance score from direct residual errors so the gain can be inspected, replayed, and challenged.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.gotherlabs.com/open-results/quadrature-rule-optimization/">
     <meta property="og:image" content="https://www.gotherlabs.com/assets/og-image.png">
@@ -52,23 +52,23 @@
         <section class="hero compact-hero page-hero open-result-detail-hero">
           <p class="eyebrow">Scientific Computing</p>
           <h1 class="page-title">Quadrature rule optimization</h1>
-          <p class="intro open-results-hero-intro">A compact one-dimensional quadrature rule improved against a frozen analytic test suite. The public result separates the acceptance score from the interpretable numerical errors so the gain can be inspected, replayed, and challenged.</p>
+          <p class="intro open-results-hero-intro">A compact five-node rule for estimating one-dimensional integrals, improved against a fixed public test suite. The report separates the acceptance score from direct residual errors so the gain can be inspected, replayed, and challenged.</p>
         </section>
 
         <section class="open-result-detail open-result-whitepaper-shell">
           <article class="open-result-article open-result-whitepaper">
 <h3>Abstract</h3>
-<p>This note reports a compact five-node quadrature rule for one-dimensional integrals on the unit interval. The run was evaluated under a frozen lower-is-better acceptance contract, with the public baseline fixed before the accepted candidate is compared. The accepted candidate reduces the contracted objective from 688.676231 to 114.514813, while the largest public representative residual is reduced from 0.363380 to 0.001029.</p>
-<p>The result is a bounded optimization artifact. It is not presented as a universal integration method. The purpose of the report is to make the problem, evaluation contract, baseline, accepted candidate, residual behavior, and replay surface inspectable in one place.</p>
+<p>This note reports a compact five-node rule for estimating one-dimensional integrals on the unit interval. Relative to the fixed public baseline, the accepted rule reduces the frozen lower-is-better acceptance score by 83.37%. On the most improved public residual component, the direct numerical error falls from 0.3634 to 0.0010, a 99.72% reduction.</p>
+<p>The acceptance score is the rule used to decide whether a candidate is retained; the residual errors are the easier-to-read numerical behavior. The report keeps both surfaces visible. A technical reader can inspect the equations, figures, candidate code, and replay artifacts. A non-specialist reader should read the result as a bounded claim: under the stated one-dimensional analytic test contract, the accepted five-node rule is materially better than the fixed baseline, but it is not presented as a universal integration method.</p>
 <h3>1. Problem formulation</h3>
-<p>The conceptual object is an integral of an arbitrary scalar function \(g\) on the unit interval:</p>
+<p>Numerical integration estimates the area accumulated under a function. The conceptual object is an integral of an arbitrary scalar function \(g\) on the unit interval:</p>
 <div class="formula-block" id="eq-1">
   <div class="formula-math">\[
 I[g] = \int_{0}^{1} g(x)\,dx.
 \]</div>
   <span class="equation-number">(1)</span>
 </div>
-<figure class="open-result-primer-card open-result-paper-figure">
+<figure class="open-result-primer-card open-result-paper-figure" id="fig-1">
               <svg class="open-result-primer-svg open-result-paper-chart-svg" viewBox="0 0 560 306" role="img" aria-label="Conceptual exact integral for an arbitrary function g on the unit interval.">
                 <defs>
                   <clipPath id="conceptExactPlotClip">
@@ -98,7 +98,7 @@ I[g] = \int_{0}^{1} g(x)\,dx.
               </svg>
               <figcaption>Figure 1. Conceptual setup for the exact integral. The shaded surface denotes \(I[g]\) for an arbitrary function \(g\), separate from the public integrand suite used by the evaluation contract.</figcaption>
             </figure>
-<p>A quadrature rule \(r\) replaces the continuous integral with a finite set of weighted point evaluations. The nodes \(x_i\) determine where the function is sampled and the normalized weights \(w_i\) determine each sample contribution:</p>
+<p>The exact area is rarely the object a production system computes directly. Instead, a quadrature rule \(r\) replaces the continuous integral with a finite set of weighted point evaluations. The nodes \(x_i\) determine where the function is sampled and the normalized weights \(w_i\) determine how much each sample contributes:</p>
 <div class="formula-block" id="eq-2">
   <div class="formula-math">\[
 Q_r[g] = \sum_{i=1}^{n} w_i\,g(x_i),
@@ -109,7 +109,7 @@ x_i \in [0,1],
 \]</div>
   <span class="equation-number">(2)</span>
 </div>
-<figure class="open-result-primer-card open-result-paper-figure">
+<figure class="open-result-primer-card open-result-paper-figure" id="fig-2">
               <svg class="open-result-primer-svg open-result-paper-chart-svg" viewBox="0 0 560 306" role="img" aria-label="Conceptual quadrature rule showing weighted point evaluations of an arbitrary function.">
                 <defs>
                   <clipPath id="conceptQuadraturePlotClip">
@@ -188,14 +188,14 @@ x_i \in [0,1],
               </svg>
               <figcaption>Figure 2. Quadrature replaces the continuous integral with weighted point evaluations. The blue cells are the estimate \(Q_r[g]\): each cell width represents \(w_i\), each height is \(g(x_i)\), and each area is one contribution \(w_i g(x_i)\).</figcaption>
             </figure>
-<p>The residual compares the analytic integral with the quadrature estimate. The visual residual can have regions where the rule overestimates and regions where it underestimates; the reported scalar residual is the absolute value of the net difference:</p>
+<p>The residual is the direct error a reader can interpret without knowing the optimization machinery. It compares the analytic integral with the quadrature estimate. The visual residual can have regions where the rule overestimates and regions where it underestimates; the reported scalar residual is the absolute value of the net difference:</p>
 <div class="formula-block" id="eq-3">
   <div class="formula-math">\[
 e(r;g) = \left|Q_r[g] - I[g]\right|.
 \]</div>
   <span class="equation-number">(3)</span>
 </div>
-<figure class="open-result-primer-card open-result-paper-figure">
+<figure class="open-result-primer-card open-result-paper-figure" id="fig-3">
               <svg class="open-result-primer-svg open-result-paper-chart-svg" viewBox="0 0 560 306" role="img" aria-label="Conceptual residual between the exact integral and weighted quadrature estimate.">
                 <defs>
                   <clipPath id="conceptResidualPlotClip">
@@ -261,9 +261,9 @@ e(r;g) = \left|Q_r[g] - I[g]\right|.
               </svg>
               <figcaption>Figure 3. Conceptual residual diagnostic. Local over- and under-estimation can coexist; the reported scalar residual is the absolute net difference between the quadrature estimate and the exact integral.</figcaption>
             </figure>
-<p>These figures introduce the objects used by the report. The actual acceptance contract below uses a fixed public suite of three analytic functions, not the illustrative function \(g\).</p>
+<p><a href="#fig-1">Figures 1</a>-<a href="#fig-3">3</a> introduce the objects used by the report. They are deliberately conceptual: the actual acceptance contract below uses a fixed public suite of three analytic functions, not the illustrative function \(g\).</p>
 <h3>2. Evaluation contract</h3>
-<p>The evaluation contract is fixed before candidate comparison. Each candidate rule is scored on the same public analytic integrand suite:</p>
+<p>The evaluation contract is what makes the comparison fair. It is fixed before candidate comparison, so the accepted rule cannot change the test after seeing the result. Each candidate rule is scored on the same public analytic integrand suite:</p>
 <div class="formula-block" id="eq-4">
   <div class="formula-math">\[
 \begin{aligned}
@@ -274,7 +274,7 @@ f_3(x) &amp;= \log(1+x).
 \]</div>
   <span class="equation-number">(4)</span>
 </div>
-<p>For each function \(f_j\), the evaluator computes the residual by specializing Equation (3) to the contract integrand:</p>
+<p>For each function \(f_j\), the evaluator computes the residual by specializing <a href="#eq-3">Equation (3)</a> to the contract integrand:</p>
 <div class="formula-block" id="eq-5">
   <div class="formula-math">\[
 e_j(r) =
@@ -282,14 +282,14 @@ e_j(r) =
 \]</div>
   <span class="equation-number">(5)</span>
 </div>
-<p>The run objective \(J(r)\) is a lower-is-better aggregate of the public residual components:</p>
+<p>The run objective \(J(r)\) is the acceptance score used during the run. It is a lower-is-better aggregate of the public residual components:</p>
 <div class="formula-block" id="eq-6">
   <div class="formula-math">\[
 J(r) = \sum_{j=1}^{3} \alpha_j\,e_j(r).
 \]</div>
   <span class="equation-number">(6)</span>
 </div>
-<figure class="open-result-paper-table open-result-contract-table">
+<figure class="open-result-paper-table open-result-contract-table" id="table-1">
           <div class="open-result-table-wrap">
             <table class="open-result-table">
               <thead>
@@ -324,10 +324,10 @@ J(r) = \sum_{j=1}^{3} \alpha_j\,e_j(r).
           </div>
           <figcaption>Table 1. Evaluation contract surface. Each row defines one public residual component and the residual of the fixed run baseline.</figcaption>
         </figure>
-<p>The public bundle identifies the integrand suite and objective direction, but it does not expose numeric component weights \(\alpha_j\). Table 1 therefore fixes the public residual components without inventing unpublished objective weights or mixing in accepted-candidate outcomes.</p>
+<p>The public bundle identifies the integrand suite and objective direction, but it does not expose numeric component weights \(\alpha_j\). <a href="#table-1">Table 1</a> therefore fixes the public residual components without inventing unpublished objective weights or mixing in accepted-candidate outcomes. In plain terms: the table shows what was tested and where the baseline started; it does not ask the reader to trust an unpublished weighting scheme.</p>
 <h4>Run baseline</h4>
-<p>The run baseline \(r_0\) is the first public rule in the curated trace. It fixes the comparison point before candidate selection.</p>
-<figure class="open-result-primer-card open-result-paper-figure open-result-single-rule-figure">
+<p>The run baseline \(r_0\) is the first public rule in the curated trace. It fixes the comparison point before candidate selection. Every improvement reported later is measured relative to this same baseline.</p>
+<figure class="open-result-primer-card open-result-paper-figure open-result-single-rule-figure" id="fig-4">
           <svg class="open-result-primer-svg open-result-accepted-rule-svg open-result-paper-chart-svg" viewBox="0 0 560 280" role="img" aria-label="Run baseline quadrature rule shown as node position and normalized weight.">
             <text class="open-result-axis-label open-result-objective-y-title" x="34" y="130" transform="rotate(-90 34 130)">normalized weight w<tspan baseline-shift="sub" font-size="8">i</tspan></text>
             <g class="open-result-objective-legend open-result-single-rule-legend" transform="translate(420 34)">
@@ -382,8 +382,8 @@ J(r) = \sum_{j=1}^{3} \alpha_j\,e_j(r).
         </figure>
 <p>All objective and residual improvements reported below are measured against this same run baseline, whose contracted objective is \(J(r_0)=688.676231\).</p>
 <h3>3. Accepted candidate</h3>
-<p>The accepted candidate is the five-node rule shown in Figure 5. The figure is the primary definition of the node placement and normalized weights; it should be read against the run baseline in Figure 4 before interpreting the objective change.</p>
-<figure class="open-result-primer-card open-result-paper-figure open-result-single-rule-figure">
+<p>The accepted candidate is the five-node rule shown in <a href="#fig-5">Figure 5</a>. This is the object being reported: five sample locations and five normalized weights. The figure is the primary definition of the node placement and weights; it should be read against the run baseline in <a href="#fig-4">Figure 4</a> before interpreting the objective change.</p>
+<figure class="open-result-primer-card open-result-paper-figure open-result-single-rule-figure" id="fig-5">
           <svg class="open-result-primer-svg open-result-accepted-rule-svg open-result-paper-chart-svg" viewBox="0 0 560 280" role="img" aria-label="Accepted five node quadrature rule shown as node position and normalized weight.">
             <text class="open-result-axis-label open-result-objective-y-title" x="34" y="130" transform="rotate(-90 34 130)">normalized weight w<tspan baseline-shift="sub" font-size="8">i</tspan></text>
             <g class="open-result-objective-legend open-result-single-rule-legend" transform="translate(420 34)">
@@ -441,7 +441,7 @@ J(r) = \sum_{j=1}^{3} \alpha_j\,e_j(r).
           <figcaption>Figure 5. Accepted five-node rule in node-position and normalized-weight coordinates. The near-uniform weights and inward node placement define the candidate evaluated below.</figcaption>
         </figure>
 <h4>Candidate construction</h4>
-<p>The implementation maps source nodes \(\xi_i\) on \([-1,1]\) inward with a fixed remapping exponent \(p=1.7\), maps them back to the unit interval, and renormalizes the weights:</p>
+<p>The candidate is intentionally small enough to audit. The implementation maps source nodes \(\xi_i\) on \([-1,1]\) inward with a fixed remapping exponent \(p=1.7\), maps them back to the unit interval, and renormalizes the weights:</p>
 <div class="formula-block" id="eq-7">
   <div class="formula-math">\[
 \tilde{\xi}_i=\operatorname{sign}(\xi_i)\,|\xi_i|^p,
@@ -452,8 +452,8 @@ p=1.7.
 \]</div>
   <span class="equation-number">(7)</span>
 </div>
-<p>The accepted implementation is included here because it is part of the candidate definition, not only a replay appendix.</p>
-<figure class="open-result-paper-code">
+<p>The accepted implementation is included here because it is part of the candidate definition, not only a replay appendix. The code is short enough for a reader to verify that the reported rule is generated by the stated transformation.</p>
+<figure class="open-result-paper-code" id="listing-1">
           <pre><code>def quadrature_rule(spec: QuadratureSpec) -&gt; QuadratureRule:
     &quot;&quot;&quot;
     Construct a quadrature rule using Gauss-Legendre nodes with deterministic inward remapping.
@@ -485,8 +485,9 @@ p=1.7.
           <figcaption>Listing 1. Accepted candidate implementation.</figcaption>
         </figure>
 <h4>Candidate results</h4>
-<p>The primary reported improvement is the reduction in the frozen acceptance objective. The curve shows the scored candidates, the retained best-so-far objective, the fixed run baseline, and the accepted candidate.</p>
-<figure class="open-result-primer-card open-result-paper-figure open-result-objective-figure">
+<p>The result has two readouts. <a href="#fig-6">Figure 6</a> and <a href="#table-2">Table 2</a> show the acceptance-contract readout: the candidate improves the lower-is-better score used by the run. <a href="#fig-7">Figure 7</a> and <a href="#table-3">Table 3</a> show the numerical readout: the residual errors left on the public functions.</p>
+<p>The curve shows the scored candidates, the retained best-so-far objective, the fixed run baseline, and the accepted candidate.</p>
+<figure class="open-result-primer-card open-result-paper-figure open-result-objective-figure" id="fig-6">
           <svg class="open-result-primer-svg open-result-objective-svg" viewBox="0 0 560 328" role="img" aria-label="Best so far objective curve across the curated public trace.">
             <text class="open-result-axis-label open-result-figure-title" x="82" y="34">Best-so-far acceptance objective (lower is better)</text>
             <g class="open-result-objective-legend" transform="translate(82 48)">
@@ -645,7 +646,7 @@ p=1.7.
           </svg>
           <figcaption>Figure 6. Objective trace in paper form. Faint points are scored candidates; the solid step curve is the best-so-far acceptance objective retained under the frozen contract. The baseline and accepted markers show the reported comparison.</figcaption>
         </figure>
-<figure class="open-result-paper-table">
+<figure class="open-result-paper-table" id="table-2">
           <div class="open-result-table-wrap">
             <table class="open-result-table">
               <thead>
@@ -674,8 +675,8 @@ p=1.7.
           </div>
           <figcaption>Table 2. Reported objective comparison under the frozen acceptance contract; lower values are better.</figcaption>
         </figure>
-<p>The residual readout is the scientific check on the objective score. The largest accepted residual remains on \(f_1(x)=\sin(\pi x)\), but it is also the component with the largest absolute reduction from the run baseline.</p>
-<figure class="open-result-primer-card open-result-paper-figure">
+<p>The residual readout is the scientific check on the objective score. The largest accepted residual remains on \(f_1(x)=\sin(\pi x)\), but it is also the component with the largest absolute reduction from the run baseline. This distinction matters: the accepted candidate is not claimed to make every residual vanish; it is claimed to improve the measured behavior under this contract.</p>
+<figure class="open-result-primer-card open-result-paper-figure" id="fig-7">
           <svg class="open-result-primer-svg open-result-residual-location-svg open-result-paper-chart-svg" viewBox="0 0 560 456" role="img" aria-label="Residual location diagnostics for the run baseline and accepted rule on each public integrand.">
             <defs>
               <pattern id="acceptedResidualHatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(62)">
@@ -838,7 +839,7 @@ p=1.7.
           </svg>
           <figcaption>Figure 7. Residual location diagnostic by public integrand. The white curve is the analytic function, gray marks the run baseline sample, blue marks the accepted samples, and the hatched regions show where the accepted contribution cells depart locally from the curve; each panel uses its own vertical scale.</figcaption>
         </figure>
-<figure class="open-result-paper-table">
+<figure class="open-result-paper-table" id="table-3">
           <div class="open-result-table-wrap">
             <table class="open-result-table">
               <thead>
@@ -874,12 +875,12 @@ p=1.7.
           <figcaption>Table 3. Representative residual errors.</figcaption>
         </figure>
 <h3>4. Limitations</h3>
-<p>This is a bounded benchmark on a fixed one-dimensional analytic suite. It does not establish superiority for arbitrary integrands, discontinuous functions, oscillatory functions outside the public suite, endpoint singularities not represented by the contract, multidimensional integration, or production workloads with different stability requirements.</p>
+<p>This is a bounded benchmark on a fixed one-dimensional analytic suite. The result says that this accepted five-node rule improved this contract. It does not establish superiority for arbitrary integrands, discontinuous functions, oscillatory functions outside the public suite, endpoint singularities not represented by the contract, multidimensional integration, or production workloads with different stability requirements.</p>
 <p>The contracted score is intentionally narrow. A lower value of \(J(r)\) is evidence that the accepted candidate improved under this contract, not evidence that every downstream quantity of interest improved. Because the public bundle does not expose numeric component weights \(\alpha_j\), readers should interpret the residual table as the transparent scientific readout alongside the aggregate score.</p>
 <p>External validity is deliberately left open. A reader should rerun an evaluation contract that explicitly contains the cases they care about before transferring the node placement to another integration setting.</p>
 <h3>5. Reproducibility</h3>
-<p>The replay surface is intentionally small. <code>evaluation_contract.md</code> defines the public contract and objective direction. <code>accepted_candidate.py</code> provides Listing 1 and the accepted rule shown in Figure 5. <code>evolution.json</code> provides Figure 6. <code>metrics.json</code> provides Table 2 and the retained objective values. The residual values used in Figure 7 and Table 3 are read from the curated public trace.</p>
-<p>Replaying the result should use the same analytic integrand suite, the same objective definition, the same run baseline, and the same lower-is-better direction.</p>
+<p>The replay surface is intentionally small. <code>evaluation_contract.md</code> defines the public contract and objective direction. <code>accepted_candidate.py</code> provides <a href="#listing-1">Listing 1</a> and the accepted rule shown in <a href="#fig-5">Figure 5</a>. <code>evolution.json</code> provides <a href="#fig-6">Figure 6</a>. <code>metrics.json</code> provides <a href="#table-2">Table 2</a> and the retained objective values. The residual values used in <a href="#fig-7">Figure 7</a> and <a href="#table-3">Table 3</a> are read from the curated public trace.</p>
+<p>Replaying the result should use the same analytic integrand suite, the same objective definition, the same run baseline, and the same lower-is-better direction. Changing any of those items creates a new evaluation, not a replay of this result.</p>
 <p>The source bundle is available in <a href="https://github.com/Gother-Labs/gother-labs-open-results/tree/main/results/quadrature-rule-optimization" target="_blank" rel="noreferrer">Göther Labs Open Results</a>.</p>
           </article>
         </section>
