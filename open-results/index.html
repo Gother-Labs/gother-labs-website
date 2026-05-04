@@ -15,7 +15,7 @@
     <meta name="twitter:image" content="https://www.gotherlabs.com/assets/og-image.png">
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="../assets/gother-mark.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../styles.css?v=site-gutters-v1">
+    <link rel="stylesheet" href="../styles.css?v=open-results-card-v3">
 
   </head>
   <body>
@@ -42,18 +42,48 @@
         </section>
 
         <section class="open-results-index" aria-label="Open results library">
-<article class="open-result-card">
+<article class="open-result-card open-result-card--quadrature">
             <a class="open-result-link" href="./quadrature-rule-optimization/" aria-label="Read Quadrature rule optimization">
+              <svg class="open-result-card-visual" viewBox="0 0 560 360" aria-hidden="true" focusable="false">
+                <defs>
+                  <clipPath id="quadrature-card-area">
+                    <path d="M44 286 L44 230 C95 166 154 109 226 82 C310 50 409 72 516 148 L516 286 Z" />
+                  </clipPath>
+                  <pattern id="quadrature-card-hatch" width="18" height="18" patternUnits="userSpaceOnUse" patternTransform="rotate(58)">
+                    <line x1="0" y1="0" x2="0" y2="18" />
+                  </pattern>
+                </defs>
+                <g class="open-result-card-chart">
+                  <line x1="44" y1="286" x2="516" y2="286" />
+                  <line x1="44" y1="286" x2="44" y2="48" />
+                  <line x1="44" y1="92" x2="516" y2="92" class="grid" />
+                  <path class="area" d="M44 286 L44 230 C95 166 154 109 226 82 C310 50 409 72 516 148 L516 286 Z" />
+                  <rect class="hatch" x="44" y="48" width="472" height="238" clip-path="url(#quadrature-card-area)" />
+                  <path class="curve" d="M44 230 C95 166 154 109 226 82 C310 50 409 72 516 148" />
+                  <g class="nodes">
+                    <line x1="92" y1="286" x2="92" y2="176" />
+                    <line x1="188" y1="286" x2="188" y2="98" />
+                    <line x1="280" y1="286" x2="280" y2="64" />
+                    <line x1="374" y1="286" x2="374" y2="82" />
+                    <line x1="468" y1="286" x2="468" y2="124" />
+                    <circle cx="92" cy="176" r="9" />
+                    <circle cx="188" cy="98" r="9" />
+                    <circle cx="280" cy="64" r="9" />
+                    <circle cx="374" cy="82" r="9" />
+                    <circle cx="468" cy="124" r="9" />
+                  </g>
+                </g>
+              </svg>
               <div class="open-result-meta">
                 <p class="eyebrow">01 Scientific Computing</p>
               </div>
               <h2>Quadrature rule optimization</h2>
-              <p>Candidate quadrature rules are evaluated against analytic integrands and retained only when the measured objective improves.</p>
+              <p>A five-node integration rule is compared against a fixed baseline, with both the acceptance score and direct residual errors exposed.</p>
               <div class="open-result-measure">
-                <span>Seed objective</span>
-                <strong>688.676</strong>
-                <span>Best objective</span>
-                <strong>114.515</strong>
+                <span>Accepted rule</span>
+                <strong>5 nodes</strong>
+                <span>Largest residual reduction</span>
+                <strong>99.72%</strong>
               </div>
             </a>
           </article>

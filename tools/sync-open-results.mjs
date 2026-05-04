@@ -9,7 +9,7 @@ const RESULTS_ROOT = path.resolve(SITE_ROOT, "..", "gother-labs-open-results");
 const CATALOG_PATH = path.join(RESULTS_ROOT, "catalog.json");
 const OUT_ROOT = path.join(SITE_ROOT, "open-results");
 
-const CSS_VERSION = "site-gutters-v1";
+const CSS_VERSION = "open-results-card-v3";
 const SITE_URL = "https://www.gotherlabs.com";
 
 function escapeHtml(value) {
@@ -187,8 +187,9 @@ function mathHead() {
 `;
 }
 
-function htmlShell({ title, description, canonicalPath, cssPrefix, body, enableMath = false }) {
+function htmlShell({ title, description, canonicalPath, cssPrefix, body, enableMath = false, bodyClass = "" }) {
   const canonical = `${SITE_URL}${canonicalPath}`;
+  const bodyClassAttribute = bodyClass ? ` class="${escapeHtml(bodyClass)}"` : "";
   return `<!doctype html>
 <html lang="en">
   <head>
@@ -209,7 +210,7 @@ function htmlShell({ title, description, canonicalPath, cssPrefix, body, enableM
     <link rel="stylesheet" href="${cssPrefix}styles.css?v=${CSS_VERSION}">
 ${enableMath ? mathHead() : ""}
   </head>
-  <body>
+  <body${bodyClassAttribute}>
     <a class="skip-link" href="#site-main">Skip to content</a>
     <div class="page-shell site-shell">
       ${nav(cssPrefix)}
@@ -229,20 +230,71 @@ ${body}
 `;
 }
 
-function resultCard(result) {
+function resultCardMeasureItems(result) {
+  if (Array.isArray(result.website?.card_metrics) && result.website.card_metrics.length > 0) {
+    return result.website.card_metrics.slice(0, 2).map((metric) => [
+      metric.label,
+      metric.value,
+    ]);
+  }
+
   const labels = result.website?.display_labels ?? {};
-  return `<article class="open-result-card">
+  return [
+    [labels.seed || "Seed objective", formatNumber(result.metrics.seed)],
+    [labels.best || "Best objective", formatNumber(result.metrics.best)],
+  ];
+}
+
+function resultCardVisual(result) {
+  if (result.website?.card_visual !== "quadrature") return "";
+
+  return `<svg class="open-result-card-visual" viewBox="0 0 560 360" aria-hidden="true" focusable="false">
+                <defs>
+                  <clipPath id="quadrature-card-area">
+                    <path d="M44 286 L44 230 C95 166 154 109 226 82 C310 50 409 72 516 148 L516 286 Z" />
+                  </clipPath>
+                  <pattern id="quadrature-card-hatch" width="18" height="18" patternUnits="userSpaceOnUse" patternTransform="rotate(58)">
+                    <line x1="0" y1="0" x2="0" y2="18" />
+                  </pattern>
+                </defs>
+                <g class="open-result-card-chart">
+                  <line x1="44" y1="286" x2="516" y2="286" />
+                  <line x1="44" y1="286" x2="44" y2="48" />
+                  <line x1="44" y1="92" x2="516" y2="92" class="grid" />
+                  <path class="area" d="M44 286 L44 230 C95 166 154 109 226 82 C310 50 409 72 516 148 L516 286 Z" />
+                  <rect class="hatch" x="44" y="48" width="472" height="238" clip-path="url(#quadrature-card-area)" />
+                  <path class="curve" d="M44 230 C95 166 154 109 226 82 C310 50 409 72 516 148" />
+                  <g class="nodes">
+                    <line x1="92" y1="286" x2="92" y2="176" />
+                    <line x1="188" y1="286" x2="188" y2="98" />
+                    <line x1="280" y1="286" x2="280" y2="64" />
+                    <line x1="374" y1="286" x2="374" y2="82" />
+                    <line x1="468" y1="286" x2="468" y2="124" />
+                    <circle cx="92" cy="176" r="9" />
+                    <circle cx="188" cy="98" r="9" />
+                    <circle cx="280" cy="64" r="9" />
+                    <circle cx="374" cy="82" r="9" />
+                    <circle cx="468" cy="124" r="9" />
+                  </g>
+                </g>
+              </svg>`;
+}
+
+function resultCard(result) {
+  const measures = resultCardMeasureItems(result);
+  const visualClass = result.website?.card_visual ? ` open-result-card--${escapeHtml(result.website.card_visual)}` : "";
+  const visual = resultCardVisual(result);
+  const visualMarkup = visual ? `              ${visual}\n` : "";
+  return `<article class="open-result-card${visualClass}">
             <a class="open-result-link" href="./${result.slug}/" aria-label="Read ${escapeHtml(result.title)}">
-              <div class="open-result-meta">
+${visualMarkup}              <div class="open-result-meta">
                 <p class="eyebrow">${escapeHtml(result.website.card_label)}</p>
               </div>
               <h2>${escapeHtml(result.title)}</h2>
               <p>${escapeHtml(result.website.card_summary || result.summary)}</p>
               <div class="open-result-measure">
-                <span>${escapeHtml(labels.seed || "Seed objective")}</span>
-                <strong>${formatNumber(result.metrics.seed)}</strong>
-                <span>${escapeHtml(labels.best || "Best objective")}</span>
-                <strong>${formatNumber(result.metrics.best)}</strong>
+                ${measures.map(([label, value]) => `<span>${escapeHtml(label)}</span>
+                <strong>${escapeHtml(value)}</strong>`).join("\n                ")}
               </div>
             </a>
           </article>`;
@@ -1228,7 +1280,6 @@ async function writeDetail(result) {
   const isQuadratureWhitepaper = full.slug === "quadrature-rule-optimization";
   const body = isQuadratureWhitepaper
     ? `        <section class="hero compact-hero page-hero open-result-detail-hero">
-          <p class="eyebrow">${escapeHtml(full.domain)}</p>
           <h1 class="page-title">${escapeHtml(full.title)}</h1>
           <p class="intro open-results-hero-intro">${escapeHtml(full.summary)}</p>
         </section>
@@ -1277,6 +1328,7 @@ ${figures}
       cssPrefix: "../../",
       body,
       enableMath: /\$\$|\\\(|\\\[/.test(article),
+      bodyClass: isQuadratureWhitepaper ? "open-result-quadrature-page" : "",
     }),
     "utf8",
   );
@@ -1301,9 +1353,16 @@ ${urls.map((url) => `  <url>\n    <loc>${SITE_URL}${url}</loc>\n  </url>`).join(
 
 async function main() {
   const catalog = JSON.parse(await fs.readFile(CATALOG_PATH, "utf8"));
-  const results = catalog.results
-    .filter((result) => result.status === "published")
-    .sort((a, b) => (a.website?.order ?? 999) - (b.website?.order ?? 999));
+  const results = (
+    await Promise.all(
+      catalog.results
+        .filter((result) => result.status === "published")
+        .map(async (result) => {
+          if (!result.path) return result;
+          return JSON.parse(await fs.readFile(path.join(RESULTS_ROOT, result.path), "utf8"));
+        }),
+    )
+  ).sort((a, b) => (a.website?.order ?? 999) - (b.website?.order ?? 999));
 
   await fs.mkdir(OUT_ROOT, { recursive: true });
   await writeIndex(results);

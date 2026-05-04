@@ -149,12 +149,23 @@
     }
     const lineHeight = Math.max(16, pitch - 6);
     const bodyHeight = Math.max(280, 24 + lineCount * pitch);
-    const fontSize = maxVisibleChars > 100 || lineCount > 56
-      ? 10.2
-      : lineCount > 46
-        ? 10.75
-        : 11.4;
-    return { pitch, lineHeight, bodyHeight, fontSize };
+    const fontSize = maxVisibleChars > 150
+      ? 9.1
+      : maxVisibleChars > 118 || lineCount > 56
+        ? 9.8
+        : maxVisibleChars > 96 || lineCount > 46
+          ? 10.35
+          : 11.1;
+    const codeScale = maxVisibleChars > 170
+      ? 0.52
+      : maxVisibleChars > 140
+        ? 0.6
+        : maxVisibleChars > 118
+          ? 0.7
+          : maxVisibleChars > 96
+            ? 0.82
+            : 1;
+    return { pitch, lineHeight, bodyHeight, fontSize, codeScale };
   }
 
   function applyEditorLayout(step, settleT) {
@@ -165,12 +176,14 @@
       lineHeight: mix(previousLayout.lineHeight, currentLayout.lineHeight, settleT),
       bodyHeight: mix(previousLayout.bodyHeight, currentLayout.bodyHeight, settleT),
       fontSize: mix(previousLayout.fontSize, currentLayout.fontSize, settleT),
+      codeScale: mix(previousLayout.codeScale, currentLayout.codeScale, settleT),
       previousPitch: previousLayout.pitch,
       currentPitch: currentLayout.pitch,
     };
     editorBody.style.height = `${layout.bodyHeight}px`;
     editorBody.style.setProperty("--editor-font-size", `${layout.fontSize}px`);
     editorBody.style.setProperty("--editor-line-height", `${layout.lineHeight}px`);
+    editorBody.style.setProperty("--editor-code-scale", `${layout.codeScale}`);
     return layout;
   }
 

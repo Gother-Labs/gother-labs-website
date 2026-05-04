@@ -1116,6 +1116,7 @@ a {
 .open-result-card {
   position: relative;
   min-height: clamp(28rem, 46vw, 38rem);
+  overflow: hidden;
   border-right: 1px solid var(--line);
 }
 
@@ -1125,6 +1126,7 @@ a {
 
 .open-result-link {
   display: grid;
+  position: relative;
   align-content: end;
   min-height: inherit;
   padding: clamp(1.4rem, 3.4vw, 2.8rem);
@@ -1139,6 +1141,14 @@ a {
 .open-result-link:focus-visible {
   outline: 2px solid var(--focus-ring);
   outline-offset: -2px;
+}
+
+.open-result-link > h2,
+.open-result-link > p,
+.open-result-link > .open-result-measure,
+.open-result-link > .open-result-meta {
+  position: relative;
+  z-index: 1;
 }
 
 .open-result-meta {
@@ -1179,6 +1189,69 @@ a {
   font-weight: 300;
   line-height: 1.55;
   letter-spacing: -0.01em;
+}
+
+.open-result-card--quadrature p {
+  max-width: 34ch;
+}
+
+.open-result-card-visual {
+  position: absolute;
+  right: clamp(-7rem, -6vw, -2.6rem);
+  bottom: clamp(4.5rem, 8vw, 7.5rem);
+  z-index: 0;
+  width: min(58%, 34rem);
+  height: auto;
+  color: var(--accent);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.open-result-card-chart line,
+.open-result-card-chart path {
+  vector-effect: non-scaling-stroke;
+}
+
+.open-result-card-chart > line {
+  stroke: color-mix(in srgb, var(--text) 24%, transparent);
+  stroke-width: 1.2;
+}
+
+.open-result-card-chart .grid {
+  stroke: color-mix(in srgb, var(--text) 12%, transparent);
+}
+
+.open-result-card-chart .area {
+  fill: rgba(11, 132, 254, 0.13);
+}
+
+.open-result-card-chart .hatch {
+  fill: url(#quadrature-card-hatch);
+  opacity: 0.42;
+}
+
+.open-result-card-chart .hatch line,
+.open-result-card-visual pattern line {
+  stroke: color-mix(in srgb, var(--text) 34%, transparent);
+  stroke-width: 1;
+}
+
+.open-result-card-chart .curve {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 84%, transparent);
+  stroke-width: 3.2;
+  stroke-linecap: round;
+}
+
+.open-result-card-chart .nodes line {
+  stroke: rgba(11, 132, 254, 0.72);
+  stroke-width: 1.8;
+}
+
+.open-result-card-chart .nodes circle {
+  fill: var(--bg);
+  stroke: var(--accent);
+  stroke-width: 3.2;
 }
 
 .open-result-measure {
@@ -1412,7 +1485,7 @@ a {
 }
 
 .open-result-primer-svg pattern line {
-  stroke: rgb(255 255 255 / 0.72);
+  stroke: color-mix(in srgb, var(--text) 38%, transparent);
   stroke-width: 0.9;
 }
 
@@ -1630,7 +1703,7 @@ a {
 }
 
 .open-result-residual-location-svg pattern line {
-  stroke: rgb(255 255 255 / 0.64);
+  stroke: color-mix(in srgb, var(--text) 38%, transparent);
 }
 
 .open-result-residual-cell-gap {
@@ -2801,6 +2874,17 @@ a {
 
   .open-result-card h2 {
     max-width: 11ch;
+  }
+
+  .open-result-card--quadrature p {
+    max-width: 31ch;
+  }
+
+  .open-result-card-visual {
+    right: -7rem;
+    bottom: 5.5rem;
+    width: 72%;
+    opacity: 0.2;
   }
 
   .open-result-measure {

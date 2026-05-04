@@ -1,8 +1,8 @@
 :root {
-  --surface-panel: #000000;
+  --surface-panel: var(--bg);
   --surface-panel-strong: color-mix(in srgb, var(--text) 3%, transparent);
-  --surface-delete: #9a9a9a;
-  --surface-insert: #0b84fe;
+  --surface-delete: color-mix(in srgb, var(--muted) 88%, var(--text) 12%);
+  --surface-insert: var(--accent);
   --surface-focus: color-mix(in srgb, var(--accent) 7%, transparent);
   --surface-mono: "SFMono-Regular", Menlo, Consolas, monospace;
   --surface-serif: Georgia, "Times New Roman", serif;
@@ -174,6 +174,7 @@
   gap: 1rem;
   padding: 0.95rem 1rem;
   border-bottom: 1px solid var(--line);
+  background: var(--surface-panel);
 }
 
 .quadrature-editor-title {
@@ -252,6 +253,13 @@
   opacity: 0.95;
 }
 
+.quadrature-editor-line .code {
+  display: block;
+  width: max-content;
+  transform: scaleX(var(--editor-code-scale, 1));
+  transform-origin: left center;
+}
+
 .quadrature-editor-line.delete .code {
   text-decoration: line-through;
   text-decoration-thickness: 1.5px;
@@ -260,8 +268,6 @@
 .quadrature-visual {
   display: grid;
   gap: 1rem;
-  padding-left: 1.2rem;
-  border-left: 1px solid var(--line);
 }
 
 .quadrature-score-pulse,
