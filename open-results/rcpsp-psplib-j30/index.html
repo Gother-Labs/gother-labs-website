@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PSPLIB J30 scheduling benchmark | Open Results | Göther Labs</title>
+    <meta name="description" content="A deterministic resource-constrained project scheduling rule improved across a frozen PSPLIB J30 subset with proven optimal makespans. The public chain reduced the lower-is-better score from 14.312 to 12.087 while keeping feasibility at 100%.">
+    <link rel="canonical" href="https://www.gotherlabs.com/open-results/rcpsp-psplib-j30/">
+    <meta property="og:title" content="PSPLIB J30 scheduling benchmark | Open Results | Göther Labs">
+    <meta property="og:description" content="A deterministic resource-constrained project scheduling rule improved across a frozen PSPLIB J30 subset with proven optimal makespans. The public chain reduced the lower-is-better score from 14.312 to 12.087 while keeping feasibility at 100%.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.gotherlabs.com/open-results/rcpsp-psplib-j30/">
+    <meta property="og:image" content="https://www.gotherlabs.com/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.gotherlabs.com/assets/og-image.png">
+    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" href="../../assets/gother-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../styles.css?v=open-results-card-v6">
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [["\\(", "\\)"]],
+          displayMath: [["\\[", "\\]"]]
+        },
+        options: {
+          enableMenu: false
+        },
+        chtml: {
+          matchFontHeight: false
+        }
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  </head>
+  <body class="open-result-rcpsp-page">
+    <a class="skip-link" href="#site-main">Skip to content</a>
+    <div class="page-shell site-shell">
+      <header class="site-header">
+        <nav class="site-nav" aria-label="Primary">
+          <a class="brand nav-brand" href="../../" aria-label="Göther Labs home">
+            <img src="../../assets/gother-mark.svg" alt="" class="brand-image">
+          </a>
+          <a href="../../company/">Company</a>
+          <a href="../../domains/">Domains</a>
+          <a href="../../open-results/">Open Results</a>
+          <a href="../../contact/">Contact</a>
+        </nav>
+      </header>
+
+      <main class="site-main" id="site-main">
+        <section class="hero compact-hero page-hero open-result-detail-hero rcpsp-detail-hero">
+          <h1 class="page-title">PSPLIB J30 scheduling benchmark</h1>
+          <p class="intro open-results-hero-intro">A deterministic resource-constrained project scheduling rule improved across a frozen PSPLIB J30 subset with proven optimal makespans. The public chain reduced the lower-is-better score from 14.312 to 12.087 while keeping feasibility at 100%.</p>
+        </section>
+
+        <section class="open-result-detail open-result-whitepaper-shell rcpsp-whitepaper-shell">
+          <article class="open-result-article open-result-whitepaper rcpsp-whitepaper">
+<h3>Abstract</h3>
+<p>This note reports a deterministic dispatch rule for the Resource-Constrained Project Scheduling Problem (RCPSP). On a frozen public subset of PSPLIB J30, the evolutionary chain reduced the lower-is-better acceptance score from 14.312 to 12.087, a 15.55% reduction, while preserving feasibility on all 80 evaluated instances.</p>
+<p>For audit clarity, the public claim is the curated evolutionary chain, or cadena evolutiva, not a claim about the final isolated diagnostic run.</p>
+<p>The benchmark is deliberately external and bounded. Each portfolio instance has a proven optimal makespan, so the reported score measures schedule quality against a reference optimum rather than machine speed. The result should be read as a scheduling benchmark result on this fixed PSPLIB J30 subset, not as a claim that every RCPSP instance or production planning workflow is solved.</p>
+<h3>1. Problem formulation</h3>
+<p>RCPSP schedules a project made of activities, precedence constraints, and renewable resource limits. An activity can start only after its predecessors finish, and the resource demand of all activities active at the same time must fit within the available capacity. The schedule objective is the project makespan: the finish time of the terminal activity.</p>
+<div class="formula-block" id="eq-1">
+  <div class="formula-math">\[
+C_{max}(S) = \max_i F_i
+\]</div>
+  <span class="equation-number">(1)</span>
+</div>
+<p>where \(F_i\) is the finish time of activity \(i\) in schedule \(S\).</p>
+<figure class="open-result-primer-card open-result-paper-figure rcpsp-inline-figure rcpsp-schedule-figure" id="fig-1">
+          <svg class="open-result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 328" role="img" aria-label="RCPSP schedule readout with precedence network and Gantt schedule.">
+            <text class="open-result-axis-label open-result-figure-title" x="72" y="34">RCPSP schedule readout</text>
+            <text class="rcpsp-paper-note" x="72" y="55">Eligible activities are ranked first; the evaluator then commits them to the earliest feasible placement.</text>
+            <text class="rcpsp-paper-section-label" x="72" y="82">precedence network</text>
+            <g class="rcpsp-network">
+              <path d="M112 112H196" />
+              <path d="M112 112C148 148 184 156 226 156" />
+              <path d="M228 112H338" />
+              <path d="M254 156C292 148 318 128 360 112" />
+              <path d="M392 112H476" />
+              <circle cx="96" cy="112" r="12" /><text x="96" y="116" text-anchor="middle">0</text>
+              <circle cx="212" cy="112" r="12" /><text x="212" y="116" text-anchor="middle">A</text>
+              <circle cx="242" cy="156" r="12" /><text x="242" y="160" text-anchor="middle">B</text>
+              <circle class="rcpsp-emphasis-node" cx="376" cy="112" r="12" /><text x="376" y="116" text-anchor="middle">C</text>
+              <circle cx="492" cy="112" r="12" /><text x="492" y="116" text-anchor="middle">T</text>
+            </g>
+            <text class="rcpsp-paper-note" x="72" y="192">A task becomes eligible only after all predecessor arcs are satisfied.</text>
+            <text class="rcpsp-paper-section-label" x="72" y="212">Gantt schedule</text>
+            <g class="rcpsp-gantt">
+              <path class="open-result-objective-grid" d="M126 234H512M126 256H512M126 278H512" />
+              <path class="open-result-rule-paper-axis" d="M126 292H512" />
+              <text x="72" y="238">lane 1</text>
+              <text x="72" y="260">lane 2</text>
+              <text x="72" y="282">lane 3</text>
+              <rect x="138" y="223" width="60" height="15" rx="2" /><text x="148" y="234">A1</text>
+              <rect x="205" y="245" width="104" height="15" rx="2" /><text x="215" y="256">A2</text>
+              <rect class="rcpsp-secondary-bar" x="314" y="245" width="118" height="15" rx="2" /><text x="324" y="256">A4</text>
+              <rect x="244" y="267" width="136" height="15" rx="2" /><text x="254" y="278">A3</text>
+              <rect x="442" y="267" width="58" height="15" rx="2" /><text x="452" y="278">A5</text>
+              <line class="rcpsp-marker-line" x1="500" y1="216" x2="500" y2="292" />
+              <text class="rcpsp-paper-note" x="507" y="224">Cmax</text>
+              <text x="126" y="312">0</text>
+              <text x="254" y="312" text-anchor="middle">20</text>
+              <text x="382" y="312" text-anchor="middle">40</text>
+              <text x="512" y="312" text-anchor="end">60</text>
+            </g>
+          </svg>
+          <figcaption>Figure 1. RCPSP schedule readout. The standard schedule view combines the precedence network, Gantt placement, and makespan marker.</figcaption>
+        </figure>
+<figure class="open-result-primer-card open-result-paper-figure rcpsp-inline-figure rcpsp-resource-figure" id="fig-2">
+          <svg class="open-result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 306" role="img" aria-label="Renewable resource load profile for an RCPSP schedule.">
+            <text class="open-result-axis-label open-result-figure-title" x="72" y="34">Renewable resource load</text>
+            <text class="rcpsp-paper-note" x="72" y="55">A schedule is feasible only while every time bucket stays at or below capacity.</text>
+            <g transform="translate(82 74)">
+              <path class="open-result-objective-grid" d="M42 144H430M42 108H430M42 72H430M42 36H430" />
+              <path class="open-result-rule-paper-axis" d="M42 0V174H430" />
+              <path class="rcpsp-capacity-line" d="M42 54H430" />
+              <text class="rcpsp-paper-section-label" x="408" y="46" text-anchor="end">capacity</text>
+              <rect class="rcpsp-load" x="55" y="108" width="36" height="66" />
+              <rect class="rcpsp-load" x="101" y="72" width="36" height="102" />
+              <rect class="rcpsp-load rcpsp-load-hot" x="147" y="36" width="36" height="138" />
+              <rect class="rcpsp-load rcpsp-load-hot" x="193" y="54" width="36" height="120" />
+              <rect class="rcpsp-load" x="239" y="72" width="36" height="102" />
+              <rect class="rcpsp-load" x="285" y="96" width="36" height="78" />
+              <rect class="rcpsp-load" x="331" y="120" width="36" height="54" />
+              <rect class="rcpsp-load" x="377" y="132" width="36" height="42" />
+              <rect class="rcpsp-load-window" x="143" y="24" width="92" height="150" />
+              <text class="open-result-axis-tick open-result-objective-y-label" x="30" y="148">0</text>
+              <text class="open-result-axis-tick open-result-objective-y-label" x="30" y="112">1</text>
+              <text class="open-result-axis-tick open-result-objective-y-label" x="30" y="76">2</text>
+              <text class="open-result-axis-tick open-result-objective-y-label" x="30" y="40">3</text>
+              <text class="open-result-axis-tick" x="42" y="196">0</text>
+              <text class="open-result-axis-tick" x="190" y="196">20</text>
+              <text class="open-result-axis-tick" x="337" y="196">40</text>
+              <text class="open-result-axis-tick" x="430" y="196">60</text>
+              <text class="open-result-axis-label open-result-x-axis-title" x="236" y="226">time bucket</text>
+              <text class="open-result-axis-label open-result-objective-y-title" x="0" y="87" transform="rotate(-90 0 87)">active demand</text>
+              <text class="rcpsp-paper-note" x="42" y="258">The fixed evaluator rejects any placement that crosses the capacity line.</text>
+            </g>
+          </svg>
+          <figcaption>Figure 2. Renewable-resource load profile. The evaluator only accepts placements that keep every active resource demand under the capacity line.</figcaption>
+        </figure>
+<p>The evaluator uses serial schedule generation. At each step it finds eligible activities, scores each one with the candidate rule, asks the selector to choose one eligible activity, and places that activity at the earliest resource-feasible start time. This keeps the optimization surface narrow: the candidate changes priority logic, not the scheduling validator.</p>
+<h3>2. Benchmark and evaluation contract</h3>
+<p>The public portfolio contains 80 frozen PSPLIB J30 single-mode instances. The selection is parameters \(\{1, 7, 13, 19, 25, 31, 37, 43\}\) crossed with instances 1 through 10. Every instance has 32 jobs including dummy source and sink jobs, renewable-resource capacities, precedence arcs, and a proven optimal makespan.</p>
+<figure class="open-result-paper-table rcpsp-contract-table" id="table-1">
+          <div class="open-result-table-wrap">
+            <table class="open-result-table">
+              <thead>
+                <tr>
+                  <th>Field</th>
+                  <th>Public contract</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Dataset</td>
+                  <td>PSPLIB J30 single-mode RCPSP</td>
+                </tr>
+                <tr>
+                  <td>Portfolio</td>
+                  <td>80 frozen instances</td>
+                </tr>
+                <tr>
+                  <td>Selection</td>
+                  <td>parameters [1, 7, 13, 19, 25, 31, 37, 43] crossed with instances 1..10</td>
+                </tr>
+                <tr>
+                  <td>Reference</td>
+                  <td>480 J30 instances with proven optima in the source set</td>
+                </tr>
+                <tr>
+                  <td>Objective</td>
+                  <td><code>mean_gap_pct + 0.35 * p95_gap_pct + feasibility_penalty</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <figcaption>Table 1. Frozen PSPLIB J30 benchmark surface.</figcaption>
+        </figure>
+<p>For one instance \(k\), the evaluator computes a makespan gap against the proven optimum:</p>
+<div class="formula-block" id="eq-2">
+  <div class="formula-math">\[
+g_k = 100 \cdot \frac{C_{max,k}^{candidate} - C_{max,k}^{optimal}}{C_{max,k}^{optimal}}.
+\]</div>
+  <span class="equation-number">(2)</span>
+</div>
+<p>The retained objective combines portfolio mean quality with a tail-risk term:</p>
+<div class="formula-block" id="eq-3">
+  <div class="formula-math">\[
+score = mean(g_k) + 0.35 \cdot p95(g_k) + feasibility\_penalty.
+\]</div>
+  <span class="equation-number">(3)</span>
+</div>
+<p>A candidate must keep the feasibility penalty at zero. It must return finite priority scores, choose only eligible activities, schedule every activity exactly once, respect all precedences, and never exceed renewable resource capacities.</p>
+<h3>3. Accepted candidate</h3>
+<p>The accepted candidate keeps the serial schedule generator unchanged and changes only the activity-ranking policy. The final rule combines critical-path urgency, successor-unlocking pressure, bottleneck resource pressure, resource pressure, wait pressure, and remaining-work pressure. The selector then prefers activities that can start earlier and uses the priority score as the second-order decision.</p>
+<figure class="open-result-paper-code open-result-code-figure rcpsp-code-figure" id="listing-1">
+          <pre><code><span class="code-line"><span class="line-no">1</span><span class="line-src"><span class="py-keyword">def</span> priority_score(</span></span><span class="code-line"><span class="line-no">2</span><span class="line-src">    activity: ActivityView,</span></span><span class="code-line"><span class="line-no">3</span><span class="line-src">    state: ScheduleStateView,</span></span><span class="code-line"><span class="line-no">4</span><span class="line-src">    instance: InstanceView,</span></span><span class="code-line"><span class="line-no">5</span><span class="line-src">) -&gt; <span class="py-builtin">float</span>:</span></span><span class="code-line"><span class="line-no">6</span><span class="line-src">    <span class="py-string">&quot;&quot;&quot;Return a deterministic priority score <span class="py-keyword">for</span> one eligible RCPSP activity.&quot;&quot;&quot;</span></span></span><span class="code-line"><span class="line-no">7</span><span class="line-src">    <span class="py-comment"># Critical path urgency: prioritize jobs that are on the critical path</span></span></span><span class="code-line"><span class="line-no">8</span><span class="line-src">    cp_score = activity.critical_path_tail * 3.0</span></span><span class="code-line"><span class="line-no">9</span><span class="line-src">    <span class="py-comment"># Downstream impact: prioritize jobs that unlock more work</span></span></span><span class="code-line"><span class="line-no">10</span><span class="line-src">    unlock_score = (</span></span><span class="code-line"><span class="line-no">11</span><span class="line-src">        activity.successor_work * 0.15</span></span><span class="code-line"><span class="line-no">12</span><span class="line-src">        + activity.transitive_successor_count * 1.5</span></span><span class="code-line"><span class="line-no">13</span><span class="line-src">    )</span></span><span class="code-line"><span class="line-no">14</span><span class="line-src">    <span class="py-comment"># Resource contention: prioritize jobs that are bottleneck-heavy</span></span></span><span class="code-line"><span class="line-no">15</span><span class="line-src">    resource_score = (</span></span><span class="code-line"><span class="line-no">16</span><span class="line-src">        activity.bottleneck_ratio * 100.0</span></span><span class="code-line"><span class="line-no">17</span><span class="line-src">        + activity.resource_pressure * 10.0</span></span><span class="code-line"><span class="line-no">18</span><span class="line-src">    )</span></span><span class="code-line"><span class="line-no">19</span><span class="line-src">    <span class="py-comment"># Urgency: penalize jobs that have been waiting past their earliest possible start</span></span></span><span class="code-line"><span class="line-no">20</span><span class="line-src">    wait_time = <span class="py-builtin">max</span>(0, state.current_makespan - state.earliest_precedence_start)</span></span><span class="code-line"><span class="line-no">21</span><span class="line-src">    wait_score = wait_time * 1.5</span></span><span class="code-line"><span class="line-no">22</span><span class="line-src">    <span class="py-comment"># Remaining work pressure: scale priority based on total remaining work to maintain throughput</span></span></span><span class="code-line"><span class="line-no">23</span><span class="line-src">    remaining_score = state.remaining_work * 0.05</span></span><span class="code-line"><span class="line-no">24</span><span class="line-src">    <span class="py-comment"># Final score with tie-breaker based on job ID</span></span></span><span class="code-line"><span class="line-no">25</span><span class="line-src">    <span class="py-keyword">return</span> (</span></span><span class="code-line"><span class="line-no">26</span><span class="line-src">        cp_score</span></span><span class="code-line"><span class="line-no">27</span><span class="line-src">        + unlock_score</span></span><span class="code-line"><span class="line-no">28</span><span class="line-src">        + resource_score</span></span><span class="code-line"><span class="line-no">29</span><span class="line-src">        + wait_score</span></span><span class="code-line"><span class="line-no">30</span><span class="line-src">        + remaining_score</span></span><span class="code-line"><span class="line-no">31</span><span class="line-src">        - (0.01 * activity.id)</span></span><span class="code-line"><span class="line-no">32</span><span class="line-src">    )</span></span><span class="code-line"><span class="line-no">33</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">34</span><span class="line-src"><span class="py-keyword">def</span> select_activity(</span></span><span class="code-line"><span class="line-no">35</span><span class="line-src">    eligible_activities: tuple[EligibleActivityView, ...],</span></span><span class="code-line"><span class="line-no">36</span><span class="line-src">    instance: InstanceView,</span></span><span class="code-line"><span class="line-no">37</span><span class="line-src">) -&gt; <span class="py-builtin">int</span>:</span></span><span class="code-line"><span class="line-no">38</span><span class="line-src">    <span class="py-string">&quot;&quot;&quot;Choose one eligible activity after all local priority scores are available.&quot;&quot;&quot;</span></span></span><span class="code-line"><span class="line-no">39</span><span class="line-src">    <span class="py-comment"># Prioritize earlier start times to keep resources busy, then use the refined priority score.</span></span></span><span class="code-line"><span class="line-no">40</span><span class="line-src">    selected = <span class="py-builtin">min</span>(</span></span><span class="code-line"><span class="line-no">41</span><span class="line-src">        eligible_activities,</span></span><span class="code-line"><span class="line-no">42</span><span class="line-src">        key=<span class="py-keyword">lambda</span> item: (</span></span><span class="code-line"><span class="line-no">43</span><span class="line-src">            item.state.earliest_resource_feasible_start,</span></span><span class="code-line"><span class="line-no">44</span><span class="line-src">            -item.priority,</span></span><span class="code-line"><span class="line-no">45</span><span class="line-src">        ),</span></span><span class="code-line"><span class="line-no">46</span><span class="line-src">    )</span></span><span class="code-line"><span class="line-no">47</span><span class="line-src">    <span class="py-keyword">return</span> <span class="py-builtin">int</span>(selected.activity.id)</span></span></code></pre>
+          <figcaption>Listing 1. Accepted candidate implementation, formatted for inspection.</figcaption>
+        </figure>
+<p>This is intentionally inspectable. The candidate is not a solver replacement or a hidden search procedure. It is a deterministic dispatch rule inside a fixed evaluator.</p>
+<h3>4. Results</h3>
+<p>The public chain moved from the seed score of 14.312 to an accepted score of 12.087. The absolute score reduction is 2.226 points, or 15.55%.</p>
+<figure class="open-result-primer-card open-result-paper-figure rcpsp-inline-figure open-result-objective-figure" id="fig-3">
+          <svg class="open-result-primer-svg open-result-objective-svg rcpsp-paper-svg" viewBox="0 0 560 328" role="img" aria-label="Best-so-far RCPSP acceptance objective.">
+            <text class="open-result-axis-label open-result-figure-title" x="82" y="34">Best-so-far acceptance objective (lower is better)</text>
+            <g class="open-result-objective-legend" transform="translate(82 48)">
+              <g transform="translate(0 0)"><circle class="rcpsp-objective-checkpoint" cx="0" cy="0" r="3" /><text x="12" y="4">retained candidate</text></g>
+              <g transform="translate(118 0)"><line class="open-result-objective-legend-best" x1="0" y1="0" x2="16" y2="0" /><text x="24" y="4">best-so-far</text></g>
+              <g transform="translate(286 0)"><circle class="open-result-legend-baseline-dot" cx="0" cy="0" r="3.4" /><text x="16" y="4">seed</text></g>
+              <g transform="translate(374 0)"><circle class="open-result-legend-accepted-dot" cx="0" cy="0" r="3.8" /><text x="16" y="4">accepted</text></g>
+            </g>
+            <path class="open-result-objective-grid" d="M82 252H512" /><text class="open-result-axis-tick open-result-objective-y-label" x="64" y="256">12</text>
+            <path class="open-result-objective-grid" d="M82 174H512" /><text class="open-result-axis-tick open-result-objective-y-label" x="64" y="178">13</text>
+            <path class="open-result-objective-grid" d="M82 96H512" /><text class="open-result-axis-tick open-result-objective-y-label" x="64" y="100">14</text>
+            <path class="open-result-rule-paper-axis" d="M82 74V260H512" />
+            <path class="open-result-objective-best" d="M82 72 L89 72 L89 116 L97 116 L97 142 L150 142 L150 175 L301 175 L301 186 L402 186 L402 234 L512 234" />
+            <g>
+              <circle class="rcpsp-objective-checkpoint" cx="89" cy="116" r="3" />
+              <circle class="rcpsp-objective-checkpoint" cx="97" cy="142" r="3" />
+              <circle class="rcpsp-objective-checkpoint" cx="150" cy="175" r="3" />
+              <circle class="rcpsp-objective-checkpoint" cx="301" cy="186" r="3" />
+              <circle class="rcpsp-objective-checkpoint" cx="512" cy="234" r="3" />
+            </g>
+            <g class="open-result-objective-baseline"><circle cx="82" cy="72" r="4.2" /></g>
+            <g class="open-result-objective-accepted"><circle cx="402" cy="234" r="4.8" /></g>
+            <text class="open-result-axis-tick" x="82" y="282">0</text>
+            <text class="open-result-axis-tick" x="150" y="282">19</text>
+            <text class="open-result-axis-tick" x="301" y="282">61</text>
+            <text class="open-result-axis-tick" x="402" y="282">89</text>
+            <text class="open-result-axis-tick" x="512" y="282">119</text>
+            <text class="open-result-axis-label open-result-x-axis-title" x="297" y="306">generation checkpoint</text>
+            <text class="open-result-axis-label open-result-objective-y-title" x="34" y="167" transform="rotate(-90 34 167)">score J(r)</text>
+          </svg>
+          <figcaption>Figure 3. Best-so-far score across the curated evolutionary chain, rendered in the same paper style as the quadrature objective trace. The comparison is a chain result, not a claim that the final isolated diagnostic run discovered an additional improvement.</figcaption>
+        </figure>
+<figure class="open-result-primer-card open-result-paper-figure rcpsp-inline-figure rcpsp-benchmark-figure" id="fig-4">
+          <svg class="open-result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 300" role="img" aria-label="Seed versus accepted RCPSP benchmark readout.">
+            <text class="open-result-axis-label open-result-figure-title" x="48" y="34">Acceptance objective</text>
+            <text class="rcpsp-paper-note" x="512" y="34" text-anchor="end">lower is better</text>
+            <g class="rcpsp-score-readout">
+              <path class="rcpsp-reduction-bracket" d="M402.5 64H467.8M402.5 59V69M467.8 59V69" />
+              <text class="rcpsp-paper-note rcpsp-delta-text" x="435.2" y="55" text-anchor="middle">15.55% reduction</text>
+              <rect class="rcpsp-track" x="48" y="88" width="440" height="28" />
+              <rect class="rcpsp-reference-fill" x="48" y="88" width="419.8" height="28" />
+              <rect class="rcpsp-accent-fill" x="48" y="88" width="354.5" height="28" />
+              <line class="rcpsp-marker-line" x1="467.8" y1="78" x2="467.8" y2="126" />
+              <line class="rcpsp-marker-line rcpsp-accepted-marker" x1="402.5" y1="78" x2="402.5" y2="126" />
+              <text class="rcpsp-paper-note" x="512" y="92" text-anchor="end">seed</text>
+              <text class="rcpsp-paper-value" x="512" y="110" text-anchor="end">14.312</text>
+              <text class="rcpsp-paper-note" x="402.5" y="140" text-anchor="middle">accepted</text>
+              <text class="rcpsp-paper-value" x="402.5" y="158" text-anchor="middle">12.087</text>
+              <path class="open-result-rule-paper-axis" d="M48 176H488" />
+              <text class="open-result-axis-tick" x="48" y="196">0</text>
+              <text class="open-result-axis-tick" x="268.0" y="196" text-anchor="middle">7.5</text>
+              <text class="open-result-axis-tick" x="488.0" y="196" text-anchor="middle">15</text>
+            </g>
+            <g class="rcpsp-small-metrics" transform="translate(48 226)">
+              <g><text>Mean gap</text><rect class="rcpsp-track" x="0" y="18" width="92" height="10" /><rect class="rcpsp-accent-fill" x="0" y="18" width="27.8" height="10" /><text class="rcpsp-paper-value" x="0" y="52">6.04%</text></g>
+              <g transform="translate(120 0)"><text>p95 gap</text><rect class="rcpsp-track" x="0" y="18" width="92" height="10" /><rect class="rcpsp-accent-fill" x="0" y="18" width="63.9" height="10" /><text class="rcpsp-paper-value" x="0" y="52">17.28%</text></g>
+              <g transform="translate(240 0)"><text>Valid schedules</text><rect class="rcpsp-track" x="0" y="18" width="92" height="10" /><rect class="rcpsp-accent-fill" x="0" y="18" width="92.0" height="10" /><text class="rcpsp-paper-value" x="0" y="52">80 / 80</text></g>
+              <g transform="translate(360 0)"><text>Optimal hit rate</text><rect class="rcpsp-track" x="0" y="18" width="92" height="10" /><rect class="rcpsp-accent-fill" x="0" y="18" width="21.8" height="10" /><text class="rcpsp-paper-value" x="0" y="52">23.75%</text></g>
+            </g>
+          </svg>
+          <figcaption>Figure 4. Seed versus accepted benchmark readout across the governed score and portfolio diagnostics.</figcaption>
+        </figure>
+<figure class="open-result-primer-card open-result-paper-figure rcpsp-inline-figure rcpsp-compression-figure" id="fig-5">
+          <svg class="open-result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 414" role="img" aria-label="Static RCPSP schedule compression and renewable resource load readout.">
+            <text class="open-result-axis-label open-result-figure-title" x="60" y="34">Schedule compression</text>
+            <g class="open-result-objective-legend" transform="translate(60 64)">
+              <g><rect class="rcpsp-gantt-seed" x="0" y="-8" width="16" height="8" /><text x="24" y="0">seed</text></g>
+              <g transform="translate(94 0)"><rect class="rcpsp-accent-fill" x="0" y="-8" width="16" height="8" /><text x="24" y="0">accepted</text></g>
+              <g transform="translate(238 0)"><line class="rcpsp-capacity-line" x1="0" y1="-4" x2="28" y2="-4" /><text x="36" y="0">capacity</text></g>
+            </g>
+            <g class="rcpsp-gantt" transform="translate(60 92)">
+              <path class="open-result-objective-grid" d="M58 34H500M58 68H500M58 102H500" />
+              <text x="0" y="38">lane 1</text>
+              <text x="0" y="72">lane 2</text>
+              <text x="0" y="106">lane 3</text>
+              <rect class="rcpsp-gantt-seed" x="95" y="24" width="68" height="16" />
+              <rect class="rcpsp-gantt-seed" x="180" y="58" width="95" height="16" />
+              <rect class="rcpsp-gantt-seed" x="248" y="92" width="122" height="16" />
+              <rect class="rcpsp-gantt-seed" x="330" y="24" width="123" height="16" />
+              <rect class="rcpsp-gantt-seed" x="398" y="58" width="68" height="16" />
+              <rect class="rcpsp-gantt-accepted" x="82" y="24" width="68" height="16" />
+              <text x="92" y="35">A1</text>
+              <rect class="rcpsp-gantt-accepted" x="150" y="58" width="95" height="16" />
+              <text x="160" y="69">A2</text>
+              <rect class="rcpsp-gantt-accepted" x="218" y="92" width="122" height="16" />
+              <text x="228" y="103">A3</text>
+              <rect class="rcpsp-gantt-accepted" x="302" y="24" width="123" height="16" />
+              <text x="312" y="35">A4</text>
+              <rect class="rcpsp-gantt-accepted" x="370" y="58" width="68" height="16" />
+              <text x="380" y="69">A5</text>
+              <line class="rcpsp-marker-line rcpsp-accepted-marker" x1="438" y1="14" x2="438" y2="120" />
+              <line class="rcpsp-marker-line" x1="466" y1="14" x2="466" y2="120" />
+              <path class="open-result-rule-paper-axis" d="M58 124H500" />
+              <text class="open-result-axis-tick" x="58" y="144">0</text>
+              <text class="open-result-axis-tick" x="279" y="144" text-anchor="middle">time</text>
+              <text class="open-result-axis-tick" x="500" y="144" text-anchor="end">60</text>
+              <text class="rcpsp-paper-note" x="438" y="136" text-anchor="middle">Cmax</text>
+              <text class="rcpsp-paper-note" x="466" y="152" text-anchor="middle">seed</text>
+            </g>
+            <g transform="translate(60 270)">
+              <text class="rcpsp-paper-section-label" x="0" y="0">Renewable resource load</text>
+              <path class="open-result-rule-paper-axis" d="M54 34V130H500" />
+              <path class="open-result-objective-grid" d="M54 58H500" />
+              <path class="rcpsp-capacity-line" d="M54 58H500" />
+              <text class="rcpsp-paper-note" x="500" y="50" text-anchor="end">capacity</text>
+<rect class="rcpsp-load" x="74" y="106" width="34" height="24" />
+<rect class="rcpsp-load" x="126" y="86" width="34" height="44" />
+<rect class="rcpsp-load" x="178" y="60" width="34" height="70" />
+<rect class="rcpsp-load" x="230" y="68" width="34" height="62" />
+<rect class="rcpsp-load" x="282" y="92" width="34" height="38" />
+<rect class="rcpsp-load" x="334" y="106" width="34" height="24" />
+<rect class="rcpsp-load-seed" x="74" y="104" width="34" height="26" />
+<rect class="rcpsp-load-seed" x="126" y="78" width="34" height="52" />
+<rect class="rcpsp-load-seed" x="178" y="72" width="34" height="58" />
+<rect class="rcpsp-load-seed" x="230" y="76" width="34" height="54" />
+<rect class="rcpsp-load-seed" x="282" y="92" width="34" height="38" />
+<rect class="rcpsp-load-seed" x="334" y="102" width="34" height="28" />
+              <text class="open-result-axis-tick" x="44" y="134" text-anchor="end">0</text>
+              <text class="open-result-axis-tick" x="44" y="62" text-anchor="end">cap</text>
+              <text class="open-result-axis-tick" x="54" y="156">0</text>
+              <text class="open-result-axis-tick" x="277" y="156" text-anchor="middle">time</text>
+              <text class="open-result-axis-tick" x="500" y="156" text-anchor="end">60</text>
+              <text class="open-result-axis-label open-result-objective-y-title" x="8" y="84" transform="rotate(-90 8 84)">demand</text>
+            </g>
+          </svg>
+          <figcaption>Figure 5. Static schedule-compression readout from the run replay. The seed load is kept as a grey outline while the accepted checkpoint shows earlier placement and resource demand under the capacity line.</figcaption>
+        </figure>
+<figure class="open-result-paper-table" id="table-2">
+          <div class="open-result-table-wrap">
+            <table class="open-result-table">
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>Seed</th>
+                  <th>Accepted</th>
+                  <th>Change</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Acceptance score</td>
+                  <td>14.312</td>
+                  <td>12.087</td>
+                  <td>-2.226</td>
+                </tr>
+                <tr>
+                  <td>Relative score change</td>
+                  <td>reference</td>
+                  <td>15.55%</td>
+                  <td>15.55% reduction</td>
+                </tr>
+                <tr>
+                  <td>Validated schedules</td>
+                  <td>80 / 80 target</td>
+                  <td>80 / 80</td>
+                  <td>100% valid</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <figcaption>Table 2. Reported score comparison across the curated evolutionary chain; lower values are better.</figcaption>
+        </figure>
+<p>The accepted candidate evaluated 80/80 instances with a zero feasibility penalty. Its mean gap was 6.04%, p95 gap was 17.28%, max gap was 22.41%, and it reached the exact proven optimum on 19 of 80 instances. In absolute benchmark terms, the accepted schedules are therefore not a 99% approximation claim: the mean makespan is about 106.04% of the proven optimum, or roughly 94.31% if expressed as optimum divided by candidate makespan.</p>
+<figure class="open-result-primer-card open-result-paper-figure rcpsp-inline-figure rcpsp-gap-figure" id="fig-6">
+          <svg class="open-result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 280" role="img" aria-label="Accepted RCPSP gap diagnostics.">
+            <text class="open-result-axis-label open-result-figure-title" x="72" y="34">Accepted candidate diagnostics</text>
+            <text class="rcpsp-paper-note" x="488" y="34" text-anchor="end">80 frozen PSPLIB J30 instances</text>
+<g>
+              <text class="rcpsp-paper-section-label" x="72" y="76">Mean gap</text>
+              <rect class="rcpsp-track" x="172" y="65" width="320" height="12" />
+              <rect class="rcpsp-accent-fill" x="172" y="65" width="77.3" height="12" />
+              <text class="rcpsp-paper-value" x="512" y="76" text-anchor="end">6.04%</text>
+            </g>
+<g>
+              <text class="rcpsp-paper-section-label" x="72" y="120">p95 gap</text>
+              <rect class="rcpsp-track" x="172" y="109" width="320" height="12" />
+              <rect class="rcpsp-accent-fill" x="172" y="109" width="221.2" height="12" />
+              <text class="rcpsp-paper-value" x="512" y="120" text-anchor="end">17.28%</text>
+            </g>
+<g>
+              <text class="rcpsp-paper-section-label" x="72" y="164">Max gap</text>
+              <rect class="rcpsp-track" x="172" y="153" width="320" height="12" />
+              <rect class="rcpsp-reference-fill" x="172" y="153" width="286.9" height="12" />
+              <text class="rcpsp-paper-value" x="512" y="164" text-anchor="end">22.41%</text>
+            </g>
+<g>
+              <text class="rcpsp-paper-section-label" x="72" y="208">Exact optima</text>
+              <rect class="rcpsp-track" x="172" y="197" width="320" height="12" />
+              <rect class="rcpsp-accent-fill" x="172" y="197" width="76.0" height="12" />
+              <text class="rcpsp-paper-value" x="512" y="208" text-anchor="end">19 / 80</text>
+            </g>
+            <text class="rcpsp-paper-note" x="72" y="252">Feasibility penalty: 0.000 | invalid priority count: 0 | schedules validated: 80 / 80</text>
+          </svg>
+          <figcaption>Figure 6. Accepted candidate diagnostics on the frozen 80-instance portfolio.</figcaption>
+        </figure>
+<p>The worst residual gaps remain visible because they matter operationally. The largest gap in the accepted readout is instance <code>j3025_10</code>, where the candidate makespan is 71 against the proven optimum 58, a 22.41% gap. Exposing that tail behavior is part of the result, not an appendix.</p>
+<figure class="open-result-primer-card open-result-paper-figure rcpsp-inline-figure rcpsp-tail-figure" id="fig-7">
+          <svg class="open-result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 328" role="img" aria-label="Worst accepted RCPSP gaps.">
+            <text class="open-result-axis-label open-result-figure-title" x="72" y="34">Tail behavior kept visible</text>
+            <text class="rcpsp-paper-note" x="488" y="34" text-anchor="end">largest accepted-candidate gaps</text>
+            <path class="open-result-rule-paper-axis" d="M170 50V250H512" />
+            <path class="open-result-objective-grid" d="M270 50V250M370 50V250M470 50V250" />
+<g>
+              <text class="rcpsp-paper-section-label" x="72" y="74">j3025_10</text>
+              <rect class="rcpsp-accent-fill" x="170" y="62" width="280.2" height="13" />
+              <text class="rcpsp-paper-value" x="460.2" y="74">22.41% | 71 vs 58</text>
+            </g>
+<g>
+              <text class="rcpsp-paper-section-label" x="72" y="97">j3025_8</text>
+              <rect class="rcpsp-accent-fill" x="170" y="85" width="235.5" height="13" />
+              <text class="rcpsp-paper-value" x="415.5" y="97">18.84% | 82 vs 69</text>
+            </g>
+<g>
+              <text class="rcpsp-paper-section-label" x="72" y="120">j3025_2</text>
+              <rect class="rcpsp-accent-fill" x="170" y="108" width="233.3" height="13" />
+              <text class="rcpsp-paper-value" x="413.3" y="120">18.67% | 89 vs 75</text>
+            </g>
+<g>
+              <text class="rcpsp-paper-section-label" x="72" y="143">j3037_8</text>
+              <rect class="rcpsp-accent-fill" x="170" y="131" width="225.7" height="13" />
+              <text class="rcpsp-paper-value" x="405.7" y="143">18.06% | 85 vs 72</text>
+            </g>
+<g>
+              <text class="rcpsp-paper-section-label" x="72" y="166">j3013_1</text>
+              <rect class="rcpsp-reference-fill" x="170" y="154" width="215.5" height="13" />
+              <text class="rcpsp-paper-value" x="395.5" y="166">17.24% | 68 vs 58</text>
+            </g>
+<g>
+              <text class="rcpsp-paper-section-label" x="72" y="189">j3025_6</text>
+              <rect class="rcpsp-reference-fill" x="170" y="177" width="215.5" height="13" />
+              <text class="rcpsp-paper-value" x="395.5" y="189">17.24% | 68 vs 58</text>
+            </g>
+<g>
+              <text class="rcpsp-paper-section-label" x="72" y="212">j3025_3</text>
+              <rect class="rcpsp-reference-fill" x="170" y="200" width="213.8" height="13" />
+              <text class="rcpsp-paper-value" x="393.8" y="212">17.11% | 89 vs 76</text>
+            </g>
+<g>
+              <text class="rcpsp-paper-section-label" x="72" y="235">j3037_6</text>
+              <rect class="rcpsp-reference-fill" x="170" y="223" width="205.5" height="13" />
+              <text class="rcpsp-paper-value" x="385.5" y="235">16.44% | 85 vs 73</text>
+            </g>
+            <text class="open-result-axis-tick" x="170" y="276">0%</text>
+            <text class="open-result-axis-tick" x="270" y="276">8%</text>
+            <text class="open-result-axis-tick" x="370" y="276">16%</text>
+            <text class="open-result-axis-tick" x="470" y="276">24%</text>
+            <text class="rcpsp-paper-note" x="72" y="306">Worst residual gaps remain part of the public result definition.</text>
+          </svg>
+          <figcaption>Figure 7. Worst-instance tail behavior for the accepted candidate. Each bar shows residual gap against the proven optimum.</figcaption>
+        </figure>
+<figure class="open-result-paper-table" id="table-3">
+          <div class="open-result-table-wrap">
+            <table class="open-result-table">
+              <thead>
+                <tr>
+                  <th>Instance</th>
+                  <th>Candidate makespan</th>
+                  <th>Proven optimum</th>
+                  <th>Gap</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>j3025_10</code></td>
+                  <td>71</td>
+                  <td>58</td>
+                  <td>22.41%</td>
+                </tr>
+                <tr>
+                  <td><code>j3025_8</code></td>
+                  <td>82</td>
+                  <td>69</td>
+                  <td>18.84%</td>
+                </tr>
+                <tr>
+                  <td><code>j3025_2</code></td>
+                  <td>89</td>
+                  <td>75</td>
+                  <td>18.67%</td>
+                </tr>
+                <tr>
+                  <td><code>j3037_8</code></td>
+                  <td>85</td>
+                  <td>72</td>
+                  <td>18.06%</td>
+                </tr>
+                <tr>
+                  <td><code>j3013_1</code></td>
+                  <td>68</td>
+                  <td>58</td>
+                  <td>17.24%</td>
+                </tr>
+                <tr>
+                  <td><code>j3025_6</code></td>
+                  <td>68</td>
+                  <td>58</td>
+                  <td>17.24%</td>
+                </tr>
+                <tr>
+                  <td><code>j3025_3</code></td>
+                  <td>89</td>
+                  <td>76</td>
+                  <td>17.11%</td>
+                </tr>
+                <tr>
+                  <td><code>j3037_6</code></td>
+                  <td>85</td>
+                  <td>73</td>
+                  <td>16.44%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <figcaption>Table 3. Largest accepted-candidate gaps kept visible as tail-risk evidence.</figcaption>
+        </figure>
+<h3>5. Limitations</h3>
+<p>This result is limited to the frozen 80-instance PSPLIB J30 subset. PSPLIB contains 480 J30 instances with proven optima; this report does not claim evaluation over all 480. It also does not measure wall-clock optimization speed, human planner usability, robustness under changed project distributions, or production integration behavior.</p>
+<p>The accepted rule is deterministic and feasible under this evaluator, but it is still a dispatch heuristic. A different project class, different resource model, multi-mode activity model, stochastic arrivals, or operational priority policy would require a new evaluation contract.</p>
+<h3>6. Reproducibility</h3>
+<p>The bundle includes the accepted candidate, evaluation contract, curated evolution chain, metrics, provenance, replay confirmation, and public figures. The run page is a presentation layer over the same curated artifacts. It excludes prompts, raw logs, telemetry, and non-public proposal context.</p>
+<p>A curated animated replay of the same public trace is available at <a href="./run/">the run page</a>. It is a presentation layer over the same artifacts, not a separate result.</p>
+<p>Replaying the result should use the same PSPLIB J30 portfolio, the same proven optimal makespans, the same score formula, and the same lower-is-better direction. Changing the instance set or objective creates a new evaluation, not a replay of this result.</p>
+          </article>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© <span id="year">2026</span> Göther Labs</p>
+      </footer>
+    </div>
+
+    <script src="../../scripts.js"></script>
+  </body>
+</html>

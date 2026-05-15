@@ -1103,7 +1103,7 @@ a {
 
 .open-results-index {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   margin-inline: var(--content-gutter);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -1175,10 +1175,10 @@ a {
 .open-result-card h2 {
   max-width: 12ch;
   margin: 0;
-  font-size: clamp(2.35rem, 5.4vw, 4.2rem);
+  font-size: clamp(2.15rem, 4vw, 3.35rem);
   font-weight: 600;
   line-height: 0.98;
-  letter-spacing: -0.06em;
+  letter-spacing: 0;
 }
 
 .open-result-card p {
@@ -1193,6 +1193,16 @@ a {
 
 .open-result-card--quadrature p {
   max-width: 34ch;
+}
+
+.open-result-card--rcpsp h2 {
+  max-width: 14ch;
+  font-size: clamp(2.1rem, 3.9vw, 3.3rem);
+  letter-spacing: 0;
+}
+
+.open-result-card--rcpsp p {
+  max-width: 36ch;
 }
 
 .open-result-card-visual {
@@ -1251,6 +1261,51 @@ a {
 .open-result-card-chart .nodes circle {
   fill: var(--bg);
   stroke: var(--accent);
+  stroke-width: 3.2;
+}
+
+.open-result-card--rcpsp .open-result-card-visual {
+  right: clamp(-9rem, -8vw, -3.6rem);
+  bottom: clamp(5.6rem, 8vw, 7.8rem);
+  width: min(58%, 29rem);
+  color: var(--text);
+  opacity: 0.2;
+}
+
+.open-result-card-rcpsp line,
+.open-result-card-rcpsp path,
+.open-result-card-rcpsp rect,
+.open-result-card-rcpsp circle {
+  vector-effect: non-scaling-stroke;
+}
+
+.open-result-card-rcpsp .grid {
+  stroke: color-mix(in srgb, var(--text) 13%, transparent);
+  stroke-width: 1;
+}
+
+.open-result-card-rcpsp .bars rect {
+  fill: color-mix(in srgb, var(--accent) 30%, transparent);
+  stroke: color-mix(in srgb, var(--accent) 54%, transparent);
+  stroke-width: 1.2;
+}
+
+.open-result-card-rcpsp .network path {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 46%, transparent);
+  stroke-width: 1.4;
+}
+
+.open-result-card-rcpsp .network circle {
+  fill: var(--bg);
+  stroke: color-mix(in srgb, var(--text) 66%, transparent);
+  stroke-width: 1.6;
+}
+
+.open-result-card-rcpsp .curve {
+  fill: none;
+  stroke: var(--accent);
+  stroke-linecap: round;
   stroke-width: 3.2;
 }
 
@@ -1848,6 +1903,159 @@ a {
   opacity: 0.8;
 }
 
+.rcpsp-inline-figure {
+  width: min(100%, 48rem);
+}
+
+.rcpsp-paper-svg .rcpsp-paper-note {
+  fill: var(--muted);
+  font-size: 9.5px;
+}
+
+.rcpsp-paper-svg .rcpsp-paper-section-label {
+  fill: var(--muted);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.rcpsp-paper-svg .rcpsp-paper-value {
+  fill: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.rcpsp-paper-svg .rcpsp-panel {
+  fill: color-mix(in srgb, var(--text) 3%, transparent);
+  stroke: var(--line);
+}
+
+.rcpsp-paper-svg .rcpsp-track {
+  fill: color-mix(in srgb, var(--text) 8%, transparent);
+  stroke: color-mix(in srgb, var(--text) 15%, transparent);
+  stroke-width: 0.8;
+}
+
+.rcpsp-paper-svg .rcpsp-accent-fill,
+.rcpsp-paper-svg .rcpsp-load,
+.rcpsp-paper-svg .rcpsp-gantt rect {
+  fill: color-mix(in srgb, var(--accent) 72%, transparent);
+}
+
+.rcpsp-paper-svg .rcpsp-secondary-bar,
+.rcpsp-paper-svg .rcpsp-load-hot {
+  fill: color-mix(in srgb, var(--accent) 38%, var(--text) 8%);
+}
+
+.rcpsp-paper-svg .rcpsp-reference-fill {
+  fill: color-mix(in srgb, var(--text) 40%, transparent);
+}
+
+.rcpsp-paper-svg .rcpsp-gantt-seed,
+.rcpsp-paper-svg .rcpsp-gantt .rcpsp-gantt-seed {
+  fill: #7a7f87;
+  fill-opacity: 0.58;
+  stroke: #9aa0aa;
+  stroke-width: 0.8;
+}
+
+.rcpsp-paper-svg .rcpsp-gantt .rcpsp-gantt-accepted {
+  fill: color-mix(in srgb, var(--accent) 76%, transparent);
+}
+
+.rcpsp-paper-svg .rcpsp-load-seed {
+  fill: none;
+  stroke: #7a7f87;
+  stroke-width: 1.3;
+}
+
+.rcpsp-paper-svg .rcpsp-success-fill {
+  fill: color-mix(in srgb, var(--accent) 52%, transparent);
+}
+
+.rcpsp-paper-svg .rcpsp-load-window {
+  fill: color-mix(in srgb, var(--accent) 9%, transparent);
+  stroke: color-mix(in srgb, var(--accent) 36%, transparent);
+}
+
+.rcpsp-paper-svg .rcpsp-capacity-line {
+  fill: none;
+  stroke: var(--text);
+  stroke-dasharray: 6 6;
+  stroke-width: 1;
+}
+
+.rcpsp-paper-svg .rcpsp-marker-line {
+  stroke: var(--text);
+  stroke-width: 1.3;
+}
+
+.rcpsp-paper-svg .rcpsp-accepted-marker {
+  stroke: var(--accent);
+}
+
+.rcpsp-paper-svg .rcpsp-reduction-bracket {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.1;
+}
+
+.rcpsp-paper-svg .rcpsp-delta-text {
+  fill: color-mix(in srgb, var(--accent) 70%, var(--text));
+}
+
+.rcpsp-paper-svg .rcpsp-network path {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 48%, transparent);
+  stroke-width: 1.2;
+}
+
+.rcpsp-paper-svg .rcpsp-network circle {
+  fill: var(--bg);
+  stroke: var(--accent);
+  stroke-width: 1.8;
+}
+
+.rcpsp-paper-svg .rcpsp-network .rcpsp-emphasis-node {
+  stroke: var(--text);
+}
+
+.rcpsp-paper-svg .rcpsp-network text,
+.rcpsp-paper-svg .rcpsp-gantt text {
+  fill: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 9.5px;
+  font-weight: 600;
+}
+
+.rcpsp-paper-svg .rcpsp-gantt .open-result-axis-tick,
+.rcpsp-paper-svg .rcpsp-gantt .rcpsp-paper-note {
+  fill: var(--muted);
+  font-weight: 400;
+}
+
+.rcpsp-paper-svg .rcpsp-gantt rect + text {
+  fill: var(--bg);
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 8px;
+}
+
+.rcpsp-paper-svg .rcpsp-small-metrics text {
+  fill: var(--muted);
+  font-size: 9.5px;
+}
+
+.rcpsp-paper-svg .rcpsp-small-metrics .rcpsp-paper-value {
+  fill: var(--text);
+  font-size: 11px;
+}
+
+.rcpsp-paper-svg .rcpsp-objective-checkpoint {
+  fill: var(--bg);
+  stroke: color-mix(in srgb, var(--text) 54%, transparent);
+  stroke-width: 1.4;
+}
+
 .open-result-rule-visual {
   display: grid;
   grid-template-columns: minmax(20rem, 0.34fr) minmax(0, 1fr);
@@ -2221,6 +2429,148 @@ a {
 .open-result-contract-table .open-result-table td {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1rem;
+}
+
+.rcpsp-whitepaper-shell {
+  padding-top: clamp(3rem, 5.2vw, 4.8rem);
+}
+
+.rcpsp-whitepaper h3 {
+  letter-spacing: 0;
+}
+
+.rcpsp-whitepaper .open-result-paper-table {
+  width: min(100%, 54rem);
+}
+
+.rcpsp-whitepaper .open-result-contract-table {
+  width: min(100%, 50rem);
+}
+
+.rcpsp-whitepaper .open-result-table td code {
+  color: var(--text);
+  font-size: 0.92em;
+}
+
+.rcpsp-whitepaper .open-result-paper-asset {
+  width: min(100%, 56rem);
+}
+
+.open-result-rcpsp-page .open-result-paper-asset img {
+  background: var(--bg);
+}
+
+.open-result-whitepaper .open-result-paper-asset img[src$=".svg"] {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+@media (prefers-color-scheme: dark) {
+  .open-result-whitepaper .open-result-paper-asset img[src$=".svg"] {
+    filter: none;
+  }
+}
+
+.rcpsp-whitepaper .open-result-paper-code {
+  width: min(100%, 56rem);
+}
+
+.open-result-whitepaper .open-result-code-figure {
+  --code-bg: #f7f8fb;
+  --code-gutter: #eef2f6;
+  --code-border: rgba(10, 10, 10, 0.18);
+  --code-text: #26313d;
+  --code-line-no: #7a8490;
+  --code-keyword: #005fba;
+  --code-builtin: #0a84ff;
+  --code-string: #3f6f9f;
+  --code-comment: #68717f;
+  --code-constant: #456f9f;
+  width: min(100%, 56rem);
+}
+
+.rcpsp-whitepaper .open-result-paper-code pre {
+  max-height: 36rem;
+  scrollbar-width: thin;
+}
+
+.open-result-whitepaper .open-result-code-figure pre {
+  max-height: none;
+  padding: 0;
+  border: 1px solid var(--code-border);
+  background:
+    linear-gradient(90deg, var(--code-gutter) 0 3.95rem, transparent 3.95rem),
+    var(--code-bg);
+}
+
+.open-result-code-figure code {
+  display: block;
+  padding: 1rem 0;
+}
+
+.open-result-code-figure .code-line {
+  display: grid;
+  grid-template-columns: 2.7rem minmax(0, 1fr);
+  gap: 0.85rem;
+  padding: 0.035rem 1rem;
+  color: var(--code-text);
+  font-size: clamp(0.74rem, 0.92vw, 0.84rem);
+  line-height: 1.48;
+  white-space: pre;
+}
+
+.open-result-code-figure .line-no {
+  color: var(--code-line-no);
+  text-align: right;
+  user-select: none;
+}
+
+.open-result-code-figure .line-src {
+  min-width: 0;
+}
+
+.open-result-code-figure .py-keyword {
+  color: var(--code-keyword);
+  font-weight: 700;
+}
+
+.open-result-code-figure .py-builtin {
+  color: var(--code-builtin);
+}
+
+.open-result-code-figure .py-string {
+  color: var(--code-string);
+}
+
+.open-result-code-figure .py-comment {
+  color: var(--code-comment);
+  font-style: italic;
+}
+
+.open-result-code-figure .py-constant {
+  color: var(--code-constant);
+}
+
+@media (prefers-color-scheme: dark) {
+  .open-result-whitepaper .open-result-code-figure {
+    --code-bg: #050608;
+    --code-gutter: color-mix(in srgb, var(--panel) 72%, transparent);
+    --code-border: var(--line);
+    --code-text: var(--muted-soft);
+    --code-line-no: color-mix(in srgb, var(--muted) 64%, transparent);
+    --code-keyword: #0b84fe;
+    --code-builtin: #7ab7ff;
+    --code-string: #9ac8ff;
+    --code-comment: #8f98aa;
+    --code-constant: #86bfff;
+  }
+}
+
+@media (max-width: 720px) {
+  .open-result-code-figure .code-line {
+    grid-template-columns: 2.35rem max-content;
+    min-width: max-content;
+    padding-right: 1.2rem;
+  }
 }
 
 .open-result-paper-asset img {
@@ -2880,11 +3230,27 @@ a {
     max-width: 31ch;
   }
 
+  .open-result-card--rcpsp h2 {
+    max-width: 12ch;
+    font-size: clamp(2rem, 12vw, 3rem);
+  }
+
+  .open-result-card--rcpsp p {
+    max-width: 31ch;
+  }
+
   .open-result-card-visual {
     right: -7rem;
     bottom: 5.5rem;
     width: 72%;
     opacity: 0.2;
+  }
+
+  .open-result-card--rcpsp .open-result-card-visual {
+    right: -6.5rem;
+    bottom: 5.8rem;
+    width: 78%;
+    opacity: 0.22;
   }
 
   .open-result-measure {

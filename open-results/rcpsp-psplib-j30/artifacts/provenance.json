@@ -1,0 +1,71 @@
+{
+  "schema_version": "open-result-provenance/v1",
+  "source_domain": "rcpsp_psplib_j30",
+  "source_run": "domains/rcpsp_psplib_j30/outputs/2026-05-12/16-51-54",
+  "accepted_candidate_id": "gen-119-i1-w1-a0-cbdd3ba1835131eb",
+  "run_started_utc": "2026-05-12T15:51:54Z",
+  "run_summary": {
+    "stop_reason": "budget_exhausted",
+    "failure_category": "none",
+    "evaluations_total": 96,
+    "evaluations_valid": 96,
+    "proposals_accepted": 56,
+    "selections_best_improved": 1,
+    "total_generations": 120,
+    "config": {
+      "generations": 24,
+      "num_islands": 4,
+      "population_size": 4,
+      "workers": 4
+    }
+  },
+  "replay": {
+    "pass": true,
+    "recorded_score": 12.086633114086395,
+    "replay_score": 12.086633114086395,
+    "replay_valid": true,
+    "abs_diff": 0,
+    "noise_summary": {
+      "all_pass": true,
+      "completed_count": 1,
+      "max_score": 12.086633114086395,
+      "mean_score": 12.086633114086395,
+      "min_score": 12.086633114086395,
+      "pass_count": 1,
+      "repeat_count": 1,
+      "score_count": 1,
+      "score_range": 0,
+      "score_stdev": 0,
+      "score_variance": 0,
+      "valid_count": 1
+    }
+  },
+  "portfolio": {
+    "dataset": "PSPLIB J30 single-mode RCPSP",
+    "dataset_url": "https://www.om-db.wi.tum.de/psplib/download_dataset.php?set=j30&mode=sm&format=zip",
+    "extracted_utc_date": "2026-05-11",
+    "portfolio_size": 80,
+    "proven_optimal_instances": 480,
+    "selection_rule": "parameters [1, 7, 13, 19, 25, 31, 37, 43] crossed with instances 1..10",
+    "solutions_url": "https://www.om-db.wi.tum.de/psplib/download_merged.php?set=j30&mode=sm",
+    "source": "Project Scheduling Problem Library (PSPLIB)",
+    "total_psplib_j30_instances": 480
+  },
+  "sanitation": {
+    "excluded": [
+      "prompts",
+      "raw logs",
+      "telemetry",
+      "proposal rationale",
+      "private provider metadata"
+    ],
+    "included": [
+      "accepted candidate",
+      "evaluation contract",
+      "curated evolution chain",
+      "metrics",
+      "provenance",
+      "replay confirmation"
+    ]
+  }
+}

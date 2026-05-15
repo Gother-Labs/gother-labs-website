@@ -1,0 +1,603 @@
+:root {
+  --surface-panel: var(--bg);
+  --surface-panel-strong: color-mix(in srgb, var(--text) 3%, transparent);
+  --surface-delete: color-mix(in srgb, var(--muted) 88%, var(--text) 12%);
+  --surface-insert: var(--accent);
+  --surface-focus: color-mix(in srgb, var(--accent) 7%, transparent);
+  --surface-mono: "SFMono-Regular", Menlo, Consolas, monospace;
+  --surface-serif: Georgia, "Times New Roman", serif;
+}
+
+.rcpsp-surface-page .site-main {
+  width: min(1680px, calc(100vw - (var(--content-gutter) * 2)));
+  max-width: none;
+  margin-inline: auto;
+}
+
+.rcpsp-surface-page .site-main > .page-hero {
+  padding-inline: 0;
+}
+
+.rcpsp-surface-page {
+  background: var(--bg);
+}
+
+.rcpsp-hero {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.rcpsp-hero .page-title {
+  max-width: none;
+}
+
+.rcpsp-surface {
+  display: grid;
+  gap: 1.35rem;
+}
+
+.rcpsp-summary {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(500px, 1fr);
+  gap: clamp(1.8rem, 3vw, 3.4rem);
+  padding-bottom: 1.35rem;
+  border-bottom: 1px solid var(--line);
+  align-items: start;
+}
+
+.rcpsp-summary .eyebrow {
+  margin-bottom: 0;
+}
+
+.rcpsp-summary-copy {
+  display: grid;
+  gap: 0.75rem;
+  align-content: start;
+}
+
+.rcpsp-summary-text {
+  max-width: 62ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.rcpsp-summary-link {
+  width: fit-content;
+  color: var(--text);
+  font-size: 0.92rem;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--accent) 62%, transparent);
+  text-underline-offset: 0.24em;
+}
+
+.rcpsp-summary-panel {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.rcpsp-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.rcpsp-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.rcpsp-metric {
+  min-height: 82px;
+  padding: 0.9rem 0.95rem 0.75rem;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.rcpsp-metric-label {
+  display: block;
+  margin-bottom: 0.42rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.rcpsp-metric-value {
+  display: block;
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.rcpsp-metric-value--numeric {
+  letter-spacing: -0.03em;
+}
+
+.rcpsp-stage {
+  display: grid;
+  grid-template-columns: minmax(560px, 1.18fr) minmax(420px, 0.82fr);
+  gap: clamp(2rem, 3vw, 4.2rem);
+  align-items: start;
+}
+
+.rcpsp-section-head,
+.rcpsp-score-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.rcpsp-section-title {
+  margin: 0;
+  font-size: 1.08rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.rcpsp-section-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.58rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1;
+}
+
+.rcpsp-section-tag.is-phase {
+  color: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 42%, transparent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+}
+
+.rcpsp-editor {
+  position: relative;
+  margin-top: 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--surface-panel);
+  overflow: hidden;
+}
+
+.rcpsp-editor-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.95rem 1rem;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface-panel);
+}
+
+.rcpsp-editor-title {
+  color: var(--muted);
+  font-family: var(--surface-mono);
+  font-size: 0.86rem;
+}
+
+.rcpsp-editor-body {
+  position: relative;
+  height: 720px;
+  overflow: hidden;
+  background: var(--bg);
+  --editor-font-size: 12.4px;
+  --editor-line-height: 21px;
+  --editor-ln-col: 34px;
+  --editor-pm-col: 14px;
+  --editor-gap-col: 0.45rem;
+  --editor-pad-x: 0.55rem;
+}
+
+.rcpsp-editor-focus {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  border-radius: 0;
+  background: var(--surface-focus);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.rcpsp-editor-line {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  display: grid;
+  grid-template-columns: var(--editor-ln-col) var(--editor-pm-col) minmax(0, 1fr);
+  gap: var(--editor-gap-col);
+  align-items: center;
+  height: var(--editor-line-height);
+  padding: 0 var(--editor-pad-x);
+  border-radius: 0;
+  color: color-mix(in srgb, var(--text) 88%, transparent);
+  font-family: var(--surface-mono);
+  font-size: var(--editor-font-size);
+  line-height: 1;
+  white-space: pre;
+  pointer-events: none;
+  transform-origin: left center;
+  will-change: transform, opacity, height;
+  transition: background-color 220ms ease, color 220ms ease;
+}
+
+.rcpsp-editor-line.equal {
+  color: color-mix(in srgb, var(--text) 88%, transparent);
+  background: transparent;
+}
+
+.rcpsp-editor-line.delete {
+  color: var(--surface-delete);
+  background: color-mix(in srgb, var(--text) 4%, transparent);
+}
+
+.rcpsp-editor-line.insert {
+  color: var(--surface-insert);
+  background: color-mix(in srgb, var(--accent) 7%, transparent);
+}
+
+.rcpsp-editor-line.baseline {
+  color: color-mix(in srgb, var(--text) 72%, transparent);
+  background: transparent;
+}
+
+.rcpsp-editor-line .ln {
+  color: var(--muted);
+  text-align: right;
+}
+
+.rcpsp-editor-line .pm {
+  font-weight: 600;
+  opacity: 0.95;
+}
+
+.rcpsp-editor-line .code {
+  display: block;
+  width: max-content;
+  transform: none;
+  transform-origin: left center;
+}
+
+.rcpsp-editor-line.delete .code {
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+}
+
+.rcpsp-editor-line .kw {
+  color: color-mix(in srgb, #4ba3ff 82%, var(--text));
+  font-weight: 700;
+}
+
+.rcpsp-editor-line .fn {
+  color: color-mix(in srgb, var(--accent) 58%, var(--text));
+}
+
+.rcpsp-editor-line .str {
+  color: color-mix(in srgb, var(--accent) 42%, var(--text));
+}
+
+.rcpsp-editor-line .cm {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.rcpsp-editor-line .num {
+  color: color-mix(in srgb, var(--accent) 52%, var(--text));
+}
+
+.rcpsp-visual {
+  display: grid;
+  gap: 1rem;
+}
+
+.rcpsp-score-pulse,
+.rcpsp-schedule-card {
+  background: var(--surface-panel);
+  border: 1px solid var(--line);
+  border-radius: 0;
+}
+
+.rcpsp-score-pulse,
+.rcpsp-schedule-card {
+  padding: 0.9rem 0.95rem 0.7rem;
+}
+
+.rcpsp-score-label {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.rcpsp-score-svg,
+.rcpsp-dispatch-svg,
+.rcpsp-schedule-svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+.rcpsp-score-svg {
+  height: 270px;
+  margin-top: 0.5rem;
+}
+
+.rcpsp-dispatch-svg {
+  height: 520px;
+}
+
+.rcpsp-schedule-svg {
+  height: 350px;
+}
+
+.rcpsp-score-svg text,
+.rcpsp-dispatch-svg text,
+.rcpsp-schedule-svg text {
+  font-family: var(--surface-serif);
+}
+
+.rcpsp-figure-title {
+  fill: var(--text);
+  font-family: var(--surface-serif);
+  font-size: 12px;
+  font-style: italic;
+}
+
+.rcpsp-axis-title,
+.rcpsp-axis-tick,
+.rcpsp-note,
+.rcpsp-legend text,
+.rcpsp-gap-row-title,
+.rcpsp-gap-value,
+.rcpsp-gap-delta {
+  fill: var(--muted);
+  font-family: var(--surface-serif);
+}
+
+.rcpsp-axis-title {
+  font-size: 10.5px;
+  text-anchor: middle;
+}
+
+.rcpsp-axis-tick {
+  font-size: 9.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.rcpsp-note,
+.rcpsp-legend text {
+  font-size: 9px;
+}
+
+.rcpsp-gap-row-title {
+  fill: var(--text);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.rcpsp-dispatch-label {
+  fill: var(--muted);
+  font-family: var(--surface-serif);
+  font-size: 9.4px;
+  font-weight: 400;
+}
+
+.rcpsp-gap-value {
+  fill: var(--muted);
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+
+.rcpsp-gap-value-current {
+  fill: var(--text);
+  font-weight: 700;
+}
+
+.rcpsp-gap-delta {
+  fill: color-mix(in srgb, var(--accent) 70%, var(--text));
+  font-size: 9px;
+  font-variant-numeric: tabular-nums;
+}
+
+.rcpsp-paper-axis {
+  stroke: color-mix(in srgb, var(--text) 58%, transparent);
+  stroke-width: 1;
+  fill: none;
+}
+
+.rcpsp-paper-grid {
+  stroke: color-mix(in srgb, var(--text) 16%, transparent);
+  stroke-width: 0.8;
+  fill: none;
+}
+
+.rcpsp-score-proposal {
+  fill: color-mix(in srgb, var(--text) 28%, transparent);
+}
+
+.rcpsp-score-best {
+  fill: none;
+  stroke: var(--text);
+  stroke-width: 2.3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.rcpsp-score-baseline,
+.rcpsp-gap-seed {
+  fill: var(--bg);
+  stroke: color-mix(in srgb, var(--text) 55%, transparent);
+  stroke-width: 2;
+}
+
+.rcpsp-score-accepted,
+.rcpsp-score-current,
+.rcpsp-gap-current {
+  fill: var(--bg);
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.rcpsp-score-current {
+  fill: var(--accent);
+}
+
+.rcpsp-gap-optimum,
+.rcpsp-gap-track {
+  fill: color-mix(in srgb, var(--text) 10%, transparent);
+  stroke: color-mix(in srgb, var(--text) 26%, transparent);
+}
+
+.rcpsp-gap-optimum-line {
+  stroke: color-mix(in srgb, var(--text) 52%, transparent);
+  stroke-width: 1;
+}
+
+.rcpsp-gap-hatch-line {
+  stroke: color-mix(in srgb, var(--accent) 54%, transparent);
+  stroke-width: 1;
+}
+
+.rcpsp-gap-accepted-guide {
+  stroke: var(--accent);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+  opacity: 0.72;
+}
+
+.rcpsp-gap-seed-fill {
+  fill: color-mix(in srgb, var(--text) 30%, transparent);
+}
+
+.rcpsp-dispatch-svg .rcpsp-gap-seed-fill {
+  opacity: 0.58;
+}
+
+.rcpsp-gap-current-fill,
+.rcpsp-schedule-bar {
+  fill: color-mix(in srgb, var(--accent) 72%, transparent);
+}
+
+.rcpsp-schedule-optimum-fill {
+  fill: color-mix(in srgb, var(--text) 13%, transparent);
+  stroke: color-mix(in srgb, var(--text) 24%, transparent);
+}
+
+.rcpsp-schedule-excess-fill {
+  fill: color-mix(in srgb, var(--accent) 36%, transparent);
+  stroke: color-mix(in srgb, var(--accent) 48%, transparent);
+}
+
+.rcpsp-schedule-excess-hatch {
+  fill: url(#rcpsp-excess-hatch);
+  opacity: 0.9;
+}
+
+.rcpsp-gap-seed-marker {
+  stroke: color-mix(in srgb, var(--text) 48%, transparent);
+  stroke-width: 1.2;
+}
+
+.rcpsp-gap-current-marker {
+  stroke: var(--accent);
+  stroke-width: 1.15;
+}
+
+.rcpsp-gap-current-dot {
+  fill: var(--bg);
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.rcpsp-schedule-final {
+  stroke: var(--accent);
+  stroke-width: 1.2;
+  stroke-dasharray: 4 4;
+}
+
+.rcpsp-schedule-gantt-lane {
+  stroke: color-mix(in srgb, var(--text) 16%, transparent);
+}
+
+.rcpsp-gantt-label {
+  fill: var(--bg);
+  font-family: var(--surface-mono) !important;
+  font-size: 7.5px;
+  font-weight: 700;
+}
+
+.rcpsp-schedule-load,
+.rcpsp-schedule-load-current {
+  fill: color-mix(in srgb, var(--accent) 72%, transparent);
+}
+
+.rcpsp-schedule-load-seed {
+  fill: none;
+  stroke: #7a7f87;
+  stroke-width: 1.45;
+  opacity: 0.95;
+}
+
+.rcpsp-capacity {
+  stroke: var(--text);
+  stroke-width: 1;
+  stroke-dasharray: 5 5;
+}
+
+
+@media (max-width: 1100px) {
+  .rcpsp-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .rcpsp-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .rcpsp-visual {
+    order: -1;
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding-top: 1rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .rcpsp-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .rcpsp-editor-body {
+    height: 620px;
+  }
+
+  .rcpsp-editor-line {
+    left: 8px;
+    right: 8px;
+    gap: 0.25rem;
+    padding: 0 0.2rem;
+    font-size: 0.58rem;
+    grid-template-columns: 24px 10px minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rcpsp-editor-focus,
+  .rcpsp-editor-line {
+    transition: none;
+  }
+}

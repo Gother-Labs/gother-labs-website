@@ -1,0 +1,70 @@
+{
+  "schema_version": "open-result-replay/v1",
+  "accepted_candidate_id": "gen-119-i1-w1-a0-cbdd3ba1835131eb",
+  "replay_status": "pass",
+  "recorded_score": 12.086633114086395,
+  "replay_score": 12.086633114086395,
+  "abs_diff": 0,
+  "replay_valid": true,
+  "public_surface": {
+    "timeline_steps": 7,
+    "interactive_panels": [
+      "score_chain",
+      "portfolio_validation",
+      "dispatch_surface",
+      "accepted_code_blocks",
+      "tail_gaps"
+    ],
+    "sanitization": "curated public replay only; prompts, raw logs, telemetry, and proposal context excluded"
+  },
+  "worst_instances": [
+    {
+      "instance_id": "j3025_10",
+      "makespan": 71,
+      "optimal_makespan": 58,
+      "gap_pct": 22.413793103448278
+    },
+    {
+      "instance_id": "j3025_8",
+      "makespan": 82,
+      "optimal_makespan": 69,
+      "gap_pct": 18.840579710144926
+    },
+    {
+      "instance_id": "j3025_2",
+      "makespan": 89,
+      "optimal_makespan": 75,
+      "gap_pct": 18.666666666666668
+    },
+    {
+      "instance_id": "j3037_8",
+      "makespan": 85,
+      "optimal_makespan": 72,
+      "gap_pct": 18.055555555555557
+    },
+    {
+      "instance_id": "j3013_1",
+      "makespan": 68,
+      "optimal_makespan": 58,
+      "gap_pct": 17.24137931034483
+    },
+    {
+      "instance_id": "j3025_6",
+      "makespan": 68,
+      "optimal_makespan": 58,
+      "gap_pct": 17.24137931034483
+    },
+    {
+      "instance_id": "j3025_3",
+      "makespan": 89,
+      "optimal_makespan": 76,
+      "gap_pct": 17.105263157894736
+    },
+    {
+      "instance_id": "j3037_6",
+      "makespan": 85,
+      "optimal_makespan": 73,
+      "gap_pct": 16.438356164383563
+    }
+  ]
+}
