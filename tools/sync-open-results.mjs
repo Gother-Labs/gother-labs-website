@@ -9,7 +9,7 @@ const RESULTS_ROOT = path.resolve(SITE_ROOT, "..", "gother-labs-open-results");
 const CATALOG_PATH = path.join(RESULTS_ROOT, "catalog.json");
 const OUT_ROOT = path.join(SITE_ROOT, "open-results");
 
-const CSS_VERSION = "open-results-card-v6";
+const CSS_VERSION = "open-results-card-v20";
 const SITE_URL = "https://www.gotherlabs.com";
 
 function escapeHtml(value) {
@@ -249,26 +249,57 @@ function resultCardVisual(result) {
   if (result.website?.card_visual === "rcpsp") {
     return `<svg class="open-result-card-visual open-result-card-visual--rcpsp" viewBox="0 0 560 360" aria-hidden="true" focusable="false">
                 <g class="open-result-card-rcpsp">
-                  <path class="grid" d="M56 270 H512 M56 218 H512 M56 166 H512 M56 114 H512" />
-                  <path class="axis" d="M56 68 V292 H512" />
-                  <g class="network">
-                    <path d="M100 96 C152 72 198 72 248 104 S348 146 414 102" />
-                    <path d="M152 224 C218 182 286 184 352 216 S448 244 498 196" />
-                    <circle cx="100" cy="96" r="13" />
-                    <circle cx="248" cy="104" r="13" />
-                    <circle cx="414" cy="102" r="13" />
-                    <circle cx="152" cy="224" r="13" />
-                    <circle cx="352" cy="216" r="13" />
-                    <circle cx="498" cy="196" r="13" />
+                  <g class="schedule">
+                    <path class="lane" d="M52 92 H508 M52 128 H508 M52 164 H508 M52 200 H508 M52 236 H508" />
+                    <path class="axis" d="M52 258 H508" />
+                    <g class="seed-bars">
+                      <rect x="76" y="81" width="32" height="11" />
+                      <rect x="86" y="117" width="58" height="11" />
+                      <rect x="122" y="153" width="72" height="11" />
+                      <rect x="164" y="189" width="44" height="11" />
+                      <rect x="170" y="225" width="64" height="11" />
+                      <rect x="252" y="81" width="54" height="11" />
+                      <rect x="284" y="117" width="86" height="11" />
+                      <rect x="334" y="153" width="78" height="11" />
+                      <rect x="392" y="189" width="54" height="11" />
+                      <rect x="430" y="225" width="44" height="11" />
+                    </g>
+                    <g class="accepted-bars">
+                      <rect x="48" y="75" width="42" height="12" />
+                      <rect x="74" y="111" width="74" height="12" />
+                      <rect x="104" y="147" width="86" height="12" />
+                      <rect x="148" y="183" width="58" height="12" />
+                      <rect x="156" y="219" width="82" height="12" />
+                      <rect x="228" y="75" width="72" height="12" />
+                      <rect x="254" y="111" width="108" height="12" />
+                      <rect x="304" y="147" width="96" height="12" />
+                      <rect x="356" y="183" width="70" height="12" />
+                      <rect x="388" y="219" width="56" height="12" />
+                    </g>
+                    <line class="cmax accepted" x1="418" y1="64" x2="418" y2="258" />
+                    <line class="cmax seed" x1="502" y1="64" x2="502" y2="258" />
                   </g>
-                  <g class="bars">
-                    <rect x="92" y="142" width="78" height="22" />
-                    <rect x="164" y="194" width="128" height="22" />
-                    <rect x="250" y="246" width="104" height="22" />
-                    <rect x="326" y="142" width="136" height="22" />
-                    <rect x="436" y="194" width="52" height="22" />
+                  <g class="load" transform="translate(52 292)">
+                    <path class="capacity" d="M0 16 H456" />
+                    <rect class="seed" x="0" y="20" width="34" height="28" />
+                    <rect class="accepted" x="0" y="8" width="34" height="40" />
+                    <rect class="seed" x="46" y="24" width="34" height="24" />
+                    <rect class="accepted" x="46" y="8" width="34" height="40" />
+                    <rect class="seed" x="92" y="8" width="34" height="40" />
+                    <rect class="accepted" x="92" y="2" width="34" height="46" />
+                    <rect class="seed" x="138" y="12" width="34" height="36" />
+                    <rect class="accepted" x="138" y="18" width="34" height="30" />
+                    <rect class="seed" x="184" y="10" width="34" height="38" />
+                    <rect class="accepted" x="184" y="8" width="34" height="40" />
+                    <rect class="seed" x="230" y="10" width="34" height="38" />
+                    <rect class="accepted" x="230" y="8" width="34" height="40" />
+                    <rect class="seed" x="276" y="12" width="34" height="36" />
+                    <rect class="accepted" x="276" y="16" width="34" height="32" />
+                    <rect class="seed" x="322" y="12" width="34" height="36" />
+                    <rect class="accepted" x="322" y="16" width="34" height="32" />
+                    <rect class="seed" x="368" y="16" width="34" height="32" />
+                    <rect class="accepted" x="368" y="22" width="34" height="26" />
                   </g>
-                  <path class="curve" d="M62 78 C132 118 180 116 236 150 C302 190 366 132 508 248" />
                 </g>
               </svg>`;
   }
