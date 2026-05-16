@@ -449,72 +449,104 @@
     const curr = steps[stepIndex];
     const score = mix(prev.score, curr.score, morph);
     const progress = clamp((baseline.score - score) / (baseline.score - accepted.score), 0, 1);
+    const interp = (a, b) => mix(a, b, progress);
+    const example = data.schedule_example;
+    if (!example || !Array.isArray(example.jobs) || !Array.isArray(example.resource_load_buckets)) return;
+
     const labelX = 30;
     const laneLeft = 58;
     const laneRight = 410;
-    const laneW = laneRight - laneLeft;
-    const timeX = (time) => laneLeft + (time / 72) * laneW;
-    const interp = (a, b) => mix(a, b, progress);
-    const seedFinish = 66;
-    const currentFinish = interp(66, 56);
-    const bars = [
-      { id: "A1", lane: 0, seedX: 2, bestX: 2, duration: 13 },
-      { id: "A2", lane: 1, seedX: 15, bestX: 12, duration: 18 },
-      { id: "A3", lane: 2, seedX: 30, bestX: 25, duration: 21 },
-      { id: "A4", lane: 0, seedX: 44, bestX: 36, duration: 20 },
-      { id: "A5", lane: 1, seedX: 52, bestX: 42, duration: 14 },
-    ];
-    const renderBars = (y0, current, withLabels) => bars.map((bar) => {
-      const x = current ? interp(bar.seedX, bar.bestX) : bar.seedX;
-      const y = y0 + bar.lane * 24;
-      const cls = current ? "rcpsp-schedule-bar" : "rcpsp-gap-seed-fill";
+    const executableJobs = example.jobs.filter((job) => !job.is_dummy && job.duration > 0);
+    const axisStart = example.time_axis?.start || 0;
+    const axisEnd = example.time_axis?.end || Math.max(example.seed_makespan, example.accepted_makespan);
+    const timeX = (time) => laneLeft + clamp((time - axisStart) / (axisEnd - axisStart), 0, 1) * (laneRight - laneLeft);
+    const currentFinish = interp(example.seed_makespan, example.accepted_makespan);
+    const rowEnds = [];
+    const bars = [...executableJobs]
+      .sort((a, b) => (a.accepted_start - b.accepted_start) || (a.id - b.id))
+      .map((job) => {
+        const spanStart = Math.min(job.seed_start, job.accepted_start);
+        const spanEnd = Math.max(job.seed_finish, job.accepted_finish);
+        let row = rowEnds.findIndex((end) => spanStart >= end + 1);
+        if (row < 0) {
+          row = rowEnds.length;
+          rowEnds.push(spanEnd);
+        } else {
+          rowEnds[row] = spanEnd;
+        }
+        return { ...job, row };
+      });
+    const rowHeight = rowEnds.length > 6 ? 13 : 20;
+    const ganttTop = 96;
+    const laneLines = rowEnds.map((_end, index) => {
+      const y = ganttTop + index * rowHeight + rowHeight - 3;
+      return `M${laneLeft} ${y}H${laneRight}`;
+    }).join("");
+    const renderSeedBars = bars.map((bar) => {
+      const y = ganttTop + bar.row * rowHeight + 5;
+      return `<rect class="rcpsp-gap-seed-fill" x="${timeX(bar.seed_start).toFixed(1)}" y="${y.toFixed(1)}" width="${Math.max(3, timeX(bar.seed_finish) - timeX(bar.seed_start)).toFixed(1)}" height="7" />`;
+    }).join("");
+    const renderAcceptedBars = bars.map((bar) => {
+      const x = interp(bar.seed_start, bar.accepted_start);
+      const y = ganttTop + bar.row * rowHeight + 1;
+      const w = Math.max(3, timeX(x + bar.duration) - timeX(x));
       return `
-        <rect class="${cls}" x="${timeX(x).toFixed(1)}" y="${current ? y : y + 4}" width="${Math.max(8, timeX(x + bar.duration) - timeX(x)).toFixed(1)}" height="${current ? 14 : 10}" />
-        ${withLabels ? `<text class="rcpsp-gantt-label" x="${(timeX(x) + 7).toFixed(1)}" y="${y + 10}">${bar.id}</text>` : ""}
+        <rect class="rcpsp-schedule-bar" x="${timeX(x).toFixed(1)}" y="${y.toFixed(1)}" width="${w.toFixed(1)}" height="9" />
       `;
     }).join("");
-    const seedLoadValues = [1.1, 1.8, 2.5, 2.2, 1.6, 1.0];
-    const loadValues = seedLoadValues.map((value, index) => (
-      index === 2 || index === 3 ? value + progress * 0.28 : value - progress * 0.08
-    ));
+    const ganttBase = ganttTop + rowEnds.length * rowHeight + 18;
     const loadLeft = 76;
     const loadRight = 404;
-    const loadTopY = 304;
-    const loadBaseY = 398;
-    const loadMax = 4;
-    const capacityValue = 3;
+    const loadTopY = 354;
+    const loadBaseY = 466;
+    const loadTimeX = (time) => loadLeft + clamp((time - axisStart) / (axisEnd - axisStart), 0, 1) * (loadRight - loadLeft);
+    const capacityValue = example.resource_capacity || 1;
+    const loadMax = Math.max(capacityValue, ...example.resource_load_buckets.flatMap((bucket) => [bucket.seed, bucket.accepted]));
     const loadCapacityY = loadBaseY - (capacityValue / loadMax) * (loadBaseY - loadTopY);
-    const loadBucketW = (loadRight - loadLeft) / loadValues.length;
-    const loadBar = (value, index, className) => {
-      const x = loadLeft + index * loadBucketW + 7;
+    const visibleBuckets = example.resource_load_buckets.filter((bucket) => (
+      bucket.end > axisStart && bucket.start < axisEnd
+    ));
+    const loadBar = (bucket, value, className) => {
+      const start = Math.max(bucket.start, axisStart);
+      const end = Math.min(bucket.end, axisEnd);
+      const x = loadTimeX(start) + 4;
+      const w = Math.max(4, loadTimeX(end) - loadTimeX(start) - 8);
       const h = Math.max(3, (value / loadMax) * (loadBaseY - loadTopY));
-      return `<rect class="${className}" x="${x.toFixed(1)}" y="${(loadBaseY - h).toFixed(1)}" width="${(loadBucketW - 14).toFixed(1)}" height="${h.toFixed(1)}" />`;
+      return `<rect class="${className}" x="${x.toFixed(1)}" y="${(loadBaseY - h).toFixed(1)}" width="${w.toFixed(1)}" height="${h.toFixed(1)}" />`;
     };
-    const loadBars = loadValues.map((value, index) => loadBar(value, index, "rcpsp-schedule-load")).join("");
-    const seedLoadBars = seedLoadValues.map((value, index) => loadBar(value, index, "rcpsp-schedule-load-seed")).join("");
+    const loadBars = visibleBuckets
+      .map((bucket) => loadBar(bucket, interp(bucket.seed, bucket.accepted), "rcpsp-schedule-load"))
+      .join("");
+    const seedLoadBars = visibleBuckets
+      .map((bucket) => loadBar(bucket, bucket.seed, "rcpsp-schedule-load-seed"))
+      .join("");
     const currentCmaxLabel = progress > 0.04
-      ? `<text class="rcpsp-axis-tick" x="${(timeX(currentFinish) - 5).toFixed(1)}" y="196" text-anchor="end">Cmax</text>`
+      ? `<text class="rcpsp-axis-tick" x="${(timeX(currentFinish) - 4).toFixed(1)}" y="${ganttBase + 36}" text-anchor="end">Cmax</text>`
       : "";
 
     dispatchSvg.innerHTML = `
       <text class="rcpsp-figure-title" x="${labelX}" y="24">Schedule compression</text>
       <text class="rcpsp-axis-tick" x="428" y="24" text-anchor="end">gen ${curr.generation}</text>
-      <text class="rcpsp-axis-tick" x="${labelX}" y="47">same activities; earlier feasible placement</text>
-      <g class="rcpsp-legend" transform="translate(178 82)">
+      <text class="rcpsp-axis-tick" x="${labelX}" y="47">all executable jobs, rendered as unlabeled bars</text>
+      <g class="rcpsp-legend" transform="translate(166 78)">
         <rect class="rcpsp-gap-seed-fill" x="0" y="-8" width="12" height="8" /><text x="18" y="0">seed</text>
         <rect class="rcpsp-schedule-bar" x="70" y="-8" width="12" height="8" /><text x="88" y="0">checkpoint</text>
       </g>
-      <path class="rcpsp-schedule-gantt-lane" d="M${laneLeft} 108H${laneRight}M${laneLeft} 132H${laneRight}M${laneLeft} 156H${laneRight}" />
-      ${renderBars(100, false, false)}
-      ${renderBars(96, true, true)}
-      <line class="rcpsp-gap-seed-marker" x1="${timeX(seedFinish).toFixed(1)}" y1="92" x2="${timeX(seedFinish).toFixed(1)}" y2="176" />
-      <line class="rcpsp-gap-current-marker" x1="${timeX(currentFinish).toFixed(1)}" y1="88" x2="${timeX(currentFinish).toFixed(1)}" y2="180" />
+      <path class="rcpsp-schedule-gantt-lane" d="${laneLines}" />
+      ${renderSeedBars}
+      ${renderAcceptedBars}
+      <line class="rcpsp-gap-seed-marker" x1="${timeX(example.seed_makespan).toFixed(1)}" y1="${(ganttTop - 8).toFixed(1)}" x2="${timeX(example.seed_makespan).toFixed(1)}" y2="${(ganttBase - 5).toFixed(1)}" />
+      <line class="rcpsp-gap-current-marker" x1="${timeX(currentFinish).toFixed(1)}" y1="${(ganttTop - 12).toFixed(1)}" x2="${timeX(currentFinish).toFixed(1)}" y2="${(ganttBase - 1).toFixed(1)}" />
       ${currentCmaxLabel}
-      <text class="rcpsp-axis-tick" x="${(timeX(seedFinish) + 5).toFixed(1)}" y="212">seed Cmax</text>
-      <line class="rcpsp-paper-grid" x1="${labelX}" y1="232" x2="428" y2="232" />
-      <text class="rcpsp-gap-row-title" x="${labelX}" y="254">renewable resource load</text>
-      <text class="rcpsp-dispatch-label" x="${labelX}" y="274">active demand per time bucket; feasible while it stays below capacity</text>
-      <g class="rcpsp-legend" transform="translate(${labelX} 292)">
+      <path class="rcpsp-paper-axis" d="M${laneLeft} ${ganttBase}H${laneRight}" />
+      <text class="rcpsp-axis-tick" x="${laneLeft}" y="${ganttBase + 16}">${fmt(axisStart, 0)}</text>
+      <text class="rcpsp-axis-tick" x="${timeX(60).toFixed(1)}" y="${ganttBase + 16}" text-anchor="middle">60</text>
+      <text class="rcpsp-axis-tick" x="${laneRight}" y="${ganttBase + 16}" text-anchor="end">120</text>
+      <text class="rcpsp-axis-tick" x="${(timeX(example.seed_makespan) + 4).toFixed(1)}" y="${ganttBase + 36}">seed Cmax</text>
+      <line class="rcpsp-paper-grid" x1="${labelX}" y1="282" x2="428" y2="282" />
+      <text class="rcpsp-gap-row-title" x="${labelX}" y="306">renewable resource load</text>
+      <text class="rcpsp-dispatch-label" x="${labelX}" y="326">Full-instance Resource ${((example.resource_index || 0) + 1)} demand; feasible below capacity ${capacityValue}</text>
+      <g class="rcpsp-legend" transform="translate(${labelX} 344)">
         <rect class="rcpsp-schedule-load-seed" x="0" y="-8" width="12" height="8" /><text x="18" y="0">seed load</text>
         <rect class="rcpsp-schedule-load" x="82" y="-8" width="12" height="8" /><text x="100" y="0">checkpoint load</text>
         <line class="rcpsp-capacity" x1="216" y1="-4" x2="238" y2="-4" /><text x="246" y="0">capacity</text>
@@ -524,9 +556,9 @@
       <line class="rcpsp-paper-grid" x1="${loadLeft}" y1="${loadCapacityY.toFixed(1)}" x2="${loadRight}" y2="${loadCapacityY.toFixed(1)}" />
       <text class="rcpsp-axis-tick" x="${loadLeft - 8}" y="${loadBaseY + 3}" text-anchor="end">0</text>
       <text class="rcpsp-axis-tick" x="${loadLeft - 8}" y="${loadCapacityY + 3}" text-anchor="end">cap</text>
-      <text class="rcpsp-axis-tick" x="${loadLeft}" y="${loadBaseY + 20}" text-anchor="middle">0</text>
+      <text class="rcpsp-axis-tick" x="${loadLeft}" y="${loadBaseY + 20}" text-anchor="middle">${fmt(axisStart, 0)}</text>
       <text class="rcpsp-axis-tick" x="${(loadLeft + loadRight) / 2}" y="${loadBaseY + 20}" text-anchor="middle">time</text>
-      <text class="rcpsp-axis-tick" x="${loadRight}" y="${loadBaseY + 20}" text-anchor="middle">60</text>
+      <text class="rcpsp-axis-tick" x="${loadRight}" y="${loadBaseY + 20}" text-anchor="middle">${fmt(axisEnd, 0)}</text>
       <text class="rcpsp-axis-title" x="${loadLeft - 35}" y="${(loadTopY + loadBaseY) / 2}" transform="rotate(-90 ${loadLeft - 35} ${(loadTopY + loadBaseY) / 2})">demand</text>
       <text class="rcpsp-axis-tick" x="${loadRight}" y="${loadCapacityY - 6}" text-anchor="end">capacity line</text>
       <line class="rcpsp-capacity" x1="${loadLeft}" y1="${loadCapacityY.toFixed(1)}" x2="${loadRight}" y2="${loadCapacityY.toFixed(1)}" />

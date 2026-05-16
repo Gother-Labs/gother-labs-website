@@ -2040,6 +2040,13 @@ a {
   font-size: 8px;
 }
 
+.rcpsp-paper-svg .rcpsp-gantt .rcpsp-gantt-job-label {
+  fill: var(--text);
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 7.5px;
+  font-weight: 700;
+}
+
 .rcpsp-paper-svg .rcpsp-small-metrics text {
   fill: var(--muted);
   font-size: 9.5px;

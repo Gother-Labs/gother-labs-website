@@ -1283,14 +1283,14 @@ function rcpspScheduleFigure() {
             <g class="rcpsp-gantt">
               <path class="open-result-objective-grid" d="M126 234H512M126 256H512M126 278H512" />
               <path class="open-result-rule-paper-axis" d="M126 292H512" />
-              <text x="72" y="238">lane 1</text>
-              <text x="72" y="260">lane 2</text>
-              <text x="72" y="282">lane 3</text>
-              <rect x="138" y="223" width="60" height="15" rx="2" /><text x="148" y="234">A1</text>
-              <rect x="205" y="245" width="104" height="15" rx="2" /><text x="215" y="256">A2</text>
-              <rect class="rcpsp-secondary-bar" x="314" y="245" width="118" height="15" rx="2" /><text x="324" y="256">A4</text>
-              <rect x="244" y="267" width="136" height="15" rx="2" /><text x="254" y="278">A3</text>
-              <rect x="442" y="267" width="58" height="15" rx="2" /><text x="452" y="278">A5</text>
+              <text x="72" y="238">row 1</text>
+              <text x="72" y="260">row 2</text>
+              <text x="72" y="282">row 3</text>
+              <rect x="138" y="223" width="60" height="15" rx="2" /><text x="148" y="234">J1</text>
+              <rect x="205" y="245" width="104" height="15" rx="2" /><text x="215" y="256">J2</text>
+              <rect class="rcpsp-secondary-bar" x="314" y="245" width="118" height="15" rx="2" /><text x="324" y="256">J4</text>
+              <rect x="244" y="267" width="136" height="15" rx="2" /><text x="254" y="278">J3</text>
+              <rect x="442" y="267" width="58" height="15" rx="2" /><text x="452" y="278">J5</text>
               <line class="rcpsp-marker-line" x1="500" y1="216" x2="500" y2="292" />
               <text class="rcpsp-paper-note" x="507" y="224">Cmax</text>
               <text x="126" y="312">0</text>
@@ -1421,78 +1421,122 @@ function rcpspBenchmarkComparisonFigure(full) {
   });
 }
 
-function rcpspScheduleCompressionFigure() {
-  const loadBars = [
-    [74, 106, 24],
-    [126, 86, 44],
-    [178, 60, 70],
-    [230, 68, 62],
-    [282, 92, 38],
-    [334, 106, 24],
-  ].map(([x, y, h]) => `<rect class="rcpsp-load" x="${x}" y="${y}" width="34" height="${h}" />`).join("\n");
-  const seedLoadBars = [
-    [74, 104, 26],
-    [126, 78, 52],
-    [178, 72, 58],
-    [230, 76, 54],
-    [282, 92, 38],
-    [334, 102, 28],
-  ].map(([x, y, h]) => `<rect class="rcpsp-load-seed" x="${x}" y="${y}" width="34" height="${h}" />`).join("\n");
+function rcpspScheduleCompressionFigure(scheduleExample) {
+  const example = scheduleExample && Array.isArray(scheduleExample.jobs) ? scheduleExample : null;
+  if (!example) {
+    return paperInlineFigure({
+      number: 5,
+      caption: "Real schedule-compression readout unavailable.",
+      className: "rcpsp-inline-figure rcpsp-compression-figure",
+      svg: `          <svg class="open-result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 160" role="img" aria-label="RCPSP schedule example unavailable.">
+            <text class="open-result-axis-label open-result-figure-title" x="60" y="48">Schedule example unavailable</text>
+          </svg>`,
+    });
+  }
+
+  const executableJobs = example.jobs.filter((job) => !job.is_dummy && job.duration > 0);
+  const axisStart = example.time_axis?.start ?? 0;
+  const axisEnd = example.time_axis?.end ?? Math.max(example.seed_makespan ?? 0, example.accepted_makespan ?? 0);
+  const left = 78;
+  const right = 500;
+  const width = right - left;
+  const timeX = (time) => left + ((time - axisStart) / (axisEnd - axisStart)) * width;
+  const xTicks = [axisStart, 30, 60, 90, axisEnd]
+    .filter((tick, index, all) => tick >= axisStart && tick <= axisEnd && all.indexOf(tick) === index);
+  const rows = [];
+  const plottedJobs = [...executableJobs]
+    .sort((a, b) => (a.accepted_start - b.accepted_start) || (a.id - b.id))
+    .map((job) => {
+      const spanStart = Math.min(job.seed_start, job.accepted_start);
+      const spanEnd = Math.max(job.seed_finish, job.accepted_finish);
+      let row = rows.findIndex((end) => spanStart >= end + 2);
+      if (row < 0) {
+        row = rows.length;
+        rows.push(spanEnd);
+      } else {
+        rows[row] = spanEnd;
+      }
+      return { ...job, row };
+    });
+  const rowHeight = 14;
+  const ganttTop = 98;
+  const laneLines = rows
+    .map((_end, index) => {
+      const y = ganttTop + index * rowHeight + 13;
+      return `M${left} ${y}H${right}`;
+    })
+    .join("");
+  const jobBars = plottedJobs.map((job) => {
+    const y = ganttTop + job.row * rowHeight;
+    const seedX = timeX(job.seed_start);
+    const acceptedX = timeX(job.accepted_start);
+    const seedW = Math.max(3, timeX(job.seed_finish) - seedX);
+    const acceptedW = Math.max(3, timeX(job.accepted_finish) - acceptedX);
+    return `<g>
+              <rect class="rcpsp-gantt-seed" x="${seedX.toFixed(1)}" y="${(y + 4).toFixed(1)}" width="${seedW.toFixed(1)}" height="6" />
+              <rect class="rcpsp-gantt-accepted" x="${acceptedX.toFixed(1)}" y="${y.toFixed(1)}" width="${acceptedW.toFixed(1)}" height="8" />
+            </g>`;
+  }).join("\n");
+  const axisY = ganttTop + rows.length * rowHeight + 20;
+  const acceptedX = timeX(example.accepted_makespan);
+  const seedX = timeX(example.seed_makespan);
+
+  const loadLeft = 78;
+  const loadRight = 500;
+  const loadTop = axisY + 66;
+  const loadBase = loadTop + 78;
+  const loadWidth = loadRight - loadLeft;
+  const capacity = example.resource_capacity || 1;
+  const visibleBuckets = example.resource_load_buckets.filter((bucket) => (
+    bucket.end > axisStart && bucket.start < axisEnd
+  ));
+  const loadY = (value) => loadBase - (value / capacity) * (loadBase - loadTop);
+  const resourceBars = visibleBuckets.map((bucket) => {
+    const x = timeX(Math.max(bucket.start, axisStart)) + 3;
+    const barW = Math.max(3, timeX(Math.min(bucket.end, axisEnd)) - timeX(Math.max(bucket.start, axisStart)) - 6);
+    const acceptedY = loadY(bucket.accepted);
+    const seedY = loadY(bucket.seed);
+    return `<g>
+              <rect class="rcpsp-load" x="${x.toFixed(1)}" y="${acceptedY.toFixed(1)}" width="${barW.toFixed(1)}" height="${(loadBase - acceptedY).toFixed(1)}" />
+              <rect class="rcpsp-load-seed" x="${x.toFixed(1)}" y="${seedY.toFixed(1)}" width="${barW.toFixed(1)}" height="${(loadBase - seedY).toFixed(1)}" />
+            </g>`;
+  }).join("\n");
 
   return paperInlineFigure({
     number: 5,
-    caption: "Static schedule-compression readout from the run replay. The seed load is kept as a grey outline while the accepted checkpoint shows earlier placement and resource demand under the capacity line.",
+    caption: `Real schedule-compression readout for PSPLIB J30 instance ${escapeHtml(example.instance_id)}. The figure renders all ${formatMetric(example.executable_job_count ?? executableJobs.length, { maximumFractionDigits: 0 })} executable jobs from the 32-job instance as unlabeled bars, so the full compression pattern remains legible. The seed schedule finishes at ${formatMetric(example.seed_makespan, { maximumFractionDigits: 0 })}, the accepted schedule at ${formatMetric(example.accepted_makespan, { maximumFractionDigits: 0 })}, and the proven optimum is ${formatMetric(example.optimal_makespan, { maximumFractionDigits: 0 })}.`,
     className: "rcpsp-inline-figure rcpsp-compression-figure",
-    svg: `          <svg class="open-result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 414" role="img" aria-label="Static RCPSP schedule compression and renewable resource load readout.">
+    svg: `          <svg class="open-result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 438" role="img" aria-label="Real RCPSP schedule compression and renewable resource load readout for ${escapeHtml(example.instance_id)}.">
             <text class="open-result-axis-label open-result-figure-title" x="60" y="34">Schedule compression</text>
             <g class="open-result-objective-legend" transform="translate(60 64)">
               <g><rect class="rcpsp-gantt-seed" x="0" y="-8" width="16" height="8" /><text x="24" y="0">seed</text></g>
               <g transform="translate(94 0)"><rect class="rcpsp-accent-fill" x="0" y="-8" width="16" height="8" /><text x="24" y="0">accepted</text></g>
               <g transform="translate(238 0)"><line class="rcpsp-capacity-line" x1="0" y1="-4" x2="28" y2="-4" /><text x="36" y="0">capacity</text></g>
             </g>
-            <g class="rcpsp-gantt" transform="translate(60 92)">
-              <path class="open-result-objective-grid" d="M58 34H500M58 68H500M58 102H500" />
-              <text x="0" y="38">lane 1</text>
-              <text x="0" y="72">lane 2</text>
-              <text x="0" y="106">lane 3</text>
-              <rect class="rcpsp-gantt-seed" x="95" y="24" width="68" height="16" />
-              <rect class="rcpsp-gantt-seed" x="180" y="58" width="95" height="16" />
-              <rect class="rcpsp-gantt-seed" x="248" y="92" width="122" height="16" />
-              <rect class="rcpsp-gantt-seed" x="330" y="24" width="123" height="16" />
-              <rect class="rcpsp-gantt-seed" x="398" y="58" width="68" height="16" />
-              <rect class="rcpsp-gantt-accepted" x="82" y="24" width="68" height="16" />
-              <text x="92" y="35">A1</text>
-              <rect class="rcpsp-gantt-accepted" x="150" y="58" width="95" height="16" />
-              <text x="160" y="69">A2</text>
-              <rect class="rcpsp-gantt-accepted" x="218" y="92" width="122" height="16" />
-              <text x="228" y="103">A3</text>
-              <rect class="rcpsp-gantt-accepted" x="302" y="24" width="123" height="16" />
-              <text x="312" y="35">A4</text>
-              <rect class="rcpsp-gantt-accepted" x="370" y="58" width="68" height="16" />
-              <text x="380" y="69">A5</text>
-              <line class="rcpsp-marker-line rcpsp-accepted-marker" x1="438" y1="14" x2="438" y2="120" />
-              <line class="rcpsp-marker-line" x1="466" y1="14" x2="466" y2="120" />
-              <path class="open-result-rule-paper-axis" d="M58 124H500" />
-              <text class="open-result-axis-tick" x="58" y="144">0</text>
-              <text class="open-result-axis-tick" x="279" y="144" text-anchor="middle">time</text>
-              <text class="open-result-axis-tick" x="500" y="144" text-anchor="end">60</text>
-              <text class="rcpsp-paper-note" x="438" y="136" text-anchor="middle">Cmax</text>
-              <text class="rcpsp-paper-note" x="466" y="152" text-anchor="middle">seed</text>
+            <g class="rcpsp-gantt">
+              <text class="rcpsp-paper-section-label" x="60" y="88">all executable jobs (${formatMetric(example.executable_job_count ?? executableJobs.length, { maximumFractionDigits: 0 })} bars; ${formatMetric(example.job_count, { maximumFractionDigits: 0 })} including source/sink)</text>
+              <path class="open-result-objective-grid" d="${laneLines}" />
+${jobBars}
+              <line class="rcpsp-marker-line rcpsp-accepted-marker" x1="${acceptedX.toFixed(1)}" y1="${(ganttTop - 10).toFixed(1)}" x2="${acceptedX.toFixed(1)}" y2="${(axisY - 4).toFixed(1)}" />
+              <line class="rcpsp-marker-line" x1="${seedX.toFixed(1)}" y1="${(ganttTop - 10).toFixed(1)}" x2="${seedX.toFixed(1)}" y2="${(axisY - 4).toFixed(1)}" />
+              <path class="open-result-rule-paper-axis" d="M${left} ${axisY}H${right}" />
+              ${xTicks.map((tick, index) => `<text class="open-result-axis-tick" x="${timeX(tick).toFixed(1)}" y="${axisY + 20}" ${index === 0 ? "" : index === xTicks.length - 1 ? 'text-anchor="end"' : 'text-anchor="middle"'}>${formatMetric(tick, { maximumFractionDigits: 0 })}</text>`).join("\n              ")}
+              <text class="rcpsp-paper-note" x="${acceptedX.toFixed(1)}" y="${axisY + 38}" text-anchor="middle">accepted Cmax</text>
+              <text class="rcpsp-paper-note" x="${seedX.toFixed(1)}" y="${axisY + 38}" text-anchor="middle">seed Cmax</text>
             </g>
-            <g transform="translate(60 270)">
-              <text class="rcpsp-paper-section-label" x="0" y="0">Renewable resource load</text>
-              <path class="open-result-rule-paper-axis" d="M54 34V130H500" />
-              <path class="open-result-objective-grid" d="M54 58H500" />
-              <path class="rcpsp-capacity-line" d="M54 58H500" />
-              <text class="rcpsp-paper-note" x="500" y="50" text-anchor="end">capacity</text>
-${loadBars}
-${seedLoadBars}
-              <text class="open-result-axis-tick" x="44" y="134" text-anchor="end">0</text>
-              <text class="open-result-axis-tick" x="44" y="62" text-anchor="end">cap</text>
-              <text class="open-result-axis-tick" x="54" y="156">0</text>
-              <text class="open-result-axis-tick" x="277" y="156" text-anchor="middle">time</text>
-              <text class="open-result-axis-tick" x="500" y="156" text-anchor="end">60</text>
-              <text class="open-result-axis-label open-result-objective-y-title" x="8" y="84" transform="rotate(-90 8 84)">demand</text>
+            <g>
+              <text class="rcpsp-paper-section-label" x="60" y="${loadTop - 20}">Resource ${formatMetric((example.resource_index ?? 0) + 1, { maximumFractionDigits: 0 })} full-instance load</text>
+              <path class="open-result-rule-paper-axis" d="M${loadLeft} ${loadTop}V${loadBase}H${loadRight}" />
+              <path class="open-result-objective-grid" d="M${loadLeft} ${loadTop}H${loadRight}" />
+              <path class="rcpsp-capacity-line" d="M${loadLeft} ${loadTop}H${loadRight}" />
+              <text class="rcpsp-paper-note" x="${loadRight}" y="${loadTop - 8}" text-anchor="end">capacity ${formatMetric(capacity, { maximumFractionDigits: 0 })}</text>
+${resourceBars}
+              <text class="open-result-axis-tick" x="${loadLeft - 10}" y="${loadBase + 3}" text-anchor="end">0</text>
+              <text class="open-result-axis-tick" x="${loadLeft - 10}" y="${loadTop + 3}" text-anchor="end">cap</text>
+              <text class="open-result-axis-tick" x="${loadLeft}" y="${loadBase + 20}">${formatMetric(axisStart, { maximumFractionDigits: 0 })}</text>
+              <text class="open-result-axis-tick" x="${(loadLeft + loadRight) / 2}" y="${loadBase + 20}" text-anchor="middle">time</text>
+              <text class="open-result-axis-tick" x="${loadRight}" y="${loadBase + 20}" text-anchor="end">${formatMetric(axisEnd, { maximumFractionDigits: 0 })}</text>
+              <text class="open-result-axis-label open-result-objective-y-title" x="28" y="${(loadTop + loadBase) / 2}" transform="rotate(-90 28 ${(loadTop + loadBase) / 2})">demand</text>
             </g>
           </svg>`,
   });
@@ -1559,7 +1603,7 @@ ${bars}
   });
 }
 
-function rcpspWhitepaperInserts(full, evolution, candidateCode) {
+function rcpspWhitepaperInserts(full, evolution, candidateCode, scheduleExample) {
   return {
     "rcpsp-primer": rcpspScheduleFigure(),
     "resource-load": rcpspResourceLoadFigure(),
@@ -1567,7 +1611,7 @@ function rcpspWhitepaperInserts(full, evolution, candidateCode) {
     "implementation-code": rcpspImplementationCodeFigure(candidateCode),
     "objective-curve": rcpspObjectiveCurveFigure(),
     "benchmark-comparison": rcpspBenchmarkComparisonFigure(full),
-    "schedule-compression": rcpspScheduleCompressionFigure(),
+    "schedule-compression": rcpspScheduleCompressionFigure(scheduleExample),
     "objective-summary-table": rcpspObjectiveSummaryTable(full),
     "gap-summary": rcpspGapSummaryFigure(full),
     "tail-ladder": rcpspTailLadderFigure(evolution),
@@ -1779,6 +1823,9 @@ async function writeDetail(result) {
     await fs.readFile(path.join(resultRoot, full.artifacts.evolution_trace), "utf8"),
   );
   const candidateCode = await fs.readFile(path.join(resultRoot, full.artifacts.candidate_code), "utf8");
+  const scheduleExample = full.artifacts?.schedule_example
+    ? JSON.parse(await fs.readFile(path.join(resultRoot, full.artifacts.schedule_example), "utf8"))
+    : null;
   const plots = full.artifacts?.plots ?? [];
   for (const file of [
     full.artifacts?.candidate_code,
@@ -1786,6 +1833,7 @@ async function writeDetail(result) {
     full.artifacts?.metrics,
     full.artifacts?.provenance,
     full.artifacts?.replay,
+    full.artifacts?.schedule_example,
     full.evaluation_contract?.artifact,
     ...plots,
   ].filter(Boolean)) {
@@ -1833,7 +1881,7 @@ ${markdownToHtml(articleWithoutTitle(article), quadratureWhitepaperInserts(full,
 
         <section class="open-result-detail open-result-whitepaper-shell rcpsp-whitepaper-shell">
           <article class="open-result-article open-result-whitepaper rcpsp-whitepaper">
-${markdownToHtml(articleWithoutTitle(article), rcpspWhitepaperInserts(full, evolution, candidateCode))}
+${markdownToHtml(articleWithoutTitle(article), rcpspWhitepaperInserts(full, evolution, candidateCode, scheduleExample))}
           </article>
         </section>`
     : `        <section class="hero compact-hero page-hero open-result-detail-hero">

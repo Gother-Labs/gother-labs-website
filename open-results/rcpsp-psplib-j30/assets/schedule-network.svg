@@ -31,18 +31,18 @@
     <text class="label" x="0" y="-24">Gantt schedule</text>
     <path class="axis" d="M78 116H760"/>
     <path class="grid" d="M78 12H760M78 46H760M78 80H760"/>
-    <text class="tick" x="0" y="22">lane 1</text>
-    <text class="tick" x="0" y="56">lane 2</text>
-    <text class="tick" x="0" y="90">lane 3</text>
+    <text class="tick" x="0" y="22">row 1</text>
+    <text class="tick" x="0" y="56">row 2</text>
+    <text class="tick" x="0" y="90">row 3</text>
     <text class="tick" x="78" y="138">0</text>
     <text class="tick" x="305" y="138" text-anchor="middle">20</text>
     <text class="tick" x="532" y="138" text-anchor="middle">40</text>
     <text class="tick" x="760" y="138" text-anchor="end">60</text>
-    <rect class="bar" x="96" y="2" width="104" height="22" rx="3"/><text class="barText" x="108" y="17">A1</text>
-    <rect class="bar" x="210" y="36" width="178" height="22" rx="3"/><text class="barText" x="222" y="51">A2</text>
-    <rect class="bar2" x="398" y="36" width="204" height="22" rx="3"/><text class="barText" x="410" y="51">A4</text>
-    <rect class="bar" x="274" y="70" width="236" height="22" rx="3"/><text class="barText" x="286" y="85">A3</text>
-    <rect class="bar" x="618" y="70" width="106" height="22" rx="3"/><text class="barText" x="630" y="85">A5</text>
+    <rect class="bar" x="96" y="2" width="104" height="22" rx="3"/><text class="barText" x="108" y="17">J1</text>
+    <rect class="bar" x="210" y="36" width="178" height="22" rx="3"/><text class="barText" x="222" y="51">J2</text>
+    <rect class="bar2" x="398" y="36" width="204" height="22" rx="3"/><text class="barText" x="410" y="51">J4</text>
+    <rect class="bar" x="274" y="70" width="236" height="22" rx="3"/><text class="barText" x="286" y="85">J3</text>
+    <rect class="bar" x="618" y="70" width="106" height="22" rx="3"/><text class="barText" x="630" y="85">J5</text>
     <line class="mk" x1="724" y1="-8" x2="724" y2="116"/><text class="tick" x="736" y="2">Cmax</text>
   </g>
 </svg>

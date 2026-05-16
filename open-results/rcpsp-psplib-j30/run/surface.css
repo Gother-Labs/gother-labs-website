@@ -336,7 +336,7 @@
 }
 
 .rcpsp-dispatch-svg {
-  height: 520px;
+  height: 600px;
 }
 
 .rcpsp-schedule-svg {
@@ -537,6 +537,11 @@
   font-family: var(--surface-mono) !important;
   font-size: 7.5px;
   font-weight: 700;
+}
+
+.rcpsp-gantt-label-external {
+  fill: var(--text);
+  font-size: 7px;
 }
 
 .rcpsp-schedule-load,
