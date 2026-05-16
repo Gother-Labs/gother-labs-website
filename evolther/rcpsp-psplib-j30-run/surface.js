@@ -5,6 +5,11 @@
   const steps = data.steps;
   const accepted = steps[steps.length - 1];
   const baseline = steps[0];
+  const scoreTrace = data.score_trace || null;
+  const scoredCandidates = Array.isArray(scoreTrace?.candidates) ? scoreTrace.candidates : steps;
+  const bestByGeneration = Array.isArray(scoreTrace?.best_by_generation) ? scoreTrace.best_by_generation : [];
+  const generationEnd = scoreTrace?.generation_end ?? Math.max(...steps.map((step) => step.generation ?? step.index ?? 0), 1);
+  const displayScoreCap = scoreTrace?.display_score_cap ?? 16;
   const editorLinePool = [];
   const metricStep = document.getElementById("metric-step");
   const metricGen = document.getElementById("metric-gen");
@@ -395,53 +400,66 @@
   function renderMiniScore(stepIndex, morph) {
     const width = 460;
     const height = 250;
-    const pad = { left: 52, right: 14, top: 24, bottom: 42 };
+    const pad = { left: 52, right: 14, top: 52, bottom: 42 };
     const plotW = width - pad.left - pad.right;
     const plotH = height - pad.top - pad.bottom;
-    const scores = steps.map((step) => step.score);
-    const minScore = Math.min(...scores) - 0.08;
-    const maxScore = Math.max(...scores) + 0.2;
-    const xAt = (index) => pad.left + plotW * (index / Math.max(1, steps.length - 1));
-    const yAt = (score) => pad.top + plotH - ((score - minScore) / (maxScore - minScore)) * plotH;
-    let best = Infinity;
-    const bestPath = steps.map((step, index) => {
-      best = Math.min(best, step.score);
-      return `${index === 0 ? "M" : "L"} ${xAt(index).toFixed(1)} ${yAt(best).toFixed(1)}`;
-    }).join(" ");
+    const scoreMin = 12;
+    const scoreMax = displayScoreCap;
+    const xAtGeneration = (generation) => pad.left + plotW * (generation / Math.max(1, generationEnd));
+    const yAt = (score) => {
+      const visibleScore = Math.min(Math.max(score, scoreMin), scoreMax);
+      return pad.top + plotH - ((visibleScore - scoreMin) / (scoreMax - scoreMin)) * plotH;
+    };
     const prev = steps[Math.max(0, stepIndex - 1)];
     const curr = steps[stepIndex];
-    const markerX = mix(xAt(Math.max(0, stepIndex - 1)), xAt(stepIndex), morph);
+    const markerX = mix(xAtGeneration(prev.generation), xAtGeneration(curr.generation), morph);
     const markerY = mix(yAt(prev.score), yAt(curr.score), morph);
-    const grid = [12.1, 13, 14].map((tick) => {
+    const bestPath = (bestByGeneration.length ? bestByGeneration : steps).map((point, index) => {
+      const generation = point.generation ?? point.index ?? index;
+      return `${index === 0 ? "M" : "L"} ${xAtGeneration(generation).toFixed(1)} ${yAt(point.score).toFixed(1)}`;
+    }).join(" ");
+    const grid = [scoreMax, 14, 12].map((tick) => {
       const y = yAt(tick);
       return `
         <line class="rcpsp-paper-grid" x1="${pad.left}" y1="${y.toFixed(1)}" x2="${pad.left + plotW}" y2="${y.toFixed(1)}" />
-        <text class="rcpsp-axis-tick" x="${pad.left - 12}" y="${(y + 3).toFixed(1)}" text-anchor="end">${tick}</text>
+        <text class="rcpsp-axis-tick rcpsp-score-y-tick" x="${pad.left - 12}" y="${(y + 3).toFixed(1)}">${tick === scoreMax ? `${tick}+` : tick}</text>
       `;
     }).join("");
-    const dots = steps.map((step, index) => (
-      `<circle class="rcpsp-score-proposal" cx="${xAt(index).toFixed(1)}" cy="${yAt(step.score).toFixed(1)}" r="1.9" />`
+    const dots = scoredCandidates.map((candidate) => (
+      `<circle class="rcpsp-score-proposal${candidate.score > scoreMax ? " is-clipped" : ""}" cx="${xAtGeneration(candidate.generation).toFixed(1)}" cy="${yAt(candidate.score).toFixed(1)}" r="1.7" />`
     )).join("");
-    const xTicks = steps.map((step, index) => (
-      `<text class="rcpsp-axis-tick" x="${xAt(index).toFixed(1)}" y="${height - 14}" text-anchor="middle">${step.generation}</text>`
+    const xTicks = [0, 40, 80, generationEnd].map((generation) => (
+      `<line class="rcpsp-score-x-tick" x1="${xAtGeneration(generation).toFixed(1)}" y1="${pad.top + plotH}" x2="${xAtGeneration(generation).toFixed(1)}" y2="${pad.top + plotH + 5}" />
+       <text class="rcpsp-axis-tick rcpsp-score-x-value" x="${xAtGeneration(generation).toFixed(1)}" y="${height - 14}">${generation}</text>`
     )).join("");
+    const legend = `
+      <g class="rcpsp-score-legend" transform="translate(${pad.left} 24)">
+        <g transform="translate(0 0)"><circle class="rcpsp-score-legend-proposal" cx="0" cy="0" r="2.4" /><text x="12" y="4">scored candidate</text></g>
+        <g transform="translate(106 0)"><line class="rcpsp-score-legend-best" x1="0" y1="0" x2="16" y2="0" /><text x="24" y="4">best-so-far objective</text></g>
+        <g transform="translate(262 0)"><circle class="rcpsp-score-baseline" cx="0" cy="0" r="3.4" /><text x="14" y="4">baseline</text></g>
+        <g transform="translate(330 0)"><circle class="rcpsp-score-accepted" cx="0" cy="0" r="3.8" /><text x="14" y="4">accepted</text></g>
+      </g>
+    `;
 
     scoreMiniSvg.innerHTML = `
+      ${legend}
       ${grid}
       <line class="rcpsp-paper-axis" x1="${pad.left}" y1="${pad.top + plotH}" x2="${pad.left + plotW}" y2="${pad.top + plotH}" />
       <line class="rcpsp-paper-axis" x1="${pad.left}" y1="${pad.top}" x2="${pad.left}" y2="${pad.top + plotH}" />
-      <text class="rcpsp-axis-title" x="18" y="${pad.top + plotH / 2}" transform="rotate(-90 18 ${pad.top + plotH / 2})">score J(r)</text>
+      <text class="rcpsp-axis-title rcpsp-score-y-label" x="18" y="${pad.top + plotH / 2}" transform="rotate(-90 18 ${pad.top + plotH / 2})">
+        <tspan font-style="italic">J</tspan><tspan>(</tspan><tspan font-style="italic">r</tspan><tspan>)</tspan>
+      </text>
       ${dots}
       <path class="rcpsp-score-best" d="${bestPath}" />
-      <circle class="rcpsp-score-baseline" cx="${xAt(0).toFixed(1)}" cy="${yAt(baseline.score).toFixed(1)}" r="5.4" />
-      <circle class="rcpsp-score-accepted" cx="${xAt(steps.length - 1).toFixed(1)}" cy="${yAt(accepted.score).toFixed(1)}" r="5.8" />
+      <circle class="rcpsp-score-baseline" cx="${xAtGeneration(baseline.generation).toFixed(1)}" cy="${yAt(baseline.score).toFixed(1)}" r="5.4" />
+      <circle class="rcpsp-score-accepted" cx="${xAtGeneration(accepted.generation).toFixed(1)}" cy="${yAt(accepted.score).toFixed(1)}" r="5.8" />
       <circle class="rcpsp-score-current" cx="${markerX.toFixed(1)}" cy="${markerY.toFixed(1)}" r="3.8" />
-      <text class="rcpsp-axis-tick" x="${pad.left}" y="15">contract score, not an optimum bound</text>
       ${xTicks}
-      <text class="rcpsp-axis-title" x="${pad.left + plotW / 2}" y="${height - 1}">generation checkpoint</text>
+      <text class="rcpsp-axis-title rcpsp-score-x-label" x="${pad.left + plotW / 2}" y="${height - 1}">
+        <tspan>generation </tspan><tspan font-style="italic">k</tspan>
+      </text>
     `;
-    const step = steps[stepIndex];
-    scoreMiniLabel.textContent = `gen ${step.generation} · best ${fmt(bestAt(stepIndex), 3)} · mean gap ${pct(step.mean_gap_pct, 2)}`;
+    scoreMiniLabel.textContent = `best ${fmt(bestAt(stepIndex), 3)}`;
   }
 
   function renderDispatch(stepIndex, morph) {

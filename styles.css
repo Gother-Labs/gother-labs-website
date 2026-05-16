@@ -1846,6 +1846,10 @@ a {
   fill: color-mix(in srgb, var(--text) 30%, transparent);
 }
 
+.open-result-objective-proposal.is-clipped {
+  fill: color-mix(in srgb, var(--text) 18%, transparent);
+}
+
 .open-result-objective-best {
   fill: none;
   stroke: var(--text);

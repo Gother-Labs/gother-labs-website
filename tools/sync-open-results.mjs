@@ -1340,46 +1340,89 @@ function rcpspResourceLoadFigure() {
   });
 }
 
-function rcpspObjectiveCurveFigure() {
+function rcpspObjectiveCurveFigure(scoreTrace) {
+  const trace = scoreTrace || {};
+  const candidates = Array.isArray(trace.candidates) ? trace.candidates : [];
+  const bestByGeneration = Array.isArray(trace.best_by_generation) ? trace.best_by_generation : [];
+  const generationEnd = trace.generation_end ?? 119;
+  const scoreMin = 12;
+  const scoreMax = trace.display_score_cap ?? 16;
+  const left = 82;
+  const right = 512;
+  const top = 76;
+  const bottom = 252;
+  const plotW = right - left;
+  const plotH = bottom - top;
+  const xAt = (generation) => left + (Math.max(0, Math.min(generationEnd, generation)) / Math.max(1, generationEnd)) * plotW;
+  const yAt = (score) => {
+    const visibleScore = Math.max(scoreMin, Math.min(scoreMax, score));
+    return bottom - ((visibleScore - scoreMin) / (scoreMax - scoreMin)) * plotH;
+  };
+  const scoreLabel = (score) => (score >= scoreMax ? `${scoreMax}+` : formatMetric(score, { maximumFractionDigits: 0 }));
+  const candidateDots = candidates
+    .map((candidate) => {
+      const generation = candidate.generation ?? 0;
+      const score = candidate.score ?? scoreMax;
+      return `<circle class="open-result-objective-proposal${score > scoreMax ? " is-clipped" : ""}" cx="${xAt(generation).toFixed(1)}" cy="${yAt(score).toFixed(1)}" r="1.6" />`;
+    })
+    .join("\n              ");
+  const fallbackBest = [
+    { generation: 0, score: trace.seed_score ?? 14.312164873860446 },
+    { generation: 2, score: 13.74111742413817 },
+    { generation: 5, score: 13.404 },
+    { generation: 19, score: 12.988 },
+    { generation: 61, score: 12.855 },
+    { generation: 89, score: 12.24 },
+    { generation: 119, score: trace.accepted_score ?? 12.086633114086395 },
+  ];
+  const bestPoints = bestByGeneration.length ? bestByGeneration : fallbackBest;
+  const bestPath = bestPoints
+    .map((point, index) => `${index === 0 ? "M" : "L"} ${xAt(point.generation ?? index).toFixed(1)} ${yAt(point.score).toFixed(1)}`)
+    .join(" ");
+  const baselineScore = trace.seed_score ?? 14.312164873860446;
+  const acceptedScore = trace.accepted_score ?? 12.086633114086395;
+  const yTicks = [scoreMax, 14, 12]
+    .map((tick) => {
+      const y = yAt(tick);
+      return `<path class="open-result-objective-grid" d="M${left} ${y.toFixed(1)}H${right}" /><text class="open-result-axis-tick open-result-objective-y-label" x="${left - 14}" y="${(y + 4).toFixed(1)}">${scoreLabel(tick)}</text>`;
+    })
+    .join("\n            ");
+  const xTicks = [0, 40, 80, generationEnd]
+    .map((generation, index, all) => {
+      const x = xAt(generation);
+      const anchor = index === 0 ? "" : index === all.length - 1 ? ' text-anchor="end"' : ' text-anchor="middle"';
+      return `<text class="open-result-axis-tick" x="${x.toFixed(1)}" y="282"${anchor}>${formatMetric(generation, { maximumFractionDigits: 0 })}</text>`;
+    })
+    .join("\n            ");
   return paperInlineFigure({
     number: 3,
-    caption: "Best-so-far score across the curated evolutionary chain, rendered in the same paper style as the quadrature objective trace. The comparison is a chain result, not a claim that the final isolated diagnostic run discovered an additional improvement.",
+    caption: "Best-so-far score across the curated evolutionary chain, rendered in the same paper style as the quadrature objective trace. Faint points are scored candidates from the sanitized public trace; scores above 16 are clipped at the top of the plotting area.",
     className: "rcpsp-inline-figure open-result-objective-figure",
     svg: `          <svg class="open-result-primer-svg open-result-objective-svg rcpsp-paper-svg" viewBox="0 0 560 328" role="img" aria-label="Best-so-far RCPSP acceptance objective.">
             <text class="open-result-axis-label open-result-figure-title" x="82" y="34">Best-so-far acceptance objective (lower is better)</text>
             <g class="open-result-objective-legend" transform="translate(82 48)">
-              <g transform="translate(0 0)"><circle class="rcpsp-objective-checkpoint" cx="0" cy="0" r="3" /><text x="12" y="4">retained candidate</text></g>
-              <g transform="translate(118 0)"><line class="open-result-objective-legend-best" x1="0" y1="0" x2="16" y2="0" /><text x="24" y="4">best-so-far</text></g>
-              <g transform="translate(286 0)"><circle class="open-result-legend-baseline-dot" cx="0" cy="0" r="3.4" /><text x="16" y="4">seed</text></g>
-              <g transform="translate(374 0)"><circle class="open-result-legend-accepted-dot" cx="0" cy="0" r="3.8" /><text x="16" y="4">accepted</text></g>
+              <g transform="translate(0 0)"><circle class="open-result-objective-legend-proposal" cx="0" cy="0" r="2.4" /><text x="12" y="4">scored candidate</text></g>
+              <g transform="translate(112 0)"><line class="open-result-objective-legend-best" x1="0" y1="0" x2="16" y2="0" /><text x="24" y="4">best-so-far objective</text></g>
+              <g transform="translate(286 0)"><circle class="open-result-legend-baseline-dot" cx="0" cy="0" r="3.4" /><text x="16" y="4">baseline</text></g>
+              <g transform="translate(370 0)"><circle class="open-result-legend-accepted-dot" cx="0" cy="0" r="3.8" /><text x="16" y="4">accepted</text></g>
             </g>
-            <path class="open-result-objective-grid" d="M82 252H512" /><text class="open-result-axis-tick open-result-objective-y-label" x="64" y="256">12</text>
-            <path class="open-result-objective-grid" d="M82 174H512" /><text class="open-result-axis-tick open-result-objective-y-label" x="64" y="178">13</text>
-            <path class="open-result-objective-grid" d="M82 96H512" /><text class="open-result-axis-tick open-result-objective-y-label" x="64" y="100">14</text>
-            <path class="open-result-rule-paper-axis" d="M82 74V260H512" />
-            <path class="open-result-objective-best" d="M82 72 L89 72 L89 116 L97 116 L97 142 L150 142 L150 175 L301 175 L301 186 L402 186 L402 234 L512 234" />
+            ${yTicks}
+            <path class="open-result-rule-paper-axis" d="M${left} ${top}V${bottom}H${right}" />
             <g>
-              <circle class="rcpsp-objective-checkpoint" cx="89" cy="116" r="3" />
-              <circle class="rcpsp-objective-checkpoint" cx="97" cy="142" r="3" />
-              <circle class="rcpsp-objective-checkpoint" cx="150" cy="175" r="3" />
-              <circle class="rcpsp-objective-checkpoint" cx="301" cy="186" r="3" />
-              <circle class="rcpsp-objective-checkpoint" cx="512" cy="234" r="3" />
+              ${candidateDots}
             </g>
-            <g class="open-result-objective-baseline"><circle cx="82" cy="72" r="4.2" /></g>
-            <g class="open-result-objective-accepted"><circle cx="402" cy="234" r="4.8" /></g>
-            <text class="open-result-axis-tick" x="82" y="282">0</text>
-            <text class="open-result-axis-tick" x="150" y="282">19</text>
-            <text class="open-result-axis-tick" x="301" y="282">61</text>
-            <text class="open-result-axis-tick" x="402" y="282">89</text>
-            <text class="open-result-axis-tick" x="512" y="282">119</text>
-            <text class="open-result-axis-label open-result-x-axis-title" x="297" y="306">generation checkpoint</text>
-            <text class="open-result-axis-label open-result-objective-y-title" x="34" y="167" transform="rotate(-90 34 167)">score J(r)</text>
+            <path class="open-result-objective-best" d="${bestPath}" />
+            <g class="open-result-objective-baseline"><circle cx="${xAt(0).toFixed(1)}" cy="${yAt(baselineScore).toFixed(1)}" r="4.2" /></g>
+            <g class="open-result-objective-accepted"><circle cx="${xAt(generationEnd).toFixed(1)}" cy="${yAt(acceptedScore).toFixed(1)}" r="4.8" /></g>
+            ${xTicks}
+            <text class="open-result-axis-label open-result-x-axis-title" x="${(left + plotW / 2).toFixed(1)}" y="306">generation <tspan font-style="italic">k</tspan></text>
+            <text class="open-result-axis-label open-result-objective-y-title" x="34" y="${(top + plotH / 2).toFixed(1)}" transform="rotate(-90 34 ${(top + plotH / 2).toFixed(1)})"><tspan font-style="italic">J</tspan><tspan>(</tspan><tspan font-style="italic">r</tspan><tspan>)</tspan></text>
           </svg>`,
   });
 }
 
 function rcpspBenchmarkComparisonFigure(full) {
-  const { seed, best, improvement, improvement_pct, mean_gap_pct, p95_gap_pct, valid_rate, optimal_hit_rate } = full.metrics;
+  const { seed, best, improvement_pct } = full.metrics;
   const scoreTrackX = 48;
   const scoreTrackWidth = 440;
   const seedWidth = (seed / 15) * scoreTrackWidth;
@@ -1389,9 +1432,9 @@ function rcpspBenchmarkComparisonFigure(full) {
   const reductionMidX = (seedX + bestX) / 2;
   return paperInlineFigure({
     number: 4,
-    caption: "Seed versus accepted benchmark readout across the governed score and portfolio diagnostics.",
+    caption: "Seed versus accepted acceptance-score readout; lower values are better.",
     className: "rcpsp-inline-figure rcpsp-benchmark-figure",
-    svg: `          <svg class="open-result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 300" role="img" aria-label="Seed versus accepted RCPSP benchmark readout.">
+    svg: `          <svg class="open-result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 220" role="img" aria-label="Seed versus accepted RCPSP acceptance score readout.">
             <text class="open-result-axis-label open-result-figure-title" x="48" y="34">Acceptance objective</text>
             <text class="rcpsp-paper-note" x="512" y="34" text-anchor="end">lower is better</text>
             <g class="rcpsp-score-readout">
@@ -1410,12 +1453,6 @@ function rcpspBenchmarkComparisonFigure(full) {
               <text class="open-result-axis-tick" x="${scoreTrackX}" y="196">0</text>
               <text class="open-result-axis-tick" x="${(scoreTrackX + scoreTrackWidth / 2).toFixed(1)}" y="196" text-anchor="middle">7.5</text>
               <text class="open-result-axis-tick" x="${(scoreTrackX + scoreTrackWidth).toFixed(1)}" y="196" text-anchor="middle">15</text>
-            </g>
-            <g class="rcpsp-small-metrics" transform="translate(48 226)">
-              <g><text>Mean gap</text><rect class="rcpsp-track" x="0" y="18" width="92" height="10" /><rect class="rcpsp-accent-fill" x="0" y="18" width="${Math.min(92, mean_gap_pct * 4.6).toFixed(1)}" height="10" /><text class="rcpsp-paper-value" x="0" y="52">${formatMetric(mean_gap_pct, { maximumFractionDigits: 2, minimumFractionDigits: 2 })}%</text></g>
-              <g transform="translate(120 0)"><text>p95 gap</text><rect class="rcpsp-track" x="0" y="18" width="92" height="10" /><rect class="rcpsp-accent-fill" x="0" y="18" width="${Math.min(92, p95_gap_pct * 3.7).toFixed(1)}" height="10" /><text class="rcpsp-paper-value" x="0" y="52">${formatMetric(p95_gap_pct, { maximumFractionDigits: 2, minimumFractionDigits: 2 })}%</text></g>
-              <g transform="translate(240 0)"><text>Valid schedules</text><rect class="rcpsp-track" x="0" y="18" width="92" height="10" /><rect class="rcpsp-accent-fill" x="0" y="18" width="${(valid_rate * 92).toFixed(1)}" height="10" /><text class="rcpsp-paper-value" x="0" y="52">80 / 80</text></g>
-              <g transform="translate(360 0)"><text>Optimal hit rate</text><rect class="rcpsp-track" x="0" y="18" width="92" height="10" /><rect class="rcpsp-accent-fill" x="0" y="18" width="${(optimal_hit_rate * 92).toFixed(1)}" height="10" /><text class="rcpsp-paper-value" x="0" y="52">${formatMetric(optimal_hit_rate * 100, { maximumFractionDigits: 2, minimumFractionDigits: 2 })}%</text></g>
             </g>
           </svg>`,
   });
@@ -1547,7 +1584,7 @@ function rcpspGapSummaryFigure(full) {
   const metrics = [
     { label: "Mean gap", value: full.metrics.mean_gap_pct, width: Math.min(320, full.metrics.mean_gap_pct * 12.8), cls: "rcpsp-accent-fill", display: `${formatMetric(full.metrics.mean_gap_pct, { maximumFractionDigits: 2, minimumFractionDigits: 2 })}%` },
     { label: "p95 gap", value: full.metrics.p95_gap_pct, width: Math.min(320, full.metrics.p95_gap_pct * 12.8), cls: "rcpsp-accent-fill", display: `${formatMetric(full.metrics.p95_gap_pct, { maximumFractionDigits: 2, minimumFractionDigits: 2 })}%` },
-    { label: "Max gap", value: full.metrics.max_gap_pct, width: Math.min(320, full.metrics.max_gap_pct * 12.8), cls: "rcpsp-reference-fill", display: `${formatMetric(full.metrics.max_gap_pct, { maximumFractionDigits: 2, minimumFractionDigits: 2 })}%` },
+    { label: "Max gap", value: full.metrics.max_gap_pct, width: Math.min(320, full.metrics.max_gap_pct * 12.8), cls: "rcpsp-accent-fill", display: `${formatMetric(full.metrics.max_gap_pct, { maximumFractionDigits: 2, minimumFractionDigits: 2 })}%` },
     { label: "Exact optima", value: full.metrics.optimal_hit_rate * 100, width: full.metrics.optimal_hit_rate * 320, cls: "rcpsp-accent-fill", display: `${exactOptima} / 80` },
   ];
   const rows = metrics.map((metric, index) => {
@@ -1580,7 +1617,7 @@ function rcpspTailLadderFigure(evolution) {
     const width = ((item.gap_pct ?? 0) / maxGap) * 300;
     return `<g>
               <text class="rcpsp-paper-section-label" x="72" y="${y}">${escapeHtml(item.instance_id)}</text>
-              <rect class="${index < 4 ? "rcpsp-accent-fill" : "rcpsp-reference-fill"}" x="170" y="${y - 12}" width="${width.toFixed(1)}" height="13" />
+              <rect class="rcpsp-accent-fill" x="170" y="${y - 12}" width="${width.toFixed(1)}" height="13" />
               <text class="rcpsp-paper-value" x="${(180 + width).toFixed(1)}" y="${y}">${formatMetric(item.gap_pct, { maximumFractionDigits: 2, minimumFractionDigits: 2 })}% | ${formatMetric(item.makespan, { maximumFractionDigits: 0 })} vs ${formatMetric(item.optimal_makespan, { maximumFractionDigits: 0 })}</text>
             </g>`;
   }).join("\n");
@@ -1603,13 +1640,13 @@ ${bars}
   });
 }
 
-function rcpspWhitepaperInserts(full, evolution, candidateCode, scheduleExample) {
+function rcpspWhitepaperInserts(full, evolution, candidateCode, scheduleExample, scoreTrace) {
   return {
     "rcpsp-primer": rcpspScheduleFigure(),
     "resource-load": rcpspResourceLoadFigure(),
     "contract-table": rcpspContractTable(evolution),
     "implementation-code": rcpspImplementationCodeFigure(candidateCode),
-    "objective-curve": rcpspObjectiveCurveFigure(),
+    "objective-curve": rcpspObjectiveCurveFigure(scoreTrace),
     "benchmark-comparison": rcpspBenchmarkComparisonFigure(full),
     "schedule-compression": rcpspScheduleCompressionFigure(scheduleExample),
     "objective-summary-table": rcpspObjectiveSummaryTable(full),
@@ -1826,6 +1863,9 @@ async function writeDetail(result) {
   const scheduleExample = full.artifacts?.schedule_example
     ? JSON.parse(await fs.readFile(path.join(resultRoot, full.artifacts.schedule_example), "utf8"))
     : null;
+  const scoreTrace = full.artifacts?.score_trace
+    ? JSON.parse(await fs.readFile(path.join(resultRoot, full.artifacts.score_trace), "utf8"))
+    : null;
   const plots = full.artifacts?.plots ?? [];
   for (const file of [
     full.artifacts?.candidate_code,
@@ -1834,6 +1874,7 @@ async function writeDetail(result) {
     full.artifacts?.provenance,
     full.artifacts?.replay,
     full.artifacts?.schedule_example,
+    full.artifacts?.score_trace,
     full.evaluation_contract?.artifact,
     ...plots,
   ].filter(Boolean)) {
@@ -1881,7 +1922,7 @@ ${markdownToHtml(articleWithoutTitle(article), quadratureWhitepaperInserts(full,
 
         <section class="open-result-detail open-result-whitepaper-shell rcpsp-whitepaper-shell">
           <article class="open-result-article open-result-whitepaper rcpsp-whitepaper">
-${markdownToHtml(articleWithoutTitle(article), rcpspWhitepaperInserts(full, evolution, candidateCode, scheduleExample))}
+${markdownToHtml(articleWithoutTitle(article), rcpspWhitepaperInserts(full, evolution, candidateCode, scheduleExample, scoreTrace))}
           </article>
         </section>`
     : `        <section class="hero compact-hero page-hero open-result-detail-hero">
