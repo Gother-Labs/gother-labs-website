@@ -545,10 +545,10 @@
     dispatchSvg.innerHTML = `
       <text class="rcpsp-figure-title" x="${labelX}" y="24">Schedule compression</text>
       <text class="rcpsp-axis-tick" x="428" y="24" text-anchor="end">gen ${curr.generation}</text>
-      <text class="rcpsp-axis-tick" x="${labelX}" y="47">all executable jobs, rendered as unlabeled bars</text>
+      <text class="rcpsp-axis-tick" x="${labelX}" y="47">j3025_9 · 30 executable jobs</text>
       <g class="rcpsp-legend" transform="translate(166 78)">
         <rect class="rcpsp-gap-seed-fill" x="0" y="-8" width="12" height="8" /><text x="18" y="0">seed</text>
-        <rect class="rcpsp-schedule-bar" x="70" y="-8" width="12" height="8" /><text x="88" y="0">checkpoint</text>
+        <rect class="rcpsp-schedule-bar" x="70" y="-8" width="12" height="8" /><text x="88" y="0">current</text>
       </g>
       <path class="rcpsp-schedule-gantt-lane" d="${laneLines}" />
       ${renderSeedBars}
@@ -563,10 +563,10 @@
       <text class="rcpsp-axis-tick" x="${(timeX(example.seed_makespan) + 4).toFixed(1)}" y="${ganttBase + 36}">seed Cmax</text>
       <line class="rcpsp-paper-grid" x1="${labelX}" y1="282" x2="428" y2="282" />
       <text class="rcpsp-gap-row-title" x="${labelX}" y="306">renewable resource load</text>
-      <text class="rcpsp-dispatch-label" x="${labelX}" y="326">Full-instance Resource ${((example.resource_index || 0) + 1)} demand; feasible below capacity ${capacityValue}</text>
+      <text class="rcpsp-dispatch-label" x="${labelX}" y="326">Resource ${((example.resource_index || 0) + 1)} demand</text>
       <g class="rcpsp-legend" transform="translate(${labelX} 344)">
         <rect class="rcpsp-schedule-load-seed" x="0" y="-8" width="12" height="8" /><text x="18" y="0">seed load</text>
-        <rect class="rcpsp-schedule-load" x="82" y="-8" width="12" height="8" /><text x="100" y="0">checkpoint load</text>
+        <rect class="rcpsp-schedule-load" x="82" y="-8" width="12" height="8" /><text x="100" y="0">current load</text>
         <line class="rcpsp-capacity" x1="216" y1="-4" x2="238" y2="-4" /><text x="246" y="0">capacity</text>
       </g>
       <line class="rcpsp-paper-axis" x1="${loadLeft}" y1="${loadTopY}" x2="${loadLeft}" y2="${loadBaseY}" />
@@ -578,7 +578,7 @@
       <text class="rcpsp-axis-tick" x="${(loadLeft + loadRight) / 2}" y="${loadBaseY + 20}" text-anchor="middle">time</text>
       <text class="rcpsp-axis-tick" x="${loadRight}" y="${loadBaseY + 20}" text-anchor="middle">${fmt(axisEnd, 0)}</text>
       <text class="rcpsp-axis-title" x="${loadLeft - 35}" y="${(loadTopY + loadBaseY) / 2}" transform="rotate(-90 ${loadLeft - 35} ${(loadTopY + loadBaseY) / 2})">demand</text>
-      <text class="rcpsp-axis-tick" x="${loadRight}" y="${loadCapacityY - 6}" text-anchor="end">capacity line</text>
+      <text class="rcpsp-axis-tick" x="${loadRight}" y="${loadCapacityY - 6}" text-anchor="end">capacity</text>
       <line class="rcpsp-capacity" x1="${loadLeft}" y1="${loadCapacityY.toFixed(1)}" x2="${loadRight}" y2="${loadCapacityY.toFixed(1)}" />
       ${loadBars}
       ${seedLoadBars}
@@ -620,14 +620,14 @@
       `;
     };
     scheduleSvg.innerHTML = `
-      <text class="rcpsp-figure-title" x="${labelX}" y="24">Portfolio gap readout</text>
+      <text class="rcpsp-figure-title" x="${labelX}" y="24">Portfolio gap</text>
       <g class="rcpsp-legend" transform="translate(${labelX} 54)">
         <line class="rcpsp-gap-seed-marker" x1="0" y1="-10" x2="0" y2="4" /><text x="10" y="0">seed</text>
-        <circle class="rcpsp-gap-current-dot" cx="64" cy="-3" r="4" /><text x="76" y="0">checkpoint</text>
-        <line class="rcpsp-schedule-final" x1="176" y1="-10" x2="176" y2="4" /><text x="186" y="0">final accepted</text>
+        <circle class="rcpsp-gap-current-dot" cx="64" cy="-3" r="4" /><text x="76" y="0">current</text>
+        <line class="rcpsp-schedule-final" x1="176" y1="-10" x2="176" y2="4" /><text x="186" y="0">accepted</text>
       </g>
-      ${row(108, "Mean portfolio gap", baseline.mean_gap_pct, meanGap, accepted.mean_gap_pct)}
-      ${row(214, "p95 tail gap", baseline.p95_gap_pct, p95Gap, accepted.p95_gap_pct)}
+      ${row(108, "Mean gap", baseline.mean_gap_pct, meanGap, accepted.mean_gap_pct)}
+      ${row(214, "p95 gap", baseline.p95_gap_pct, p95Gap, accepted.p95_gap_pct)}
     `;
   }
 

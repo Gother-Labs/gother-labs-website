@@ -58,7 +58,7 @@
           <article class="open-result-article open-result-whitepaper">
 <h3>Abstract</h3>
 <p>This note reports a compact five-node rule for estimating one-dimensional integrals on the unit interval. Relative to the fixed public baseline, the accepted rule reduces the frozen lower-is-better acceptance score by 83.37%. On the most improved public residual component, the direct numerical error falls from 0.3634 to 0.0010, a 99.72% reduction.</p>
-<p>The acceptance score is the rule used to decide whether a candidate is retained; the residual errors are the easier-to-read numerical behavior. The report keeps both surfaces visible. A technical reader can inspect the equations, figures, candidate code, and replay artifacts. A non-specialist reader should read the result as a bounded claim: under the stated one-dimensional analytic test contract, the accepted five-node rule is materially better than the fixed baseline, but it is not presented as a universal integration method.</p>
+<p>The public claim is bounded to the stated one-dimensional analytic test contract. The acceptance score is the retention objective used by the run; the residual errors are the direct numerical readout. Both surfaces are shown so the candidate can be audited without presenting the rule as a universal integration method.</p>
 <h3>1. Problem formulation</h3>
 <p>Numerical integration estimates the area accumulated under a function. The conceptual object is an integral of an arbitrary scalar function \(g\) on the unit interval:</p>
 <div class="formula-block" id="eq-1">
@@ -457,8 +457,7 @@ p=1.7.
           <figcaption>Listing 1. Accepted candidate implementation.</figcaption>
         </figure>
 <h4>Candidate results</h4>
-<p>The result has two readouts. <a href="#fig-6">Figure 6</a> and <a href="#table-2">Table 2</a> show the acceptance-contract readout: the candidate improves the lower-is-better score used by the run. <a href="#fig-7">Figure 7</a> and <a href="#table-3">Table 3</a> show the numerical readout: the residual errors left on the public functions.</p>
-<p>The curve shows the scored candidates, the retained best-so-far objective, the fixed run baseline, and the accepted candidate.</p>
+<p>The result is read in two layers. <a href="#fig-6">Figure 6</a> and <a href="#table-2">Table 2</a> show the governed acceptance objective; <a href="#fig-7">Figure 7</a> and <a href="#table-3">Table 3</a> show where the accepted rule leaves residual error on the public functions.</p>
 <figure class="open-result-primer-card open-result-paper-figure open-result-objective-figure" id="fig-6">
           <svg class="open-result-primer-svg open-result-objective-svg" viewBox="0 0 560 328" role="img" aria-label="Best so far objective curve across the curated public trace.">
             <text class="open-result-axis-label open-result-figure-title" x="82" y="34">Best-so-far acceptance objective (lower is better)</text>
@@ -616,7 +615,7 @@ p=1.7.
               <circle cx="312.4" cy="229.6" r="4.8" />
             </g>
           </svg>
-          <figcaption>Figure 6. Objective trace in paper form. Faint points are scored candidates; the solid step curve is the best-so-far acceptance objective retained under the frozen contract. The baseline and accepted markers show the reported comparison.</figcaption>
+          <figcaption>Figure 6. Objective trace for the curated public chain. Faint points are scored candidates, the solid line is retained best-so-far, and rings mark baseline and accepted.</figcaption>
         </figure>
 <figure class="open-result-paper-table" id="table-2">
           <div class="open-result-table-wrap">
@@ -647,7 +646,7 @@ p=1.7.
           </div>
           <figcaption>Table 2. Reported objective comparison under the frozen acceptance contract; lower values are better.</figcaption>
         </figure>
-<p>The residual readout is the scientific check on the objective score. The largest accepted residual remains on \(f_1(x)=\sin(\pi x)\), but it is also the component with the largest absolute reduction from the run baseline. This distinction matters: the accepted candidate is not claimed to make every residual vanish; it is claimed to improve the measured behavior under this contract.</p>
+<p>The residual readout is the numerical check on the objective score. The accepted candidate does not erase every residual; it materially reduces the measured behavior under this contract.</p>
 <figure class="open-result-primer-card open-result-paper-figure" id="fig-7">
           <svg class="open-result-primer-svg open-result-residual-location-svg open-result-paper-chart-svg" viewBox="0 0 560 456" role="img" aria-label="Residual location diagnostics for the run baseline and accepted rule on each public integrand.">
             <defs>
@@ -809,7 +808,7 @@ p=1.7.
               <path class="open-result-primer-curve" d="M72.0 402.0 L75.5 400.9 L79.0 399.8 L82.4 398.7 L85.9 397.7 L89.4 396.6 L92.9 395.6 L96.4 394.6 L99.9 393.6 L103.3 392.5 L106.8 391.6 L110.3 390.6 L113.8 389.6 L117.3 388.6 L120.8 387.7 L124.2 386.7 L127.7 385.8 L131.2 384.9 L134.7 383.9 L138.2 383.0 L141.7 382.1 L145.1 381.2 L148.6 380.3 L152.1 379.4 L155.6 378.6 L159.1 377.7 L162.6 376.9 L166.0 376.0 L169.5 375.2 L173.0 374.3 L176.5 373.5 L180.0 372.7 L183.5 371.9 L186.9 371.1 L190.4 370.3 L193.9 369.5 L197.4 368.7 L200.9 367.9 L204.4 367.1 L207.8 366.3 L211.3 365.6 L214.8 364.8 L218.3 364.1 L221.8 363.3 L225.3 362.6 L228.7 361.9 L232.2 361.1 L235.7 360.4 L239.2 359.7 L242.7 359.0 L246.2 358.3 L249.6 357.6 L253.1 356.9 L256.6 356.2 L260.1 355.5 L263.6 354.8 L267.1 354.1 L270.5 353.4 L274.0 352.8 L277.5 352.1 L281.0 351.4 L284.5 350.8 L288.0 350.1 L291.4 349.5 L294.9 348.8 L298.4 348.2 L301.9 347.6 L305.4 346.9 L308.9 346.3 L312.3 345.7 L315.8 345.1 L319.3 344.5 L322.8 343.8 L326.3 343.2 L329.8 342.6 L333.2 342.0 L336.7 341.4 L340.2 340.8 L343.7 340.3 L347.2 339.7 L350.7 339.1 L354.1 338.5 L357.6 337.9 L361.1 337.4 L364.6 336.8 L368.1 336.2 L371.6 335.7 L375.0 335.1 L378.5 334.6 L382.0 334.0" />
             </g>
           </svg>
-          <figcaption>Figure 7. Residual location diagnostic by public integrand. The white curve is the analytic function, gray marks the run baseline sample, blue marks the accepted samples, and the hatched regions show where the accepted contribution cells depart locally from the curve; each panel uses its own vertical scale.</figcaption>
+          <figcaption>Figure 7. Residual location by public integrand. Grey marks the run baseline, blue marks the accepted rule, and hatching shows local accepted-rule residual area.</figcaption>
         </figure>
 <figure class="open-result-paper-table" id="table-3">
           <div class="open-result-table-wrap">
@@ -851,8 +850,8 @@ p=1.7.
 <p>The contracted score is intentionally narrow. A lower value of \(J(r)\) is evidence that the accepted candidate improved under this contract, not evidence that every downstream quantity of interest improved. Because the public bundle does not expose numeric component weights \(\alpha_j\), readers should interpret the residual table as the transparent scientific readout alongside the aggregate score.</p>
 <p>External validity is deliberately left open. A reader should rerun an evaluation contract that explicitly contains the cases they care about before transferring the node placement to another integration setting.</p>
 <h3>5. Reproducibility</h3>
-<p>The replay surface is intentionally small. <code>evaluation_contract.md</code> defines the public contract and objective direction. <code>accepted_candidate.py</code> provides <a href="#listing-1">Listing 1</a> and the accepted rule shown in <a href="#fig-5">Figure 5</a>. <code>evolution.json</code> provides <a href="#fig-6">Figure 6</a>. <code>metrics.json</code> provides <a href="#table-2">Table 2</a> and the retained objective values. The residual values used in <a href="#fig-7">Figure 7</a> and <a href="#table-3">Table 3</a> are read from the curated public trace.</p>
-<p>An animated replay of the same public trace is available at <a href="./run/">the run page</a>. It is a presentation layer over the same artifacts, not a separate result.</p>
+<p>The public bundle includes the evaluation contract, accepted candidate, curated evolution trace, metrics, provenance, residual readout, and replay surface. The article uses those artifacts as the source for the figures, tables, and accepted implementation.</p>
+<p>An animated replay of the same public trace is available at <a href="./run/">the run page</a>. It is a presentation layer over the same artifacts, not a separate result, and excludes non-public proposal context.</p>
 <p>Replaying the result should use the same analytic integrand suite, the same objective definition, the same run baseline, and the same lower-is-better direction. Changing any of those items creates a new evaluation, not a replay of this result.</p>
 <p>The source bundle is available in <a href="https://github.com/Gother-Labs/gother-labs-open-results/tree/main/results/quadrature-rule-optimization" target="_blank" rel="noreferrer">Göther Labs Open Results</a>.</p>
           </article>

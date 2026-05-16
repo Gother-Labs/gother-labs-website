@@ -966,7 +966,7 @@ function residualLocationFigure(evolution) {
             </g>
             ${panels}
           </svg>
-          <figcaption>Figure 7. Residual location diagnostic by public integrand. The white curve is the analytic function, gray marks the run baseline sample, blue marks the accepted samples, and the hatched regions show where the accepted contribution cells depart locally from the curve; each panel uses its own vertical scale.</figcaption>
+          <figcaption>Figure 7. Residual location by public integrand. Grey marks the run baseline, blue marks the accepted rule, and hatching shows local accepted-rule residual area.</figcaption>
         </figure>`;
 }
 
@@ -1055,7 +1055,7 @@ function objectiveCurveFigure(evolution) {
               <circle cx="${acceptedX.toFixed(1)}" cy="${acceptedY.toFixed(1)}" r="4.8" />
             </g>
           </svg>
-          <figcaption>Figure 6. Objective trace in paper form. Faint points are scored candidates; the solid step curve is the best-so-far acceptance objective retained under the frozen contract. The baseline and accepted markers show the reported comparison.</figcaption>
+          <figcaption>Figure 6. Objective trace for the curated public chain. Faint points are scored candidates, the solid line is retained best-so-far, and rings mark baseline and accepted.</figcaption>
         </figure>`;
 }
 
@@ -1541,7 +1541,7 @@ function rcpspScheduleCompressionFigure(scheduleExample) {
 
   return paperInlineFigure({
     number: 5,
-    caption: `Real schedule-compression readout for PSPLIB J30 instance ${escapeHtml(example.instance_id)}. The figure renders all ${formatMetric(example.executable_job_count ?? executableJobs.length, { maximumFractionDigits: 0 })} executable jobs from the 32-job instance as unlabeled bars, so the full compression pattern remains legible. The seed schedule finishes at ${formatMetric(example.seed_makespan, { maximumFractionDigits: 0 })}, the accepted schedule at ${formatMetric(example.accepted_makespan, { maximumFractionDigits: 0 })}, and the proven optimum is ${formatMetric(example.optimal_makespan, { maximumFractionDigits: 0 })}.`,
+    caption: `Real schedule-compression readout for PSPLIB J30 instance ${escapeHtml(example.instance_id)}. All executable jobs are rendered as unlabeled bars; seed finishes at ${formatMetric(example.seed_makespan, { maximumFractionDigits: 0 })}, accepted at ${formatMetric(example.accepted_makespan, { maximumFractionDigits: 0 })}, and the proven optimum is ${formatMetric(example.optimal_makespan, { maximumFractionDigits: 0 })}.`,
     className: "rcpsp-inline-figure rcpsp-compression-figure",
     svg: `          <svg class="open-result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 438" role="img" aria-label="Real RCPSP schedule compression and renewable resource load readout for ${escapeHtml(example.instance_id)}.">
             <text class="open-result-axis-label open-result-figure-title" x="60" y="34">Schedule compression</text>
