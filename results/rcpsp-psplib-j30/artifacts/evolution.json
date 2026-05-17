@@ -1,5 +1,5 @@
 {
-  "schema_version": "open-result-evolution/v1",
+  "schema_version": "result-evolution/v1",
   "title": "PSPLIB J30 RCPSP evolution chain",
   "direction": "lower_is_better",
   "baseline_score": 14.312164873860446,

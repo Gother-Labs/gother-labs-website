@@ -246,8 +246,8 @@ function resultCardMeasureItems(result) {
 
 function resultCardVisual(result) {
   if (result.website?.card_visual === "rcpsp") {
-    return `<svg class="open-result-card-visual open-result-card-visual--rcpsp" viewBox="0 0 560 360" aria-hidden="true" focusable="false">
-                <g class="open-result-card-rcpsp">
+    return `<svg class="result-card-visual result-card-visual--rcpsp" viewBox="0 0 560 360" aria-hidden="true" focusable="false">
+                <g class="result-card-rcpsp">
                   <g class="schedule">
                     <path class="lane" d="M52 92 H508 M52 128 H508 M52 164 H508 M52 200 H508 M52 236 H508" />
                     <path class="axis" d="M52 258 H508" />
@@ -305,7 +305,7 @@ function resultCardVisual(result) {
 
   if (result.website?.card_visual !== "quadrature") return "";
 
-  return `<svg class="open-result-card-visual" viewBox="0 0 560 360" aria-hidden="true" focusable="false">
+  return `<svg class="result-card-visual" viewBox="0 0 560 360" aria-hidden="true" focusable="false">
                 <defs>
                   <clipPath id="quadrature-card-area">
                     <path d="M44 286 L44 230 C95 166 154 109 226 82 C310 50 409 72 516 148 L516 286 Z" />
@@ -314,7 +314,7 @@ function resultCardVisual(result) {
                     <line x1="0" y1="0" x2="0" y2="18" />
                   </pattern>
                 </defs>
-                <g class="open-result-card-chart">
+                <g class="result-card-chart">
                   <line x1="44" y1="286" x2="516" y2="286" />
                   <line x1="44" y1="286" x2="44" y2="48" />
                   <line x1="44" y1="92" x2="516" y2="92" class="grid" />
@@ -339,17 +339,17 @@ function resultCardVisual(result) {
 
 function resultCard(result) {
   const measures = resultCardMeasureItems(result);
-  const visualClass = result.website?.card_visual ? ` open-result-card--${escapeHtml(result.website.card_visual)}` : "";
+  const visualClass = result.website?.card_visual ? ` result-card--${escapeHtml(result.website.card_visual)}` : "";
   const visual = resultCardVisual(result);
   const visualMarkup = visual ? `              ${visual}\n` : "";
-  return `<article class="open-result-card${visualClass}">
-            <a class="open-result-link" href="./${result.slug}/" aria-label="Read ${escapeHtml(result.title)}">
-${visualMarkup}              <div class="open-result-meta">
+  return `<article class="result-card${visualClass}">
+            <a class="result-link" href="./${result.slug}/" aria-label="Read ${escapeHtml(result.title)}">
+${visualMarkup}              <div class="result-meta">
                 <p class="eyebrow">${escapeHtml(result.website.card_label)}</p>
               </div>
               <h2>${escapeHtml(result.title)}</h2>
               <p>${escapeHtml(result.website.card_summary || result.summary)}</p>
-              <div class="open-result-measure">
+              <div class="result-measure">
                 ${measures.map(([label, value]) => `<span>${escapeHtml(label)}</span>
                 <strong>${escapeHtml(value)}</strong>`).join("\n                ")}
               </div>
@@ -470,13 +470,13 @@ function resultSnapshot(full, evolution) {
     cards.push(["Acceptance objective", formatNumber(full.metrics.best)]);
   }
 
-  return `<section class="open-result-snapshot" aria-label="Result summary">
-            <div class="open-result-snapshot-primary">
+  return `<section class="result-snapshot" aria-label="Result summary">
+            <div class="result-snapshot-primary">
               <span>${escapeHtml(primary.label)}</span>
               <strong>${primary.value}</strong>
               <p>${escapeHtml(primary.note)}</p>
             </div>
-            <div class="open-result-snapshot-cards">
+            <div class="result-snapshot-cards">
 ${cards
   .slice(0, 4)
   .map(
@@ -505,14 +505,14 @@ function quadratureProblemVisuals() {
     return 0.86 * envelope * (0.86 + 0.14 * x) + 0.05 * x * (1 - x);
   };
   const plotClipRect = `<rect x="${plot.left}" y="${plot.top - 2}" width="${plot.right - plot.left}" height="${plot.base - plot.top + 2}" />`;
-  const axes = `<path class="open-result-primer-grid" d="M${plot.left} ${plot.top} V${plot.base} H${plot.right}" />
-                <path class="open-result-objective-grid" d="M${plot.left} ${mapY(1).toFixed(1)} H${plot.right}" />
-                <text class="open-result-axis-tick open-result-y-tick" x="${plot.left - 16}" y="${mapY(1) + 4}">1</text>
-                <path class="open-result-axis-notch" d="M${plot.left - 6} ${mapY(1)} H${plot.left}" />
-                <text class="open-result-axis-tick" x="${plot.left}" y="${plot.base + 22}">0</text>
-                <text class="open-result-axis-tick" x="${plot.right}" y="${plot.base + 22}">1</text>
-                <text class="open-result-axis-label open-result-x-axis-title" x="${(plot.left + plot.right) / 2}" y="${plot.base + 48}">x</text>
-                <text class="open-result-axis-label open-result-objective-y-title" x="34" y="${plot.top + (plot.base - plot.top) / 2}" transform="rotate(-90 34 ${plot.top + (plot.base - plot.top) / 2})">g(x)</text>`;
+  const axes = `<path class="result-primer-grid" d="M${plot.left} ${plot.top} V${plot.base} H${plot.right}" />
+                <path class="result-objective-grid" d="M${plot.left} ${mapY(1).toFixed(1)} H${plot.right}" />
+                <text class="result-axis-tick result-y-tick" x="${plot.left - 16}" y="${mapY(1) + 4}">1</text>
+                <path class="result-axis-notch" d="M${plot.left - 6} ${mapY(1)} H${plot.left}" />
+                <text class="result-axis-tick" x="${plot.left}" y="${plot.base + 22}">0</text>
+                <text class="result-axis-tick" x="${plot.right}" y="${plot.base + 22}">1</text>
+                <text class="result-axis-label result-x-axis-title" x="${(plot.left + plot.right) / 2}" y="${plot.base + 48}">x</text>
+                <text class="result-axis-label result-objective-y-title" x="34" y="${plot.top + (plot.base - plot.top) / 2}" transform="rotate(-90 34 ${plot.top + (plot.base - plot.top) / 2})">g(x)</text>`;
   const samples = Array.from({ length: 90 }, (_, index) => {
     const x = index / 89;
     const y = conceptFunction(x);
@@ -536,7 +536,7 @@ function quadratureProblemVisuals() {
     const right = mapX(x1);
     const x = mapX(node);
     const y = mapY(value);
-    return `<g class="open-result-concept-sample ${index === 2 ? "is-accepted" : ""}">
+    return `<g class="result-concept-sample ${index === 2 ? "is-accepted" : ""}">
               <rect x="${left.toFixed(1)}" y="${y.toFixed(1)}" width="${(right - left).toFixed(1)}" height="${(plot.base - y).toFixed(1)}" />
               <line x1="${x.toFixed(1)}" y1="${plot.base}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" />
               <circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4.2" />
@@ -552,7 +552,7 @@ function quadratureProblemVisuals() {
       return [mapX(x), mapY(conceptFunction(x))];
     });
     const meanCurveY = regionSamples.reduce((sum, [, y]) => sum + y, 0) / regionSamples.length;
-    const residualClass = meanCurveY < estimateY ? "open-result-residual-positive" : "open-result-residual-negative";
+    const residualClass = meanCurveY < estimateY ? "result-residual-positive" : "result-residual-negative";
     const curveEdge = regionSamples
       .slice()
       .reverse()
@@ -562,15 +562,15 @@ function quadratureProblemVisuals() {
     return { pathData, residualClass };
   });
   const residualRegions = residualRegionPaths
-    .map(({ pathData, residualClass }) => `<path class="open-result-residual-region ${residualClass}" d="${pathData}" />`)
+    .map(({ pathData, residualClass }) => `<path class="result-residual-region ${residualClass}" d="${pathData}" />`)
     .join("\n");
   const residualHatches = residualRegionPaths
-    .map(({ pathData }) => `<path class="open-result-residual-hatch" d="${pathData}" />`)
+    .map(({ pathData }) => `<path class="result-residual-hatch" d="${pathData}" />`)
     .join("\n");
 
   return {
-    "exact-integral": `<figure class="open-result-primer-card open-result-paper-figure" id="fig-1">
-              <svg class="open-result-primer-svg open-result-paper-chart-svg" viewBox="0 0 560 306" role="img" aria-label="Conceptual exact integral for an arbitrary function g on the unit interval.">
+    "exact-integral": `<figure class="result-primer-card result-paper-figure" id="fig-1">
+              <svg class="result-primer-svg result-paper-chart-svg" viewBox="0 0 560 306" role="img" aria-label="Conceptual exact integral for an arbitrary function g on the unit interval.">
                 <defs>
                   <clipPath id="conceptExactPlotClip">
                     ${plotClipRect}
@@ -582,18 +582,18 @@ function quadratureProblemVisuals() {
                     <line x1="0" y1="0" x2="0" y2="12" />
                   </pattern>
                 </defs>
-                <text class="open-result-axis-label open-result-figure-title" x="${plot.left}" y="34">Conceptual integral of an arbitrary g(x)</text>
+                <text class="result-axis-label result-figure-title" x="${plot.left}" y="34">Conceptual integral of an arbitrary g(x)</text>
                 ${axes}
                 <g clip-path="url(#conceptExactPlotClip)">
-                  <path class="open-result-primer-area exact-integral-area" d="${areaPath}" />
-                  <rect class="open-result-integral-hatch" x="${plot.left}" y="${plot.top}" width="${plot.right - plot.left}" height="${plot.base - plot.top}" clip-path="url(#conceptExactIntegralClip)" />
-                  <path class="open-result-primer-curve" d="${curvePath}" />
+                  <path class="result-primer-area exact-integral-area" d="${areaPath}" />
+                  <rect class="result-integral-hatch" x="${plot.left}" y="${plot.top}" width="${plot.right - plot.left}" height="${plot.base - plot.top}" clip-path="url(#conceptExactIntegralClip)" />
+                  <path class="result-primer-curve" d="${curvePath}" />
                 </g>
               </svg>
               <figcaption>Figure 1. Conceptual setup for the exact integral. The shaded surface denotes \\(I[g]\\) for an arbitrary function \\(g\\), separate from the public integrand suite used by the evaluation contract.</figcaption>
             </figure>`,
-    "quadrature-rule": `<figure class="open-result-primer-card open-result-paper-figure" id="fig-2">
-              <svg class="open-result-primer-svg open-result-paper-chart-svg" viewBox="0 0 560 306" role="img" aria-label="Conceptual quadrature rule showing weighted point evaluations of an arbitrary function.">
+    "quadrature-rule": `<figure class="result-primer-card result-paper-figure" id="fig-2">
+              <svg class="result-primer-svg result-paper-chart-svg" viewBox="0 0 560 306" role="img" aria-label="Conceptual quadrature rule showing weighted point evaluations of an arbitrary function.">
                 <defs>
                   <clipPath id="conceptQuadraturePlotClip">
                     ${plotClipRect}
@@ -602,22 +602,22 @@ function quadratureProblemVisuals() {
                     <line x1="0" y1="0" x2="0" y2="12" />
                   </pattern>
                 </defs>
-                <text class="open-result-axis-label open-result-figure-title" x="${plot.left}" y="34">Weighted point evaluations</text>
+                <text class="result-axis-label result-figure-title" x="${plot.left}" y="34">Weighted point evaluations</text>
                 ${axes}
                 <g clip-path="url(#conceptQuadraturePlotClip)">
-                  <g class="open-result-concept-samples">
+                  <g class="result-concept-samples">
 ${quadratureCells.join("\n")}
                   </g>
-                  <g class="open-result-concept-samples open-result-concept-sample-hatches">
+                  <g class="result-concept-samples result-concept-sample-hatches">
 ${quadratureCells.join("\n")}
                   </g>
-                  <path class="open-result-primer-curve muted-curve dashed-curve" d="${curvePath}" />
+                  <path class="result-primer-curve muted-curve dashed-curve" d="${curvePath}" />
                 </g>
               </svg>
               <figcaption>Figure 2. Quadrature replaces the continuous integral with weighted point evaluations. The blue cells are the estimate \\(Q_r[g]\\): each cell width represents \\(w_i\\), each height is \\(g(x_i)\\), and each area is one contribution \\(w_i g(x_i)\\).</figcaption>
             </figure>`,
-    "residual-error": `<figure class="open-result-primer-card open-result-paper-figure" id="fig-3">
-              <svg class="open-result-primer-svg open-result-paper-chart-svg" viewBox="0 0 560 306" role="img" aria-label="Conceptual residual between the exact integral and weighted quadrature estimate.">
+    "residual-error": `<figure class="result-primer-card result-paper-figure" id="fig-3">
+              <svg class="result-primer-svg result-paper-chart-svg" viewBox="0 0 560 306" role="img" aria-label="Conceptual residual between the exact integral and weighted quadrature estimate.">
                 <defs>
                   <clipPath id="conceptResidualPlotClip">
                     ${plotClipRect}
@@ -626,19 +626,19 @@ ${quadratureCells.join("\n")}
                     <line x1="0" y1="0" x2="0" y2="12" />
                   </pattern>
                 </defs>
-                <text class="open-result-axis-label open-result-figure-title" x="${plot.left}" y="34">Residual between I[g] and Q<tspan baseline-shift="sub" font-size="9">r</tspan><tspan dx="4">[g]</tspan></text>
+                <text class="result-axis-label result-figure-title" x="${plot.left}" y="34">Residual between I[g] and Q<tspan baseline-shift="sub" font-size="9">r</tspan><tspan dx="4">[g]</tspan></text>
                 ${axes}
                 <g clip-path="url(#conceptResidualPlotClip)">
-                  <g class="open-result-concept-samples open-result-concept-samples-muted">
+                  <g class="result-concept-samples result-concept-samples-muted">
 ${quadratureCells.join("\n")}
                   </g>
-                  <g class="open-result-residual-regions">
+                  <g class="result-residual-regions">
 ${residualRegions}
                   </g>
-                  <g class="open-result-residual-hatches">
+                  <g class="result-residual-hatches">
 ${residualHatches}
                   </g>
-                  <path class="open-result-primer-curve" d="${curvePath}" />
+                  <path class="result-primer-curve" d="${curvePath}" />
                 </g>
               </svg>
               <figcaption>Figure 3. Conceptual residual diagnostic. Local over- and under-estimation can coexist; the reported scalar residual is the absolute net difference between the quadrature estimate and the exact integral.</figcaption>
@@ -648,8 +648,8 @@ ${residualHatches}
 
 function metricTable(rows) {
   if (!rows.length) return "";
-  return `<div class="open-result-table-wrap">
-          <table class="open-result-table">
+  return `<div class="result-table-wrap">
+          <table class="result-table">
             <tbody>
 ${rows
   .map(
@@ -665,12 +665,12 @@ ${rows
 }
 
 function paperTable({ caption, headers, rows, className = "" }) {
-  const figureClass = ["open-result-paper-table", className].filter(Boolean).join(" ");
+  const figureClass = ["result-paper-table", className].filter(Boolean).join(" ");
   const captionId = caption?.match(/^Table\s+(\d+)/)?.[1];
   const idAttribute = captionId ? ` id="table-${captionId}"` : "";
   return `<figure class="${figureClass}"${idAttribute}>
-          <div class="open-result-table-wrap">
-            <table class="open-result-table">
+          <div class="result-table-wrap">
+            <table class="result-table">
               <thead>
                 <tr>
 ${headers.map((header) => `                  <th>${escapeHtml(header)}</th>`).join("\n")}
@@ -751,7 +751,7 @@ function ruleDistributionFigure({ rule, figureNumber, title, subtitle, markerCla
     width: 430,
   };
   const subtitleMarkup = subtitle
-    ? `<text class="open-result-axis-label open-result-panel-subtitle" x="${panel.left}" y="54">${subtitle}</text>`
+    ? `<text class="result-axis-label result-panel-subtitle" x="${panel.left}" y="54">${subtitle}</text>`
     : "";
   const mapX = (node) => panel.left + node * panel.width;
   const mapY = (top, weight) => top + panel.height - (weight / yMax) * panel.height;
@@ -761,8 +761,8 @@ function ruleDistributionFigure({ rule, figureNumber, title, subtitle, markerCla
       const y = mapY(top, tick);
       const label = Number.isInteger(tick) ? String(tick) : tick.toFixed(2).replace(/0$/, "");
       return `<g>
-                <path class="open-result-objective-grid" d="M${panel.left} ${y.toFixed(1)} H${panel.right}" />
-                <text class="open-result-axis-tick open-result-objective-y-label" x="${panel.left - 14}" y="${(y + 4).toFixed(1)}">${label}</text>
+                <path class="result-objective-grid" d="M${panel.left} ${y.toFixed(1)} H${panel.right}" />
+                <text class="result-axis-tick result-objective-y-label" x="${panel.left - 14}" y="${(y + 4).toFixed(1)}">${label}</text>
               </g>`;
     }).join("\n");
   const marks = rule.nodes
@@ -776,26 +776,26 @@ function ruleDistributionFigure({ rule, figureNumber, title, subtitle, markerCla
                 <circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${visibleRadius.toFixed(1)}" />
               </g>`;
     }).join("\n");
-  return `<figure class="open-result-primer-card open-result-paper-figure open-result-single-rule-figure" id="fig-${figureNumber}">
-          <svg class="open-result-primer-svg open-result-accepted-rule-svg open-result-paper-chart-svg" viewBox="0 0 560 280" role="img" aria-label="${escapeHtml(ariaLabel)}">
-            <text class="open-result-axis-label open-result-objective-y-title" x="34" y="${top + panel.height / 2}" transform="rotate(-90 34 ${top + panel.height / 2})">normalized weight w<tspan baseline-shift="sub" font-size="8">i</tspan></text>
-            <g class="open-result-objective-legend open-result-single-rule-legend" transform="translate(${panel.right - 92} 34)">
+  return `<figure class="result-primer-card result-paper-figure result-single-rule-figure" id="fig-${figureNumber}">
+          <svg class="result-primer-svg result-accepted-rule-svg result-paper-chart-svg" viewBox="0 0 560 280" role="img" aria-label="${escapeHtml(ariaLabel)}">
+            <text class="result-axis-label result-objective-y-title" x="34" y="${top + panel.height / 2}" transform="rotate(-90 34 ${top + panel.height / 2})">normalized weight w<tspan baseline-shift="sub" font-size="8">i</tspan></text>
+            <g class="result-objective-legend result-single-rule-legend" transform="translate(${panel.right - 92} 34)">
               <g transform="translate(0 0)">
-                <circle class="${markerClass === "open-result-baseline-node" ? "open-result-legend-baseline-dot" : "open-result-legend-accepted-dot"}" cx="0" cy="0" r="3.8" />
+                <circle class="${markerClass === "result-baseline-node" ? "result-legend-baseline-dot" : "result-legend-accepted-dot"}" cx="0" cy="0" r="3.8" />
                 <text x="16" y="4">${markerLabel}</text>
               </g>
             </g>
-            <g class="open-result-rule-panel">
-              <text class="open-result-axis-label open-result-figure-title" x="${panel.left}" y="36">${title}</text>
+            <g class="result-rule-panel">
+              <text class="result-axis-label result-figure-title" x="${panel.left}" y="36">${title}</text>
 ${subtitleMarkup}
               ${yTickMarkup}
-              <path class="open-result-rule-paper-axis" d="M${panel.left} ${top} V${top + panel.height} H${panel.right}" />
-              <text class="open-result-axis-tick" x="${panel.left}" y="${top + panel.height + 18}">0</text>
-              <text class="open-result-axis-tick" x="${panel.left + panel.width / 2}" y="${top + panel.height + 18}">0.5</text>
-              <text class="open-result-axis-tick" x="${panel.right}" y="${top + panel.height + 18}">1</text>
+              <path class="result-rule-paper-axis" d="M${panel.left} ${top} V${top + panel.height} H${panel.right}" />
+              <text class="result-axis-tick" x="${panel.left}" y="${top + panel.height + 18}">0</text>
+              <text class="result-axis-tick" x="${panel.left + panel.width / 2}" y="${top + panel.height + 18}">0.5</text>
+              <text class="result-axis-tick" x="${panel.right}" y="${top + panel.height + 18}">1</text>
             </g>
             ${marks}
-            <text class="open-result-axis-label open-result-x-axis-title" x="${panel.left + panel.width / 2}" y="260">node position x<tspan baseline-shift="sub" font-size="8">i</tspan></text>
+            <text class="result-axis-label result-x-axis-title" x="${panel.left + panel.width / 2}" y="260">node position x<tspan baseline-shift="sub" font-size="8">i</tspan></text>
           </svg>
           <figcaption>Figure ${figureNumber}. ${caption}</figcaption>
         </figure>`;
@@ -808,7 +808,7 @@ function baselineRulePaperFigure(evolution) {
     figureNumber: 4,
     title: "Run baseline",
     subtitle: "",
-    markerClass: "open-result-baseline-node",
+    markerClass: "result-baseline-node",
     markerLabel: "run baseline",
     ariaLabel: "Run baseline quadrature rule shown as node position and normalized weight.",
     caption: "Run baseline \\(r_0\\). This fixed rule anchors the residual and objective improvements reported later.",
@@ -822,7 +822,7 @@ function acceptedRulePaperFigure(evolution) {
     figureNumber: 5,
     title: "Accepted rule",
     subtitle: "",
-    markerClass: "open-result-accepted-node",
+    markerClass: "result-accepted-node",
     markerLabel: "accepted",
     ariaLabel: "Accepted five node quadrature rule shown as node position and normalized weight.",
     caption: "Accepted five-node rule in node-position and normalized-weight coordinates. The near-uniform weights and inward node placement define the candidate evaluated below.",
@@ -857,7 +857,7 @@ function contractReproducibilityTable(evolution) {
   const baselineErrors = steps[0]?.integrand_error ?? {};
   const names = ["sin_pi", "sqrt", "log1p"].filter((name) => baselineErrors[name] !== undefined);
   return paperTable({
-    className: "open-result-contract-table",
+    className: "result-contract-table",
     caption: "Table 1. Evaluation contract surface. Each row defines one public residual component and the residual of the fixed run baseline.",
     headers: ["Component", "Integrand", "Analytic reference", "Baseline residual"],
     rows: names.map((name, index) => [
@@ -945,52 +945,52 @@ function residualLocationFigure(evolution) {
         .map(([x, curveY]) => `L${x.toFixed(1)} ${curveY.toFixed(1)}`)
         .join(" ");
       const residualRegion = `M${cellX.toFixed(1)} ${y.toFixed(1)} L${(cellX + cellWidth).toFixed(1)} ${y.toFixed(1)} ${highEdge} Z`;
-      return `<g class="open-result-residual-cell">
+      return `<g class="result-residual-cell">
                 <rect x="${cellX.toFixed(1)}" y="${y.toFixed(1)}" width="${cellWidth.toFixed(1)}" height="${(base - y).toFixed(1)}" />
-                <path class="open-result-residual-cell-gap-fill" d="${residualRegion}" />
-                <path class="open-result-residual-cell-gap" d="${residualRegion}" />
+                <path class="result-residual-cell-gap-fill" d="${residualRegion}" />
+                <path class="result-residual-cell-gap" d="${residualRegion}" />
                 <circle cx="${mapX(node).toFixed(1)}" cy="${y.toFixed(1)}" r="3.2" />
               </g>`;
     }).join("\n");
     const baselineY = mapY(fn(baselineNode));
     return `<g transform="translate(0 0)">
-              <text class="open-result-axis-label open-result-figure-title" x="${left}" y="${top}">${integrandSvgLabel(name)}</text>
-              <text class="open-result-axis-label open-result-residual-value" x="414" y="${top + 24}">run baseline e<tspan baseline-shift="sub" font-size="8">j</tspan></text>
-              <text class="open-result-axis-label open-result-residual-number open-result-residual-number-baseline" x="414" y="${top + 43}">${formatMetric(baselineErrors[name], { maximumFractionDigits: 6, minimumFractionDigits: 6 })}</text>
-              <text class="open-result-axis-label open-result-residual-value" x="414" y="${top + 68}">accepted e<tspan baseline-shift="sub" font-size="8">j</tspan></text>
-              <text class="open-result-axis-label open-result-residual-number" x="414" y="${top + 87}">${formatMetric(errors[name], { maximumFractionDigits: 6, minimumFractionDigits: 6 })}</text>
-              <path class="open-result-primer-grid" d="M${left} ${top + 12} V${base} H${right}" />
-              <text class="open-result-axis-tick" x="${left}" y="${base + 18}">0</text>
-              <text class="open-result-axis-tick" x="${right}" y="${base + 18}">1</text>
-              <text class="open-result-axis-label open-result-x-axis-title" x="${left + width / 2}" y="${base + 34}">x<tspan baseline-shift="sub" font-size="8">i</tspan></text>
+              <text class="result-axis-label result-figure-title" x="${left}" y="${top}">${integrandSvgLabel(name)}</text>
+              <text class="result-axis-label result-residual-value" x="414" y="${top + 24}">run baseline e<tspan baseline-shift="sub" font-size="8">j</tspan></text>
+              <text class="result-axis-label result-residual-number result-residual-number-baseline" x="414" y="${top + 43}">${formatMetric(baselineErrors[name], { maximumFractionDigits: 6, minimumFractionDigits: 6 })}</text>
+              <text class="result-axis-label result-residual-value" x="414" y="${top + 68}">accepted e<tspan baseline-shift="sub" font-size="8">j</tspan></text>
+              <text class="result-axis-label result-residual-number" x="414" y="${top + 87}">${formatMetric(errors[name], { maximumFractionDigits: 6, minimumFractionDigits: 6 })}</text>
+              <path class="result-primer-grid" d="M${left} ${top + 12} V${base} H${right}" />
+              <text class="result-axis-tick" x="${left}" y="${base + 18}">0</text>
+              <text class="result-axis-tick" x="${right}" y="${base + 18}">1</text>
+              <text class="result-axis-label result-x-axis-title" x="${left + width / 2}" y="${base + 34}">x<tspan baseline-shift="sub" font-size="8">i</tspan></text>
               ${cells}
-              <g class="open-result-residual-baseline-marker">
+              <g class="result-residual-baseline-marker">
                 <line x1="${mapX(baselineNode).toFixed(1)}" y1="${base}" x2="${mapX(baselineNode).toFixed(1)}" y2="${baselineY.toFixed(1)}" />
                 <circle cx="${mapX(baselineNode).toFixed(1)}" cy="${baselineY.toFixed(1)}" r="3.6" />
               </g>
-              <path class="open-result-primer-curve" d="${curve}" />
+              <path class="result-primer-curve" d="${curve}" />
             </g>`;
   }).join("\n");
 
-  return `<figure class="open-result-primer-card open-result-paper-figure" id="fig-7">
-          <svg class="open-result-primer-svg open-result-residual-location-svg open-result-paper-chart-svg" viewBox="0 0 560 456" role="img" aria-label="Residual location diagnostics for the run baseline and accepted rule on each public integrand.">
+  return `<figure class="result-primer-card result-paper-figure" id="fig-7">
+          <svg class="result-primer-svg result-residual-location-svg result-paper-chart-svg" viewBox="0 0 560 456" role="img" aria-label="Residual location diagnostics for the run baseline and accepted rule on each public integrand.">
             <defs>
               <pattern id="acceptedResidualHatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(62)">
                 <line x1="0" y1="0" x2="0" y2="10" />
               </pattern>
             </defs>
-            <text class="open-result-axis-label open-result-figure-title" x="${left}" y="34">Residual location diagnostic</text>
-            <g class="open-result-objective-legend" transform="translate(${left} 48)">
+            <text class="result-axis-label result-figure-title" x="${left}" y="34">Residual location diagnostic</text>
+            <g class="result-objective-legend" transform="translate(${left} 48)">
               <g transform="translate(0 0)">
-                <circle class="open-result-legend-baseline-dot" cx="0" cy="0" r="3.4" />
+                <circle class="result-legend-baseline-dot" cx="0" cy="0" r="3.4" />
                 <text x="16" y="4">run baseline sample</text>
               </g>
               <g transform="translate(142 0)">
-                <circle class="open-result-legend-accepted-dot" cx="0" cy="0" r="3.8" />
+                <circle class="result-legend-accepted-dot" cx="0" cy="0" r="3.8" />
                 <text x="16" y="4">accepted samples</text>
               </g>
               <g transform="translate(282 0)">
-                <line class="open-result-objective-legend-best" x1="0" y1="0" x2="18" y2="0" />
+                <line class="result-objective-legend-best" x1="0" y1="0" x2="18" y2="0" />
                 <text x="26" y="4">integrand curve</text>
               </g>
             </g>
@@ -1031,57 +1031,57 @@ function objectiveCurveFigure(evolution) {
     .map((value) => {
       const x = mapX(value);
       return `<g>
-                <path class="open-result-objective-x-tick" d="M${x.toFixed(1)} ${bottom} V${(bottom + 5).toFixed(1)}" />
-                <text class="open-result-axis-tick" x="${x.toFixed(1)}" y="${bottom + 22}">${value}</text>
+                <path class="result-objective-x-tick" d="M${x.toFixed(1)} ${bottom} V${(bottom + 5).toFixed(1)}" />
+                <text class="result-axis-tick" x="${x.toFixed(1)}" y="${bottom + 22}">${value}</text>
               </g>`;
     }).join("\n");
   const proposalDots = scored.map((step) => {
     const x = mapX(step.index ?? 0);
     const y = mapY(step.score);
-    return `<circle class="open-result-objective-proposal" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.1" />`;
+    return `<circle class="result-objective-proposal" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.1" />`;
   }).join("\n");
   const grid = [0, 200, 400, 600, maxScore]
     .filter((value, index, values) => value <= maxScore && values.indexOf(value) === index)
     .map((value) => {
       const y = mapY(value);
       return `<g>
-                <path class="open-result-objective-grid" d="M${left} ${y.toFixed(1)} H${right}" />
-                <text class="open-result-axis-tick open-result-objective-y-label" x="${left - 18}" y="${(y + 4).toFixed(1)}">${value}</text>
+                <path class="result-objective-grid" d="M${left} ${y.toFixed(1)} H${right}" />
+                <text class="result-axis-tick result-objective-y-label" x="${left - 18}" y="${(y + 4).toFixed(1)}">${value}</text>
               </g>`;
     }).join("\n");
 
-  return `<figure class="open-result-primer-card open-result-paper-figure open-result-objective-figure" id="fig-6">
-          <svg class="open-result-primer-svg open-result-objective-svg" viewBox="0 0 560 328" role="img" aria-label="Best so far objective curve across the curated public trace.">
-            <text class="open-result-axis-label open-result-figure-title" x="${left}" y="34">Best-so-far acceptance objective (lower is better)</text>
-            <g class="open-result-objective-legend" transform="translate(${left} 48)">
+  return `<figure class="result-primer-card result-paper-figure result-objective-figure" id="fig-6">
+          <svg class="result-primer-svg result-objective-svg" viewBox="0 0 560 328" role="img" aria-label="Best so far objective curve across the curated public trace.">
+            <text class="result-axis-label result-figure-title" x="${left}" y="34">Best-so-far acceptance objective (lower is better)</text>
+            <g class="result-objective-legend" transform="translate(${left} 48)">
               <g transform="translate(0 0)">
-                <circle class="open-result-objective-legend-proposal" cx="0" cy="0" r="2.4" />
+                <circle class="result-objective-legend-proposal" cx="0" cy="0" r="2.4" />
                 <text x="12" y="4">scored candidate</text>
               </g>
               <g transform="translate(118 0)">
-                <line class="open-result-objective-legend-best" x1="0" y1="0" x2="16" y2="0" />
+                <line class="result-objective-legend-best" x1="0" y1="0" x2="16" y2="0" />
                 <text x="24" y="4">best-so-far objective</text>
               </g>
               <g transform="translate(286 0)">
-                <circle class="open-result-legend-baseline-dot" cx="0" cy="0" r="3.4" />
+                <circle class="result-legend-baseline-dot" cx="0" cy="0" r="3.4" />
                 <text x="16" y="4">baseline</text>
               </g>
               <g transform="translate(374 0)">
-                <circle class="open-result-legend-accepted-dot" cx="0" cy="0" r="3.8" />
+                <circle class="result-legend-accepted-dot" cx="0" cy="0" r="3.8" />
                 <text x="16" y="4">accepted</text>
               </g>
             </g>
             ${grid}
-            <path class="open-result-rule-paper-axis" d="M${left} ${top} V${bottom} H${right}" />
+            <path class="result-rule-paper-axis" d="M${left} ${top} V${bottom} H${right}" />
             ${xTicks}
-            <text class="open-result-axis-label open-result-x-axis-title" x="${left + width / 2}" y="306">candidate index</text>
-            <text class="open-result-axis-label open-result-objective-y-title" x="34" y="${top + height / 2}" transform="rotate(-90 34 ${top + height / 2})">J(r)</text>
+            <text class="result-axis-label result-x-axis-title" x="${left + width / 2}" y="306">candidate index</text>
+            <text class="result-axis-label result-objective-y-title" x="34" y="${top + height / 2}" transform="rotate(-90 34 ${top + height / 2})">J(r)</text>
             <g>${proposalDots}</g>
-            <path class="open-result-objective-best" d="${svgPolyline(bestPoints)}" />
-            <g class="open-result-objective-baseline">
+            <path class="result-objective-best" d="${svgPolyline(bestPoints)}" />
+            <g class="result-objective-baseline">
               <circle cx="${baselineX.toFixed(1)}" cy="${baselineY.toFixed(1)}" r="4.2" />
             </g>
-            <g class="open-result-objective-accepted">
+            <g class="result-objective-accepted">
               <circle cx="${acceptedX.toFixed(1)}" cy="${acceptedY.toFixed(1)}" r="4.8" />
             </g>
           </svg>
@@ -1090,14 +1090,14 @@ function objectiveCurveFigure(evolution) {
 }
 
 function paperAssetFigure({ src, caption, number }) {
-  return `<figure class="open-result-paper-asset" id="fig-${number}">
+  return `<figure class="result-paper-asset" id="fig-${number}">
           <img src="./${escapeHtml(src)}" alt="">
           <figcaption>Figure ${number}. ${escapeHtml(caption)}</figcaption>
         </figure>`;
 }
 
 function paperInlineFigure({ number, caption, svg, className = "" }) {
-  const classes = ["open-result-primer-card", "open-result-paper-figure", className].filter(Boolean).join(" ");
+  const classes = ["result-primer-card", "result-paper-figure", className].filter(Boolean).join(" ");
   return `<figure class="${classes}" id="fig-${number}">
 ${svg}
           <figcaption>Figure ${number}. ${escapeHtml(caption)}</figcaption>
@@ -1202,7 +1202,7 @@ function pythonImplementationCodeFigure({ source, caption, className = "" }) {
     .map((line, index) => `<span class="code-line"><span class="line-no">${index + 1}</span><span class="line-src">${highlightPythonLine(line)}</span></span>`)
     .join("");
   const extraClass = className ? ` ${className}` : "";
-  return `<figure class="open-result-paper-code open-result-code-figure${extraClass}" id="listing-1">
+  return `<figure class="result-paper-code result-code-figure${extraClass}" id="listing-1">
           <pre><code>${markup}</code></pre>
           <figcaption>Listing 1. ${escapeHtml(caption)}</figcaption>
         </figure>`;
@@ -1292,8 +1292,8 @@ function rcpspScheduleFigure() {
     number: 1,
     caption: "RCPSP schedule readout. The standard schedule view combines the precedence network, Gantt placement, and makespan marker.",
     className: "rcpsp-inline-figure rcpsp-schedule-figure",
-    svg: `          <svg class="open-result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 328" role="img" aria-label="RCPSP schedule readout with precedence network and Gantt schedule.">
-            <text class="open-result-axis-label open-result-figure-title" x="72" y="34">RCPSP schedule readout</text>
+    svg: `          <svg class="result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 328" role="img" aria-label="RCPSP schedule readout with precedence network and Gantt schedule.">
+            <text class="result-axis-label result-figure-title" x="72" y="34">RCPSP schedule readout</text>
             <text class="rcpsp-paper-note" x="72" y="55">Eligible activities are ranked first; the evaluator then commits them to the earliest feasible placement.</text>
             <text class="rcpsp-paper-section-label" x="72" y="82">precedence network</text>
             <g class="rcpsp-network">
@@ -1311,8 +1311,8 @@ function rcpspScheduleFigure() {
             <text class="rcpsp-paper-note" x="72" y="192">A task becomes eligible only after all predecessor arcs are satisfied.</text>
             <text class="rcpsp-paper-section-label" x="72" y="212">Gantt schedule</text>
             <g class="rcpsp-gantt">
-              <path class="open-result-objective-grid" d="M126 234H512M126 256H512M126 278H512" />
-              <path class="open-result-rule-paper-axis" d="M126 292H512" />
+              <path class="result-objective-grid" d="M126 234H512M126 256H512M126 278H512" />
+              <path class="result-rule-paper-axis" d="M126 292H512" />
               <text x="72" y="238">row 1</text>
               <text x="72" y="260">row 2</text>
               <text x="72" y="282">row 3</text>
@@ -1337,12 +1337,12 @@ function rcpspResourceLoadFigure() {
     number: 2,
     caption: "Renewable-resource load profile. The evaluator only accepts placements that keep every active resource demand under the capacity line.",
     className: "rcpsp-inline-figure rcpsp-resource-figure",
-    svg: `          <svg class="open-result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 306" role="img" aria-label="Renewable resource load profile for an RCPSP schedule.">
-            <text class="open-result-axis-label open-result-figure-title" x="72" y="34">Renewable resource load</text>
+    svg: `          <svg class="result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 306" role="img" aria-label="Renewable resource load profile for an RCPSP schedule.">
+            <text class="result-axis-label result-figure-title" x="72" y="34">Renewable resource load</text>
             <text class="rcpsp-paper-note" x="72" y="55">A schedule is feasible only while every time bucket stays at or below capacity.</text>
             <g transform="translate(82 74)">
-              <path class="open-result-objective-grid" d="M42 144H430M42 108H430M42 72H430M42 36H430" />
-              <path class="open-result-rule-paper-axis" d="M42 0V174H430" />
+              <path class="result-objective-grid" d="M42 144H430M42 108H430M42 72H430M42 36H430" />
+              <path class="result-rule-paper-axis" d="M42 0V174H430" />
               <path class="rcpsp-capacity-line" d="M42 54H430" />
               <text class="rcpsp-paper-section-label" x="408" y="46" text-anchor="end">capacity</text>
               <rect class="rcpsp-load" x="55" y="108" width="36" height="66" />
@@ -1354,16 +1354,16 @@ function rcpspResourceLoadFigure() {
               <rect class="rcpsp-load" x="331" y="120" width="36" height="54" />
               <rect class="rcpsp-load" x="377" y="132" width="36" height="42" />
               <rect class="rcpsp-load-window" x="143" y="24" width="92" height="150" />
-              <text class="open-result-axis-tick open-result-objective-y-label" x="30" y="148">0</text>
-              <text class="open-result-axis-tick open-result-objective-y-label" x="30" y="112">1</text>
-              <text class="open-result-axis-tick open-result-objective-y-label" x="30" y="76">2</text>
-              <text class="open-result-axis-tick open-result-objective-y-label" x="30" y="40">3</text>
-              <text class="open-result-axis-tick" x="42" y="196">0</text>
-              <text class="open-result-axis-tick" x="190" y="196">20</text>
-              <text class="open-result-axis-tick" x="337" y="196">40</text>
-              <text class="open-result-axis-tick" x="430" y="196">60</text>
-              <text class="open-result-axis-label open-result-x-axis-title" x="236" y="226">time bucket</text>
-              <text class="open-result-axis-label open-result-objective-y-title" x="0" y="87" transform="rotate(-90 0 87)">active demand</text>
+              <text class="result-axis-tick result-objective-y-label" x="30" y="148">0</text>
+              <text class="result-axis-tick result-objective-y-label" x="30" y="112">1</text>
+              <text class="result-axis-tick result-objective-y-label" x="30" y="76">2</text>
+              <text class="result-axis-tick result-objective-y-label" x="30" y="40">3</text>
+              <text class="result-axis-tick" x="42" y="196">0</text>
+              <text class="result-axis-tick" x="190" y="196">20</text>
+              <text class="result-axis-tick" x="337" y="196">40</text>
+              <text class="result-axis-tick" x="430" y="196">60</text>
+              <text class="result-axis-label result-x-axis-title" x="236" y="226">time bucket</text>
+              <text class="result-axis-label result-objective-y-title" x="0" y="87" transform="rotate(-90 0 87)">active demand</text>
               <text class="rcpsp-paper-note" x="42" y="258">The fixed evaluator rejects any placement that crosses the capacity line.</text>
             </g>
           </svg>`,
@@ -1393,7 +1393,7 @@ function rcpspObjectiveCurveFigure(scoreTrace) {
     .map((candidate) => {
       const generation = candidate.generation ?? 0;
       const score = candidate.score ?? scoreMax;
-      return `<circle class="open-result-objective-proposal${score > scoreMax ? " is-clipped" : ""}" cx="${xAt(generation).toFixed(1)}" cy="${yAt(score).toFixed(1)}" r="1.6" />`;
+      return `<circle class="result-objective-proposal${score > scoreMax ? " is-clipped" : ""}" cx="${xAt(generation).toFixed(1)}" cy="${yAt(score).toFixed(1)}" r="1.6" />`;
     })
     .join("\n              ");
   const fallbackBest = [
@@ -1414,39 +1414,39 @@ function rcpspObjectiveCurveFigure(scoreTrace) {
   const yTicks = [scoreMax, 14, 12]
     .map((tick) => {
       const y = yAt(tick);
-      return `<path class="open-result-objective-grid" d="M${left} ${y.toFixed(1)}H${right}" /><text class="open-result-axis-tick open-result-objective-y-label" x="${left - 14}" y="${(y + 4).toFixed(1)}">${scoreLabel(tick)}</text>`;
+      return `<path class="result-objective-grid" d="M${left} ${y.toFixed(1)}H${right}" /><text class="result-axis-tick result-objective-y-label" x="${left - 14}" y="${(y + 4).toFixed(1)}">${scoreLabel(tick)}</text>`;
     })
     .join("\n            ");
   const xTicks = [0, 40, 80, generationEnd]
     .map((generation, index, all) => {
       const x = xAt(generation);
       const anchor = index === 0 ? "" : index === all.length - 1 ? ' text-anchor="end"' : ' text-anchor="middle"';
-      return `<text class="open-result-axis-tick" x="${x.toFixed(1)}" y="282"${anchor}>${formatMetric(generation, { maximumFractionDigits: 0 })}</text>`;
+      return `<text class="result-axis-tick" x="${x.toFixed(1)}" y="282"${anchor}>${formatMetric(generation, { maximumFractionDigits: 0 })}</text>`;
     })
     .join("\n            ");
   return paperInlineFigure({
     number: 3,
     caption: "Best-so-far score across the curated evolutionary chain, rendered in the same paper style as the quadrature objective trace. Faint points are scored candidates from the sanitized public trace; scores above 16 are clipped at the top of the plotting area.",
-    className: "rcpsp-inline-figure open-result-objective-figure",
-    svg: `          <svg class="open-result-primer-svg open-result-objective-svg rcpsp-paper-svg" viewBox="0 0 560 328" role="img" aria-label="Best-so-far RCPSP acceptance objective.">
-            <text class="open-result-axis-label open-result-figure-title" x="82" y="34">Best-so-far acceptance objective (lower is better)</text>
-            <g class="open-result-objective-legend" transform="translate(82 48)">
-              <g transform="translate(0 0)"><circle class="open-result-objective-legend-proposal" cx="0" cy="0" r="2.4" /><text x="12" y="4">scored candidate</text></g>
-              <g transform="translate(112 0)"><line class="open-result-objective-legend-best" x1="0" y1="0" x2="16" y2="0" /><text x="24" y="4">best-so-far objective</text></g>
-              <g transform="translate(286 0)"><circle class="open-result-legend-baseline-dot" cx="0" cy="0" r="3.4" /><text x="16" y="4">baseline</text></g>
-              <g transform="translate(370 0)"><circle class="open-result-legend-accepted-dot" cx="0" cy="0" r="3.8" /><text x="16" y="4">accepted</text></g>
+    className: "rcpsp-inline-figure result-objective-figure",
+    svg: `          <svg class="result-primer-svg result-objective-svg rcpsp-paper-svg" viewBox="0 0 560 328" role="img" aria-label="Best-so-far RCPSP acceptance objective.">
+            <text class="result-axis-label result-figure-title" x="82" y="34">Best-so-far acceptance objective (lower is better)</text>
+            <g class="result-objective-legend" transform="translate(82 48)">
+              <g transform="translate(0 0)"><circle class="result-objective-legend-proposal" cx="0" cy="0" r="2.4" /><text x="12" y="4">scored candidate</text></g>
+              <g transform="translate(112 0)"><line class="result-objective-legend-best" x1="0" y1="0" x2="16" y2="0" /><text x="24" y="4">best-so-far objective</text></g>
+              <g transform="translate(286 0)"><circle class="result-legend-baseline-dot" cx="0" cy="0" r="3.4" /><text x="16" y="4">baseline</text></g>
+              <g transform="translate(370 0)"><circle class="result-legend-accepted-dot" cx="0" cy="0" r="3.8" /><text x="16" y="4">accepted</text></g>
             </g>
             ${yTicks}
-            <path class="open-result-rule-paper-axis" d="M${left} ${top}V${bottom}H${right}" />
+            <path class="result-rule-paper-axis" d="M${left} ${top}V${bottom}H${right}" />
             <g>
               ${candidateDots}
             </g>
-            <path class="open-result-objective-best" d="${bestPath}" />
-            <g class="open-result-objective-baseline"><circle cx="${xAt(0).toFixed(1)}" cy="${yAt(baselineScore).toFixed(1)}" r="4.2" /></g>
-            <g class="open-result-objective-accepted"><circle cx="${xAt(generationEnd).toFixed(1)}" cy="${yAt(acceptedScore).toFixed(1)}" r="4.8" /></g>
+            <path class="result-objective-best" d="${bestPath}" />
+            <g class="result-objective-baseline"><circle cx="${xAt(0).toFixed(1)}" cy="${yAt(baselineScore).toFixed(1)}" r="4.2" /></g>
+            <g class="result-objective-accepted"><circle cx="${xAt(generationEnd).toFixed(1)}" cy="${yAt(acceptedScore).toFixed(1)}" r="4.8" /></g>
             ${xTicks}
-            <text class="open-result-axis-label open-result-x-axis-title" x="${(left + plotW / 2).toFixed(1)}" y="306">generation <tspan font-style="italic">k</tspan></text>
-            <text class="open-result-axis-label open-result-objective-y-title" x="34" y="${(top + plotH / 2).toFixed(1)}" transform="rotate(-90 34 ${(top + plotH / 2).toFixed(1)})"><tspan font-style="italic">J</tspan><tspan>(</tspan><tspan font-style="italic">r</tspan><tspan>)</tspan></text>
+            <text class="result-axis-label result-x-axis-title" x="${(left + plotW / 2).toFixed(1)}" y="306">generation <tspan font-style="italic">k</tspan></text>
+            <text class="result-axis-label result-objective-y-title" x="34" y="${(top + plotH / 2).toFixed(1)}" transform="rotate(-90 34 ${(top + plotH / 2).toFixed(1)})"><tspan font-style="italic">J</tspan><tspan>(</tspan><tspan font-style="italic">r</tspan><tspan>)</tspan></text>
           </svg>`,
   });
 }
@@ -1464,8 +1464,8 @@ function rcpspBenchmarkComparisonFigure(full) {
     number: 4,
     caption: "Seed versus accepted acceptance-score readout; lower values are better.",
     className: "rcpsp-inline-figure rcpsp-benchmark-figure",
-    svg: `          <svg class="open-result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 220" role="img" aria-label="Seed versus accepted RCPSP acceptance score readout.">
-            <text class="open-result-axis-label open-result-figure-title" x="48" y="34">Acceptance objective</text>
+    svg: `          <svg class="result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 220" role="img" aria-label="Seed versus accepted RCPSP acceptance score readout.">
+            <text class="result-axis-label result-figure-title" x="48" y="34">Acceptance objective</text>
             <text class="rcpsp-paper-note" x="512" y="34" text-anchor="end">lower is better</text>
             <g class="rcpsp-score-readout">
               <path class="rcpsp-reduction-bracket" d="M${bestX.toFixed(1)} 64H${seedX.toFixed(1)}M${bestX.toFixed(1)} 59V69M${seedX.toFixed(1)} 59V69" />
@@ -1479,10 +1479,10 @@ function rcpspBenchmarkComparisonFigure(full) {
               <text class="rcpsp-paper-value" x="512" y="110" text-anchor="end">${formatMetric(seed, { maximumFractionDigits: 3, minimumFractionDigits: 3 })}</text>
               <text class="rcpsp-paper-note" x="${bestX.toFixed(1)}" y="140" text-anchor="middle">accepted</text>
               <text class="rcpsp-paper-value" x="${bestX.toFixed(1)}" y="158" text-anchor="middle">${formatMetric(best, { maximumFractionDigits: 3, minimumFractionDigits: 3 })}</text>
-              <path class="open-result-rule-paper-axis" d="M${scoreTrackX} 176H${scoreTrackX + scoreTrackWidth}" />
-              <text class="open-result-axis-tick" x="${scoreTrackX}" y="196">0</text>
-              <text class="open-result-axis-tick" x="${(scoreTrackX + scoreTrackWidth / 2).toFixed(1)}" y="196" text-anchor="middle">7.5</text>
-              <text class="open-result-axis-tick" x="${(scoreTrackX + scoreTrackWidth).toFixed(1)}" y="196" text-anchor="middle">15</text>
+              <path class="result-rule-paper-axis" d="M${scoreTrackX} 176H${scoreTrackX + scoreTrackWidth}" />
+              <text class="result-axis-tick" x="${scoreTrackX}" y="196">0</text>
+              <text class="result-axis-tick" x="${(scoreTrackX + scoreTrackWidth / 2).toFixed(1)}" y="196" text-anchor="middle">7.5</text>
+              <text class="result-axis-tick" x="${(scoreTrackX + scoreTrackWidth).toFixed(1)}" y="196" text-anchor="middle">15</text>
             </g>
           </svg>`,
   });
@@ -1495,8 +1495,8 @@ function rcpspScheduleCompressionFigure(scheduleExample) {
       number: 5,
       caption: "Real schedule-compression readout unavailable.",
       className: "rcpsp-inline-figure rcpsp-compression-figure",
-      svg: `          <svg class="open-result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 160" role="img" aria-label="RCPSP schedule example unavailable.">
-            <text class="open-result-axis-label open-result-figure-title" x="60" y="48">Schedule example unavailable</text>
+      svg: `          <svg class="result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 160" role="img" aria-label="RCPSP schedule example unavailable.">
+            <text class="result-axis-label result-figure-title" x="60" y="48">Schedule example unavailable</text>
           </svg>`,
     });
   }
@@ -1573,37 +1573,37 @@ function rcpspScheduleCompressionFigure(scheduleExample) {
     number: 5,
     caption: `Real schedule-compression readout for PSPLIB J30 instance ${escapeHtml(example.instance_id)}. All executable jobs are rendered as unlabeled bars; seed finishes at ${formatMetric(example.seed_makespan, { maximumFractionDigits: 0 })}, accepted at ${formatMetric(example.accepted_makespan, { maximumFractionDigits: 0 })}, and the proven optimum is ${formatMetric(example.optimal_makespan, { maximumFractionDigits: 0 })}.`,
     className: "rcpsp-inline-figure rcpsp-compression-figure",
-    svg: `          <svg class="open-result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 438" role="img" aria-label="Real RCPSP schedule compression and renewable resource load readout for ${escapeHtml(example.instance_id)}.">
-            <text class="open-result-axis-label open-result-figure-title" x="60" y="34">Schedule compression</text>
-            <g class="open-result-objective-legend" transform="translate(60 64)">
+    svg: `          <svg class="result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 438" role="img" aria-label="Real RCPSP schedule compression and renewable resource load readout for ${escapeHtml(example.instance_id)}.">
+            <text class="result-axis-label result-figure-title" x="60" y="34">Schedule compression</text>
+            <g class="result-objective-legend" transform="translate(60 64)">
               <g><rect class="rcpsp-gantt-seed" x="0" y="-8" width="16" height="8" /><text x="24" y="0">seed</text></g>
               <g transform="translate(94 0)"><rect class="rcpsp-accent-fill" x="0" y="-8" width="16" height="8" /><text x="24" y="0">accepted</text></g>
               <g transform="translate(238 0)"><line class="rcpsp-capacity-line" x1="0" y1="-4" x2="28" y2="-4" /><text x="36" y="0">capacity</text></g>
             </g>
             <g class="rcpsp-gantt">
               <text class="rcpsp-paper-section-label" x="60" y="88">all executable jobs (${formatMetric(example.executable_job_count ?? executableJobs.length, { maximumFractionDigits: 0 })} bars; ${formatMetric(example.job_count, { maximumFractionDigits: 0 })} including source/sink)</text>
-              <path class="open-result-objective-grid" d="${laneLines}" />
+              <path class="result-objective-grid" d="${laneLines}" />
 ${jobBars}
               <line class="rcpsp-marker-line rcpsp-accepted-marker" x1="${acceptedX.toFixed(1)}" y1="${(ganttTop - 10).toFixed(1)}" x2="${acceptedX.toFixed(1)}" y2="${(axisY - 4).toFixed(1)}" />
               <line class="rcpsp-marker-line" x1="${seedX.toFixed(1)}" y1="${(ganttTop - 10).toFixed(1)}" x2="${seedX.toFixed(1)}" y2="${(axisY - 4).toFixed(1)}" />
-              <path class="open-result-rule-paper-axis" d="M${left} ${axisY}H${right}" />
-              ${xTicks.map((tick, index) => `<text class="open-result-axis-tick" x="${timeX(tick).toFixed(1)}" y="${axisY + 20}" ${index === 0 ? "" : index === xTicks.length - 1 ? 'text-anchor="end"' : 'text-anchor="middle"'}>${formatMetric(tick, { maximumFractionDigits: 0 })}</text>`).join("\n              ")}
+              <path class="result-rule-paper-axis" d="M${left} ${axisY}H${right}" />
+              ${xTicks.map((tick, index) => `<text class="result-axis-tick" x="${timeX(tick).toFixed(1)}" y="${axisY + 20}" ${index === 0 ? "" : index === xTicks.length - 1 ? 'text-anchor="end"' : 'text-anchor="middle"'}>${formatMetric(tick, { maximumFractionDigits: 0 })}</text>`).join("\n              ")}
               <text class="rcpsp-paper-note" x="${acceptedX.toFixed(1)}" y="${axisY + 38}" text-anchor="middle">accepted Cmax</text>
               <text class="rcpsp-paper-note" x="${seedX.toFixed(1)}" y="${axisY + 38}" text-anchor="middle">seed Cmax</text>
             </g>
             <g>
               <text class="rcpsp-paper-section-label" x="60" y="${loadTop - 20}">Resource ${formatMetric((example.resource_index ?? 0) + 1, { maximumFractionDigits: 0 })} full-instance load</text>
-              <path class="open-result-rule-paper-axis" d="M${loadLeft} ${loadTop}V${loadBase}H${loadRight}" />
-              <path class="open-result-objective-grid" d="M${loadLeft} ${loadTop}H${loadRight}" />
+              <path class="result-rule-paper-axis" d="M${loadLeft} ${loadTop}V${loadBase}H${loadRight}" />
+              <path class="result-objective-grid" d="M${loadLeft} ${loadTop}H${loadRight}" />
               <path class="rcpsp-capacity-line" d="M${loadLeft} ${loadTop}H${loadRight}" />
               <text class="rcpsp-paper-note" x="${loadRight}" y="${loadTop - 8}" text-anchor="end">capacity ${formatMetric(capacity, { maximumFractionDigits: 0 })}</text>
 ${resourceBars}
-              <text class="open-result-axis-tick" x="${loadLeft - 10}" y="${loadBase + 3}" text-anchor="end">0</text>
-              <text class="open-result-axis-tick" x="${loadLeft - 10}" y="${loadTop + 3}" text-anchor="end">cap</text>
-              <text class="open-result-axis-tick" x="${loadLeft}" y="${loadBase + 20}">${formatMetric(axisStart, { maximumFractionDigits: 0 })}</text>
-              <text class="open-result-axis-tick" x="${(loadLeft + loadRight) / 2}" y="${loadBase + 20}" text-anchor="middle">time</text>
-              <text class="open-result-axis-tick" x="${loadRight}" y="${loadBase + 20}" text-anchor="end">${formatMetric(axisEnd, { maximumFractionDigits: 0 })}</text>
-              <text class="open-result-axis-label open-result-objective-y-title" x="28" y="${(loadTop + loadBase) / 2}" transform="rotate(-90 28 ${(loadTop + loadBase) / 2})">demand</text>
+              <text class="result-axis-tick" x="${loadLeft - 10}" y="${loadBase + 3}" text-anchor="end">0</text>
+              <text class="result-axis-tick" x="${loadLeft - 10}" y="${loadTop + 3}" text-anchor="end">cap</text>
+              <text class="result-axis-tick" x="${loadLeft}" y="${loadBase + 20}">${formatMetric(axisStart, { maximumFractionDigits: 0 })}</text>
+              <text class="result-axis-tick" x="${(loadLeft + loadRight) / 2}" y="${loadBase + 20}" text-anchor="middle">time</text>
+              <text class="result-axis-tick" x="${loadRight}" y="${loadBase + 20}" text-anchor="end">${formatMetric(axisEnd, { maximumFractionDigits: 0 })}</text>
+              <text class="result-axis-label result-objective-y-title" x="28" y="${(loadTop + loadBase) / 2}" transform="rotate(-90 28 ${(loadTop + loadBase) / 2})">demand</text>
             </g>
           </svg>`,
   });
@@ -1630,8 +1630,8 @@ function rcpspGapSummaryFigure(full) {
     number: 6,
     caption: "Accepted candidate diagnostics on the frozen 80-instance portfolio.",
     className: "rcpsp-inline-figure rcpsp-gap-figure",
-    svg: `          <svg class="open-result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 280" role="img" aria-label="Accepted RCPSP gap diagnostics.">
-            <text class="open-result-axis-label open-result-figure-title" x="72" y="34">Accepted candidate diagnostics</text>
+    svg: `          <svg class="result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 280" role="img" aria-label="Accepted RCPSP gap diagnostics.">
+            <text class="result-axis-label result-figure-title" x="72" y="34">Accepted candidate diagnostics</text>
             <text class="rcpsp-paper-note" x="488" y="34" text-anchor="end">80 frozen PSPLIB J30 instances</text>
 ${rows}
             <text class="rcpsp-paper-note" x="72" y="252">Feasibility penalty: 0.000 | invalid priority count: 0 | schedules validated: 80 / 80</text>
@@ -1655,16 +1655,16 @@ function rcpspTailLadderFigure(evolution) {
     number: 7,
     caption: "Worst-instance tail behavior for the accepted candidate. Each bar shows residual gap against the proven optimum.",
     className: "rcpsp-inline-figure rcpsp-tail-figure",
-    svg: `          <svg class="open-result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 328" role="img" aria-label="Worst accepted RCPSP gaps.">
-            <text class="open-result-axis-label open-result-figure-title" x="72" y="34">Tail behavior kept visible</text>
+    svg: `          <svg class="result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 328" role="img" aria-label="Worst accepted RCPSP gaps.">
+            <text class="result-axis-label result-figure-title" x="72" y="34">Tail behavior kept visible</text>
             <text class="rcpsp-paper-note" x="488" y="34" text-anchor="end">largest accepted-candidate gaps</text>
-            <path class="open-result-rule-paper-axis" d="M170 50V250H512" />
-            <path class="open-result-objective-grid" d="M270 50V250M370 50V250M470 50V250" />
+            <path class="result-rule-paper-axis" d="M170 50V250H512" />
+            <path class="result-objective-grid" d="M270 50V250M370 50V250M470 50V250" />
 ${bars}
-            <text class="open-result-axis-tick" x="170" y="276">0%</text>
-            <text class="open-result-axis-tick" x="270" y="276">8%</text>
-            <text class="open-result-axis-tick" x="370" y="276">16%</text>
-            <text class="open-result-axis-tick" x="470" y="276">24%</text>
+            <text class="result-axis-tick" x="170" y="276">0%</text>
+            <text class="result-axis-tick" x="270" y="276">8%</text>
+            <text class="result-axis-tick" x="370" y="276">16%</text>
+            <text class="result-axis-tick" x="470" y="276">24%</text>
             <text class="rcpsp-paper-note" x="72" y="306">Worst residual gaps remain part of the public result definition.</text>
           </svg>`,
   });
@@ -1700,28 +1700,28 @@ function acceptedRuleVisual(full, evolution) {
       const weight = rule.weights[index] ?? 0;
       const x = Math.min(100, Math.max(0, node * 100));
       const bar = maxWeight > 0 ? Math.max(1.2, (weight / maxWeight) * 5.8) : 1.2;
-      return `<div class="open-result-node" style="--x: ${x.toFixed(3)}%; --bar: ${bar.toFixed(3)}rem;">
-              <span class="open-result-node-pin" aria-hidden="true"></span>
-              <span class="open-result-node-label">${formatMetric(node, { maximumFractionDigits: 3, minimumFractionDigits: 3 })}</span>
-              <span class="open-result-node-weight">${formatMetric(weight, { maximumFractionDigits: 3, minimumFractionDigits: 3 })}</span>
+      return `<div class="result-node" style="--x: ${x.toFixed(3)}%; --bar: ${bar.toFixed(3)}rem;">
+              <span class="result-node-pin" aria-hidden="true"></span>
+              <span class="result-node-label">${formatMetric(node, { maximumFractionDigits: 3, minimumFractionDigits: 3 })}</span>
+              <span class="result-node-weight">${formatMetric(weight, { maximumFractionDigits: 3, minimumFractionDigits: 3 })}</span>
             </div>`;
     })
     .join("\n");
 
-  return `<section class="open-result-rule-visual" aria-label="Accepted quadrature rule visual">
-          <div class="open-result-rule-copy">
+  return `<section class="result-rule-visual" aria-label="Accepted quadrature rule visual">
+          <div class="result-rule-copy">
             <p class="eyebrow">Accepted rule</p>
             <h2>Accepted five-node rule.</h2>
             <p>The final candidate is not a black-box policy. It is a compact rule on the unit interval, with two nodes pulled in from the endpoints, a midpoint node, symmetric interior support, and near-uniform weights.</p>
           </div>
-          <div class="open-result-rule-panel">
-            <div class="open-result-rule-axis" aria-hidden="true">
-              <span class="open-result-axis-end open-result-axis-start">0</span>
-              <span class="open-result-axis-line"></span>
-              <span class="open-result-axis-end open-result-axis-finish">1</span>
+          <div class="result-rule-panel">
+            <div class="result-rule-axis" aria-hidden="true">
+              <span class="result-axis-end result-axis-start">0</span>
+              <span class="result-axis-line"></span>
+              <span class="result-axis-end result-axis-finish">1</span>
 ${nodes}
             </div>
-            <div class="open-result-rule-summary">
+            <div class="result-rule-summary">
               <div>
                 <span>Left endpoint gap</span>
                 <strong>${formatMetric(leftGap, { maximumFractionDigits: 3, minimumFractionDigits: 3 })}</strong>
@@ -1773,8 +1773,8 @@ function resultEvidence(full, evolution) {
       ];
 
   const ruleTable = finalRule?.nodes?.length
-    ? `<div class="open-result-table-wrap">
-          <table class="open-result-table">
+    ? `<div class="result-table-wrap">
+          <table class="result-table">
             <thead>
               <tr>
                 <th>Node</th>
@@ -1805,8 +1805,8 @@ ${finalRule.nodes
     .join("\n");
 
   const errorTable = errorRows
-    ? `<div class="open-result-table-wrap">
-          <table class="open-result-table">
+    ? `<div class="result-table-wrap">
+          <table class="result-table">
             <thead>
               <tr>
                 <th>Integrand</th>
@@ -1853,16 +1853,16 @@ ${errorRows}
       : "",
   ].filter(Boolean);
 
-  return `<section class="open-result-evidence" aria-label="Result evidence">
-          <div class="open-result-evidence-heading">
+  return `<section class="result-evidence" aria-label="Result evidence">
+          <div class="result-evidence-heading">
             <p class="eyebrow">Evidence</p>
             <h2>Acceptance score and observable behavior.</h2>
             ${scoreNote ? `<p>${escapeHtml(scoreNote)}</p>` : ""}
           </div>
-          <div class="open-result-metric-grid">
+          <div class="result-metric-grid">
 ${stats
   .map(
-    ([label, value]) => `            <div class="open-result-metric-card">
+    ([label, value]) => `            <div class="result-metric-card">
               <span>${escapeHtml(label)}</span>
               <strong>${value}</strong>
             </div>`,
@@ -1871,7 +1871,7 @@ ${stats
           </div>
           ${
             panels.length
-              ? `<div class="open-result-data-grid open-result-data-grid-${panels.length}">
+              ? `<div class="result-data-grid result-data-grid-${panels.length}">
 ${panels.join("\n")}
           </div>`
               : ""
@@ -1914,7 +1914,7 @@ async function writeDetail(result) {
 
   const figures = plots
     .map(
-      (plot) => `<figure class="open-result-figure">
+      (plot) => `<figure class="result-figure">
             <img src="./${escapeHtml(plot)}" alt="">
             ${
               full.website?.figure_captions?.[plot]
@@ -1928,35 +1928,35 @@ async function writeDetail(result) {
   const isQuadratureWhitepaper = full.slug === "quadrature-rule-optimization";
   const isRcpspWhitepaper = full.slug === "rcpsp-psplib-j30";
   const body = isQuadratureWhitepaper
-    ? `        <section class="hero compact-hero page-hero open-result-detail-hero">
+    ? `        <section class="hero compact-hero page-hero result-detail-hero">
           <h1 class="page-title">${escapeHtml(full.title)}</h1>
           <p class="intro results-hero-intro">${escapeHtml(full.summary)}</p>
         </section>
 
-        <section class="open-result-detail open-result-whitepaper-shell">
-          <article class="open-result-article open-result-whitepaper">
+        <section class="result-detail result-whitepaper-shell">
+          <article class="result-article result-whitepaper">
 ${markdownToHtml(articleWithoutTitle(article), quadratureWhitepaperInserts(full, evolution, candidateCode))}
           </article>
         </section>`
     : isRcpspWhitepaper
-      ? `        <section class="hero compact-hero page-hero open-result-detail-hero rcpsp-detail-hero">
+      ? `        <section class="hero compact-hero page-hero result-detail-hero rcpsp-detail-hero">
           <h1 class="page-title">${escapeHtml(full.title)}</h1>
           <p class="intro results-hero-intro">${escapeHtml(full.summary)}</p>
         </section>
 
-        <section class="open-result-detail open-result-whitepaper-shell rcpsp-whitepaper-shell">
-          <article class="open-result-article open-result-whitepaper rcpsp-whitepaper">
+        <section class="result-detail result-whitepaper-shell rcpsp-whitepaper-shell">
+          <article class="result-article result-whitepaper rcpsp-whitepaper">
 ${markdownToHtml(articleWithoutTitle(article), rcpspWhitepaperInserts(full, evolution, candidateCode, scheduleExample, scoreTrace))}
           </article>
         </section>`
-    : `        <section class="hero compact-hero page-hero open-result-detail-hero">
+    : `        <section class="hero compact-hero page-hero result-detail-hero">
           <p class="eyebrow">${escapeHtml(full.domain)}</p>
           <h1 class="page-title">${escapeHtml(full.title)}</h1>
           <p class="intro results-hero-intro">${escapeHtml(full.summary)}</p>
         </section>
 
-        <section class="open-result-detail">
-          <article class="open-result-article">
+        <section class="result-detail">
+          <article class="result-article">
 ${markdownToHtml(articleWithoutTitle(article), quadratureProblemVisuals(full, evolution))}
           </article>
         </section>
@@ -1965,14 +1965,14 @@ ${markdownToHtml(articleWithoutTitle(article), quadratureProblemVisuals(full, ev
 
         ${resultSnapshot(full, evolution)}
 
-        <section class="open-result-assets" aria-label="Public result figures">
+        <section class="result-assets" aria-label="Public result figures">
 ${figures}
         </section>
 
         ${resultEvidence(full, evolution)}
 
-        <section class="open-result-code" aria-label="Accepted candidate code">
-          <div class="open-result-code-heading">
+        <section class="result-code" aria-label="Accepted candidate code">
+          <div class="result-code-heading">
             <p class="eyebrow">Accepted implementation</p>
             <h2>Replayable candidate code.</h2>
           </div>
@@ -1989,9 +1989,9 @@ ${figures}
       body,
       enableMath: /\$\$|\\\(|\\\[/.test(article),
       bodyClass: isQuadratureWhitepaper
-        ? "open-result-quadrature-page"
+        ? "result-quadrature-page"
         : isRcpspWhitepaper
-          ? "open-result-rcpsp-page"
+          ? "result-rcpsp-page"
           : "",
     }),
     "utf8",

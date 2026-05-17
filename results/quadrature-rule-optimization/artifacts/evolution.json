@@ -1,5 +1,5 @@
 {
-  "schema_version": "open-result-evolution/v1",
+  "schema_version": "result-evolution/v1",
   "slug": "quadrature-rule-optimization",
   "steps": [
     {

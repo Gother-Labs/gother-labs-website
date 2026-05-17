@@ -1,5 +1,5 @@
 {
-  "schema_version": "open-result-provenance/v1",
+  "schema_version": "result-provenance/v1",
   "source_domain": "rcpsp_psplib_j30",
   "source_run": "domains/rcpsp_psplib_j30/outputs/2026-05-12/16-51-54",
   "accepted_candidate_id": "gen-119-i1-w1-a0-cbdd3ba1835131eb",
