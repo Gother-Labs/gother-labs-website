@@ -33,7 +33,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 
   </head>
-  <body class="open-result-rcpsp-page">
+  <body class="result-rcpsp-page">
     <a class="skip-link" href="#site-main">Skip to content</a>
     <div class="page-shell site-shell">
       <header class="site-header">
@@ -48,13 +48,13 @@
       </header>
 
       <main class="site-main" id="site-main">
-        <section class="hero compact-hero page-hero open-result-detail-hero rcpsp-detail-hero">
+        <section class="hero compact-hero page-hero result-detail-hero rcpsp-detail-hero">
           <h1 class="page-title">PSPLIB J30 scheduling benchmark</h1>
           <p class="intro results-hero-intro">A deterministic resource-constrained project scheduling rule improved across a frozen PSPLIB J30 subset with proven optimal makespans. The public chain reduced the lower-is-better score from 14.312 to 12.087 while keeping feasibility at 100%.</p>
         </section>
 
-        <section class="open-result-detail open-result-whitepaper-shell rcpsp-whitepaper-shell">
-          <article class="open-result-article open-result-whitepaper rcpsp-whitepaper">
+        <section class="result-detail result-whitepaper-shell rcpsp-whitepaper-shell">
+          <article class="result-article result-whitepaper rcpsp-whitepaper">
 <h3>Abstract</h3>
 <p>This note reports a deterministic dispatch rule for the Resource-Constrained Project Scheduling Problem (RCPSP). On a frozen public subset of PSPLIB J30, the evolutionary chain reduced the lower-is-better acceptance score from 14.312 to 12.087, a 15.55% reduction, while preserving feasibility on all 80 evaluated instances.</p>
 <p>For audit clarity, the public claim is the curated evolutionary chain, or cadena evolutiva, not a claim about the final isolated diagnostic run.</p>
@@ -68,9 +68,9 @@ C_{max}(S) = \max_i F_i
   <span class="equation-number">(1)</span>
 </div>
 <p>where \(F_i\) is the finish time of activity \(i\) in schedule \(S\).</p>
-<figure class="open-result-primer-card open-result-paper-figure rcpsp-inline-figure rcpsp-schedule-figure" id="fig-1">
-          <svg class="open-result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 328" role="img" aria-label="RCPSP schedule readout with precedence network and Gantt schedule.">
-            <text class="open-result-axis-label open-result-figure-title" x="72" y="34">RCPSP schedule readout</text>
+<figure class="result-primer-card result-paper-figure rcpsp-inline-figure rcpsp-schedule-figure" id="fig-1">
+          <svg class="result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 328" role="img" aria-label="RCPSP schedule readout with precedence network and Gantt schedule.">
+            <text class="result-axis-label result-figure-title" x="72" y="34">RCPSP schedule readout</text>
             <text class="rcpsp-paper-note" x="72" y="55">Eligible activities are ranked first; the evaluator then commits them to the earliest feasible placement.</text>
             <text class="rcpsp-paper-section-label" x="72" y="82">precedence network</text>
             <g class="rcpsp-network">
@@ -88,8 +88,8 @@ C_{max}(S) = \max_i F_i
             <text class="rcpsp-paper-note" x="72" y="192">A task becomes eligible only after all predecessor arcs are satisfied.</text>
             <text class="rcpsp-paper-section-label" x="72" y="212">Gantt schedule</text>
             <g class="rcpsp-gantt">
-              <path class="open-result-objective-grid" d="M126 234H512M126 256H512M126 278H512" />
-              <path class="open-result-rule-paper-axis" d="M126 292H512" />
+              <path class="result-objective-grid" d="M126 234H512M126 256H512M126 278H512" />
+              <path class="result-rule-paper-axis" d="M126 292H512" />
               <text x="72" y="238">row 1</text>
               <text x="72" y="260">row 2</text>
               <text x="72" y="282">row 3</text>
@@ -108,13 +108,13 @@ C_{max}(S) = \max_i F_i
           </svg>
           <figcaption>Figure 1. RCPSP schedule readout. The standard schedule view combines the precedence network, Gantt placement, and makespan marker.</figcaption>
         </figure>
-<figure class="open-result-primer-card open-result-paper-figure rcpsp-inline-figure rcpsp-resource-figure" id="fig-2">
-          <svg class="open-result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 306" role="img" aria-label="Renewable resource load profile for an RCPSP schedule.">
-            <text class="open-result-axis-label open-result-figure-title" x="72" y="34">Renewable resource load</text>
+<figure class="result-primer-card result-paper-figure rcpsp-inline-figure rcpsp-resource-figure" id="fig-2">
+          <svg class="result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 306" role="img" aria-label="Renewable resource load profile for an RCPSP schedule.">
+            <text class="result-axis-label result-figure-title" x="72" y="34">Renewable resource load</text>
             <text class="rcpsp-paper-note" x="72" y="55">A schedule is feasible only while every time bucket stays at or below capacity.</text>
             <g transform="translate(82 74)">
-              <path class="open-result-objective-grid" d="M42 144H430M42 108H430M42 72H430M42 36H430" />
-              <path class="open-result-rule-paper-axis" d="M42 0V174H430" />
+              <path class="result-objective-grid" d="M42 144H430M42 108H430M42 72H430M42 36H430" />
+              <path class="result-rule-paper-axis" d="M42 0V174H430" />
               <path class="rcpsp-capacity-line" d="M42 54H430" />
               <text class="rcpsp-paper-section-label" x="408" y="46" text-anchor="end">capacity</text>
               <rect class="rcpsp-load" x="55" y="108" width="36" height="66" />
@@ -126,16 +126,16 @@ C_{max}(S) = \max_i F_i
               <rect class="rcpsp-load" x="331" y="120" width="36" height="54" />
               <rect class="rcpsp-load" x="377" y="132" width="36" height="42" />
               <rect class="rcpsp-load-window" x="143" y="24" width="92" height="150" />
-              <text class="open-result-axis-tick open-result-objective-y-label" x="30" y="148">0</text>
-              <text class="open-result-axis-tick open-result-objective-y-label" x="30" y="112">1</text>
-              <text class="open-result-axis-tick open-result-objective-y-label" x="30" y="76">2</text>
-              <text class="open-result-axis-tick open-result-objective-y-label" x="30" y="40">3</text>
-              <text class="open-result-axis-tick" x="42" y="196">0</text>
-              <text class="open-result-axis-tick" x="190" y="196">20</text>
-              <text class="open-result-axis-tick" x="337" y="196">40</text>
-              <text class="open-result-axis-tick" x="430" y="196">60</text>
-              <text class="open-result-axis-label open-result-x-axis-title" x="236" y="226">time bucket</text>
-              <text class="open-result-axis-label open-result-objective-y-title" x="0" y="87" transform="rotate(-90 0 87)">active demand</text>
+              <text class="result-axis-tick result-objective-y-label" x="30" y="148">0</text>
+              <text class="result-axis-tick result-objective-y-label" x="30" y="112">1</text>
+              <text class="result-axis-tick result-objective-y-label" x="30" y="76">2</text>
+              <text class="result-axis-tick result-objective-y-label" x="30" y="40">3</text>
+              <text class="result-axis-tick" x="42" y="196">0</text>
+              <text class="result-axis-tick" x="190" y="196">20</text>
+              <text class="result-axis-tick" x="337" y="196">40</text>
+              <text class="result-axis-tick" x="430" y="196">60</text>
+              <text class="result-axis-label result-x-axis-title" x="236" y="226">time bucket</text>
+              <text class="result-axis-label result-objective-y-title" x="0" y="87" transform="rotate(-90 0 87)">active demand</text>
               <text class="rcpsp-paper-note" x="42" y="258">The fixed evaluator rejects any placement that crosses the capacity line.</text>
             </g>
           </svg>
@@ -144,9 +144,9 @@ C_{max}(S) = \max_i F_i
 <p>The evaluator uses serial schedule generation. At each step it finds eligible activities, scores each one with the candidate rule, asks the selector to choose one eligible activity, and places that activity at the earliest resource-feasible start time. This keeps the optimization surface narrow: the candidate changes priority logic, not the scheduling validator.</p>
 <h3>2. Benchmark and evaluation contract</h3>
 <p>The public portfolio contains 80 frozen PSPLIB J30 single-mode instances. The selection is parameters \(\{1, 7, 13, 19, 25, 31, 37, 43\}\) crossed with instances 1 through 10. Every instance has 32 jobs including dummy source and sink jobs, renewable-resource capacities, precedence arcs, and a proven optimal makespan.</p>
-<figure class="open-result-paper-table rcpsp-contract-table" id="table-1">
-          <div class="open-result-table-wrap">
-            <table class="open-result-table">
+<figure class="result-paper-table rcpsp-contract-table" id="table-1">
+          <div class="result-table-wrap">
+            <table class="result-table">
               <thead>
                 <tr>
                   <th>Field</th>
@@ -196,515 +196,515 @@ score = mean(g_k) + 0.35 \cdot p95(g_k) + feasibility\_penalty.
 <p>A candidate must keep the feasibility penalty at zero. It must return finite priority scores, choose only eligible activities, schedule every activity exactly once, respect all precedences, and never exceed renewable resource capacities.</p>
 <h3>3. Accepted candidate</h3>
 <p>The accepted candidate keeps the serial schedule generator unchanged and changes only the activity-ranking policy. The final rule combines critical-path urgency, successor-unlocking pressure, bottleneck resource pressure, resource pressure, wait pressure, and remaining-work pressure. The selector then prefers activities that can start earlier and uses the priority score as the second-order decision.</p>
-<figure class="open-result-paper-code open-result-code-figure rcpsp-code-figure" id="listing-1">
+<figure class="result-paper-code result-code-figure rcpsp-code-figure" id="listing-1">
           <pre><code><span class="code-line"><span class="line-no">1</span><span class="line-src"><span class="py-keyword">def</span> priority_score(</span></span><span class="code-line"><span class="line-no">2</span><span class="line-src">    activity: ActivityView,</span></span><span class="code-line"><span class="line-no">3</span><span class="line-src">    state: ScheduleStateView,</span></span><span class="code-line"><span class="line-no">4</span><span class="line-src">    instance: InstanceView,</span></span><span class="code-line"><span class="line-no">5</span><span class="line-src">) -&gt; <span class="py-builtin">float</span>:</span></span><span class="code-line"><span class="line-no">6</span><span class="line-src">    <span class="py-string">&quot;&quot;&quot;Return a deterministic priority score <span class="py-keyword">for</span> one eligible RCPSP activity.&quot;&quot;&quot;</span></span></span><span class="code-line"><span class="line-no">7</span><span class="line-src">    <span class="py-comment"># Critical path urgency: prioritize jobs that are on the critical path</span></span></span><span class="code-line"><span class="line-no">8</span><span class="line-src">    cp_score = activity.critical_path_tail * 3.0</span></span><span class="code-line"><span class="line-no">9</span><span class="line-src">    <span class="py-comment"># Downstream impact: prioritize jobs that unlock more work</span></span></span><span class="code-line"><span class="line-no">10</span><span class="line-src">    unlock_score = (</span></span><span class="code-line"><span class="line-no">11</span><span class="line-src">        activity.successor_work * 0.15</span></span><span class="code-line"><span class="line-no">12</span><span class="line-src">        + activity.transitive_successor_count * 1.5</span></span><span class="code-line"><span class="line-no">13</span><span class="line-src">    )</span></span><span class="code-line"><span class="line-no">14</span><span class="line-src">    <span class="py-comment"># Resource contention: prioritize jobs that are bottleneck-heavy</span></span></span><span class="code-line"><span class="line-no">15</span><span class="line-src">    resource_score = (</span></span><span class="code-line"><span class="line-no">16</span><span class="line-src">        activity.bottleneck_ratio * 100.0</span></span><span class="code-line"><span class="line-no">17</span><span class="line-src">        + activity.resource_pressure * 10.0</span></span><span class="code-line"><span class="line-no">18</span><span class="line-src">    )</span></span><span class="code-line"><span class="line-no">19</span><span class="line-src">    <span class="py-comment"># Urgency: penalize jobs that have been waiting past their earliest possible start</span></span></span><span class="code-line"><span class="line-no">20</span><span class="line-src">    wait_time = <span class="py-builtin">max</span>(0, state.current_makespan - state.earliest_precedence_start)</span></span><span class="code-line"><span class="line-no">21</span><span class="line-src">    wait_score = wait_time * 1.5</span></span><span class="code-line"><span class="line-no">22</span><span class="line-src">    <span class="py-comment"># Remaining work pressure: scale priority based on total remaining work to maintain throughput</span></span></span><span class="code-line"><span class="line-no">23</span><span class="line-src">    remaining_score = state.remaining_work * 0.05</span></span><span class="code-line"><span class="line-no">24</span><span class="line-src">    <span class="py-comment"># Final score with tie-breaker based on job ID</span></span></span><span class="code-line"><span class="line-no">25</span><span class="line-src">    <span class="py-keyword">return</span> (</span></span><span class="code-line"><span class="line-no">26</span><span class="line-src">        cp_score</span></span><span class="code-line"><span class="line-no">27</span><span class="line-src">        + unlock_score</span></span><span class="code-line"><span class="line-no">28</span><span class="line-src">        + resource_score</span></span><span class="code-line"><span class="line-no">29</span><span class="line-src">        + wait_score</span></span><span class="code-line"><span class="line-no">30</span><span class="line-src">        + remaining_score</span></span><span class="code-line"><span class="line-no">31</span><span class="line-src">        - (0.01 * activity.id)</span></span><span class="code-line"><span class="line-no">32</span><span class="line-src">    )</span></span><span class="code-line"><span class="line-no">33</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">34</span><span class="line-src"><span class="py-keyword">def</span> select_activity(</span></span><span class="code-line"><span class="line-no">35</span><span class="line-src">    eligible_activities: tuple[EligibleActivityView, ...],</span></span><span class="code-line"><span class="line-no">36</span><span class="line-src">    instance: InstanceView,</span></span><span class="code-line"><span class="line-no">37</span><span class="line-src">) -&gt; <span class="py-builtin">int</span>:</span></span><span class="code-line"><span class="line-no">38</span><span class="line-src">    <span class="py-string">&quot;&quot;&quot;Choose one eligible activity after all local priority scores are available.&quot;&quot;&quot;</span></span></span><span class="code-line"><span class="line-no">39</span><span class="line-src">    <span class="py-comment"># Prioritize earlier start times to keep resources busy, then use the refined priority score.</span></span></span><span class="code-line"><span class="line-no">40</span><span class="line-src">    selected = <span class="py-builtin">min</span>(</span></span><span class="code-line"><span class="line-no">41</span><span class="line-src">        eligible_activities,</span></span><span class="code-line"><span class="line-no">42</span><span class="line-src">        key=<span class="py-keyword">lambda</span> item: (</span></span><span class="code-line"><span class="line-no">43</span><span class="line-src">            item.state.earliest_resource_feasible_start,</span></span><span class="code-line"><span class="line-no">44</span><span class="line-src">            -item.priority,</span></span><span class="code-line"><span class="line-no">45</span><span class="line-src">        ),</span></span><span class="code-line"><span class="line-no">46</span><span class="line-src">    )</span></span><span class="code-line"><span class="line-no">47</span><span class="line-src">    <span class="py-keyword">return</span> <span class="py-builtin">int</span>(selected.activity.id)</span></span></code></pre>
           <figcaption>Listing 1. Accepted candidate implementation, formatted for inspection.</figcaption>
         </figure>
 <p>This is intentionally inspectable. The candidate is not a solver replacement or a hidden search procedure. It is a deterministic dispatch rule inside a fixed evaluator.</p>
 <h3>4. Results</h3>
 <p>The public chain moved from the seed score of 14.312 to an accepted score of 12.087. Figure 3 shows the full scored-candidate trace; Figure 4 summarizes the reported seed-versus-accepted comparison.</p>
-<figure class="open-result-primer-card open-result-paper-figure rcpsp-inline-figure open-result-objective-figure" id="fig-3">
-          <svg class="open-result-primer-svg open-result-objective-svg rcpsp-paper-svg" viewBox="0 0 560 328" role="img" aria-label="Best-so-far RCPSP acceptance objective.">
-            <text class="open-result-axis-label open-result-figure-title" x="82" y="34">Best-so-far acceptance objective (lower is better)</text>
-            <g class="open-result-objective-legend" transform="translate(82 48)">
-              <g transform="translate(0 0)"><circle class="open-result-objective-legend-proposal" cx="0" cy="0" r="2.4" /><text x="12" y="4">scored candidate</text></g>
-              <g transform="translate(112 0)"><line class="open-result-objective-legend-best" x1="0" y1="0" x2="16" y2="0" /><text x="24" y="4">best-so-far objective</text></g>
-              <g transform="translate(286 0)"><circle class="open-result-legend-baseline-dot" cx="0" cy="0" r="3.4" /><text x="16" y="4">baseline</text></g>
-              <g transform="translate(370 0)"><circle class="open-result-legend-accepted-dot" cx="0" cy="0" r="3.8" /><text x="16" y="4">accepted</text></g>
+<figure class="result-primer-card result-paper-figure rcpsp-inline-figure result-objective-figure" id="fig-3">
+          <svg class="result-primer-svg result-objective-svg rcpsp-paper-svg" viewBox="0 0 560 328" role="img" aria-label="Best-so-far RCPSP acceptance objective.">
+            <text class="result-axis-label result-figure-title" x="82" y="34">Best-so-far acceptance objective (lower is better)</text>
+            <g class="result-objective-legend" transform="translate(82 48)">
+              <g transform="translate(0 0)"><circle class="result-objective-legend-proposal" cx="0" cy="0" r="2.4" /><text x="12" y="4">scored candidate</text></g>
+              <g transform="translate(112 0)"><line class="result-objective-legend-best" x1="0" y1="0" x2="16" y2="0" /><text x="24" y="4">best-so-far objective</text></g>
+              <g transform="translate(286 0)"><circle class="result-legend-baseline-dot" cx="0" cy="0" r="3.4" /><text x="16" y="4">baseline</text></g>
+              <g transform="translate(370 0)"><circle class="result-legend-accepted-dot" cx="0" cy="0" r="3.8" /><text x="16" y="4">accepted</text></g>
             </g>
-            <path class="open-result-objective-grid" d="M82 76.0H512" /><text class="open-result-axis-tick open-result-objective-y-label" x="68" y="80.0">16+</text>
-            <path class="open-result-objective-grid" d="M82 164.0H512" /><text class="open-result-axis-tick open-result-objective-y-label" x="68" y="168.0">14</text>
-            <path class="open-result-objective-grid" d="M82 252.0H512" /><text class="open-result-axis-tick open-result-objective-y-label" x="68" y="256.0">12</text>
-            <path class="open-result-rule-paper-axis" d="M82 76V252H512" />
+            <path class="result-objective-grid" d="M82 76.0H512" /><text class="result-axis-tick result-objective-y-label" x="68" y="80.0">16+</text>
+            <path class="result-objective-grid" d="M82 164.0H512" /><text class="result-axis-tick result-objective-y-label" x="68" y="168.0">14</text>
+            <path class="result-objective-grid" d="M82 252.0H512" /><text class="result-axis-tick result-objective-y-label" x="68" y="256.0">12</text>
+            <path class="result-rule-paper-axis" d="M82 76V252H512" />
             <g>
-              <circle class="open-result-objective-proposal" cx="85.6" cy="169.9" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="85.6" cy="141.5" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="89.2" cy="175.4" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="89.2" cy="173.5" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="92.8" cy="178.1" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="92.8" cy="178.1" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="92.8" cy="154.3" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="92.8" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="96.5" cy="156.1" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="96.5" cy="151.8" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="96.5" cy="141.8" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="96.5" cy="125.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="100.1" cy="190.2" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="100.1" cy="163.3" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="100.1" cy="155.2" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="100.1" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="103.7" cy="171.2" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="103.7" cy="169.5" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="103.7" cy="100.4" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="103.7" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="107.3" cy="169.5" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="107.3" cy="90.6" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="107.3" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="107.3" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="110.9" cy="151.8" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="110.9" cy="150.3" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="110.9" cy="118.1" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="110.9" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="114.5" cy="167.5" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="114.5" cy="118.1" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="114.5" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="114.5" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="118.1" cy="184.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="118.1" cy="178.1" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="118.1" cy="143.9" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="118.1" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="121.7" cy="170.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="121.7" cy="155.1" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="121.7" cy="151.8" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="121.7" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="125.4" cy="182.9" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="125.4" cy="182.2" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="125.4" cy="146.7" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="125.4" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="129.0" cy="181.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="129.0" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="129.0" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="129.0" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="132.6" cy="156.9" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="132.6" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="132.6" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="132.6" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="136.2" cy="165.1" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="136.2" cy="131.5" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="136.2" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="136.2" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="139.8" cy="207.6" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="139.8" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="139.8" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="139.8" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="143.4" cy="136.4" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="143.4" cy="91.2" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="143.4" cy="81.2" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="143.4" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="147.0" cy="149.9" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="147.0" cy="138.4" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="147.0" cy="126.6" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="147.0" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="150.7" cy="208.8" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="150.7" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="150.7" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="150.7" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="154.3" cy="154.7" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="154.3" cy="149.7" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="154.3" cy="82.1" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="154.3" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="157.9" cy="80.1" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="157.9" cy="80.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="157.9" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="157.9" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="161.5" cy="182.7" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="161.5" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="161.5" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="161.5" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="165.1" cy="134.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="165.1" cy="81.2" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="165.1" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="165.1" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="168.7" cy="145.3" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="168.7" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="168.7" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="168.7" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="172.3" cy="125.7" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="172.3" cy="89.8" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="172.3" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="172.3" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="175.9" cy="159.6" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="175.9" cy="151.5" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="175.9" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="175.9" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="179.6" cy="140.7" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="179.6" cy="123.8" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="179.6" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="179.6" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="183.2" cy="146.8" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="183.2" cy="126.3" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="183.2" cy="125.6" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="183.2" cy="111.7" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="186.8" cy="120.6" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="186.8" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="186.8" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="186.8" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="190.4" cy="165.3" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="190.4" cy="129.3" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="190.4" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="190.4" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="194.0" cy="135.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="194.0" cy="132.4" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="194.0" cy="93.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="194.0" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="197.6" cy="157.9" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="197.6" cy="157.4" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="197.6" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="197.6" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="201.2" cy="160.6" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="201.2" cy="136.3" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="201.2" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="201.2" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="204.9" cy="162.6" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="204.9" cy="90.9" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="204.9" cy="85.4" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="204.9" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="208.5" cy="113.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="208.5" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="208.5" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="208.5" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="212.1" cy="187.6" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="212.1" cy="178.3" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="212.1" cy="170.2" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="212.1" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="215.7" cy="191.3" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="215.7" cy="122.2" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="215.7" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="215.7" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="219.3" cy="187.4" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="219.3" cy="114.6" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="219.3" cy="110.3" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="219.3" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="222.9" cy="158.5" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="222.9" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="222.9" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="222.9" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="226.5" cy="110.2" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="226.5" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="226.5" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="226.5" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="230.2" cy="145.2" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="230.2" cy="134.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="230.2" cy="98.8" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="230.2" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="233.8" cy="141.4" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="233.8" cy="115.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="233.8" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="233.8" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="237.4" cy="194.4" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="237.4" cy="158.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="237.4" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="237.4" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="241.0" cy="176.2" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="241.0" cy="140.1" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="241.0" cy="107.8" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="241.0" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="244.6" cy="153.9" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="244.6" cy="112.8" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="244.6" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="244.6" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="248.2" cy="147.5" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="248.2" cy="133.1" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="248.2" cy="130.6" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="248.2" cy="112.5" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="251.8" cy="208.8" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="251.8" cy="160.7" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="251.8" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="251.8" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="255.4" cy="140.5" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="255.4" cy="110.9" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="255.4" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="255.4" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="259.1" cy="169.9" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="259.1" cy="153.1" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="259.1" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="259.1" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="262.7" cy="158.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="262.7" cy="138.9" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="262.7" cy="138.9" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="262.7" cy="138.2" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="266.3" cy="173.3" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="266.3" cy="167.2" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="266.3" cy="166.7" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="266.3" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="269.9" cy="166.4" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="269.9" cy="117.5" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="269.9" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="269.9" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="273.5" cy="150.7" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="273.5" cy="142.2" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="273.5" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="273.5" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="277.1" cy="125.7" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="277.1" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="277.1" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="277.1" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="280.7" cy="106.1" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="280.7" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="280.7" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="280.7" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="284.4" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="284.4" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="284.4" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="284.4" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="288.0" cy="129.5" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="288.0" cy="85.7" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="288.0" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="288.0" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="291.6" cy="133.5" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="291.6" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="291.6" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="291.6" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="295.2" cy="146.8" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="295.2" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="295.2" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="295.2" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="298.8" cy="132.3" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="298.8" cy="98.9" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="298.8" cy="80.7" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="298.8" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="302.4" cy="215.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="302.4" cy="153.6" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="302.4" cy="122.8" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="302.4" cy="100.2" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="306.0" cy="166.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="306.0" cy="119.8" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="306.0" cy="78.8" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="306.0" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="309.6" cy="115.8" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="309.6" cy="100.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="309.6" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="309.6" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="313.3" cy="144.3" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="313.3" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="313.3" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="313.3" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="316.9" cy="155.4" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="316.9" cy="91.7" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="316.9" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="316.9" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="320.5" cy="194.9" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="320.5" cy="93.5" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="320.5" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="320.5" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="324.1" cy="207.4" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="324.1" cy="124.4" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="324.1" cy="90.7" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="324.1" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="327.7" cy="190.5" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="327.7" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="327.7" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="327.7" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="331.3" cy="115.6" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="331.3" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="331.3" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="331.3" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="334.9" cy="129.7" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="334.9" cy="119.3" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="334.9" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="334.9" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="338.6" cy="160.7" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="338.6" cy="154.2" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="338.6" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="338.6" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="342.2" cy="194.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="342.2" cy="163.9" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="342.2" cy="147.6" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="342.2" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="345.8" cy="225.7" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="345.8" cy="181.8" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="345.8" cy="177.1" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="345.8" cy="109.4" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="349.4" cy="197.7" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="349.4" cy="174.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="349.4" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="349.4" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="353.0" cy="190.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="353.0" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="353.0" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="353.0" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="356.6" cy="183.3" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="356.6" cy="128.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="356.6" cy="127.3" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="356.6" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="360.2" cy="139.4" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="360.2" cy="113.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="360.2" cy="82.7" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="360.2" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="363.8" cy="182.3" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="363.8" cy="131.6" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="363.8" cy="123.8" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="363.8" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="367.5" cy="202.1" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="367.5" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="367.5" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="367.5" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="371.1" cy="205.1" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="371.1" cy="111.9" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="371.1" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="371.1" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="374.7" cy="149.8" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="374.7" cy="123.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="374.7" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="374.7" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="378.3" cy="171.9" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="378.3" cy="144.9" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="378.3" cy="119.4" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="378.3" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="381.9" cy="238.5" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="381.9" cy="121.1" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="381.9" cy="76.5" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="381.9" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="385.5" cy="230.1" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="385.5" cy="99.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="385.5" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="385.5" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="389.1" cy="162.9" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="389.1" cy="122.2" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="389.1" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="389.1" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="392.8" cy="234.8" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="392.8" cy="205.1" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="392.8" cy="111.2" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="392.8" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="396.4" cy="220.8" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="396.4" cy="115.3" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="396.4" cy="77.9" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="396.4" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="400.0" cy="162.1" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="400.0" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="400.0" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="400.0" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="403.6" cy="242.1" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="403.6" cy="147.7" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="403.6" cy="122.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="403.6" cy="102.8" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="407.2" cy="203.9" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="407.2" cy="165.4" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="407.2" cy="142.6" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="407.2" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="410.8" cy="229.1" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="410.8" cy="135.6" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="410.8" cy="123.7" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="410.8" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="414.4" cy="193.1" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="414.4" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="414.4" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="414.4" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="418.1" cy="203.5" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="418.1" cy="131.8" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="418.1" cy="102.7" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="418.1" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="421.7" cy="99.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="421.7" cy="85.6" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="421.7" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="421.7" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="425.3" cy="205.8" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="425.3" cy="144.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="425.3" cy="110.5" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="425.3" cy="88.4" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="428.9" cy="157.6" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="428.9" cy="94.5" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="428.9" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="428.9" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="432.5" cy="209.3" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="432.5" cy="163.6" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="432.5" cy="135.8" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="432.5" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="436.1" cy="221.4" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="436.1" cy="140.5" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="436.1" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="436.1" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="439.7" cy="220.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="439.7" cy="78.9" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="439.7" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="439.7" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="443.3" cy="123.3" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="443.3" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="443.3" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="443.3" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="447.0" cy="230.6" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="447.0" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="447.0" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="447.0" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="450.6" cy="213.7" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="450.6" cy="148.5" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="450.6" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="450.6" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="454.2" cy="198.3" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="454.2" cy="126.9" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="454.2" cy="120.5" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="454.2" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="457.8" cy="209.8" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="457.8" cy="87.6" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="457.8" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="457.8" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="461.4" cy="160.3" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="461.4" cy="126.9" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="461.4" cy="111.1" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="461.4" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="465.0" cy="228.4" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="465.0" cy="170.8" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="465.0" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="465.0" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="468.6" cy="162.6" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="468.6" cy="123.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="468.6" cy="121.4" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="468.6" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="472.3" cy="221.4" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="472.3" cy="210.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="472.3" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="472.3" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="475.9" cy="230.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="475.9" cy="133.3" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="475.9" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="475.9" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="479.5" cy="218.4" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="479.5" cy="214.4" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="479.5" cy="127.6" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="479.5" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="483.1" cy="188.4" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="483.1" cy="86.7" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="483.1" cy="83.1" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="483.1" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="486.7" cy="227.5" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="486.7" cy="160.4" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="486.7" cy="152.4" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="486.7" cy="83.5" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="490.3" cy="231.5" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="490.3" cy="135.3" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="490.3" cy="114.8" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="490.3" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="493.9" cy="227.5" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="493.9" cy="193.6" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="493.9" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="493.9" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="497.5" cy="186.8" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="497.5" cy="114.8" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="497.5" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="497.5" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="501.2" cy="209.8" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="501.2" cy="184.1" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="501.2" cy="135.7" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="501.2" cy="91.7" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="504.8" cy="222.1" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="504.8" cy="222.1" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="504.8" cy="133.3" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="504.8" cy="127.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="508.4" cy="222.1" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="508.4" cy="166.7" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="508.4" cy="114.8" r="1.6" />
-              <circle class="open-result-objective-proposal is-clipped" cx="508.4" cy="76.0" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="512.0" cy="248.2" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="512.0" cy="218.4" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="512.0" cy="140.2" r="1.6" />
-              <circle class="open-result-objective-proposal" cx="512.0" cy="110.4" r="1.6" />
+              <circle class="result-objective-proposal" cx="85.6" cy="169.9" r="1.6" />
+              <circle class="result-objective-proposal" cx="85.6" cy="141.5" r="1.6" />
+              <circle class="result-objective-proposal" cx="89.2" cy="175.4" r="1.6" />
+              <circle class="result-objective-proposal" cx="89.2" cy="173.5" r="1.6" />
+              <circle class="result-objective-proposal" cx="92.8" cy="178.1" r="1.6" />
+              <circle class="result-objective-proposal" cx="92.8" cy="178.1" r="1.6" />
+              <circle class="result-objective-proposal" cx="92.8" cy="154.3" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="92.8" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="96.5" cy="156.1" r="1.6" />
+              <circle class="result-objective-proposal" cx="96.5" cy="151.8" r="1.6" />
+              <circle class="result-objective-proposal" cx="96.5" cy="141.8" r="1.6" />
+              <circle class="result-objective-proposal" cx="96.5" cy="125.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="100.1" cy="190.2" r="1.6" />
+              <circle class="result-objective-proposal" cx="100.1" cy="163.3" r="1.6" />
+              <circle class="result-objective-proposal" cx="100.1" cy="155.2" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="100.1" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="103.7" cy="171.2" r="1.6" />
+              <circle class="result-objective-proposal" cx="103.7" cy="169.5" r="1.6" />
+              <circle class="result-objective-proposal" cx="103.7" cy="100.4" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="103.7" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="107.3" cy="169.5" r="1.6" />
+              <circle class="result-objective-proposal" cx="107.3" cy="90.6" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="107.3" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="107.3" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="110.9" cy="151.8" r="1.6" />
+              <circle class="result-objective-proposal" cx="110.9" cy="150.3" r="1.6" />
+              <circle class="result-objective-proposal" cx="110.9" cy="118.1" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="110.9" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="114.5" cy="167.5" r="1.6" />
+              <circle class="result-objective-proposal" cx="114.5" cy="118.1" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="114.5" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="114.5" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="118.1" cy="184.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="118.1" cy="178.1" r="1.6" />
+              <circle class="result-objective-proposal" cx="118.1" cy="143.9" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="118.1" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="121.7" cy="170.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="121.7" cy="155.1" r="1.6" />
+              <circle class="result-objective-proposal" cx="121.7" cy="151.8" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="121.7" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="125.4" cy="182.9" r="1.6" />
+              <circle class="result-objective-proposal" cx="125.4" cy="182.2" r="1.6" />
+              <circle class="result-objective-proposal" cx="125.4" cy="146.7" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="125.4" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="129.0" cy="181.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="129.0" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="129.0" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="129.0" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="132.6" cy="156.9" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="132.6" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="132.6" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="132.6" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="136.2" cy="165.1" r="1.6" />
+              <circle class="result-objective-proposal" cx="136.2" cy="131.5" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="136.2" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="136.2" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="139.8" cy="207.6" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="139.8" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="139.8" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="139.8" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="143.4" cy="136.4" r="1.6" />
+              <circle class="result-objective-proposal" cx="143.4" cy="91.2" r="1.6" />
+              <circle class="result-objective-proposal" cx="143.4" cy="81.2" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="143.4" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="147.0" cy="149.9" r="1.6" />
+              <circle class="result-objective-proposal" cx="147.0" cy="138.4" r="1.6" />
+              <circle class="result-objective-proposal" cx="147.0" cy="126.6" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="147.0" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="150.7" cy="208.8" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="150.7" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="150.7" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="150.7" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="154.3" cy="154.7" r="1.6" />
+              <circle class="result-objective-proposal" cx="154.3" cy="149.7" r="1.6" />
+              <circle class="result-objective-proposal" cx="154.3" cy="82.1" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="154.3" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="157.9" cy="80.1" r="1.6" />
+              <circle class="result-objective-proposal" cx="157.9" cy="80.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="157.9" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="157.9" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="161.5" cy="182.7" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="161.5" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="161.5" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="161.5" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="165.1" cy="134.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="165.1" cy="81.2" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="165.1" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="165.1" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="168.7" cy="145.3" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="168.7" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="168.7" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="168.7" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="172.3" cy="125.7" r="1.6" />
+              <circle class="result-objective-proposal" cx="172.3" cy="89.8" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="172.3" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="172.3" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="175.9" cy="159.6" r="1.6" />
+              <circle class="result-objective-proposal" cx="175.9" cy="151.5" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="175.9" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="175.9" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="179.6" cy="140.7" r="1.6" />
+              <circle class="result-objective-proposal" cx="179.6" cy="123.8" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="179.6" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="179.6" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="183.2" cy="146.8" r="1.6" />
+              <circle class="result-objective-proposal" cx="183.2" cy="126.3" r="1.6" />
+              <circle class="result-objective-proposal" cx="183.2" cy="125.6" r="1.6" />
+              <circle class="result-objective-proposal" cx="183.2" cy="111.7" r="1.6" />
+              <circle class="result-objective-proposal" cx="186.8" cy="120.6" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="186.8" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="186.8" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="186.8" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="190.4" cy="165.3" r="1.6" />
+              <circle class="result-objective-proposal" cx="190.4" cy="129.3" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="190.4" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="190.4" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="194.0" cy="135.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="194.0" cy="132.4" r="1.6" />
+              <circle class="result-objective-proposal" cx="194.0" cy="93.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="194.0" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="197.6" cy="157.9" r="1.6" />
+              <circle class="result-objective-proposal" cx="197.6" cy="157.4" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="197.6" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="197.6" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="201.2" cy="160.6" r="1.6" />
+              <circle class="result-objective-proposal" cx="201.2" cy="136.3" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="201.2" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="201.2" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="204.9" cy="162.6" r="1.6" />
+              <circle class="result-objective-proposal" cx="204.9" cy="90.9" r="1.6" />
+              <circle class="result-objective-proposal" cx="204.9" cy="85.4" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="204.9" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="208.5" cy="113.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="208.5" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="208.5" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="208.5" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="212.1" cy="187.6" r="1.6" />
+              <circle class="result-objective-proposal" cx="212.1" cy="178.3" r="1.6" />
+              <circle class="result-objective-proposal" cx="212.1" cy="170.2" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="212.1" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="215.7" cy="191.3" r="1.6" />
+              <circle class="result-objective-proposal" cx="215.7" cy="122.2" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="215.7" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="215.7" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="219.3" cy="187.4" r="1.6" />
+              <circle class="result-objective-proposal" cx="219.3" cy="114.6" r="1.6" />
+              <circle class="result-objective-proposal" cx="219.3" cy="110.3" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="219.3" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="222.9" cy="158.5" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="222.9" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="222.9" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="222.9" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="226.5" cy="110.2" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="226.5" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="226.5" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="226.5" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="230.2" cy="145.2" r="1.6" />
+              <circle class="result-objective-proposal" cx="230.2" cy="134.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="230.2" cy="98.8" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="230.2" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="233.8" cy="141.4" r="1.6" />
+              <circle class="result-objective-proposal" cx="233.8" cy="115.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="233.8" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="233.8" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="237.4" cy="194.4" r="1.6" />
+              <circle class="result-objective-proposal" cx="237.4" cy="158.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="237.4" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="237.4" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="241.0" cy="176.2" r="1.6" />
+              <circle class="result-objective-proposal" cx="241.0" cy="140.1" r="1.6" />
+              <circle class="result-objective-proposal" cx="241.0" cy="107.8" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="241.0" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="244.6" cy="153.9" r="1.6" />
+              <circle class="result-objective-proposal" cx="244.6" cy="112.8" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="244.6" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="244.6" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="248.2" cy="147.5" r="1.6" />
+              <circle class="result-objective-proposal" cx="248.2" cy="133.1" r="1.6" />
+              <circle class="result-objective-proposal" cx="248.2" cy="130.6" r="1.6" />
+              <circle class="result-objective-proposal" cx="248.2" cy="112.5" r="1.6" />
+              <circle class="result-objective-proposal" cx="251.8" cy="208.8" r="1.6" />
+              <circle class="result-objective-proposal" cx="251.8" cy="160.7" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="251.8" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="251.8" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="255.4" cy="140.5" r="1.6" />
+              <circle class="result-objective-proposal" cx="255.4" cy="110.9" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="255.4" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="255.4" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="259.1" cy="169.9" r="1.6" />
+              <circle class="result-objective-proposal" cx="259.1" cy="153.1" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="259.1" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="259.1" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="262.7" cy="158.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="262.7" cy="138.9" r="1.6" />
+              <circle class="result-objective-proposal" cx="262.7" cy="138.9" r="1.6" />
+              <circle class="result-objective-proposal" cx="262.7" cy="138.2" r="1.6" />
+              <circle class="result-objective-proposal" cx="266.3" cy="173.3" r="1.6" />
+              <circle class="result-objective-proposal" cx="266.3" cy="167.2" r="1.6" />
+              <circle class="result-objective-proposal" cx="266.3" cy="166.7" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="266.3" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="269.9" cy="166.4" r="1.6" />
+              <circle class="result-objective-proposal" cx="269.9" cy="117.5" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="269.9" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="269.9" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="273.5" cy="150.7" r="1.6" />
+              <circle class="result-objective-proposal" cx="273.5" cy="142.2" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="273.5" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="273.5" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="277.1" cy="125.7" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="277.1" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="277.1" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="277.1" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="280.7" cy="106.1" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="280.7" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="280.7" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="280.7" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="284.4" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="284.4" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="284.4" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="284.4" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="288.0" cy="129.5" r="1.6" />
+              <circle class="result-objective-proposal" cx="288.0" cy="85.7" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="288.0" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="288.0" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="291.6" cy="133.5" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="291.6" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="291.6" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="291.6" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="295.2" cy="146.8" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="295.2" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="295.2" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="295.2" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="298.8" cy="132.3" r="1.6" />
+              <circle class="result-objective-proposal" cx="298.8" cy="98.9" r="1.6" />
+              <circle class="result-objective-proposal" cx="298.8" cy="80.7" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="298.8" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="302.4" cy="215.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="302.4" cy="153.6" r="1.6" />
+              <circle class="result-objective-proposal" cx="302.4" cy="122.8" r="1.6" />
+              <circle class="result-objective-proposal" cx="302.4" cy="100.2" r="1.6" />
+              <circle class="result-objective-proposal" cx="306.0" cy="166.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="306.0" cy="119.8" r="1.6" />
+              <circle class="result-objective-proposal" cx="306.0" cy="78.8" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="306.0" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="309.6" cy="115.8" r="1.6" />
+              <circle class="result-objective-proposal" cx="309.6" cy="100.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="309.6" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="309.6" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="313.3" cy="144.3" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="313.3" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="313.3" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="313.3" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="316.9" cy="155.4" r="1.6" />
+              <circle class="result-objective-proposal" cx="316.9" cy="91.7" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="316.9" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="316.9" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="320.5" cy="194.9" r="1.6" />
+              <circle class="result-objective-proposal" cx="320.5" cy="93.5" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="320.5" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="320.5" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="324.1" cy="207.4" r="1.6" />
+              <circle class="result-objective-proposal" cx="324.1" cy="124.4" r="1.6" />
+              <circle class="result-objective-proposal" cx="324.1" cy="90.7" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="324.1" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="327.7" cy="190.5" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="327.7" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="327.7" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="327.7" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="331.3" cy="115.6" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="331.3" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="331.3" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="331.3" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="334.9" cy="129.7" r="1.6" />
+              <circle class="result-objective-proposal" cx="334.9" cy="119.3" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="334.9" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="334.9" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="338.6" cy="160.7" r="1.6" />
+              <circle class="result-objective-proposal" cx="338.6" cy="154.2" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="338.6" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="338.6" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="342.2" cy="194.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="342.2" cy="163.9" r="1.6" />
+              <circle class="result-objective-proposal" cx="342.2" cy="147.6" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="342.2" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="345.8" cy="225.7" r="1.6" />
+              <circle class="result-objective-proposal" cx="345.8" cy="181.8" r="1.6" />
+              <circle class="result-objective-proposal" cx="345.8" cy="177.1" r="1.6" />
+              <circle class="result-objective-proposal" cx="345.8" cy="109.4" r="1.6" />
+              <circle class="result-objective-proposal" cx="349.4" cy="197.7" r="1.6" />
+              <circle class="result-objective-proposal" cx="349.4" cy="174.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="349.4" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="349.4" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="353.0" cy="190.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="353.0" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="353.0" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="353.0" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="356.6" cy="183.3" r="1.6" />
+              <circle class="result-objective-proposal" cx="356.6" cy="128.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="356.6" cy="127.3" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="356.6" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="360.2" cy="139.4" r="1.6" />
+              <circle class="result-objective-proposal" cx="360.2" cy="113.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="360.2" cy="82.7" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="360.2" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="363.8" cy="182.3" r="1.6" />
+              <circle class="result-objective-proposal" cx="363.8" cy="131.6" r="1.6" />
+              <circle class="result-objective-proposal" cx="363.8" cy="123.8" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="363.8" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="367.5" cy="202.1" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="367.5" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="367.5" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="367.5" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="371.1" cy="205.1" r="1.6" />
+              <circle class="result-objective-proposal" cx="371.1" cy="111.9" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="371.1" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="371.1" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="374.7" cy="149.8" r="1.6" />
+              <circle class="result-objective-proposal" cx="374.7" cy="123.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="374.7" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="374.7" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="378.3" cy="171.9" r="1.6" />
+              <circle class="result-objective-proposal" cx="378.3" cy="144.9" r="1.6" />
+              <circle class="result-objective-proposal" cx="378.3" cy="119.4" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="378.3" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="381.9" cy="238.5" r="1.6" />
+              <circle class="result-objective-proposal" cx="381.9" cy="121.1" r="1.6" />
+              <circle class="result-objective-proposal" cx="381.9" cy="76.5" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="381.9" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="385.5" cy="230.1" r="1.6" />
+              <circle class="result-objective-proposal" cx="385.5" cy="99.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="385.5" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="385.5" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="389.1" cy="162.9" r="1.6" />
+              <circle class="result-objective-proposal" cx="389.1" cy="122.2" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="389.1" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="389.1" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="392.8" cy="234.8" r="1.6" />
+              <circle class="result-objective-proposal" cx="392.8" cy="205.1" r="1.6" />
+              <circle class="result-objective-proposal" cx="392.8" cy="111.2" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="392.8" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="396.4" cy="220.8" r="1.6" />
+              <circle class="result-objective-proposal" cx="396.4" cy="115.3" r="1.6" />
+              <circle class="result-objective-proposal" cx="396.4" cy="77.9" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="396.4" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="400.0" cy="162.1" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="400.0" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="400.0" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="400.0" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="403.6" cy="242.1" r="1.6" />
+              <circle class="result-objective-proposal" cx="403.6" cy="147.7" r="1.6" />
+              <circle class="result-objective-proposal" cx="403.6" cy="122.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="403.6" cy="102.8" r="1.6" />
+              <circle class="result-objective-proposal" cx="407.2" cy="203.9" r="1.6" />
+              <circle class="result-objective-proposal" cx="407.2" cy="165.4" r="1.6" />
+              <circle class="result-objective-proposal" cx="407.2" cy="142.6" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="407.2" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="410.8" cy="229.1" r="1.6" />
+              <circle class="result-objective-proposal" cx="410.8" cy="135.6" r="1.6" />
+              <circle class="result-objective-proposal" cx="410.8" cy="123.7" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="410.8" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="414.4" cy="193.1" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="414.4" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="414.4" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="414.4" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="418.1" cy="203.5" r="1.6" />
+              <circle class="result-objective-proposal" cx="418.1" cy="131.8" r="1.6" />
+              <circle class="result-objective-proposal" cx="418.1" cy="102.7" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="418.1" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="421.7" cy="99.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="421.7" cy="85.6" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="421.7" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="421.7" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="425.3" cy="205.8" r="1.6" />
+              <circle class="result-objective-proposal" cx="425.3" cy="144.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="425.3" cy="110.5" r="1.6" />
+              <circle class="result-objective-proposal" cx="425.3" cy="88.4" r="1.6" />
+              <circle class="result-objective-proposal" cx="428.9" cy="157.6" r="1.6" />
+              <circle class="result-objective-proposal" cx="428.9" cy="94.5" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="428.9" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="428.9" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="432.5" cy="209.3" r="1.6" />
+              <circle class="result-objective-proposal" cx="432.5" cy="163.6" r="1.6" />
+              <circle class="result-objective-proposal" cx="432.5" cy="135.8" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="432.5" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="436.1" cy="221.4" r="1.6" />
+              <circle class="result-objective-proposal" cx="436.1" cy="140.5" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="436.1" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="436.1" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="439.7" cy="220.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="439.7" cy="78.9" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="439.7" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="439.7" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="443.3" cy="123.3" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="443.3" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="443.3" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="443.3" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="447.0" cy="230.6" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="447.0" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="447.0" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="447.0" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="450.6" cy="213.7" r="1.6" />
+              <circle class="result-objective-proposal" cx="450.6" cy="148.5" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="450.6" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="450.6" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="454.2" cy="198.3" r="1.6" />
+              <circle class="result-objective-proposal" cx="454.2" cy="126.9" r="1.6" />
+              <circle class="result-objective-proposal" cx="454.2" cy="120.5" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="454.2" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="457.8" cy="209.8" r="1.6" />
+              <circle class="result-objective-proposal" cx="457.8" cy="87.6" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="457.8" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="457.8" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="461.4" cy="160.3" r="1.6" />
+              <circle class="result-objective-proposal" cx="461.4" cy="126.9" r="1.6" />
+              <circle class="result-objective-proposal" cx="461.4" cy="111.1" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="461.4" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="465.0" cy="228.4" r="1.6" />
+              <circle class="result-objective-proposal" cx="465.0" cy="170.8" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="465.0" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="465.0" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="468.6" cy="162.6" r="1.6" />
+              <circle class="result-objective-proposal" cx="468.6" cy="123.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="468.6" cy="121.4" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="468.6" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="472.3" cy="221.4" r="1.6" />
+              <circle class="result-objective-proposal" cx="472.3" cy="210.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="472.3" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="472.3" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="475.9" cy="230.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="475.9" cy="133.3" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="475.9" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="475.9" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="479.5" cy="218.4" r="1.6" />
+              <circle class="result-objective-proposal" cx="479.5" cy="214.4" r="1.6" />
+              <circle class="result-objective-proposal" cx="479.5" cy="127.6" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="479.5" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="483.1" cy="188.4" r="1.6" />
+              <circle class="result-objective-proposal" cx="483.1" cy="86.7" r="1.6" />
+              <circle class="result-objective-proposal" cx="483.1" cy="83.1" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="483.1" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="486.7" cy="227.5" r="1.6" />
+              <circle class="result-objective-proposal" cx="486.7" cy="160.4" r="1.6" />
+              <circle class="result-objective-proposal" cx="486.7" cy="152.4" r="1.6" />
+              <circle class="result-objective-proposal" cx="486.7" cy="83.5" r="1.6" />
+              <circle class="result-objective-proposal" cx="490.3" cy="231.5" r="1.6" />
+              <circle class="result-objective-proposal" cx="490.3" cy="135.3" r="1.6" />
+              <circle class="result-objective-proposal" cx="490.3" cy="114.8" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="490.3" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="493.9" cy="227.5" r="1.6" />
+              <circle class="result-objective-proposal" cx="493.9" cy="193.6" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="493.9" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="493.9" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="497.5" cy="186.8" r="1.6" />
+              <circle class="result-objective-proposal" cx="497.5" cy="114.8" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="497.5" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="497.5" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="501.2" cy="209.8" r="1.6" />
+              <circle class="result-objective-proposal" cx="501.2" cy="184.1" r="1.6" />
+              <circle class="result-objective-proposal" cx="501.2" cy="135.7" r="1.6" />
+              <circle class="result-objective-proposal" cx="501.2" cy="91.7" r="1.6" />
+              <circle class="result-objective-proposal" cx="504.8" cy="222.1" r="1.6" />
+              <circle class="result-objective-proposal" cx="504.8" cy="222.1" r="1.6" />
+              <circle class="result-objective-proposal" cx="504.8" cy="133.3" r="1.6" />
+              <circle class="result-objective-proposal" cx="504.8" cy="127.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="508.4" cy="222.1" r="1.6" />
+              <circle class="result-objective-proposal" cx="508.4" cy="166.7" r="1.6" />
+              <circle class="result-objective-proposal" cx="508.4" cy="114.8" r="1.6" />
+              <circle class="result-objective-proposal is-clipped" cx="508.4" cy="76.0" r="1.6" />
+              <circle class="result-objective-proposal" cx="512.0" cy="248.2" r="1.6" />
+              <circle class="result-objective-proposal" cx="512.0" cy="218.4" r="1.6" />
+              <circle class="result-objective-proposal" cx="512.0" cy="140.2" r="1.6" />
+              <circle class="result-objective-proposal" cx="512.0" cy="110.4" r="1.6" />
             </g>
-            <path class="open-result-objective-best" d="M 82.0 150.3 L 85.6 169.9 L 89.2 175.4 L 92.8 178.1 L 96.5 178.1 L 100.1 190.2 L 103.7 190.2 L 107.3 190.2 L 110.9 190.2 L 114.5 190.2 L 118.1 190.2 L 121.7 190.2 L 125.4 190.2 L 129.0 190.2 L 132.6 190.2 L 136.2 190.2 L 139.8 207.6 L 143.4 207.6 L 147.0 207.6 L 150.7 208.8 L 154.3 208.8 L 157.9 208.8 L 161.5 208.8 L 165.1 208.8 L 168.7 208.8 L 172.3 208.8 L 175.9 208.8 L 179.6 208.8 L 183.2 208.8 L 186.8 208.8 L 190.4 208.8 L 194.0 208.8 L 197.6 208.8 L 201.2 208.8 L 204.9 208.8 L 208.5 208.8 L 212.1 208.8 L 215.7 208.8 L 219.3 208.8 L 222.9 208.8 L 226.5 208.8 L 230.2 208.8 L 233.8 208.8 L 237.4 208.8 L 241.0 208.8 L 244.6 208.8 L 248.2 208.8 L 251.8 208.8 L 255.4 208.8 L 259.1 208.8 L 262.7 208.8 L 266.3 208.8 L 269.9 208.8 L 273.5 208.8 L 277.1 208.8 L 280.7 208.8 L 284.4 208.8 L 288.0 208.8 L 291.6 208.8 L 295.2 208.8 L 298.8 208.8 L 302.4 215.0 L 306.0 215.0 L 309.6 215.0 L 313.3 215.0 L 316.9 215.0 L 320.5 215.0 L 324.1 215.0 L 327.7 215.0 L 331.3 215.0 L 334.9 215.0 L 338.6 215.0 L 342.2 215.0 L 345.8 225.7 L 349.4 225.7 L 353.0 225.7 L 356.6 225.7 L 360.2 225.7 L 363.8 225.7 L 367.5 225.7 L 371.1 225.7 L 374.7 225.7 L 378.3 225.7 L 381.9 238.5 L 385.5 238.5 L 389.1 238.5 L 392.8 238.5 L 396.4 238.5 L 400.0 238.5 L 403.6 242.1 L 407.2 242.1 L 410.8 242.1 L 414.4 242.1 L 418.1 242.1 L 421.7 242.1 L 425.3 242.1 L 428.9 242.1 L 432.5 242.1 L 436.1 242.1 L 439.7 242.1 L 443.3 242.1 L 447.0 242.1 L 450.6 242.1 L 454.2 242.1 L 457.8 242.1 L 461.4 242.1 L 465.0 242.1 L 468.6 242.1 L 472.3 242.1 L 475.9 242.1 L 479.5 242.1 L 483.1 242.1 L 486.7 242.1 L 490.3 242.1 L 493.9 242.1 L 497.5 242.1 L 501.2 242.1 L 504.8 242.1 L 508.4 242.1 L 512.0 248.2" />
-            <g class="open-result-objective-baseline"><circle cx="82.0" cy="150.3" r="4.2" /></g>
-            <g class="open-result-objective-accepted"><circle cx="512.0" cy="248.2" r="4.8" /></g>
-            <text class="open-result-axis-tick" x="82.0" y="282">0</text>
-            <text class="open-result-axis-tick" x="226.5" y="282" text-anchor="middle">40</text>
-            <text class="open-result-axis-tick" x="371.1" y="282" text-anchor="middle">80</text>
-            <text class="open-result-axis-tick" x="512.0" y="282" text-anchor="end">119</text>
-            <text class="open-result-axis-label open-result-x-axis-title" x="297.0" y="306">generation <tspan font-style="italic">k</tspan></text>
-            <text class="open-result-axis-label open-result-objective-y-title" x="34" y="164.0" transform="rotate(-90 34 164.0)"><tspan font-style="italic">J</tspan><tspan>(</tspan><tspan font-style="italic">r</tspan><tspan>)</tspan></text>
+            <path class="result-objective-best" d="M 82.0 150.3 L 85.6 169.9 L 89.2 175.4 L 92.8 178.1 L 96.5 178.1 L 100.1 190.2 L 103.7 190.2 L 107.3 190.2 L 110.9 190.2 L 114.5 190.2 L 118.1 190.2 L 121.7 190.2 L 125.4 190.2 L 129.0 190.2 L 132.6 190.2 L 136.2 190.2 L 139.8 207.6 L 143.4 207.6 L 147.0 207.6 L 150.7 208.8 L 154.3 208.8 L 157.9 208.8 L 161.5 208.8 L 165.1 208.8 L 168.7 208.8 L 172.3 208.8 L 175.9 208.8 L 179.6 208.8 L 183.2 208.8 L 186.8 208.8 L 190.4 208.8 L 194.0 208.8 L 197.6 208.8 L 201.2 208.8 L 204.9 208.8 L 208.5 208.8 L 212.1 208.8 L 215.7 208.8 L 219.3 208.8 L 222.9 208.8 L 226.5 208.8 L 230.2 208.8 L 233.8 208.8 L 237.4 208.8 L 241.0 208.8 L 244.6 208.8 L 248.2 208.8 L 251.8 208.8 L 255.4 208.8 L 259.1 208.8 L 262.7 208.8 L 266.3 208.8 L 269.9 208.8 L 273.5 208.8 L 277.1 208.8 L 280.7 208.8 L 284.4 208.8 L 288.0 208.8 L 291.6 208.8 L 295.2 208.8 L 298.8 208.8 L 302.4 215.0 L 306.0 215.0 L 309.6 215.0 L 313.3 215.0 L 316.9 215.0 L 320.5 215.0 L 324.1 215.0 L 327.7 215.0 L 331.3 215.0 L 334.9 215.0 L 338.6 215.0 L 342.2 215.0 L 345.8 225.7 L 349.4 225.7 L 353.0 225.7 L 356.6 225.7 L 360.2 225.7 L 363.8 225.7 L 367.5 225.7 L 371.1 225.7 L 374.7 225.7 L 378.3 225.7 L 381.9 238.5 L 385.5 238.5 L 389.1 238.5 L 392.8 238.5 L 396.4 238.5 L 400.0 238.5 L 403.6 242.1 L 407.2 242.1 L 410.8 242.1 L 414.4 242.1 L 418.1 242.1 L 421.7 242.1 L 425.3 242.1 L 428.9 242.1 L 432.5 242.1 L 436.1 242.1 L 439.7 242.1 L 443.3 242.1 L 447.0 242.1 L 450.6 242.1 L 454.2 242.1 L 457.8 242.1 L 461.4 242.1 L 465.0 242.1 L 468.6 242.1 L 472.3 242.1 L 475.9 242.1 L 479.5 242.1 L 483.1 242.1 L 486.7 242.1 L 490.3 242.1 L 493.9 242.1 L 497.5 242.1 L 501.2 242.1 L 504.8 242.1 L 508.4 242.1 L 512.0 248.2" />
+            <g class="result-objective-baseline"><circle cx="82.0" cy="150.3" r="4.2" /></g>
+            <g class="result-objective-accepted"><circle cx="512.0" cy="248.2" r="4.8" /></g>
+            <text class="result-axis-tick" x="82.0" y="282">0</text>
+            <text class="result-axis-tick" x="226.5" y="282" text-anchor="middle">40</text>
+            <text class="result-axis-tick" x="371.1" y="282" text-anchor="middle">80</text>
+            <text class="result-axis-tick" x="512.0" y="282" text-anchor="end">119</text>
+            <text class="result-axis-label result-x-axis-title" x="297.0" y="306">generation <tspan font-style="italic">k</tspan></text>
+            <text class="result-axis-label result-objective-y-title" x="34" y="164.0" transform="rotate(-90 34 164.0)"><tspan font-style="italic">J</tspan><tspan>(</tspan><tspan font-style="italic">r</tspan><tspan>)</tspan></text>
           </svg>
           <figcaption>Figure 3. Best-so-far score across the curated evolutionary chain, rendered in the same paper style as the quadrature objective trace. Faint points are scored candidates from the sanitized public trace; scores above 16 are clipped at the top of the plotting area.</figcaption>
         </figure>
-<figure class="open-result-primer-card open-result-paper-figure rcpsp-inline-figure rcpsp-benchmark-figure" id="fig-4">
-          <svg class="open-result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 220" role="img" aria-label="Seed versus accepted RCPSP acceptance score readout.">
-            <text class="open-result-axis-label open-result-figure-title" x="48" y="34">Acceptance objective</text>
+<figure class="result-primer-card result-paper-figure rcpsp-inline-figure rcpsp-benchmark-figure" id="fig-4">
+          <svg class="result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 220" role="img" aria-label="Seed versus accepted RCPSP acceptance score readout.">
+            <text class="result-axis-label result-figure-title" x="48" y="34">Acceptance objective</text>
             <text class="rcpsp-paper-note" x="512" y="34" text-anchor="end">lower is better</text>
             <g class="rcpsp-score-readout">
               <path class="rcpsp-reduction-bracket" d="M402.5 64H467.8M402.5 59V69M467.8 59V69" />
@@ -718,25 +718,25 @@ score = mean(g_k) + 0.35 \cdot p95(g_k) + feasibility\_penalty.
               <text class="rcpsp-paper-value" x="512" y="110" text-anchor="end">14.312</text>
               <text class="rcpsp-paper-note" x="402.5" y="140" text-anchor="middle">accepted</text>
               <text class="rcpsp-paper-value" x="402.5" y="158" text-anchor="middle">12.087</text>
-              <path class="open-result-rule-paper-axis" d="M48 176H488" />
-              <text class="open-result-axis-tick" x="48" y="196">0</text>
-              <text class="open-result-axis-tick" x="268.0" y="196" text-anchor="middle">7.5</text>
-              <text class="open-result-axis-tick" x="488.0" y="196" text-anchor="middle">15</text>
+              <path class="result-rule-paper-axis" d="M48 176H488" />
+              <text class="result-axis-tick" x="48" y="196">0</text>
+              <text class="result-axis-tick" x="268.0" y="196" text-anchor="middle">7.5</text>
+              <text class="result-axis-tick" x="488.0" y="196" text-anchor="middle">15</text>
             </g>
           </svg>
           <figcaption>Figure 4. Seed versus accepted acceptance-score readout; lower values are better.</figcaption>
         </figure>
-<figure class="open-result-primer-card open-result-paper-figure rcpsp-inline-figure rcpsp-compression-figure" id="fig-5">
-          <svg class="open-result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 438" role="img" aria-label="Real RCPSP schedule compression and renewable resource load readout for j3025_9.">
-            <text class="open-result-axis-label open-result-figure-title" x="60" y="34">Schedule compression</text>
-            <g class="open-result-objective-legend" transform="translate(60 64)">
+<figure class="result-primer-card result-paper-figure rcpsp-inline-figure rcpsp-compression-figure" id="fig-5">
+          <svg class="result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 438" role="img" aria-label="Real RCPSP schedule compression and renewable resource load readout for j3025_9.">
+            <text class="result-axis-label result-figure-title" x="60" y="34">Schedule compression</text>
+            <g class="result-objective-legend" transform="translate(60 64)">
               <g><rect class="rcpsp-gantt-seed" x="0" y="-8" width="16" height="8" /><text x="24" y="0">seed</text></g>
               <g transform="translate(94 0)"><rect class="rcpsp-accent-fill" x="0" y="-8" width="16" height="8" /><text x="24" y="0">accepted</text></g>
               <g transform="translate(238 0)"><line class="rcpsp-capacity-line" x1="0" y1="-4" x2="28" y2="-4" /><text x="36" y="0">capacity</text></g>
             </g>
             <g class="rcpsp-gantt">
               <text class="rcpsp-paper-section-label" x="60" y="88">all executable jobs (30 bars; 32 including source/sink)</text>
-              <path class="open-result-objective-grid" d="M78 111H500M78 125H500M78 139H500M78 153H500M78 167H500M78 181H500M78 195H500M78 209H500M78 223H500M78 237H500" />
+              <path class="result-objective-grid" d="M78 111H500M78 125H500M78 139H500M78 153H500M78 167H500M78 181H500M78 195H500M78 209H500M78 223H500M78 237H500" />
 <g>
               <rect class="rcpsp-gantt-seed" x="102.6" y="102.0" width="21.1" height="6" />
               <rect class="rcpsp-gantt-accepted" x="78.0" y="98.0" width="21.1" height="8" />
@@ -859,19 +859,19 @@ score = mean(g_k) + 0.35 \cdot p95(g_k) + feasibility\_penalty.
             </g>
               <line class="rcpsp-marker-line rcpsp-accepted-marker" x1="394.5" y1="88.0" x2="394.5" y2="254.0" />
               <line class="rcpsp-marker-line" x1="471.9" y1="88.0" x2="471.9" y2="254.0" />
-              <path class="open-result-rule-paper-axis" d="M78 258H500" />
-              <text class="open-result-axis-tick" x="78.0" y="278" >0</text>
-              <text class="open-result-axis-tick" x="183.5" y="278" text-anchor="middle">30</text>
-              <text class="open-result-axis-tick" x="289.0" y="278" text-anchor="middle">60</text>
-              <text class="open-result-axis-tick" x="394.5" y="278" text-anchor="middle">90</text>
-              <text class="open-result-axis-tick" x="500.0" y="278" text-anchor="end">120</text>
+              <path class="result-rule-paper-axis" d="M78 258H500" />
+              <text class="result-axis-tick" x="78.0" y="278" >0</text>
+              <text class="result-axis-tick" x="183.5" y="278" text-anchor="middle">30</text>
+              <text class="result-axis-tick" x="289.0" y="278" text-anchor="middle">60</text>
+              <text class="result-axis-tick" x="394.5" y="278" text-anchor="middle">90</text>
+              <text class="result-axis-tick" x="500.0" y="278" text-anchor="end">120</text>
               <text class="rcpsp-paper-note" x="394.5" y="296" text-anchor="middle">accepted Cmax</text>
               <text class="rcpsp-paper-note" x="471.9" y="296" text-anchor="middle">seed Cmax</text>
             </g>
             <g>
               <text class="rcpsp-paper-section-label" x="60" y="304">Resource 3 full-instance load</text>
-              <path class="open-result-rule-paper-axis" d="M78 324V402H500" />
-              <path class="open-result-objective-grid" d="M78 324H500" />
+              <path class="result-rule-paper-axis" d="M78 324V402H500" />
+              <path class="result-objective-grid" d="M78 324H500" />
               <path class="rcpsp-capacity-line" d="M78 324H500" />
               <text class="rcpsp-paper-note" x="500" y="316" text-anchor="end">capacity 14</text>
 <g>
@@ -922,20 +922,20 @@ score = mean(g_k) + 0.35 \cdot p95(g_k) + feasibility\_penalty.
               <rect class="rcpsp-load" x="467.8" y="402.0" width="29.2" height="0.0" />
               <rect class="rcpsp-load-seed" x="467.8" y="357.4" width="29.2" height="44.6" />
             </g>
-              <text class="open-result-axis-tick" x="68" y="405" text-anchor="end">0</text>
-              <text class="open-result-axis-tick" x="68" y="327" text-anchor="end">cap</text>
-              <text class="open-result-axis-tick" x="78" y="422">0</text>
-              <text class="open-result-axis-tick" x="289" y="422" text-anchor="middle">time</text>
-              <text class="open-result-axis-tick" x="500" y="422" text-anchor="end">120</text>
-              <text class="open-result-axis-label open-result-objective-y-title" x="28" y="363" transform="rotate(-90 28 363)">demand</text>
+              <text class="result-axis-tick" x="68" y="405" text-anchor="end">0</text>
+              <text class="result-axis-tick" x="68" y="327" text-anchor="end">cap</text>
+              <text class="result-axis-tick" x="78" y="422">0</text>
+              <text class="result-axis-tick" x="289" y="422" text-anchor="middle">time</text>
+              <text class="result-axis-tick" x="500" y="422" text-anchor="end">120</text>
+              <text class="result-axis-label result-objective-y-title" x="28" y="363" transform="rotate(-90 28 363)">demand</text>
             </g>
           </svg>
           <figcaption>Figure 5. Real schedule-compression readout for PSPLIB J30 instance j3025_9. All executable jobs are rendered as unlabeled bars; seed finishes at 112, accepted at 90, and the proven optimum is 84.</figcaption>
         </figure>
 <p>Figure 5 translates the aggregate result into one real portfolio instance, <code>j3025_9</code>. Unlike the introductory schematic, it uses all executable jobs from the instance and the same instance's renewable-resource load buckets.</p>
-<figure class="open-result-paper-table" id="table-2">
-          <div class="open-result-table-wrap">
-            <table class="open-result-table">
+<figure class="result-paper-table" id="table-2">
+          <div class="result-table-wrap">
+            <table class="result-table">
               <thead>
                 <tr>
                   <th>Metric</th>
@@ -969,9 +969,9 @@ score = mean(g_k) + 0.35 \cdot p95(g_k) + feasibility\_penalty.
           <figcaption>Table 2. Reported score comparison across the curated evolutionary chain; lower values are better.</figcaption>
         </figure>
 <p>Figure 6 keeps the accepted-candidate diagnostics separate from the chain objective. In absolute benchmark terms, this is not a 99% approximation claim: the mean accepted makespan is about 106.04% of the proven optimum, or roughly 94.31% if expressed as optimum divided by candidate makespan.</p>
-<figure class="open-result-primer-card open-result-paper-figure rcpsp-inline-figure rcpsp-gap-figure" id="fig-6">
-          <svg class="open-result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 280" role="img" aria-label="Accepted RCPSP gap diagnostics.">
-            <text class="open-result-axis-label open-result-figure-title" x="72" y="34">Accepted candidate diagnostics</text>
+<figure class="result-primer-card result-paper-figure rcpsp-inline-figure rcpsp-gap-figure" id="fig-6">
+          <svg class="result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 280" role="img" aria-label="Accepted RCPSP gap diagnostics.">
+            <text class="result-axis-label result-figure-title" x="72" y="34">Accepted candidate diagnostics</text>
             <text class="rcpsp-paper-note" x="488" y="34" text-anchor="end">80 frozen PSPLIB J30 instances</text>
 <g>
               <text class="rcpsp-paper-section-label" x="72" y="76">Mean gap</text>
@@ -1002,12 +1002,12 @@ score = mean(g_k) + 0.35 \cdot p95(g_k) + feasibility\_penalty.
           <figcaption>Figure 6. Accepted candidate diagnostics on the frozen 80-instance portfolio.</figcaption>
         </figure>
 <p>The worst residual gaps remain visible because they matter operationally. Figure 7 is the tail readout: it shows the largest accepted-candidate residual gaps and their makespan-versus-optimum comparison.</p>
-<figure class="open-result-primer-card open-result-paper-figure rcpsp-inline-figure rcpsp-tail-figure" id="fig-7">
-          <svg class="open-result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 328" role="img" aria-label="Worst accepted RCPSP gaps.">
-            <text class="open-result-axis-label open-result-figure-title" x="72" y="34">Tail behavior kept visible</text>
+<figure class="result-primer-card result-paper-figure rcpsp-inline-figure rcpsp-tail-figure" id="fig-7">
+          <svg class="result-primer-svg rcpsp-paper-svg" viewBox="0 0 560 328" role="img" aria-label="Worst accepted RCPSP gaps.">
+            <text class="result-axis-label result-figure-title" x="72" y="34">Tail behavior kept visible</text>
             <text class="rcpsp-paper-note" x="488" y="34" text-anchor="end">largest accepted-candidate gaps</text>
-            <path class="open-result-rule-paper-axis" d="M170 50V250H512" />
-            <path class="open-result-objective-grid" d="M270 50V250M370 50V250M470 50V250" />
+            <path class="result-rule-paper-axis" d="M170 50V250H512" />
+            <path class="result-objective-grid" d="M270 50V250M370 50V250M470 50V250" />
 <g>
               <text class="rcpsp-paper-section-label" x="72" y="74">j3025_10</text>
               <rect class="rcpsp-accent-fill" x="170" y="62" width="280.2" height="13" />
@@ -1048,10 +1048,10 @@ score = mean(g_k) + 0.35 \cdot p95(g_k) + feasibility\_penalty.
               <rect class="rcpsp-accent-fill" x="170" y="223" width="205.5" height="13" />
               <text class="rcpsp-paper-value" x="385.5" y="235">16.44% | 85 vs 73</text>
             </g>
-            <text class="open-result-axis-tick" x="170" y="276">0%</text>
-            <text class="open-result-axis-tick" x="270" y="276">8%</text>
-            <text class="open-result-axis-tick" x="370" y="276">16%</text>
-            <text class="open-result-axis-tick" x="470" y="276">24%</text>
+            <text class="result-axis-tick" x="170" y="276">0%</text>
+            <text class="result-axis-tick" x="270" y="276">8%</text>
+            <text class="result-axis-tick" x="370" y="276">16%</text>
+            <text class="result-axis-tick" x="470" y="276">24%</text>
             <text class="rcpsp-paper-note" x="72" y="306">Worst residual gaps remain part of the public result definition.</text>
           </svg>
           <figcaption>Figure 7. Worst-instance tail behavior for the accepted candidate. Each bar shows residual gap against the proven optimum.</figcaption>
