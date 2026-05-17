@@ -1946,14 +1946,6 @@ async function writeDetail(result) {
   }
   await copyDirectoryIfExists(path.join(resultRoot, "run"), path.join(outputRoot, "run"));
   await rewritePublishedResultRoutes(path.join(outputRoot, "run"));
-  if (full.website?.surface_path) {
-    const surfaceRoot = path.join(SITE_ROOT, full.website.surface_path);
-    await copyDirectoryIfExists(
-      path.join(resultRoot, "run"),
-      surfaceRoot,
-    );
-    await rewritePublishedResultRoutes(surfaceRoot);
-  }
 
   const figures = plots
     .map(
@@ -2076,7 +2068,7 @@ async function main() {
     await writeDetail(result);
   }
   await writeSitemap(results);
-  console.log(`Synced ${results.length} open result(s) from ${path.relative(SITE_ROOT, RESULTS_ROOT)}`);
+  console.log(`Synced ${results.length} result(s) from ${path.relative(SITE_ROOT, RESULTS_ROOT)}`);
 }
 
 main().catch((error) => {
