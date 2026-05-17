@@ -165,6 +165,15 @@ a {
   background: var(--bg);
 }
 
+.site-nav:has(.nav-home-wordmark) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  flex: 1 1 auto;
+  width: 100%;
+  justify-content: stretch;
+  padding: 0.5rem 0;
+}
+
 .site-nav a,
 .site-footer a {
   color: var(--text);
@@ -174,6 +183,29 @@ a {
   font-size: 0.95rem;
   line-height: 1;
   letter-spacing: -0.01em;
+}
+
+.site-nav .nav-home-wordmark {
+  grid-column: 2;
+  justify-self: center;
+  gap: 0.34rem;
+  font-size: clamp(1.08rem, 1.55vw, 1.34rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+}
+
+.site-nav .nav-home-wordmark .wordmark-mark-wrap {
+  width: 0.82em;
+  height: 0.82em;
+}
+
+.nav-links {
+  grid-column: 3;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .brand:focus-visible,
@@ -2798,6 +2830,26 @@ a {
     flex-wrap: nowrap;
     min-width: max-content;
     padding-left: 0;
+  }
+
+  .site-nav:has(.nav-home-wordmark) {
+    grid-template-columns: 1fr;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .nav-home-wordmark,
+  .nav-links {
+    grid-column: 1;
+    justify-self: center;
+  }
+
+  .site-nav .nav-home-wordmark {
+    font-size: 1.08rem;
+  }
+
+  .nav-links {
+    gap: 0.85rem;
   }
 
   .site-main {
