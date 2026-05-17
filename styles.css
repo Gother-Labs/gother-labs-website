@@ -165,6 +165,15 @@ a {
   background: var(--bg);
 }
 
+.site-nav:has(.nav-home-wordmark) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  flex: 1 1 auto;
+  width: 100%;
+  justify-content: stretch;
+  padding: 0.5rem 0;
+}
+
 .site-nav a,
 .site-footer a {
   color: var(--text);
@@ -174,6 +183,29 @@ a {
   font-size: 0.95rem;
   line-height: 1;
   letter-spacing: -0.01em;
+}
+
+.site-nav .nav-home-wordmark {
+  grid-column: 2;
+  justify-self: center;
+  gap: 0.34rem;
+  font-size: clamp(1.08rem, 1.55vw, 1.34rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+}
+
+.site-nav .nav-home-wordmark .wordmark-mark-wrap {
+  width: 0.82em;
+  height: 0.82em;
+}
+
+.nav-links {
+  grid-column: 3;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .brand:focus-visible,
@@ -912,13 +944,15 @@ a {
 
 .result-card-visual {
   position: absolute;
-  right: clamp(-8rem, -5vw, -2.5rem);
-  bottom: clamp(5.6rem, 8vw, 8.2rem);
+  right: clamp(-8rem, -5.5vw, -2.5rem);
+  bottom: clamp(-0.9rem, -1.2vw, -0.15rem);
   z-index: 0;
-  width: min(62%, 38rem);
+  width: min(68%, 40rem);
   height: auto;
   color: var(--accent);
-  opacity: 0.38;
+  opacity: 1;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0 16%, rgba(0, 0, 0, 0.16) 32%, #000 50%);
+  mask-image: linear-gradient(90deg, transparent 0 16%, rgba(0, 0, 0, 0.16) 32%, #000 50%);
   pointer-events: none;
 }
 
@@ -970,11 +1004,8 @@ a {
 }
 
 .result-card--rcpsp .result-card-visual {
-  right: clamp(-8rem, -5vw, -2.5rem);
-  bottom: clamp(5.6rem, 8vw, 8.2rem);
-  width: min(62%, 38rem);
   color: var(--accent);
-  opacity: 0.38;
+  transform: translateY(-2.6rem);
 }
 
 .result-card-rcpsp line,
@@ -1071,10 +1102,16 @@ a {
     border-bottom: 0;
   }
 
+  .result-card-visual {
+    right: -6.8rem;
+    bottom: -0.75rem;
+    width: min(56%, 34rem);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0 18%, rgba(0, 0, 0, 0.16) 34%, #000 52%);
+    mask-image: linear-gradient(90deg, transparent 0 18%, rgba(0, 0, 0, 0.16) 34%, #000 52%);
+  }
+
   .result-card--rcpsp .result-card-visual {
-    right: clamp(-8rem, -5vw, -2.5rem);
-    bottom: clamp(5.6rem, 8vw, 8.2rem);
-    width: min(62%, 38rem);
+    transform: translateY(-2.4rem);
   }
 }
 
@@ -2795,6 +2832,26 @@ a {
     padding-left: 0;
   }
 
+  .site-nav:has(.nav-home-wordmark) {
+    grid-template-columns: 1fr;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .nav-home-wordmark,
+  .nav-links {
+    grid-column: 1;
+    justify-self: center;
+  }
+
+  .site-nav .nav-home-wordmark {
+    font-size: 1.08rem;
+  }
+
+  .nav-links {
+    gap: 0.85rem;
+  }
+
   .site-main {
     max-width: 100%;
   }
@@ -2923,18 +2980,17 @@ a {
   }
 
   .result-card-visual {
-    right: -7rem;
-    bottom: 5.5rem;
-    width: 72%;
-    opacity: 0.24;
+    right: -4.8rem;
+    bottom: -1rem;
+    width: 78%;
+    opacity: 1;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0 22%, rgba(0, 0, 0, 0.16) 40%, #000 58%);
+    mask-image: linear-gradient(90deg, transparent 0 22%, rgba(0, 0, 0, 0.16) 40%, #000 58%);
   }
 
   .result-card--rcpsp .result-card-visual {
     display: block;
-    right: -7rem;
-    bottom: 5.5rem;
-    width: 72%;
-    opacity: 0.24;
+    transform: translateY(-1.55rem);
   }
 
   .result-measure {

@@ -4,13 +4,13 @@ if (yearNode) {
   yearNode.textContent = new Date().getFullYear().toString();
 }
 
-const animatedSymbolPage =
-  document.body.classList.contains("home-page") ||
-  document.body.classList.contains("not-found-page");
+const animatedSymbolScopes = Array.from(document.querySelectorAll(".animated-symbol-scope"));
 const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-if (animatedSymbolPage && !reducedMotionQuery.matches) {
-  initializeThreeBodySystem();
+if (animatedSymbolScopes.length > 0 && !reducedMotionQuery.matches) {
+  animatedSymbolScopes.forEach((symbolScope) => {
+    initializeThreeBodySystem(symbolScope);
+  });
 }
 
 initializeEvolutionDemo();
@@ -469,8 +469,7 @@ function initializeEvolutionDemo() {
   }
 }
 
-function initializeThreeBodySystem() {
-  const symbolScope = document.querySelector(".animated-symbol-scope");
+function initializeThreeBodySystem(symbolScope) {
   const referenceGeometry = symbolScope?.querySelector(".animated-reference-geometry");
   const bodyNodes = Array.from(
     symbolScope?.querySelectorAll(".live-geometry-dot") || []
@@ -497,6 +496,9 @@ function initializeThreeBodySystem() {
   const historyLength = 240;
   const gravityStrength = 2200;
   const softening = 12;
+  const storageKey = "gother-logo-animation-state-v1";
+  const maxRestoreAgeMs = 8000;
+  const maxCatchUpMs = 1600;
   let state = null;
   let history = [];
   let accumulator = 0;
@@ -505,6 +507,7 @@ function initializeThreeBodySystem() {
   let gravityActive = false;
   let phase = "idle";
   let phaseStartTime = performance.now();
+  let phaseWallStartTime = Date.now();
   let collapseSourceState = null;
   let collapseReferenceState = null;
   let referenceState = null;
@@ -513,13 +516,21 @@ function initializeThreeBodySystem() {
   let collapseTimeoutId = 0;
   let resetTimeoutId = 0;
 
-  resetToReference();
-  scheduleWakeSequence();
+  if (!restorePersistedAnimation()) {
+    resetToReference();
+    scheduleWakeSequence();
+  }
 
   window.addEventListener("resize", handleViewportChange);
   if (window.visualViewport) {
     window.visualViewport.addEventListener("resize", handleViewportChange);
   }
+  window.addEventListener("pagehide", persistAnimationState);
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") {
+      persistAnimationState();
+    }
+  });
   requestAnimationFrame(frame);
 
   function frame(now) {
@@ -589,6 +600,7 @@ function initializeThreeBodySystem() {
     isAwake = false;
     gravityActive = false;
     phase = "idle";
+    markPhaseStart();
     collapseSourceState = null;
     collapseReferenceState = null;
     referenceState = null;
@@ -598,34 +610,6 @@ function initializeThreeBodySystem() {
     syncBodyNodes(bodyNodes, previewState.positions, previewState.radii);
     drawTrails(trailNodes, []);
     render(0);
-  }
-
-  function scheduleWakeSequence() {
-    wakeTimeoutId = window.setTimeout(() => {
-      if (!state) {
-        state = createStateFromReferenceGlyph(referenceGeometry);
-      }
-      referenceState = cloneSystemState(state);
-      history = state.positions.map((position) => [copyVector(position)]);
-      phase = "settling";
-      phaseStartTime = performance.now();
-      syncBodyNodes(bodyNodes, state.positions, state.radii);
-      isAwake = true;
-      render(1);
-      requestAnimationFrame(() => {
-        document.body.classList.add("logo-awake");
-      });
-      gravityTimeoutId = window.setTimeout(() => {
-        applyWakePerturbation(state);
-        gravityActive = true;
-        phase = "gravity";
-        phaseStartTime = performance.now();
-        document.body.classList.add("gravity-live");
-        collapseTimeoutId = window.setTimeout(() => {
-          beginCollapse();
-        }, activeDurationMs);
-      }, settleDelayMs);
-    }, wakeDelayMs);
   }
 
   function handleViewportChange() {
@@ -668,7 +652,7 @@ function initializeThreeBodySystem() {
     gravityActive = false;
     accumulator = 0;
     phase = "collapsing";
-    phaseStartTime = performance.now();
+    markPhaseStart();
     collapseSourceState = {
       positions: state.positions.map(copyVector),
       radii: state.radii.slice(),
@@ -680,6 +664,216 @@ function initializeThreeBodySystem() {
       resetToReference();
       scheduleWakeSequence();
     }, collapseDurationMs + resetDelayMs);
+  }
+
+  function enterGravity(catchUpMs = 0) {
+    if (!state) {
+      return;
+    }
+
+    applyWakePerturbation(state);
+    gravityActive = true;
+    phase = "gravity";
+    markPhaseStart(catchUpMs);
+    document.body.classList.add("gravity-live");
+
+    if (catchUpMs > 0) {
+      advanceGravityBy(Math.min(catchUpMs, maxCatchUpMs));
+    }
+
+    const remainingActiveMs = Math.max(activeDurationMs - catchUpMs, 0);
+    collapseTimeoutId = window.setTimeout(() => {
+      beginCollapse();
+    }, remainingActiveMs);
+  }
+
+  function markPhaseStart(elapsedMs = 0) {
+    phaseStartTime = performance.now() - elapsedMs;
+    phaseWallStartTime = Date.now() - elapsedMs;
+  }
+
+  function persistAnimationState() {
+    if (!window.sessionStorage || !state) {
+      return;
+    }
+
+    try {
+      window.sessionStorage.setItem(
+        storageKey,
+        JSON.stringify({
+          savedAt: Date.now(),
+          phase,
+          phaseElapsedMs: Math.max(0, Date.now() - phaseWallStartTime),
+          isAwake,
+          gravityActive,
+          state,
+          history,
+          accumulator,
+          referenceState,
+          collapseSourceState,
+          collapseReferenceState,
+        })
+      );
+    } catch (error) {
+      // Storage can be unavailable in private contexts; the logo can safely restart.
+    }
+  }
+
+  function restorePersistedAnimation() {
+    const persistedState = readPersistedAnimationState();
+
+    if (!persistedState) {
+      return false;
+    }
+
+    window.clearTimeout(wakeTimeoutId);
+    window.clearTimeout(gravityTimeoutId);
+    window.clearTimeout(collapseTimeoutId);
+    window.clearTimeout(resetTimeoutId);
+
+    state = hydrateSystemState(persistedState.state);
+
+    if (!state) {
+      return false;
+    }
+
+    history = hydrateHistory(persistedState.history);
+    accumulator = Number.isFinite(persistedState.accumulator) ? persistedState.accumulator : 0;
+    isAwake = Boolean(persistedState.isAwake);
+    gravityActive = Boolean(persistedState.gravityActive);
+    phase = typeof persistedState.phase === "string" ? persistedState.phase : "idle";
+    referenceState = hydrateSystemState(persistedState.referenceState) || createStateFromReferenceGlyph(referenceGeometry);
+    collapseSourceState = hydrateCollapseState(persistedState.collapseSourceState);
+    collapseReferenceState = hydrateSystemState(persistedState.collapseReferenceState);
+
+    const savedAgeMs = Math.max(0, Date.now() - persistedState.savedAt);
+    const phaseElapsedMs = Math.max(0, (persistedState.phaseElapsedMs || 0) + savedAgeMs);
+    markPhaseStart(phaseElapsedMs);
+    lastFrameTime = performance.now();
+
+    if (isAwake) {
+      document.body.classList.add("logo-awake");
+    }
+
+    if (phase === "idle") {
+      resetToReference();
+      scheduleWakeSequence(Math.max(wakeDelayMs - phaseElapsedMs, 0));
+      return true;
+    }
+
+    if (phase === "settling") {
+      document.body.classList.remove("gravity-live");
+      syncBodyNodes(bodyNodes, state.positions, state.radii);
+      drawTrails(trailNodes, history);
+      render(1);
+
+      if (phaseElapsedMs >= settleDelayMs) {
+        enterGravity(phaseElapsedMs - settleDelayMs);
+      } else {
+        gravityTimeoutId = window.setTimeout(() => {
+          enterGravity(0);
+        }, settleDelayMs - phaseElapsedMs);
+      }
+
+      return true;
+    }
+
+    if (phase === "gravity") {
+      gravityActive = true;
+      document.body.classList.add("gravity-live");
+      advanceGravityBy(Math.min(savedAgeMs, maxCatchUpMs));
+      syncBodyNodes(bodyNodes, state.positions, state.radii);
+      drawTrails(trailNodes, history);
+      render(1);
+      collapseTimeoutId = window.setTimeout(() => {
+        beginCollapse();
+      }, Math.max(activeDurationMs - phaseElapsedMs, 0));
+      return true;
+    }
+
+    if (phase === "collapsing" && collapseSourceState && collapseReferenceState) {
+      gravityActive = false;
+      document.body.classList.remove("gravity-live");
+
+      if (phaseElapsedMs >= collapseDurationMs + resetDelayMs) {
+        resetToReference();
+        scheduleWakeSequence();
+        return true;
+      }
+
+      syncBodyNodes(bodyNodes, state.positions, state.radii);
+      drawTrails(trailNodes, history);
+      render(1);
+      resetTimeoutId = window.setTimeout(() => {
+        resetToReference();
+        scheduleWakeSequence();
+      }, Math.max(collapseDurationMs + resetDelayMs - phaseElapsedMs, 0));
+      return true;
+    }
+
+    return false;
+  }
+
+  function scheduleWakeSequence(delayMs = wakeDelayMs) {
+    wakeTimeoutId = window.setTimeout(() => {
+      if (!state) {
+        state = createStateFromReferenceGlyph(referenceGeometry);
+      }
+      referenceState = cloneSystemState(state);
+      history = state.positions.map((position) => [copyVector(position)]);
+      phase = "settling";
+      markPhaseStart();
+      syncBodyNodes(bodyNodes, state.positions, state.radii);
+      isAwake = true;
+      render(1);
+      requestAnimationFrame(() => {
+        document.body.classList.add("logo-awake");
+      });
+      gravityTimeoutId = window.setTimeout(() => {
+        enterGravity(0);
+      }, settleDelayMs);
+    }, delayMs);
+  }
+
+  function advanceGravityBy(milliseconds) {
+    if (!state || milliseconds <= 0) {
+      return;
+    }
+
+    let remainingSeconds = milliseconds / 1000;
+
+    while (remainingSeconds >= integratorStep) {
+      stepThreeBodyState(state, integratorStep, gravityStrength, softening);
+      recordHistory(history, state.positions, historyLength);
+      remainingSeconds -= integratorStep;
+    }
+
+    accumulator = Math.max(0, remainingSeconds);
+  }
+
+  function readPersistedAnimationState() {
+    if (!window.sessionStorage) {
+      return null;
+    }
+
+    try {
+      const rawState = window.sessionStorage.getItem(storageKey);
+
+      if (!rawState) {
+        return null;
+      }
+
+      const parsedState = JSON.parse(rawState);
+      const savedAgeMs = Date.now() - parsedState.savedAt;
+
+      if (!Number.isFinite(savedAgeMs) || savedAgeMs > maxRestoreAgeMs) {
+        return null;
+      }
+
+      return parsedState;
+    } catch (error) {
+      return null;
+    }
   }
 }
 
@@ -827,6 +1021,84 @@ function cloneSystemState(systemState) {
     positions: systemState.positions.map(copyVector),
     radii: systemState.radii.slice(),
   };
+}
+
+function hydrateSystemState(systemState) {
+  if (!systemState || !Array.isArray(systemState.positions) || !Array.isArray(systemState.radii)) {
+    return null;
+  }
+
+  const positions = systemState.positions.map(hydrateVector);
+
+  if (positions.some((position) => !position)) {
+    return null;
+  }
+
+  const radii = systemState.radii.map((radius) => Number(radius));
+
+  if (radii.length !== positions.length || radii.some((radius) => !Number.isFinite(radius))) {
+    return null;
+  }
+
+  const velocities = Array.isArray(systemState.velocities)
+    ? systemState.velocities.map(hydrateVector)
+    : positions.map(() => ({ x: 0, y: 0 }));
+  const masses = Array.isArray(systemState.masses)
+    ? systemState.masses.map((mass) => Number(mass))
+    : positions.map(() => 1);
+
+  return {
+    positions,
+    velocities: velocities.length !== positions.length || velocities.some((velocity) => !velocity)
+      ? positions.map(() => ({ x: 0, y: 0 }))
+      : velocities,
+    masses: masses.length !== positions.length || masses.some((mass) => !Number.isFinite(mass))
+      ? positions.map(() => 1)
+      : masses,
+    radii,
+  };
+}
+
+function hydrateCollapseState(collapseState) {
+  const hydratedState = hydrateSystemState(collapseState);
+
+  if (!hydratedState) {
+    return null;
+  }
+
+  return {
+    positions: hydratedState.positions,
+    radii: hydratedState.radii,
+  };
+}
+
+function hydrateHistory(history) {
+  if (!Array.isArray(history)) {
+    return [];
+  }
+
+  return history.map((trail) => {
+    if (!Array.isArray(trail)) {
+      return [];
+    }
+
+    return trail.map(hydrateVector).filter(Boolean);
+  });
+}
+
+function hydrateVector(vector) {
+  if (!vector) {
+    return null;
+  }
+
+  const x = Number(vector.x);
+  const y = Number(vector.y);
+
+  if (!Number.isFinite(x) || !Number.isFinite(y)) {
+    return null;
+  }
+
+  return { x, y };
 }
 
 function createReferenceTransform(previousReferenceState, nextReferenceState) {
