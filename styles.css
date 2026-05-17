@@ -1070,10 +1070,16 @@ a {
     border-bottom: 0;
   }
 
+  .result-card-visual {
+    right: -6.8rem;
+    bottom: -0.75rem;
+    width: min(56%, 34rem);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0 18%, rgba(0, 0, 0, 0.16) 34%, #000 52%);
+    mask-image: linear-gradient(90deg, transparent 0 18%, rgba(0, 0, 0, 0.16) 34%, #000 52%);
+  }
+
   .result-card--rcpsp .result-card-visual {
-    right: clamp(-8rem, -5vw, -2.5rem);
-    bottom: clamp(5.6rem, 8vw, 8.2rem);
-    width: min(62%, 38rem);
+    transform: translateY(-2.4rem);
   }
 }
 
@@ -2922,17 +2928,17 @@ a {
   }
 
   .result-card-visual {
-    right: -6.6rem;
-    bottom: -0.5rem;
-    width: 82%;
+    right: -4.8rem;
+    bottom: -1rem;
+    width: 78%;
     opacity: 1;
-    -webkit-mask-image: linear-gradient(90deg, transparent 0 24%, rgba(0, 0, 0, 0.16) 42%, #000 60%);
-    mask-image: linear-gradient(90deg, transparent 0 24%, rgba(0, 0, 0, 0.16) 42%, #000 60%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0 22%, rgba(0, 0, 0, 0.16) 40%, #000 58%);
+    mask-image: linear-gradient(90deg, transparent 0 22%, rgba(0, 0, 0, 0.16) 40%, #000 58%);
   }
 
   .result-card--rcpsp .result-card-visual {
     display: block;
-    transform: translateY(-1.6rem);
+    transform: translateY(-1.55rem);
   }
 
   .result-measure {
