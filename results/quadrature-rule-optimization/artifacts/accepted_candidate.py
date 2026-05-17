@@ -1,4 +1,4 @@
-"""Accepted candidate exported for the Open Result bundle.
+"""Accepted candidate exported for the result bundle.
 
 This file contains only the accepted public quadrature rule. It omits
 non-public proposal context and operational run records.
