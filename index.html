@@ -20,7 +20,7 @@
     <meta name="twitter:image" content="https://www.gotherlabs.com/assets/og-image.png">
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="./assets/gother-mark.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./styles.css?v=site-gutters-v1">
   </head>
   <body class="home-page">
     <a class="skip-link" href="#site-main">Skip to content</a>
@@ -28,12 +28,13 @@
       <header class="site-header">
         <nav class="site-nav" aria-label="Primary">
           <a href="./company/">Company</a>
+          <a href="./open-results/">Results</a>
           <a href="./contact/">Contact</a>
         </nav>
       </header>
 
       <main class="site-main home-main" id="site-main">
-        <section class="hero home-hero animated-symbol-scope">
+        <div class="home-wordmark-anchor animated-symbol-scope">
           <h1 class="wordmark">
             <span aria-hidden="true" class="wordmark-mark-wrap">
               <svg
@@ -56,17 +57,19 @@
             </span>
             <span>Göther Labs</span>
           </h1>
-          <p class="intro">
-            Algorithmic Discovery, Evaluation-driven optimization.
-          </p>
-          <p class="subintro">
-            Offline-first, auditable, and built for real constraints.
-          </p>
+        </div>
+
+        <section class="hero home-hero">
+          <div class="home-intro" aria-label="Göther Labs positioning">
+            <p>AI R&amp;D for governed optimization.</p>
+            <p>Algorithmic Discovery, Evaluation-driven optimization.</p>
+          </div>
         </section>
+
       </main>
 
     </div>
 
-    <script src="./scripts.js"></script>
+    <script src="./scripts.js?v=open-results-v2"></script>
   </body>
 </html>

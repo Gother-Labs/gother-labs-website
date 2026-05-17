@@ -1,0 +1,216 @@
+{
+  "schema_version": "open-result-evolution/v1",
+  "title": "PSPLIB J30 RCPSP evolution chain",
+  "direction": "lower_is_better",
+  "baseline_score": 14.312164873860446,
+  "accepted_score": 12.086633114086395,
+  "improvement": 2.225531759774052,
+  "improvement_pct": 15.549930981012764,
+  "source_run": "domains/rcpsp_psplib_j30/outputs/2026-05-12/16-51-54",
+  "chain_scope": "Curated best-so-far checkpoints across resumed runs. Prompt text, raw logs, telemetry, and non-retained candidates are intentionally excluded.",
+  "steps": [
+    {
+      "index": 0,
+      "label": "seed",
+      "date": "2026-05-11 23:39",
+      "generation": 0,
+      "candidate_id": "seed",
+      "score": 14.312164873860446,
+      "mean_gap_pct": 7.129583087830384,
+      "p95_gap_pct": 20.521662245800176,
+      "optimal_hit_rate": 0.2875,
+      "note": "Initial deterministic priority rule."
+    },
+    {
+      "index": 1,
+      "label": "accepted-1",
+      "date": "2026-05-11 23:42",
+      "generation": 2,
+      "candidate_id": "gen-2-i0-w0-a0-9361581f76c599fa",
+      "score": 13.74111742413817,
+      "mean_gap_pct": 6.930650527850381,
+      "p95_gap_pct": 19.458476846536545,
+      "optimal_hit_rate": 0.3125,
+      "note": "First retained improvement over the fixed baseline."
+    },
+    {
+      "index": 2,
+      "label": "accepted-2",
+      "date": "2026-05-11 23:45",
+      "generation": 5,
+      "candidate_id": "gen-5-i0-w2-a0-58109074ffc0abe5",
+      "score": 13.403590937119027,
+      "mean_gap_pct": 6.800388506076485,
+      "p95_gap_pct": 18.866292660121548,
+      "optimal_hit_rate": 0.325,
+      "note": "Critical-path and wait-pressure tuning lowered both mean and tail gap."
+    },
+    {
+      "index": 3,
+      "label": "accepted-3",
+      "date": "2026-05-12 13:44",
+      "generation": 19,
+      "candidate_id": "gen-19-i3-w3-a0-06d7c81c0a42753d",
+      "score": 12.980897111869561,
+      "mean_gap_pct": 6.3392461907547775,
+      "p95_gap_pct": 18.976145488899384,
+      "optimal_hit_rate": 0.35,
+      "note": "A broader candidate improved mean gap and hit rate."
+    },
+    {
+      "index": 4,
+      "label": "accepted-4",
+      "date": "2026-05-12 16:34",
+      "generation": 61,
+      "candidate_id": "gen-61-i0-w0-a0-6cbf4f15f3cdc9b6",
+      "score": 12.841466293384446,
+      "mean_gap_pct": 6.778580490915313,
+      "p95_gap_pct": 17.322530864197525,
+      "optimal_hit_rate": 0.2,
+      "note": "Tail-risk pressure moved p95 down."
+    },
+    {
+      "index": 5,
+      "label": "accepted-5",
+      "date": "2026-05-12 16:42",
+      "generation": 89,
+      "candidate_id": "gen-89-i0-w0-a0-a7822abf52919bad",
+      "score": 12.224816068912162,
+      "mean_gap_pct": 5.891633701762404,
+      "p95_gap_pct": 18.094806763285025,
+      "optimal_hit_rate": 0.2375,
+      "note": "Mean gap reached its best value in the public chain."
+    },
+    {
+      "index": 6,
+      "label": "accepted",
+      "date": "2026-05-12 16:51",
+      "generation": 119,
+      "candidate_id": "gen-119-i1-w1-a0-cbdd3ba1835131eb",
+      "score": 12.086633114086395,
+      "mean_gap_pct": 6.037902271174518,
+      "p95_gap_pct": 17.282088122605362,
+      "optimal_hit_rate": 0.2375,
+      "note": "Final accepted rule balanced bottleneck pressure, unlocking pressure, and early feasible starts."
+    }
+  ],
+  "code": {
+    "baseline_entrypoint": "priority_score + select_activity",
+    "accepted_entrypoint": "priority_score + select_activity",
+    "before_lines": [
+      "def priority_score(activity: ActivityView, state: ScheduleStateView, instance: InstanceView) -> float:",
+      "    \"\"\"Return a deterministic priority score for one eligible RCPSP activity.",
+      "",
+      "    Contract:",
+      "        * Preserve this signature.",
+      "        * Return a finite float; higher scores are scheduled first.",
+      "        * Use only the provided immutable views.",
+      "        * Do not use randomness, time, filesystem access, network access, or global mutable state.",
+      "",
+      "    Baseline heuristic:",
+      "        Prioritize activities that sit on a long downstream critical path, consume scarce",
+      "        resources, and unlock many successors. This is intentionally simple so evolution",
+      "        has room to discover better dispatch rules.",
+      "    \"\"\"",
+      "    _ = instance",
+      "    successor_pressure = float(len(activity.successors))",
+      "    duration_pressure = float(activity.duration)",
+      "    resource_pressure = float(activity.resource_pressure)",
+      "    tail_pressure = float(activity.critical_path_tail)",
+      "    waiting_pressure = float(max(0, state.current_makespan - state.earliest_precedence_start))",
+      "",
+      "    return (",
+      "        3.0 * tail_pressure",
+      "        + 1.5 * resource_pressure",
+      "        + 0.7 * successor_pressure",
+      "        + 0.2 * duration_pressure",
+      "        + 0.05 * waiting_pressure",
+      "        - 0.001 * float(activity.id)",
+      "    )"
+    ],
+    "after_lines": [
+      "def priority_score(activity: ActivityView, state: ScheduleStateView, instance: InstanceView) -> float:",
+      "    \"\"\"Return a deterministic priority score for one eligible RCPSP activity.\"\"\"",
+      "    # Critical path urgency: prioritize jobs that are on the critical path",
+      "    cp_score = activity.critical_path_tail * 3.0",
+      "    # Downstream impact: prioritize jobs that unlock more work",
+      "    unlock_score = activity.successor_work * 0.15 + activity.transitive_successor_count * 1.5",
+      "    # Resource contention: prioritize jobs that are bottleneck-heavy",
+      "    resource_score = activity.bottleneck_ratio * 100.0 + activity.resource_pressure * 10.0",
+      "    # Urgency: penalize jobs that have been waiting past their earliest possible start",
+      "    wait_time = max(0, state.current_makespan - state.earliest_precedence_start)",
+      "    wait_score = wait_time * 1.5",
+      "    # Remaining work pressure: scale priority based on total remaining work to maintain throughput",
+      "    remaining_score = state.remaining_work * 0.05",
+      "    # Final score with tie-breaker based on job ID",
+      "    return cp_score + unlock_score + resource_score + wait_score + remaining_score - (0.01 * activity.id)",
+      "",
+      "def select_activity(eligible_activities: tuple[EligibleActivityView, ...], instance: InstanceView) -> int:",
+      "    \"\"\"Choose one eligible activity after all local priority scores are available.\"\"\"",
+      "    # Prioritize earlier start times to keep resources busy, then use the refined priority score.",
+      "    selected = min(eligible_activities, key=lambda item: (item.state.earliest_resource_feasible_start, -item.priority))",
+      "    return int(selected.activity.id)"
+    ]
+  },
+  "portfolio": {
+    "dataset": "PSPLIB J30 single-mode RCPSP",
+    "dataset_url": "https://www.om-db.wi.tum.de/psplib/download_dataset.php?set=j30&mode=sm&format=zip",
+    "extracted_utc_date": "2026-05-11",
+    "portfolio_size": 80,
+    "proven_optimal_instances": 480,
+    "selection_rule": "parameters [1, 7, 13, 19, 25, 31, 37, 43] crossed with instances 1..10",
+    "solutions_url": "https://www.om-db.wi.tum.de/psplib/download_merged.php?set=j30&mode=sm",
+    "source": "Project Scheduling Problem Library (PSPLIB)",
+    "total_psplib_j30_instances": 480
+  },
+  "worst_instances": [
+    {
+      "instance_id": "j3025_10",
+      "makespan": 71,
+      "optimal_makespan": 58,
+      "gap_pct": 22.413793103448278
+    },
+    {
+      "instance_id": "j3025_8",
+      "makespan": 82,
+      "optimal_makespan": 69,
+      "gap_pct": 18.840579710144926
+    },
+    {
+      "instance_id": "j3025_2",
+      "makespan": 89,
+      "optimal_makespan": 75,
+      "gap_pct": 18.666666666666668
+    },
+    {
+      "instance_id": "j3037_8",
+      "makespan": 85,
+      "optimal_makespan": 72,
+      "gap_pct": 18.055555555555557
+    },
+    {
+      "instance_id": "j3013_1",
+      "makespan": 68,
+      "optimal_makespan": 58,
+      "gap_pct": 17.24137931034483
+    },
+    {
+      "instance_id": "j3025_6",
+      "makespan": 68,
+      "optimal_makespan": 58,
+      "gap_pct": 17.24137931034483
+    },
+    {
+      "instance_id": "j3025_3",
+      "makespan": 89,
+      "optimal_makespan": 76,
+      "gap_pct": 17.105263157894736
+    },
+    {
+      "instance_id": "j3037_6",
+      "makespan": 85,
+      "optimal_makespan": 73,
+      "gap_pct": 16.438356164383563
+    }
+  ]
+}

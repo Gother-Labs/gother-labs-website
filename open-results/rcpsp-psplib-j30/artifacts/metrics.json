@@ -1,0 +1,17 @@
+{
+  "seed": 14.312164873860446,
+  "best": 12.086633114086395,
+  "improvement": 2.225531759774052,
+  "improvement_pct": 15.549930981012764,
+  "units": "score",
+  "direction": "lower_is_better",
+  "validation_status": "curated-surface",
+  "mean_gap_pct": 6.037902271174518,
+  "p95_gap_pct": 17.282088122605362,
+  "max_gap_pct": 22.413793103448278,
+  "optimal_hit_rate": 0.2375,
+  "valid_rate": 1,
+  "instances_evaluated": 80,
+  "feasibility_penalty": 0,
+  "invalid_priority_count": 0
+}

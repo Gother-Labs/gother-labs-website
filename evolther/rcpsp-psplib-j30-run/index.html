@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PSPLIB J30 RCPSP Run Replay | Göther Labs</title>
+    <meta name="description" content="A curated replay of the PSPLIB J30 RCPSP scheduling score chain.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" href="../../../assets/gother-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../../styles.css?v=open-results-card-v5">
+    <link rel="stylesheet" href="./surface.css?v=rcpsp-v44">
+  </head>
+  <body class="rcpsp-surface-page">
+    <div class="page-shell site-shell">
+      <header class="site-header">
+        <nav class="site-nav" aria-label="Primary">
+          <a class="brand nav-brand" href="../../../" aria-label="Göther Labs home">
+            <img src="../../../assets/gother-mark.svg" alt="" class="brand-image">
+          </a>
+          <a href="../../../company/">Company</a>
+          <a href="../../../open-results/">Results</a>
+          <a href="../../../contact/">Contact</a>
+        </nav>
+      </header>
+
+      <main class="site-main">
+        <section class="hero compact-hero page-hero rcpsp-hero">
+          <h1 class="page-title">PSPLIB J30 scheduling replay.</h1>
+        </section>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <section class="rcpsp-surface" aria-label="RCPSP run surface">
+          <div class="rcpsp-summary">
+            <div class="rcpsp-summary-copy">
+              <p class="eyebrow">Open Result Replay</p>
+              <p class="rcpsp-summary-text">
+                Curated replay of the public best-so-far cadena evolutiva over 80 frozen PSPLIB J30
+                instances. The visual focus is j3025_9: all executable jobs, the same resource-load
+                buckets, and schedule compression from 112 to 90 against optimum 84.
+              </p>
+              <a class="rcpsp-summary-link" href="/open-results/rcpsp-psplib-j30/#fig-1">
+                Open the schedule readout
+              </a>
+            </div>
+            <div class="rcpsp-summary-panel">
+              <p class="eyebrow">Reported Comparison</p>
+              <div class="rcpsp-metrics" role="group" aria-label="Current run step">
+                <div class="rcpsp-metric">
+                  <span class="rcpsp-metric-label">SCORE CHANGE</span>
+                  <strong class="rcpsp-metric-value" id="signal-gains">15.55%</strong>
+                </div>
+                <div class="rcpsp-metric">
+                  <span class="rcpsp-metric-label">RUN BASELINE</span>
+                  <strong class="rcpsp-metric-value rcpsp-metric-value--numeric" id="signal-seed">14.312</strong>
+                </div>
+                <div class="rcpsp-metric">
+                  <span class="rcpsp-metric-label">ACCEPTED</span>
+                  <strong class="rcpsp-metric-value rcpsp-metric-value--numeric" id="signal-best">12.087</strong>
+                </div>
+              </div>
+              <span class="rcpsp-visually-hidden" id="metric-step">0 / 6</span>
+              <span class="rcpsp-visually-hidden" id="metric-gen">0</span>
+            </div>
+          </div>
+
+          <div class="rcpsp-stage">
+            <section class="rcpsp-code" aria-labelledby="rcpsp-code-title">
+              <div class="rcpsp-section-head">
+                <h2 class="rcpsp-section-title" id="rcpsp-code-title">Code evolution</h2>
+                <span class="rcpsp-section-tag" id="editor-badge">seed</span>
+              </div>
+
+              <div class="rcpsp-editor">
+                <div class="rcpsp-editor-head">
+                  <span class="rcpsp-editor-title">accepted_candidate.py :: curated implementation replay</span>
+                </div>
+                <div class="rcpsp-editor-body" id="editor-body">
+                  <div class="rcpsp-editor-focus" id="editor-focus"></div>
+                </div>
+              </div>
+            </section>
+
+            <aside class="rcpsp-visual" aria-labelledby="rcpsp-visual-title">
+              <div class="rcpsp-score-pulse">
+                <div class="rcpsp-score-head">
+                  <h2 class="rcpsp-section-title" id="rcpsp-visual-title">Acceptance objective</h2>
+                  <span class="rcpsp-score-label" id="score-mini-label">best-so-far</span>
+                </div>
+                <svg
+                  class="rcpsp-score-svg"
+                  id="score-mini-svg"
+                  viewBox="0 0 460 250"
+                  aria-label="Best-so-far RCPSP acceptance objective"
+                ></svg>
+              </div>
+
+              <div class="rcpsp-schedule-card">
+                <svg
+                  class="rcpsp-dispatch-svg"
+                  id="dispatch-svg"
+                  viewBox="0 0 460 500"
+                  aria-label="Animated Gantt and resource view for the current checkpoint"
+                ></svg>
+              </div>
+
+              <div class="rcpsp-schedule-card">
+                <svg
+                  class="rcpsp-schedule-svg"
+                  id="schedule-svg"
+                  viewBox="0 0 460 320"
+                  aria-label="Animated portfolio gap view for the current checkpoint"
+                ></svg>
+              </div>
+            </aside>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© <span id="year">2026</span> Göther Labs</p>
+      </footer>
+    </div>
+
+    <script src="../../../scripts.js"></script>
+    <script src="./surface-data.js"></script>
+    <script src="./surface.js?v=rcpsp-v44"></script>
+  </body>
+</html>

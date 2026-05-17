@@ -1,0 +1,867 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quadrature rule optimization | Open Results | Göther Labs</title>
+    <meta name="description" content="A compact five-node rule for estimating one-dimensional integrals, improved against a fixed public test suite. The report separates the acceptance score from direct residual errors so the gain can be inspected, replayed, and challenged.">
+    <link rel="canonical" href="https://www.gotherlabs.com/open-results/quadrature-rule-optimization/">
+    <meta property="og:title" content="Quadrature rule optimization | Open Results | Göther Labs">
+    <meta property="og:description" content="A compact five-node rule for estimating one-dimensional integrals, improved against a fixed public test suite. The report separates the acceptance score from direct residual errors so the gain can be inspected, replayed, and challenged.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.gotherlabs.com/open-results/quadrature-rule-optimization/">
+    <meta property="og:image" content="https://www.gotherlabs.com/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.gotherlabs.com/assets/og-image.png">
+    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" href="../../assets/gother-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../styles.css?v=open-results-card-v20">
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [["\\(", "\\)"]],
+          displayMath: [["\\[", "\\]"]]
+        },
+        options: {
+          enableMenu: false
+        },
+        chtml: {
+          matchFontHeight: false
+        }
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  </head>
+  <body class="open-result-quadrature-page">
+    <a class="skip-link" href="#site-main">Skip to content</a>
+    <div class="page-shell site-shell">
+      <header class="site-header">
+        <nav class="site-nav" aria-label="Primary">
+          <a class="brand nav-brand" href="../../" aria-label="Göther Labs home">
+            <img src="../../assets/gother-mark.svg" alt="" class="brand-image">
+          </a>
+          <a href="../../company/">Company</a>
+          <a href="../../open-results/">Results</a>
+          <a href="../../contact/">Contact</a>
+        </nav>
+      </header>
+
+      <main class="site-main" id="site-main">
+        <section class="hero compact-hero page-hero open-result-detail-hero">
+          <h1 class="page-title">Quadrature rule optimization</h1>
+          <p class="intro open-results-hero-intro">A compact five-node rule for estimating one-dimensional integrals, improved against a fixed public test suite. The report separates the acceptance score from direct residual errors so the gain can be inspected, replayed, and challenged.</p>
+        </section>
+
+        <section class="open-result-detail open-result-whitepaper-shell">
+          <article class="open-result-article open-result-whitepaper">
+<h3>Abstract</h3>
+<p>This note reports a compact five-node rule for estimating one-dimensional integrals on the unit interval. Relative to the fixed public baseline, the accepted rule reduces the frozen lower-is-better acceptance score by 83.37%. On the most improved public residual component, the direct numerical error falls from 0.3634 to 0.0010, a 99.72% reduction.</p>
+<p>The public claim is bounded to the stated one-dimensional analytic test contract. The acceptance score is the retention objective used by the run; the residual errors are the direct numerical readout. Both surfaces are shown so the candidate can be audited without presenting the rule as a universal integration method.</p>
+<h3>1. Problem formulation</h3>
+<p>Numerical integration estimates the area accumulated under a function. The conceptual object is an integral of an arbitrary scalar function \(g\) on the unit interval:</p>
+<div class="formula-block" id="eq-1">
+  <div class="formula-math">\[
+I[g] = \int_{0}^{1} g(x)\,dx.
+\]</div>
+  <span class="equation-number">(1)</span>
+</div>
+<figure class="open-result-primer-card open-result-paper-figure" id="fig-1">
+              <svg class="open-result-primer-svg open-result-paper-chart-svg" viewBox="0 0 560 306" role="img" aria-label="Conceptual exact integral for an arbitrary function g on the unit interval.">
+                <defs>
+                  <clipPath id="conceptExactPlotClip">
+                    <rect x="72" y="72" width="438" height="166" />
+                  </clipPath>
+                  <clipPath id="conceptExactIntegralClip">
+                    <path d="M72.0 238.0 L76.9 234.3 L81.8 230.5 L86.8 226.8 L91.7 223.0 L96.6 219.3 L101.5 215.6 L106.4 211.8 L111.4 208.2 L116.3 204.5 L121.2 200.9 L126.1 197.3 L131.1 193.7 L136.0 190.2 L140.9 186.7 L145.8 183.3 L150.7 179.9 L155.7 176.6 L160.6 173.4 L165.5 170.2 L170.4 167.1 L175.3 164.1 L180.3 161.2 L185.2 158.4 L190.1 155.6 L195.0 153.0 L200.0 150.4 L204.9 147.9 L209.8 145.6 L214.7 143.3 L219.6 141.2 L224.6 139.2 L229.5 137.3 L234.4 135.5 L239.3 133.8 L244.2 132.3 L249.2 130.9 L254.1 129.6 L259.0 128.4 L263.9 127.4 L268.9 126.5 L273.8 125.8 L278.7 125.2 L283.6 124.7 L288.5 124.4 L293.5 124.2 L298.4 124.2 L303.3 124.2 L308.2 124.5 L313.1 124.9 L318.1 125.4 L323.0 126.1 L327.9 126.9 L332.8 127.8 L337.8 128.9 L342.7 130.1 L347.6 131.5 L352.5 133.0 L357.4 134.6 L362.4 136.4 L367.3 138.3 L372.2 140.4 L377.1 142.5 L382.0 144.8 L387.0 147.3 L391.9 149.8 L396.8 152.5 L401.7 155.2 L406.7 158.1 L411.6 161.1 L416.5 164.2 L421.4 167.4 L426.3 170.7 L431.3 174.1 L436.2 177.6 L441.1 181.2 L446.0 184.9 L450.9 188.6 L455.9 192.4 L460.8 196.3 L465.7 200.3 L470.6 204.3 L475.6 208.4 L480.5 212.5 L485.4 216.7 L490.3 220.9 L495.2 225.1 L500.2 229.4 L505.1 233.7 L510.0 238.0 L510 238 L72 238 Z" />
+                  </clipPath>
+                  <pattern id="conceptExactIntegralHatch" patternUnits="userSpaceOnUse" width="12" height="12" patternTransform="rotate(62)">
+                    <line x1="0" y1="0" x2="0" y2="12" />
+                  </pattern>
+                </defs>
+                <text class="open-result-axis-label open-result-figure-title" x="72" y="34">Conceptual integral of an arbitrary g(x)</text>
+                <path class="open-result-primer-grid" d="M72 74 V238 H510" />
+                <path class="open-result-objective-grid" d="M72 98.0 H510" />
+                <text class="open-result-axis-tick open-result-y-tick" x="56" y="102">1</text>
+                <path class="open-result-axis-notch" d="M66 98 H72" />
+                <text class="open-result-axis-tick" x="72" y="260">0</text>
+                <text class="open-result-axis-tick" x="510" y="260">1</text>
+                <text class="open-result-axis-label open-result-x-axis-title" x="291" y="286">x</text>
+                <text class="open-result-axis-label open-result-objective-y-title" x="34" y="156" transform="rotate(-90 34 156)">g(x)</text>
+                <g clip-path="url(#conceptExactPlotClip)">
+                  <path class="open-result-primer-area exact-integral-area" d="M72.0 238.0 L76.9 234.3 L81.8 230.5 L86.8 226.8 L91.7 223.0 L96.6 219.3 L101.5 215.6 L106.4 211.8 L111.4 208.2 L116.3 204.5 L121.2 200.9 L126.1 197.3 L131.1 193.7 L136.0 190.2 L140.9 186.7 L145.8 183.3 L150.7 179.9 L155.7 176.6 L160.6 173.4 L165.5 170.2 L170.4 167.1 L175.3 164.1 L180.3 161.2 L185.2 158.4 L190.1 155.6 L195.0 153.0 L200.0 150.4 L204.9 147.9 L209.8 145.6 L214.7 143.3 L219.6 141.2 L224.6 139.2 L229.5 137.3 L234.4 135.5 L239.3 133.8 L244.2 132.3 L249.2 130.9 L254.1 129.6 L259.0 128.4 L263.9 127.4 L268.9 126.5 L273.8 125.8 L278.7 125.2 L283.6 124.7 L288.5 124.4 L293.5 124.2 L298.4 124.2 L303.3 124.2 L308.2 124.5 L313.1 124.9 L318.1 125.4 L323.0 126.1 L327.9 126.9 L332.8 127.8 L337.8 128.9 L342.7 130.1 L347.6 131.5 L352.5 133.0 L357.4 134.6 L362.4 136.4 L367.3 138.3 L372.2 140.4 L377.1 142.5 L382.0 144.8 L387.0 147.3 L391.9 149.8 L396.8 152.5 L401.7 155.2 L406.7 158.1 L411.6 161.1 L416.5 164.2 L421.4 167.4 L426.3 170.7 L431.3 174.1 L436.2 177.6 L441.1 181.2 L446.0 184.9 L450.9 188.6 L455.9 192.4 L460.8 196.3 L465.7 200.3 L470.6 204.3 L475.6 208.4 L480.5 212.5 L485.4 216.7 L490.3 220.9 L495.2 225.1 L500.2 229.4 L505.1 233.7 L510.0 238.0 L510 238 L72 238 Z" />
+                  <rect class="open-result-integral-hatch" x="72" y="74" width="438" height="164" clip-path="url(#conceptExactIntegralClip)" />
+                  <path class="open-result-primer-curve" d="M72.0 238.0 L76.9 234.3 L81.8 230.5 L86.8 226.8 L91.7 223.0 L96.6 219.3 L101.5 215.6 L106.4 211.8 L111.4 208.2 L116.3 204.5 L121.2 200.9 L126.1 197.3 L131.1 193.7 L136.0 190.2 L140.9 186.7 L145.8 183.3 L150.7 179.9 L155.7 176.6 L160.6 173.4 L165.5 170.2 L170.4 167.1 L175.3 164.1 L180.3 161.2 L185.2 158.4 L190.1 155.6 L195.0 153.0 L200.0 150.4 L204.9 147.9 L209.8 145.6 L214.7 143.3 L219.6 141.2 L224.6 139.2 L229.5 137.3 L234.4 135.5 L239.3 133.8 L244.2 132.3 L249.2 130.9 L254.1 129.6 L259.0 128.4 L263.9 127.4 L268.9 126.5 L273.8 125.8 L278.7 125.2 L283.6 124.7 L288.5 124.4 L293.5 124.2 L298.4 124.2 L303.3 124.2 L308.2 124.5 L313.1 124.9 L318.1 125.4 L323.0 126.1 L327.9 126.9 L332.8 127.8 L337.8 128.9 L342.7 130.1 L347.6 131.5 L352.5 133.0 L357.4 134.6 L362.4 136.4 L367.3 138.3 L372.2 140.4 L377.1 142.5 L382.0 144.8 L387.0 147.3 L391.9 149.8 L396.8 152.5 L401.7 155.2 L406.7 158.1 L411.6 161.1 L416.5 164.2 L421.4 167.4 L426.3 170.7 L431.3 174.1 L436.2 177.6 L441.1 181.2 L446.0 184.9 L450.9 188.6 L455.9 192.4 L460.8 196.3 L465.7 200.3 L470.6 204.3 L475.6 208.4 L480.5 212.5 L485.4 216.7 L490.3 220.9 L495.2 225.1 L500.2 229.4 L505.1 233.7 L510.0 238.0" />
+                </g>
+              </svg>
+              <figcaption>Figure 1. Conceptual setup for the exact integral. The shaded surface denotes \(I[g]\) for an arbitrary function \(g\), separate from the public integrand suite used by the evaluation contract.</figcaption>
+            </figure>
+<p>The exact area is rarely the object a production system computes directly. Instead, a quadrature rule \(r\) replaces the continuous integral with a finite set of weighted point evaluations. The nodes \(x_i\) determine where the function is sampled and the normalized weights \(w_i\) determine how much each sample contributes:</p>
+<div class="formula-block" id="eq-2">
+  <div class="formula-math">\[
+Q_r[g] = \sum_{i=1}^{n} w_i\,g(x_i),
+\qquad
+x_i \in [0,1],
+\qquad
+\sum_{i=1}^{n} w_i = 1.
+\]</div>
+  <span class="equation-number">(2)</span>
+</div>
+<figure class="open-result-primer-card open-result-paper-figure" id="fig-2">
+              <svg class="open-result-primer-svg open-result-paper-chart-svg" viewBox="0 0 560 306" role="img" aria-label="Conceptual quadrature rule showing weighted point evaluations of an arbitrary function.">
+                <defs>
+                  <clipPath id="conceptQuadraturePlotClip">
+                    <rect x="72" y="72" width="438" height="166" />
+                  </clipPath>
+                  <pattern id="conceptQuadratureHatch" patternUnits="userSpaceOnUse" width="12" height="12" patternTransform="rotate(62)">
+                    <line x1="0" y1="0" x2="0" y2="12" />
+                  </pattern>
+                </defs>
+                <text class="open-result-axis-label open-result-figure-title" x="72" y="34">Weighted point evaluations</text>
+                <path class="open-result-primer-grid" d="M72 74 V238 H510" />
+                <path class="open-result-objective-grid" d="M72 98.0 H510" />
+                <text class="open-result-axis-tick open-result-y-tick" x="56" y="102">1</text>
+                <path class="open-result-axis-notch" d="M66 98 H72" />
+                <text class="open-result-axis-tick" x="72" y="260">0</text>
+                <text class="open-result-axis-tick" x="510" y="260">1</text>
+                <text class="open-result-axis-label open-result-x-axis-title" x="291" y="286">x</text>
+                <text class="open-result-axis-label open-result-objective-y-title" x="34" y="156" transform="rotate(-90 34 156)">g(x)</text>
+                <g clip-path="url(#conceptQuadraturePlotClip)">
+                  <g class="open-result-concept-samples">
+<g class="open-result-concept-sample ">
+              <rect x="72.0" y="214.7" width="61.3" height="23.3" />
+              <line x1="102.7" y1="238" x2="102.7" y2="214.7" />
+              <circle cx="102.7" cy="214.7" r="4.2" />
+            </g>
+<g class="open-result-concept-sample ">
+              <rect x="133.3" y="161.8" width="92.0" height="76.2" />
+              <line x1="179.3" y1="238" x2="179.3" y2="161.8" />
+              <circle cx="179.3" cy="161.8" r="4.2" />
+            </g>
+<g class="open-result-concept-sample is-accepted">
+              <rect x="225.3" y="124.3" width="131.4" height="113.7" />
+              <line x1="291.0" y1="238" x2="291.0" y2="124.3" />
+              <circle cx="291.0" cy="124.3" r="4.2" />
+            </g>
+<g class="open-result-concept-sample ">
+              <rect x="356.7" y="155.8" width="92.0" height="82.2" />
+              <line x1="402.7" y1="238" x2="402.7" y2="155.8" />
+              <circle cx="402.7" cy="155.8" r="4.2" />
+            </g>
+<g class="open-result-concept-sample ">
+              <rect x="448.7" y="211.5" width="61.3" height="26.5" />
+              <line x1="479.3" y1="238" x2="479.3" y2="211.5" />
+              <circle cx="479.3" cy="211.5" r="4.2" />
+            </g>
+                  </g>
+                  <g class="open-result-concept-samples open-result-concept-sample-hatches">
+<g class="open-result-concept-sample ">
+              <rect x="72.0" y="214.7" width="61.3" height="23.3" />
+              <line x1="102.7" y1="238" x2="102.7" y2="214.7" />
+              <circle cx="102.7" cy="214.7" r="4.2" />
+            </g>
+<g class="open-result-concept-sample ">
+              <rect x="133.3" y="161.8" width="92.0" height="76.2" />
+              <line x1="179.3" y1="238" x2="179.3" y2="161.8" />
+              <circle cx="179.3" cy="161.8" r="4.2" />
+            </g>
+<g class="open-result-concept-sample is-accepted">
+              <rect x="225.3" y="124.3" width="131.4" height="113.7" />
+              <line x1="291.0" y1="238" x2="291.0" y2="124.3" />
+              <circle cx="291.0" cy="124.3" r="4.2" />
+            </g>
+<g class="open-result-concept-sample ">
+              <rect x="356.7" y="155.8" width="92.0" height="82.2" />
+              <line x1="402.7" y1="238" x2="402.7" y2="155.8" />
+              <circle cx="402.7" cy="155.8" r="4.2" />
+            </g>
+<g class="open-result-concept-sample ">
+              <rect x="448.7" y="211.5" width="61.3" height="26.5" />
+              <line x1="479.3" y1="238" x2="479.3" y2="211.5" />
+              <circle cx="479.3" cy="211.5" r="4.2" />
+            </g>
+                  </g>
+                  <path class="open-result-primer-curve muted-curve dashed-curve" d="M72.0 238.0 L76.9 234.3 L81.8 230.5 L86.8 226.8 L91.7 223.0 L96.6 219.3 L101.5 215.6 L106.4 211.8 L111.4 208.2 L116.3 204.5 L121.2 200.9 L126.1 197.3 L131.1 193.7 L136.0 190.2 L140.9 186.7 L145.8 183.3 L150.7 179.9 L155.7 176.6 L160.6 173.4 L165.5 170.2 L170.4 167.1 L175.3 164.1 L180.3 161.2 L185.2 158.4 L190.1 155.6 L195.0 153.0 L200.0 150.4 L204.9 147.9 L209.8 145.6 L214.7 143.3 L219.6 141.2 L224.6 139.2 L229.5 137.3 L234.4 135.5 L239.3 133.8 L244.2 132.3 L249.2 130.9 L254.1 129.6 L259.0 128.4 L263.9 127.4 L268.9 126.5 L273.8 125.8 L278.7 125.2 L283.6 124.7 L288.5 124.4 L293.5 124.2 L298.4 124.2 L303.3 124.2 L308.2 124.5 L313.1 124.9 L318.1 125.4 L323.0 126.1 L327.9 126.9 L332.8 127.8 L337.8 128.9 L342.7 130.1 L347.6 131.5 L352.5 133.0 L357.4 134.6 L362.4 136.4 L367.3 138.3 L372.2 140.4 L377.1 142.5 L382.0 144.8 L387.0 147.3 L391.9 149.8 L396.8 152.5 L401.7 155.2 L406.7 158.1 L411.6 161.1 L416.5 164.2 L421.4 167.4 L426.3 170.7 L431.3 174.1 L436.2 177.6 L441.1 181.2 L446.0 184.9 L450.9 188.6 L455.9 192.4 L460.8 196.3 L465.7 200.3 L470.6 204.3 L475.6 208.4 L480.5 212.5 L485.4 216.7 L490.3 220.9 L495.2 225.1 L500.2 229.4 L505.1 233.7 L510.0 238.0" />
+                </g>
+              </svg>
+              <figcaption>Figure 2. Quadrature replaces the continuous integral with weighted point evaluations. The blue cells are the estimate \(Q_r[g]\): each cell width represents \(w_i\), each height is \(g(x_i)\), and each area is one contribution \(w_i g(x_i)\).</figcaption>
+            </figure>
+<p>The residual is the direct error a reader can interpret without knowing the optimization machinery. It compares the analytic integral with the quadrature estimate. The visual residual can have regions where the rule overestimates and regions where it underestimates; the reported scalar residual is the absolute value of the net difference:</p>
+<div class="formula-block" id="eq-3">
+  <div class="formula-math">\[
+e(r;g) = \left|Q_r[g] - I[g]\right|.
+\]</div>
+  <span class="equation-number">(3)</span>
+</div>
+<figure class="open-result-primer-card open-result-paper-figure" id="fig-3">
+              <svg class="open-result-primer-svg open-result-paper-chart-svg" viewBox="0 0 560 306" role="img" aria-label="Conceptual residual between the exact integral and weighted quadrature estimate.">
+                <defs>
+                  <clipPath id="conceptResidualPlotClip">
+                    <rect x="72" y="72" width="438" height="166" />
+                  </clipPath>
+                  <pattern id="conceptResidualHatch" patternUnits="userSpaceOnUse" width="12" height="12" patternTransform="rotate(62)">
+                    <line x1="0" y1="0" x2="0" y2="12" />
+                  </pattern>
+                </defs>
+                <text class="open-result-axis-label open-result-figure-title" x="72" y="34">Residual between I[g] and Q<tspan baseline-shift="sub" font-size="9">r</tspan><tspan dx="4">[g]</tspan></text>
+                <path class="open-result-primer-grid" d="M72 74 V238 H510" />
+                <path class="open-result-objective-grid" d="M72 98.0 H510" />
+                <text class="open-result-axis-tick open-result-y-tick" x="56" y="102">1</text>
+                <path class="open-result-axis-notch" d="M66 98 H72" />
+                <text class="open-result-axis-tick" x="72" y="260">0</text>
+                <text class="open-result-axis-tick" x="510" y="260">1</text>
+                <text class="open-result-axis-label open-result-x-axis-title" x="291" y="286">x</text>
+                <text class="open-result-axis-label open-result-objective-y-title" x="34" y="156" transform="rotate(-90 34 156)">g(x)</text>
+                <g clip-path="url(#conceptResidualPlotClip)">
+                  <g class="open-result-concept-samples open-result-concept-samples-muted">
+<g class="open-result-concept-sample ">
+              <rect x="72.0" y="214.7" width="61.3" height="23.3" />
+              <line x1="102.7" y1="238" x2="102.7" y2="214.7" />
+              <circle cx="102.7" cy="214.7" r="4.2" />
+            </g>
+<g class="open-result-concept-sample ">
+              <rect x="133.3" y="161.8" width="92.0" height="76.2" />
+              <line x1="179.3" y1="238" x2="179.3" y2="161.8" />
+              <circle cx="179.3" cy="161.8" r="4.2" />
+            </g>
+<g class="open-result-concept-sample is-accepted">
+              <rect x="225.3" y="124.3" width="131.4" height="113.7" />
+              <line x1="291.0" y1="238" x2="291.0" y2="124.3" />
+              <circle cx="291.0" cy="124.3" r="4.2" />
+            </g>
+<g class="open-result-concept-sample ">
+              <rect x="356.7" y="155.8" width="92.0" height="82.2" />
+              <line x1="402.7" y1="238" x2="402.7" y2="155.8" />
+              <circle cx="402.7" cy="155.8" r="4.2" />
+            </g>
+<g class="open-result-concept-sample ">
+              <rect x="448.7" y="211.5" width="61.3" height="26.5" />
+              <line x1="479.3" y1="238" x2="479.3" y2="211.5" />
+              <circle cx="479.3" cy="211.5" r="4.2" />
+            </g>
+                  </g>
+                  <g class="open-result-residual-regions">
+<path class="open-result-residual-region open-result-residual-negative" d="M72.0 214.7 L133.3 214.7 L133.3 192.1 L130.7 194.0 L128.0 195.9 L125.3 197.8 L122.7 199.8 L120.0 201.8 L117.3 203.7 L114.7 205.7 L112.0 207.7 L109.3 209.7 L106.7 211.7 L104.0 213.7 L101.3 215.7 L98.7 217.7 L96.0 219.7 L93.3 221.8 L90.7 223.8 L88.0 225.8 L85.3 227.9 L82.7 229.9 L80.0 231.9 L77.3 233.9 L74.7 236.0 L72.0 238.0 Z" />
+<path class="open-result-residual-region open-result-residual-negative" d="M133.3 161.8 L225.3 161.8 L225.3 138.9 L221.3 140.5 L217.3 142.2 L213.3 144.0 L209.3 145.8 L205.3 147.7 L201.3 149.7 L197.3 151.8 L193.3 153.9 L189.3 156.1 L185.3 158.3 L181.3 160.6 L177.3 163.0 L173.3 165.4 L169.3 167.8 L165.3 170.4 L161.3 172.9 L157.3 175.5 L153.3 178.2 L149.3 180.9 L145.3 183.6 L141.3 186.4 L137.3 189.2 L133.3 192.1 Z" />
+<path class="open-result-residual-region open-result-residual-negative" d="M225.3 124.3 L356.7 124.3 L356.7 134.4 L351.0 132.5 L345.3 130.8 L339.6 129.3 L333.8 128.0 L328.1 126.9 L322.4 126.0 L316.7 125.2 L311.0 124.7 L305.3 124.3 L299.6 124.2 L293.9 124.2 L288.1 124.4 L282.4 124.8 L276.7 125.4 L271.0 126.2 L265.3 127.2 L259.6 128.3 L253.9 129.7 L248.2 131.2 L242.4 132.8 L236.7 134.7 L231.0 136.7 L225.3 138.9 Z" />
+<path class="open-result-residual-region open-result-residual-negative" d="M356.7 155.8 L448.7 155.8 L448.7 186.9 L444.7 183.9 L440.7 180.9 L436.7 178.0 L432.7 175.2 L428.7 172.4 L424.7 169.6 L420.7 167.0 L416.7 164.4 L412.7 161.8 L408.7 159.4 L404.7 157.0 L400.7 154.6 L396.7 152.4 L392.7 150.2 L388.7 148.1 L384.7 146.1 L380.7 144.2 L376.7 142.3 L372.7 140.6 L368.7 138.9 L364.7 137.3 L360.7 135.8 L356.7 134.4 Z" />
+<path class="open-result-residual-region open-result-residual-negative" d="M448.7 211.5 L510.0 211.5 L510.0 238.0 L507.3 235.7 L504.7 233.3 L502.0 231.0 L499.3 228.7 L496.7 226.3 L494.0 224.0 L491.3 221.7 L488.7 219.5 L486.0 217.2 L483.3 214.9 L480.7 212.7 L478.0 210.4 L475.3 208.2 L472.7 206.0 L470.0 203.8 L467.3 201.6 L464.7 199.5 L462.0 197.3 L459.3 195.2 L456.7 193.1 L454.0 191.0 L451.3 188.9 L448.7 186.9 Z" />
+                  </g>
+                  <g class="open-result-residual-hatches">
+<path class="open-result-residual-hatch" d="M72.0 214.7 L133.3 214.7 L133.3 192.1 L130.7 194.0 L128.0 195.9 L125.3 197.8 L122.7 199.8 L120.0 201.8 L117.3 203.7 L114.7 205.7 L112.0 207.7 L109.3 209.7 L106.7 211.7 L104.0 213.7 L101.3 215.7 L98.7 217.7 L96.0 219.7 L93.3 221.8 L90.7 223.8 L88.0 225.8 L85.3 227.9 L82.7 229.9 L80.0 231.9 L77.3 233.9 L74.7 236.0 L72.0 238.0 Z" />
+<path class="open-result-residual-hatch" d="M133.3 161.8 L225.3 161.8 L225.3 138.9 L221.3 140.5 L217.3 142.2 L213.3 144.0 L209.3 145.8 L205.3 147.7 L201.3 149.7 L197.3 151.8 L193.3 153.9 L189.3 156.1 L185.3 158.3 L181.3 160.6 L177.3 163.0 L173.3 165.4 L169.3 167.8 L165.3 170.4 L161.3 172.9 L157.3 175.5 L153.3 178.2 L149.3 180.9 L145.3 183.6 L141.3 186.4 L137.3 189.2 L133.3 192.1 Z" />
+<path class="open-result-residual-hatch" d="M225.3 124.3 L356.7 124.3 L356.7 134.4 L351.0 132.5 L345.3 130.8 L339.6 129.3 L333.8 128.0 L328.1 126.9 L322.4 126.0 L316.7 125.2 L311.0 124.7 L305.3 124.3 L299.6 124.2 L293.9 124.2 L288.1 124.4 L282.4 124.8 L276.7 125.4 L271.0 126.2 L265.3 127.2 L259.6 128.3 L253.9 129.7 L248.2 131.2 L242.4 132.8 L236.7 134.7 L231.0 136.7 L225.3 138.9 Z" />
+<path class="open-result-residual-hatch" d="M356.7 155.8 L448.7 155.8 L448.7 186.9 L444.7 183.9 L440.7 180.9 L436.7 178.0 L432.7 175.2 L428.7 172.4 L424.7 169.6 L420.7 167.0 L416.7 164.4 L412.7 161.8 L408.7 159.4 L404.7 157.0 L400.7 154.6 L396.7 152.4 L392.7 150.2 L388.7 148.1 L384.7 146.1 L380.7 144.2 L376.7 142.3 L372.7 140.6 L368.7 138.9 L364.7 137.3 L360.7 135.8 L356.7 134.4 Z" />
+<path class="open-result-residual-hatch" d="M448.7 211.5 L510.0 211.5 L510.0 238.0 L507.3 235.7 L504.7 233.3 L502.0 231.0 L499.3 228.7 L496.7 226.3 L494.0 224.0 L491.3 221.7 L488.7 219.5 L486.0 217.2 L483.3 214.9 L480.7 212.7 L478.0 210.4 L475.3 208.2 L472.7 206.0 L470.0 203.8 L467.3 201.6 L464.7 199.5 L462.0 197.3 L459.3 195.2 L456.7 193.1 L454.0 191.0 L451.3 188.9 L448.7 186.9 Z" />
+                  </g>
+                  <path class="open-result-primer-curve" d="M72.0 238.0 L76.9 234.3 L81.8 230.5 L86.8 226.8 L91.7 223.0 L96.6 219.3 L101.5 215.6 L106.4 211.8 L111.4 208.2 L116.3 204.5 L121.2 200.9 L126.1 197.3 L131.1 193.7 L136.0 190.2 L140.9 186.7 L145.8 183.3 L150.7 179.9 L155.7 176.6 L160.6 173.4 L165.5 170.2 L170.4 167.1 L175.3 164.1 L180.3 161.2 L185.2 158.4 L190.1 155.6 L195.0 153.0 L200.0 150.4 L204.9 147.9 L209.8 145.6 L214.7 143.3 L219.6 141.2 L224.6 139.2 L229.5 137.3 L234.4 135.5 L239.3 133.8 L244.2 132.3 L249.2 130.9 L254.1 129.6 L259.0 128.4 L263.9 127.4 L268.9 126.5 L273.8 125.8 L278.7 125.2 L283.6 124.7 L288.5 124.4 L293.5 124.2 L298.4 124.2 L303.3 124.2 L308.2 124.5 L313.1 124.9 L318.1 125.4 L323.0 126.1 L327.9 126.9 L332.8 127.8 L337.8 128.9 L342.7 130.1 L347.6 131.5 L352.5 133.0 L357.4 134.6 L362.4 136.4 L367.3 138.3 L372.2 140.4 L377.1 142.5 L382.0 144.8 L387.0 147.3 L391.9 149.8 L396.8 152.5 L401.7 155.2 L406.7 158.1 L411.6 161.1 L416.5 164.2 L421.4 167.4 L426.3 170.7 L431.3 174.1 L436.2 177.6 L441.1 181.2 L446.0 184.9 L450.9 188.6 L455.9 192.4 L460.8 196.3 L465.7 200.3 L470.6 204.3 L475.6 208.4 L480.5 212.5 L485.4 216.7 L490.3 220.9 L495.2 225.1 L500.2 229.4 L505.1 233.7 L510.0 238.0" />
+                </g>
+              </svg>
+              <figcaption>Figure 3. Conceptual residual diagnostic. Local over- and under-estimation can coexist; the reported scalar residual is the absolute net difference between the quadrature estimate and the exact integral.</figcaption>
+            </figure>
+<p><a href="#fig-1">Figures 1</a>-<a href="#fig-3">3</a> introduce the objects used by the report. They are deliberately conceptual: the actual acceptance contract below uses a fixed public suite of three analytic functions, not the illustrative function \(g\).</p>
+<h3>2. Evaluation contract</h3>
+<p>The evaluation contract is what makes the comparison fair. It is fixed before candidate comparison, so the accepted rule cannot change the test after seeing the result. Each candidate rule is scored on the same public analytic integrand suite:</p>
+<div class="formula-block" id="eq-4">
+  <div class="formula-math">\[
+\begin{aligned}
+f_1(x) &amp;= \sin(\pi x),\\
+f_2(x) &amp;= \sqrt{x},\\
+f_3(x) &amp;= \log(1+x).
+\end{aligned}
+\]</div>
+  <span class="equation-number">(4)</span>
+</div>
+<p>For each function \(f_j\), the evaluator computes the residual by specializing <a href="#eq-3">Equation (3)</a> to the contract integrand:</p>
+<div class="formula-block" id="eq-5">
+  <div class="formula-math">\[
+e_j(r) =
+\left|Q_r[f_j] - I[f_j]\right|.
+\]</div>
+  <span class="equation-number">(5)</span>
+</div>
+<p>The run objective \(J(r)\) is the acceptance score used during the run. It is a lower-is-better aggregate of the public residual components:</p>
+<div class="formula-block" id="eq-6">
+  <div class="formula-math">\[
+J(r) = \sum_{j=1}^{3} \alpha_j\,e_j(r).
+\]</div>
+  <span class="equation-number">(6)</span>
+</div>
+<figure class="open-result-paper-table open-result-contract-table" id="table-1">
+          <div class="open-result-table-wrap">
+            <table class="open-result-table">
+              <thead>
+                <tr>
+                  <th>Component</th>
+                  <th>Integrand</th>
+                  <th>Analytic reference</th>
+                  <th>Baseline residual</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>\(\sin(\pi x)\)</td>
+                  <td>\(2/\pi\)</td>
+                  <td>0.363380</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>\(\sqrt{x}\)</td>
+                  <td>\(2/3\)</td>
+                  <td>0.040440</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>\(\log(1+x)\)</td>
+                  <td>\(2\log 2 - 1\)</td>
+                  <td>0.019171</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <figcaption>Table 1. Evaluation contract surface. Each row defines one public residual component and the residual of the fixed run baseline.</figcaption>
+        </figure>
+<p>The public bundle identifies the integrand suite and objective direction, but it does not expose numeric component weights \(\alpha_j\). <a href="#table-1">Table 1</a> therefore fixes the public residual components without inventing unpublished objective weights or mixing in accepted-candidate outcomes. In plain terms: the table shows what was tested and where the baseline started; it does not ask the reader to trust an unpublished weighting scheme.</p>
+<h4>Run baseline</h4>
+<p>The run baseline \(r_0\) is the first public rule in the curated trace. It fixes the comparison point before candidate selection. Every improvement reported later is measured relative to this same baseline.</p>
+<figure class="open-result-primer-card open-result-paper-figure open-result-single-rule-figure" id="fig-4">
+          <svg class="open-result-primer-svg open-result-accepted-rule-svg open-result-paper-chart-svg" viewBox="0 0 560 280" role="img" aria-label="Run baseline quadrature rule shown as node position and normalized weight.">
+            <text class="open-result-axis-label open-result-objective-y-title" x="34" y="130" transform="rotate(-90 34 130)">normalized weight w<tspan baseline-shift="sub" font-size="8">i</tspan></text>
+            <g class="open-result-objective-legend open-result-single-rule-legend" transform="translate(420 34)">
+              <g transform="translate(0 0)">
+                <circle class="open-result-legend-baseline-dot" cx="0" cy="0" r="3.8" />
+                <text x="16" y="4">run baseline</text>
+              </g>
+            </g>
+            <g class="open-result-rule-panel">
+              <text class="open-result-axis-label open-result-figure-title" x="82" y="36">Run baseline</text>
+
+              <g>
+                <path class="open-result-objective-grid" d="M82 186.0 H512" />
+                <text class="open-result-axis-tick open-result-objective-y-label" x="68" y="190.0">0</text>
+              </g>
+<g>
+                <path class="open-result-objective-grid" d="M82 130.0 H512" />
+                <text class="open-result-axis-tick open-result-objective-y-label" x="68" y="134.0">0.5</text>
+              </g>
+<g>
+                <path class="open-result-objective-grid" d="M82 74.0 H512" />
+                <text class="open-result-axis-tick open-result-objective-y-label" x="68" y="78.0">1</text>
+              </g>
+              <path class="open-result-rule-paper-axis" d="M82 74 V186 H512" />
+              <text class="open-result-axis-tick" x="82" y="204">0</text>
+              <text class="open-result-axis-tick" x="297" y="204">0.5</text>
+              <text class="open-result-axis-tick" x="512" y="204">1</text>
+            </g>
+            <g class="open-result-baseline-node">
+                <line x1="82.0" y1="186.0" x2="82.0" y2="186.0" />
+                <circle cx="82.0" cy="186.0" r="3.1" />
+              </g>
+<g class="open-result-baseline-node">
+                <line x1="82.0" y1="186.0" x2="82.0" y2="186.0" />
+                <circle cx="82.0" cy="186.0" r="3.1" />
+              </g>
+<g class="open-result-baseline-node">
+                <line x1="130.5" y1="186.0" x2="130.5" y2="186.0" />
+                <circle cx="130.5" cy="186.0" r="3.1" />
+              </g>
+<g class="open-result-baseline-node">
+                <line x1="130.5" y1="186.0" x2="130.5" y2="186.0" />
+                <circle cx="130.5" cy="186.0" r="3.1" />
+              </g>
+<g class="open-result-baseline-node">
+                <line x1="297.0" y1="186.0" x2="297.0" y2="74.0" />
+                <circle cx="297.0" cy="74.0" r="4.4" />
+              </g>
+            <text class="open-result-axis-label open-result-x-axis-title" x="297" y="260">node position x<tspan baseline-shift="sub" font-size="8">i</tspan></text>
+          </svg>
+          <figcaption>Figure 4. Run baseline \(r_0\). This fixed rule anchors the residual and objective improvements reported later.</figcaption>
+        </figure>
+<p>All objective and residual improvements reported below are measured against this same run baseline, whose contracted objective is \(J(r_0)=688.676231\).</p>
+<h3>3. Accepted candidate</h3>
+<p>The accepted candidate is the five-node rule shown in <a href="#fig-5">Figure 5</a>. This is the object being reported: five sample locations and five normalized weights. The figure is the primary definition of the node placement and weights; it should be read against the run baseline in <a href="#fig-4">Figure 4</a> before interpreting the objective change.</p>
+<figure class="open-result-primer-card open-result-paper-figure open-result-single-rule-figure" id="fig-5">
+          <svg class="open-result-primer-svg open-result-accepted-rule-svg open-result-paper-chart-svg" viewBox="0 0 560 280" role="img" aria-label="Accepted five node quadrature rule shown as node position and normalized weight.">
+            <text class="open-result-axis-label open-result-objective-y-title" x="34" y="130" transform="rotate(-90 34 130)">normalized weight w<tspan baseline-shift="sub" font-size="8">i</tspan></text>
+            <g class="open-result-objective-legend open-result-single-rule-legend" transform="translate(420 34)">
+              <g transform="translate(0 0)">
+                <circle class="open-result-legend-accepted-dot" cx="0" cy="0" r="3.8" />
+                <text x="16" y="4">accepted</text>
+              </g>
+            </g>
+            <g class="open-result-rule-panel">
+              <text class="open-result-axis-label open-result-figure-title" x="82" y="36">Accepted rule</text>
+
+              <g>
+                <path class="open-result-objective-grid" d="M82 186.0 H512" />
+                <text class="open-result-axis-tick open-result-objective-y-label" x="68" y="190.0">0</text>
+              </g>
+<g>
+                <path class="open-result-objective-grid" d="M82 141.2 H512" />
+                <text class="open-result-axis-tick open-result-objective-y-label" x="68" y="145.2">0.1</text>
+              </g>
+<g>
+                <path class="open-result-objective-grid" d="M82 96.4 H512" />
+                <text class="open-result-axis-tick open-result-objective-y-label" x="68" y="100.4">0.2</text>
+              </g>
+<g>
+                <path class="open-result-objective-grid" d="M82 74.0 H512" />
+                <text class="open-result-axis-tick open-result-objective-y-label" x="68" y="78.0">0.25</text>
+              </g>
+              <path class="open-result-rule-paper-axis" d="M82 74 V186 H512" />
+              <text class="open-result-axis-tick" x="82" y="204">0</text>
+              <text class="open-result-axis-tick" x="297" y="204">0.5</text>
+              <text class="open-result-axis-tick" x="512" y="204">1</text>
+            </g>
+            <g class="open-result-accepted-node">
+                <line x1="115.2" y1="186.0" x2="115.2" y2="96.4" />
+                <circle cx="115.2" cy="96.4" r="4.4" />
+              </g>
+<g class="open-result-accepted-node">
+                <line x1="221.9" y1="186.0" x2="221.9" y2="96.3" />
+                <circle cx="221.9" cy="96.3" r="4.4" />
+              </g>
+<g class="open-result-accepted-node">
+                <line x1="297.0" y1="186.0" x2="297.0" y2="96.3" />
+                <circle cx="297.0" cy="96.3" r="4.4" />
+              </g>
+<g class="open-result-accepted-node">
+                <line x1="372.1" y1="186.0" x2="372.1" y2="96.4" />
+                <circle cx="372.1" cy="96.4" r="4.4" />
+              </g>
+<g class="open-result-accepted-node">
+                <line x1="478.8" y1="186.0" x2="478.8" y2="96.6" />
+                <circle cx="478.8" cy="96.6" r="4.4" />
+              </g>
+            <text class="open-result-axis-label open-result-x-axis-title" x="297" y="260">node position x<tspan baseline-shift="sub" font-size="8">i</tspan></text>
+          </svg>
+          <figcaption>Figure 5. Accepted five-node rule in node-position and normalized-weight coordinates. The near-uniform weights and inward node placement define the candidate evaluated below.</figcaption>
+        </figure>
+<h4>Candidate construction</h4>
+<p>The candidate is intentionally small enough to audit. The implementation maps source nodes \(\xi_i\) on \([-1,1]\) inward with a fixed remapping exponent \(p=1.7\), maps them back to the unit interval, and renormalizes the weights:</p>
+<div class="formula-block" id="eq-7">
+  <div class="formula-math">\[
+\tilde{\xi}_i=\operatorname{sign}(\xi_i)\,|\xi_i|^p,
+\qquad
+x_i=\frac{\tilde{\xi}_i+1}{2},
+\qquad
+p=1.7.
+\]</div>
+  <span class="equation-number">(7)</span>
+</div>
+<p>The accepted implementation is included here because it is part of the candidate definition, not only a replay appendix. The code is short enough for a reader to verify that the reported rule is generated by the stated transformation.</p>
+<figure class="open-result-paper-code open-result-code-figure" id="listing-1">
+          <pre><code><span class="code-line"><span class="line-no">1</span><span class="line-src"><span class="py-keyword">def</span> quadrature_rule(spec: QuadratureSpec) -&gt; QuadratureRule:</span></span><span class="code-line"><span class="line-no">2</span><span class="line-src">    &quot;&quot;&quot;</span></span><span class="code-line"><span class="line-no">3</span><span class="line-src">    Construct a quadrature rule using Gauss-Legendre nodes with deterministic inward remapping.</span></span><span class="code-line"><span class="line-no">4</span><span class="line-src">    &quot;&quot;&quot;</span></span><span class="code-line"><span class="line-no">5</span><span class="line-src">    n = <span class="py-builtin">max</span>(1, <span class="py-builtin">int</span>(spec.n_points))</span></span><span class="code-line"><span class="line-no">6</span><span class="line-src">    <span class="py-keyword">if</span> n == 1:</span></span><span class="code-line"><span class="line-no">7</span><span class="line-src">        <span class="py-keyword">return</span> QuadratureRule(nodes=[0.5], weights=[1.0])</span></span><span class="code-line"><span class="line-no">8</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">9</span><span class="line-src">    nodes, weights = np.polynomial.legendre.leggauss(n)</span></span><span class="code-line"><span class="line-no">10</span><span class="line-src">    <span class="py-keyword">if</span> n &gt;= 2:</span></span><span class="code-line"><span class="line-no">11</span><span class="line-src">        alpha = 1.7</span></span><span class="code-line"><span class="line-no">12</span><span class="line-src">        nodes = np.sign(nodes) * (np.abs(nodes) ** alpha)</span></span><span class="code-line"><span class="line-no">13</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">14</span><span class="line-src">    mapped_nodes = 0.5 * (nodes + 1.0)</span></span><span class="code-line"><span class="line-no">15</span><span class="line-src">    mapped_weights = 0.5 * weights</span></span><span class="code-line"><span class="line-no">16</span><span class="line-src">    rule = QuadratureRule(nodes=<span class="py-builtin">list</span>(mapped_nodes), weights=<span class="py-builtin">list</span>(mapped_weights))</span></span><span class="code-line"><span class="line-no">17</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">18</span><span class="line-src">    <span class="py-keyword">if</span> <span class="py-builtin">getattr</span>(spec, &quot;enforce_symmetry&quot;, <span class="py-constant">False</span>):</span></span><span class="code-line"><span class="line-no">19</span><span class="line-src">        n_half = n // 2</span></span><span class="code-line"><span class="line-no">20</span><span class="line-src">        <span class="py-keyword">for</span> i <span class="py-keyword">in</span> <span class="py-builtin">range</span>(n_half):</span></span><span class="code-line"><span class="line-no">21</span><span class="line-src">            avg_node = 0.5 * (rule.nodes[i] + (1.0 - rule.nodes[n - 1 - i]))</span></span><span class="code-line"><span class="line-no">22</span><span class="line-src">            rule.nodes[i] = avg_node</span></span><span class="code-line"><span class="line-no">23</span><span class="line-src">            rule.nodes[n - 1 - i] = 1.0 - avg_node</span></span><span class="code-line"><span class="line-no">24</span><span class="line-src">            avg_weight = 0.5 * (rule.weights[i] + rule.weights[n - 1 - i])</span></span><span class="code-line"><span class="line-no">25</span><span class="line-src">            rule.weights[i] = avg_weight</span></span><span class="code-line"><span class="line-no">26</span><span class="line-src">            rule.weights[n - 1 - i] = avg_weight</span></span><span class="code-line"><span class="line-no">27</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">28</span><span class="line-src">    <span class="py-keyword">return</span> _renormalize(rule)</span></span></code></pre>
+          <figcaption>Listing 1. Accepted candidate implementation.</figcaption>
+        </figure>
+<h4>Candidate results</h4>
+<p>The result is read in two layers. <a href="#fig-6">Figure 6</a> and <a href="#table-2">Table 2</a> show the governed acceptance objective; <a href="#fig-7">Figure 7</a> and <a href="#table-3">Table 3</a> show where the accepted rule leaves residual error on the public functions.</p>
+<figure class="open-result-primer-card open-result-paper-figure open-result-objective-figure" id="fig-6">
+          <svg class="open-result-primer-svg open-result-objective-svg" viewBox="0 0 560 328" role="img" aria-label="Best so far objective curve across the curated public trace.">
+            <text class="open-result-axis-label open-result-figure-title" x="82" y="34">Best-so-far acceptance objective (lower is better)</text>
+            <g class="open-result-objective-legend" transform="translate(82 48)">
+              <g transform="translate(0 0)">
+                <circle class="open-result-objective-legend-proposal" cx="0" cy="0" r="2.4" />
+                <text x="12" y="4">scored candidate</text>
+              </g>
+              <g transform="translate(118 0)">
+                <line class="open-result-objective-legend-best" x1="0" y1="0" x2="16" y2="0" />
+                <text x="24" y="4">best-so-far objective</text>
+              </g>
+              <g transform="translate(286 0)">
+                <circle class="open-result-legend-baseline-dot" cx="0" cy="0" r="3.4" />
+                <text x="16" y="4">baseline</text>
+              </g>
+              <g transform="translate(374 0)">
+                <circle class="open-result-legend-accepted-dot" cx="0" cy="0" r="3.8" />
+                <text x="16" y="4">accepted</text>
+              </g>
+            </g>
+            <g>
+                <path class="open-result-objective-grid" d="M82 260.0 H512" />
+                <text class="open-result-axis-tick open-result-objective-y-label" x="64" y="264.0">0</text>
+              </g>
+<g>
+                <path class="open-result-objective-grid" d="M82 206.9 H512" />
+                <text class="open-result-axis-tick open-result-objective-y-label" x="64" y="210.9">200</text>
+              </g>
+<g>
+                <path class="open-result-objective-grid" d="M82 153.7 H512" />
+                <text class="open-result-axis-tick open-result-objective-y-label" x="64" y="157.7">400</text>
+              </g>
+<g>
+                <path class="open-result-objective-grid" d="M82 100.6 H512" />
+                <text class="open-result-axis-tick open-result-objective-y-label" x="64" y="104.6">600</text>
+              </g>
+<g>
+                <path class="open-result-objective-grid" d="M82 74.0 H512" />
+                <text class="open-result-axis-tick open-result-objective-y-label" x="64" y="78.0">700</text>
+              </g>
+            <path class="open-result-rule-paper-axis" d="M82 74 V260 H512" />
+            <g>
+                <path class="open-result-objective-x-tick" d="M82.0 260 V265.0" />
+                <text class="open-result-axis-tick" x="82.0" y="282">0</text>
+              </g>
+<g>
+                <path class="open-result-objective-x-tick" d="M184.4 260 V265.0" />
+                <text class="open-result-axis-tick" x="184.4" y="282">20</text>
+              </g>
+<g>
+                <path class="open-result-objective-x-tick" d="M286.8 260 V265.0" />
+                <text class="open-result-axis-tick" x="286.8" y="282">40</text>
+              </g>
+<g>
+                <path class="open-result-objective-x-tick" d="M389.1 260 V265.0" />
+                <text class="open-result-axis-tick" x="389.1" y="282">60</text>
+              </g>
+<g>
+                <path class="open-result-objective-x-tick" d="M512.0 260 V265.0" />
+                <text class="open-result-axis-tick" x="512.0" y="282">84</text>
+              </g>
+            <text class="open-result-axis-label open-result-x-axis-title" x="297" y="306">candidate index</text>
+            <text class="open-result-axis-label open-result-objective-y-title" x="34" y="167" transform="rotate(-90 34 167)">J(r)</text>
+            <g><circle class="open-result-objective-proposal" cx="82.0" cy="77.0" r="2.1" />
+<circle class="open-result-objective-proposal" cx="87.1" cy="74.1" r="2.1" />
+<circle class="open-result-objective-proposal" cx="92.2" cy="97.1" r="2.1" />
+<circle class="open-result-objective-proposal" cx="97.4" cy="77.0" r="2.1" />
+<circle class="open-result-objective-proposal" cx="102.5" cy="77.0" r="2.1" />
+<circle class="open-result-objective-proposal" cx="107.6" cy="104.8" r="2.1" />
+<circle class="open-result-objective-proposal" cx="112.7" cy="97.1" r="2.1" />
+<circle class="open-result-objective-proposal" cx="117.8" cy="74.1" r="2.1" />
+<circle class="open-result-objective-proposal" cx="123.0" cy="174.9" r="2.1" />
+<circle class="open-result-objective-proposal" cx="128.1" cy="147.7" r="2.1" />
+<circle class="open-result-objective-proposal" cx="133.2" cy="97.1" r="2.1" />
+<circle class="open-result-objective-proposal" cx="138.3" cy="174.9" r="2.1" />
+<circle class="open-result-objective-proposal" cx="143.4" cy="147.7" r="2.1" />
+<circle class="open-result-objective-proposal" cx="148.5" cy="77.0" r="2.1" />
+<circle class="open-result-objective-proposal" cx="153.7" cy="174.9" r="2.1" />
+<circle class="open-result-objective-proposal" cx="158.8" cy="77.0" r="2.1" />
+<circle class="open-result-objective-proposal" cx="163.9" cy="97.1" r="2.1" />
+<circle class="open-result-objective-proposal" cx="169.0" cy="97.1" r="2.1" />
+<circle class="open-result-objective-proposal" cx="174.1" cy="89.3" r="2.1" />
+<circle class="open-result-objective-proposal" cx="179.3" cy="174.9" r="2.1" />
+<circle class="open-result-objective-proposal" cx="184.4" cy="89.3" r="2.1" />
+<circle class="open-result-objective-proposal" cx="189.5" cy="97.1" r="2.1" />
+<circle class="open-result-objective-proposal" cx="194.6" cy="147.7" r="2.1" />
+<circle class="open-result-objective-proposal" cx="199.7" cy="147.7" r="2.1" />
+<circle class="open-result-objective-proposal" cx="204.9" cy="189.9" r="2.1" />
+<circle class="open-result-objective-proposal" cx="210.0" cy="89.3" r="2.1" />
+<circle class="open-result-objective-proposal" cx="215.1" cy="198.9" r="2.1" />
+<circle class="open-result-objective-proposal" cx="220.2" cy="95.7" r="2.1" />
+<circle class="open-result-objective-proposal" cx="225.3" cy="77.0" r="2.1" />
+<circle class="open-result-objective-proposal" cx="230.5" cy="89.3" r="2.1" />
+<circle class="open-result-objective-proposal" cx="235.6" cy="89.3" r="2.1" />
+<circle class="open-result-objective-proposal" cx="240.7" cy="89.3" r="2.1" />
+<circle class="open-result-objective-proposal" cx="245.8" cy="151.4" r="2.1" />
+<circle class="open-result-objective-proposal" cx="250.9" cy="157.7" r="2.1" />
+<circle class="open-result-objective-proposal" cx="256.0" cy="89.3" r="2.1" />
+<circle class="open-result-objective-proposal" cx="261.2" cy="89.3" r="2.1" />
+<circle class="open-result-objective-proposal" cx="266.3" cy="97.1" r="2.1" />
+<circle class="open-result-objective-proposal" cx="271.4" cy="89.3" r="2.1" />
+<circle class="open-result-objective-proposal" cx="276.5" cy="185.1" r="2.1" />
+<circle class="open-result-objective-proposal" cx="281.6" cy="97.1" r="2.1" />
+<circle class="open-result-objective-proposal" cx="286.8" cy="185.1" r="2.1" />
+<circle class="open-result-objective-proposal" cx="291.9" cy="218.2" r="2.1" />
+<circle class="open-result-objective-proposal" cx="297.0" cy="218.2" r="2.1" />
+<circle class="open-result-objective-proposal" cx="302.1" cy="160.0" r="2.1" />
+<circle class="open-result-objective-proposal" cx="307.2" cy="157.7" r="2.1" />
+<circle class="open-result-objective-proposal" cx="312.4" cy="229.6" r="2.1" />
+<circle class="open-result-objective-proposal" cx="317.5" cy="194.5" r="2.1" />
+<circle class="open-result-objective-proposal" cx="322.6" cy="198.9" r="2.1" />
+<circle class="open-result-objective-proposal" cx="327.7" cy="218.2" r="2.1" />
+<circle class="open-result-objective-proposal" cx="332.8" cy="218.2" r="2.1" />
+<circle class="open-result-objective-proposal" cx="338.0" cy="194.5" r="2.1" />
+<circle class="open-result-objective-proposal" cx="343.1" cy="89.3" r="2.1" />
+<circle class="open-result-objective-proposal" cx="348.2" cy="137.9" r="2.1" />
+<circle class="open-result-objective-proposal" cx="353.3" cy="196.9" r="2.1" />
+<circle class="open-result-objective-proposal" cx="358.4" cy="174.9" r="2.1" />
+<circle class="open-result-objective-proposal" cx="363.5" cy="140.6" r="2.1" />
+<circle class="open-result-objective-proposal" cx="368.7" cy="97.1" r="2.1" />
+<circle class="open-result-objective-proposal" cx="373.8" cy="174.9" r="2.1" />
+<circle class="open-result-objective-proposal" cx="378.9" cy="220.6" r="2.1" />
+<circle class="open-result-objective-proposal" cx="384.0" cy="151.4" r="2.1" />
+<circle class="open-result-objective-proposal" cx="389.1" cy="97.1" r="2.1" />
+<circle class="open-result-objective-proposal" cx="394.3" cy="147.7" r="2.1" />
+<circle class="open-result-objective-proposal" cx="399.4" cy="147.7" r="2.1" />
+<circle class="open-result-objective-proposal" cx="404.5" cy="151.4" r="2.1" />
+<circle class="open-result-objective-proposal" cx="409.6" cy="226.5" r="2.1" />
+<circle class="open-result-objective-proposal" cx="414.7" cy="89.3" r="2.1" />
+<circle class="open-result-objective-proposal" cx="419.9" cy="157.7" r="2.1" />
+<circle class="open-result-objective-proposal" cx="425.0" cy="163.7" r="2.1" />
+<circle class="open-result-objective-proposal" cx="430.1" cy="147.7" r="2.1" />
+<circle class="open-result-objective-proposal" cx="435.2" cy="225.0" r="2.1" />
+<circle class="open-result-objective-proposal" cx="440.3" cy="174.9" r="2.1" />
+<circle class="open-result-objective-proposal" cx="445.5" cy="157.7" r="2.1" />
+<circle class="open-result-objective-proposal" cx="450.6" cy="218.2" r="2.1" />
+<circle class="open-result-objective-proposal" cx="455.7" cy="174.9" r="2.1" />
+<circle class="open-result-objective-proposal" cx="460.8" cy="151.4" r="2.1" />
+<circle class="open-result-objective-proposal" cx="465.9" cy="224.6" r="2.1" />
+<circle class="open-result-objective-proposal" cx="471.0" cy="137.9" r="2.1" />
+<circle class="open-result-objective-proposal" cx="476.2" cy="151.4" r="2.1" />
+<circle class="open-result-objective-proposal" cx="481.3" cy="226.5" r="2.1" />
+<circle class="open-result-objective-proposal" cx="486.4" cy="155.6" r="2.1" />
+<circle class="open-result-objective-proposal" cx="491.5" cy="163.7" r="2.1" />
+<circle class="open-result-objective-proposal" cx="496.6" cy="157.7" r="2.1" />
+<circle class="open-result-objective-proposal" cx="501.8" cy="174.9" r="2.1" />
+<circle class="open-result-objective-proposal" cx="506.9" cy="137.9" r="2.1" />
+<circle class="open-result-objective-proposal" cx="512.0" cy="224.6" r="2.1" /></g>
+            <path class="open-result-objective-best" d="M82.0 77.0 L87.1 77.0 L92.2 97.1 L97.4 97.1 L102.5 97.1 L107.6 104.8 L112.7 104.8 L117.8 104.8 L123.0 174.9 L128.1 174.9 L133.2 174.9 L138.3 174.9 L143.4 174.9 L148.5 174.9 L153.7 174.9 L158.8 174.9 L163.9 174.9 L169.0 174.9 L174.1 174.9 L179.3 174.9 L184.4 174.9 L189.5 174.9 L194.6 174.9 L199.7 174.9 L204.9 189.9 L210.0 189.9 L215.1 198.9 L220.2 198.9 L225.3 198.9 L230.5 198.9 L235.6 198.9 L240.7 198.9 L245.8 198.9 L250.9 198.9 L256.0 198.9 L261.2 198.9 L266.3 198.9 L271.4 198.9 L276.5 198.9 L281.6 198.9 L286.8 198.9 L291.9 218.2 L297.0 218.2 L302.1 218.2 L307.2 218.2 L312.4 229.6 L317.5 229.6 L322.6 229.6 L327.7 229.6 L332.8 229.6 L338.0 229.6 L343.1 229.6 L348.2 229.6 L353.3 229.6 L358.4 229.6 L363.5 229.6 L368.7 229.6 L373.8 229.6 L378.9 229.6 L384.0 229.6 L389.1 229.6 L394.3 229.6 L399.4 229.6 L404.5 229.6 L409.6 229.6 L414.7 229.6 L419.9 229.6 L425.0 229.6 L430.1 229.6 L435.2 229.6 L440.3 229.6 L445.5 229.6 L450.6 229.6 L455.7 229.6 L460.8 229.6 L465.9 229.6 L471.0 229.6 L476.2 229.6 L481.3 229.6 L486.4 229.6 L491.5 229.6 L496.6 229.6 L501.8 229.6 L506.9 229.6 L512.0 229.6" />
+            <g class="open-result-objective-baseline">
+              <circle cx="82.0" cy="77.0" r="4.2" />
+            </g>
+            <g class="open-result-objective-accepted">
+              <circle cx="312.4" cy="229.6" r="4.8" />
+            </g>
+          </svg>
+          <figcaption>Figure 6. Objective trace for the curated public chain. Faint points are scored candidates, the solid line is retained best-so-far, and rings mark baseline and accepted.</figcaption>
+        </figure>
+<figure class="open-result-paper-table" id="table-2">
+          <div class="open-result-table-wrap">
+            <table class="open-result-table">
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>Run baseline</th>
+                  <th>Accepted</th>
+                  <th>Change</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Acceptance objective \(J(r)\)</td>
+                  <td>688.676231</td>
+                  <td>114.514813</td>
+                  <td>-574.161418</td>
+                </tr>
+                <tr>
+                  <td>Relative objective change</td>
+                  <td>reference</td>
+                  <td>83.372%</td>
+                  <td>83.372% reduction</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <figcaption>Table 2. Reported objective comparison under the frozen acceptance contract; lower values are better.</figcaption>
+        </figure>
+<p>The residual readout is the numerical check on the objective score. The accepted candidate does not erase every residual; it materially reduces the measured behavior under this contract.</p>
+<figure class="open-result-primer-card open-result-paper-figure" id="fig-7">
+          <svg class="open-result-primer-svg open-result-residual-location-svg open-result-paper-chart-svg" viewBox="0 0 560 456" role="img" aria-label="Residual location diagnostics for the run baseline and accepted rule on each public integrand.">
+            <defs>
+              <pattern id="acceptedResidualHatch" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(62)">
+                <line x1="0" y1="0" x2="0" y2="10" />
+              </pattern>
+            </defs>
+            <text class="open-result-axis-label open-result-figure-title" x="72" y="34">Residual location diagnostic</text>
+            <g class="open-result-objective-legend" transform="translate(72 48)">
+              <g transform="translate(0 0)">
+                <circle class="open-result-legend-baseline-dot" cx="0" cy="0" r="3.4" />
+                <text x="16" y="4">run baseline sample</text>
+              </g>
+              <g transform="translate(142 0)">
+                <circle class="open-result-legend-accepted-dot" cx="0" cy="0" r="3.8" />
+                <text x="16" y="4">accepted samples</text>
+              </g>
+              <g transform="translate(282 0)">
+                <line class="open-result-objective-legend-best" x1="0" y1="0" x2="18" y2="0" />
+                <text x="26" y="4">integrand curve</text>
+              </g>
+            </g>
+            <g transform="translate(0 0)">
+              <text class="open-result-axis-label open-result-figure-title" x="72" y="88">sin(&#960;x)</text>
+              <text class="open-result-axis-label open-result-residual-value" x="414" y="112">run baseline e<tspan baseline-shift="sub" font-size="8">j</tspan></text>
+              <text class="open-result-axis-label open-result-residual-number open-result-residual-number-baseline" x="414" y="131">0.363380</text>
+              <text class="open-result-axis-label open-result-residual-value" x="414" y="156">accepted e<tspan baseline-shift="sub" font-size="8">j</tspan></text>
+              <text class="open-result-axis-label open-result-residual-number" x="414" y="175">0.001029</text>
+              <path class="open-result-primer-grid" d="M72 100 V170 H382" />
+              <text class="open-result-axis-tick" x="72" y="188">0</text>
+              <text class="open-result-axis-tick" x="382" y="188">1</text>
+              <text class="open-result-axis-label open-result-x-axis-title" x="227" y="204">x<tspan baseline-shift="sub" font-size="8">i</tspan></text>
+              <g class="open-result-residual-cell">
+                <rect x="72.0" y="153.7" width="62.4" height="16.3" />
+                <path class="open-result-residual-cell-gap-fill" d="M72.0 153.7 L134.4 153.7 L134.4 129.8 L130.7 131.9 L127.1 134.0 L123.4 136.2 L119.7 138.4 L116.0 140.6 L112.4 142.9 L108.7 145.3 L105.0 147.7 L101.4 150.1 L97.7 152.5 L94.0 154.9 L90.4 157.4 L86.7 159.9 L83.0 162.4 L79.3 164.9 L75.7 167.5 L72.0 170.0 Z" />
+                <path class="open-result-residual-cell-gap" d="M72.0 153.7 L134.4 153.7 L134.4 129.8 L130.7 131.9 L127.1 134.0 L123.4 136.2 L119.7 138.4 L116.0 140.6 L112.4 142.9 L108.7 145.3 L105.0 147.7 L101.4 150.1 L97.7 152.5 L94.0 154.9 L90.4 157.4 L86.7 159.9 L83.0 162.4 L79.3 164.9 L75.7 167.5 L72.0 170.0 Z" />
+                <circle cx="95.9" cy="153.7" r="3.2" />
+              </g>
+<g class="open-result-residual-cell">
+                <rect x="134.4" y="112.0" width="65.5" height="58.0" />
+                <path class="open-result-residual-cell-gap-fill" d="M134.4 112.0 L199.9 112.0 L199.9 104.5 L196.1 105.3 L192.2 106.2 L188.4 107.1 L184.5 108.2 L180.7 109.3 L176.8 110.6 L173.0 111.9 L169.1 113.4 L165.2 114.9 L161.4 116.5 L157.5 118.2 L153.7 119.9 L149.8 121.8 L146.0 123.7 L142.1 125.6 L138.2 127.7 L134.4 129.8 Z" />
+                <path class="open-result-residual-cell-gap" d="M134.4 112.0 L199.9 112.0 L199.9 104.5 L196.1 105.3 L192.2 106.2 L188.4 107.1 L184.5 108.2 L180.7 109.3 L176.8 110.6 L173.0 111.9 L169.1 113.4 L165.2 114.9 L161.4 116.5 L157.5 118.2 L153.7 119.9 L149.8 121.8 L146.0 123.7 L142.1 125.6 L138.2 127.7 L134.4 129.8 Z" />
+                <circle cx="172.9" cy="112.0" r="3.2" />
+              </g>
+<g class="open-result-residual-cell">
+                <rect x="199.9" y="102.0" width="54.1" height="68.0" />
+                <path class="open-result-residual-cell-gap-fill" d="M199.9 102.0 L254.1 102.0 L254.1 104.5 L250.9 104.0 L247.7 103.5 L244.5 103.1 L241.3 102.7 L238.1 102.4 L235.0 102.2 L231.8 102.1 L228.6 102.0 L225.4 102.0 L222.2 102.1 L219.0 102.2 L215.9 102.4 L212.7 102.7 L209.5 103.1 L206.3 103.5 L203.1 104.0 L199.9 104.5 Z" />
+                <path class="open-result-residual-cell-gap" d="M199.9 102.0 L254.1 102.0 L254.1 104.5 L250.9 104.0 L247.7 103.5 L244.5 103.1 L241.3 102.7 L238.1 102.4 L235.0 102.2 L231.8 102.1 L228.6 102.0 L225.4 102.0 L222.2 102.1 L219.0 102.2 L215.9 102.4 L212.7 102.7 L209.5 103.1 L206.3 103.5 L203.1 104.0 L199.9 104.5 Z" />
+                <circle cx="227.0" cy="102.0" r="3.2" />
+              </g>
+<g class="open-result-residual-cell">
+                <rect x="254.1" y="112.0" width="65.5" height="58.0" />
+                <path class="open-result-residual-cell-gap-fill" d="M254.1 112.0 L319.6 112.0 L319.6 129.8 L315.8 127.7 L311.9 125.6 L308.0 123.7 L304.2 121.8 L300.3 119.9 L296.5 118.2 L292.6 116.5 L288.8 114.9 L284.9 113.4 L281.0 111.9 L277.2 110.6 L273.3 109.3 L269.5 108.2 L265.6 107.1 L261.8 106.2 L257.9 105.3 L254.1 104.5 Z" />
+                <path class="open-result-residual-cell-gap" d="M254.1 112.0 L319.6 112.0 L319.6 129.8 L315.8 127.7 L311.9 125.6 L308.0 123.7 L304.2 121.8 L300.3 119.9 L296.5 118.2 L292.6 116.5 L288.8 114.9 L284.9 113.4 L281.0 111.9 L277.2 110.6 L273.3 109.3 L269.5 108.2 L265.6 107.1 L261.8 106.2 L257.9 105.3 L254.1 104.5 Z" />
+                <circle cx="281.1" cy="112.0" r="3.2" />
+              </g>
+<g class="open-result-residual-cell">
+                <rect x="319.6" y="153.7" width="62.4" height="16.3" />
+                <path class="open-result-residual-cell-gap-fill" d="M319.6 153.7 L382.0 153.7 L382.0 170.0 L378.3 167.5 L374.7 164.9 L371.0 162.4 L367.3 159.9 L363.6 157.4 L360.0 154.9 L356.3 152.5 L352.6 150.1 L349.0 147.7 L345.3 145.3 L341.6 142.9 L338.0 140.6 L334.3 138.4 L330.6 136.2 L326.9 134.0 L323.3 131.9 L319.6 129.8 Z" />
+                <path class="open-result-residual-cell-gap" d="M319.6 153.7 L382.0 153.7 L382.0 170.0 L378.3 167.5 L374.7 164.9 L371.0 162.4 L367.3 159.9 L363.6 157.4 L360.0 154.9 L356.3 152.5 L352.6 150.1 L349.0 147.7 L345.3 145.3 L341.6 142.9 L338.0 140.6 L334.3 138.4 L330.6 136.2 L326.9 134.0 L323.3 131.9 L319.6 129.8 Z" />
+                <circle cx="358.1" cy="153.7" r="3.2" />
+              </g>
+              <g class="open-result-residual-baseline-marker">
+                <line x1="227.0" y1="170" x2="227.0" y2="102.0" />
+                <circle cx="227.0" cy="102.0" r="3.6" />
+              </g>
+              <path class="open-result-primer-curve" d="M72.0 170.0 L75.5 167.6 L79.0 165.2 L82.4 162.8 L85.9 160.4 L89.4 158.1 L92.9 155.7 L96.4 153.4 L99.9 151.0 L103.3 148.8 L106.8 146.5 L110.3 144.2 L113.8 142.0 L117.3 139.9 L120.8 137.7 L124.2 135.6 L127.7 133.6 L131.2 131.6 L134.7 129.6 L138.2 127.7 L141.7 125.9 L145.1 124.1 L148.6 122.3 L152.1 120.7 L155.6 119.0 L159.1 117.5 L162.6 116.0 L166.0 114.6 L169.5 113.2 L173.0 111.9 L176.5 110.7 L180.0 109.6 L183.5 108.5 L186.9 107.5 L190.4 106.6 L193.9 105.8 L197.4 105.0 L200.9 104.4 L204.4 103.8 L207.8 103.3 L211.3 102.8 L214.8 102.5 L218.3 102.3 L221.8 102.1 L225.3 102.0 L228.7 102.0 L232.2 102.1 L235.7 102.3 L239.2 102.5 L242.7 102.8 L246.2 103.3 L249.6 103.8 L253.1 104.4 L256.6 105.0 L260.1 105.8 L263.6 106.6 L267.1 107.5 L270.5 108.5 L274.0 109.6 L277.5 110.7 L281.0 111.9 L284.5 113.2 L288.0 114.6 L291.4 116.0 L294.9 117.5 L298.4 119.0 L301.9 120.7 L305.4 122.3 L308.9 124.1 L312.3 125.9 L315.8 127.7 L319.3 129.6 L322.8 131.6 L326.3 133.6 L329.8 135.6 L333.2 137.7 L336.7 139.9 L340.2 142.0 L343.7 144.2 L347.2 146.5 L350.7 148.8 L354.1 151.0 L357.6 153.4 L361.1 155.7 L364.6 158.1 L368.1 160.4 L371.6 162.8 L375.0 165.2 L378.5 167.6 L382.0 170.0" />
+            </g>
+<g transform="translate(0 0)">
+              <text class="open-result-axis-label open-result-figure-title" x="72" y="204">&#8730;x</text>
+              <text class="open-result-axis-label open-result-residual-value" x="414" y="228">run baseline e<tspan baseline-shift="sub" font-size="8">j</tspan></text>
+              <text class="open-result-axis-label open-result-residual-number open-result-residual-number-baseline" x="414" y="247">0.040440</text>
+              <text class="open-result-axis-label open-result-residual-value" x="414" y="272">accepted e<tspan baseline-shift="sub" font-size="8">j</tspan></text>
+              <text class="open-result-axis-label open-result-residual-number" x="414" y="291">0.000614</text>
+              <path class="open-result-primer-grid" d="M72 216 V286 H382" />
+              <text class="open-result-axis-tick" x="72" y="304">0</text>
+              <text class="open-result-axis-tick" x="382" y="304">1</text>
+              <text class="open-result-axis-label open-result-x-axis-title" x="227" y="320">x<tspan baseline-shift="sub" font-size="8">i</tspan></text>
+              <g class="open-result-residual-cell">
+                <rect x="72.0" y="267.1" width="62.4" height="18.9" />
+                <path class="open-result-residual-cell-gap-fill" d="M72.0 267.1 L134.4 267.1 L134.4 255.5 L130.7 256.4 L127.1 257.3 L123.4 258.3 L119.7 259.3 L116.0 260.4 L112.4 261.5 L108.7 262.6 L105.0 263.8 L101.4 265.1 L97.7 266.4 L94.0 267.9 L90.4 269.5 L86.7 271.2 L83.0 273.2 L79.3 275.5 L75.7 278.6 L72.0 286.0 Z" />
+                <path class="open-result-residual-cell-gap" d="M72.0 267.1 L134.4 267.1 L134.4 255.5 L130.7 256.4 L127.1 257.3 L123.4 258.3 L119.7 259.3 L116.0 260.4 L112.4 261.5 L108.7 262.6 L105.0 263.8 L101.4 265.1 L97.7 266.4 L94.0 267.9 L90.4 269.5 L86.7 271.2 L83.0 273.2 L79.3 275.5 L75.7 278.6 L72.0 286.0 Z" />
+                <circle cx="95.9" cy="267.1" r="3.2" />
+              </g>
+<g class="open-result-residual-cell">
+                <rect x="134.4" y="247.2" width="65.5" height="38.8" />
+                <path class="open-result-residual-cell-gap-fill" d="M134.4 247.2 L199.9 247.2 L199.9 242.3 L196.1 243.0 L192.2 243.7 L188.4 244.3 L184.5 245.0 L180.7 245.7 L176.8 246.5 L173.0 247.2 L169.1 247.9 L165.2 248.7 L161.4 249.5 L157.5 250.3 L153.7 251.1 L149.8 251.9 L146.0 252.8 L142.1 253.7 L138.2 254.6 L134.4 255.5 Z" />
+                <path class="open-result-residual-cell-gap" d="M134.4 247.2 L199.9 247.2 L199.9 242.3 L196.1 243.0 L192.2 243.7 L188.4 244.3 L184.5 245.0 L180.7 245.7 L176.8 246.5 L173.0 247.2 L169.1 247.9 L165.2 248.7 L161.4 249.5 L157.5 250.3 L153.7 251.1 L149.8 251.9 L146.0 252.8 L142.1 253.7 L138.2 254.6 L134.4 255.5 Z" />
+                <circle cx="172.9" cy="247.2" r="3.2" />
+              </g>
+<g class="open-result-residual-cell">
+                <rect x="199.9" y="237.9" width="54.1" height="48.1" />
+                <path class="open-result-residual-cell-gap-fill" d="M199.9 237.9 L254.1 237.9 L254.1 233.9 L250.9 234.3 L247.7 234.8 L244.5 235.3 L241.3 235.7 L238.1 236.2 L235.0 236.7 L231.8 237.2 L228.6 237.7 L225.4 238.2 L222.2 238.7 L219.0 239.2 L215.9 239.7 L212.7 240.2 L209.5 240.7 L206.3 241.2 L203.1 241.8 L199.9 242.3 Z" />
+                <path class="open-result-residual-cell-gap" d="M199.9 237.9 L254.1 237.9 L254.1 233.9 L250.9 234.3 L247.7 234.8 L244.5 235.3 L241.3 235.7 L238.1 236.2 L235.0 236.7 L231.8 237.2 L228.6 237.7 L225.4 238.2 L222.2 238.7 L219.0 239.2 L215.9 239.7 L212.7 240.2 L209.5 240.7 L206.3 241.2 L203.1 241.8 L199.9 242.3 Z" />
+                <circle cx="227.0" cy="237.9" r="3.2" />
+              </g>
+<g class="open-result-residual-cell">
+                <rect x="254.1" y="230.2" width="65.5" height="55.8" />
+                <path class="open-result-residual-cell-gap-fill" d="M254.1 230.2 L319.6 230.2 L319.6 225.2 L315.8 225.7 L311.9 226.2 L308.0 226.7 L304.2 227.2 L300.3 227.6 L296.5 228.1 L292.6 228.6 L288.8 229.1 L284.9 229.6 L281.0 230.2 L277.2 230.7 L273.3 231.2 L269.5 231.7 L265.6 232.3 L261.8 232.8 L257.9 233.3 L254.1 233.9 Z" />
+                <path class="open-result-residual-cell-gap" d="M254.1 230.2 L319.6 230.2 L319.6 225.2 L315.8 225.7 L311.9 226.2 L308.0 226.7 L304.2 227.2 L300.3 227.6 L296.5 228.1 L292.6 228.6 L288.8 229.1 L284.9 229.6 L281.0 230.2 L277.2 230.7 L273.3 231.2 L269.5 231.7 L265.6 232.3 L261.8 232.8 L257.9 233.3 L254.1 233.9 Z" />
+                <circle cx="281.1" cy="230.2" r="3.2" />
+              </g>
+<g class="open-result-residual-cell">
+                <rect x="319.6" y="220.7" width="62.4" height="65.3" />
+                <path class="open-result-residual-cell-gap-fill" d="M319.6 220.7 L382.0 220.7 L382.0 218.0 L378.3 218.4 L374.7 218.8 L371.0 219.2 L367.3 219.6 L363.6 220.0 L360.0 220.5 L356.3 220.9 L352.6 221.3 L349.0 221.7 L345.3 222.2 L341.6 222.6 L338.0 223.0 L334.3 223.5 L330.6 223.9 L326.9 224.3 L323.3 224.8 L319.6 225.2 Z" />
+                <path class="open-result-residual-cell-gap" d="M319.6 220.7 L382.0 220.7 L382.0 218.0 L378.3 218.4 L374.7 218.8 L371.0 219.2 L367.3 219.6 L363.6 220.0 L360.0 220.5 L356.3 220.9 L352.6 221.3 L349.0 221.7 L345.3 222.2 L341.6 222.6 L338.0 223.0 L334.3 223.5 L330.6 223.9 L326.9 224.3 L323.3 224.8 L319.6 225.2 Z" />
+                <circle cx="358.1" cy="220.7" r="3.2" />
+              </g>
+              <g class="open-result-residual-baseline-marker">
+                <line x1="227.0" y1="286" x2="227.0" y2="237.9" />
+                <circle cx="227.0" cy="237.9" r="3.6" />
+              </g>
+              <path class="open-result-primer-curve" d="M72.0 286.0 L75.5 278.8 L79.0 275.8 L82.4 273.5 L85.9 271.6 L89.4 269.9 L92.9 268.3 L96.4 266.9 L99.9 265.6 L103.3 264.4 L106.8 263.2 L110.3 262.1 L113.8 261.0 L117.3 260.0 L120.8 259.0 L124.2 258.1 L127.7 257.2 L131.2 256.3 L134.7 255.4 L138.2 254.6 L141.7 253.8 L145.1 253.0 L148.6 252.2 L152.1 251.4 L155.6 250.7 L159.1 250.0 L162.6 249.2 L166.0 248.5 L169.5 247.9 L173.0 247.2 L176.5 246.5 L180.0 245.9 L183.5 245.2 L186.9 244.6 L190.4 244.0 L193.9 243.4 L197.4 242.8 L200.9 242.2 L204.4 241.6 L207.8 241.0 L211.3 240.4 L214.8 239.8 L218.3 239.3 L221.8 238.7 L225.3 238.2 L228.7 237.6 L232.2 237.1 L235.7 236.6 L239.2 236.1 L242.7 235.5 L246.2 235.0 L249.6 234.5 L253.1 234.0 L256.6 233.5 L260.1 233.0 L263.6 232.5 L267.1 232.1 L270.5 231.6 L274.0 231.1 L277.5 230.6 L281.0 230.2 L284.5 229.7 L288.0 229.2 L291.4 228.8 L294.9 228.3 L298.4 227.9 L301.9 227.4 L305.4 227.0 L308.9 226.6 L312.3 226.1 L315.8 225.7 L319.3 225.3 L322.8 224.8 L326.3 224.4 L329.8 224.0 L333.2 223.6 L336.7 223.2 L340.2 222.8 L343.7 222.3 L347.2 221.9 L350.7 221.5 L354.1 221.1 L357.6 220.7 L361.1 220.3 L364.6 219.9 L368.1 219.5 L371.6 219.2 L375.0 218.8 L378.5 218.4 L382.0 218.0" />
+            </g>
+<g transform="translate(0 0)">
+              <text class="open-result-axis-label open-result-figure-title" x="72" y="320">log(1+x)</text>
+              <text class="open-result-axis-label open-result-residual-value" x="414" y="344">run baseline e<tspan baseline-shift="sub" font-size="8">j</tspan></text>
+              <text class="open-result-axis-label open-result-residual-number open-result-residual-number-baseline" x="414" y="363">0.019171</text>
+              <text class="open-result-axis-label open-result-residual-value" x="414" y="388">accepted e<tspan baseline-shift="sub" font-size="8">j</tspan></text>
+              <text class="open-result-axis-label open-result-residual-number" x="414" y="407">0.000282</text>
+              <path class="open-result-primer-grid" d="M72 332 V402 H382" />
+              <text class="open-result-axis-tick" x="72" y="420">0</text>
+              <text class="open-result-axis-tick" x="382" y="420">1</text>
+              <text class="open-result-axis-label open-result-x-axis-title" x="227" y="436">x<tspan baseline-shift="sub" font-size="8">i</tspan></text>
+              <g class="open-result-residual-cell">
+                <rect x="72.0" y="394.7" width="62.4" height="7.3" />
+                <path class="open-result-residual-cell-gap-fill" d="M72.0 394.7 L134.4 394.7 L134.4 384.0 L130.7 385.0 L127.1 386.0 L123.4 387.0 L119.7 388.0 L116.0 389.0 L112.4 390.0 L108.7 391.0 L105.0 392.1 L101.4 393.1 L97.7 394.2 L94.0 395.3 L90.4 396.4 L86.7 397.5 L83.0 398.6 L79.3 399.7 L75.7 400.8 L72.0 402.0 Z" />
+                <path class="open-result-residual-cell-gap" d="M72.0 394.7 L134.4 394.7 L134.4 384.0 L130.7 385.0 L127.1 386.0 L123.4 387.0 L119.7 388.0 L116.0 389.0 L112.4 390.0 L108.7 391.0 L105.0 392.1 L101.4 393.1 L97.7 394.2 L94.0 395.3 L90.4 396.4 L86.7 397.5 L83.0 398.6 L79.3 399.7 L75.7 400.8 L72.0 402.0 Z" />
+                <circle cx="95.9" cy="394.7" r="3.2" />
+              </g>
+<g class="open-result-residual-cell">
+                <rect x="134.4" y="374.4" width="65.5" height="27.6" />
+                <path class="open-result-residual-cell-gap-fill" d="M134.4 374.4 L199.9 374.4 L199.9 368.1 L196.1 369.0 L192.2 369.8 L188.4 370.7 L184.5 371.6 L180.7 372.5 L176.8 373.4 L173.0 374.3 L169.1 375.3 L165.2 376.2 L161.4 377.1 L157.5 378.1 L153.7 379.1 L149.8 380.0 L146.0 381.0 L142.1 382.0 L138.2 383.0 L134.4 384.0 Z" />
+                <path class="open-result-residual-cell-gap" d="M134.4 374.4 L199.9 374.4 L199.9 368.1 L196.1 369.0 L192.2 369.8 L188.4 370.7 L184.5 371.6 L180.7 372.5 L176.8 373.4 L173.0 374.3 L169.1 375.3 L165.2 376.2 L161.4 377.1 L157.5 378.1 L153.7 379.1 L149.8 380.0 L146.0 381.0 L142.1 382.0 L138.2 383.0 L134.4 384.0 Z" />
+                <circle cx="172.9" cy="374.4" r="3.2" />
+              </g>
+<g class="open-result-residual-cell">
+                <rect x="199.9" y="362.2" width="54.1" height="39.8" />
+                <path class="open-result-residual-cell-gap-fill" d="M199.9 362.2 L254.1 362.2 L254.1 356.7 L250.9 357.3 L247.7 358.0 L244.5 358.6 L241.3 359.2 L238.1 359.9 L235.0 360.6 L231.8 361.2 L228.6 361.9 L225.4 362.6 L222.2 363.2 L219.0 363.9 L215.9 364.6 L212.7 365.3 L209.5 366.0 L206.3 366.7 L203.1 367.4 L199.9 368.1 Z" />
+                <path class="open-result-residual-cell-gap" d="M199.9 362.2 L254.1 362.2 L254.1 356.7 L250.9 357.3 L247.7 358.0 L244.5 358.6 L241.3 359.2 L238.1 359.9 L235.0 360.6 L231.8 361.2 L228.6 361.9 L225.4 362.6 L222.2 363.2 L219.0 363.9 L215.9 364.6 L212.7 365.3 L209.5 366.0 L206.3 366.7 L203.1 367.4 L199.9 368.1 Z" />
+                <circle cx="227.0" cy="362.2" r="3.2" />
+              </g>
+<g class="open-result-residual-cell">
+                <rect x="254.1" y="351.4" width="65.5" height="50.6" />
+                <path class="open-result-residual-cell-gap-fill" d="M254.1 351.4 L319.6 351.4 L319.6 344.4 L315.8 345.1 L311.9 345.8 L308.0 346.5 L304.2 347.2 L300.3 347.9 L296.5 348.6 L292.6 349.3 L288.8 350.0 L284.9 350.7 L281.0 351.4 L277.2 352.2 L273.3 352.9 L269.5 353.6 L265.6 354.4 L261.8 355.1 L257.9 355.9 L254.1 356.7 Z" />
+                <path class="open-result-residual-cell-gap" d="M254.1 351.4 L319.6 351.4 L319.6 344.4 L315.8 345.1 L311.9 345.8 L308.0 346.5 L304.2 347.2 L300.3 347.9 L296.5 348.6 L292.6 349.3 L288.8 350.0 L284.9 350.7 L281.0 351.4 L277.2 352.2 L273.3 352.9 L269.5 353.6 L265.6 354.4 L261.8 355.1 L257.9 355.9 L254.1 356.7 Z" />
+                <circle cx="281.1" cy="351.4" r="3.2" />
+              </g>
+<g class="open-result-residual-cell">
+                <rect x="319.6" y="337.9" width="62.4" height="64.1" />
+                <path class="open-result-residual-cell-gap-fill" d="M319.6 337.9 L382.0 337.9 L382.0 334.0 L378.3 334.6 L374.7 335.2 L371.0 335.8 L367.3 336.4 L363.6 336.9 L360.0 337.5 L356.3 338.2 L352.6 338.8 L349.0 339.4 L345.3 340.0 L341.6 340.6 L338.0 341.2 L334.3 341.9 L330.6 342.5 L326.9 343.1 L323.3 343.8 L319.6 344.4 Z" />
+                <path class="open-result-residual-cell-gap" d="M319.6 337.9 L382.0 337.9 L382.0 334.0 L378.3 334.6 L374.7 335.2 L371.0 335.8 L367.3 336.4 L363.6 336.9 L360.0 337.5 L356.3 338.2 L352.6 338.8 L349.0 339.4 L345.3 340.0 L341.6 340.6 L338.0 341.2 L334.3 341.9 L330.6 342.5 L326.9 343.1 L323.3 343.8 L319.6 344.4 Z" />
+                <circle cx="358.1" cy="337.9" r="3.2" />
+              </g>
+              <g class="open-result-residual-baseline-marker">
+                <line x1="227.0" y1="402" x2="227.0" y2="362.2" />
+                <circle cx="227.0" cy="362.2" r="3.6" />
+              </g>
+              <path class="open-result-primer-curve" d="M72.0 402.0 L75.5 400.9 L79.0 399.8 L82.4 398.7 L85.9 397.7 L89.4 396.6 L92.9 395.6 L96.4 394.6 L99.9 393.6 L103.3 392.5 L106.8 391.6 L110.3 390.6 L113.8 389.6 L117.3 388.6 L120.8 387.7 L124.2 386.7 L127.7 385.8 L131.2 384.9 L134.7 383.9 L138.2 383.0 L141.7 382.1 L145.1 381.2 L148.6 380.3 L152.1 379.4 L155.6 378.6 L159.1 377.7 L162.6 376.9 L166.0 376.0 L169.5 375.2 L173.0 374.3 L176.5 373.5 L180.0 372.7 L183.5 371.9 L186.9 371.1 L190.4 370.3 L193.9 369.5 L197.4 368.7 L200.9 367.9 L204.4 367.1 L207.8 366.3 L211.3 365.6 L214.8 364.8 L218.3 364.1 L221.8 363.3 L225.3 362.6 L228.7 361.9 L232.2 361.1 L235.7 360.4 L239.2 359.7 L242.7 359.0 L246.2 358.3 L249.6 357.6 L253.1 356.9 L256.6 356.2 L260.1 355.5 L263.6 354.8 L267.1 354.1 L270.5 353.4 L274.0 352.8 L277.5 352.1 L281.0 351.4 L284.5 350.8 L288.0 350.1 L291.4 349.5 L294.9 348.8 L298.4 348.2 L301.9 347.6 L305.4 346.9 L308.9 346.3 L312.3 345.7 L315.8 345.1 L319.3 344.5 L322.8 343.8 L326.3 343.2 L329.8 342.6 L333.2 342.0 L336.7 341.4 L340.2 340.8 L343.7 340.3 L347.2 339.7 L350.7 339.1 L354.1 338.5 L357.6 337.9 L361.1 337.4 L364.6 336.8 L368.1 336.2 L371.6 335.7 L375.0 335.1 L378.5 334.6 L382.0 334.0" />
+            </g>
+          </svg>
+          <figcaption>Figure 7. Residual location by public integrand. Grey marks the run baseline, blue marks the accepted rule, and hatching shows local accepted-rule residual area.</figcaption>
+        </figure>
+<figure class="open-result-paper-table" id="table-3">
+          <div class="open-result-table-wrap">
+            <table class="open-result-table">
+              <thead>
+                <tr>
+                  <th>Integrand</th>
+                  <th>Baseline residual</th>
+                  <th>Accepted residual</th>
+                  <th>Reduction</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>\(\sin(\pi x)\)</td>
+                  <td>0.363380</td>
+                  <td>0.001029</td>
+                  <td>99.717%</td>
+                </tr>
+                <tr>
+                  <td>\(\sqrt{x}\)</td>
+                  <td>0.040440</td>
+                  <td>0.000614</td>
+                  <td>98.482%</td>
+                </tr>
+                <tr>
+                  <td>\(\log(1+x)\)</td>
+                  <td>0.019171</td>
+                  <td>0.000282</td>
+                  <td>98.529%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <figcaption>Table 3. Representative residual errors.</figcaption>
+        </figure>
+<h3>4. Limitations</h3>
+<p>This is a bounded benchmark on a fixed one-dimensional analytic suite. The result says that this accepted five-node rule improved this contract. It does not establish superiority for arbitrary integrands, discontinuous functions, oscillatory functions outside the public suite, endpoint singularities not represented by the contract, multidimensional integration, or production workloads with different stability requirements.</p>
+<p>The contracted score is intentionally narrow. A lower value of \(J(r)\) is evidence that the accepted candidate improved under this contract, not evidence that every downstream quantity of interest improved. Because the public bundle does not expose numeric component weights \(\alpha_j\), readers should interpret the residual table as the transparent scientific readout alongside the aggregate score.</p>
+<p>External validity is deliberately left open. A reader should rerun an evaluation contract that explicitly contains the cases they care about before transferring the node placement to another integration setting.</p>
+<h3>5. Reproducibility</h3>
+<p>The public bundle includes the evaluation contract, accepted candidate, curated evolution trace, metrics, provenance, residual readout, and replay surface. The article uses those artifacts as the source for the figures, tables, and accepted implementation.</p>
+<p>An animated replay of the same public trace is available at <a href="./run/">the run page</a>. It is a presentation layer over the same artifacts, not a separate result, and excludes non-public proposal context.</p>
+<p>Replaying the result should use the same analytic integrand suite, the same objective definition, the same run baseline, and the same lower-is-better direction. Changing any of those items creates a new evaluation, not a replay of this result.</p>
+<p>The source bundle is available in <a href="https://github.com/Gother-Labs/gother-labs-open-results/tree/main/results/quadrature-rule-optimization" target="_blank" rel="noreferrer">Göther Labs Open Results</a>.</p>
+          </article>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© <span id="year">2026</span> Göther Labs</p>
+      </footer>
+    </div>
+
+    <script src="../../scripts.js"></script>
+  </body>
+</html>

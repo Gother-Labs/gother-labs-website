@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 328" role="img" aria-label="Best-so-far RCPSP acceptance objective in the same paper style as the quadrature result">
+  <style>
+    .bg{fill:#050608}.axis{stroke:rgba(248,250,252,.58);stroke-width:1;fill:none}.grid{stroke:rgba(248,250,252,.16);stroke-width:.8}.best{fill:none;stroke:#f8fafc;stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}.proposal{fill:rgba(248,250,252,.28)}.baseline{fill:#050608;stroke:rgba(248,250,252,.55);stroke-width:2}.accepted{fill:#050608;stroke:#168cff;stroke-width:2}.tick{font:9.5px Georgia,'Times New Roman',serif;fill:#8f98aa}.label{font:12px Georgia,'Times New Roman',serif;fill:rgba(248,250,252,.78)}.title{font:12px Georgia,'Times New Roman',serif;font-style:italic;fill:#f8fafc}.legend{font:8.5px Georgia,'Times New Roman',serif;fill:#8f98aa}
+  </style>
+  <rect class="bg" width="560" height="328"/>
+  <text class="title" x="82" y="34">Best-so-far acceptance objective (lower is better)</text>
+  <g transform="translate(82 48)">
+    <circle class="proposal" cx="0" cy="0" r="2.4"/><text class="legend" x="12" y="4">scored checkpoint</text>
+    <line class="best" x1="118" y1="0" x2="134" y2="0"/><text class="legend" x="142" y="4">best-so-far</text>
+    <circle class="baseline" cx="286" cy="0" r="3.4"/><text class="legend" x="302" y="4">seed</text>
+    <circle class="accepted" cx="374" cy="0" r="3.8"/><text class="legend" x="390" y="4">accepted</text>
+  </g>
+  <g>
+    <path class="grid" d="M82 252H512"/><text class="tick" x="64" y="256" text-anchor="end">12</text>
+    <path class="grid" d="M82 174H512"/><text class="tick" x="64" y="178" text-anchor="end">13</text>
+    <path class="grid" d="M82 96H512"/><text class="tick" x="64" y="100" text-anchor="end">14</text>
+    <path class="axis" d="M82 74V260H512"/>
+    <path class="best" d="M82 72 L89 72 L89 116 L97 116 L97 142 L150 142 L150 175 L301 175 L301 186 L402 186 L402 234 L512 234"/>
+    <circle class="proposal" cx="82" cy="72" r="2.1"/>
+    <circle class="proposal" cx="89" cy="116" r="2.1"/>
+    <circle class="proposal" cx="97" cy="142" r="2.1"/>
+    <circle class="proposal" cx="150" cy="175" r="2.1"/>
+    <circle class="proposal" cx="301" cy="186" r="2.1"/>
+    <circle class="proposal" cx="402" cy="234" r="2.1"/>
+    <circle class="proposal" cx="512" cy="234" r="2.1"/>
+    <circle class="baseline" cx="82" cy="72" r="4.2"/>
+    <circle class="accepted" cx="402" cy="234" r="4.8"/>
+    <text class="tick" x="82" y="282" text-anchor="middle">0</text>
+    <text class="tick" x="150" y="282" text-anchor="middle">19</text>
+    <text class="tick" x="301" y="282" text-anchor="middle">61</text>
+    <text class="tick" x="402" y="282" text-anchor="middle">89</text>
+    <text class="tick" x="512" y="282" text-anchor="middle">119</text>
+    <text class="label" x="297" y="306" text-anchor="middle">generation checkpoint</text>
+    <text class="label" x="34" y="167" transform="rotate(-90 34 167)" text-anchor="middle">score J(r)</text>
+  </g>
+</svg>
