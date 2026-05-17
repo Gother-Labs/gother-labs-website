@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SITE_ROOT = path.resolve(__dirname, "..");
-const RESULTS_ROOT = path.resolve(SITE_ROOT, "..", "gother-labs-open-results");
+const RESULTS_ROOT = path.resolve(SITE_ROOT, "..", "gother-labs-results");
 const CATALOG_PATH = path.join(RESULTS_ROOT, "catalog.json");
 const OUT_ROOT = path.join(SITE_ROOT, "results");
 
