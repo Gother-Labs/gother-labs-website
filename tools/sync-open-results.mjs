@@ -161,8 +161,7 @@ function nav(prefix) {
             <img src="${prefix}assets/gother-mark.svg" alt="" class="brand-image">
           </a>
           <a href="${prefix}company/">Company</a>
-          <a href="${prefix}domains/">Domains</a>
-          <a href="${prefix}open-results/">Open Results</a>
+          <a href="${prefix}open-results/">Results</a>
           <a href="${prefix}contact/">Contact</a>
         </nav>
       </header>`;
@@ -2009,7 +2008,6 @@ async function writeSitemap(results) {
   const urls = [
     "/",
     "/company/",
-    "/domains/",
     "/open-results/",
     ...results.map((result) => `/open-results/${result.slug}/`),
     "/contact/",
