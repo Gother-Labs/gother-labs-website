@@ -913,14 +913,13 @@ a {
 .result-card-visual {
   position: absolute;
   right: clamp(-10rem, -7vw, -3.5rem);
-  bottom: clamp(1.4rem, 3.2vw, 3.8rem);
+  bottom: clamp(-1.2rem, -1.5vw, -0.2rem);
   z-index: 0;
-  width: min(58%, 35rem);
+  width: min(62%, 37rem);
   height: auto;
   color: var(--accent);
-  opacity: 0.36;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0 18%, rgba(0, 0, 0, 0.22) 34%, #000 56%);
-  mask-image: linear-gradient(90deg, transparent 0 18%, rgba(0, 0, 0, 0.22) 34%, #000 56%);
+  opacity: 1;
+  clip-path: inset(0 0 0 22%);
   pointer-events: none;
 }
 
@@ -973,10 +972,10 @@ a {
 
 .result-card--rcpsp .result-card-visual {
   right: clamp(-10rem, -7vw, -3.5rem);
-  bottom: clamp(1.4rem, 3.2vw, 3.8rem);
-  width: min(58%, 35rem);
+  bottom: clamp(-1.2rem, -1.5vw, -0.2rem);
+  width: min(62%, 37rem);
   color: var(--accent);
-  opacity: 0.36;
+  opacity: 1;
 }
 
 .result-card-rcpsp line,
@@ -2925,20 +2924,19 @@ a {
   }
 
   .result-card-visual {
-    right: -5rem;
-    bottom: 1.4rem;
-    width: 78%;
-    opacity: 0.28;
-    -webkit-mask-image: linear-gradient(90deg, transparent 0 20%, rgba(0, 0, 0, 0.24) 36%, #000 54%);
-    mask-image: linear-gradient(90deg, transparent 0 20%, rgba(0, 0, 0, 0.24) 36%, #000 54%);
+    right: -6.5rem;
+    bottom: -0.65rem;
+    width: 84%;
+    opacity: 1;
+    clip-path: inset(0 0 0 26%);
   }
 
   .result-card--rcpsp .result-card-visual {
     display: block;
-    right: -5rem;
-    bottom: 1.4rem;
-    width: 74%;
-    opacity: 0.28;
+    right: -6.5rem;
+    bottom: -0.65rem;
+    width: 80%;
+    opacity: 1;
   }
 
   .result-measure {
