@@ -403,40 +403,6 @@ async function copyDirectoryIfExists(source, target) {
   await fs.cp(source, target, { recursive: true });
 }
 
-async function rewritePublishedResultRoutes(root) {
-  let entries;
-  try {
-    entries = await fs.readdir(root, { withFileTypes: true });
-  } catch {
-    return;
-  }
-
-  for (const entry of entries) {
-    const entryPath = path.join(root, entry.name);
-    if (entry.isDirectory()) {
-      await rewritePublishedResultRoutes(entryPath);
-      continue;
-    }
-
-    if (!/\.(html|css|js|xml)$/i.test(entry.name)) {
-      continue;
-    }
-
-    const original = await fs.readFile(entryPath, "utf8");
-    const updated = original
-      .replaceAll("/open-results/", "/results/")
-      .replaceAll("../../../open-results/", "../../../results/")
-      .replaceAll("../../open-results/", "../../results/")
-      .replaceAll("../open-results/", "../results/")
-      .replaceAll("open-results-card", "results-card")
-      .replaceAll(">Open Results<", ">Results<");
-
-    if (updated !== original) {
-      await fs.writeFile(entryPath, updated, "utf8");
-    }
-  }
-}
-
 function extractCandidateCode(code) {
   const match = code.match(/# EVOLVE_START:[^\n]*\n?([\s\S]*?)\n?# EVOLVE_END/);
   const candidateCode = match ? match[1] : code;
@@ -1945,7 +1911,6 @@ async function writeDetail(result) {
     await copyIfExists(resultRoot, outputRoot, file);
   }
   await copyDirectoryIfExists(path.join(resultRoot, "run"), path.join(outputRoot, "run"));
-  await rewritePublishedResultRoutes(path.join(outputRoot, "run"));
 
   const figures = plots
     .map(

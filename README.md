@@ -14,8 +14,15 @@ This repository contains the production static site served through GitHub Pages 
 
 - Root: publishable site files and deployment metadata such as `CNAME`, `robots.txt`, and `sitemap.xml`
 - `assets/`: shared static assets used by the site
-- `company/`, `contact/`, `careers/`, `evolther/`: section routes
+- `company/`, `contact/`, `results/`, `evolther/`: section routes
+- `careers/`: legacy redirect to `contact/`
 - `tools/`: internal support helpers that should not live in the repository root
+
+Published result pages are generated from the sibling `gother-labs-results` repository:
+
+```bash
+node tools/sync-results.mjs
+```
 
 ## Local preview
 
