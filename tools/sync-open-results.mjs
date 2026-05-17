@@ -7,9 +7,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SITE_ROOT = path.resolve(__dirname, "..");
 const RESULTS_ROOT = path.resolve(SITE_ROOT, "..", "gother-labs-open-results");
 const CATALOG_PATH = path.join(RESULTS_ROOT, "catalog.json");
-const OUT_ROOT = path.join(SITE_ROOT, "open-results");
+const OUT_ROOT = path.join(SITE_ROOT, "results");
 
-const CSS_VERSION = "open-results-card-v20";
+const CSS_VERSION = "results-card-v20";
 const SITE_URL = "https://www.gotherlabs.com";
 
 function escapeHtml(value) {
@@ -161,7 +161,7 @@ function nav(prefix) {
             <img src="${prefix}assets/gother-mark.svg" alt="" class="brand-image">
           </a>
           <a href="${prefix}company/">Company</a>
-          <a href="${prefix}open-results/">Results</a>
+          <a href="${prefix}results/">Results</a>
           <a href="${prefix}contact/">Contact</a>
         </nav>
       </header>`;
@@ -360,23 +360,23 @@ ${visualMarkup}              <div class="open-result-meta">
 async function writeIndex(results) {
   const cards = results.map(resultCard).join("\n\n");
   const body = `        <section class="hero compact-hero page-hero">
-          <h1 class="page-title">Open results for evaluated technical improvement.</h1>
-          <p class="intro open-results-hero-intro">
+          <h1 class="page-title">Results for evaluated technical improvement.</h1>
+          <p class="intro results-hero-intro">
             Public technical results where the problem, evaluation contract, and accepted improvement can be inspected together.
           </p>
         </section>
 
-        <section class="open-results-index" aria-label="Open results library">
+        <section class="results-index" aria-label="Results library">
 ${cards}
         </section>`;
 
   await fs.writeFile(
     path.join(OUT_ROOT, "index.html"),
     htmlShell({
-      title: "Open Results | Göther Labs",
+      title: "Results | Göther Labs",
       description:
-        "Open technical results from Göther Labs: evaluated runs, reproducible surfaces, and governed optimization evidence.",
-      canonicalPath: "/open-results/",
+        "Public technical results from Göther Labs: evaluated runs, reproducible surfaces, and governed optimization evidence.",
+      canonicalPath: "/results/",
       cssPrefix: "../",
       body,
     }),
@@ -401,6 +401,40 @@ async function copyDirectoryIfExists(source, target) {
   await fs.mkdir(path.dirname(target), { recursive: true });
   await fs.rm(target, { recursive: true, force: true });
   await fs.cp(source, target, { recursive: true });
+}
+
+async function rewritePublishedResultRoutes(root) {
+  let entries;
+  try {
+    entries = await fs.readdir(root, { withFileTypes: true });
+  } catch {
+    return;
+  }
+
+  for (const entry of entries) {
+    const entryPath = path.join(root, entry.name);
+    if (entry.isDirectory()) {
+      await rewritePublishedResultRoutes(entryPath);
+      continue;
+    }
+
+    if (!/\.(html|css|js|xml)$/i.test(entry.name)) {
+      continue;
+    }
+
+    const original = await fs.readFile(entryPath, "utf8");
+    const updated = original
+      .replaceAll("/open-results/", "/results/")
+      .replaceAll("../../../open-results/", "../../../results/")
+      .replaceAll("../../open-results/", "../../results/")
+      .replaceAll("../open-results/", "../results/")
+      .replaceAll("open-results-card", "results-card")
+      .replaceAll(">Open Results<", ">Results<");
+
+    if (updated !== original) {
+      await fs.writeFile(entryPath, updated, "utf8");
+    }
+  }
 }
 
 function extractCandidateCode(code) {
@@ -1911,11 +1945,14 @@ async function writeDetail(result) {
     await copyIfExists(resultRoot, outputRoot, file);
   }
   await copyDirectoryIfExists(path.join(resultRoot, "run"), path.join(outputRoot, "run"));
+  await rewritePublishedResultRoutes(path.join(outputRoot, "run"));
   if (full.website?.surface_path) {
+    const surfaceRoot = path.join(SITE_ROOT, full.website.surface_path);
     await copyDirectoryIfExists(
       path.join(resultRoot, "run"),
-      path.join(SITE_ROOT, full.website.surface_path),
+      surfaceRoot,
     );
+    await rewritePublishedResultRoutes(surfaceRoot);
   }
 
   const figures = plots
@@ -1936,7 +1973,7 @@ async function writeDetail(result) {
   const body = isQuadratureWhitepaper
     ? `        <section class="hero compact-hero page-hero open-result-detail-hero">
           <h1 class="page-title">${escapeHtml(full.title)}</h1>
-          <p class="intro open-results-hero-intro">${escapeHtml(full.summary)}</p>
+          <p class="intro results-hero-intro">${escapeHtml(full.summary)}</p>
         </section>
 
         <section class="open-result-detail open-result-whitepaper-shell">
@@ -1947,7 +1984,7 @@ ${markdownToHtml(articleWithoutTitle(article), quadratureWhitepaperInserts(full,
     : isRcpspWhitepaper
       ? `        <section class="hero compact-hero page-hero open-result-detail-hero rcpsp-detail-hero">
           <h1 class="page-title">${escapeHtml(full.title)}</h1>
-          <p class="intro open-results-hero-intro">${escapeHtml(full.summary)}</p>
+          <p class="intro results-hero-intro">${escapeHtml(full.summary)}</p>
         </section>
 
         <section class="open-result-detail open-result-whitepaper-shell rcpsp-whitepaper-shell">
@@ -1958,7 +1995,7 @@ ${markdownToHtml(articleWithoutTitle(article), rcpspWhitepaperInserts(full, evol
     : `        <section class="hero compact-hero page-hero open-result-detail-hero">
           <p class="eyebrow">${escapeHtml(full.domain)}</p>
           <h1 class="page-title">${escapeHtml(full.title)}</h1>
-          <p class="intro open-results-hero-intro">${escapeHtml(full.summary)}</p>
+          <p class="intro results-hero-intro">${escapeHtml(full.summary)}</p>
         </section>
 
         <section class="open-result-detail">
@@ -1988,9 +2025,9 @@ ${figures}
   await fs.writeFile(
     path.join(outputRoot, "index.html"),
     htmlShell({
-      title: `${full.title} | Open Results | Göther Labs`,
+      title: `${full.title} | Results | Göther Labs`,
       description: full.summary,
-      canonicalPath: `/open-results/${full.slug}/`,
+      canonicalPath: `/results/${full.slug}/`,
       cssPrefix: "../../",
       body,
       enableMath: /\$\$|\\\(|\\\[/.test(article),
@@ -2008,8 +2045,8 @@ async function writeSitemap(results) {
   const urls = [
     "/",
     "/company/",
-    "/open-results/",
-    ...results.map((result) => `/open-results/${result.slug}/`),
+    "/results/",
+    ...results.map((result) => `/results/${result.slug}/`),
     "/contact/",
   ];
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
