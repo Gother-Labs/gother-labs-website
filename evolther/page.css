@@ -1884,7 +1884,7 @@
       "code";
     gap: 2rem;
     min-height: auto;
-    padding: 0.8rem 0 0;
+    padding: 0.8rem var(--content-gutter) 0;
   }
 
   .story-shell::before,
@@ -1901,11 +1901,14 @@
   .story-visual {
     grid-column: auto;
     grid-row: auto;
+    min-width: 0;
   }
 
   .story-visual {
     grid-area: visual;
     order: 1;
+    justify-self: center;
+    width: min(100%, 440px);
     padding: 0;
   }
 
@@ -1930,6 +1933,7 @@
     pointer-events: auto;
     gap: 2.2rem;
     justify-self: stretch;
+    min-width: 0;
     padding-top: 0;
     padding-bottom: 0;
   }
@@ -1939,14 +1943,31 @@
     padding-top: 0.9rem;
   }
 
+  .story-scene.is-active {
+    transform: none;
+  }
+
   .story-code-window,
   .story-subcode {
     border-top-color: var(--line);
   }
 
+  .story-code-window {
+    overflow-x: visible;
+  }
+
   .story-code-line,
   .story-subcode-block {
     color: var(--muted);
+  }
+
+  .story-code-line {
+    min-width: 0;
+  }
+
+  .story-code-text {
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 
   .story-code-ln {
@@ -1955,6 +1976,7 @@
 
   .story-code-line.is-active {
     color: var(--text);
+    transform: none;
   }
 
   .story-subcode-label {
