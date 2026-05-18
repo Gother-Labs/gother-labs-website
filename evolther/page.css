@@ -1,6 +1,5 @@
 .evolther-2-page {
   color-scheme: light;
-  --accent: #fff;
 }
 
 html,
@@ -44,35 +43,39 @@ html,
 
 .evolther-2-hero {
   display: grid;
-  gap: 0.65rem;
-  max-width: 64ch;
+  gap: 1.05rem;
+  max-width: min(100%, 92rem);
 }
 
 .evolther-2-hero .page-title {
-  max-width: 12ch;
-  font-size: clamp(2.8rem, 4.9vw, 4.35rem);
+  max-width: none;
+  font-size: clamp(2.8rem, 5.5vw, 5.35rem);
   line-height: 0.98;
-  text-wrap: pretty;
+  white-space: nowrap;
 }
 
 .evolther-2-intro {
   margin: 0;
-  max-width: 48ch;
+  max-width: 82ch;
   color: var(--muted);
-  font-size: 0.98rem;
+  font-size: clamp(0.98rem, 1.25vw, 1.16rem);
   line-height: 1.54;
   text-wrap: pretty;
 }
 
+.evolther-2-main > .divider {
+  margin: clamp(1.45rem, 2.2vw, 2.2rem) 0 clamp(0.6rem, 1.1vw, 1.05rem);
+}
+
 .story-shell {
   --story-gap: clamp(1.5rem, 2.5vw, 2.5rem);
-  --story-code-ratio: 0.54;
+  --story-code-ratio: 0.51;
   display: grid;
   position: relative;
-  min-height: 100vh;
-  padding: 0.85rem 0 2rem;
+  min-height: 86vh;
+  padding: 0.65rem 0 1.4rem;
   width: 100%;
-  grid-template-columns: minmax(460px, 1.08fr) minmax(500px, 0.92fr);
+  grid-template-columns: minmax(520px, 1fr) minmax(560px, 0.96fr);
   gap: var(--story-gap);
   align-items: start;
   isolation: isolate;
@@ -117,7 +120,7 @@ html,
   grid-column: 2;
   grid-row: 1;
   justify-self: start;
-  width: min(100%, 440px);
+  width: min(100%, 46rem);
   padding: 0;
 }
 
@@ -250,19 +253,19 @@ html,
   grid-column: 1 / -1;
   grid-row: 1;
   width: 1px;
-  gap: 68vh;
+  gap: 42vh;
   justify-self: center;
   opacity: 0;
   pointer-events: none;
-  padding-top: 12vh;
-  padding-bottom: 36vh;
+  padding-top: 4vh;
+  padding-bottom: 14vh;
 }
 
 .story-scene {
   display: grid;
   gap: 0.45rem;
   align-content: center;
-  min-height: 64vh;
+  min-height: 48vh;
   padding-top: 0.4rem;
   border-top: 1px solid var(--line);
   transition: opacity 180ms ease, transform 180ms ease;
@@ -325,10 +328,6 @@ html,
   margin-top: 0.95rem;
   overflow: hidden;
   background: none;
-}
-
-.story-shell[data-active-scene="run"] .story-canvas {
-  display: none;
 }
 
 #evolther-story-svg {
@@ -585,11 +584,23 @@ html,
 }
 
 .story-shell[data-active-scene="run"] .story-node--entry .story-glyph-stroke {
-  stroke: white;
+  stroke: var(--accent);
 }
 
 .story-shell[data-active-scene="run"] .story-node--entry .story-glyph-dot {
-  fill: white;
+  fill: var(--accent);
+}
+
+.story-shell[data-active-scene="run"] .story-node--entry {
+  transform: scale(1.8);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.story-shell[data-active-scene="run"] .story-node--entry .story-glyph-halo {
+  display: block;
+  fill: color-mix(in srgb, var(--accent) 14%, transparent);
+  opacity: 0.5;
 }
 
 .story-shell[data-active-scene="run"] .story-node.story-node--entry.is-active .story-node-label,
@@ -1919,7 +1930,7 @@ html,
   }
 
   .story-visual {
-    width: min(100%, 400px);
+    width: min(100%, 38rem);
   }
 }
 
@@ -2036,6 +2047,7 @@ html,
   .evolther-2-hero .page-title {
     max-width: 9ch;
     font-size: clamp(2.6rem, 13vw, 4rem);
+    white-space: normal;
   }
 
   .story-canvas {
