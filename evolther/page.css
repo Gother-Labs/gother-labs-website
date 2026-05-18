@@ -3,6 +3,11 @@
   --accent: #fff;
 }
 
+html,
+.evolther-2-page {
+  overflow-x: clip;
+}
+
 .evolther-2-page .site-main {
   max-width: none;
 }
@@ -96,7 +101,7 @@
 .story-code,
 .story-visual {
   position: sticky;
-  top: 1.2rem;
+  top: 5.95rem;
   align-self: start;
   z-index: 1;
 }
@@ -320,6 +325,10 @@
   margin-top: 0.95rem;
   overflow: hidden;
   background: none;
+}
+
+.story-shell[data-active-scene="run"] .story-canvas {
+  display: none;
 }
 
 #evolther-story-svg {
@@ -1870,6 +1879,45 @@
     grid-template-columns: minmax(340px, 0.9fr) minmax(420px, 1.1fr);
   }
 
+  .story-code {
+    padding-right: 1.5rem;
+  }
+
+  .story-code-window {
+    margin-top: 0.75rem;
+    padding-top: 0.65rem;
+  }
+
+  .story-code-line {
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 0.55rem;
+    min-height: 31px;
+    font-size: 0.82rem;
+  }
+
+  .story-code-line[data-indent="1"] .story-code-text {
+    padding-left: 0.9rem;
+  }
+
+  .story-code-line[data-indent="2"] .story-code-text {
+    padding-left: 1.55rem;
+  }
+
+  .story-subcode {
+    margin-top: 0.8rem;
+    padding-top: 0.7rem;
+  }
+
+  .story-subcode-label {
+    margin-bottom: 0.55rem;
+    font-size: 0.82rem;
+  }
+
+  .story-subcode-block {
+    font-size: 0.78rem;
+    line-height: 1.46;
+  }
+
   .story-visual {
     width: min(100%, 400px);
   }
@@ -1879,7 +1927,6 @@
   .story-shell {
     grid-template-columns: 1fr;
     grid-template-areas:
-      "visual"
       "scenes"
       "code";
     gap: 2rem;
@@ -1905,21 +1952,17 @@
   }
 
   .story-visual {
-    grid-area: visual;
-    order: 1;
-    justify-self: center;
-    width: min(100%, 440px);
-    padding: 0;
+    display: none;
   }
 
   .story-scenes {
     grid-area: scenes;
-    order: 2;
+    order: 1;
   }
 
   .story-code {
     grid-area: code;
-    order: 3;
+    order: 2;
     padding: 0;
     color: var(--text);
   }
