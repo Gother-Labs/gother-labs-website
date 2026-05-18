@@ -17,6 +17,7 @@
   --story-atlas-highlight-line: color-mix(in srgb, var(--accent) 70%, var(--text) 18%);
   --story-flow-line: color-mix(in srgb, var(--text) 36%, transparent);
   --story-flow-line-strong: color-mix(in srgb, var(--text) 55%, transparent);
+  --story-marker-fill: color-mix(in srgb, var(--text) 74%, transparent);
 }
 
 html,
@@ -356,6 +357,12 @@ html,
 #evolther-story-svg text {
   fill: var(--muted);
   font-family: "Inter", sans-serif;
+}
+
+#story-arrow path,
+#story-arrow-soft path,
+#story-arrow-loop path {
+  fill: var(--story-marker-fill);
 }
 
 .svg-section-label {
@@ -1852,6 +1859,7 @@ html,
   }
 
   .evolther-2-page .story-shell[data-active-scene] .story-track.is-active,
+  .evolther-2-page .story-shell[data-active-scene] .story-seed-ray.is-active,
   .evolther-2-page .story-shell[data-active-scene] .story-worker-line.is-active,
   .evolther-2-page .story-shell[data-active-scene] .story-sample-link.is-active,
   .evolther-2-page .story-shell[data-active-scene] .story-ring.is-active,
@@ -2203,7 +2211,7 @@ html,
 
   .story-visual {
     top: 5.5rem;
-    max-height: 34dvh;
+    max-height: 39dvh;
     padding-bottom: 0.55rem;
   }
 
@@ -2217,8 +2225,38 @@ html,
   }
 
   .story-canvas {
-    height: clamp(8.75rem, 20dvh, 12rem);
+    height: clamp(10.25rem, 25dvh, 14rem);
     margin-top: 0.45rem;
+  }
+
+  #evolther-story-svg {
+    transform: scale(1.08);
+    transform-origin: center;
+  }
+
+  .story-track,
+  .story-worker-line,
+  .story-seed-ray,
+  .story-sample-link,
+  .story-ring,
+  .story-threshold {
+    stroke-width: 2.2;
+  }
+
+  .story-track.is-active,
+  .story-seed-ray.is-active,
+  .story-worker-line.is-active,
+  .story-sample-link.is-active {
+    stroke-width: 3.2;
+  }
+
+  .story-node .story-glyph-stroke,
+  .story-ledger .story-glyph-stroke {
+    stroke-width: 1.5;
+  }
+
+  .story-cell {
+    stroke-width: 1.2;
   }
 
   .story-scenes {
@@ -2226,6 +2264,58 @@ html,
     margin-top: 5.5rem;
   }
 
+}
+
+@media (max-width: 720px) and (prefers-color-scheme: dark) {
+  .evolther-2-page {
+    --story-marker-fill: color-mix(in srgb, white 88%, transparent);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-island-top {
+    fill: color-mix(in srgb, white 8%, black);
+    stroke: color-mix(in srgb, white 34%, transparent);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-island-side {
+    fill: color-mix(in srgb, white 5%, black);
+    stroke: color-mix(in srgb, white 28%, transparent);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-cell,
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-occupied,
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-occupied:not(.is-seed),
+  .evolther-2-page .story-shell[data-active-scene] .story-cell:not(.is-parent):not(.is-inspiration):not(.is-seed):not(.is-accepted):not(.is-migrant-target) {
+    fill: color-mix(in srgb, white 5%, black);
+    stroke: color-mix(in srgb, white 22%, transparent);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-seed,
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-parent,
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-inspiration,
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-accepted,
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-migrant-target {
+    fill: color-mix(in srgb, white 17%, transparent);
+    stroke: color-mix(in srgb, white 74%, transparent);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-track,
+  .evolther-2-page .story-shell[data-active-scene] .story-worker-line,
+  .evolther-2-page .story-shell[data-active-scene] .story-sample-link,
+  .evolther-2-page .story-shell[data-active-scene] .story-ring,
+  .evolther-2-page .story-shell[data-active-scene] .story-threshold,
+  .evolther-2-page .story-shell[data-active-scene] .story-seed-ray {
+    color: color-mix(in srgb, white 58%, transparent);
+    stroke: color-mix(in srgb, white 58%, transparent);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-track.is-active,
+  .evolther-2-page .story-shell[data-active-scene] .story-seed-ray.is-active,
+  .evolther-2-page .story-shell[data-active-scene] .story-worker-line.is-active,
+  .evolther-2-page .story-shell[data-active-scene] .story-sample-link.is-active,
+  .evolther-2-page .story-shell[data-active-scene] .story-ring.is-active,
+  .evolther-2-page .story-shell[data-active-scene] .story-threshold.is-active {
+    stroke: color-mix(in srgb, white 82%, transparent);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
