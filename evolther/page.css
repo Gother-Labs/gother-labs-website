@@ -622,9 +622,8 @@ html,
 }
 
 .story-shell[data-active-scene="run"] .story-node--entry .story-glyph-halo {
-  display: block;
-  fill: color-mix(in srgb, var(--accent) 14%, transparent);
-  opacity: 0.5;
+  display: none;
+  opacity: 0;
 }
 
 .story-shell[data-active-scene="run"] .story-node.story-node--entry.is-active .story-node-label,
