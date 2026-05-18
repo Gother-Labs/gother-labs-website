@@ -1,5 +1,22 @@
 .evolther-2-page {
-  color-scheme: light;
+  color-scheme: light dark;
+  --story-entry-ink: var(--text);
+  --story-entry-muted: color-mix(in srgb, var(--text) 70%, transparent);
+  --story-entry-soft: color-mix(in srgb, var(--text) 74%, transparent);
+  --story-entry-stroke: color-mix(in srgb, var(--text) 82%, transparent);
+  --story-entry-dot: color-mix(in srgb, var(--text) 88%, transparent);
+  --story-atlas-top: color-mix(in srgb, var(--text) 12%, var(--bg));
+  --story-atlas-side: color-mix(in srgb, var(--text) 17%, var(--bg));
+  --story-atlas-cell: color-mix(in srgb, var(--text) 11%, var(--bg));
+  --story-atlas-cell-deep: color-mix(in srgb, var(--text) 7%, var(--bg));
+  --story-atlas-line: color-mix(in srgb, var(--text) 28%, transparent);
+  --story-atlas-line-soft: color-mix(in srgb, var(--text) 20%, transparent);
+  --story-atlas-line-strong: color-mix(in srgb, var(--text) 42%, transparent);
+  --story-atlas-highlight: color-mix(in srgb, var(--accent) 16%, var(--bg));
+  --story-atlas-highlight-strong: color-mix(in srgb, var(--accent) 20%, var(--bg));
+  --story-atlas-highlight-line: color-mix(in srgb, var(--accent) 70%, var(--text) 18%);
+  --story-flow-line: color-mix(in srgb, var(--text) 36%, transparent);
+  --story-flow-line-strong: color-mix(in srgb, var(--text) 55%, transparent);
 }
 
 html,
@@ -544,22 +561,22 @@ html,
 }
 
 .story-node--entry .story-glyph-stroke {
-  stroke: white;
+  stroke: var(--story-entry-stroke);
   stroke-width: 1;
 }
 
 .story-node--entry .story-glyph-dot {
-  fill: white;
+  fill: var(--story-entry-dot);
 }
 
 .story-node--entry.is-visible .story-glyph-stroke,
 .story-node--entry.is-active .story-glyph-stroke {
-  stroke: color-mix(in srgb, white 82%, transparent);
+  stroke: var(--story-entry-stroke);
 }
 
 .story-node--entry.is-visible .story-glyph-dot,
 .story-node--entry.is-active .story-glyph-dot {
-  fill: color-mix(in srgb, white 88%, transparent);
+  fill: var(--story-entry-dot);
 }
 
 .story-node--entry.is-active {
@@ -576,11 +593,11 @@ html,
 }
 
 .story-node.story-node--entry.is-active .story-node-label {
-  fill: color-mix(in srgb, white 74%, transparent) !important;
+  fill: var(--story-entry-soft) !important;
 }
 
 .story-node.story-node--entry .story-node-sublabel {
-  fill: color-mix(in srgb, white 70%, transparent);
+  fill: var(--story-entry-muted);
 }
 
 .story-shell[data-active-scene="run"] .story-node--entry .story-glyph-stroke {
@@ -605,7 +622,7 @@ html,
 
 .story-shell[data-active-scene="run"] .story-node.story-node--entry.is-active .story-node-label,
 .story-shell[data-active-scene="run"] .story-node.story-node--entry .story-node-sublabel {
-  fill: white !important;
+  fill: var(--story-entry-ink) !important;
 }
 
 .story-node--entry .story-node-glyph,
@@ -614,16 +631,16 @@ html,
 }
 
 .story-shell[data-active-scene="manifest"] .story-node--entry .story-glyph-stroke {
-  stroke: white;
+  stroke: var(--story-entry-stroke);
 }
 
 .story-shell[data-active-scene="manifest"] .story-node--entry .story-glyph-dot {
-  fill: white;
+  fill: var(--story-entry-dot);
 }
 
 .story-shell[data-active-scene="manifest"] .story-node.story-node--entry.is-active .story-node-label,
 .story-shell[data-active-scene="manifest"] .story-node.story-node--entry .story-node-label {
-  fill: white !important;
+  fill: var(--story-entry-ink) !important;
 }
 
 .story-shell[data-active-scene="manifest"] .story-node.story-node--entry .story-node-sublabel {
@@ -1745,6 +1762,102 @@ html,
 .story-shell[data-active-scene="evidence"] .story-cell:not(.is-parent):not(.is-seed):not(.is-accepted):not(.is-migrant-target) {
   fill: color-mix(in srgb, white 6%, black 94%);
   stroke: color-mix(in srgb, white 14%, transparent);
+}
+
+@media (prefers-color-scheme: light) {
+  .evolther-2-page .story-shell[data-active-scene] .story-island-top {
+    fill: var(--story-atlas-top);
+    stroke: var(--story-atlas-line);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-island-side {
+    fill: var(--story-atlas-side);
+    stroke: var(--story-atlas-line);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-island.is-active .story-island-top,
+  .evolther-2-page .story-shell[data-active-scene] .story-island.is-active .story-island-side {
+    stroke: var(--story-atlas-line-strong);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-cell,
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-occupied,
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-occupied:not(.is-seed),
+  .evolther-2-page .story-shell[data-active-scene] .story-cell:not(.is-parent):not(.is-inspiration):not(.is-seed):not(.is-accepted):not(.is-migrant-target) {
+    fill: var(--story-atlas-cell);
+    stroke: var(--story-atlas-line-soft);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-seed,
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-parent,
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-inspiration,
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-accepted,
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-migrant-target {
+    fill: var(--story-atlas-highlight);
+    stroke: var(--story-atlas-highlight-line);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-parent {
+    fill: var(--story-atlas-highlight-strong);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-ledger-entry.is-accepted {
+    fill: var(--story-atlas-highlight);
+    stroke: var(--story-atlas-highlight-line);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-node .story-glyph-stroke,
+  .evolther-2-page .story-shell[data-active-scene] .story-ledger .story-glyph-stroke {
+    stroke: var(--story-entry-stroke);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-node .story-glyph-fill,
+  .evolther-2-page .story-shell[data-active-scene] .story-ledger .story-glyph-fill {
+    fill: var(--story-atlas-cell);
+    stroke: var(--story-atlas-line-strong);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-node .story-glyph-dot,
+  .evolther-2-page .story-shell[data-active-scene] .story-ledger .story-glyph-dot {
+    fill: var(--story-entry-dot);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-node .story-node-label,
+  .evolther-2-page .story-shell[data-active-scene] .story-node .story-node-sublabel,
+  .evolther-2-page .story-shell[data-active-scene] .story-ledger-label,
+  .evolther-2-page .story-shell[data-active-scene] .story-ledger .svg-section-label {
+    fill: var(--story-entry-soft) !important;
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-node.is-active .story-glyph-stroke,
+  .evolther-2-page .story-shell[data-active-scene] .story-ledger.is-active .story-glyph-stroke,
+  .evolther-2-page .story-shell[data-active-scene="run"] .story-node--entry .story-glyph-stroke {
+    stroke: var(--accent);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-node.is-active .story-glyph-dot,
+  .evolther-2-page .story-shell[data-active-scene] .story-ledger.is-active .story-glyph-dot,
+  .evolther-2-page .story-shell[data-active-scene="run"] .story-node--entry .story-glyph-dot {
+    fill: var(--accent);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-track,
+  .evolther-2-page .story-shell[data-active-scene] .story-worker-line,
+  .evolther-2-page .story-shell[data-active-scene] .story-sample-link,
+  .evolther-2-page .story-shell[data-active-scene] .story-ring,
+  .evolther-2-page .story-shell[data-active-scene] .story-threshold,
+  .evolther-2-page .story-shell[data-active-scene] .story-seed-ray {
+    color: var(--story-flow-line);
+    stroke: var(--story-flow-line);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-track.is-active,
+  .evolther-2-page .story-shell[data-active-scene] .story-worker-line.is-active,
+  .evolther-2-page .story-shell[data-active-scene] .story-sample-link.is-active,
+  .evolther-2-page .story-shell[data-active-scene] .story-ring.is-active,
+  .evolther-2-page .story-shell[data-active-scene] .story-threshold.is-active {
+    stroke: var(--story-flow-line-strong);
+  }
 }
 
 @keyframes story-flow-drift {
