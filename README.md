@@ -24,6 +24,12 @@ Published result pages are generated from the sibling `gother-labs-results` repo
 node tools/sync-results.mjs
 ```
 
+Shared site shell maintenance is documented in `docs/site-shell.md`. Before opening a PR that changes global navigation, metadata, shared assets, or generated result chrome, run:
+
+```bash
+node tools/check-site-shell.mjs
+```
+
 ## Local preview
 
 Serve the repository root with a simple static server:
@@ -39,3 +45,4 @@ Then open `http://127.0.0.1:4173/`.
 - Keep tracked assets only when they are used by the site or by a documented helper workflow.
 - Remove deprecated public routes instead of leaving ambiguous stubs behind.
 - Keep internal or experimental helpers under `tools/`, not in the repository root.
+- Keep hand-authored shell changes aligned with `tools/sync-results.mjs` and `docs/site-shell.md`.
