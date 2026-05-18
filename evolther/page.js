@@ -1415,6 +1415,10 @@
   const sceneArticles = Array.from(storyRoot.querySelectorAll(".story-scene"));
   const codeLines = Array.from(storyRoot.querySelectorAll(".story-code-line"));
   const progressDots = Array.from(storyRoot.querySelectorAll("[data-progress-dot]"));
+  const storyVisual = storyRoot.querySelector(".story-visual");
+  const mobileSceneQuery = window.matchMedia("(max-width: 1100px)");
+  let activeSceneId = "";
+  let mobileSceneFrame = 0;
   const statusNodes = {
     count: storyRoot.querySelector("[data-scene-count]"),
     title: storyRoot.querySelector("[data-scene-title]"),
@@ -1475,6 +1479,11 @@
     const index = sceneIndex.get(sceneId) ?? 0;
     const scene = scenes[index];
 
+    if (scene.id === activeSceneId) {
+      return;
+    }
+
+    activeSceneId = scene.id;
     storyRoot.setAttribute("data-active-scene", scene.id);
 
     sceneArticles.forEach((article) => {
@@ -1581,7 +1590,65 @@
     }
   }
 
+  function getMobileSceneId() {
+    const visualRect = storyVisual?.getBoundingClientRect();
+    const readingY = Math.min(
+      window.innerHeight * 0.72,
+      Math.max(window.innerHeight * 0.42, (visualRect?.bottom ?? 0) + 8)
+    );
+
+    const measuredScenes = sceneArticles.map((article) => ({
+      article,
+      rect: article.getBoundingClientRect(),
+    }));
+
+    const containingScene = measuredScenes
+      .filter(({ rect }) => rect.top <= readingY && rect.bottom >= readingY)
+      .sort((a, b) => {
+        const aCenter = (a.rect.top + a.rect.bottom) / 2;
+        const bCenter = (b.rect.top + b.rect.bottom) / 2;
+        return Math.abs(aCenter - readingY) - Math.abs(bCenter - readingY);
+      })[0];
+
+    const nearestScene = measuredScenes
+      .sort((a, b) => {
+        const aDistance = Math.min(Math.abs(a.rect.top - readingY), Math.abs(a.rect.bottom - readingY));
+        const bDistance = Math.min(Math.abs(b.rect.top - readingY), Math.abs(b.rect.bottom - readingY));
+        return aDistance - bDistance;
+      })[0];
+
+    const target = containingScene ?? nearestScene;
+    return target?.article.getAttribute("data-scene") ?? scenes[0].id;
+  }
+
+  function syncMobileScene() {
+    mobileSceneFrame = 0;
+
+    if (!mobileSceneQuery.matches) {
+      return;
+    }
+
+    applyScene(getMobileSceneId());
+  }
+
+  function queueMobileSceneSync() {
+    if (!mobileSceneQuery.matches || mobileSceneFrame) {
+      return;
+    }
+
+    mobileSceneFrame = window.requestAnimationFrame(syncMobileScene);
+  }
+
   applyScene(scenes[0].id);
+  queueMobileSceneSync();
+
+  window.addEventListener("scroll", queueMobileSceneSync, { passive: true });
+  window.addEventListener("resize", queueMobileSceneSync);
+  if (mobileSceneQuery.addEventListener) {
+    mobileSceneQuery.addEventListener("change", queueMobileSceneSync);
+  } else {
+    mobileSceneQuery.addListener(queueMobileSceneSync);
+  }
 
   if (!("IntersectionObserver" in window)) {
     return;
@@ -1589,6 +1656,10 @@
 
   const observer = new IntersectionObserver(
     (entries) => {
+      if (mobileSceneQuery.matches) {
+        return;
+      }
+
       const visible = entries
         .filter((entry) => entry.isIntersecting)
         .sort((a, b) => b.intersectionRatio - a.intersectionRatio);

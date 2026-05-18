@@ -1,6 +1,28 @@
 .evolther-2-page {
-  color-scheme: light;
-  --accent: #fff;
+  color-scheme: light dark;
+  --story-entry-ink: var(--text);
+  --story-entry-muted: color-mix(in srgb, var(--text) 70%, transparent);
+  --story-entry-soft: color-mix(in srgb, var(--text) 74%, transparent);
+  --story-entry-stroke: color-mix(in srgb, var(--text) 82%, transparent);
+  --story-entry-dot: color-mix(in srgb, var(--text) 88%, transparent);
+  --story-atlas-top: color-mix(in srgb, var(--text) 12%, var(--bg));
+  --story-atlas-side: color-mix(in srgb, var(--text) 17%, var(--bg));
+  --story-atlas-cell: color-mix(in srgb, var(--text) 11%, var(--bg));
+  --story-atlas-cell-deep: color-mix(in srgb, var(--text) 7%, var(--bg));
+  --story-atlas-line: color-mix(in srgb, var(--text) 28%, transparent);
+  --story-atlas-line-soft: color-mix(in srgb, var(--text) 20%, transparent);
+  --story-atlas-line-strong: color-mix(in srgb, var(--text) 42%, transparent);
+  --story-atlas-highlight: color-mix(in srgb, var(--accent) 16%, var(--bg));
+  --story-atlas-highlight-strong: color-mix(in srgb, var(--accent) 20%, var(--bg));
+  --story-atlas-highlight-line: color-mix(in srgb, var(--accent) 70%, var(--text) 18%);
+  --story-flow-line: color-mix(in srgb, var(--text) 36%, transparent);
+  --story-flow-line-strong: color-mix(in srgb, var(--text) 55%, transparent);
+  --story-marker-fill: color-mix(in srgb, var(--text) 74%, transparent);
+}
+
+html,
+.evolther-2-page {
+  overflow-x: clip;
 }
 
 .evolther-2-page .site-main {
@@ -39,35 +61,39 @@
 
 .evolther-2-hero {
   display: grid;
-  gap: 0.65rem;
-  max-width: 64ch;
+  gap: 1.05rem;
+  max-width: min(100%, 92rem);
 }
 
 .evolther-2-hero .page-title {
-  max-width: 12ch;
-  font-size: clamp(2.8rem, 4.9vw, 4.35rem);
+  max-width: none;
+  font-size: clamp(2.8rem, 5.5vw, 5.35rem);
   line-height: 0.98;
-  text-wrap: pretty;
+  white-space: nowrap;
 }
 
 .evolther-2-intro {
   margin: 0;
-  max-width: 48ch;
+  max-width: 82ch;
   color: var(--muted);
-  font-size: 0.98rem;
+  font-size: clamp(0.98rem, 1.25vw, 1.16rem);
   line-height: 1.54;
   text-wrap: pretty;
 }
 
+.evolther-2-main > .divider {
+  margin: clamp(1.45rem, 2.2vw, 2.2rem) 0 clamp(0.6rem, 1.1vw, 1.05rem);
+}
+
 .story-shell {
   --story-gap: clamp(1.5rem, 2.5vw, 2.5rem);
-  --story-code-ratio: 0.54;
+  --story-code-ratio: 0.51;
   display: grid;
   position: relative;
-  min-height: 100vh;
-  padding: 0.85rem 0 2rem;
+  min-height: 86vh;
+  padding: 0.65rem 0 1.4rem;
   width: 100%;
-  grid-template-columns: minmax(460px, 1.08fr) minmax(500px, 0.92fr);
+  grid-template-columns: minmax(520px, 1fr) minmax(560px, 0.96fr);
   gap: var(--story-gap);
   align-items: start;
   isolation: isolate;
@@ -96,7 +122,7 @@
 .story-code,
 .story-visual {
   position: sticky;
-  top: 1.2rem;
+  top: 5.95rem;
   align-self: start;
   z-index: 1;
 }
@@ -112,7 +138,7 @@
   grid-column: 2;
   grid-row: 1;
   justify-self: start;
-  width: min(100%, 440px);
+  width: min(100%, 46rem);
   padding: 0;
 }
 
@@ -245,19 +271,19 @@
   grid-column: 1 / -1;
   grid-row: 1;
   width: 1px;
-  gap: 68vh;
+  gap: 42vh;
   justify-self: center;
   opacity: 0;
   pointer-events: none;
-  padding-top: 12vh;
-  padding-bottom: 36vh;
+  padding-top: 4vh;
+  padding-bottom: 14vh;
 }
 
 .story-scene {
   display: grid;
   gap: 0.45rem;
   align-content: center;
-  min-height: 64vh;
+  min-height: 48vh;
   padding-top: 0.4rem;
   border-top: 1px solid var(--line);
   transition: opacity 180ms ease, transform 180ms ease;
@@ -331,6 +357,12 @@
 #evolther-story-svg text {
   fill: var(--muted);
   font-family: "Inter", sans-serif;
+}
+
+#story-arrow path,
+#story-arrow-soft path,
+#story-arrow-loop path {
+  fill: var(--story-marker-fill);
 }
 
 .svg-section-label {
@@ -536,22 +568,22 @@
 }
 
 .story-node--entry .story-glyph-stroke {
-  stroke: white;
+  stroke: var(--story-entry-stroke);
   stroke-width: 1;
 }
 
 .story-node--entry .story-glyph-dot {
-  fill: white;
+  fill: var(--story-entry-dot);
 }
 
 .story-node--entry.is-visible .story-glyph-stroke,
 .story-node--entry.is-active .story-glyph-stroke {
-  stroke: color-mix(in srgb, white 82%, transparent);
+  stroke: var(--story-entry-stroke);
 }
 
 .story-node--entry.is-visible .story-glyph-dot,
 .story-node--entry.is-active .story-glyph-dot {
-  fill: color-mix(in srgb, white 88%, transparent);
+  fill: var(--story-entry-dot);
 }
 
 .story-node--entry.is-active {
@@ -568,24 +600,35 @@
 }
 
 .story-node.story-node--entry.is-active .story-node-label {
-  fill: color-mix(in srgb, white 74%, transparent) !important;
+  fill: var(--story-entry-soft) !important;
 }
 
 .story-node.story-node--entry .story-node-sublabel {
-  fill: color-mix(in srgb, white 70%, transparent);
+  fill: var(--story-entry-muted);
 }
 
 .story-shell[data-active-scene="run"] .story-node--entry .story-glyph-stroke {
-  stroke: white;
+  stroke: var(--accent);
 }
 
 .story-shell[data-active-scene="run"] .story-node--entry .story-glyph-dot {
-  fill: white;
+  fill: var(--accent);
+}
+
+.story-shell[data-active-scene="run"] .story-node--entry {
+  transform: scale(1.8);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.story-shell[data-active-scene="run"] .story-node--entry .story-glyph-halo {
+  display: none;
+  opacity: 0;
 }
 
 .story-shell[data-active-scene="run"] .story-node.story-node--entry.is-active .story-node-label,
 .story-shell[data-active-scene="run"] .story-node.story-node--entry .story-node-sublabel {
-  fill: white !important;
+  fill: var(--story-entry-ink) !important;
 }
 
 .story-node--entry .story-node-glyph,
@@ -594,16 +637,16 @@
 }
 
 .story-shell[data-active-scene="manifest"] .story-node--entry .story-glyph-stroke {
-  stroke: white;
+  stroke: var(--story-entry-stroke);
 }
 
 .story-shell[data-active-scene="manifest"] .story-node--entry .story-glyph-dot {
-  fill: white;
+  fill: var(--story-entry-dot);
 }
 
 .story-shell[data-active-scene="manifest"] .story-node.story-node--entry.is-active .story-node-label,
 .story-shell[data-active-scene="manifest"] .story-node.story-node--entry .story-node-label {
-  fill: white !important;
+  fill: var(--story-entry-ink) !important;
 }
 
 .story-shell[data-active-scene="manifest"] .story-node.story-node--entry .story-node-sublabel {
@@ -1727,6 +1770,103 @@
   stroke: color-mix(in srgb, white 14%, transparent);
 }
 
+@media (prefers-color-scheme: light) {
+  .evolther-2-page .story-shell[data-active-scene] .story-island-top {
+    fill: var(--story-atlas-top);
+    stroke: var(--story-atlas-line);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-island-side {
+    fill: var(--story-atlas-side);
+    stroke: var(--story-atlas-line);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-island.is-active .story-island-top,
+  .evolther-2-page .story-shell[data-active-scene] .story-island.is-active .story-island-side {
+    stroke: var(--story-atlas-line-strong);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-cell,
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-occupied,
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-occupied:not(.is-seed),
+  .evolther-2-page .story-shell[data-active-scene] .story-cell:not(.is-parent):not(.is-inspiration):not(.is-seed):not(.is-accepted):not(.is-migrant-target) {
+    fill: var(--story-atlas-cell);
+    stroke: var(--story-atlas-line-soft);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-seed,
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-parent,
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-inspiration,
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-accepted,
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-migrant-target {
+    fill: var(--story-atlas-highlight);
+    stroke: var(--story-atlas-highlight-line);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-parent {
+    fill: var(--story-atlas-highlight-strong);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-ledger-entry.is-accepted {
+    fill: var(--story-atlas-highlight);
+    stroke: var(--story-atlas-highlight-line);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-node .story-glyph-stroke,
+  .evolther-2-page .story-shell[data-active-scene] .story-ledger .story-glyph-stroke {
+    stroke: var(--story-entry-stroke);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-node .story-glyph-fill,
+  .evolther-2-page .story-shell[data-active-scene] .story-ledger .story-glyph-fill {
+    fill: var(--story-atlas-cell);
+    stroke: var(--story-atlas-line-strong);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-node .story-glyph-dot,
+  .evolther-2-page .story-shell[data-active-scene] .story-ledger .story-glyph-dot {
+    fill: var(--story-entry-dot);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-node .story-node-label,
+  .evolther-2-page .story-shell[data-active-scene] .story-node .story-node-sublabel,
+  .evolther-2-page .story-shell[data-active-scene] .story-ledger-label,
+  .evolther-2-page .story-shell[data-active-scene] .story-ledger .svg-section-label {
+    fill: var(--story-entry-soft) !important;
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-node.is-active .story-glyph-stroke,
+  .evolther-2-page .story-shell[data-active-scene] .story-ledger.is-active .story-glyph-stroke,
+  .evolther-2-page .story-shell[data-active-scene="run"] .story-node--entry .story-glyph-stroke {
+    stroke: var(--accent);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-node.is-active .story-glyph-dot,
+  .evolther-2-page .story-shell[data-active-scene] .story-ledger.is-active .story-glyph-dot,
+  .evolther-2-page .story-shell[data-active-scene="run"] .story-node--entry .story-glyph-dot {
+    fill: var(--accent);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-track,
+  .evolther-2-page .story-shell[data-active-scene] .story-worker-line,
+  .evolther-2-page .story-shell[data-active-scene] .story-sample-link,
+  .evolther-2-page .story-shell[data-active-scene] .story-ring,
+  .evolther-2-page .story-shell[data-active-scene] .story-threshold,
+  .evolther-2-page .story-shell[data-active-scene] .story-seed-ray {
+    color: var(--story-flow-line);
+    stroke: var(--story-flow-line);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-track.is-active,
+  .evolther-2-page .story-shell[data-active-scene] .story-seed-ray.is-active,
+  .evolther-2-page .story-shell[data-active-scene] .story-worker-line.is-active,
+  .evolther-2-page .story-shell[data-active-scene] .story-sample-link.is-active,
+  .evolther-2-page .story-shell[data-active-scene] .story-ring.is-active,
+  .evolther-2-page .story-shell[data-active-scene] .story-threshold.is-active {
+    stroke: var(--story-flow-line-strong);
+  }
+}
+
 @keyframes story-flow-drift {
   from {
     stroke-dashoffset: 0;
@@ -1870,8 +2010,47 @@
     grid-template-columns: minmax(340px, 0.9fr) minmax(420px, 1.1fr);
   }
 
+  .story-code {
+    padding-right: 1.5rem;
+  }
+
+  .story-code-window {
+    margin-top: 0.75rem;
+    padding-top: 0.65rem;
+  }
+
+  .story-code-line {
+    grid-template-columns: 32px minmax(0, 1fr);
+    gap: 0.55rem;
+    min-height: 31px;
+    font-size: 0.82rem;
+  }
+
+  .story-code-line[data-indent="1"] .story-code-text {
+    padding-left: 0.9rem;
+  }
+
+  .story-code-line[data-indent="2"] .story-code-text {
+    padding-left: 1.55rem;
+  }
+
+  .story-subcode {
+    margin-top: 0.8rem;
+    padding-top: 0.7rem;
+  }
+
+  .story-subcode-label {
+    margin-bottom: 0.55rem;
+    font-size: 0.82rem;
+  }
+
+  .story-subcode-block {
+    font-size: 0.78rem;
+    line-height: 1.46;
+  }
+
   .story-visual {
-    width: min(100%, 400px);
+    width: min(100%, 38rem);
   }
 }
 
@@ -1882,9 +2061,9 @@
       "visual"
       "scenes"
       "code";
-    gap: 2rem;
+    gap: clamp(1.25rem, 4vw, 2rem);
     min-height: auto;
-    padding: 0.8rem 0 0;
+    padding: 0.7rem var(--content-gutter) 0;
   }
 
   .story-shell::before,
@@ -1901,12 +2080,22 @@
   .story-visual {
     grid-column: auto;
     grid-row: auto;
+    min-width: 0;
   }
 
   .story-visual {
     grid-area: visual;
     order: 1;
-    padding: 0;
+    position: sticky;
+    top: 5.75rem;
+    z-index: 5;
+    display: grid;
+    justify-self: stretch;
+    width: 100%;
+    max-height: min(48dvh, 34rem);
+    padding: 0.15rem 0 0.85rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
   }
 
   .story-scenes {
@@ -1921,6 +2110,31 @@
     color: var(--text);
   }
 
+  .story-panel-head--visual {
+    display: none;
+  }
+
+  .story-visual-copy {
+    gap: 0.25rem;
+  }
+
+  .story-visual-copy .story-panel-title {
+    font-size: clamp(1.2rem, 3.4vw, 1.75rem);
+    line-height: 1.08;
+  }
+
+  .story-visual-line {
+    max-width: 62ch;
+    font-size: clamp(0.88rem, 2vw, 1rem);
+    line-height: 1.45;
+  }
+
+  .story-canvas {
+    height: clamp(12.5rem, 34dvh, 22rem);
+    margin-top: 0.65rem;
+    aspect-ratio: auto;
+  }
+
   .story-scenes {
     grid-column: auto;
     grid-row: auto;
@@ -1928,15 +2142,21 @@
     max-width: none;
     opacity: 1;
     pointer-events: auto;
-    gap: 2.2rem;
+    gap: clamp(1.25rem, 4.5vw, 2rem);
     justify-self: stretch;
+    margin-top: clamp(5.5rem, 16dvh, 10rem);
+    min-width: 0;
     padding-top: 0;
     padding-bottom: 0;
   }
 
   .story-scene {
     min-height: auto;
-    padding-top: 0.9rem;
+    padding-top: 0.8rem;
+  }
+
+  .story-scene.is-active {
+    transform: none;
   }
 
   .story-code-window,
@@ -1944,9 +2164,22 @@
     border-top-color: var(--line);
   }
 
+  .story-code-window {
+    overflow-x: visible;
+  }
+
   .story-code-line,
   .story-subcode-block {
     color: var(--muted);
+  }
+
+  .story-code-line {
+    min-width: 0;
+  }
+
+  .story-code-text {
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 
   .story-code-ln {
@@ -1955,6 +2188,7 @@
 
   .story-code-line.is-active {
     color: var(--text);
+    transform: none;
   }
 
   .story-subcode-label {
@@ -1970,17 +2204,117 @@
 @media (max-width: 720px) {
   .evolther-2-hero .page-title {
     max-width: 9ch;
-    font-size: clamp(2.6rem, 13vw, 4rem);
+    font-size: clamp(2.45rem, 12vw, 3.6rem);
+    white-space: normal;
+  }
+
+  .story-visual {
+    top: 5.5rem;
+    max-height: 39dvh;
+    padding-bottom: 0.55rem;
+  }
+
+  .story-visual-copy .story-panel-title {
+    font-size: 1.1rem;
+  }
+
+  .story-visual-line {
+    font-size: 0.86rem;
+    line-height: 1.35;
   }
 
   .story-canvas {
-    aspect-ratio: 920 / 760;
+    height: clamp(10.25rem, 25dvh, 14rem);
+    margin-top: 0.45rem;
+  }
+
+  #evolther-story-svg {
+    transform: scale(1.08);
+    transform-origin: center;
+  }
+
+  .story-track,
+  .story-worker-line,
+  .story-seed-ray,
+  .story-sample-link,
+  .story-ring,
+  .story-threshold {
+    stroke-width: 2.2;
+  }
+
+  .story-track.is-active,
+  .story-seed-ray.is-active,
+  .story-worker-line.is-active,
+  .story-sample-link.is-active {
+    stroke-width: 3.2;
+  }
+
+  .story-node .story-glyph-stroke,
+  .story-ledger .story-glyph-stroke {
+    stroke-width: 1.5;
+  }
+
+  .story-cell {
+    stroke-width: 1.2;
   }
 
   .story-scenes {
-    gap: 1.7rem;
+    gap: 1.2rem;
+    margin-top: 5.5rem;
   }
 
+}
+
+@media (max-width: 720px) and (prefers-color-scheme: dark) {
+  .evolther-2-page {
+    --story-marker-fill: color-mix(in srgb, white 88%, transparent);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-island-top {
+    fill: color-mix(in srgb, white 8%, black);
+    stroke: color-mix(in srgb, white 34%, transparent);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-island-side {
+    fill: color-mix(in srgb, white 5%, black);
+    stroke: color-mix(in srgb, white 28%, transparent);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-cell,
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-occupied,
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-occupied:not(.is-seed),
+  .evolther-2-page .story-shell[data-active-scene] .story-cell:not(.is-parent):not(.is-inspiration):not(.is-seed):not(.is-accepted):not(.is-migrant-target) {
+    fill: color-mix(in srgb, white 5%, black);
+    stroke: color-mix(in srgb, white 22%, transparent);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-seed,
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-parent,
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-inspiration,
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-accepted,
+  .evolther-2-page .story-shell[data-active-scene] .story-cell.is-migrant-target {
+    fill: color-mix(in srgb, white 17%, transparent);
+    stroke: color-mix(in srgb, white 74%, transparent);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-track,
+  .evolther-2-page .story-shell[data-active-scene] .story-worker-line,
+  .evolther-2-page .story-shell[data-active-scene] .story-sample-link,
+  .evolther-2-page .story-shell[data-active-scene] .story-ring,
+  .evolther-2-page .story-shell[data-active-scene] .story-threshold,
+  .evolther-2-page .story-shell[data-active-scene] .story-seed-ray {
+    color: color-mix(in srgb, white 58%, transparent);
+    stroke: color-mix(in srgb, white 58%, transparent);
+  }
+
+  .evolther-2-page .story-shell[data-active-scene] .story-track.is-active,
+  .evolther-2-page .story-shell[data-active-scene] .story-seed-ray.is-active,
+  .evolther-2-page .story-shell[data-active-scene] .story-worker-line.is-active,
+  .evolther-2-page .story-shell[data-active-scene] .story-sample-link.is-active,
+  .evolther-2-page .story-shell[data-active-scene] .story-ring.is-active,
+  .evolther-2-page .story-shell[data-active-scene] .story-threshold.is-active {
+    stroke: color-mix(in srgb, white 82%, transparent);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
