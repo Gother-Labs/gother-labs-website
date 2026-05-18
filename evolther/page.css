@@ -1938,11 +1938,12 @@ html,
   .story-shell {
     grid-template-columns: 1fr;
     grid-template-areas:
+      "visual"
       "scenes"
       "code";
-    gap: 2rem;
+    gap: clamp(1.25rem, 4vw, 2rem);
     min-height: auto;
-    padding: 0.8rem var(--content-gutter) 0;
+    padding: 0.7rem var(--content-gutter) 0;
   }
 
   .story-shell::before,
@@ -1963,19 +1964,55 @@ html,
   }
 
   .story-visual {
-    display: none;
+    grid-area: visual;
+    order: 1;
+    position: sticky;
+    top: 5.75rem;
+    z-index: 5;
+    display: grid;
+    justify-self: stretch;
+    width: 100%;
+    max-height: min(48dvh, 34rem);
+    padding: 0.15rem 0 0.85rem;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
   }
 
   .story-scenes {
     grid-area: scenes;
-    order: 1;
+    order: 2;
   }
 
   .story-code {
     grid-area: code;
-    order: 2;
+    order: 3;
     padding: 0;
     color: var(--text);
+  }
+
+  .story-panel-head--visual {
+    display: none;
+  }
+
+  .story-visual-copy {
+    gap: 0.25rem;
+  }
+
+  .story-visual-copy .story-panel-title {
+    font-size: clamp(1.2rem, 3.4vw, 1.75rem);
+    line-height: 1.08;
+  }
+
+  .story-visual-line {
+    max-width: 62ch;
+    font-size: clamp(0.88rem, 2vw, 1rem);
+    line-height: 1.45;
+  }
+
+  .story-canvas {
+    height: clamp(12.5rem, 34dvh, 22rem);
+    margin-top: 0.65rem;
+    aspect-ratio: auto;
   }
 
   .story-scenes {
@@ -1985,8 +2022,9 @@ html,
     max-width: none;
     opacity: 1;
     pointer-events: auto;
-    gap: 2.2rem;
+    gap: clamp(1.25rem, 4.5vw, 2rem);
     justify-self: stretch;
+    margin-top: clamp(5.5rem, 16dvh, 10rem);
     min-width: 0;
     padding-top: 0;
     padding-bottom: 0;
@@ -1994,7 +2032,7 @@ html,
 
   .story-scene {
     min-height: auto;
-    padding-top: 0.9rem;
+    padding-top: 0.8rem;
   }
 
   .story-scene.is-active {
@@ -2046,16 +2084,33 @@ html,
 @media (max-width: 720px) {
   .evolther-2-hero .page-title {
     max-width: 9ch;
-    font-size: clamp(2.6rem, 13vw, 4rem);
+    font-size: clamp(2.45rem, 12vw, 3.6rem);
     white-space: normal;
   }
 
+  .story-visual {
+    top: 5.5rem;
+    max-height: 34dvh;
+    padding-bottom: 0.55rem;
+  }
+
+  .story-visual-copy .story-panel-title {
+    font-size: 1.1rem;
+  }
+
+  .story-visual-line {
+    font-size: 0.86rem;
+    line-height: 1.35;
+  }
+
   .story-canvas {
-    aspect-ratio: 920 / 760;
+    height: clamp(8.75rem, 20dvh, 12rem);
+    margin-top: 0.45rem;
   }
 
   .story-scenes {
-    gap: 1.7rem;
+    gap: 1.2rem;
+    margin-top: 5.5rem;
   }
 
 }
