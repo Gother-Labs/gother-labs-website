@@ -9,7 +9,8 @@ const RESULTS_ROOT = path.resolve(SITE_ROOT, "..", "gother-labs-results");
 const CATALOG_PATH = path.join(RESULTS_ROOT, "catalog.json");
 const OUT_ROOT = path.join(SITE_ROOT, "results");
 
-const CSS_VERSION = "results-card-v20";
+// Keep this shell version aligned with the hand-authored pages.
+const SITE_SHELL_VERSION = "nav-wordmark-v1";
 const SITE_URL = "https://www.gotherlabs.com";
 
 function escapeHtml(value) {
@@ -157,14 +158,59 @@ function articleWithoutTitle(markdown) {
 function nav(prefix) {
   return `<header class="site-header">
         <nav class="site-nav" aria-label="Primary">
-          <a class="brand nav-brand" href="${prefix}" aria-label="Göther Labs home">
-            <img src="${prefix}assets/gother-mark.svg" alt="" class="brand-image">
+          <a class="brand nav-brand nav-home-wordmark animated-symbol-scope" href="${prefix}" aria-label="Göther Labs home">
+            <span aria-hidden="true" class="wordmark-mark-wrap">
+              <svg class="animated-reference-geometry live-symbol-svg" viewBox="0 0 64 64" focusable="false">
+                <g class="source-geometry" aria-hidden="true">
+                  <circle class="source-geometry-dot" cx="34.5" cy="34.5" r="3.6" />
+                  <circle class="source-geometry-dot" cx="21" cy="58" r="3.6" />
+                  <circle class="source-geometry-dot" cx="48" cy="58" r="3.6" />
+                </g>
+                <path class="live-trail" d="" />
+                <path class="live-trail" d="" />
+                <path class="live-trail" d="" />
+                <circle class="geometry-dot live-geometry-dot" cx="34.2" cy="28.4" r="3.34" />
+                <circle class="geometry-dot live-geometry-dot" cx="20.9" cy="50.6" r="3.34" />
+                <circle class="geometry-dot live-geometry-dot" cx="47.5" cy="50.6" r="3.34" />
+              </svg>
+            </span>
+            <span class="nav-wordmark-text">Göther Labs</span>
           </a>
-          <a href="${prefix}company/">Company</a>
-          <a href="${prefix}results/">Results</a>
-          <a href="${prefix}contact/">Contact</a>
+          <div class="nav-links">
+            <a href="${prefix}company/">Company</a>
+            <a href="${prefix}results/">Results</a>
+            <a href="${prefix}contact/">Contact</a>
+          </div>
         </nav>
       </header>`;
+}
+
+async function alignCopiedRunShell(outputRoot) {
+  // Run surfaces are copied from the results repo, so normalize their shared site shell here.
+  const runIndexPath = path.join(outputRoot, "run", "index.html");
+  let html;
+
+  try {
+    html = await fs.readFile(runIndexPath, "utf8");
+  } catch {
+    return;
+  }
+
+  const runPrefix = "../../../";
+  const aligned = html
+    .replace(
+      /<link rel="stylesheet" href="\.\.\/\.\.\/\.\.\/styles\.css(?:\?v=[^"]*)?">/,
+      `<link rel="stylesheet" href="${runPrefix}styles.css?v=${SITE_SHELL_VERSION}">`,
+    )
+    .replace(/<header class="site-header">[\s\S]*?<\/header>/, nav(runPrefix))
+    .replace(
+      /<script src="\.\.\/\.\.\/\.\.\/scripts\.js(?:\?v=[^"]*)?"><\/script>/,
+      `<script src="${runPrefix}scripts.js?v=${SITE_SHELL_VERSION}"></script>`,
+    );
+
+  if (aligned !== html) {
+    await fs.writeFile(runIndexPath, aligned, "utf8");
+  }
 }
 
 function mathHead() {
@@ -206,7 +252,7 @@ function htmlShell({ title, description, canonicalPath, cssPrefix, body, enableM
     <meta name="twitter:image" content="${SITE_URL}/assets/og-image.png">
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="${cssPrefix}assets/gother-mark.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="${cssPrefix}styles.css?v=${CSS_VERSION}">
+    <link rel="stylesheet" href="${cssPrefix}styles.css?v=${SITE_SHELL_VERSION}">
 ${enableMath ? mathHead() : ""}
   </head>
   <body${bodyClassAttribute}>
@@ -223,7 +269,7 @@ ${body}
       </footer>
     </div>
 
-    <script src="${cssPrefix}scripts.js"></script>
+    <script src="${cssPrefix}scripts.js?v=${SITE_SHELL_VERSION}"></script>
   </body>
 </html>
 `;
@@ -1911,6 +1957,7 @@ async function writeDetail(result) {
     await copyIfExists(resultRoot, outputRoot, file);
   }
   await copyDirectoryIfExists(path.join(resultRoot, "run"), path.join(outputRoot, "run"));
+  await alignCopiedRunShell(outputRoot);
 
   const figures = plots
     .map(
