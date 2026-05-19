@@ -77,6 +77,8 @@ git diff --check
 python3 -m http.server 4173
 ```
 
+Use `python3 -m http.server 4173` for the simplest static preview. Use `node tools/preview.mjs` when validating GitHub Pages-style 404 fallback behavior for unknown routes such as `/domains`; Python's built-in server shows its own error page for those routes. If port `4173` is already in use, run `node tools/preview.mjs 4174`.
+
 Then spot-check:
 
 - `/`

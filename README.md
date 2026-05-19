@@ -40,6 +40,20 @@ python3 -m http.server 4173
 
 Then open `http://127.0.0.1:4173/`.
 
+To preview GitHub Pages-style custom 404 behavior for unknown routes, use the local preview helper instead:
+
+```bash
+node tools/preview.mjs
+```
+
+Then open `http://127.0.0.1:4173/domains` or another missing route. The helper serves `404.html` with a 404 status, matching the production fallback more closely than Python's built-in error page.
+
+If port `4173` is already in use, pass another port:
+
+```bash
+node tools/preview.mjs 4174
+```
+
 ## Maintenance rules
 
 - Keep tracked assets only when they are used by the site or by a documented helper workflow.
