@@ -51,6 +51,25 @@ The operational source of truth is:
 - `SITE_SHELL_VERSION` in `tools/sync-results.mjs` and hand-authored `styles.css` / `scripts.js` query strings must stay aligned.
 - Per-page metadata stays local when it is intentionally page-specific, such as home copy, canonical paths, `robots` directives for experimental/noindex pages, and MathJax on result detail pages.
 
+## Metadata Policy
+
+Indexable public pages must include:
+
+- A page-specific `<title>`.
+- A page-specific `meta name="description"`.
+- A canonical URL.
+- Open Graph title, description, URL, image, and type metadata.
+- Twitter card and image metadata.
+- Inter font preload and favicon links.
+
+The documented noindex exceptions are:
+
+- `404.html`
+- `evolther/index.html`
+- copied run pages under `results/*/run/index.html`
+
+Those exception pages must keep `meta name="robots"` with `noindex`. They may omit canonical, Open Graph, and Twitter metadata when the route is intentionally non-indexable.
+
 This is the smallest approach that prevents shell drift while preserving the repository's no-build deployment model.
 
 ## Rejected Alternatives
