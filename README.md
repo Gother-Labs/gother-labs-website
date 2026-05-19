@@ -24,7 +24,7 @@ Published result pages are generated from the sibling `gother-labs-results` repo
 node tools/sync-results.mjs
 ```
 
-Shared site shell maintenance is documented in `docs/site-shell.md`. Before opening a PR that changes global navigation, metadata, shared assets, or generated result chrome, run:
+Shared site shell maintenance is documented in `docs/site-shell.md`. Preview and visual QA expectations are documented in `docs/preview-qa.md`. Before opening a PR that changes global navigation, metadata, shared assets, or generated result chrome, run:
 
 ```bash
 node tools/check-site-shell.mjs
