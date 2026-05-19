@@ -64,7 +64,7 @@ When changing global shell behavior:
    - `evolther/` and copied run pages may include `robots` noindex directives and may omit canonical/social metadata.
    - Result detail pages may include MathJax.
 5. Run the shell checker before opening a PR.
-6. Preview representative routes with a static server.
+6. Preview representative routes with a static server and the visual QA checklist in `docs/preview-qa.md`.
 
 ## Verification
 
@@ -79,7 +79,7 @@ python3 -m http.server 4173
 
 Use `python3 -m http.server 4173` for the simplest static preview. Use `node tools/preview.mjs` when validating GitHub Pages-style 404 fallback behavior for unknown routes such as `/domains`; Python's built-in server shows its own error page for those routes. If port `4173` is already in use, run `node tools/preview.mjs 4174`.
 
-Then spot-check:
+Then follow the preview and visual QA checklist in `docs/preview-qa.md`. At minimum, spot-check:
 
 - `/`
 - `/company/`
@@ -97,5 +97,5 @@ Split future work into focused issues if this checklist is no longer enough:
 - Extract shared shell primitives into a small helper used by generated pages.
 - Normalize metadata and canonical handling across hand-authored pages.
 - Strengthen result generator shell integration.
-- Add a stricter preview and visual QA checklist.
+- Keep the preview and visual QA checklist current as new shell-sensitive pages are added.
 - Reconsider a static-site generator only if the manual/static model becomes a real maintenance bottleneck.
