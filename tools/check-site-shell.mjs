@@ -97,23 +97,22 @@ function checkFooter(html, failures, route) {
   assert(html.includes(`class="site-footer"`), failures, route, "missing site footer");
 }
 
-function checkMetadata(html, failures, route, { home = false } = {}) {
+function checkMetadata(html, failures, route) {
   assert(html.includes(`<title>`), failures, route, "missing title");
   assert(html.includes(`name="description"`), failures, route, "missing description metadata");
 
-  if (home) {
-    assert(html.includes(`property="og:url"`), failures, route, "missing home Open Graph URL");
-    assert(html.includes(`property="og:image"`), failures, route, "missing home Open Graph image");
+  if (METADATA_OPTIONAL.has(route) || route.endsWith("/run/index.html")) {
+    assert(html.includes(`name="robots"`) && html.includes(`noindex`), failures, route, "metadata exception must be noindex");
     return;
   }
 
-  if (!METADATA_OPTIONAL.has(route) && !route.endsWith("/run/index.html")) {
-    assert(html.includes(`rel="canonical"`), failures, route, "missing canonical URL");
-    assert(html.includes(`property="og:title"`), failures, route, "missing Open Graph title");
-    assert(html.includes(`property="og:description"`), failures, route, "missing Open Graph description");
-    assert(html.includes(`property="og:url"`), failures, route, "missing Open Graph URL");
-    assert(html.includes(`property="og:image"`), failures, route, "missing Open Graph image");
-  }
+  assert(html.includes(`rel="canonical"`), failures, route, "missing canonical URL");
+  assert(html.includes(`property="og:title"`), failures, route, "missing Open Graph title");
+  assert(html.includes(`property="og:description"`), failures, route, "missing Open Graph description");
+  assert(html.includes(`property="og:url"`), failures, route, "missing Open Graph URL");
+  assert(html.includes(`property="og:image"`), failures, route, "missing Open Graph image");
+  assert(html.includes(`name="twitter:card"`) && html.includes(`summary_large_image`), failures, route, "missing Twitter card metadata");
+  assert(html.includes(`name="twitter:image"`), failures, route, "missing Twitter image metadata");
 }
 
 async function main() {
@@ -129,7 +128,7 @@ async function main() {
     assert(html.startsWith("<!doctype html>"), failures, route, "missing HTML doctype");
     assert(html.includes(`id="site-main"`) || route.endsWith("/run/index.html"), failures, route, "missing site-main anchor");
 
-    checkMetadata(html, failures, route, { home });
+    checkMetadata(html, failures, route);
     checkSharedAssets(html, failures, route);
     checkNav(html, failures, route, { home });
     checkFooter(html, failures, route);
