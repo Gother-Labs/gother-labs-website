@@ -29,14 +29,15 @@ The generated shell currently appears in:
 - `results/*/index.html`
 - copied result run pages under `results/*/run/index.html`, normalized by `tools/sync-results.mjs`
 
-Inside `tools/sync-results.mjs`, generated shell ownership is intentionally limited to:
+Shared shell primitives live in `tools/site-shell.mjs`. The helper is intentionally small and currently owns:
 
 - `SITE_SHELL_VERSION` and `SHARED_SITE_SHELL` for shared asset versioning and nav labels.
-- `nav(prefix)` for the generated header.
-- `htmlShell(...)` for generated result index and detail pages.
-- `alignCopiedRunShell(...)` / `normalizeCopiedRunShell(...)` for copied run-page shell normalization.
+- Shared font preload, favicon, stylesheet, and script tag helpers.
+- `sharedNav(prefix)` for generated headers.
+- `sharedFooter()` for generated footers.
+- `normalizeCopiedRunShell(...)` for copied run-page shell normalization.
 
-Result content renderers should stay below that boundary and use `htmlShell(...)` rather than emitting their own top-level chrome.
+`tools/sync-results.mjs` still owns generated result metadata and body structure through `htmlShell(...)`. Result content renderers should stay below that boundary and use `htmlShell(...)` rather than emitting their own top-level chrome.
 
 `careers/index.html` is a legacy redirect and is intentionally excluded from the shared shell checklist.
 
@@ -47,8 +48,9 @@ Keep the site static and hand-authored for now. Do not introduce a framework, fu
 The operational source of truth is:
 
 - `tools/sync-results.mjs` owns generated result pages and copied run-page shell normalization.
+- `tools/site-shell.mjs` owns the minimal generated shell primitives shared by `tools/sync-results.mjs` and `tools/check-site-shell.mjs`.
 - Hand-authored pages remain manually edited, but they must follow this document and `node tools/check-site-shell.mjs`.
-- `SITE_SHELL_VERSION` in `tools/sync-results.mjs` and hand-authored `styles.css` / `scripts.js` query strings must stay aligned.
+- `SITE_SHELL_VERSION` in `tools/site-shell.mjs` and hand-authored `styles.css` / `scripts.js` query strings must stay aligned.
 - Per-page metadata stays local when it is intentionally page-specific, such as home copy, canonical paths, `robots` directives for experimental/noindex pages, and MathJax on result detail pages.
 
 ## Metadata Policy
