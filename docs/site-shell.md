@@ -29,6 +29,15 @@ The generated shell currently appears in:
 - `results/*/index.html`
 - copied result run pages under `results/*/run/index.html`, normalized by `tools/sync-results.mjs`
 
+Inside `tools/sync-results.mjs`, generated shell ownership is intentionally limited to:
+
+- `SITE_SHELL_VERSION` and `SHARED_SITE_SHELL` for shared asset versioning and nav labels.
+- `nav(prefix)` for the generated header.
+- `htmlShell(...)` for generated result index and detail pages.
+- `alignCopiedRunShell(...)` / `normalizeCopiedRunShell(...)` for copied run-page shell normalization.
+
+Result content renderers should stay below that boundary and use `htmlShell(...)` rather than emitting their own top-level chrome.
+
 `careers/index.html` is a legacy redirect and is intentionally excluded from the shared shell checklist.
 
 ## Decision
