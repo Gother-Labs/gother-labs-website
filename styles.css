@@ -1681,7 +1681,7 @@ a {
 }
 
 .result-objective-proposal {
-  fill: color-mix(in srgb, var(--text) 30%, transparent);
+  fill: color-mix(in srgb, var(--text) 20%, transparent);
 }
 
 .result-objective-proposal.is-clipped {
@@ -1981,6 +1981,10 @@ a {
   fill: var(--text);
   font-family: "SFMono-Regular", Menlo, Consolas, monospace;
   font-size: 13px;
+}
+
+.circle-packing-paper-svg .circle-packing-contact-value {
+  fill: var(--accent);
 }
 
 .circle-packing-paper-svg .circle-packing-track {

@@ -332,7 +332,7 @@
 }
 
 .packing-svg-dot {
-  fill: color-mix(in srgb, var(--text) 32%, transparent);
+  fill: color-mix(in srgb, var(--text) 18%, transparent);
 }
 
 .packing-svg-checkpoint {
@@ -369,25 +369,8 @@
   fill: color-mix(in srgb, var(--accent) 20%, transparent);
 }
 
-.packing-contact-target {
-  stroke: var(--accent);
-  stroke-width: 1.3;
-  stroke-dasharray: 4 4;
-}
-
-.packing-contact-seed {
-  fill: none;
-  stroke: color-mix(in srgb, var(--text) 48%, transparent);
-  stroke-width: 1.35;
-  opacity: 0.88;
-}
-
-.packing-contact-bar {
-  fill: color-mix(in srgb, var(--text) 7%, transparent);
-}
-
-.packing-contact-fill {
-  fill: color-mix(in srgb, var(--accent) 72%, transparent);
+.packing-contact-value {
+  fill: var(--accent);
 }
 
 @media (max-width: 1180px) {

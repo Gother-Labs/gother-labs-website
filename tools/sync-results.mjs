@@ -1790,9 +1790,12 @@ function circlePackingContractTable(evolution) {
   });
 }
 
-function circlePackingObjectiveCurveFigure(evolution) {
-  const steps = Array.isArray(evolution?.steps) ? evolution.steps : [];
-  const scored = steps.filter((step) => typeof step.sum_radii === "number");
+function circlePackingObjectiveCurveFigure(evolution, scoreTrace) {
+  const retainedSteps = Array.isArray(evolution?.steps) ? evolution.steps : [];
+  const tracedCandidates = Array.isArray(scoreTrace?.candidates) ? scoreTrace.candidates : [];
+  const scored = (tracedCandidates.length ? tracedCandidates : retainedSteps)
+    .filter((step) => typeof step.sum_radii === "number" && Number.isFinite(step.sum_radii));
+  const retained = retainedSteps.filter((step) => typeof step.sum_radii === "number" && Number.isFinite(step.sum_radii));
   if (!scored.length) return "";
 
   const left = 82;
@@ -1801,10 +1804,17 @@ function circlePackingObjectiveCurveFigure(evolution) {
   const bottom = 260;
   const width = right - left;
   const height = bottom - top;
-  const minRadius = Math.floor(Math.min(...scored.map((step) => step.sum_radii)) * 100) / 100;
-  const maxRadius = Math.ceil(Math.max(...scored.map((step) => step.sum_radii)) * 100) / 100;
-  const progressEnd = Math.max(1, scored.length - 1);
-  const mapX = (position) => left + (position / progressEnd) * width;
+  const baseline = retained[0] ?? scored[0];
+  const accepted = retained[retained.length - 1] ?? scored[scored.length - 1];
+  const minRadius = baseline.sum_radii;
+  const maxRadius = Math.ceil(accepted.sum_radii * 1000) / 1000;
+  const generationEnd = Math.max(
+    1,
+    scoreTrace?.generation_end ?? 0,
+    ...scored.map((step) => Number(step.generation) || 0),
+    ...retained.map((step) => Number(step.generation) || 0),
+  );
+  const mapX = (generation) => left + (Math.max(0, Math.min(generationEnd, generation)) / generationEnd) * width;
   const radiusSpan = Math.max(0.0001, maxRadius - minRadius);
   const scaleStrength = 18;
   const mapY = (sumRadii) => {
@@ -1812,26 +1822,24 @@ function circlePackingObjectiveCurveFigure(evolution) {
     const normalized = 1 - (Math.log1p(scaleStrength * gapRatio) / Math.log1p(scaleStrength));
     return bottom - normalized * height;
   };
+  const traceBest = Array.isArray(scoreTrace?.best_by_generation) ? scoreTrace.best_by_generation : [];
   let best = -Infinity;
-  const bestPoints = scored.map((step, index) => {
+  const bestPoints = (traceBest.length ? traceBest : scored).map((step) => {
     best = Math.max(best, step.sum_radii);
-    return [mapX(index), mapY(best)];
+    return [mapX(Number(step.generation) || 0), mapY(traceBest.length ? step.sum_radii : best)];
   });
-  const proposalDots = scored.map((step, index) => {
-    const x = mapX(index);
+  const proposalDots = scored.map((step) => {
+    const x = mapX(Number(step.generation) || 0);
     const y = mapY(step.sum_radii);
-    return `<circle class="result-objective-proposal" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.1" />`;
+    return `<circle class="result-objective-proposal" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="1.35" />`;
   }).join("\n");
-  const baseline = scored[0];
-  const accepted = scored[scored.length - 1];
-  const firstRetained = scored.find((step) => step.sum_radii > 2.3);
-  const firstRetainedIndex = scored.findIndex((step) => step === firstRetained);
+  const firstRetained = retained.find((step) => step.sum_radii > 2.3) ?? scored.find((step) => step.sum_radii > 2.3);
   const yTicks = circlePackingSpacedTickValues([
     { value: minRadius, priority: 0 },
     { value: maxRadius, priority: 0 },
     { value: firstRetained?.sum_radii, priority: 1 },
-    { value: scored[2]?.sum_radii, priority: 2 },
-    { value: scored[1]?.sum_radii, priority: 3 },
+    { value: retained[2]?.sum_radii ?? scored[2]?.sum_radii, priority: 2 },
+    { value: retained[1]?.sum_radii ?? scored[1]?.sum_radii, priority: 3 },
   ], mapY)
     .map((value) => {
       const y = mapY(value);
@@ -1840,45 +1848,46 @@ function circlePackingObjectiveCurveFigure(evolution) {
                 <text class="result-axis-tick result-objective-y-label" x="${left - 14}" y="${(y + 4).toFixed(1)}">${formatMetric(value, { maximumFractionDigits: value < 2 ? 2 : 3, minimumFractionDigits: value < 2 ? 2 : 3 })}</text>
               </g>`;
     }).join("\n");
-  const tickIndexes = circlePackingUniqueSorted([
+  const tickGenerations = circlePackingUniqueSorted([
     0,
-    firstRetainedIndex >= 0 ? firstRetainedIndex : null,
-    scored.findIndex((step) => step.generation >= 60),
-    scored.findIndex((step) => step.generation >= 151),
-    scored.length - 1,
-  ].filter((index) => Number.isFinite(index) && index >= 0));
-  const xTicks = tickIndexes.map((index) => {
-    const x = mapX(index);
-    const anchor = index === 0 ? "" : index === progressEnd ? ' text-anchor="end"' : ' text-anchor="middle"';
-    return `<text class="result-axis-tick" x="${x.toFixed(1)}" y="282"${anchor}>${formatMetric(scored[index].generation, { maximumFractionDigits: 0 })}</text>`;
+    Number(firstRetained?.generation) || null,
+    60,
+    151,
+    Number(accepted?.generation) || null,
+    generationEnd,
+  ].filter((generation) => Number.isFinite(generation) && generation >= 0));
+  const xTicks = tickGenerations.map((generation) => {
+    const x = mapX(generation);
+    const anchor = generation === 0 ? "" : generation === generationEnd ? ' text-anchor="end"' : ' text-anchor="middle"';
+    return `<text class="result-axis-tick" x="${x.toFixed(1)}" y="282"${anchor}>${formatMetric(generation, { maximumFractionDigits: 0 })}</text>`;
   }).join("\n");
-  const xGuides = tickIndexes.slice(1, -1).map((index) => {
-    const x = mapX(index);
+  const xGuides = tickGenerations.slice(1, -1).map((generation) => {
+    const x = mapX(generation);
     return `<path class="result-objective-grid result-objective-guide" d="M${x.toFixed(1)} ${top}V${bottom}" />`;
   }).join("\n");
 
   return paperInlineFigure({
     number: 3,
-    caption: "Best-so-far total radius across the curated public chain. Faint points are retained public checkpoints, the x-axis follows the global progress order, and the vertical scale is transformed by distance to the accepted value so the post-baseline curve remains visible.",
+    caption: "Best-so-far total radius across all scored public candidates. Faint points are valid candidate evaluations, with values below the baseline clipped to the bottom edge, and the vertical scale is transformed by distance to the accepted value so the post-baseline curve remains visible.",
     className: "circle-packing-inline-figure result-objective-figure",
-    svg: `          <svg class="result-primer-svg result-objective-svg circle-packing-paper-svg" viewBox="0 0 560 328" role="img" aria-label="Best so far total radius across the public circle-packing chain.">
+    svg: `          <svg class="result-primer-svg result-objective-svg circle-packing-paper-svg" viewBox="0 0 560 328" role="img" aria-label="Best so far total radius across public circle-packing candidates.">
             <text class="result-axis-label result-figure-title" x="${left}" y="34">Best-so-far total radius</text>
-            <text class="circle-packing-note" x="${right}" y="34" text-anchor="end">global order, gap-scaled</text>
+            <text class="circle-packing-note" x="${right}" y="34" text-anchor="end">scored candidates, gap-scaled</text>
             <g class="result-objective-legend" transform="translate(${left} 48)">
-              <g><circle class="result-objective-legend-proposal" cx="0" cy="0" r="2.4" /><text x="12" y="4">retained checkpoint</text></g>
-              <g transform="translate(144 0)"><line class="result-objective-legend-best" x1="0" y1="0" x2="16" y2="0" /><text x="24" y="4">best-so-far radius</text></g>
-              <g transform="translate(306 0)"><circle class="result-legend-baseline-dot" cx="0" cy="0" r="3.4" /><text x="16" y="4">baseline</text></g>
-              <g transform="translate(390 0)"><circle class="result-legend-accepted-dot" cx="0" cy="0" r="3.8" /><text x="16" y="4">accepted</text></g>
+              <g><circle class="result-objective-legend-proposal" cx="0" cy="0" r="2.0" /><text x="12" y="4">scored candidate</text></g>
+              <g transform="translate(142 0)"><line class="result-objective-legend-best" x1="0" y1="0" x2="16" y2="0" /><text x="24" y="4">best-so-far radius</text></g>
+              <g transform="translate(304 0)"><circle class="result-legend-baseline-dot" cx="0" cy="0" r="3.4" /><text x="16" y="4">baseline</text></g>
+              <g transform="translate(388 0)"><circle class="result-legend-accepted-dot" cx="0" cy="0" r="3.8" /><text x="16" y="4">accepted</text></g>
             </g>
             ${yTicks}
             ${xGuides}
             <path class="result-rule-paper-axis" d="M${left} ${top}V${bottom}H${right}" />
             <g>${proposalDots}</g>
             <path class="result-objective-best" d="${svgPolyline(bestPoints)}" />
-            <g class="result-objective-baseline"><circle cx="${mapX(0).toFixed(1)}" cy="${mapY(baseline.sum_radii).toFixed(1)}" r="4.2" /></g>
-            <g class="result-objective-accepted"><circle cx="${mapX(scored.length - 1).toFixed(1)}" cy="${mapY(accepted.sum_radii).toFixed(1)}" r="4.8" /></g>
+            <g class="result-objective-baseline"><circle cx="${mapX(Number(baseline.generation) || 0).toFixed(1)}" cy="${mapY(baseline.sum_radii).toFixed(1)}" r="4.2" /></g>
+            <g class="result-objective-accepted"><circle cx="${mapX(Number(accepted.generation) || generationEnd).toFixed(1)}" cy="${mapY(accepted.sum_radii).toFixed(1)}" r="4.8" /></g>
             ${xTicks}
-            <text class="result-axis-label result-x-axis-title" x="${(left + width / 2).toFixed(1)}" y="306">global generation labels on progress order</text>
+            <text class="result-axis-label result-x-axis-title" x="${(left + width / 2).toFixed(1)}" y="306">global generation</text>
             <text class="result-axis-label result-objective-y-title" x="34" y="${(top + height / 2).toFixed(1)}" transform="rotate(-90 34 ${(top + height / 2).toFixed(1)})">Σr<tspan baseline-shift="sub" font-size="8">i</tspan></text>
           </svg>`,
   });
@@ -1927,35 +1936,28 @@ function circlePackingLayoutFigure(replay) {
 
   return paperInlineFigure({
     number: 4,
-    caption: `Accepted packing geometry. The deterministic public candidate returns these 26 centers and radii, with total radius ${formatMetric(replay?.metrics?.sum_radii ?? trace.reported_sum, { maximumFractionDigits: 12, minimumFractionDigits: 12 })}.`,
+    caption: `Accepted packing geometry. The deterministic public candidate returns these 26 centers and radii, with total radius ${formatMetric(replay?.metrics?.sum_radii ?? trace.reported_sum, { maximumFractionDigits: 6, minimumFractionDigits: 6 })}.`,
     className: "circle-packing-inline-figure circle-packing-layout-figure",
-    svg: `          <svg class="result-primer-svg circle-packing-paper-svg" viewBox="0 0 560 530" role="img" aria-label="Accepted 26-circle packing in the unit square.">
+    svg: `          <svg class="result-primer-svg circle-packing-paper-svg" viewBox="0 0 560 490" role="img" aria-label="Accepted 26-circle packing in the unit square.">
             <text class="result-axis-label result-figure-title" x="${left}" y="34">Accepted 26-circle packing</text>
             <rect class="circle-packing-square" x="${left}" y="${top}" width="${size}" height="${size}" />
             <path class="circle-packing-grid" d="M${left} ${top + size / 2}H${left + size}M${left + size / 2} ${top}V${top + size}" />
 ${disks}
-            <text class="result-axis-tick" x="${left}" y="${top + size + 24}">0</text>
-            <text class="result-axis-tick" x="${left + size}" y="${top + size + 24}" text-anchor="end">1</text>
-            <text class="result-axis-tick" x="${left - 12}" y="${top + size}" text-anchor="end">0</text>
-            <text class="result-axis-tick" x="${left - 12}" y="${top + 4}" text-anchor="end">1</text>
           </svg>`,
   });
 }
 
 function circlePackingContactFigure(full) {
   const metrics = full.metrics ?? {};
-  const bars = [
-    ["Boundary contacts", metrics.boundary_contact_count ?? 0, 26],
-    ["Pairwise contacts", metrics.pairwise_contact_count ?? 0, 70],
-    ["Interior circles", metrics.interior_circle_count ?? 0, 26],
-  ].map(([label, value, max], index) => {
-    const y = 86 + index * 54;
-    const width = Math.min(310, (Number(value) / Number(max)) * 310);
+  const rows = [
+    ["Boundary contacts", metrics.boundary_contact_count ?? 0],
+    ["Pairwise contacts", metrics.pairwise_contact_count ?? 0],
+    ["Interior circles", metrics.interior_circle_count ?? 0],
+  ].map(([label, value], index) => {
+    const y = 82 + index * 44;
     return `<g>
               <text class="circle-packing-section-label" x="72" y="${y}">${escapeHtml(label)}</text>
-              <rect class="circle-packing-track" x="214" y="${y - 13}" width="310" height="14" />
-              <rect class="circle-packing-fill" x="214" y="${y - 13}" width="${width.toFixed(1)}" height="14" />
-              <text class="circle-packing-value" x="72" y="${y + 22}">${formatMetric(value, { maximumFractionDigits: 0 })}</text>
+              <text class="circle-packing-value circle-packing-contact-value" x="488" y="${y}" text-anchor="end">${formatMetric(value, { maximumFractionDigits: 0 })}</text>
             </g>`;
   }).join("\n");
 
@@ -1963,10 +1965,9 @@ function circlePackingContactFigure(full) {
     number: 5,
     caption: "Accepted geometry diagnostics. Contact counts use the public tolerance and the minimum slacks are near machine precision.",
     className: "circle-packing-inline-figure circle-packing-contact-figure",
-    svg: `          <svg class="result-primer-svg circle-packing-paper-svg" viewBox="0 0 560 286" role="img" aria-label="Contact diagnostics for the accepted circle packing.">
+    svg: `          <svg class="result-primer-svg circle-packing-paper-svg" viewBox="0 0 560 190" role="img" aria-label="Contact diagnostics for the accepted circle packing.">
             <text class="result-axis-label result-figure-title" x="72" y="34">Accepted contact readout</text>
-            <text class="circle-packing-note" x="72" y="55">validity margin ${formatMetric(metrics.validity_margin ?? 0, { maximumFractionDigits: 3 })}; min radius ${formatMetric(metrics.min_radius ?? 0, { maximumFractionDigits: 6 })}; max radius ${formatMetric(metrics.max_radius ?? 0, { maximumFractionDigits: 6 })}</text>
-${bars}
+${rows}
           </svg>`,
   });
 }
@@ -1979,12 +1980,12 @@ function circlePackingImplementationCodeFigure(candidateCode) {
   });
 }
 
-function circlePackingWhitepaperInserts(full, evolution, candidateCode, replay) {
+function circlePackingWhitepaperInserts(full, evolution, candidateCode, replay, scoreTrace) {
   return {
     "packing-primer": circlePackingPrimerFigure(),
     "contract-table": circlePackingContractTable(evolution),
     "implementation-code": circlePackingImplementationCodeFigure(candidateCode),
-    "objective-curve": circlePackingObjectiveCurveFigure(evolution),
+    "objective-curve": circlePackingObjectiveCurveFigure(evolution, scoreTrace),
     "objective-summary-table": circlePackingSummaryTable(full),
     "packing-layout": circlePackingLayoutFigure(replay),
     "contact-readout": circlePackingContactFigure(full),
@@ -2267,7 +2268,7 @@ ${markdownToHtml(articleWithoutTitle(article), rcpspWhitepaperInserts(full, evol
 
         <section class="result-detail result-whitepaper-shell circle-packing-whitepaper-shell">
           <article class="result-article result-whitepaper circle-packing-whitepaper">
-${markdownToHtml(articleWithoutTitle(article), circlePackingWhitepaperInserts(full, evolution, candidateCode, replay))}
+${markdownToHtml(articleWithoutTitle(article), circlePackingWhitepaperInserts(full, evolution, candidateCode, replay, scoreTrace))}
           </article>
         </section>`
     : `        <section class="hero compact-hero page-hero result-detail-hero">

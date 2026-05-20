@@ -5,6 +5,19 @@
   const steps = data.steps;
   const checkpoints = data.checkpoints;
   const meta = data.meta || {};
+  const scoreTrace = data.score_trace || {};
+  const scoredCandidates = Array.isArray(scoreTrace.candidates)
+    ? scoreTrace.candidates.filter((candidate) => Number.isFinite(candidate?.sum_radii))
+    : steps;
+  const bestByGeneration = Array.isArray(scoreTrace.best_by_generation)
+    ? scoreTrace.best_by_generation.filter((point) => Number.isFinite(point?.sum_radii))
+    : [];
+  const generationEnd = Math.max(
+    1,
+    Number(scoreTrace.generation_end) || 0,
+    ...scoredCandidates.map((candidate) => Number(candidate.generation) || 0),
+    ...steps.map((step) => Number(step.generation) || 0),
+  );
   const signalGains = document.getElementById("signal-gains");
   const signalSeed = document.getElementById("signal-seed");
   const signalBest = document.getElementById("signal-best");
@@ -261,10 +274,9 @@
     const right = 430;
     const top = 34;
     const bottom = 202;
-    const minY = Math.min(...steps.map((step) => step.sum_radii));
-    const maxY = Math.max(...steps.map((step) => step.sum_radii));
-    const progressEnd = Math.max(1, steps.length - 1);
-    const xAt = (progress) => left + (progress / progressEnd) * (right - left);
+    const minY = Number.isFinite(meta.seed_sum_radii) ? meta.seed_sum_radii : Math.min(...steps.map((step) => step.sum_radii));
+    const maxY = Number.isFinite(meta.accepted_sum_radii) ? meta.accepted_sum_radii : Math.max(...steps.map((step) => step.sum_radii));
+    const xAtGeneration = (generation) => left + (clamp(generation, 0, generationEnd) / generationEnd) * (right - left);
     const radiusSpan = Math.max(0.0001, maxY - minY);
     const scaleStrength = 18;
     const yAt = (value) => {
@@ -273,13 +285,14 @@
       return bottom - normalized * (bottom - top);
     };
     let best = -Infinity;
-    const bestPoints = steps.map((step, index) => {
+    const bestSource = bestByGeneration.length ? bestByGeneration : scoredCandidates;
+    const bestPoints = bestSource.map((step) => {
       best = Math.max(best, step.sum_radii);
-      return [xAt(index), yAt(best)];
+      return [xAtGeneration(Number(step.generation) || 0), yAt(bestByGeneration.length ? step.sum_radii : best)];
     });
-    const dots = steps.map((step, index) => `<circle class="packing-svg-dot" cx="${xAt(index).toFixed(1)}" cy="${yAt(step.sum_radii).toFixed(1)}" r="1.8" />`).join("");
+    const dots = scoredCandidates.map((step) => `<circle class="packing-svg-dot" cx="${xAtGeneration(Number(step.generation) || 0).toFixed(1)}" cy="${yAt(step.sum_radii).toFixed(1)}" r="1.15" />`).join("");
     const checkpointDots = checkpointFrames.map((checkpoint) => (
-      `<circle class="packing-svg-checkpoint" cx="${xAt(checkpoint.progress).toFixed(1)}" cy="${yAt(checkpoint.sum_radii).toFixed(1)}" r="3.3" />`
+      `<circle class="packing-svg-checkpoint" cx="${xAtGeneration(Number(checkpoint.generation) || 0).toFixed(1)}" cy="${yAt(checkpoint.sum_radii).toFixed(1)}" r="3.3" />`
     )).join("");
     const retainedStep = steps.find((step) => step.sum_radii > 2.3);
     const gridValues = spacedTickValues([
@@ -289,23 +302,23 @@
       { value: steps[2]?.sum_radii, priority: 2 },
       { value: steps[1]?.sum_radii, priority: 3 },
     ], yAt);
-    const tickSteps = [
-      steps[0],
-      retainedStep,
-      steps.find((step) => step.generation >= 60),
-      steps.find((step) => step.generation >= 151),
-      steps[steps.length - 1],
-    ].filter(Boolean);
-    const xTicks = uniqueSorted(tickSteps.map((step) => stepPositionByCandidate.get(step.candidate_id)))
-      .map((position) => {
-        const step = steps[position];
-        const x = xAt(position);
-        const anchor = position === 0 ? "" : position === progressEnd ? ' text-anchor="end"' : ' text-anchor="middle"';
-        return `<text class="packing-svg-text" x="${x.toFixed(1)}" y="220"${anchor}>${step.generation}</text>`;
+    const tickGenerations = uniqueSorted([
+      0,
+      Number(retainedStep?.generation) || null,
+      60,
+      151,
+      Number(steps[steps.length - 1]?.generation) || null,
+      generationEnd,
+    ].filter((generation) => Number.isFinite(generation) && generation >= 0));
+    const xTicks = tickGenerations
+      .map((generation) => {
+        const x = xAtGeneration(generation);
+        const anchor = generation === 0 ? "" : generation === generationEnd ? ' text-anchor="end"' : ' text-anchor="middle"';
+        return `<text class="packing-svg-text" x="${x.toFixed(1)}" y="220"${anchor}>${generation}</text>`;
       }).join("");
-    const xGuides = uniqueSorted(tickSteps.slice(1, -1).map((step) => stepPositionByCandidate.get(step.candidate_id)))
-      .map((position) => {
-        const x = xAt(position);
+    const xGuides = tickGenerations.slice(1, -1)
+      .map((generation) => {
+        const x = xAtGeneration(generation);
         return `<path class="packing-svg-guide" d="M${x.toFixed(1)} ${top}V${bottom}" />`;
       }).join("");
     const grid = gridValues.map((value) => {
@@ -319,11 +332,11 @@
       ${dots}
       ${checkpointDots}
       <path class="packing-svg-line" d="${linePath(bestPoints)}" />
-      <circle class="packing-svg-current" cx="${xAt(currentProgress).toFixed(1)}" cy="${yAt(currentSum).toFixed(1)}" r="5" />
+      <circle class="packing-svg-current" cx="${xAtGeneration(currentGeneration).toFixed(1)}" cy="${yAt(currentSum).toFixed(1)}" r="5" />
       ${xTicks}
       <text class="packing-svg-text" x="${left}" y="232">global generation</text>
       <text class="packing-svg-value" x="${right}" y="232" text-anchor="end">${statusLabel ?? `Σr = ${fmt(currentSum, 6)}`}</text>
-      <text class="packing-svg-text" x="${left}" y="18">Σr gap-scaled, global progress order</text>
+      <text class="packing-svg-text" x="${left}" y="18">Σr gap-scaled, scored candidates</text>
     `);
   }
 
@@ -358,12 +371,6 @@
     const current = visual.current;
     const next = visual.next ?? current;
     const t = visual.transition_t ?? 0;
-    const generationLabel = isTransition
-      ? `accepted gen ${Math.round(current.generation)} -> ${Math.round(next.generation)}`
-      : `validated accepted · gen ${Math.round(current.generation)}`;
-    const sumLabel = isTransition
-      ? `Σr = ${fmt(visual.current_sum, 6)}`
-      : `Σr ${fmt(current.sum_radii, 6)}`;
     const packing = isTransition
       ? {
         centers: current.centers.map(([x, y], index) => {
@@ -382,8 +389,6 @@
       <rect class="packing-square" x="${left}" y="${top}" width="${size}" height="${size}" />
       <path class="packing-svg-grid" d="M${left} ${top + size / 2}H${left + size}M${left + size / 2} ${top}V${top + size}" />
       ${diskMarkup}
-      <text class="packing-svg-value" x="${left}" y="446">${sumLabel}</text>
-      <text class="packing-svg-text" x="${left + size}" y="446" text-anchor="end">${generationLabel}</text>
     `);
   }
 
@@ -393,28 +398,20 @@
     const currentDiag = diagnostics(visual.current);
     const nextDiag = isTransition ? diagnostics(visual.next) : currentDiag;
     const rows = [
-      ["boundary contacts", currentDiag.boundaryContacts, nextDiag.boundaryContacts, 26],
-      ["pairwise contacts", currentDiag.pairContacts, nextDiag.pairContacts, 70],
-      ["interior circles", currentDiag.interior, nextDiag.interior, 26],
+      ["Boundary contacts", currentDiag.boundaryContacts, nextDiag.boundaryContacts, 26],
+      ["Pairwise contacts", currentDiag.pairContacts, nextDiag.pairContacts, 70],
+      ["Interior circles", currentDiag.interior, nextDiag.interior, 26],
     ];
     const markup = rows.map(([label, value, nextValue, max], index) => {
-      const y = 48 + index * 54;
+      const y = 46 + index * 52;
       const displayValue = isTransition ? mix(value, nextValue, t) : value;
-      const width = clamp((displayValue / max) * 260, 0, 260);
-      const seedWidth = clamp((value / max) * 260, 0, 260);
-      const nextWidth = clamp((nextValue / max) * 260, 0, 260);
       const valueLabel = String(Math.round(displayValue));
       return `
         <text class="packing-svg-text" x="26" y="${y}">${label}</text>
-        <rect class="packing-contact-bar" x="162" y="${y - 12}" width="260" height="14" />
-        ${isTransition ? `<rect class="packing-contact-seed" x="162" y="${y - 12}" width="${seedWidth.toFixed(1)}" height="14" />` : ""}
-        ${isTransition && value !== nextValue ? `<line class="packing-contact-target" x1="${(162 + nextWidth).toFixed(1)}" y1="${y - 15}" x2="${(162 + nextWidth).toFixed(1)}" y2="${y + 5}" />` : ""}
-        <rect class="packing-contact-fill" x="162" y="${y - 12}" width="${width.toFixed(1)}" height="14" />
-        <text class="packing-svg-value" x="26" y="${y + 22}">${valueLabel}</text>
+        <text class="packing-svg-value packing-contact-value" x="414" y="${y}" text-anchor="end">${valueLabel}</text>
       `;
     }).join("");
-    const caption = isTransition ? "current contact diagnostics, interpolated during accepted transitions" : "contacts use the public tolerance during replay";
-    setSvg(contactSvg, `${markup}<text class="packing-svg-text" x="26" y="210">${caption}</text>`);
+    setSvg(contactSvg, markup);
   }
 
   function renderFrame(now = performance.now()) {

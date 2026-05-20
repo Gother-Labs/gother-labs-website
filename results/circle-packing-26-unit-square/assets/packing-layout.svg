@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 540" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 500" role="img">
 <style>text{font-family:Inter,Arial,sans-serif;fill:#0a0a0a}.muted{fill:#667085;font-size:12px}.axis{stroke:#98a2b3;stroke-width:1;fill:none}.grid{stroke:#e4e7ec;stroke-width:1}.accent{fill:#0b84fe;stroke:#006bd6}.soft{fill:#e8f3ff;stroke:#84bfff}.line{stroke:#0a0a0a;stroke-width:2;fill:none}</style>
 <text x="72" y="30" font-size="16" font-weight="600">Accepted 26-circle packing</text><rect x="72" y="52" width="416" height="416" fill="none" stroke="#0a0a0a" stroke-width="1.4"/>
 <circle class="soft" cx="118.202" cy="421.798" r="46.202"/>
@@ -26,4 +26,4 @@
 <circle class="soft" cx="364.683" cy="107.062" r="55.062"/>
 <circle class="soft" cx="444.205" cy="165.789" r="43.795"/>
 <circle class="soft" cx="195.317" cy="107.062" r="55.062"/>
-<circle class="soft" cx="280.000" cy="84.560" r="32.560"/><text class="muted" x="72" y="504">sum radii 2.635977394754</text></svg>
+<circle class="soft" cx="280.000" cy="84.560" r="32.560"/></svg>
