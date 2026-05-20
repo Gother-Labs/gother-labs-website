@@ -379,6 +379,12 @@
     grid-template-columns: 1fr;
   }
 
+  .packing-visual {
+    order: -1;
+    border-top: 1px solid var(--line);
+    padding-top: 1rem;
+  }
+
   .packing-editor-body {
     height: 520px;
   }
