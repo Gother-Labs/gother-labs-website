@@ -2,6 +2,15 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  normalizeCopiedRunShell,
+  sharedFaviconTag,
+  sharedFontPreloadTag,
+  sharedFooter,
+  sharedNav,
+  sharedScriptTag,
+  sharedStylesheetTag,
+} from "./site-shell.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SITE_ROOT = path.resolve(__dirname, "..");
@@ -9,42 +18,7 @@ const RESULTS_ROOT = path.resolve(SITE_ROOT, "..", "gother-labs-results");
 const CATALOG_PATH = path.join(RESULTS_ROOT, "catalog.json");
 const OUT_ROOT = path.join(SITE_ROOT, "results");
 
-// Results pages are generated here, but the shared site shell must stay aligned
-// with the hand-authored pages documented in docs/site-shell.md.
-const SITE_SHELL_VERSION = "nav-wordmark-v1";
 const SITE_URL = "https://www.gotherlabs.com";
-const SHARED_SITE_SHELL = Object.freeze({
-  version: SITE_SHELL_VERSION,
-  fontPreloadHref: "/assets/fonts/inter-latin.woff2",
-  faviconPath: "assets/gother-mark.svg",
-  stylesheetPath: "styles.css",
-  scriptPath: "scripts.js",
-  navLinks: Object.freeze([
-    ["company/", "Company"],
-    ["results/", "Results"],
-    ["contact/", "Contact"],
-  ]),
-});
-
-function versionedSharedAsset(prefix, assetPath) {
-  return `${prefix}${assetPath}?v=${SHARED_SITE_SHELL.version}`;
-}
-
-function sharedStylesheetTag(prefix) {
-  return `<link rel="stylesheet" href="${versionedSharedAsset(prefix, SHARED_SITE_SHELL.stylesheetPath)}">`;
-}
-
-function sharedScriptTag(prefix) {
-  return `<script src="${versionedSharedAsset(prefix, SHARED_SITE_SHELL.scriptPath)}"></script>`;
-}
-
-function sharedFaviconTag(prefix) {
-  return `<link rel="icon" href="${prefix}${SHARED_SITE_SHELL.faviconPath}" type="image/svg+xml">`;
-}
-
-function sharedFontPreloadTag() {
-  return `<link rel="preload" href="${SHARED_SITE_SHELL.fontPreloadHref}" as="font" type="font/woff2" crossorigin>`;
-}
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -188,51 +162,6 @@ function articleWithoutTitle(markdown) {
   return markdown.replace(/\r\n/g, "\n").replace(/^#\s+.+\n+/, "");
 }
 
-function nav(prefix) {
-  const links = SHARED_SITE_SHELL.navLinks
-    .map(([href, label]) => `<a href="${prefix}${href}">${label}</a>`)
-    .join("\n            ");
-
-  return `<header class="site-header">
-        <nav class="site-nav" aria-label="Primary">
-          <a class="brand nav-brand nav-home-wordmark animated-symbol-scope" href="${prefix}" aria-label="Göther Labs home">
-            <span aria-hidden="true" class="wordmark-mark-wrap">
-              <svg class="animated-reference-geometry live-symbol-svg" viewBox="0 0 64 64" focusable="false">
-                <g class="source-geometry" aria-hidden="true">
-                  <circle class="source-geometry-dot" cx="34.5" cy="34.5" r="3.6" />
-                  <circle class="source-geometry-dot" cx="21" cy="58" r="3.6" />
-                  <circle class="source-geometry-dot" cx="48" cy="58" r="3.6" />
-                </g>
-                <path class="live-trail" d="" />
-                <path class="live-trail" d="" />
-                <path class="live-trail" d="" />
-                <circle class="geometry-dot live-geometry-dot" cx="34.2" cy="28.4" r="3.34" />
-                <circle class="geometry-dot live-geometry-dot" cx="20.9" cy="50.6" r="3.34" />
-                <circle class="geometry-dot live-geometry-dot" cx="47.5" cy="50.6" r="3.34" />
-              </svg>
-            </span>
-            <span class="nav-wordmark-text">Göther Labs</span>
-          </a>
-          <div class="nav-links">
-            ${links}
-          </div>
-        </nav>
-      </header>`;
-}
-
-function normalizeCopiedRunShell(html, prefix) {
-  return html
-    .replace(
-      /<link rel="stylesheet" href="\.\.\/\.\.\/\.\.\/styles\.css(?:\?v=[^"]*)?">/,
-      sharedStylesheetTag(prefix),
-    )
-    .replace(/<header class="site-header">[\s\S]*?<\/header>/, nav(prefix))
-    .replace(
-      /<script src="\.\.\/\.\.\/\.\.\/scripts\.js(?:\?v=[^"]*)?"><\/script>/,
-      sharedScriptTag(prefix),
-    );
-}
-
 async function alignCopiedRunShell(outputRoot) {
   // Run surfaces are copied from the results repo, so normalize their shared site shell here.
   const runIndexPath = path.join(outputRoot, "run", "index.html");
@@ -297,15 +226,13 @@ ${enableMath ? mathHead() : ""}
   <body${bodyClassAttribute}>
     <a class="skip-link" href="#site-main">Skip to content</a>
     <div class="page-shell site-shell">
-      ${nav(cssPrefix)}
+      ${sharedNav(cssPrefix)}
 
       <main class="site-main" id="site-main">
 ${body}
       </main>
 
-      <footer class="site-footer">
-        <p>© <span id="year">2026</span> Göther Labs</p>
-      </footer>
+      ${sharedFooter()}
     </div>
 
     ${sharedScriptTag(cssPrefix)}

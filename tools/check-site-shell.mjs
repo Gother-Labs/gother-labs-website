@@ -2,17 +2,14 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { REQUIRED_NAV_LABELS, SITE_SHELL_VERSION } from "./site-shell.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SITE_ROOT = path.resolve(__dirname, "..");
-const SHELL_VERSION = "nav-wordmark-v1";
-
 const REDIRECT_EXCEPTIONS = new Set(["careers/index.html"]);
 const HOME_PAGE = "index.html";
 const FOOTER_OPTIONAL = new Set(["index.html", "404.html"]);
 const METADATA_OPTIONAL = new Set(["404.html", "evolther/index.html"]);
-
-const requiredNavLabels = ["Company", "Results", "Contact"];
 
 async function collectHtmlFiles(dir = SITE_ROOT) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
@@ -63,16 +60,16 @@ function checkSharedAssets(html, failures, route) {
   );
   assert(html.includes(`assets/gother-mark.svg`) && html.includes(`rel="icon"`), failures, route, "missing favicon");
   assert(
-    html.includes(`styles.css?v=${SHELL_VERSION}`),
+    html.includes(`styles.css?v=${SITE_SHELL_VERSION}`),
     failures,
     route,
-    `missing shared stylesheet version ${SHELL_VERSION}`,
+    `missing shared stylesheet version ${SITE_SHELL_VERSION}`,
   );
   assert(
-    html.includes(`scripts.js?v=${SHELL_VERSION}`),
+    html.includes(`scripts.js?v=${SITE_SHELL_VERSION}`),
     failures,
     route,
-    `missing shared script version ${SHELL_VERSION}`,
+    `missing shared script version ${SITE_SHELL_VERSION}`,
   );
 }
 
@@ -86,7 +83,7 @@ function checkNav(html, failures, route, { home = false } = {}) {
     assert(html.includes(`class="nav-links"`), failures, route, "missing nav links wrapper");
   }
 
-  for (const label of requiredNavLabels) {
+  for (const label of REQUIRED_NAV_LABELS) {
     assert(new RegExp(`<a\\s[^>]*>${label}</a>`).test(html), failures, route, `missing ${label} nav link`);
   }
 }
