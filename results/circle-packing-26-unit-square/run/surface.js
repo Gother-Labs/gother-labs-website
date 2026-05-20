@@ -27,6 +27,10 @@
   let lastFrameKey = "";
   let lastMetricsStep = -1;
   const editorLinePool = [];
+  const editorLayer = document.createElement("div");
+  editorLayer.className = "packing-editor-layer";
+  if (editorFocus) editorLayer.appendChild(editorFocus);
+  editorBody.appendChild(editorLayer);
   const stepPositionByCandidate = new Map(steps.map((step, index) => [step.candidate_id, index]));
   const checkpointFrames = checkpoints
     .map((checkpoint, index) => {
@@ -49,6 +53,7 @@
     ? codeSurface.snapshots.filter((snapshot) => Array.isArray(snapshot.lines) && snapshot.lines.length)
     : [];
   if (!codeSnapshots.length) return;
+  const maxVisibleChars = Math.max(...codeSnapshots.flatMap((snapshot) => snapshot.lines.map((line) => (line || "").length)));
 
   function buildOps(before, after) {
     const ops = [];
@@ -76,14 +81,15 @@
     return ops;
   }
 
-  const editorStages = steps.map((_, stepIndex) => {
-    const snapshotIndex = getCodeSnapshotIndex(stepIndex);
-    const previousSnapshotIndex = stepIndex === 0 ? snapshotIndex : getCodeSnapshotIndex(stepIndex - 1);
+  const editorStages = checkpointFrames.map((checkpoint, frameIndex) => {
+    const snapshotIndex = getCodeSnapshotIndex(checkpoint.progress);
+    const previousCheckpoint = checkpointFrames[Math.max(0, frameIndex - 1)];
+    const previousSnapshotIndex = frameIndex === 0 ? snapshotIndex : getCodeSnapshotIndex(previousCheckpoint.progress);
     const beforeSnapshot = codeSnapshots[previousSnapshotIndex] ?? codeSnapshots[0];
     const afterSnapshot = codeSnapshots[snapshotIndex] ?? codeSnapshots[codeSnapshots.length - 1];
     const beforeLines = beforeSnapshot.lines;
     const afterLines = afterSnapshot.lines;
-    const ops = stepIndex === 0 || snapshotIndex === previousSnapshotIndex
+    const ops = frameIndex === 0 || snapshotIndex === previousSnapshotIndex
       ? afterLines.map((line, lineIndex) => ({ tag: "equal", text: line, before_index: lineIndex, after_index: lineIndex }))
       : buildOps(beforeLines, afterLines);
     return { before_lines: beforeLines, after_lines: afterLines, ops, snapshot: afterSnapshot, snapshot_index: snapshotIndex };
@@ -120,19 +126,49 @@
     return clamp(Math.round((stepIndex / Math.max(1, steps.length - 1)) * (codeSnapshots.length - 1)), 0, codeSnapshots.length - 1);
   }
 
-  function getEditorLayout(stage, settleT) {
-    const previousCount = stage.before_lines.length;
-    const currentCount = stage.after_lines.length;
-    const count = Math.max(previousCount, currentCount);
-    const pitch = count > 110 ? 17 : count > 80 ? 18 : count > 50 ? 19 : count > 30 ? 20 : 22;
-    const fontSize = count > 110 ? 9.8 : count > 80 ? 10.2 : count > 50 ? 10.6 : count > 30 ? 10.9 : 12.1;
-    const previousHeight = Math.max(560, 24 + previousCount * pitch);
-    const currentHeight = Math.max(560, 24 + currentCount * pitch);
-    const bodyHeight = mix(previousHeight, currentHeight, settleT);
-    editorBody.style.height = `${bodyHeight}px`;
-    editorBody.style.setProperty("--editor-font-size", `${fontSize}px`);
-    editorBody.style.setProperty("--editor-line-height", `${Math.max(17, pitch - 2)}px`);
-    return { pitch };
+  function getEditorLayoutForLineCount(lineCount) {
+    const pitch = lineCount > 130 ? 15 : lineCount > 105 ? 16 : lineCount > 80 ? 17 : lineCount > 52 ? 18 : lineCount > 34 ? 20 : 22;
+    const lineHeight = Math.max(15, pitch - 2);
+    const fullHeight = Math.max(560, 24 + lineCount * pitch);
+    const bodyHeight = fullHeight;
+    const fontSize = maxVisibleChars > 120 || lineCount > 120
+      ? 8.8
+      : maxVisibleChars > 96 || lineCount > 90
+        ? 9.4
+        : lineCount > 60
+          ? 10
+          : 11.2;
+    const codeScale = maxVisibleChars > 150
+      ? 0.62
+      : maxVisibleChars > 120
+        ? 0.72
+        : maxVisibleChars > 96
+          ? 0.84
+          : 1;
+    return { pitch, lineHeight, fullHeight, bodyHeight, fontSize, codeScale };
+  }
+
+  function applyEditorLayout(stage, settleT) {
+    const previousLayout = getEditorLayoutForLineCount(stage.before_lines.length);
+    const currentLayout = getEditorLayoutForLineCount(stage.after_lines.length);
+    const layout = {
+      pitch: mix(previousLayout.pitch, currentLayout.pitch, settleT),
+      lineHeight: mix(previousLayout.lineHeight, currentLayout.lineHeight, settleT),
+      fullHeight: mix(previousLayout.fullHeight, currentLayout.fullHeight, settleT),
+      bodyHeight: mix(previousLayout.bodyHeight, currentLayout.bodyHeight, settleT),
+      fontSize: mix(previousLayout.fontSize, currentLayout.fontSize, settleT),
+      codeScale: mix(previousLayout.codeScale, currentLayout.codeScale, settleT),
+      previousPitch: previousLayout.pitch,
+      currentPitch: currentLayout.pitch,
+      previousFullHeight: previousLayout.fullHeight,
+      currentFullHeight: currentLayout.fullHeight,
+    };
+    editorBody.style.height = `${layout.bodyHeight}px`;
+    editorLayer.style.height = `${layout.bodyHeight}px`;
+    editorBody.style.setProperty("--editor-font-size", `${layout.fontSize}px`);
+    editorBody.style.setProperty("--editor-line-height", `${layout.lineHeight}px`);
+    editorBody.style.setProperty("--editor-code-scale", `${layout.codeScale}`);
+    return layout;
   }
 
   function ensureEditorLinePool(size) {
@@ -140,7 +176,7 @@
       const line = document.createElement("div");
       line.className = "packing-editor-line equal";
       line.innerHTML = '<span class="ln"></span><span class="pm"></span><span class="code"></span>';
-      editorBody.appendChild(line);
+      editorLayer.appendChild(line);
       editorLinePool.push(line);
     }
   }
@@ -170,18 +206,28 @@
     const deleteT = ease(clamp((localT - 0.18) / 0.22, 0, 1));
     const insertT = ease(clamp((localT - 0.42) / 0.26, 0, 1));
     const settleT = ease(clamp((localT - 0.42) / 0.16, 0, 1));
-    const layout = getEditorLayout(stage, settleT);
+    const layout = applyEditorLayout(stage, settleT);
     const ops = stage.ops;
-    const block = stage.snapshot?.focus ?? { start: 0, end: Math.max(0, stage.after_lines.length - 1) };
-    const label = stage.snapshot?.label ?? "accepted candidate";
 
-    editorBadge.textContent = stepIndex === 0 ? label : `${label} · ${phaseFor(localT)}`;
+    editorBadge.textContent = stepIndex === 0 ? "run baseline" : `accepted update ${stepIndex} · ${phaseFor(localT)}`;
     editorBadge.classList.toggle("is-phase", stepIndex !== 0);
 
-    if (editorFocus) {
+    const changedOnly = ops.filter((op) => op.tag !== "equal");
+    const changedIndices = changedOnly.flatMap((op) => [op.before_index, op.after_index].filter((value) => value !== null));
+    if (editorFocus && changedOnly.length) {
+      const minIdx = Math.min(...changedIndices);
+      const maxIdx = Math.max(...changedIndices);
+      const focusTop = mix(12 + minIdx * layout.previousPitch - 6, 12 + minIdx * layout.currentPitch - 6, settleT);
+      const focusHeight = mix(
+        (maxIdx - minIdx + 1) * layout.previousPitch + 10,
+        (maxIdx - minIdx + 1) * layout.currentPitch + 10,
+        settleT
+      );
       editorFocus.style.opacity = "1";
-      editorFocus.style.top = `${12 + block.start * layout.pitch - 5}px`;
-      editorFocus.style.height = `${(block.end - block.start + 1) * layout.pitch + 10}px`;
+      editorFocus.style.top = `${Math.max(6, focusTop)}px`;
+      editorFocus.style.height = `${focusHeight}px`;
+    } else if (editorFocus) {
+      editorFocus.style.opacity = "0";
     }
 
     ensureEditorLinePool(ops.length);
@@ -189,8 +235,8 @@
       const op = ops[index];
       const line = editorLinePool[index];
       syncEditorLine(line, op);
-      const beforeY = op.before_index === null ? null : 12 + op.before_index * layout.pitch;
-      const afterY = op.after_index === null ? null : 12 + op.after_index * layout.pitch;
+      const beforeY = op.before_index === null ? null : 12 + op.before_index * layout.previousPitch;
+      const afterY = op.after_index === null ? null : 12 + op.after_index * layout.currentPitch;
       line.style.display = "";
       if (op.tag === "equal") {
         line.style.transform = `translateY(${mix(beforeY, afterY, settleT)}px)`;
@@ -313,8 +359,8 @@
     const next = visual.next ?? current;
     const t = visual.transition_t ?? 0;
     const generationLabel = isTransition
-      ? `checkpoint gen ${Math.round(current.generation)} -> ${Math.round(next.generation)}`
-      : `validated checkpoint · gen ${Math.round(current.generation)}`;
+      ? `accepted gen ${Math.round(current.generation)} -> ${Math.round(next.generation)}`
+      : `validated accepted · gen ${Math.round(current.generation)}`;
     const sumLabel = isTransition
       ? `Σr = ${fmt(visual.current_sum, 6)}`
       : `Σr ${fmt(current.sum_radii, 6)}`;
@@ -363,7 +409,7 @@
         <text class="packing-svg-value" x="26" y="${y + 22}">${valueLabel}</text>
       `;
     }).join("");
-    const caption = isTransition ? "contact counts show validated checkpoints" : "contacts use the public tolerance during replay";
+    const caption = isTransition ? "contact counts show validated accepted states" : "contacts use the public tolerance during replay";
     setSvg(contactSvg, `${markup}<text class="packing-svg-text" x="26" y="210">${caption}</text>`);
   }
 
@@ -372,7 +418,7 @@
       requestAnimationFrame(renderFrame);
       return;
     }
-    const stepDuration = 5.2;
+    const stepDuration = checkpointFrames.length > 12 ? 2.8 : 5.2;
     const hold = 2.6;
     const total = checkpointFrames.length * stepDuration + hold;
     const t = reduceMotion ? checkpointFrames.length * stepDuration - 1e-6 : (now / 1000) % total;
@@ -381,7 +427,7 @@
     const localRawT = (effectiveT % stepDuration) / stepDuration;
     const checkpoint = checkpointFrames[index];
     const nextCheckpoint = checkpointFrames[Math.min(checkpointFrames.length - 1, index + 1)];
-    const transitionStart = 0.42;
+    const transitionStart = checkpointFrames.length > 12 ? 0.24 : 0.42;
     const transitionRawT = nextCheckpoint === checkpoint ? 0 : clamp((localRawT - transitionStart) / (1 - transitionStart), 0, 1);
     const transitionT = ease(transitionRawT);
     const isTransition = transitionT > 0 && nextCheckpoint !== checkpoint;
@@ -391,7 +437,7 @@
     const packingVisual = isTransition
       ? { type: "transition", current: checkpoint, next: nextCheckpoint, progress: currentProgress, current_sum: currentSum, current_generation: currentGeneration, transition_t: transitionT }
       : { type: "checkpoint", current: checkpoint, progress: currentProgress, transition_t: 0 };
-    const editorStep = isTransition ? Math.round(currentProgress) : checkpoint.progress;
+    const editorStep = isTransition ? Math.min(index + 1, editorStages.length - 1) : index;
     const editorT = isTransition ? transitionRawT : 1;
     const frameKey = `${index}:${Math.round(localRawT * 40)}:${Math.round(transitionT * 60)}:${checkpoint.candidate_id}`;
     if (frameKey !== lastFrameKey) {

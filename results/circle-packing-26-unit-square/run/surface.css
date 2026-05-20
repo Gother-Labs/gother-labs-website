@@ -2,6 +2,9 @@
   --packing-panel: var(--bg);
   --packing-panel-soft: color-mix(in srgb, var(--text) 3%, transparent);
   --packing-accent-soft: color-mix(in srgb, var(--accent) 9%, transparent);
+  --packing-delete: color-mix(in srgb, var(--muted) 88%, var(--text) 12%);
+  --packing-insert: var(--accent);
+  --packing-focus: color-mix(in srgb, var(--accent) 7%, transparent);
   --packing-mono: "SFMono-Regular", Menlo, Consolas, monospace;
   --packing-serif: Georgia, "Times New Roman", serif;
 }
@@ -187,9 +190,15 @@
   background: var(--bg);
   --editor-font-size: 12.2px;
   --editor-line-height: 22px;
-  --editor-ln-col: 2.35rem;
-  --editor-pm-col: 0.9rem;
-  --editor-gap-col: 0.55rem;
+  --editor-ln-col: 34px;
+  --editor-pm-col: 14px;
+  --editor-gap-col: 0.45rem;
+  --editor-pad-x: 0.55rem;
+}
+
+.packing-editor-layer {
+  position: relative;
+  min-height: 100%;
 }
 
 .packing-editor-focus {
@@ -197,7 +206,7 @@
   left: 12px;
   right: 12px;
   border-radius: 0;
-  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  background: var(--packing-focus);
   opacity: 0;
   pointer-events: none;
   transition: opacity 180ms ease;
@@ -212,7 +221,7 @@
   gap: var(--editor-gap-col);
   align-items: center;
   height: var(--editor-line-height);
-  padding: 0 0.55rem;
+  padding: 0 var(--editor-pad-x);
   color: color-mix(in srgb, var(--text) 88%, transparent);
   font-family: var(--packing-mono);
   font-size: var(--editor-font-size);
@@ -220,7 +229,7 @@
   white-space: pre;
   pointer-events: none;
   transform-origin: left center;
-  will-change: transform, opacity;
+  will-change: transform, opacity, height;
   transition: background-color 220ms ease, color 220ms ease;
 }
 
@@ -239,6 +248,8 @@
   display: block;
   width: max-content;
   min-width: 0;
+  transform: scaleX(var(--editor-code-scale, 1));
+  transform-origin: left center;
 }
 
 .packing-editor-line.equal {
@@ -246,19 +257,18 @@
 }
 
 .packing-editor-line.insert {
-  color: var(--accent);
+  color: var(--packing-insert);
   background: color-mix(in srgb, var(--accent) 7%, transparent);
 }
 
 .packing-editor-line.delete {
-  color: color-mix(in srgb, var(--muted) 88%, var(--text) 12%);
+  color: var(--packing-delete);
   background: color-mix(in srgb, var(--text) 4%, transparent);
 }
 
 .packing-editor-line.delete .code {
   text-decoration: line-through;
-  text-decoration-thickness: 1px;
-  text-decoration-color: color-mix(in srgb, currentColor 46%, transparent);
+  text-decoration-thickness: 1.5px;
 }
 
 .packing-visual {
