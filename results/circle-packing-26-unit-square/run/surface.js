@@ -389,6 +389,7 @@
 
   function renderContacts(visual) {
     const isTransition = visual.type === "transition";
+    const t = visual.transition_t ?? 0;
     const currentDiag = diagnostics(visual.current);
     const nextDiag = isTransition ? diagnostics(visual.next) : currentDiag;
     const rows = [
@@ -398,18 +399,21 @@
     ];
     const markup = rows.map(([label, value, nextValue, max], index) => {
       const y = 48 + index * 54;
-      const width = clamp((value / max) * 260, 0, 260);
+      const displayValue = isTransition ? mix(value, nextValue, t) : value;
+      const width = clamp((displayValue / max) * 260, 0, 260);
+      const seedWidth = clamp((value / max) * 260, 0, 260);
       const nextWidth = clamp((nextValue / max) * 260, 0, 260);
-      const valueLabel = isTransition ? `${value} -> ${nextValue}` : String(value);
+      const valueLabel = String(Math.round(displayValue));
       return `
         <text class="packing-svg-text" x="26" y="${y}">${label}</text>
         <rect class="packing-contact-bar" x="162" y="${y - 12}" width="260" height="14" />
-        ${isTransition ? `<rect class="packing-contact-target" x="162" y="${y - 12}" width="${nextWidth.toFixed(1)}" height="14" />` : ""}
+        ${isTransition ? `<rect class="packing-contact-seed" x="162" y="${y - 12}" width="${seedWidth.toFixed(1)}" height="14" />` : ""}
+        ${isTransition && value !== nextValue ? `<line class="packing-contact-target" x1="${(162 + nextWidth).toFixed(1)}" y1="${y - 15}" x2="${(162 + nextWidth).toFixed(1)}" y2="${y + 5}" />` : ""}
         <rect class="packing-contact-fill" x="162" y="${y - 12}" width="${width.toFixed(1)}" height="14" />
         <text class="packing-svg-value" x="26" y="${y + 22}">${valueLabel}</text>
       `;
     }).join("");
-    const caption = isTransition ? "contact counts show validated accepted states" : "contacts use the public tolerance during replay";
+    const caption = isTransition ? "current contact diagnostics, interpolated during accepted transitions" : "contacts use the public tolerance during replay";
     setSvg(contactSvg, `${markup}<text class="packing-svg-text" x="26" y="210">${caption}</text>`);
   }
 

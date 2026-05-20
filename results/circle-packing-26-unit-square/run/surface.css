@@ -370,7 +370,16 @@
 }
 
 .packing-contact-target {
-  fill: color-mix(in srgb, var(--accent) 20%, transparent);
+  stroke: var(--accent);
+  stroke-width: 1.3;
+  stroke-dasharray: 4 4;
+}
+
+.packing-contact-seed {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 48%, transparent);
+  stroke-width: 1.35;
+  opacity: 0.88;
 }
 
 .packing-contact-bar {
