@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>26-circle unit-square packing | Results | Göther Labs</title>
+    <meta name="description" content="A deterministic 26-circle packing in the unit square reaches a validated total radius of 2.635977. The public result exposes the geometry, the validation contract, and the curated best-so-far chain that found it.">
+    <link rel="canonical" href="https://www.gotherlabs.com/results/circle-packing-26-unit-square/">
+    <meta property="og:title" content="26-circle unit-square packing | Results | Göther Labs">
+    <meta property="og:description" content="A deterministic 26-circle packing in the unit square reaches a validated total radius of 2.635977. The public result exposes the geometry, the validation contract, and the curated best-so-far chain that found it.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.gotherlabs.com/results/circle-packing-26-unit-square/">
+    <meta property="og:image" content="https://www.gotherlabs.com/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.gotherlabs.com/assets/og-image.png">
+    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" href="../../assets/gother-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../styles.css?v=nav-wordmark-v1">
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [["\\(", "\\)"]],
+          displayMath: [["\\[", "\\]"]]
+        },
+        options: {
+          enableMenu: false
+        },
+        chtml: {
+          matchFontHeight: false
+        }
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  </head>
+  <body class="result-circle-packing-page">
+    <a class="skip-link" href="#site-main">Skip to content</a>
+    <div class="page-shell site-shell">
+      <header class="site-header">
+        <nav class="site-nav" aria-label="Primary">
+          <a class="brand nav-brand nav-home-wordmark animated-symbol-scope" href="../../" aria-label="Göther Labs home">
+            <span aria-hidden="true" class="wordmark-mark-wrap">
+              <svg class="animated-reference-geometry live-symbol-svg" viewBox="0 0 64 64" focusable="false">
+                <g class="source-geometry" aria-hidden="true">
+                  <circle class="source-geometry-dot" cx="34.5" cy="34.5" r="3.6" />
+                  <circle class="source-geometry-dot" cx="21" cy="58" r="3.6" />
+                  <circle class="source-geometry-dot" cx="48" cy="58" r="3.6" />
+                </g>
+                <path class="live-trail" d="" />
+                <path class="live-trail" d="" />
+                <path class="live-trail" d="" />
+                <circle class="geometry-dot live-geometry-dot" cx="34.2" cy="28.4" r="3.34" />
+                <circle class="geometry-dot live-geometry-dot" cx="20.9" cy="50.6" r="3.34" />
+                <circle class="geometry-dot live-geometry-dot" cx="47.5" cy="50.6" r="3.34" />
+              </svg>
+            </span>
+            <span class="nav-wordmark-text">Göther Labs</span>
+          </a>
+          <div class="nav-links">
+            <a href="../../company/">Company</a>
+            <a href="../../results/">Results</a>
+            <a href="../../contact/">Contact</a>
+          </div>
+        </nav>
+      </header>
+
+      <main class="site-main" id="site-main">
+        <section class="hero compact-hero page-hero result-detail-hero circle-packing-detail-hero">
+          <h1 class="page-title">26-circle unit-square packing</h1>
+          <p class="intro results-hero-intro">A deterministic 26-circle packing in the unit square reaches a validated total radius of 2.635977. The public result exposes the geometry, the validation contract, and the curated best-so-far chain that found it.</p>
+        </section>
+
+        <section class="result-detail result-whitepaper-shell circle-packing-whitepaper-shell">
+          <article class="result-article result-whitepaper circle-packing-whitepaper">
+<h3>Abstract</h3>
+<p>This note reports a deterministic packing of 26 circles inside the unit square. The accepted geometry reaches a validated total radius of 2.6359773947541023. The public chain starts from the original domain <code>program.py</code> baseline with total radius 0.9597783591318301, then records the first generated candidates before the retained high-quality checkpoints. The governed lower-is-better score improves from -0.9597783591318301 to -2.6359773947541023.</p>
+<p>For audit clarity, the public claim is the validated geometry and curated best-so-far chain, not the raw solver artifact. The accepted candidate is deterministic: it reconstructs the accepted packing from the evolved contact graph and then returns the generated centers and radii to the evaluator.</p>
+<h3>1. Problem formulation</h3>
+<p>The task is to place 26 circles in the unit square without overlap. A packing is defined by centers \((x_i, y_i)\) and radii \(r_i\) for \(i = 1, \dots, 26\). The objective is the total radius:</p>
+<div class="formula-block" id="eq-1">
+  <div class="formula-math">\[
+R(P) = \sum_{i=1}^{26} r_i
+\]</div>
+  <span class="equation-number">(1)</span>
+</div>
+<figure class="result-primer-card result-paper-figure circle-packing-inline-figure" id="fig-1">
+          <svg class="result-primer-svg circle-packing-paper-svg" viewBox="0 0 560 328" role="img" aria-label="Circle packing problem in the unit square.">
+            <text class="result-axis-label result-figure-title" x="72" y="34">26 circles in the unit square</text>
+            <text class="circle-packing-note" x="72" y="55">Maximize total radius while preserving boundary and non-overlap constraints.</text>
+            <rect class="circle-packing-square" x="112" y="80" width="220" height="220" />
+            <circle class="circle-packing-disk" cx="178" cy="154" r="52" />
+            <circle class="circle-packing-disk circle-packing-disk-strong" cx="260" cy="190" r="48" />
+            <circle class="circle-packing-disk" cx="196" cy="244" r="36" />
+            <path class="circle-packing-measure" d="M178 154H230" />
+            <text class="circle-packing-note" x="190" y="146">r<tspan baseline-shift="sub" font-size="9">i</tspan></text>
+            <path class="circle-packing-measure" d="M178 154L260 190" />
+            <text class="circle-packing-note" x="222" y="162">d<tspan baseline-shift="sub" font-size="9">ij</tspan></text>
+            <g class="circle-packing-callouts">
+              <text x="370" y="112">boundary</text>
+              <path d="M360 118H332" />
+              <text x="370" y="170">no overlap</text>
+              <path d="M360 176L274 194" />
+              <text x="370" y="228">objective</text>
+              <text class="circle-packing-value" x="370" y="252">maximize Σr<tspan baseline-shift="sub" font-size="9">i</tspan></text>
+            </g>
+          </svg>
+          <figcaption>Figure 1. Circle-packing contract surface. Every circle must stay inside the unit square, and every pairwise distance must be at least the sum of the two radii.</figcaption>
+        </figure>
+<p>Every circle must remain inside \([0,1]^2\), and every pair of circles must satisfy the non-overlap constraint:</p>
+<div class="formula-block" id="eq-2">
+  <div class="formula-math">\[
+\sqrt{(x_i-x_j)^2 + (y_i-y_j)^2} \ge r_i + r_j.
+\]</div>
+  <span class="equation-number">(2)</span>
+</div>
+<h3>2. Evaluation contract</h3>
+<p>The evaluator asks the candidate for exactly 26 centers, 26 positive radii, and a reported sum. It verifies finite values, checks that the reported sum matches the radii, rejects boundary violations, rejects pairwise overlap, and calls the entrypoint twice to enforce determinism.</p>
+<figure class="result-paper-table result-contract-table circle-packing-contract-table" id="table-1">
+          <div class="result-table-wrap">
+            <table class="result-table">
+              <thead>
+                <tr>
+                  <th>Field</th>
+                  <th>Public contract</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Container</td>
+                  <td>unit square [0,1]^2</td>
+                </tr>
+                <tr>
+                  <td>Circles</td>
+                  <td>26 circles</td>
+                </tr>
+                <tr>
+                  <td>Objective</td>
+                  <td>maximize <code>sum(radii)</code></td>
+                </tr>
+                <tr>
+                  <td>Score</td>
+                  <td><code>-sum(radii)</code>; lower is better</td>
+                </tr>
+                <tr>
+                  <td>Validation</td>
+                  <td>boundary containment, pairwise non-overlap, sum consistency, deterministic replay</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <figcaption>Table 1. Public geometry contract for the accepted packing.</figcaption>
+        </figure>
+<p>The score is defined as:</p>
+<div class="formula-block" id="eq-3">
+  <div class="formula-math">\[
+J(P) = -R(P).
+\]</div>
+  <span class="equation-number">(3)</span>
+</div>
+<p>Lower score is therefore better, but the report also shows \(R(P)\) directly because total radius is the geometric quantity of interest.</p>
+<h3>3. Accepted candidate</h3>
+<p>The accepted public candidate reconstructs the packing from the contact structure exposed by the run. It starts from a coarse deterministic seed, solves the boundary and pairwise tangency equations with a small damped Newton system, and then validates the resulting geometry before returning it. The replayed centers and radii remain part of the audit bundle, but they are not the implementation surface.</p>
+<figure class="result-paper-code result-code-figure circle-packing-code-figure" id="listing-1">
+          <pre><code><span class="code-line"><span class="line-no">1</span><span class="line-src"><span class="py-keyword">def</span> _contact_residuals(values: <span class="py-builtin">list</span>[<span class="py-builtin">float</span>]) -&gt; <span class="py-builtin">list</span>[<span class="py-builtin">float</span>]:</span></span><span class="code-line"><span class="line-no">2</span><span class="line-src">    <span class="py-string">&quot;&quot;&quot;Residuals <span class="py-keyword">for</span> boundary contacts and pairwise tangent contacts.&quot;&quot;&quot;</span></span></span><span class="code-line"><span class="line-no">3</span><span class="line-src">    residuals: <span class="py-builtin">list</span>[<span class="py-builtin">float</span>] = []</span></span><span class="code-line"><span class="line-no">4</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">5</span><span class="line-src">    <span class="py-keyword">for</span> index, side <span class="py-keyword">in</span> BOUNDARY_CONTACTS:</span></span><span class="code-line"><span class="line-no">6</span><span class="line-src">        x = values[3 * index]</span></span><span class="code-line"><span class="line-no">7</span><span class="line-src">        y = values[3 * index + 1]</span></span><span class="code-line"><span class="line-no">8</span><span class="line-src">        radius = values[3 * index + 2]</span></span><span class="code-line"><span class="line-no">9</span><span class="line-src">        <span class="py-keyword">if</span> side == &quot;left&quot;:</span></span><span class="code-line"><span class="line-no">10</span><span class="line-src">            residuals.append(x - radius)</span></span><span class="code-line"><span class="line-no">11</span><span class="line-src">        elif side == &quot;right&quot;:</span></span><span class="code-line"><span class="line-no">12</span><span class="line-src">            residuals.append(1.0 - x - radius)</span></span><span class="code-line"><span class="line-no">13</span><span class="line-src">        elif side == &quot;bottom&quot;:</span></span><span class="code-line"><span class="line-no">14</span><span class="line-src">            residuals.append(y - radius)</span></span><span class="code-line"><span class="line-no">15</span><span class="line-src">        elif side == &quot;top&quot;:</span></span><span class="code-line"><span class="line-no">16</span><span class="line-src">            residuals.append(1.0 - y - radius)</span></span><span class="code-line"><span class="line-no">17</span><span class="line-src">        else:</span></span><span class="code-line"><span class="line-no">18</span><span class="line-src">            raise ValueError(f&quot;unknown boundary side: {side}&quot;)</span></span><span class="code-line"><span class="line-no">19</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">20</span><span class="line-src">    <span class="py-keyword">for</span> left, right <span class="py-keyword">in</span> CONTACT_EDGES:</span></span><span class="code-line"><span class="line-no">21</span><span class="line-src">        dx = values[3 * left] - values[3 * right]</span></span><span class="code-line"><span class="line-no">22</span><span class="line-src">        dy = values[3 * left + 1] - values[3 * right + 1]</span></span><span class="code-line"><span class="line-no">23</span><span class="line-src">        residuals.append(math.hypot(dx, dy) - values[3 * left + 2] - values[3 * right + 2])</span></span><span class="code-line"><span class="line-no">24</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">25</span><span class="line-src">    <span class="py-keyword">return</span> residuals</span></span><span class="code-line"><span class="line-no">26</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">27</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">28</span><span class="line-src"><span class="py-keyword">def</span> _residual_norm(values: <span class="py-builtin">list</span>[<span class="py-builtin">float</span>]) -&gt; <span class="py-builtin">float</span>:</span></span><span class="code-line"><span class="line-no">29</span><span class="line-src">    <span class="py-string">&quot;&quot;&quot;Return the infinity norm of the contact residual vector.&quot;&quot;&quot;</span></span></span><span class="code-line"><span class="line-no">30</span><span class="line-src">    <span class="py-keyword">return</span> <span class="py-builtin">max</span>(abs(value) <span class="py-keyword">for</span> value <span class="py-keyword">in</span> _contact_residuals(values))</span></span><span class="code-line"><span class="line-no">31</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">32</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">33</span><span class="line-src"><span class="py-keyword">def</span> _contact_jacobian(values: <span class="py-builtin">list</span>[<span class="py-builtin">float</span>], residuals: <span class="py-builtin">list</span>[<span class="py-builtin">float</span>]) -&gt; <span class="py-builtin">list</span>[<span class="py-builtin">list</span>[<span class="py-builtin">float</span>]]:</span></span><span class="code-line"><span class="line-no">34</span><span class="line-src">    <span class="py-string">&quot;&quot;&quot;Build a finite-difference Jacobian <span class="py-keyword">for</span> the contact equations.&quot;&quot;&quot;</span></span></span><span class="code-line"><span class="line-no">35</span><span class="line-src">    jacobian = [[0.0 <span class="py-keyword">for</span> _ <span class="py-keyword">in</span> values] <span class="py-keyword">for</span> _ <span class="py-keyword">in</span> residuals]</span></span><span class="code-line"><span class="line-no">36</span><span class="line-src">    <span class="py-keyword">for</span> column, value <span class="py-keyword">in</span> enumerate(values):</span></span><span class="code-line"><span class="line-no">37</span><span class="line-src">        step = 1e-6 * <span class="py-builtin">max</span>(1.0, abs(value))</span></span><span class="code-line"><span class="line-no">38</span><span class="line-src">        shifted = <span class="py-builtin">list</span>(values)</span></span><span class="code-line"><span class="line-no">39</span><span class="line-src">        shifted[column] += step</span></span><span class="code-line"><span class="line-no">40</span><span class="line-src">        shifted_residuals = _contact_residuals(shifted)</span></span><span class="code-line"><span class="line-no">41</span><span class="line-src">        <span class="py-keyword">for</span> row, residual <span class="py-keyword">in</span> enumerate(residuals):</span></span><span class="code-line"><span class="line-no">42</span><span class="line-src">            jacobian[row][column] = (shifted_residuals[row] - residual) / step</span></span><span class="code-line"><span class="line-no">43</span><span class="line-src">    <span class="py-keyword">return</span> jacobian</span></span><span class="code-line"><span class="line-no">44</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">45</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">46</span><span class="line-src"><span class="py-keyword">def</span> _solve_linear_system(matrix: <span class="py-builtin">list</span>[<span class="py-builtin">list</span>[<span class="py-builtin">float</span>]], rhs: <span class="py-builtin">list</span>[<span class="py-builtin">float</span>]) -&gt; <span class="py-builtin">list</span>[<span class="py-builtin">float</span>]:</span></span><span class="code-line"><span class="line-no">47</span><span class="line-src">    <span class="py-string">&quot;&quot;&quot;Solve a dense square system with partial-pivot Gauss-Jordan elimination.&quot;&quot;&quot;</span></span></span><span class="code-line"><span class="line-no">48</span><span class="line-src">    size = len(rhs)</span></span><span class="code-line"><span class="line-no">49</span><span class="line-src">    augmented = [matrix[row][:] + [rhs[row]] <span class="py-keyword">for</span> row <span class="py-keyword">in</span> <span class="py-builtin">range</span>(size)]</span></span><span class="code-line"><span class="line-no">50</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">51</span><span class="line-src">    <span class="py-keyword">for</span> column <span class="py-keyword">in</span> <span class="py-builtin">range</span>(size):</span></span><span class="code-line"><span class="line-no">52</span><span class="line-src">        pivot = <span class="py-builtin">max</span>(<span class="py-builtin">range</span>(column, size), key=<span class="py-keyword">lambda</span> row: abs(augmented[row][column]))</span></span><span class="code-line"><span class="line-no">53</span><span class="line-src">        <span class="py-keyword">if</span> abs(augmented[pivot][column]) &lt; 1e-14:</span></span><span class="code-line"><span class="line-no">54</span><span class="line-src">            raise RuntimeError(&quot;contact Jacobian became singular&quot;)</span></span><span class="code-line"><span class="line-no">55</span><span class="line-src">        augmented[column], augmented[pivot] = augmented[pivot], augmented[column]</span></span><span class="code-line"><span class="line-no">56</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">57</span><span class="line-src">        pivot_value = augmented[column][column]</span></span><span class="code-line"><span class="line-no">58</span><span class="line-src">        <span class="py-keyword">for</span> item <span class="py-keyword">in</span> <span class="py-builtin">range</span>(column, size + 1):</span></span><span class="code-line"><span class="line-no">59</span><span class="line-src">            augmented[column][item] /= pivot_value</span></span><span class="code-line"><span class="line-no">60</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">61</span><span class="line-src">        <span class="py-keyword">for</span> row <span class="py-keyword">in</span> <span class="py-builtin">range</span>(size):</span></span><span class="code-line"><span class="line-no">62</span><span class="line-src">            <span class="py-keyword">if</span> row == column:</span></span><span class="code-line"><span class="line-no">63</span><span class="line-src">                continue</span></span><span class="code-line"><span class="line-no">64</span><span class="line-src">            factor = augmented[row][column]</span></span><span class="code-line"><span class="line-no">65</span><span class="line-src">            <span class="py-keyword">if</span> factor == 0.0:</span></span><span class="code-line"><span class="line-no">66</span><span class="line-src">                continue</span></span><span class="code-line"><span class="line-no">67</span><span class="line-src">            <span class="py-keyword">for</span> item <span class="py-keyword">in</span> <span class="py-builtin">range</span>(column, size + 1):</span></span><span class="code-line"><span class="line-no">68</span><span class="line-src">                augmented[row][item] -= factor * augmented[column][item]</span></span><span class="code-line"><span class="line-no">69</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">70</span><span class="line-src">    <span class="py-keyword">return</span> [augmented[row][size] <span class="py-keyword">for</span> row <span class="py-keyword">in</span> <span class="py-builtin">range</span>(size)]</span></span><span class="code-line"><span class="line-no">71</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">72</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">73</span><span class="line-src"><span class="py-keyword">def</span> _bounded_step(values: <span class="py-builtin">list</span>[<span class="py-builtin">float</span>], step: <span class="py-builtin">list</span>[<span class="py-builtin">float</span>], scale: <span class="py-builtin">float</span>) -&gt; <span class="py-builtin">list</span>[<span class="py-builtin">float</span>]:</span></span><span class="code-line"><span class="line-no">74</span><span class="line-src">    <span class="py-string">&quot;&quot;&quot;Apply one damped Newton step while keeping variables <span class="py-keyword">in</span> valid ranges.&quot;&quot;&quot;</span></span></span><span class="code-line"><span class="line-no">75</span><span class="line-src">    updated: <span class="py-builtin">list</span>[<span class="py-builtin">float</span>] = []</span></span><span class="code-line"><span class="line-no">76</span><span class="line-src">    <span class="py-keyword">for</span> index, value <span class="py-keyword">in</span> enumerate(values):</span></span><span class="code-line"><span class="line-no">77</span><span class="line-src">        candidate = value + scale * step[index]</span></span><span class="code-line"><span class="line-no">78</span><span class="line-src">        <span class="py-keyword">if</span> index % 3 == 2:</span></span><span class="code-line"><span class="line-no">79</span><span class="line-src">            updated.append(<span class="py-builtin">min</span>(0.5, <span class="py-builtin">max</span>(MIN_RADIUS, candidate)))</span></span><span class="code-line"><span class="line-no">80</span><span class="line-src">        else:</span></span><span class="code-line"><span class="line-no">81</span><span class="line-src">            updated.append(<span class="py-builtin">min</span>(1.0, <span class="py-builtin">max</span>(0.0, candidate)))</span></span><span class="code-line"><span class="line-no">82</span><span class="line-src">    <span class="py-keyword">return</span> updated</span></span><span class="code-line"><span class="line-no">83</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">84</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">85</span><span class="line-src"><span class="py-keyword">def</span> _solve_contact_system() -&gt; tuple[<span class="py-builtin">list</span>[Point], <span class="py-builtin">list</span>[<span class="py-builtin">float</span>]]:</span></span><span class="code-line"><span class="line-no">86</span><span class="line-src">    <span class="py-string">&quot;&quot;&quot;Solve the evolved contact graph into concrete centers and radii.&quot;&quot;&quot;</span></span></span><span class="code-line"><span class="line-no">87</span><span class="line-src">    values = _coarse_seed_layout()</span></span><span class="code-line"><span class="line-no">88</span><span class="line-src">    <span class="py-keyword">for</span> _ <span class="py-keyword">in</span> <span class="py-builtin">range</span>(12):</span></span><span class="code-line"><span class="line-no">89</span><span class="line-src">        residuals = _contact_residuals(values)</span></span><span class="code-line"><span class="line-no">90</span><span class="line-src">        <span class="py-keyword">if</span> <span class="py-builtin">max</span>(abs(value) <span class="py-keyword">for</span> value <span class="py-keyword">in</span> residuals) &lt; 1e-12:</span></span><span class="code-line"><span class="line-no">91</span><span class="line-src">            break</span></span><span class="code-line"><span class="line-no">92</span><span class="line-src">        jacobian = _contact_jacobian(values, residuals)</span></span><span class="code-line"><span class="line-no">93</span><span class="line-src">        newton_step = _solve_linear_system(jacobian, [-value <span class="py-keyword">for</span> value <span class="py-keyword">in</span> residuals])</span></span><span class="code-line"><span class="line-no">94</span><span class="line-src">        baseline_norm = _residual_norm(values)</span></span><span class="code-line"><span class="line-no">95</span><span class="line-src">        step_scale = 1.0</span></span><span class="code-line"><span class="line-no">96</span><span class="line-src">        while step_scale &gt; 1e-4:</span></span><span class="code-line"><span class="line-no">97</span><span class="line-src">            candidate = _bounded_step(values, newton_step, step_scale)</span></span><span class="code-line"><span class="line-no">98</span><span class="line-src">            <span class="py-keyword">if</span> _residual_norm(candidate) &lt; baseline_norm:</span></span><span class="code-line"><span class="line-no">99</span><span class="line-src">                values = candidate</span></span><span class="code-line"><span class="line-no">100</span><span class="line-src">                break</span></span><span class="code-line"><span class="line-no">101</span><span class="line-src">            step_scale *= 0.5</span></span><span class="code-line"><span class="line-no">102</span><span class="line-src">        else:</span></span><span class="code-line"><span class="line-no">103</span><span class="line-src">            raise RuntimeError(&quot;contact solve failed to find a decreasing Newton step&quot;)</span></span><span class="code-line"><span class="line-no">104</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">105</span><span class="line-src">    <span class="py-keyword">if</span> _residual_norm(values) &gt;= 1e-10:</span></span><span class="code-line"><span class="line-no">106</span><span class="line-src">        raise RuntimeError(&quot;contact solve did not converge to evaluator tolerance&quot;)</span></span><span class="code-line"><span class="line-no">107</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">108</span><span class="line-src">    solved_centers = [(values[3 * index], values[3 * index + 1]) <span class="py-keyword">for</span> index <span class="py-keyword">in</span> <span class="py-builtin">range</span>(N_CIRCLES)]</span></span><span class="code-line"><span class="line-no">109</span><span class="line-src">    solved_radii = [values[3 * index + 2] <span class="py-keyword">for</span> index <span class="py-keyword">in</span> <span class="py-builtin">range</span>(N_CIRCLES)]</span></span><span class="code-line"><span class="line-no">110</span><span class="line-src">    <span class="py-keyword">return</span> solved_centers, solved_radii</span></span><span class="code-line"><span class="line-no">111</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">112</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">113</span><span class="line-src"><span class="py-keyword">def</span> _assert_valid(centers: <span class="py-builtin">list</span>[Point], radii: <span class="py-builtin">list</span>[<span class="py-builtin">float</span>]) -&gt; <span class="py-constant">None</span>:</span></span><span class="code-line"><span class="line-no">114</span><span class="line-src">    <span class="py-string">&quot;&quot;&quot;Fail fast <span class="py-keyword">if</span> numerical drift breaks the public geometry contract.&quot;&quot;&quot;</span></span></span><span class="code-line"><span class="line-no">115</span><span class="line-src">    tolerance = 1e-10</span></span><span class="code-line"><span class="line-no">116</span><span class="line-src">    <span class="py-keyword">for</span> index, ((x, y), radius) <span class="py-keyword">in</span> enumerate(zip(centers, radii, strict=<span class="py-constant">True</span>)):</span></span><span class="code-line"><span class="line-no">117</span><span class="line-src">        <span class="py-keyword">if</span> radius &lt;= MIN_RADIUS:</span></span><span class="code-line"><span class="line-no">118</span><span class="line-src">            raise ValueError(f&quot;circle {index} has non-positive radius&quot;)</span></span><span class="code-line"><span class="line-no">119</span><span class="line-src">        <span class="py-keyword">if</span> x - radius &lt; -tolerance or x + radius &gt; 1.0 + tolerance:</span></span><span class="code-line"><span class="line-no">120</span><span class="line-src">            raise ValueError(f&quot;circle {index} exceeds x-boundary&quot;)</span></span><span class="code-line"><span class="line-no">121</span><span class="line-src">        <span class="py-keyword">if</span> y - radius &lt; -tolerance or y + radius &gt; 1.0 + tolerance:</span></span><span class="code-line"><span class="line-no">122</span><span class="line-src">            raise ValueError(f&quot;circle {index} exceeds y-boundary&quot;)</span></span><span class="code-line"><span class="line-no">123</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">124</span><span class="line-src">    <span class="py-keyword">for</span> left <span class="py-keyword">in</span> <span class="py-builtin">range</span>(N_CIRCLES):</span></span><span class="code-line"><span class="line-no">125</span><span class="line-src">        <span class="py-keyword">for</span> right <span class="py-keyword">in</span> <span class="py-builtin">range</span>(left + 1, N_CIRCLES):</span></span><span class="code-line"><span class="line-no">126</span><span class="line-src">            dx = centers[left][0] - centers[right][0]</span></span><span class="code-line"><span class="line-no">127</span><span class="line-src">            dy = centers[left][1] - centers[right][1]</span></span><span class="code-line"><span class="line-no">128</span><span class="line-src">            <span class="py-keyword">if</span> math.hypot(dx, dy) + tolerance &lt; radii[left] + radii[right]:</span></span><span class="code-line"><span class="line-no">129</span><span class="line-src">                raise ValueError(f&quot;circles {left} and {right} overlap&quot;)</span></span><span class="code-line"><span class="line-no">130</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">131</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">132</span><span class="line-src"><span class="py-keyword">def</span> construct_packing() -&gt; tuple[<span class="py-builtin">list</span>[Point], <span class="py-builtin">list</span>[<span class="py-builtin">float</span>]]:</span></span><span class="code-line"><span class="line-no">133</span><span class="line-src">    <span class="py-string">&quot;&quot;&quot;Construct the accepted 26-circle packing from its contact graph.&quot;&quot;&quot;</span></span></span><span class="code-line"><span class="line-no">134</span><span class="line-src">    centers, radii = _solve_contact_system()</span></span><span class="code-line"><span class="line-no">135</span><span class="line-src">    _assert_valid(centers, radii)</span></span><span class="code-line"><span class="line-no">136</span><span class="line-src">    <span class="py-keyword">return</span> centers, radii</span></span><span class="code-line"><span class="line-no">137</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">138</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">139</span><span class="line-src"><span class="py-keyword">def</span> run_packing() -&gt; tuple[<span class="py-builtin">list</span>[Point], <span class="py-builtin">list</span>[<span class="py-builtin">float</span>], <span class="py-builtin">float</span>]:</span></span><span class="code-line"><span class="line-no">140</span><span class="line-src">    <span class="py-string">&quot;&quot;&quot;Return centers, radii, and total radius <span class="py-keyword">for</span> the evaluator.&quot;&quot;&quot;</span></span></span><span class="code-line"><span class="line-no">141</span><span class="line-src">    centers, radii = construct_packing()</span></span><span class="code-line"><span class="line-no">142</span><span class="line-src">    <span class="py-keyword">return</span> centers, radii, <span class="py-builtin">float</span>(sum(radii))</span></span></code></pre>
+          <figcaption>Listing 1. Accepted deterministic packing candidate. The public entrypoint returns the validated replay geometry.</figcaption>
+        </figure>
+<h3>4. Results</h3>
+<p>The curated chain improved from the original <code>program.py</code> total radius of 0.9597783591318301 to an accepted total radius of 2.6359773947541023. The first valid generated candidate reached 1.0642342609737314, and the first generation later produced the retained 2.4389662673796346 checkpoint. In evaluator-score terms, the full public trajectory is a reduction from -0.9597783591318301 to -2.6359773947541023.</p>
+<figure class="result-primer-card result-paper-figure circle-packing-inline-figure result-objective-figure" id="fig-3">
+          <svg class="result-primer-svg result-objective-svg circle-packing-paper-svg" viewBox="0 0 560 328" role="img" aria-label="Best so far total radius across the public circle-packing chain.">
+            <text class="result-axis-label result-figure-title" x="82" y="34">Best-so-far total radius</text>
+            <text class="circle-packing-note" x="512" y="34" text-anchor="end">global order, gap-scaled</text>
+            <g class="result-objective-legend" transform="translate(82 48)">
+              <g><circle class="result-objective-legend-proposal" cx="0" cy="0" r="2.4" /><text x="12" y="4">retained checkpoint</text></g>
+              <g transform="translate(144 0)"><line class="result-objective-legend-best" x1="0" y1="0" x2="16" y2="0" /><text x="24" y="4">best-so-far radius</text></g>
+              <g transform="translate(306 0)"><circle class="result-legend-baseline-dot" cx="0" cy="0" r="3.4" /><text x="16" y="4">baseline</text></g>
+              <g transform="translate(390 0)"><circle class="result-legend-accepted-dot" cx="0" cy="0" r="3.8" /><text x="16" y="4">accepted</text></g>
+            </g>
+            <g>
+                <path class="result-objective-grid" d="M82 260.0 H512" />
+                <text class="result-axis-tick result-objective-y-label" x="68" y="264.0">0.95</text>
+              </g>
+<g>
+                <path class="result-objective-grid" d="M82 186.2 H512" />
+                <text class="result-axis-tick result-objective-y-label" x="68" y="190.2">2.179</text>
+              </g>
+<g>
+                <path class="result-objective-grid" d="M82 146.3 H512" />
+                <text class="result-axis-tick result-objective-y-label" x="68" y="150.3">2.439</text>
+              </g>
+<g>
+                <path class="result-objective-grid" d="M82 74.0 H512" />
+                <text class="result-axis-tick result-objective-y-label" x="68" y="78.0">2.640</text>
+              </g>
+            <path class="result-objective-grid result-objective-guide" d="M135.8 74V260" />
+<path class="result-objective-grid result-objective-guide" d="M261.2 74V260" />
+<path class="result-objective-grid result-objective-guide" d="M314.9 74V260" />
+            <path class="result-rule-paper-axis" d="M82 74V260H512" />
+            <g><circle class="result-objective-proposal" cx="82.0" cy="259.7" r="2.1" />
+<circle class="result-objective-proposal" cx="99.9" cy="255.8" r="2.1" />
+<circle class="result-objective-proposal" cx="117.8" cy="186.2" r="2.1" />
+<circle class="result-objective-proposal" cx="135.8" cy="146.3" r="2.1" />
+<circle class="result-objective-proposal" cx="153.7" cy="87.7" r="2.1" />
+<circle class="result-objective-proposal" cx="171.6" cy="87.7" r="2.1" />
+<circle class="result-objective-proposal" cx="189.5" cy="87.3" r="2.1" />
+<circle class="result-objective-proposal" cx="207.4" cy="85.9" r="2.1" />
+<circle class="result-objective-proposal" cx="225.3" cy="84.5" r="2.1" />
+<circle class="result-objective-proposal" cx="243.3" cy="84.5" r="2.1" />
+<circle class="result-objective-proposal" cx="261.2" cy="84.5" r="2.1" />
+<circle class="result-objective-proposal" cx="279.1" cy="83.0" r="2.1" />
+<circle class="result-objective-proposal" cx="297.0" cy="83.0" r="2.1" />
+<circle class="result-objective-proposal" cx="314.9" cy="80.6" r="2.1" />
+<circle class="result-objective-proposal" cx="332.8" cy="80.6" r="2.1" />
+<circle class="result-objective-proposal" cx="350.8" cy="80.6" r="2.1" />
+<circle class="result-objective-proposal" cx="368.7" cy="80.6" r="2.1" />
+<circle class="result-objective-proposal" cx="386.6" cy="80.6" r="2.1" />
+<circle class="result-objective-proposal" cx="404.5" cy="80.6" r="2.1" />
+<circle class="result-objective-proposal" cx="422.4" cy="80.6" r="2.1" />
+<circle class="result-objective-proposal" cx="440.3" cy="80.6" r="2.1" />
+<circle class="result-objective-proposal" cx="458.3" cy="80.6" r="2.1" />
+<circle class="result-objective-proposal" cx="476.2" cy="80.6" r="2.1" />
+<circle class="result-objective-proposal" cx="494.1" cy="80.3" r="2.1" />
+<circle class="result-objective-proposal" cx="512.0" cy="76.7" r="2.1" /></g>
+            <path class="result-objective-best" d="M82.0 259.7 L99.9 255.8 L117.8 186.2 L135.8 146.3 L153.7 87.7 L171.6 87.7 L189.5 87.3 L207.4 85.9 L225.3 84.5 L243.3 84.5 L261.2 84.5 L279.1 83.0 L297.0 83.0 L314.9 80.6 L332.8 80.6 L350.8 80.6 L368.7 80.6 L386.6 80.6 L404.5 80.6 L422.4 80.6 L440.3 80.6 L458.3 80.6 L476.2 80.6 L494.1 80.3 L512.0 76.7" />
+            <g class="result-objective-baseline"><circle cx="82.0" cy="259.7" r="4.2" /></g>
+            <g class="result-objective-accepted"><circle cx="512.0" cy="76.7" r="4.8" /></g>
+            <text class="result-axis-tick" x="82.0" y="282">0</text>
+<text class="result-axis-tick" x="135.8" y="282" text-anchor="middle">1</text>
+<text class="result-axis-tick" x="261.2" y="282" text-anchor="middle">60</text>
+<text class="result-axis-tick" x="314.9" y="282" text-anchor="middle">151</text>
+<text class="result-axis-tick" x="512.0" y="282" text-anchor="end">288</text>
+            <text class="result-axis-label result-x-axis-title" x="297.0" y="306">global generation labels on progress order</text>
+            <text class="result-axis-label result-objective-y-title" x="34" y="167.0" transform="rotate(-90 34 167.0)">Σr<tspan baseline-shift="sub" font-size="8">i</tspan></text>
+          </svg>
+          <figcaption>Figure 3. Best-so-far total radius across the curated public chain. Faint points are retained public checkpoints, the x-axis follows the global progress order, and the vertical scale is transformed by distance to the accepted value so the post-baseline curve remains visible.</figcaption>
+        </figure>
+<figure class="result-paper-table" id="table-2">
+          <div class="result-table-wrap">
+            <table class="result-table">
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>Baseline</th>
+                  <th>Accepted</th>
+                  <th>Change</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Total radius \(R(P)\)</td>
+                  <td>0.959778</td>
+                  <td>2.635977</td>
+                  <td>+1.676199</td>
+                </tr>
+                <tr>
+                  <td>Evaluator score \(J(P)\)</td>
+                  <td>-0.959778</td>
+                  <td>-2.635977</td>
+                  <td>-1.676199</td>
+                </tr>
+                <tr>
+                  <td>Relative radius gain</td>
+                  <td>reference</td>
+                  <td>174.64%</td>
+                  <td>174.64% gain</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <figcaption>Table 2. Reported comparison for the curated public circle-packing chain.</figcaption>
+        </figure>
+<p>The accepted packing is close to a contact graph: 20 boundary contacts and 58 pairwise contacts are detected at the public tolerance. The smallest boundary and pairwise slacks are near machine precision, which is expected for a tight validated layout.</p>
+<figure class="result-primer-card result-paper-figure circle-packing-inline-figure circle-packing-layout-figure" id="fig-4">
+          <svg class="result-primer-svg circle-packing-paper-svg" viewBox="0 0 560 530" role="img" aria-label="Accepted 26-circle packing in the unit square.">
+            <text class="result-axis-label result-figure-title" x="82" y="34">Accepted 26-circle packing</text>
+            <rect class="circle-packing-square" x="82" y="62" width="396" height="396" />
+            <path class="circle-packing-grid" d="M82 260H478M280 62V458" />
+<circle class="circle-packing-disk circle-packing-disk-strong" cx="125.98" cy="414.02" r="43.98" />
+<circle class="circle-packing-disk" cx="434.02" cy="414.02" r="43.98" />
+<circle class="circle-packing-disk" cx="115.54" cy="95.54" r="33.54" />
+<circle class="circle-packing-disk" cx="444.46" cy="95.54" r="33.54" />
+<circle class="circle-packing-disk" cx="177.24" cy="364.25" r="27.47" />
+<circle class="circle-packing-disk circle-packing-disk-strong" cx="206.24" cy="421.39" r="36.61" />
+<circle class="circle-packing-disk" cx="280.00" cy="420.85" r="37.15" />
+<circle class="circle-packing-disk" cx="353.76" cy="421.39" r="36.61" />
+<circle class="circle-packing-disk" cx="382.76" cy="364.25" r="27.47" />
+<circle class="circle-packing-disk" cx="120.08" cy="332.17" r="38.08" />
+<circle class="circle-packing-disk circle-packing-disk-strong" cx="242.09" cy="356.06" r="37.91" />
+<circle class="circle-packing-disk" cx="317.91" cy="356.06" r="37.91" />
+<circle class="circle-packing-disk" cx="369.82" cy="298.23" r="39.81" />
+<circle class="circle-packing-disk" cx="439.92" cy="332.17" r="38.08" />
+<circle class="circle-packing-disk" cx="123.07" cy="253.08" r="41.07" />
+<circle class="circle-packing-disk circle-packing-disk-strong" cx="190.18" cy="298.23" r="39.81" />
+<circle class="circle-packing-disk" cx="280.00" cy="272.88" r="53.51" />
+<circle class="circle-packing-disk" cx="359.55" cy="212.93" r="46.10" />
+<circle class="circle-packing-disk" cx="436.93" cy="253.08" r="41.07" />
+<circle class="circle-packing-disk" cx="123.69" cy="170.32" r="41.69" />
+<circle class="circle-packing-disk circle-packing-disk-strong" cx="200.45" cy="212.93" r="46.10" />
+<circle class="circle-packing-disk" cx="280.00" cy="168.84" r="44.85" />
+<circle class="circle-packing-disk" cx="360.61" cy="114.41" r="52.41" />
+<circle class="circle-packing-disk" cx="436.31" cy="170.32" r="41.69" />
+<circle class="circle-packing-disk" cx="199.39" cy="114.41" r="52.41" />
+<circle class="circle-packing-disk circle-packing-disk-strong" cx="280.00" cy="92.99" r="30.99" />
+            <text class="result-axis-tick" x="82" y="482">0</text>
+            <text class="result-axis-tick" x="478" y="482" text-anchor="end">1</text>
+            <text class="result-axis-tick" x="70" y="458" text-anchor="end">0</text>
+            <text class="result-axis-tick" x="70" y="66" text-anchor="end">1</text>
+          </svg>
+          <figcaption>Figure 4. Accepted packing geometry. The deterministic public candidate returns these 26 centers and radii, with total radius 2.635977394754.</figcaption>
+        </figure>
+<figure class="result-primer-card result-paper-figure circle-packing-inline-figure circle-packing-contact-figure" id="fig-5">
+          <svg class="result-primer-svg circle-packing-paper-svg" viewBox="0 0 560 286" role="img" aria-label="Contact diagnostics for the accepted circle packing.">
+            <text class="result-axis-label result-figure-title" x="72" y="34">Accepted contact readout</text>
+            <text class="circle-packing-note" x="72" y="55">validity margin -0; min radius 0.069357; max radius 0.135128</text>
+<g>
+              <text class="circle-packing-section-label" x="72" y="86">Boundary contacts</text>
+              <rect class="circle-packing-track" x="214" y="73" width="310" height="14" />
+              <rect class="circle-packing-fill" x="214" y="73" width="238.5" height="14" />
+              <text class="circle-packing-value" x="72" y="108">20</text>
+            </g>
+<g>
+              <text class="circle-packing-section-label" x="72" y="140">Pairwise contacts</text>
+              <rect class="circle-packing-track" x="214" y="127" width="310" height="14" />
+              <rect class="circle-packing-fill" x="214" y="127" width="256.9" height="14" />
+              <text class="circle-packing-value" x="72" y="162">58</text>
+            </g>
+<g>
+              <text class="circle-packing-section-label" x="72" y="194">Interior circles</text>
+              <rect class="circle-packing-track" x="214" y="181" width="310" height="14" />
+              <rect class="circle-packing-fill" x="214" y="181" width="119.2" height="14" />
+              <text class="circle-packing-value" x="72" y="216">10</text>
+            </g>
+          </svg>
+          <figcaption>Figure 5. Accepted geometry diagnostics. Contact counts use the public tolerance and the minimum slacks are near machine precision.</figcaption>
+        </figure>
+<h3>5. Limitations</h3>
+<p>This is a result for the 26-circle unit-square packing contract only. It is not a proof of global optimality, and it does not claim a general packing solver for other circle counts, other containers, or changed objectives.</p>
+<p>The accepted candidate is deterministic and reconstructs the validated contact graph. It is not a general-purpose solver for arbitrary circle-packing instances, and changing the circle count, container, objective, or contact graph creates a new evaluation.</p>
+<h3>6. Reproducibility</h3>
+<p>The bundle includes the accepted candidate, evaluation contract, curated evolution chain, metrics, provenance, replay confirmation, and a public animated run surface. The run page is a presentation layer over the same public artifacts and excludes raw operational material.</p>
+<p>The source bundle is available in <a href="https://github.com/Gother-Labs/gother-labs-results/tree/main/results/circle-packing-26-unit-square" target="_blank" rel="noreferrer">Göther Labs results repository</a>.</p>
+          </article>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© <span id="year">2026</span> Göther Labs</p>
+      </footer>
+    </div>
+
+    <script src="../../scripts.js?v=nav-wordmark-v1"></script>
+  </body>
+</html>

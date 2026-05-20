@@ -942,6 +942,15 @@ a {
   max-width: 36ch;
 }
 
+.result-card--circle-packing h2 {
+  max-width: 13ch;
+  font-size: clamp(2.8rem, 5vw, 5rem);
+}
+
+.result-card--circle-packing p {
+  max-width: 35ch;
+}
+
 .result-card-visual {
   position: absolute;
   right: clamp(-8rem, -5.5vw, -2.5rem);
@@ -1060,6 +1069,50 @@ a {
   stroke-width: 1.5;
 }
 
+.result-card--circle-packing .result-card-visual {
+  right: clamp(-5rem, -3vw, -1rem);
+  bottom: clamp(0.4rem, 1vw, 1.2rem);
+  width: min(64%, 38rem);
+}
+
+.result-card-packing rect,
+.result-card-packing path,
+.result-card-packing circle {
+  vector-effect: non-scaling-stroke;
+}
+
+.result-card-packing .packing-frame {
+  fill: color-mix(in srgb, var(--text) 2%, transparent);
+  stroke: color-mix(in srgb, var(--text) 42%, transparent);
+  stroke-width: 1.4;
+}
+
+.result-card-packing .packing-grid {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 12%, transparent);
+  stroke-width: 1;
+}
+
+.result-card-packing circle {
+  fill: color-mix(in srgb, var(--accent) 13%, transparent);
+  stroke: color-mix(in srgb, var(--accent) 70%, transparent);
+  stroke-width: 1.8;
+}
+
+.result-card-packing circle.is-accepted {
+  fill: color-mix(in srgb, var(--accent) 22%, transparent);
+  stroke: var(--accent);
+  stroke-width: 2.3;
+}
+
+.result-card-packing .packing-contact {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 42%, transparent);
+  stroke-dasharray: 6 7;
+  stroke-linecap: round;
+  stroke-width: 1.2;
+}
+
 .result-measure {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1113,6 +1166,11 @@ a {
 
   .result-card--rcpsp .result-card-visual {
     transform: translateY(-1.25rem);
+  }
+
+  .result-card--circle-packing .result-card-visual {
+    right: 0.9rem;
+    width: min(50%, 27rem);
   }
 }
 
@@ -1845,6 +1903,92 @@ a {
   fill: var(--bg);
   stroke: color-mix(in srgb, var(--text) 54%, transparent);
   stroke-width: 1.4;
+}
+
+.circle-packing-whitepaper-shell {
+  padding-top: clamp(3rem, 5.2vw, 4.8rem);
+}
+
+.circle-packing-whitepaper .result-paper-table {
+  width: min(100%, 54rem);
+}
+
+.circle-packing-whitepaper .result-contract-table {
+  width: min(100%, 50rem);
+}
+
+.circle-packing-whitepaper .result-table td code {
+  color: var(--text);
+  font-size: 0.92em;
+}
+
+.circle-packing-whitepaper .result-paper-code {
+  width: min(100%, 60rem);
+}
+
+.circle-packing-paper-svg .circle-packing-note {
+  fill: var(--muted);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 11px;
+}
+
+.circle-packing-paper-svg .circle-packing-square {
+  fill: color-mix(in srgb, var(--text) 2%, transparent);
+  stroke: color-mix(in srgb, var(--text) 70%, transparent);
+  stroke-width: 1.2;
+}
+
+.circle-packing-paper-svg .circle-packing-grid {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 12%, transparent);
+  stroke-width: 0.8;
+}
+
+.circle-packing-paper-svg .circle-packing-disk {
+  fill: color-mix(in srgb, var(--accent) 13%, transparent);
+  stroke: color-mix(in srgb, var(--accent) 70%, transparent);
+  stroke-width: 1.2;
+}
+
+.circle-packing-paper-svg .circle-packing-disk-strong {
+  fill: color-mix(in srgb, var(--accent) 24%, transparent);
+  stroke: var(--accent);
+  stroke-width: 1.6;
+}
+
+.circle-packing-paper-svg .circle-packing-measure {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 74%, transparent);
+  stroke-dasharray: 5 5;
+  stroke-linecap: round;
+  stroke-width: 1.2;
+}
+
+.circle-packing-paper-svg .circle-packing-callouts text,
+.circle-packing-paper-svg .circle-packing-section-label {
+  fill: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 13px;
+}
+
+.circle-packing-paper-svg .circle-packing-callouts path {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 42%, transparent);
+  stroke-width: 1;
+}
+
+.circle-packing-paper-svg .circle-packing-value {
+  fill: var(--text);
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 13px;
+}
+
+.circle-packing-paper-svg .circle-packing-track {
+  fill: color-mix(in srgb, var(--text) 7%, transparent);
+}
+
+.circle-packing-paper-svg .circle-packing-fill {
+  fill: color-mix(in srgb, var(--accent) 72%, transparent);
 }
 
 .result-rule-visual {
@@ -2980,6 +3124,15 @@ a {
     max-width: 31ch;
   }
 
+  .result-card--circle-packing h2 {
+    max-width: 12ch;
+    font-size: clamp(2rem, 12vw, 3rem);
+  }
+
+  .result-card--circle-packing p {
+    max-width: 31ch;
+  }
+
   .result-card-visual {
     right: 0.95rem;
     bottom: 1rem;
@@ -2992,6 +3145,12 @@ a {
   .result-card--rcpsp .result-card-visual {
     display: block;
     transform: translateY(-0.8rem);
+  }
+
+  .result-card--circle-packing .result-card-visual {
+    display: block;
+    right: 0.9rem;
+    width: min(50%, 13rem);
   }
 
   .result-measure {

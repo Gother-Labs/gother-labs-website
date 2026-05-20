@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 540" role="img">
+<style>text{font-family:Inter,Arial,sans-serif;fill:#0a0a0a}.muted{fill:#667085;font-size:12px}.axis{stroke:#98a2b3;stroke-width:1;fill:none}.grid{stroke:#e4e7ec;stroke-width:1}.accent{fill:#0b84fe;stroke:#006bd6}.soft{fill:#e8f3ff;stroke:#84bfff}.line{stroke:#0a0a0a;stroke-width:2;fill:none}</style>
+<text x="72" y="30" font-size="16" font-weight="600">Accepted 26-circle packing</text><rect x="72" y="52" width="416" height="416" fill="none" stroke="#0a0a0a" stroke-width="1.4"/>
+<circle class="soft" cx="118.202" cy="421.798" r="46.202"/>
+<circle class="soft" cx="441.798" cy="421.798" r="46.202"/>
+<circle class="soft" cx="107.230" cy="87.230" r="35.230"/>
+<circle class="soft" cx="452.770" cy="87.230" r="35.230"/>
+<circle class="soft" cx="172.049" cy="369.512" r="28.853"/>
+<circle class="soft" cx="202.512" cy="429.538" r="38.462"/>
+<circle class="soft" cx="280.000" cy="428.971" r="39.029"/>
+<circle class="soft" cx="357.488" cy="429.538" r="38.462"/>
+<circle class="soft" cx="387.951" cy="369.512" r="28.853"/>
+<circle class="soft" cx="112.002" cy="335.817" r="40.002"/>
+<circle class="soft" cx="240.181" cy="360.916" r="39.819"/>
+<circle class="soft" cx="319.819" cy="360.916" r="39.819"/>
+<circle class="soft" cx="374.352" cy="300.156" r="41.824"/>
+<circle class="soft" cx="447.998" cy="335.817" r="40.002"/>
+<circle class="soft" cx="115.146" cy="252.728" r="43.146"/>
+<circle class="soft" cx="185.648" cy="300.156" r="41.824"/>
+<circle class="soft" cx="280.000" cy="273.528" r="56.213"/>
+<circle class="soft" cx="363.569" cy="210.548" r="48.430"/>
+<circle class="soft" cx="444.854" cy="252.728" r="43.146"/>
+<circle class="soft" cx="115.795" cy="165.789" r="43.795"/>
+<circle class="soft" cx="196.431" cy="210.548" r="48.430"/>
+<circle class="soft" cx="280.000" cy="164.234" r="47.114"/>
+<circle class="soft" cx="364.683" cy="107.062" r="55.062"/>
+<circle class="soft" cx="444.205" cy="165.789" r="43.795"/>
+<circle class="soft" cx="195.317" cy="107.062" r="55.062"/>
+<circle class="soft" cx="280.000" cy="84.560" r="32.560"/><text class="muted" x="72" y="504">sum radii 2.635977394754</text></svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 360" role="img">
+<style>text{font-family:Inter,Arial,sans-serif;fill:#0a0a0a}.muted{fill:#667085;font-size:12px}.axis{stroke:#98a2b3;stroke-width:1;fill:none}.grid{stroke:#e4e7ec;stroke-width:1}.accent{fill:#0b84fe;stroke:#006bd6}.baseline{fill:#667085;stroke:#344054}.accepted{fill:#16a34a;stroke:#15803d}.line{stroke:#0a0a0a;stroke-width:2;fill:none}</style>
+<text x="66" y="32" font-size="16" font-weight="600">Best-so-far total radius</text>
+<path class="grid" d="M66 58V292H522"/>
+<path class="line" d="M66.0 290.6 L67.6 276.2 L67.6 121.8 L67.6 85.8 L81.8 61.1 L83.4 61.1 L86.6 61.0 L88.2 60.7 L97.7 60.3 L119.8 60.3 L161.0 60.3 L170.5 60.0 L194.2 60.0 L305.1 59.4 L325.7 59.4 L330.4 59.4 L343.1 59.4 L344.7 59.4 L379.5 59.4 L382.7 59.4 L447.6 59.4 L498.2 59.4 L504.6 59.4 L507.8 59.4 L522.0 58.6"/>
+<circle class="accent" cx="66.0" cy="290.6" r="3"/>
+<circle class="accent" cx="67.6" cy="276.2" r="3"/>
+<circle class="accent" cx="67.6" cy="121.8" r="3"/>
+<circle class="accent" cx="67.6" cy="85.8" r="3"/>
+<circle class="accent" cx="81.8" cy="61.1" r="3"/>
+<circle class="accent" cx="83.4" cy="61.1" r="3"/>
+<circle class="accent" cx="86.6" cy="61.0" r="3"/>
+<circle class="accent" cx="88.2" cy="60.7" r="3"/>
+<circle class="accent" cx="97.7" cy="60.3" r="3"/>
+<circle class="accent" cx="119.8" cy="60.3" r="3"/>
+<circle class="accent" cx="161.0" cy="60.3" r="3"/>
+<circle class="accent" cx="170.5" cy="60.0" r="3"/>
+<circle class="accent" cx="194.2" cy="60.0" r="3"/>
+<circle class="accent" cx="305.1" cy="59.4" r="3"/>
+<circle class="accent" cx="325.7" cy="59.4" r="3"/>
+<circle class="accent" cx="330.4" cy="59.4" r="3"/>
+<circle class="accent" cx="343.1" cy="59.4" r="3"/>
+<circle class="accent" cx="344.7" cy="59.4" r="3"/>
+<circle class="accent" cx="379.5" cy="59.4" r="3"/>
+<circle class="accent" cx="382.7" cy="59.4" r="3"/>
+<circle class="accent" cx="447.6" cy="59.4" r="3"/>
+<circle class="accent" cx="498.2" cy="59.4" r="3"/>
+<circle class="accent" cx="504.6" cy="59.4" r="3"/>
+<circle class="accent" cx="507.8" cy="59.4" r="3"/>
+<circle class="accent" cx="522.0" cy="58.6" r="3"/>
+<circle class="baseline" cx="66.0" cy="290.6" r="4"/>
+<circle class="accepted" cx="522.0" cy="58.6" r="4"/>
+<text class="muted" x="66" y="326">generation</text><text class="muted" x="18" y="170" transform="rotate(-90 18 170)">sum radii</text></svg>
