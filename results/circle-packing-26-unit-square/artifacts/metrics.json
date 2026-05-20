@@ -1,0 +1,23 @@
+{
+  "seed": -0.9597783591318301,
+  "best": -2.6359773947541023,
+  "improvement": 1.6761990356222722,
+  "improvement_pct": 174.64438739153093,
+  "units": "score",
+  "direction": "lower_is_better",
+  "validation_status": "contact-system-construction",
+  "seed_sum_radii": 0.9597783591318301,
+  "accepted_sum_radii": 2.6359773947541023,
+  "sum_radii_gain": 1.6761990356222722,
+  "known_target_sum_radii": 2.635,
+  "known_target_gap": 0.0,
+  "circle_count": 26,
+  "valid_rate": 1,
+  "boundary_contact_count": 20,
+  "pairwise_contact_count": 58,
+  "interior_circle_count": 10,
+  "min_radius": 0.06935728482282306,
+  "max_radius": 0.13512828357180387,
+  "mean_radius": 0.10138374595208086,
+  "validity_margin": -1.757760603737779e-13
+}

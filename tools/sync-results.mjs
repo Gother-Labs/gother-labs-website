@@ -257,6 +257,44 @@ function resultCardMeasureItems(result) {
 }
 
 function resultCardVisual(result) {
+  if (result.website?.card_visual === "circle-packing") {
+    const circles = [
+      [118.202, 421.798, 46.202],
+      [441.798, 421.798, 46.202],
+      [107.23, 87.23, 35.23],
+      [452.77, 87.23, 35.23],
+      [172.049, 369.512, 28.853],
+      [202.512, 429.538, 38.462],
+      [280, 428.971, 39.029],
+      [357.488, 429.538, 38.462],
+      [387.951, 369.512, 28.853],
+      [112.002, 335.817, 40.002],
+      [240.181, 360.916, 39.819],
+      [319.819, 360.916, 39.819],
+      [374.352, 300.156, 41.824],
+      [447.998, 335.817, 40.002],
+      [115.146, 252.728, 43.146],
+      [185.648, 300.156, 41.824],
+      [280, 273.528, 56.213],
+      [363.569, 210.548, 48.43],
+      [444.854, 252.728, 43.146],
+      [115.795, 165.789, 43.795],
+      [196.431, 210.548, 48.43],
+      [280, 164.234, 47.114],
+      [364.683, 107.062, 55.062],
+      [444.205, 165.789, 43.795],
+      [195.317, 107.062, 55.062],
+      [280, 84.56, 32.56],
+    ];
+    return `<svg class="result-card-visual result-card-visual--packing" viewBox="0 0 560 500" aria-hidden="true" focusable="false">
+                <g class="result-card-packing result-card-packing--figure4">
+                  <rect class="packing-frame" x="72" y="52" width="416" height="416" />
+                  <path class="packing-grid" d="M72 260H488M280 52V468" />
+${circles.map(([cx, cy, r]) => `                  <circle cx="${cx}" cy="${cy}" r="${r}" />`).join("\n")}
+                </g>
+              </svg>`;
+  }
+
   if (result.website?.card_visual === "rcpsp") {
     return `<svg class="result-card-visual result-card-visual--rcpsp" viewBox="0 0 560 360" aria-hidden="true" focusable="false">
                 <g class="result-card-rcpsp">
@@ -1698,6 +1736,274 @@ function rcpspWhitepaperInserts(full, evolution, candidateCode, scheduleExample,
   };
 }
 
+function circlePackingScoreLabel(score) {
+  return formatMetric(score, { maximumFractionDigits: 6, minimumFractionDigits: 6 });
+}
+
+function circlePackingUniqueSorted(values) {
+  return [...new Set(values.filter((value) => Number.isFinite(value)).map((value) => Number(value.toFixed(12))))].sort((a, b) => a - b);
+}
+
+function circlePackingSpacedTickValues(candidates, mapY, minGap = 18) {
+  const ordered = candidates
+    .filter((item) => Number.isFinite(item?.value))
+    .sort((a, b) => (a.priority ?? 10) - (b.priority ?? 10));
+  const kept = [];
+  ordered.forEach((item) => {
+    const y = mapY(item.value);
+    if (kept.every((tick) => Math.abs(tick.y - y) >= minGap)) {
+      kept.push({ value: Number(item.value.toFixed(12)), y });
+    }
+  });
+  return circlePackingUniqueSorted(kept.map((tick) => tick.value));
+}
+
+function circlePackingPrimerFigure() {
+  return paperInlineFigure({
+    number: 1,
+    caption: "Circle-packing contract surface. Every circle must stay inside the unit square, and every pairwise distance must be at least the sum of the two radii.",
+    className: "circle-packing-inline-figure",
+    svg: `          <svg class="result-primer-svg circle-packing-paper-svg" viewBox="0 0 560 328" role="img" aria-label="Circle packing problem in the unit square.">
+            <text class="result-axis-label result-figure-title" x="72" y="34">26 circles in the unit square</text>
+            <text class="circle-packing-note" x="72" y="55">Maximize total radius while preserving boundary and non-overlap constraints.</text>
+            <rect class="circle-packing-square" x="112" y="80" width="220" height="220" />
+            <circle class="circle-packing-disk" cx="178" cy="154" r="52" />
+            <circle class="circle-packing-disk circle-packing-disk-strong" cx="260" cy="190" r="48" />
+            <circle class="circle-packing-disk" cx="196" cy="244" r="36" />
+            <path class="circle-packing-measure" d="M178 154H230" />
+            <text class="circle-packing-note" x="190" y="146">r<tspan baseline-shift="sub" font-size="9">i</tspan></text>
+            <path class="circle-packing-measure" d="M178 154L260 190" />
+            <text class="circle-packing-note" x="222" y="162">d<tspan baseline-shift="sub" font-size="9">ij</tspan></text>
+            <g class="circle-packing-callouts">
+              <text x="370" y="112">boundary</text>
+              <path d="M360 118H332" />
+              <text x="370" y="170">no overlap</text>
+              <path d="M360 176L274 194" />
+              <text x="370" y="228">objective</text>
+              <text class="circle-packing-value" x="370" y="252">maximize Σr<tspan baseline-shift="sub" font-size="9">i</tspan></text>
+            </g>
+          </svg>`,
+  });
+}
+
+function circlePackingContractTable(evolution) {
+  const domain = evolution?.domain ?? {};
+  return paperTable({
+    className: "result-contract-table circle-packing-contract-table",
+    caption: "Table 1. Public geometry contract for the accepted packing.",
+    headers: ["Field", "Public contract"],
+    rows: [
+      ["Container", escapeHtml(domain.container ?? "unit square [0,1]^2")],
+      ["Circles", `${formatMetric(domain.circle_count ?? 26, { maximumFractionDigits: 0 })} circles`],
+      ["Objective", "maximize <code>sum(radii)</code>"],
+      ["Score", "<code>-sum(radii)</code>; lower is better"],
+      ["Validation", "boundary containment, pairwise non-overlap, sum consistency, deterministic replay"],
+    ],
+  });
+}
+
+function circlePackingObjectiveCurveFigure(evolution, scoreTrace) {
+  const retainedSteps = Array.isArray(evolution?.steps) ? evolution.steps : [];
+  const tracedCandidates = Array.isArray(scoreTrace?.candidates) ? scoreTrace.candidates : [];
+  const scored = (tracedCandidates.length ? tracedCandidates : retainedSteps)
+    .filter((step) => typeof step.sum_radii === "number" && Number.isFinite(step.sum_radii));
+  const retained = retainedSteps.filter((step) => typeof step.sum_radii === "number" && Number.isFinite(step.sum_radii));
+  if (!scored.length) return "";
+
+  const left = 82;
+  const right = 512;
+  const top = 74;
+  const bottom = 260;
+  const width = right - left;
+  const height = bottom - top;
+  const baseline = retained[0] ?? scored[0];
+  const accepted = retained[retained.length - 1] ?? scored[scored.length - 1];
+  const minRadius = baseline.sum_radii;
+  const maxRadius = Math.ceil(accepted.sum_radii * 1000) / 1000;
+  const generationEnd = Math.max(
+    1,
+    scoreTrace?.generation_end ?? 0,
+    ...scored.map((step) => Number(step.generation) || 0),
+    ...retained.map((step) => Number(step.generation) || 0),
+  );
+  const mapX = (generation) => left + (Math.max(0, Math.min(generationEnd, generation)) / generationEnd) * width;
+  const radiusSpan = Math.max(0.0001, maxRadius - minRadius);
+  const scaleStrength = 18;
+  const mapY = (sumRadii) => {
+    const gapRatio = Math.max(0, Math.min(1, (maxRadius - sumRadii) / radiusSpan));
+    const normalized = 1 - (Math.log1p(scaleStrength * gapRatio) / Math.log1p(scaleStrength));
+    return bottom - normalized * height;
+  };
+  const traceBest = Array.isArray(scoreTrace?.best_by_generation) ? scoreTrace.best_by_generation : [];
+  let best = -Infinity;
+  const bestPoints = (traceBest.length ? traceBest : scored).map((step) => {
+    best = Math.max(best, step.sum_radii);
+    return [mapX(Number(step.generation) || 0), mapY(traceBest.length ? step.sum_radii : best)];
+  });
+  const proposalDots = scored.map((step) => {
+    const x = mapX(Number(step.generation) || 0);
+    const y = mapY(step.sum_radii);
+    return `<circle class="result-objective-proposal" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="1.35" />`;
+  }).join("\n");
+  const firstRetained = retained.find((step) => step.sum_radii > 2.3) ?? scored.find((step) => step.sum_radii > 2.3);
+  const yTicks = circlePackingSpacedTickValues([
+    { value: minRadius, priority: 0 },
+    { value: maxRadius, priority: 0 },
+    { value: firstRetained?.sum_radii, priority: 1 },
+    { value: retained[2]?.sum_radii ?? scored[2]?.sum_radii, priority: 2 },
+    { value: retained[1]?.sum_radii ?? scored[1]?.sum_radii, priority: 3 },
+  ], mapY)
+    .map((value) => {
+      const y = mapY(value);
+      return `<g>
+                <path class="result-objective-grid" d="M${left} ${y.toFixed(1)} H${right}" />
+                <text class="result-axis-tick result-objective-y-label" x="${left - 14}" y="${(y + 4).toFixed(1)}">${formatMetric(value, { maximumFractionDigits: value < 2 ? 2 : 3, minimumFractionDigits: value < 2 ? 2 : 3 })}</text>
+              </g>`;
+    }).join("\n");
+  const tickGenerations = circlePackingUniqueSorted([
+    0,
+    Number(firstRetained?.generation) || null,
+    60,
+    151,
+    Number(accepted?.generation) || null,
+    generationEnd,
+  ].filter((generation) => Number.isFinite(generation) && generation >= 0));
+  const xTicks = tickGenerations.map((generation) => {
+    const x = mapX(generation);
+    const anchor = generation === 0 ? "" : generation === generationEnd ? ' text-anchor="end"' : ' text-anchor="middle"';
+    return `<text class="result-axis-tick" x="${x.toFixed(1)}" y="282"${anchor}>${formatMetric(generation, { maximumFractionDigits: 0 })}</text>`;
+  }).join("\n");
+  const xGuides = tickGenerations.slice(1, -1).map((generation) => {
+    const x = mapX(generation);
+    return `<path class="result-objective-grid result-objective-guide" d="M${x.toFixed(1)} ${top}V${bottom}" />`;
+  }).join("\n");
+
+  return paperInlineFigure({
+    number: 3,
+    caption: "Public scoring trace for total radius. Faint points are valid candidate evaluations, values below the baseline are clipped to the bottom edge, and the solid frontier shows the best-so-far geometry that survived the evaluator.",
+    className: "circle-packing-inline-figure result-objective-figure",
+    svg: `          <svg class="result-primer-svg result-objective-svg circle-packing-paper-svg" viewBox="0 0 560 328" role="img" aria-label="Best so far total radius across public circle-packing candidates.">
+            <text class="result-axis-label result-figure-title" x="${left}" y="34">Best-so-far total radius</text>
+            <text class="circle-packing-note" x="${right}" y="34" text-anchor="end">scored candidates, gap-scaled</text>
+            <g class="result-objective-legend" transform="translate(${left} 48)">
+              <g><circle class="result-objective-legend-proposal" cx="0" cy="0" r="2.0" /><text x="12" y="4">scored candidate</text></g>
+              <g transform="translate(142 0)"><line class="result-objective-legend-best" x1="0" y1="0" x2="16" y2="0" /><text x="24" y="4">best-so-far radius</text></g>
+              <g transform="translate(304 0)"><circle class="result-legend-baseline-dot" cx="0" cy="0" r="3.4" /><text x="16" y="4">baseline</text></g>
+              <g transform="translate(388 0)"><circle class="result-legend-accepted-dot" cx="0" cy="0" r="3.8" /><text x="16" y="4">accepted</text></g>
+            </g>
+            ${yTicks}
+            ${xGuides}
+            <path class="result-rule-paper-axis" d="M${left} ${top}V${bottom}H${right}" />
+            <g>${proposalDots}</g>
+            <path class="result-objective-best" d="${svgPolyline(bestPoints)}" />
+            <g class="result-objective-baseline"><circle cx="${mapX(Number(baseline.generation) || 0).toFixed(1)}" cy="${mapY(baseline.sum_radii).toFixed(1)}" r="4.2" /></g>
+            <g class="result-objective-accepted"><circle cx="${mapX(Number(accepted.generation) || generationEnd).toFixed(1)}" cy="${mapY(accepted.sum_radii).toFixed(1)}" r="4.8" /></g>
+            ${xTicks}
+            <text class="result-axis-label result-x-axis-title" x="${(left + width / 2).toFixed(1)}" y="306">global generation</text>
+            <text class="result-axis-label result-objective-y-title" x="34" y="${(top + height / 2).toFixed(1)}" transform="rotate(-90 34 ${(top + height / 2).toFixed(1)})">Σr<tspan baseline-shift="sub" font-size="8">i</tspan></text>
+          </svg>`,
+  });
+}
+
+function circlePackingSummaryTable(full) {
+  return paperTable({
+    caption: "Table 2. Reported comparison for the curated public circle-packing chain.",
+    headers: ["Metric", "Baseline", "Accepted", "Change"],
+    rows: [
+      [
+        "Total radius \\(R(P)\\)",
+        formatMetric(full.metrics.seed_sum_radii, { maximumFractionDigits: 6, minimumFractionDigits: 6 }),
+        formatMetric(full.metrics.accepted_sum_radii, { maximumFractionDigits: 6, minimumFractionDigits: 6 }),
+        `+${formatMetric(full.metrics.sum_radii_gain, { maximumFractionDigits: 6, minimumFractionDigits: 6 })}`,
+      ],
+      [
+        "Evaluator score \\(J(P)\\)",
+        circlePackingScoreLabel(full.metrics.seed),
+        circlePackingScoreLabel(full.metrics.best),
+        `-${formatMetric(full.metrics.improvement, { maximumFractionDigits: 6, minimumFractionDigits: 6 })}`,
+      ],
+      [
+        "Relative radius gain",
+        "reference",
+        `${formatMetric(full.metrics.improvement_pct, { maximumFractionDigits: 2, minimumFractionDigits: 2 })}%`,
+        `${formatMetric(full.metrics.improvement_pct, { maximumFractionDigits: 2, minimumFractionDigits: 2 })}% gain`,
+      ],
+    ],
+  });
+}
+
+function circlePackingLayoutFigure(replay) {
+  const trace = replay?.trace ?? {};
+  const centers = Array.isArray(trace.centers) ? trace.centers : [];
+  const radii = Array.isArray(trace.radii) ? trace.radii : [];
+  if (!centers.length || !radii.length) return "";
+
+  const left = 82;
+  const top = 62;
+  const size = 396;
+  const disks = centers.map(([x, y], index) => {
+    const radius = radii[index] ?? 0;
+    return `<circle class="circle-packing-disk${index % 5 === 0 ? " circle-packing-disk-strong" : ""}" cx="${(left + x * size).toFixed(2)}" cy="${(top + (1 - y) * size).toFixed(2)}" r="${(radius * size).toFixed(2)}" />`;
+  }).join("\n");
+
+  return paperInlineFigure({
+    number: 4,
+    caption: `Accepted packing geometry produced by the deterministic reconstruction candidate and validated by the evaluator. The 26 returned radii sum to ${formatMetric(replay?.metrics?.sum_radii ?? trace.reported_sum, { maximumFractionDigits: 6, minimumFractionDigits: 6 })}.`,
+    className: "circle-packing-inline-figure circle-packing-layout-figure",
+    svg: `          <svg class="result-primer-svg circle-packing-paper-svg" viewBox="0 0 560 490" role="img" aria-label="Accepted 26-circle packing in the unit square.">
+            <text class="result-axis-label result-figure-title" x="${left}" y="34">Accepted 26-circle packing</text>
+            <rect class="circle-packing-square" x="${left}" y="${top}" width="${size}" height="${size}" />
+            <path class="circle-packing-grid" d="M${left} ${top + size / 2}H${left + size}M${left + size / 2} ${top}V${top + size}" />
+${disks}
+          </svg>`,
+  });
+}
+
+function circlePackingContactFigure(full) {
+  const metrics = full.metrics ?? {};
+  const rows = [
+    ["Boundary contacts", metrics.boundary_contact_count ?? 0],
+    ["Pairwise contacts", metrics.pairwise_contact_count ?? 0],
+    ["Interior circles", metrics.interior_circle_count ?? 0],
+  ].map(([label, value], index) => {
+    const y = 82 + index * 44;
+    return `<g>
+              <text class="circle-packing-section-label" x="72" y="${y}">${escapeHtml(label)}</text>
+              <text class="circle-packing-value circle-packing-contact-value" x="488" y="${y}" text-anchor="end">${formatMetric(value, { maximumFractionDigits: 0 })}</text>
+            </g>`;
+  }).join("\n");
+
+  return paperInlineFigure({
+    number: 5,
+    caption: "Accepted contact diagnostics. Boundary and pairwise contacts are a structural tightness readout under the public tolerance, not a separate optimality proof.",
+    className: "circle-packing-inline-figure circle-packing-contact-figure",
+    svg: `          <svg class="result-primer-svg circle-packing-paper-svg" viewBox="0 0 560 190" role="img" aria-label="Contact diagnostics for the accepted circle packing.">
+            <text class="result-axis-label result-figure-title" x="72" y="34">Accepted contact readout</text>
+${rows}
+          </svg>`,
+  });
+}
+
+function circlePackingImplementationCodeFigure(candidateCode) {
+  return pythonImplementationCodeFigure({
+    source: extractCandidateCode(candidateCode),
+    caption: "Accepted deterministic reconstruction candidate. The public entrypoint rebuilds the validated packing before returning centers and radii.",
+    className: "circle-packing-code-figure",
+  });
+}
+
+function circlePackingWhitepaperInserts(full, evolution, candidateCode, replay, scoreTrace) {
+  return {
+    "packing-primer": circlePackingPrimerFigure(),
+    "contract-table": circlePackingContractTable(evolution),
+    "implementation-code": circlePackingImplementationCodeFigure(candidateCode),
+    "objective-curve": circlePackingObjectiveCurveFigure(evolution, scoreTrace),
+    "objective-summary-table": circlePackingSummaryTable(full),
+    "packing-layout": circlePackingLayoutFigure(replay),
+    "contact-readout": circlePackingContactFigure(full),
+  };
+}
+
 function acceptedRuleVisual(full, evolution) {
   const bestStep = bestEvolutionStep(evolution);
   const rule = bestStep?.rule;
@@ -1908,12 +2214,16 @@ async function writeDetail(result) {
   const scoreTrace = full.artifacts?.score_trace
     ? JSON.parse(await fs.readFile(path.join(resultRoot, full.artifacts.score_trace), "utf8"))
     : null;
+  const replay = full.artifacts?.replay
+    ? JSON.parse(await fs.readFile(path.join(resultRoot, full.artifacts.replay), "utf8"))
+    : null;
   const plots = full.artifacts?.plots ?? [];
   for (const file of [
     full.artifacts?.candidate_code,
     full.artifacts?.evolution_trace,
     full.artifacts?.metrics,
     full.artifacts?.provenance,
+    full.artifacts?.reference_comparison,
     full.artifacts?.replay,
     full.artifacts?.schedule_example,
     full.artifacts?.score_trace,
@@ -1940,6 +2250,7 @@ async function writeDetail(result) {
 
   const isQuadratureWhitepaper = full.slug === "quadrature-rule-optimization";
   const isRcpspWhitepaper = full.slug === "rcpsp-psplib-j30";
+  const isCirclePackingWhitepaper = full.slug === "circle-packing-26-unit-square";
   const body = isQuadratureWhitepaper
     ? `        <section class="hero compact-hero page-hero result-detail-hero">
           <h1 class="page-title">${escapeHtml(full.title)}</h1>
@@ -1960,6 +2271,17 @@ ${markdownToHtml(articleWithoutTitle(article), quadratureWhitepaperInserts(full,
         <section class="result-detail result-whitepaper-shell rcpsp-whitepaper-shell">
           <article class="result-article result-whitepaper rcpsp-whitepaper">
 ${markdownToHtml(articleWithoutTitle(article), rcpspWhitepaperInserts(full, evolution, candidateCode, scheduleExample, scoreTrace))}
+          </article>
+        </section>`
+      : isCirclePackingWhitepaper
+        ? `        <section class="hero compact-hero page-hero result-detail-hero circle-packing-detail-hero">
+          <h1 class="page-title">${escapeHtml(full.title)}</h1>
+          <p class="intro results-hero-intro">${escapeHtml(full.summary)}</p>
+        </section>
+
+        <section class="result-detail result-whitepaper-shell circle-packing-whitepaper-shell">
+          <article class="result-article result-whitepaper circle-packing-whitepaper">
+${markdownToHtml(articleWithoutTitle(article), circlePackingWhitepaperInserts(full, evolution, candidateCode, replay, scoreTrace))}
           </article>
         </section>`
     : `        <section class="hero compact-hero page-hero result-detail-hero">
@@ -2005,6 +2327,8 @@ ${figures}
         ? "result-quadrature-page"
         : isRcpspWhitepaper
           ? "result-rcpsp-page"
+          : isCirclePackingWhitepaper
+            ? "result-circle-packing-page"
           : "",
     }),
     "utf8",

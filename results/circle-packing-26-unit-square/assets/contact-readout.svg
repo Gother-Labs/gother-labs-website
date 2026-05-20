@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 200" role="img">
+<style>text{font-family:Inter,Arial,sans-serif;fill:#0a0a0a}.muted{fill:#667085;font-size:12px}.axis{stroke:#98a2b3;stroke-width:1;fill:none}.grid{stroke:#e4e7ec;stroke-width:1}.accent{fill:#0b84fe;stroke:#006bd6}.soft{fill:#e8f3ff;stroke:#84bfff}.line{stroke:#0a0a0a;stroke-width:2;fill:none}.value{fill:#0b84fe;font-family:Menlo,Consolas,monospace;font-weight:600}</style>
+<text x="72" y="34" font-size="16" font-weight="600">Accepted contact readout</text>
+<text x="72" y="82" font-size="14">Boundary contacts</text><text class="value" x="488" y="82" font-size="14" text-anchor="end">20</text>
+<text x="72" y="124" font-size="14">Pairwise contacts</text><text class="value" x="488" y="124" font-size="14" text-anchor="end">58</text>
+<text x="72" y="166" font-size="14">Interior circles</text><text class="value" x="488" y="166" font-size="14" text-anchor="end">10</text>
+</svg>

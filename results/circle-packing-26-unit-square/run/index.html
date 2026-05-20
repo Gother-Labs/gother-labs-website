@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>26-Circle Packing Run Replay | Göther Labs</title>
+    <meta name="description" content="A curated animated replay of the 26-circle unit-square packing result.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" href="../../../assets/gother-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../../styles.css?v=nav-wordmark-v1">
+    <link rel="stylesheet" href="./surface.css?v=circle-packing-v2">
+  </head>
+  <body class="packing-surface-page">
+    <div class="page-shell site-shell">
+      <header class="site-header">
+        <nav class="site-nav" aria-label="Primary">
+          <a class="brand nav-brand nav-home-wordmark animated-symbol-scope" href="../../../" aria-label="Göther Labs home">
+            <span aria-hidden="true" class="wordmark-mark-wrap">
+              <svg class="animated-reference-geometry live-symbol-svg" viewBox="0 0 64 64" focusable="false">
+                <g class="source-geometry" aria-hidden="true">
+                  <circle class="source-geometry-dot" cx="34.5" cy="34.5" r="3.6" />
+                  <circle class="source-geometry-dot" cx="21" cy="58" r="3.6" />
+                  <circle class="source-geometry-dot" cx="48" cy="58" r="3.6" />
+                </g>
+                <path class="live-trail" d="" />
+                <path class="live-trail" d="" />
+                <path class="live-trail" d="" />
+                <circle class="geometry-dot live-geometry-dot" cx="34.2" cy="28.4" r="3.34" />
+                <circle class="geometry-dot live-geometry-dot" cx="20.9" cy="50.6" r="3.34" />
+                <circle class="geometry-dot live-geometry-dot" cx="47.5" cy="50.6" r="3.34" />
+              </svg>
+            </span>
+            <span class="nav-wordmark-text">Göther Labs</span>
+          </a>
+          <div class="nav-links">
+            <a href="../../../company/">Company</a>
+            <a href="../../../results/">Results</a>
+            <a href="../../../contact/">Contact</a>
+          </div>
+        </nav>
+      </header>
+
+      <main class="site-main">
+        <section class="hero compact-hero page-hero packing-hero">
+          <h1 class="page-title">26-circle packing replay.</h1>
+        </section>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <section class="packing-surface" aria-label="Circle packing run surface">
+          <div class="packing-summary">
+            <div class="packing-summary-copy">
+              <p class="eyebrow">Result Replay</p>
+              <p class="packing-summary-text">
+                Curated replay of the public scoring trace and retained implementation states for
+                26 circles in the unit square. The surface links score movement, accepted-code
+                reconstruction, final geometry, and contact diagnostics.
+              </p>
+              <a class="packing-summary-link" href="../#fig-3">
+                Open Figure 3: scored-candidate trace
+              </a>
+            </div>
+            <div class="packing-summary-panel">
+              <p class="eyebrow">Reported Comparison</p>
+              <div class="packing-metrics" role="group" aria-label="Current run step">
+                <div class="packing-metric">
+                  <span class="packing-metric-label">RADIUS GAIN</span>
+                  <strong class="packing-metric-value" id="signal-gains">8.08%</strong>
+                </div>
+                <div class="packing-metric">
+                  <span class="packing-metric-label">BASELINE Σr</span>
+                  <strong class="packing-metric-value packing-metric-value--numeric" id="signal-seed">0.959778</strong>
+                </div>
+                <div class="packing-metric">
+                  <span class="packing-metric-label">ACCEPTED Σr</span>
+                  <strong class="packing-metric-value packing-metric-value--numeric" id="signal-best">2.635977</strong>
+                </div>
+              </div>
+              <span class="packing-visually-hidden" id="metric-step">0 / 4</span>
+              <span class="packing-visually-hidden" id="metric-gen">0</span>
+            </div>
+          </div>
+
+          <div class="packing-stage">
+            <section class="packing-code" aria-labelledby="packing-code-title">
+              <div class="packing-section-head">
+                <h2 class="packing-section-title" id="packing-code-title">Candidate surface</h2>
+                <div class="packing-code-actions">
+                  <a class="packing-code-link" href="../#listing-1">Open Listing 1</a>
+                  <span class="packing-section-tag" id="editor-badge">original</span>
+                </div>
+              </div>
+
+              <div class="packing-editor">
+                <div class="packing-editor-head">
+                  <span class="packing-editor-title">program.py -> accepted_candidate.py :: retained implementation replay</span>
+                </div>
+                <div class="packing-editor-body" id="editor-body">
+                  <div class="packing-editor-focus" id="editor-focus"></div>
+                </div>
+              </div>
+            </section>
+
+            <aside class="packing-visual" aria-labelledby="packing-visual-title">
+              <div class="packing-card">
+                <div class="packing-score-head">
+                  <h2 class="packing-section-title" id="packing-visual-title">Total radius</h2>
+                  <span class="packing-score-label" id="score-mini-label">best-so-far</span>
+                </div>
+                <svg
+                  class="packing-score-svg"
+                  id="score-mini-svg"
+                  viewBox="0 0 460 250"
+                  aria-label="Best-so-far total radius"
+                ></svg>
+              </div>
+
+              <div class="packing-card packing-card--layout">
+                <svg
+                  class="packing-layout-svg"
+                  id="packing-svg"
+                  viewBox="0 0 460 430"
+                  aria-label="Animated 26-circle unit-square packing"
+                ></svg>
+              </div>
+
+              <div class="packing-card">
+                <svg
+                  class="packing-contact-svg"
+                  id="contact-svg"
+                  viewBox="0 0 460 180"
+                  aria-label="Animated contact diagnostics"
+                ></svg>
+              </div>
+            </aside>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© <span id="year">2026</span> Göther Labs</p>
+      </footer>
+    </div>
+
+    <script src="../../../scripts.js?v=nav-wordmark-v1"></script>
+    <script src="./surface-data.js"></script>
+    <script src="./surface.js?v=circle-packing-v2"></script>
+  </body>
+</html>

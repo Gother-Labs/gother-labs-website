@@ -1,0 +1,1486 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>26-circle unit-square packing | Results | Göther Labs</title>
+    <meta name="description" content="A deterministic 26-circle packing in the unit square reaches a validated total radius of 2.635977. The public result exposes the geometry, the validation contract, and the curated best-so-far chain that found it.">
+    <link rel="canonical" href="https://www.gotherlabs.com/results/circle-packing-26-unit-square/">
+    <meta property="og:title" content="26-circle unit-square packing | Results | Göther Labs">
+    <meta property="og:description" content="A deterministic 26-circle packing in the unit square reaches a validated total radius of 2.635977. The public result exposes the geometry, the validation contract, and the curated best-so-far chain that found it.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.gotherlabs.com/results/circle-packing-26-unit-square/">
+    <meta property="og:image" content="https://www.gotherlabs.com/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.gotherlabs.com/assets/og-image.png">
+    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" href="../../assets/gother-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../styles.css?v=nav-wordmark-v1">
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [["\\(", "\\)"]],
+          displayMath: [["\\[", "\\]"]]
+        },
+        options: {
+          enableMenu: false
+        },
+        chtml: {
+          matchFontHeight: false
+        }
+      };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+
+  </head>
+  <body class="result-circle-packing-page">
+    <a class="skip-link" href="#site-main">Skip to content</a>
+    <div class="page-shell site-shell">
+      <header class="site-header">
+        <nav class="site-nav" aria-label="Primary">
+          <a class="brand nav-brand nav-home-wordmark animated-symbol-scope" href="../../" aria-label="Göther Labs home">
+            <span aria-hidden="true" class="wordmark-mark-wrap">
+              <svg class="animated-reference-geometry live-symbol-svg" viewBox="0 0 64 64" focusable="false">
+                <g class="source-geometry" aria-hidden="true">
+                  <circle class="source-geometry-dot" cx="34.5" cy="34.5" r="3.6" />
+                  <circle class="source-geometry-dot" cx="21" cy="58" r="3.6" />
+                  <circle class="source-geometry-dot" cx="48" cy="58" r="3.6" />
+                </g>
+                <path class="live-trail" d="" />
+                <path class="live-trail" d="" />
+                <path class="live-trail" d="" />
+                <circle class="geometry-dot live-geometry-dot" cx="34.2" cy="28.4" r="3.34" />
+                <circle class="geometry-dot live-geometry-dot" cx="20.9" cy="50.6" r="3.34" />
+                <circle class="geometry-dot live-geometry-dot" cx="47.5" cy="50.6" r="3.34" />
+              </svg>
+            </span>
+            <span class="nav-wordmark-text">Göther Labs</span>
+          </a>
+          <div class="nav-links">
+            <a href="../../company/">Company</a>
+            <a href="../../results/">Results</a>
+            <a href="../../contact/">Contact</a>
+          </div>
+        </nav>
+      </header>
+
+      <main class="site-main" id="site-main">
+        <section class="hero compact-hero page-hero result-detail-hero circle-packing-detail-hero">
+          <h1 class="page-title">26-circle unit-square packing</h1>
+          <p class="intro results-hero-intro">A deterministic 26-circle packing in the unit square reaches a validated total radius of 2.635977. The public result exposes the geometry, the validation contract, and the curated best-so-far chain that found it.</p>
+        </section>
+
+        <section class="result-detail result-whitepaper-shell circle-packing-whitepaper-shell">
+          <article class="result-article result-whitepaper circle-packing-whitepaper">
+<h3>Abstract</h3>
+<p>This note reports a deterministic 26-circle packing inside the unit square as a validated geometry, a public scoring trace, and a reproducible reconstruction candidate. The accepted geometry reaches total radius 2.635977. The public trace starts from the original domain <code>program.py</code> baseline at total radius 0.959778, records all valid scored candidates, and marks the retained implementation states that lead to the accepted packing. The governed lower-is-better score improves from -0.959778 to -2.635977.</p>
+<p>For audit clarity, the public claim is not a raw solver artifact. It is the combination of the accepted code surface, the replayed scoring evidence, and the evaluator-validated geometry. The accepted candidate reconstructs the packing from the evolved contact graph and returns the generated centers and radii only after the deterministic reconstruction has passed validation.</p>
+<h3>1. Problem formulation</h3>
+<p>The task is to place 26 circles in the unit square without overlap. A packing is defined by centers \((x_i, y_i)\) and radii \(r_i\) for \(i = 1, \dots, 26\). The objective is the total radius:</p>
+<div class="formula-block" id="eq-1">
+  <div class="formula-math">\[
+R(P) = \sum_{i=1}^{26} r_i
+\]</div>
+  <span class="equation-number">(1)</span>
+</div>
+<figure class="result-primer-card result-paper-figure circle-packing-inline-figure" id="fig-1">
+          <svg class="result-primer-svg circle-packing-paper-svg" viewBox="0 0 560 328" role="img" aria-label="Circle packing problem in the unit square.">
+            <text class="result-axis-label result-figure-title" x="72" y="34">26 circles in the unit square</text>
+            <text class="circle-packing-note" x="72" y="55">Maximize total radius while preserving boundary and non-overlap constraints.</text>
+            <rect class="circle-packing-square" x="112" y="80" width="220" height="220" />
+            <circle class="circle-packing-disk" cx="178" cy="154" r="52" />
+            <circle class="circle-packing-disk circle-packing-disk-strong" cx="260" cy="190" r="48" />
+            <circle class="circle-packing-disk" cx="196" cy="244" r="36" />
+            <path class="circle-packing-measure" d="M178 154H230" />
+            <text class="circle-packing-note" x="190" y="146">r<tspan baseline-shift="sub" font-size="9">i</tspan></text>
+            <path class="circle-packing-measure" d="M178 154L260 190" />
+            <text class="circle-packing-note" x="222" y="162">d<tspan baseline-shift="sub" font-size="9">ij</tspan></text>
+            <g class="circle-packing-callouts">
+              <text x="370" y="112">boundary</text>
+              <path d="M360 118H332" />
+              <text x="370" y="170">no overlap</text>
+              <path d="M360 176L274 194" />
+              <text x="370" y="228">objective</text>
+              <text class="circle-packing-value" x="370" y="252">maximize Σr<tspan baseline-shift="sub" font-size="9">i</tspan></text>
+            </g>
+          </svg>
+          <figcaption>Figure 1. Circle-packing contract surface. Every circle must stay inside the unit square, and every pairwise distance must be at least the sum of the two radii.</figcaption>
+        </figure>
+<p>Every circle must remain inside \([0,1]^2\), and every pair of circles must satisfy the non-overlap constraint:</p>
+<div class="formula-block" id="eq-2">
+  <div class="formula-math">\[
+\sqrt{(x_i-x_j)^2 + (y_i-y_j)^2} \ge r_i + r_j.
+\]</div>
+  <span class="equation-number">(2)</span>
+</div>
+<h3>2. Evaluation contract</h3>
+<p>The evaluator asks the candidate for exactly 26 centers, 26 positive radii, and a reported sum. It verifies finite values, checks that the reported sum matches the radii, rejects boundary violations, rejects pairwise overlap, and calls the entrypoint twice to enforce determinism.</p>
+<figure class="result-paper-table result-contract-table circle-packing-contract-table" id="table-1">
+          <div class="result-table-wrap">
+            <table class="result-table">
+              <thead>
+                <tr>
+                  <th>Field</th>
+                  <th>Public contract</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Container</td>
+                  <td>unit square [0,1]^2</td>
+                </tr>
+                <tr>
+                  <td>Circles</td>
+                  <td>26 circles</td>
+                </tr>
+                <tr>
+                  <td>Objective</td>
+                  <td>maximize <code>sum(radii)</code></td>
+                </tr>
+                <tr>
+                  <td>Score</td>
+                  <td><code>-sum(radii)</code>; lower is better</td>
+                </tr>
+                <tr>
+                  <td>Validation</td>
+                  <td>boundary containment, pairwise non-overlap, sum consistency, deterministic replay</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <figcaption>Table 1. Public geometry contract for the accepted packing.</figcaption>
+        </figure>
+<p>The score is defined as:</p>
+<div class="formula-block" id="eq-3">
+  <div class="formula-math">\[
+J(P) = -R(P).
+\]</div>
+  <span class="equation-number">(3)</span>
+</div>
+<p>Lower score is therefore better, but the report also shows \(R(P)\) directly because total radius is the geometric quantity of interest.</p>
+<h3>3. Accepted candidate</h3>
+<p>The accepted public candidate is a deterministic reconstruction program, not a stored list of final coordinates. It starts from a coarse deterministic seed, solves the boundary and pairwise tangency equations with a small damped Newton system, and then validates the resulting geometry before returning it. The replayed centers and radii remain part of the audit bundle as evidence of the accepted run, but the implementation surface is the reconstruction code.</p>
+<figure class="result-paper-code result-code-figure circle-packing-code-figure" id="listing-1">
+          <pre><code><span class="code-line"><span class="line-no">1</span><span class="line-src"><span class="py-keyword">def</span> _contact_residuals(values: <span class="py-builtin">list</span>[<span class="py-builtin">float</span>]) -&gt; <span class="py-builtin">list</span>[<span class="py-builtin">float</span>]:</span></span><span class="code-line"><span class="line-no">2</span><span class="line-src">    <span class="py-string">&quot;&quot;&quot;Residuals <span class="py-keyword">for</span> boundary contacts and pairwise tangent contacts.&quot;&quot;&quot;</span></span></span><span class="code-line"><span class="line-no">3</span><span class="line-src">    residuals: <span class="py-builtin">list</span>[<span class="py-builtin">float</span>] = []</span></span><span class="code-line"><span class="line-no">4</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">5</span><span class="line-src">    <span class="py-keyword">for</span> index, side <span class="py-keyword">in</span> BOUNDARY_CONTACTS:</span></span><span class="code-line"><span class="line-no">6</span><span class="line-src">        x = values[3 * index]</span></span><span class="code-line"><span class="line-no">7</span><span class="line-src">        y = values[3 * index + 1]</span></span><span class="code-line"><span class="line-no">8</span><span class="line-src">        radius = values[3 * index + 2]</span></span><span class="code-line"><span class="line-no">9</span><span class="line-src">        <span class="py-keyword">if</span> side == &quot;left&quot;:</span></span><span class="code-line"><span class="line-no">10</span><span class="line-src">            residuals.append(x - radius)</span></span><span class="code-line"><span class="line-no">11</span><span class="line-src">        elif side == &quot;right&quot;:</span></span><span class="code-line"><span class="line-no">12</span><span class="line-src">            residuals.append(1.0 - x - radius)</span></span><span class="code-line"><span class="line-no">13</span><span class="line-src">        elif side == &quot;bottom&quot;:</span></span><span class="code-line"><span class="line-no">14</span><span class="line-src">            residuals.append(y - radius)</span></span><span class="code-line"><span class="line-no">15</span><span class="line-src">        elif side == &quot;top&quot;:</span></span><span class="code-line"><span class="line-no">16</span><span class="line-src">            residuals.append(1.0 - y - radius)</span></span><span class="code-line"><span class="line-no">17</span><span class="line-src">        else:</span></span><span class="code-line"><span class="line-no">18</span><span class="line-src">            raise ValueError(f&quot;unknown boundary side: {side}&quot;)</span></span><span class="code-line"><span class="line-no">19</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">20</span><span class="line-src">    <span class="py-keyword">for</span> left, right <span class="py-keyword">in</span> CONTACT_EDGES:</span></span><span class="code-line"><span class="line-no">21</span><span class="line-src">        dx = values[3 * left] - values[3 * right]</span></span><span class="code-line"><span class="line-no">22</span><span class="line-src">        dy = values[3 * left + 1] - values[3 * right + 1]</span></span><span class="code-line"><span class="line-no">23</span><span class="line-src">        residuals.append(math.hypot(dx, dy) - values[3 * left + 2] - values[3 * right + 2])</span></span><span class="code-line"><span class="line-no">24</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">25</span><span class="line-src">    <span class="py-keyword">return</span> residuals</span></span><span class="code-line"><span class="line-no">26</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">27</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">28</span><span class="line-src"><span class="py-keyword">def</span> _residual_norm(values: <span class="py-builtin">list</span>[<span class="py-builtin">float</span>]) -&gt; <span class="py-builtin">float</span>:</span></span><span class="code-line"><span class="line-no">29</span><span class="line-src">    <span class="py-string">&quot;&quot;&quot;Return the infinity norm of the contact residual vector.&quot;&quot;&quot;</span></span></span><span class="code-line"><span class="line-no">30</span><span class="line-src">    <span class="py-keyword">return</span> <span class="py-builtin">max</span>(abs(value) <span class="py-keyword">for</span> value <span class="py-keyword">in</span> _contact_residuals(values))</span></span><span class="code-line"><span class="line-no">31</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">32</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">33</span><span class="line-src"><span class="py-keyword">def</span> _contact_jacobian(values: <span class="py-builtin">list</span>[<span class="py-builtin">float</span>], residuals: <span class="py-builtin">list</span>[<span class="py-builtin">float</span>]) -&gt; <span class="py-builtin">list</span>[<span class="py-builtin">list</span>[<span class="py-builtin">float</span>]]:</span></span><span class="code-line"><span class="line-no">34</span><span class="line-src">    <span class="py-string">&quot;&quot;&quot;Build a finite-difference Jacobian <span class="py-keyword">for</span> the contact equations.&quot;&quot;&quot;</span></span></span><span class="code-line"><span class="line-no">35</span><span class="line-src">    jacobian = [[0.0 <span class="py-keyword">for</span> _ <span class="py-keyword">in</span> values] <span class="py-keyword">for</span> _ <span class="py-keyword">in</span> residuals]</span></span><span class="code-line"><span class="line-no">36</span><span class="line-src">    <span class="py-keyword">for</span> column, value <span class="py-keyword">in</span> enumerate(values):</span></span><span class="code-line"><span class="line-no">37</span><span class="line-src">        step = 1e-6 * <span class="py-builtin">max</span>(1.0, abs(value))</span></span><span class="code-line"><span class="line-no">38</span><span class="line-src">        shifted = <span class="py-builtin">list</span>(values)</span></span><span class="code-line"><span class="line-no">39</span><span class="line-src">        shifted[column] += step</span></span><span class="code-line"><span class="line-no">40</span><span class="line-src">        shifted_residuals = _contact_residuals(shifted)</span></span><span class="code-line"><span class="line-no">41</span><span class="line-src">        <span class="py-keyword">for</span> row, residual <span class="py-keyword">in</span> enumerate(residuals):</span></span><span class="code-line"><span class="line-no">42</span><span class="line-src">            jacobian[row][column] = (shifted_residuals[row] - residual) / step</span></span><span class="code-line"><span class="line-no">43</span><span class="line-src">    <span class="py-keyword">return</span> jacobian</span></span><span class="code-line"><span class="line-no">44</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">45</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">46</span><span class="line-src"><span class="py-keyword">def</span> _solve_linear_system(matrix: <span class="py-builtin">list</span>[<span class="py-builtin">list</span>[<span class="py-builtin">float</span>]], rhs: <span class="py-builtin">list</span>[<span class="py-builtin">float</span>]) -&gt; <span class="py-builtin">list</span>[<span class="py-builtin">float</span>]:</span></span><span class="code-line"><span class="line-no">47</span><span class="line-src">    <span class="py-string">&quot;&quot;&quot;Solve a dense square system with partial-pivot Gauss-Jordan elimination.&quot;&quot;&quot;</span></span></span><span class="code-line"><span class="line-no">48</span><span class="line-src">    size = len(rhs)</span></span><span class="code-line"><span class="line-no">49</span><span class="line-src">    augmented = [matrix[row][:] + [rhs[row]] <span class="py-keyword">for</span> row <span class="py-keyword">in</span> <span class="py-builtin">range</span>(size)]</span></span><span class="code-line"><span class="line-no">50</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">51</span><span class="line-src">    <span class="py-keyword">for</span> column <span class="py-keyword">in</span> <span class="py-builtin">range</span>(size):</span></span><span class="code-line"><span class="line-no">52</span><span class="line-src">        pivot = <span class="py-builtin">max</span>(<span class="py-builtin">range</span>(column, size), key=<span class="py-keyword">lambda</span> row: abs(augmented[row][column]))</span></span><span class="code-line"><span class="line-no">53</span><span class="line-src">        <span class="py-keyword">if</span> abs(augmented[pivot][column]) &lt; 1e-14:</span></span><span class="code-line"><span class="line-no">54</span><span class="line-src">            raise RuntimeError(&quot;contact Jacobian became singular&quot;)</span></span><span class="code-line"><span class="line-no">55</span><span class="line-src">        augmented[column], augmented[pivot] = augmented[pivot], augmented[column]</span></span><span class="code-line"><span class="line-no">56</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">57</span><span class="line-src">        pivot_value = augmented[column][column]</span></span><span class="code-line"><span class="line-no">58</span><span class="line-src">        <span class="py-keyword">for</span> item <span class="py-keyword">in</span> <span class="py-builtin">range</span>(column, size + 1):</span></span><span class="code-line"><span class="line-no">59</span><span class="line-src">            augmented[column][item] /= pivot_value</span></span><span class="code-line"><span class="line-no">60</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">61</span><span class="line-src">        <span class="py-keyword">for</span> row <span class="py-keyword">in</span> <span class="py-builtin">range</span>(size):</span></span><span class="code-line"><span class="line-no">62</span><span class="line-src">            <span class="py-keyword">if</span> row == column:</span></span><span class="code-line"><span class="line-no">63</span><span class="line-src">                continue</span></span><span class="code-line"><span class="line-no">64</span><span class="line-src">            factor = augmented[row][column]</span></span><span class="code-line"><span class="line-no">65</span><span class="line-src">            <span class="py-keyword">if</span> factor == 0.0:</span></span><span class="code-line"><span class="line-no">66</span><span class="line-src">                continue</span></span><span class="code-line"><span class="line-no">67</span><span class="line-src">            <span class="py-keyword">for</span> item <span class="py-keyword">in</span> <span class="py-builtin">range</span>(column, size + 1):</span></span><span class="code-line"><span class="line-no">68</span><span class="line-src">                augmented[row][item] -= factor * augmented[column][item]</span></span><span class="code-line"><span class="line-no">69</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">70</span><span class="line-src">    <span class="py-keyword">return</span> [augmented[row][size] <span class="py-keyword">for</span> row <span class="py-keyword">in</span> <span class="py-builtin">range</span>(size)]</span></span><span class="code-line"><span class="line-no">71</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">72</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">73</span><span class="line-src"><span class="py-keyword">def</span> _bounded_step(values: <span class="py-builtin">list</span>[<span class="py-builtin">float</span>], step: <span class="py-builtin">list</span>[<span class="py-builtin">float</span>], scale: <span class="py-builtin">float</span>) -&gt; <span class="py-builtin">list</span>[<span class="py-builtin">float</span>]:</span></span><span class="code-line"><span class="line-no">74</span><span class="line-src">    <span class="py-string">&quot;&quot;&quot;Apply one damped Newton step while keeping variables <span class="py-keyword">in</span> valid ranges.&quot;&quot;&quot;</span></span></span><span class="code-line"><span class="line-no">75</span><span class="line-src">    updated: <span class="py-builtin">list</span>[<span class="py-builtin">float</span>] = []</span></span><span class="code-line"><span class="line-no">76</span><span class="line-src">    <span class="py-keyword">for</span> index, value <span class="py-keyword">in</span> enumerate(values):</span></span><span class="code-line"><span class="line-no">77</span><span class="line-src">        candidate = value + scale * step[index]</span></span><span class="code-line"><span class="line-no">78</span><span class="line-src">        <span class="py-keyword">if</span> index % 3 == 2:</span></span><span class="code-line"><span class="line-no">79</span><span class="line-src">            updated.append(<span class="py-builtin">min</span>(0.5, <span class="py-builtin">max</span>(MIN_RADIUS, candidate)))</span></span><span class="code-line"><span class="line-no">80</span><span class="line-src">        else:</span></span><span class="code-line"><span class="line-no">81</span><span class="line-src">            updated.append(<span class="py-builtin">min</span>(1.0, <span class="py-builtin">max</span>(0.0, candidate)))</span></span><span class="code-line"><span class="line-no">82</span><span class="line-src">    <span class="py-keyword">return</span> updated</span></span><span class="code-line"><span class="line-no">83</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">84</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">85</span><span class="line-src"><span class="py-keyword">def</span> _solve_contact_system() -&gt; tuple[<span class="py-builtin">list</span>[Point], <span class="py-builtin">list</span>[<span class="py-builtin">float</span>]]:</span></span><span class="code-line"><span class="line-no">86</span><span class="line-src">    <span class="py-string">&quot;&quot;&quot;Solve the evolved contact graph into concrete centers and radii.&quot;&quot;&quot;</span></span></span><span class="code-line"><span class="line-no">87</span><span class="line-src">    values = _coarse_seed_layout()</span></span><span class="code-line"><span class="line-no">88</span><span class="line-src">    <span class="py-keyword">for</span> _ <span class="py-keyword">in</span> <span class="py-builtin">range</span>(12):</span></span><span class="code-line"><span class="line-no">89</span><span class="line-src">        residuals = _contact_residuals(values)</span></span><span class="code-line"><span class="line-no">90</span><span class="line-src">        <span class="py-keyword">if</span> <span class="py-builtin">max</span>(abs(value) <span class="py-keyword">for</span> value <span class="py-keyword">in</span> residuals) &lt; 1e-12:</span></span><span class="code-line"><span class="line-no">91</span><span class="line-src">            break</span></span><span class="code-line"><span class="line-no">92</span><span class="line-src">        jacobian = _contact_jacobian(values, residuals)</span></span><span class="code-line"><span class="line-no">93</span><span class="line-src">        newton_step = _solve_linear_system(jacobian, [-value <span class="py-keyword">for</span> value <span class="py-keyword">in</span> residuals])</span></span><span class="code-line"><span class="line-no">94</span><span class="line-src">        baseline_norm = _residual_norm(values)</span></span><span class="code-line"><span class="line-no">95</span><span class="line-src">        step_scale = 1.0</span></span><span class="code-line"><span class="line-no">96</span><span class="line-src">        while step_scale &gt; 1e-4:</span></span><span class="code-line"><span class="line-no">97</span><span class="line-src">            candidate = _bounded_step(values, newton_step, step_scale)</span></span><span class="code-line"><span class="line-no">98</span><span class="line-src">            <span class="py-keyword">if</span> _residual_norm(candidate) &lt; baseline_norm:</span></span><span class="code-line"><span class="line-no">99</span><span class="line-src">                values = candidate</span></span><span class="code-line"><span class="line-no">100</span><span class="line-src">                break</span></span><span class="code-line"><span class="line-no">101</span><span class="line-src">            step_scale *= 0.5</span></span><span class="code-line"><span class="line-no">102</span><span class="line-src">        else:</span></span><span class="code-line"><span class="line-no">103</span><span class="line-src">            raise RuntimeError(&quot;contact solve failed to find a decreasing Newton step&quot;)</span></span><span class="code-line"><span class="line-no">104</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">105</span><span class="line-src">    <span class="py-keyword">if</span> _residual_norm(values) &gt;= 1e-10:</span></span><span class="code-line"><span class="line-no">106</span><span class="line-src">        raise RuntimeError(&quot;contact solve did not converge to evaluator tolerance&quot;)</span></span><span class="code-line"><span class="line-no">107</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">108</span><span class="line-src">    solved_centers = [(values[3 * index], values[3 * index + 1]) <span class="py-keyword">for</span> index <span class="py-keyword">in</span> <span class="py-builtin">range</span>(N_CIRCLES)]</span></span><span class="code-line"><span class="line-no">109</span><span class="line-src">    solved_radii = [values[3 * index + 2] <span class="py-keyword">for</span> index <span class="py-keyword">in</span> <span class="py-builtin">range</span>(N_CIRCLES)]</span></span><span class="code-line"><span class="line-no">110</span><span class="line-src">    <span class="py-keyword">return</span> solved_centers, solved_radii</span></span><span class="code-line"><span class="line-no">111</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">112</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">113</span><span class="line-src"><span class="py-keyword">def</span> _assert_valid(centers: <span class="py-builtin">list</span>[Point], radii: <span class="py-builtin">list</span>[<span class="py-builtin">float</span>]) -&gt; <span class="py-constant">None</span>:</span></span><span class="code-line"><span class="line-no">114</span><span class="line-src">    <span class="py-string">&quot;&quot;&quot;Fail fast <span class="py-keyword">if</span> numerical drift breaks the public geometry contract.&quot;&quot;&quot;</span></span></span><span class="code-line"><span class="line-no">115</span><span class="line-src">    tolerance = 1e-10</span></span><span class="code-line"><span class="line-no">116</span><span class="line-src">    <span class="py-keyword">for</span> index, ((x, y), radius) <span class="py-keyword">in</span> enumerate(zip(centers, radii, strict=<span class="py-constant">True</span>)):</span></span><span class="code-line"><span class="line-no">117</span><span class="line-src">        <span class="py-keyword">if</span> radius &lt;= MIN_RADIUS:</span></span><span class="code-line"><span class="line-no">118</span><span class="line-src">            raise ValueError(f&quot;circle {index} has non-positive radius&quot;)</span></span><span class="code-line"><span class="line-no">119</span><span class="line-src">        <span class="py-keyword">if</span> x - radius &lt; -tolerance or x + radius &gt; 1.0 + tolerance:</span></span><span class="code-line"><span class="line-no">120</span><span class="line-src">            raise ValueError(f&quot;circle {index} exceeds x-boundary&quot;)</span></span><span class="code-line"><span class="line-no">121</span><span class="line-src">        <span class="py-keyword">if</span> y - radius &lt; -tolerance or y + radius &gt; 1.0 + tolerance:</span></span><span class="code-line"><span class="line-no">122</span><span class="line-src">            raise ValueError(f&quot;circle {index} exceeds y-boundary&quot;)</span></span><span class="code-line"><span class="line-no">123</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">124</span><span class="line-src">    <span class="py-keyword">for</span> left <span class="py-keyword">in</span> <span class="py-builtin">range</span>(N_CIRCLES):</span></span><span class="code-line"><span class="line-no">125</span><span class="line-src">        <span class="py-keyword">for</span> right <span class="py-keyword">in</span> <span class="py-builtin">range</span>(left + 1, N_CIRCLES):</span></span><span class="code-line"><span class="line-no">126</span><span class="line-src">            dx = centers[left][0] - centers[right][0]</span></span><span class="code-line"><span class="line-no">127</span><span class="line-src">            dy = centers[left][1] - centers[right][1]</span></span><span class="code-line"><span class="line-no">128</span><span class="line-src">            <span class="py-keyword">if</span> math.hypot(dx, dy) + tolerance &lt; radii[left] + radii[right]:</span></span><span class="code-line"><span class="line-no">129</span><span class="line-src">                raise ValueError(f&quot;circles {left} and {right} overlap&quot;)</span></span><span class="code-line"><span class="line-no">130</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">131</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">132</span><span class="line-src"><span class="py-keyword">def</span> construct_packing() -&gt; tuple[<span class="py-builtin">list</span>[Point], <span class="py-builtin">list</span>[<span class="py-builtin">float</span>]]:</span></span><span class="code-line"><span class="line-no">133</span><span class="line-src">    <span class="py-string">&quot;&quot;&quot;Construct the accepted 26-circle packing from its contact graph.&quot;&quot;&quot;</span></span></span><span class="code-line"><span class="line-no">134</span><span class="line-src">    centers, radii = _solve_contact_system()</span></span><span class="code-line"><span class="line-no">135</span><span class="line-src">    _assert_valid(centers, radii)</span></span><span class="code-line"><span class="line-no">136</span><span class="line-src">    <span class="py-keyword">return</span> centers, radii</span></span><span class="code-line"><span class="line-no">137</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">138</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">139</span><span class="line-src"><span class="py-keyword">def</span> run_packing() -&gt; tuple[<span class="py-builtin">list</span>[Point], <span class="py-builtin">list</span>[<span class="py-builtin">float</span>], <span class="py-builtin">float</span>]:</span></span><span class="code-line"><span class="line-no">140</span><span class="line-src">    <span class="py-string">&quot;&quot;&quot;Return centers, radii, and total radius <span class="py-keyword">for</span> the evaluator.&quot;&quot;&quot;</span></span></span><span class="code-line"><span class="line-no">141</span><span class="line-src">    centers, radii = construct_packing()</span></span><span class="code-line"><span class="line-no">142</span><span class="line-src">    <span class="py-keyword">return</span> centers, radii, <span class="py-builtin">float</span>(sum(radii))</span></span></code></pre>
+          <figcaption>Listing 1. Accepted deterministic reconstruction candidate. The public entrypoint rebuilds the validated packing before returning centers and radii.</figcaption>
+        </figure>
+<h3>4. Results</h3>
+<p>The public trajectory has three visible phases. First, the original <code>program.py</code> baseline is a sparse packing with total radius 0.959778. Second, early generated candidates move quickly into useful geometries: the first valid candidate reaches 1.064234, and generation 1 later produces the retained 2.438966 checkpoint. Third, most later candidates explore the high-radius plateau until the accepted reconstruction reaches total radius 2.635977. In evaluator-score terms, the full public trajectory is a reduction from -0.959778 to -2.635977.</p>
+<figure class="result-primer-card result-paper-figure circle-packing-inline-figure result-objective-figure" id="fig-3">
+          <svg class="result-primer-svg result-objective-svg circle-packing-paper-svg" viewBox="0 0 560 328" role="img" aria-label="Best so far total radius across public circle-packing candidates.">
+            <text class="result-axis-label result-figure-title" x="82" y="34">Best-so-far total radius</text>
+            <text class="circle-packing-note" x="512" y="34" text-anchor="end">scored candidates, gap-scaled</text>
+            <g class="result-objective-legend" transform="translate(82 48)">
+              <g><circle class="result-objective-legend-proposal" cx="0" cy="0" r="2.0" /><text x="12" y="4">scored candidate</text></g>
+              <g transform="translate(142 0)"><line class="result-objective-legend-best" x1="0" y1="0" x2="16" y2="0" /><text x="24" y="4">best-so-far radius</text></g>
+              <g transform="translate(304 0)"><circle class="result-legend-baseline-dot" cx="0" cy="0" r="3.4" /><text x="16" y="4">baseline</text></g>
+              <g transform="translate(388 0)"><circle class="result-legend-accepted-dot" cx="0" cy="0" r="3.8" /><text x="16" y="4">accepted</text></g>
+            </g>
+            <g>
+                <path class="result-objective-grid" d="M82 260.0 H512" />
+                <text class="result-axis-tick result-objective-y-label" x="68" y="264.0">0.96</text>
+              </g>
+<g>
+                <path class="result-objective-grid" d="M82 186.2 H512" />
+                <text class="result-axis-tick result-objective-y-label" x="68" y="190.2">2.179</text>
+              </g>
+<g>
+                <path class="result-objective-grid" d="M82 145.8 H512" />
+                <text class="result-axis-tick result-objective-y-label" x="68" y="149.8">2.439</text>
+              </g>
+<g>
+                <path class="result-objective-grid" d="M82 74.0 H512" />
+                <text class="result-axis-tick result-objective-y-label" x="68" y="78.0">2.636</text>
+              </g>
+            <path class="result-objective-grid result-objective-guide" d="M83.2 74V260" />
+<path class="result-objective-grid result-objective-guide" d="M155.3 74V260" />
+<path class="result-objective-grid result-objective-guide" d="M266.5 74V260" />
+<path class="result-objective-grid result-objective-guide" d="M433.8 74V260" />
+            <path class="result-rule-paper-axis" d="M82 74V260H512" />
+            <g><circle class="result-objective-proposal" cx="82.0" cy="260.0" r="1.35" />
+<circle class="result-objective-proposal" cx="83.2" cy="256.2" r="1.35" />
+<circle class="result-objective-proposal" cx="83.2" cy="186.2" r="1.35" />
+<circle class="result-objective-proposal" cx="83.2" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="84.4" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="84.4" cy="226.7" r="1.35" />
+<circle class="result-objective-proposal" cx="84.4" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="85.7" cy="229.1" r="1.35" />
+<circle class="result-objective-proposal" cx="85.7" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="85.7" cy="245.4" r="1.35" />
+<circle class="result-objective-proposal" cx="85.7" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="86.9" cy="245.4" r="1.35" />
+<circle class="result-objective-proposal" cx="86.9" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="86.9" cy="260.0" r="1.35" />
+<circle class="result-objective-proposal" cx="86.9" cy="220.7" r="1.35" />
+<circle class="result-objective-proposal" cx="88.1" cy="165.5" r="1.35" />
+<circle class="result-objective-proposal" cx="88.1" cy="193.4" r="1.35" />
+<circle class="result-objective-proposal" cx="88.1" cy="232.7" r="1.35" />
+<circle class="result-objective-proposal" cx="88.1" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="89.3" cy="229.8" r="1.35" />
+<circle class="result-objective-proposal" cx="89.3" cy="246.5" r="1.35" />
+<circle class="result-objective-proposal" cx="89.3" cy="260.0" r="1.35" />
+<circle class="result-objective-proposal" cx="89.3" cy="116.6" r="1.35" />
+<circle class="result-objective-proposal" cx="90.6" cy="151.2" r="1.35" />
+<circle class="result-objective-proposal" cx="90.6" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="90.6" cy="260.0" r="1.35" />
+<circle class="result-objective-proposal" cx="90.6" cy="132.1" r="1.35" />
+<circle class="result-objective-proposal" cx="91.8" cy="171.7" r="1.35" />
+<circle class="result-objective-proposal" cx="91.8" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="91.8" cy="260.0" r="1.35" />
+<circle class="result-objective-proposal" cx="91.8" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="93.0" cy="232.7" r="1.35" />
+<circle class="result-objective-proposal" cx="93.0" cy="160.4" r="1.35" />
+<circle class="result-objective-proposal" cx="93.0" cy="151.2" r="1.35" />
+<circle class="result-objective-proposal" cx="93.0" cy="187.6" r="1.35" />
+<circle class="result-objective-proposal" cx="94.2" cy="151.2" r="1.35" />
+<circle class="result-objective-proposal" cx="94.2" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="94.2" cy="215.3" r="1.35" />
+<circle class="result-objective-proposal" cx="95.4" cy="224.0" r="1.35" />
+<circle class="result-objective-proposal" cx="95.4" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="95.4" cy="146.6" r="1.35" />
+<circle class="result-objective-proposal" cx="95.4" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="96.7" cy="146.6" r="1.35" />
+<circle class="result-objective-proposal" cx="96.7" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="96.7" cy="146.6" r="1.35" />
+<circle class="result-objective-proposal" cx="96.7" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="97.9" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="97.9" cy="143.1" r="1.35" />
+<circle class="result-objective-proposal" cx="97.9" cy="85.1" r="1.35" />
+<circle class="result-objective-proposal" cx="99.1" cy="143.1" r="1.35" />
+<circle class="result-objective-proposal" cx="99.1" cy="85.1" r="1.35" />
+<circle class="result-objective-proposal" cx="99.1" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="100.3" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="100.3" cy="212.8" r="1.35" />
+<circle class="result-objective-proposal" cx="100.3" cy="95.5" r="1.35" />
+<circle class="result-objective-proposal" cx="101.5" cy="222.0" r="1.35" />
+<circle class="result-objective-proposal" cx="101.5" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="101.5" cy="143.1" r="1.35" />
+<circle class="result-objective-proposal" cx="101.5" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="102.8" cy="259.4" r="1.35" />
+<circle class="result-objective-proposal" cx="102.8" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="104.0" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="104.0" cy="143.1" r="1.35" />
+<circle class="result-objective-proposal" cx="104.0" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="105.2" cy="240.2" r="1.35" />
+<circle class="result-objective-proposal" cx="105.2" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="105.2" cy="186.4" r="1.35" />
+<circle class="result-objective-proposal" cx="105.2" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="106.4" cy="100.9" r="1.35" />
+<circle class="result-objective-proposal" cx="106.4" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="106.4" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="106.4" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="107.7" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="107.7" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="107.7" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="107.7" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="108.9" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="108.9" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="108.9" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="110.1" cy="230.2" r="1.35" />
+<circle class="result-objective-proposal" cx="110.1" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="110.1" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="110.1" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="111.3" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="111.3" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="111.3" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="112.5" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="112.5" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="112.5" cy="98.1" r="1.35" />
+<circle class="result-objective-proposal" cx="112.5" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="113.8" cy="242.1" r="1.35" />
+<circle class="result-objective-proposal" cx="113.8" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="113.8" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="113.8" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="115.0" cy="216.5" r="1.35" />
+<circle class="result-objective-proposal" cx="115.0" cy="91.6" r="1.35" />
+<circle class="result-objective-proposal" cx="115.0" cy="88.6" r="1.35" />
+<circle class="result-objective-proposal" cx="115.0" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="116.2" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="116.2" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="116.2" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="117.4" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="117.4" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="117.4" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="117.4" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="118.6" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="118.6" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="118.6" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="118.6" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="119.9" cy="94.1" r="1.35" />
+<circle class="result-objective-proposal" cx="119.9" cy="82.7" r="1.35" />
+<circle class="result-objective-proposal" cx="119.9" cy="238.1" r="1.35" />
+<circle class="result-objective-proposal" cx="121.1" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="121.1" cy="85.1" r="1.35" />
+<circle class="result-objective-proposal" cx="121.1" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="122.3" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="122.3" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="122.3" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="122.3" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="123.5" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="123.5" cy="187.6" r="1.35" />
+<circle class="result-objective-proposal" cx="123.5" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="124.8" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="124.8" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="124.8" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="126.0" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="126.0" cy="99.7" r="1.35" />
+<circle class="result-objective-proposal" cx="126.0" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="127.2" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="127.2" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="127.2" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="127.2" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="128.4" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="128.4" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="128.4" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="128.4" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="129.6" cy="84.5" r="1.35" />
+<circle class="result-objective-proposal" cx="129.6" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="129.6" cy="88.4" r="1.35" />
+<circle class="result-objective-proposal" cx="130.9" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="130.9" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="130.9" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="130.9" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="132.1" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="132.1" cy="230.2" r="1.35" />
+<circle class="result-objective-proposal" cx="132.1" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="133.3" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="133.3" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="133.3" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="133.3" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="134.5" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="134.5" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="134.5" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="135.8" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="137.0" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="137.0" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="137.0" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="138.2" cy="86.4" r="1.35" />
+<circle class="result-objective-proposal" cx="138.2" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="138.2" cy="88.4" r="1.35" />
+<circle class="result-objective-proposal" cx="138.2" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="139.4" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="139.4" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="139.4" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="140.6" cy="143.1" r="1.35" />
+<circle class="result-objective-proposal" cx="140.6" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="140.6" cy="221.5" r="1.35" />
+<circle class="result-objective-proposal" cx="140.6" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="141.9" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="141.9" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="141.9" cy="85.1" r="1.35" />
+<circle class="result-objective-proposal" cx="141.9" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="143.1" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="143.1" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="143.1" cy="146.3" r="1.35" />
+<circle class="result-objective-proposal" cx="143.1" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="144.3" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="144.3" cy="224.1" r="1.35" />
+<circle class="result-objective-proposal" cx="144.3" cy="158.3" r="1.35" />
+<circle class="result-objective-proposal" cx="144.3" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="145.5" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="145.5" cy="168.0" r="1.35" />
+<circle class="result-objective-proposal" cx="145.5" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="146.7" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="146.7" cy="194.9" r="1.35" />
+<circle class="result-objective-proposal" cx="146.7" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="146.7" cy="85.1" r="1.35" />
+<circle class="result-objective-proposal" cx="148.0" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="148.0" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="148.0" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="149.2" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="149.2" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="149.2" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="150.4" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="150.4" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="151.6" cy="88.0" r="1.35" />
+<circle class="result-objective-proposal" cx="151.6" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="151.6" cy="228.7" r="1.35" />
+<circle class="result-objective-proposal" cx="152.9" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="152.9" cy="248.5" r="1.35" />
+<circle class="result-objective-proposal" cx="154.1" cy="88.4" r="1.35" />
+<circle class="result-objective-proposal" cx="154.1" cy="260.0" r="1.35" />
+<circle class="result-objective-proposal" cx="154.1" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="155.3" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="155.3" cy="95.5" r="1.35" />
+<circle class="result-objective-proposal" cx="156.5" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="156.5" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="156.5" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="156.5" cy="241.4" r="1.35" />
+<circle class="result-objective-proposal" cx="157.7" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="157.7" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="159.0" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="159.0" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="159.0" cy="146.1" r="1.35" />
+<circle class="result-objective-proposal" cx="159.0" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="160.2" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="160.2" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="160.2" cy="91.2" r="1.35" />
+<circle class="result-objective-proposal" cx="160.2" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="161.4" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="161.4" cy="141.2" r="1.35" />
+<circle class="result-objective-proposal" cx="161.4" cy="207.9" r="1.35" />
+<circle class="result-objective-proposal" cx="161.4" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="162.6" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="162.6" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="162.6" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="162.6" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="163.8" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="163.8" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="165.1" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="165.1" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="165.1" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="166.3" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="166.3" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="166.3" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="166.3" cy="246.0" r="1.35" />
+<circle class="result-objective-proposal" cx="167.5" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="167.5" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="167.5" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="168.7" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="168.7" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="168.7" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="168.7" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="170.0" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="170.0" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="170.0" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="171.2" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="171.2" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="171.2" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="172.4" cy="260.0" r="1.35" />
+<circle class="result-objective-proposal" cx="172.4" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="172.4" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="173.6" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="174.8" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="174.8" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="174.8" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="174.8" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="176.1" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="176.1" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="176.1" cy="207.1" r="1.35" />
+<circle class="result-objective-proposal" cx="176.1" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="177.3" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="177.3" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="177.3" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="177.3" cy="158.0" r="1.35" />
+<circle class="result-objective-proposal" cx="178.5" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="178.5" cy="230.6" r="1.35" />
+<circle class="result-objective-proposal" cx="178.5" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="179.7" cy="127.5" r="1.35" />
+<circle class="result-objective-proposal" cx="179.7" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="179.7" cy="92.0" r="1.35" />
+<circle class="result-objective-proposal" cx="180.9" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="180.9" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="180.9" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="180.9" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="182.2" cy="215.3" r="1.35" />
+<circle class="result-objective-proposal" cx="182.2" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="182.2" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="182.2" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="183.4" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="184.6" cy="233.1" r="1.35" />
+<circle class="result-objective-proposal" cx="184.6" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="184.6" cy="88.4" r="1.35" />
+<circle class="result-objective-proposal" cx="184.6" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="185.8" cy="85.1" r="1.35" />
+<circle class="result-objective-proposal" cx="185.8" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="185.8" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="185.8" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="187.1" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="188.3" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="188.3" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="188.3" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="188.3" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="189.5" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="189.5" cy="164.3" r="1.35" />
+<circle class="result-objective-proposal" cx="189.5" cy="87.9" r="1.35" />
+<circle class="result-objective-proposal" cx="190.7" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="190.7" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="190.7" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="191.9" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="191.9" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="191.9" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="191.9" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="193.2" cy="194.6" r="1.35" />
+<circle class="result-objective-proposal" cx="193.2" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="193.2" cy="230.1" r="1.35" />
+<circle class="result-objective-proposal" cx="194.4" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="194.4" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="194.4" cy="207.1" r="1.35" />
+<circle class="result-objective-proposal" cx="194.4" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="195.6" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="195.6" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="195.6" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="196.8" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="196.8" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="196.8" cy="164.3" r="1.35" />
+<circle class="result-objective-proposal" cx="196.8" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="198.1" cy="116.6" r="1.35" />
+<circle class="result-objective-proposal" cx="198.1" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="198.1" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="198.1" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="199.3" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="199.3" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="200.5" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="200.5" cy="102.5" r="1.35" />
+<circle class="result-objective-proposal" cx="200.5" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="201.7" cy="93.9" r="1.35" />
+<circle class="result-objective-proposal" cx="201.7" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="201.7" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="201.7" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="202.9" cy="227.5" r="1.35" />
+<circle class="result-objective-proposal" cx="202.9" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="202.9" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="204.2" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="204.2" cy="187.6" r="1.35" />
+<circle class="result-objective-proposal" cx="204.2" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="205.4" cy="85.1" r="1.35" />
+<circle class="result-objective-proposal" cx="205.4" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="205.4" cy="152.4" r="1.35" />
+<circle class="result-objective-proposal" cx="205.4" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="206.6" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="206.6" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="206.6" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="206.6" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="207.8" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="207.8" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="209.0" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="209.0" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="209.0" cy="194.4" r="1.35" />
+<circle class="result-objective-proposal" cx="209.0" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="210.3" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="210.3" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="210.3" cy="201.8" r="1.35" />
+<circle class="result-objective-proposal" cx="210.3" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="211.5" cy="225.4" r="1.35" />
+<circle class="result-objective-proposal" cx="211.5" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="211.5" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="211.5" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="212.7" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="212.7" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="212.7" cy="246.5" r="1.35" />
+<circle class="result-objective-proposal" cx="212.7" cy="114.1" r="1.35" />
+<circle class="result-objective-proposal" cx="213.9" cy="187.6" r="1.35" />
+<circle class="result-objective-proposal" cx="213.9" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="215.2" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="215.2" cy="187.6" r="1.35" />
+<circle class="result-objective-proposal" cx="215.2" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="215.2" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="216.4" cy="187.6" r="1.35" />
+<circle class="result-objective-proposal" cx="216.4" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="217.6" cy="164.0" r="1.35" />
+<circle class="result-objective-proposal" cx="217.6" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="217.6" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="217.6" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="218.8" cy="224.0" r="1.35" />
+<circle class="result-objective-proposal" cx="218.8" cy="179.4" r="1.35" />
+<circle class="result-objective-proposal" cx="218.8" cy="164.3" r="1.35" />
+<circle class="result-objective-proposal" cx="218.8" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="220.0" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="220.0" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="220.0" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="221.3" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="221.3" cy="140.1" r="1.35" />
+<circle class="result-objective-proposal" cx="221.3" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="222.5" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="222.5" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="222.5" cy="187.6" r="1.35" />
+<circle class="result-objective-proposal" cx="222.5" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="223.7" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="224.9" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="224.9" cy="81.1" r="1.35" />
+<circle class="result-objective-proposal" cx="224.9" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="226.1" cy="187.6" r="1.35" />
+<circle class="result-objective-proposal" cx="226.1" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="226.1" cy="99.7" r="1.35" />
+<circle class="result-objective-proposal" cx="226.1" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="227.4" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="227.4" cy="140.1" r="1.35" />
+<circle class="result-objective-proposal" cx="228.6" cy="158.0" r="1.35" />
+<circle class="result-objective-proposal" cx="228.6" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="229.8" cy="85.1" r="1.35" />
+<circle class="result-objective-proposal" cx="229.8" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="229.8" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="229.8" cy="177.8" r="1.35" />
+<circle class="result-objective-proposal" cx="231.0" cy="215.3" r="1.35" />
+<circle class="result-objective-proposal" cx="231.0" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="231.0" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="232.3" cy="187.6" r="1.35" />
+<circle class="result-objective-proposal" cx="232.3" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="232.3" cy="99.5" r="1.35" />
+<circle class="result-objective-proposal" cx="233.5" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="233.5" cy="194.9" r="1.35" />
+<circle class="result-objective-proposal" cx="233.5" cy="85.1" r="1.35" />
+<circle class="result-objective-proposal" cx="233.5" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="234.7" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="234.7" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="234.7" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="235.9" cy="146.1" r="1.35" />
+<circle class="result-objective-proposal" cx="235.9" cy="196.7" r="1.35" />
+<circle class="result-objective-proposal" cx="237.1" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="237.1" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="237.1" cy="85.1" r="1.35" />
+<circle class="result-objective-proposal" cx="237.1" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="238.4" cy="128.7" r="1.35" />
+<circle class="result-objective-proposal" cx="238.4" cy="204.0" r="1.35" />
+<circle class="result-objective-proposal" cx="238.4" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="238.4" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="240.8" cy="187.6" r="1.35" />
+<circle class="result-objective-proposal" cx="240.8" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="240.8" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="242.0" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="242.0" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="242.0" cy="223.1" r="1.35" />
+<circle class="result-objective-proposal" cx="242.0" cy="98.8" r="1.35" />
+<circle class="result-objective-proposal" cx="243.3" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="243.3" cy="194.9" r="1.35" />
+<circle class="result-objective-proposal" cx="244.5" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="244.5" cy="177.6" r="1.35" />
+<circle class="result-objective-proposal" cx="244.5" cy="181.3" r="1.35" />
+<circle class="result-objective-proposal" cx="244.5" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="245.7" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="245.7" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="246.9" cy="189.9" r="1.35" />
+<circle class="result-objective-proposal" cx="246.9" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="246.9" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="246.9" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="248.1" cy="193.6" r="1.35" />
+<circle class="result-objective-proposal" cx="248.1" cy="187.6" r="1.35" />
+<circle class="result-objective-proposal" cx="248.1" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="249.4" cy="187.8" r="1.35" />
+<circle class="result-objective-proposal" cx="249.4" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="249.4" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="249.4" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="250.6" cy="187.8" r="1.35" />
+<circle class="result-objective-proposal" cx="250.6" cy="187.6" r="1.35" />
+<circle class="result-objective-proposal" cx="250.6" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="251.8" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="251.8" cy="189.9" r="1.35" />
+<circle class="result-objective-proposal" cx="251.8" cy="241.6" r="1.35" />
+<circle class="result-objective-proposal" cx="253.0" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="253.0" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="253.0" cy="189.9" r="1.35" />
+<circle class="result-objective-proposal" cx="253.0" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="254.2" cy="111.1" r="1.35" />
+<circle class="result-objective-proposal" cx="254.2" cy="228.8" r="1.35" />
+<circle class="result-objective-proposal" cx="254.2" cy="213.1" r="1.35" />
+<circle class="result-objective-proposal" cx="254.2" cy="144.7" r="1.35" />
+<circle class="result-objective-proposal" cx="255.5" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="255.5" cy="87.5" r="1.35" />
+<circle class="result-objective-proposal" cx="256.7" cy="104.6" r="1.35" />
+<circle class="result-objective-proposal" cx="256.7" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="257.9" cy="252.0" r="1.35" />
+<circle class="result-objective-proposal" cx="257.9" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="259.1" cy="188.5" r="1.35" />
+<circle class="result-objective-proposal" cx="259.1" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="259.1" cy="237.2" r="1.35" />
+<circle class="result-objective-proposal" cx="260.4" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="260.4" cy="188.1" r="1.35" />
+<circle class="result-objective-proposal" cx="261.6" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="261.6" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="262.8" cy="246.9" r="1.35" />
+<circle class="result-objective-proposal" cx="262.8" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="262.8" cy="244.3" r="1.35" />
+<circle class="result-objective-proposal" cx="262.8" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="264.0" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="264.0" cy="260.0" r="1.35" />
+<circle class="result-objective-proposal" cx="264.0" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="265.2" cy="231.0" r="1.35" />
+<circle class="result-objective-proposal" cx="265.2" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="265.2" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="266.5" cy="253.4" r="1.35" />
+<circle class="result-objective-proposal" cx="266.5" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="266.5" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="267.7" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="267.7" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="268.9" cy="260.0" r="1.35" />
+<circle class="result-objective-proposal" cx="270.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="270.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="271.3" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="271.3" cy="188.1" r="1.35" />
+<circle class="result-objective-proposal" cx="272.6" cy="232.1" r="1.35" />
+<circle class="result-objective-proposal" cx="272.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="272.6" cy="225.0" r="1.35" />
+<circle class="result-objective-proposal" cx="272.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="273.8" cy="260.0" r="1.35" />
+<circle class="result-objective-proposal" cx="273.8" cy="248.3" r="1.35" />
+<circle class="result-objective-proposal" cx="273.8" cy="84.1" r="1.35" />
+<circle class="result-objective-proposal" cx="275.0" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="275.0" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="276.2" cy="188.5" r="1.35" />
+<circle class="result-objective-proposal" cx="276.2" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="277.5" cy="260.0" r="1.35" />
+<circle class="result-objective-proposal" cx="277.5" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="277.5" cy="252.0" r="1.35" />
+<circle class="result-objective-proposal" cx="277.5" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="278.7" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="278.7" cy="83.1" r="1.35" />
+<circle class="result-objective-proposal" cx="278.7" cy="85.1" r="1.35" />
+<circle class="result-objective-proposal" cx="279.9" cy="201.4" r="1.35" />
+<circle class="result-objective-proposal" cx="279.9" cy="260.0" r="1.35" />
+<circle class="result-objective-proposal" cx="281.1" cy="260.0" r="1.35" />
+<circle class="result-objective-proposal" cx="281.1" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="281.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="282.3" cy="237.6" r="1.35" />
+<circle class="result-objective-proposal" cx="282.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="282.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="283.6" cy="260.0" r="1.35" />
+<circle class="result-objective-proposal" cx="283.6" cy="89.8" r="1.35" />
+<circle class="result-objective-proposal" cx="283.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="284.8" cy="254.6" r="1.35" />
+<circle class="result-objective-proposal" cx="284.8" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="284.8" cy="260.0" r="1.35" />
+<circle class="result-objective-proposal" cx="284.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="286.0" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="286.0" cy="84.1" r="1.35" />
+<circle class="result-objective-proposal" cx="286.0" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="287.2" cy="260.0" r="1.35" />
+<circle class="result-objective-proposal" cx="287.2" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="288.4" cy="84.1" r="1.35" />
+<circle class="result-objective-proposal" cx="288.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="288.4" cy="260.0" r="1.35" />
+<circle class="result-objective-proposal" cx="288.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="289.7" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="289.7" cy="84.1" r="1.35" />
+<circle class="result-objective-proposal" cx="290.9" cy="235.3" r="1.35" />
+<circle class="result-objective-proposal" cx="290.9" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="290.9" cy="218.4" r="1.35" />
+<circle class="result-objective-proposal" cx="290.9" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="292.1" cy="252.4" r="1.35" />
+<circle class="result-objective-proposal" cx="292.1" cy="87.5" r="1.35" />
+<circle class="result-objective-proposal" cx="292.1" cy="260.0" r="1.35" />
+<circle class="result-objective-proposal" cx="292.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="293.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="293.3" cy="260.0" r="1.35" />
+<circle class="result-objective-proposal" cx="293.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="294.6" cy="260.0" r="1.35" />
+<circle class="result-objective-proposal" cx="294.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="295.8" cy="229.1" r="1.35" />
+<circle class="result-objective-proposal" cx="295.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="295.8" cy="222.1" r="1.35" />
+<circle class="result-objective-proposal" cx="295.8" cy="190.5" r="1.35" />
+<circle class="result-objective-proposal" cx="297.0" cy="246.1" r="1.35" />
+<circle class="result-objective-proposal" cx="297.0" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="297.0" cy="238.0" r="1.35" />
+<circle class="result-objective-proposal" cx="297.0" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="298.2" cy="85.3" r="1.35" />
+<circle class="result-objective-proposal" cx="298.2" cy="218.2" r="1.35" />
+<circle class="result-objective-proposal" cx="298.2" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="299.4" cy="256.2" r="1.35" />
+<circle class="result-objective-proposal" cx="299.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="299.4" cy="84.8" r="1.35" />
+<circle class="result-objective-proposal" cx="300.7" cy="241.8" r="1.35" />
+<circle class="result-objective-proposal" cx="300.7" cy="177.8" r="1.35" />
+<circle class="result-objective-proposal" cx="300.7" cy="85.3" r="1.35" />
+<circle class="result-objective-proposal" cx="301.9" cy="89.4" r="1.35" />
+<circle class="result-objective-proposal" cx="301.9" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="301.9" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="301.9" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="303.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="303.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="303.1" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="303.1" cy="187.6" r="1.35" />
+<circle class="result-objective-proposal" cx="304.3" cy="109.3" r="1.35" />
+<circle class="result-objective-proposal" cx="304.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="304.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="304.3" cy="216.5" r="1.35" />
+<circle class="result-objective-proposal" cx="305.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="305.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="305.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="306.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="306.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="306.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="306.8" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="308.0" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="308.0" cy="84.3" r="1.35" />
+<circle class="result-objective-proposal" cx="308.0" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="308.0" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="309.2" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="309.2" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="309.2" cy="117.6" r="1.35" />
+<circle class="result-objective-proposal" cx="309.2" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="310.4" cy="227.1" r="1.35" />
+<circle class="result-objective-proposal" cx="310.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="310.4" cy="83.1" r="1.35" />
+<circle class="result-objective-proposal" cx="311.7" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="311.7" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="311.7" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="311.7" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="312.9" cy="79.9" r="1.35" />
+<circle class="result-objective-proposal" cx="312.9" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="312.9" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="312.9" cy="90.7" r="1.35" />
+<circle class="result-objective-proposal" cx="314.1" cy="152.4" r="1.35" />
+<circle class="result-objective-proposal" cx="314.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="314.1" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="314.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="315.3" cy="194.9" r="1.35" />
+<circle class="result-objective-proposal" cx="315.3" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="315.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="315.3" cy="83.1" r="1.35" />
+<circle class="result-objective-proposal" cx="316.5" cy="239.4" r="1.35" />
+<circle class="result-objective-proposal" cx="316.5" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="316.5" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="316.5" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="317.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="317.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="317.8" cy="92.2" r="1.35" />
+<circle class="result-objective-proposal" cx="317.8" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="319.0" cy="215.3" r="1.35" />
+<circle class="result-objective-proposal" cx="319.0" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="319.0" cy="95.7" r="1.35" />
+<circle class="result-objective-proposal" cx="319.0" cy="86.7" r="1.35" />
+<circle class="result-objective-proposal" cx="320.2" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="320.2" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="320.2" cy="138.6" r="1.35" />
+<circle class="result-objective-proposal" cx="320.2" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="321.4" cy="239.5" r="1.35" />
+<circle class="result-objective-proposal" cx="321.4" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="321.4" cy="89.4" r="1.35" />
+<circle class="result-objective-proposal" cx="322.7" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="322.7" cy="85.3" r="1.35" />
+<circle class="result-objective-proposal" cx="322.7" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="322.7" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="323.9" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="323.9" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="323.9" cy="88.1" r="1.35" />
+<circle class="result-objective-proposal" cx="323.9" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="325.1" cy="117.6" r="1.35" />
+<circle class="result-objective-proposal" cx="325.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="325.1" cy="84.9" r="1.35" />
+<circle class="result-objective-proposal" cx="325.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="326.3" cy="90.7" r="1.35" />
+<circle class="result-objective-proposal" cx="326.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="326.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="326.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="327.5" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="327.5" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="327.5" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="327.5" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="328.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="328.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="328.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="328.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="330.0" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="330.0" cy="92.5" r="1.35" />
+<circle class="result-objective-proposal" cx="330.0" cy="99.7" r="1.35" />
+<circle class="result-objective-proposal" cx="330.0" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="331.2" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="331.2" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="331.2" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="332.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="332.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="332.4" cy="185.0" r="1.35" />
+<circle class="result-objective-proposal" cx="332.4" cy="201.4" r="1.35" />
+<circle class="result-objective-proposal" cx="333.6" cy="132.4" r="1.35" />
+<circle class="result-objective-proposal" cx="333.6" cy="90.7" r="1.35" />
+<circle class="result-objective-proposal" cx="334.9" cy="233.8" r="1.35" />
+<circle class="result-objective-proposal" cx="336.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="336.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="336.1" cy="215.3" r="1.35" />
+<circle class="result-objective-proposal" cx="336.1" cy="215.3" r="1.35" />
+<circle class="result-objective-proposal" cx="337.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="337.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="337.3" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="338.5" cy="120.7" r="1.35" />
+<circle class="result-objective-proposal" cx="338.5" cy="109.3" r="1.35" />
+<circle class="result-objective-proposal" cx="338.5" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="338.5" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="339.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="339.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="339.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="339.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="341.0" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="341.0" cy="215.3" r="1.35" />
+<circle class="result-objective-proposal" cx="341.0" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="341.0" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="342.2" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="342.2" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="342.2" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="343.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="343.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="343.4" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="343.4" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="344.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="344.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="344.6" cy="121.1" r="1.35" />
+<circle class="result-objective-proposal" cx="344.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="345.9" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="345.9" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="345.9" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="347.1" cy="144.9" r="1.35" />
+<circle class="result-objective-proposal" cx="347.1" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="347.1" cy="216.6" r="1.35" />
+<circle class="result-objective-proposal" cx="347.1" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="348.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="348.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="348.3" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="349.5" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="349.5" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="349.5" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="349.5" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="350.8" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="350.8" cy="124.2" r="1.35" />
+<circle class="result-objective-proposal" cx="350.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="350.8" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="352.0" cy="215.3" r="1.35" />
+<circle class="result-objective-proposal" cx="352.0" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="352.0" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="353.2" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="353.2" cy="194.9" r="1.35" />
+<circle class="result-objective-proposal" cx="353.2" cy="249.4" r="1.35" />
+<circle class="result-objective-proposal" cx="354.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="354.4" cy="84.1" r="1.35" />
+<circle class="result-objective-proposal" cx="354.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="354.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="355.6" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="355.6" cy="155.8" r="1.35" />
+<circle class="result-objective-proposal" cx="355.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="356.9" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="356.9" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="356.9" cy="196.7" r="1.35" />
+<circle class="result-objective-proposal" cx="358.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="358.1" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="358.1" cy="84.1" r="1.35" />
+<circle class="result-objective-proposal" cx="359.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="359.3" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="359.3" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="360.5" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="360.5" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="360.5" cy="246.5" r="1.35" />
+<circle class="result-objective-proposal" cx="361.7" cy="94.8" r="1.35" />
+<circle class="result-objective-proposal" cx="361.7" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="361.7" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="361.7" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="363.0" cy="99.7" r="1.35" />
+<circle class="result-objective-proposal" cx="363.0" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="364.2" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="364.2" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="364.2" cy="102.4" r="1.35" />
+<circle class="result-objective-proposal" cx="365.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="365.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="365.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="365.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="366.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="366.6" cy="89.5" r="1.35" />
+<circle class="result-objective-proposal" cx="366.6" cy="81.0" r="1.35" />
+<circle class="result-objective-proposal" cx="367.9" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="367.9" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="367.9" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="367.9" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="369.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="369.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="369.1" cy="92.2" r="1.35" />
+<circle class="result-objective-proposal" cx="369.1" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="370.3" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="370.3" cy="102.4" r="1.35" />
+<circle class="result-objective-proposal" cx="370.3" cy="79.2" r="1.35" />
+<circle class="result-objective-proposal" cx="370.3" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="371.5" cy="120.1" r="1.35" />
+<circle class="result-objective-proposal" cx="371.5" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="372.7" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="372.7" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="372.7" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="374.0" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="374.0" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="374.0" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="375.2" cy="241.7" r="1.35" />
+<circle class="result-objective-proposal" cx="375.2" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="375.2" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="375.2" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="376.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="376.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="376.4" cy="239.6" r="1.35" />
+<circle class="result-objective-proposal" cx="377.6" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="377.6" cy="89.8" r="1.35" />
+<circle class="result-objective-proposal" cx="377.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="377.6" cy="215.3" r="1.35" />
+<circle class="result-objective-proposal" cx="378.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="378.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="378.8" cy="173.1" r="1.35" />
+<circle class="result-objective-proposal" cx="378.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="380.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="380.1" cy="90.7" r="1.35" />
+<circle class="result-objective-proposal" cx="380.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="380.1" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="381.3" cy="81.0" r="1.35" />
+<circle class="result-objective-proposal" cx="381.3" cy="96.8" r="1.35" />
+<circle class="result-objective-proposal" cx="381.3" cy="196.7" r="1.35" />
+<circle class="result-objective-proposal" cx="381.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="382.5" cy="216.2" r="1.35" />
+<circle class="result-objective-proposal" cx="382.5" cy="183.9" r="1.35" />
+<circle class="result-objective-proposal" cx="382.5" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="383.7" cy="260.0" r="1.35" />
+<circle class="result-objective-proposal" cx="383.7" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="383.7" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="385.0" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="385.0" cy="215.3" r="1.35" />
+<circle class="result-objective-proposal" cx="385.0" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="385.0" cy="215.3" r="1.35" />
+<circle class="result-objective-proposal" cx="386.2" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="386.2" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="387.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="387.4" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="388.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="388.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="388.6" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="388.6" cy="90.7" r="1.35" />
+<circle class="result-objective-proposal" cx="389.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="389.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="389.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="391.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="391.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="391.1" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="391.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="392.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="392.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="392.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="393.5" cy="79.2" r="1.35" />
+<circle class="result-objective-proposal" cx="393.5" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="393.5" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="394.7" cy="132.4" r="1.35" />
+<circle class="result-objective-proposal" cx="394.7" cy="90.7" r="1.35" />
+<circle class="result-objective-proposal" cx="394.7" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="395.9" cy="260.0" r="1.35" />
+<circle class="result-objective-proposal" cx="395.9" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="395.9" cy="213.4" r="1.35" />
+<circle class="result-objective-proposal" cx="395.9" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="397.2" cy="207.7" r="1.35" />
+<circle class="result-objective-proposal" cx="397.2" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="397.2" cy="234.8" r="1.35" />
+<circle class="result-objective-proposal" cx="397.2" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="398.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="398.4" cy="89.4" r="1.35" />
+<circle class="result-objective-proposal" cx="398.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="399.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="399.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="399.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="399.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="400.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="400.8" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="400.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="400.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="402.1" cy="246.5" r="1.35" />
+<circle class="result-objective-proposal" cx="402.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="402.1" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="402.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="403.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="404.5" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="404.5" cy="194.9" r="1.35" />
+<circle class="result-objective-proposal" cx="404.5" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="405.7" cy="257.1" r="1.35" />
+<circle class="result-objective-proposal" cx="405.7" cy="79.2" r="1.35" />
+<circle class="result-objective-proposal" cx="405.7" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="405.7" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="406.9" cy="194.9" r="1.35" />
+<circle class="result-objective-proposal" cx="406.9" cy="89.4" r="1.35" />
+<circle class="result-objective-proposal" cx="408.2" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="408.2" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="408.2" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="408.2" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="409.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="409.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="409.4" cy="79.2" r="1.35" />
+<circle class="result-objective-proposal" cx="409.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="410.6" cy="90.7" r="1.35" />
+<circle class="result-objective-proposal" cx="410.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="411.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="411.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="411.8" cy="168.5" r="1.35" />
+<circle class="result-objective-proposal" cx="411.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="413.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="413.1" cy="90.7" r="1.35" />
+<circle class="result-objective-proposal" cx="413.1" cy="90.3" r="1.35" />
+<circle class="result-objective-proposal" cx="413.1" cy="83.1" r="1.35" />
+<circle class="result-objective-proposal" cx="414.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="414.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="414.3" cy="90.7" r="1.35" />
+<circle class="result-objective-proposal" cx="415.5" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="415.5" cy="112.9" r="1.35" />
+<circle class="result-objective-proposal" cx="415.5" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="416.7" cy="90.7" r="1.35" />
+<circle class="result-objective-proposal" cx="416.7" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="416.7" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="416.7" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="417.9" cy="102.4" r="1.35" />
+<circle class="result-objective-proposal" cx="417.9" cy="248.9" r="1.35" />
+<circle class="result-objective-proposal" cx="417.9" cy="95.4" r="1.35" />
+<circle class="result-objective-proposal" cx="419.2" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="419.2" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="419.2" cy="194.9" r="1.35" />
+<circle class="result-objective-proposal" cx="419.2" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="420.4" cy="99.7" r="1.35" />
+<circle class="result-objective-proposal" cx="420.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="420.4" cy="99.7" r="1.35" />
+<circle class="result-objective-proposal" cx="420.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="421.6" cy="253.8" r="1.35" />
+<circle class="result-objective-proposal" cx="421.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="421.6" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="421.6" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="422.8" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="422.8" cy="81.9" r="1.35" />
+<circle class="result-objective-proposal" cx="422.8" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="422.8" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="424.0" cy="92.5" r="1.35" />
+<circle class="result-objective-proposal" cx="424.0" cy="84.1" r="1.35" />
+<circle class="result-objective-proposal" cx="424.0" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="425.3" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="425.3" cy="81.9" r="1.35" />
+<circle class="result-objective-proposal" cx="425.3" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="425.3" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="426.5" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="426.5" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="426.5" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="427.7" cy="88.6" r="1.35" />
+<circle class="result-objective-proposal" cx="427.7" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="427.7" cy="81.9" r="1.35" />
+<circle class="result-objective-proposal" cx="428.9" cy="91.2" r="1.35" />
+<circle class="result-objective-proposal" cx="428.9" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="428.9" cy="101.6" r="1.35" />
+<circle class="result-objective-proposal" cx="428.9" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="430.2" cy="80.2" r="1.35" />
+<circle class="result-objective-proposal" cx="430.2" cy="99.7" r="1.35" />
+<circle class="result-objective-proposal" cx="430.2" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="431.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="431.4" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="432.6" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="432.6" cy="90.7" r="1.35" />
+<circle class="result-objective-proposal" cx="432.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="433.8" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="433.8" cy="239.5" r="1.35" />
+<circle class="result-objective-proposal" cx="433.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="435.0" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="435.0" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="436.3" cy="82.7" r="1.35" />
+<circle class="result-objective-proposal" cx="436.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="436.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="436.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="437.5" cy="89.9" r="1.35" />
+<circle class="result-objective-proposal" cx="437.5" cy="85.3" r="1.35" />
+<circle class="result-objective-proposal" cx="437.5" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="438.7" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="438.7" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="438.7" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="439.9" cy="80.4" r="1.35" />
+<circle class="result-objective-proposal" cx="439.9" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="439.9" cy="80.7" r="1.35" />
+<circle class="result-objective-proposal" cx="439.9" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="441.1" cy="79.9" r="1.35" />
+<circle class="result-objective-proposal" cx="441.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="441.1" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="441.1" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="442.4" cy="158.5" r="1.35" />
+<circle class="result-objective-proposal" cx="442.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="442.4" cy="92.2" r="1.35" />
+<circle class="result-objective-proposal" cx="442.4" cy="83.1" r="1.35" />
+<circle class="result-objective-proposal" cx="443.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="443.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="443.6" cy="81.9" r="1.35" />
+<circle class="result-objective-proposal" cx="444.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="444.8" cy="185.5" r="1.35" />
+<circle class="result-objective-proposal" cx="444.8" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="444.8" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="446.0" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="446.0" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="446.0" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="446.0" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="447.3" cy="85.3" r="1.35" />
+<circle class="result-objective-proposal" cx="447.3" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="447.3" cy="85.6" r="1.35" />
+<circle class="result-objective-proposal" cx="447.3" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="448.5" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="448.5" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="448.5" cy="80.6" r="1.35" />
+<circle class="result-objective-proposal" cx="449.7" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="449.7" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="449.7" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="449.7" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="450.9" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="450.9" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="450.9" cy="83.2" r="1.35" />
+<circle class="result-objective-proposal" cx="450.9" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="452.1" cy="172.7" r="1.35" />
+<circle class="result-objective-proposal" cx="452.1" cy="142.9" r="1.35" />
+<circle class="result-objective-proposal" cx="452.1" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="452.1" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="453.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="453.4" cy="77.3" r="1.35" />
+<circle class="result-objective-proposal" cx="453.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="453.4" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="454.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="454.6" cy="77.3" r="1.35" />
+<circle class="result-objective-proposal" cx="454.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="454.6" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="455.8" cy="89.3" r="1.35" />
+<circle class="result-objective-proposal" cx="455.8" cy="77.3" r="1.35" />
+<circle class="result-objective-proposal" cx="455.8" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="457.0" cy="85.1" r="1.35" />
+<circle class="result-objective-proposal" cx="457.0" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="457.0" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="457.0" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="458.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="458.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="458.3" cy="85.1" r="1.35" />
+<circle class="result-objective-proposal" cx="458.3" cy="77.3" r="1.35" />
+<circle class="result-objective-proposal" cx="459.5" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="459.5" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="459.5" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="459.5" cy="77.3" r="1.35" />
+<circle class="result-objective-proposal" cx="460.7" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="460.7" cy="87.8" r="1.35" />
+<circle class="result-objective-proposal" cx="460.7" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="461.9" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="461.9" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="461.9" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="461.9" cy="196.7" r="1.35" />
+<circle class="result-objective-proposal" cx="463.1" cy="85.1" r="1.35" />
+<circle class="result-objective-proposal" cx="463.1" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="463.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="464.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="464.4" cy="77.3" r="1.35" />
+<circle class="result-objective-proposal" cx="464.4" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="464.4" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="465.6" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="465.6" cy="77.3" r="1.35" />
+<circle class="result-objective-proposal" cx="465.6" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="465.6" cy="77.3" r="1.35" />
+<circle class="result-objective-proposal" cx="466.8" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="466.8" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="466.8" cy="100.9" r="1.35" />
+<circle class="result-objective-proposal" cx="468.0" cy="78.8" r="1.35" />
+<circle class="result-objective-proposal" cx="468.0" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="468.0" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="469.2" cy="95.7" r="1.35" />
+<circle class="result-objective-proposal" cx="469.2" cy="197.9" r="1.35" />
+<circle class="result-objective-proposal" cx="469.2" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="470.5" cy="83.7" r="1.35" />
+<circle class="result-objective-proposal" cx="470.5" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="470.5" cy="85.1" r="1.35" />
+<circle class="result-objective-proposal" cx="470.5" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="471.7" cy="83.1" r="1.35" />
+<circle class="result-objective-proposal" cx="471.7" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="471.7" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="472.9" cy="175.4" r="1.35" />
+<circle class="result-objective-proposal" cx="472.9" cy="85.1" r="1.35" />
+<circle class="result-objective-proposal" cx="472.9" cy="90.3" r="1.35" />
+<circle class="result-objective-proposal" cx="472.9" cy="194.9" r="1.35" />
+<circle class="result-objective-proposal" cx="474.1" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="474.1" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="474.1" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="475.4" cy="154.1" r="1.35" />
+<circle class="result-objective-proposal" cx="475.4" cy="215.3" r="1.35" />
+<circle class="result-objective-proposal" cx="475.4" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="476.6" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="476.6" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="476.6" cy="81.7" r="1.35" />
+<circle class="result-objective-proposal" cx="477.8" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="477.8" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="477.8" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="477.8" cy="208.2" r="1.35" />
+<circle class="result-objective-proposal" cx="479.0" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="479.0" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="479.0" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="480.2" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="480.2" cy="201.9" r="1.35" />
+<circle class="result-objective-proposal" cx="480.2" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="480.2" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="481.5" cy="128.8" r="1.35" />
+<circle class="result-objective-proposal" cx="481.5" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="481.5" cy="80.6" r="1.35" />
+<circle class="result-objective-proposal" cx="482.7" cy="159.7" r="1.35" />
+<circle class="result-objective-proposal" cx="482.7" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="482.7" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="483.9" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="485.1" cy="79.7" r="1.35" />
+<circle class="result-objective-proposal" cx="485.1" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="485.1" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="485.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="486.3" cy="180.2" r="1.35" />
+<circle class="result-objective-proposal" cx="486.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="486.3" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="487.6" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="487.6" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="488.8" cy="211.1" r="1.35" />
+<circle class="result-objective-proposal" cx="488.8" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="490.0" cy="87.3" r="1.35" />
+<circle class="result-objective-proposal" cx="490.0" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="490.0" cy="81.3" r="1.35" />
+<circle class="result-objective-proposal" cx="490.0" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="491.2" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="491.2" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="492.5" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="492.5" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="492.5" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="493.7" cy="85.1" r="1.35" />
+<circle class="result-objective-proposal" cx="493.7" cy="82.2" r="1.35" />
+<circle class="result-objective-proposal" cx="493.7" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="494.9" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="494.9" cy="76.8" r="1.35" />
+<circle class="result-objective-proposal" cx="494.9" cy="81.5" r="1.35" />
+<circle class="result-objective-proposal" cx="496.1" cy="81.1" r="1.35" />
+<circle class="result-objective-proposal" cx="496.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="496.1" cy="85.1" r="1.35" />
+<circle class="result-objective-proposal" cx="496.1" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="497.3" cy="84.5" r="1.35" />
+<circle class="result-objective-proposal" cx="497.3" cy="82.9" r="1.35" />
+<circle class="result-objective-proposal" cx="497.3" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="498.6" cy="97.6" r="1.35" />
+<circle class="result-objective-proposal" cx="498.6" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="498.6" cy="164.3" r="1.35" />
+<circle class="result-objective-proposal" cx="498.6" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="499.8" cy="86.7" r="1.35" />
+<circle class="result-objective-proposal" cx="499.8" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="499.8" cy="125.0" r="1.35" />
+<circle class="result-objective-proposal" cx="499.8" cy="79.2" r="1.35" />
+<circle class="result-objective-proposal" cx="501.0" cy="80.6" r="1.35" />
+<circle class="result-objective-proposal" cx="501.0" cy="84.2" r="1.35" />
+<circle class="result-objective-proposal" cx="501.0" cy="89.5" r="1.35" />
+<circle class="result-objective-proposal" cx="501.0" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="502.2" cy="85.1" r="1.35" />
+<circle class="result-objective-proposal" cx="502.2" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="502.2" cy="85.1" r="1.35" />
+<circle class="result-objective-proposal" cx="502.2" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="503.4" cy="80.6" r="1.35" />
+<circle class="result-objective-proposal" cx="503.4" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="503.4" cy="145.8" r="1.35" />
+<circle class="result-objective-proposal" cx="504.7" cy="149.8" r="1.35" />
+<circle class="result-objective-proposal" cx="504.7" cy="79.2" r="1.35" />
+<circle class="result-objective-proposal" cx="504.7" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="505.9" cy="85.5" r="1.35" />
+<circle class="result-objective-proposal" cx="505.9" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="505.9" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="507.1" cy="80.3" r="1.35" />
+<circle class="result-objective-proposal" cx="507.1" cy="144.1" r="1.35" />
+<circle class="result-objective-proposal" cx="507.1" cy="76.8" r="1.35" />
+<circle class="result-objective-proposal" cx="507.1" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="508.3" cy="78.2" r="1.35" />
+<circle class="result-objective-proposal" cx="508.3" cy="81.7" r="1.35" />
+<circle class="result-objective-proposal" cx="509.6" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="509.6" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="509.6" cy="88.6" r="1.35" />
+<circle class="result-objective-proposal" cx="510.8" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="510.8" cy="83.1" r="1.35" />
+<circle class="result-objective-proposal" cx="510.8" cy="77.8" r="1.35" />
+<circle class="result-objective-proposal" cx="510.8" cy="74.0" r="1.35" />
+<circle class="result-objective-proposal" cx="512.0" cy="95.4" r="1.35" />
+<circle class="result-objective-proposal" cx="512.0" cy="81.5" r="1.35" /></g>
+            <path class="result-objective-best" d="M82.0 260.0 L83.2 145.8 L84.4 145.8 L85.7 145.8 L86.9 145.8 L88.1 145.8 L89.3 116.6 L90.6 116.6 L91.8 116.6 L93.0 116.6 L94.2 85.5 L95.4 85.5 L96.7 85.5 L97.9 85.1 L99.1 83.7 L100.3 83.7 L101.5 83.7 L102.8 83.7 L104.0 83.7 L105.2 83.7 L106.4 82.2 L107.7 82.2 L108.9 82.2 L110.1 82.2 L111.3 82.2 L112.5 82.2 L113.8 82.2 L115.0 82.2 L116.2 82.2 L117.4 82.2 L118.6 82.2 L119.9 82.2 L121.1 82.2 L122.3 82.2 L123.5 82.2 L124.8 82.2 L126.0 82.2 L127.2 82.2 L128.4 82.2 L129.6 82.2 L130.9 82.2 L132.1 82.2 L133.3 82.2 L134.5 82.2 L135.8 82.2 L137.0 82.2 L138.2 82.2 L139.4 82.2 L140.6 82.2 L141.9 82.2 L143.1 82.2 L144.3 82.2 L145.5 82.2 L146.7 82.2 L148.0 82.2 L149.2 82.2 L150.4 82.2 L151.6 82.2 L152.9 82.2 L154.1 82.2 L155.3 82.2 L156.5 82.2 L157.7 82.2 L159.0 82.2 L160.2 82.2 L161.4 82.2 L162.6 80.7 L163.8 80.7 L165.1 80.7 L166.3 80.7 L167.5 80.7 L168.7 80.7 L170.0 80.7 L171.2 80.7 L172.4 80.7 L173.6 80.7 L174.8 80.7 L176.1 80.7 L177.3 80.7 L178.5 80.7 L179.7 80.7 L180.9 80.7 L182.2 80.7 L183.4 80.7 L184.6 80.7 L185.8 80.7 L187.1 80.7 L188.3 80.7 L189.5 80.7 L190.7 80.7 L191.9 80.7 L193.2 80.7 L194.4 80.7 L195.6 80.7 L196.8 80.7 L198.1 80.7 L199.3 80.7 L200.5 80.7 L201.7 80.7 L202.9 80.7 L204.2 80.7 L205.4 80.7 L206.6 80.7 L207.8 80.7 L209.0 80.7 L210.3 80.7 L211.5 80.7 L212.7 80.7 L213.9 80.7 L215.2 80.7 L216.4 80.7 L217.6 80.7 L218.8 80.7 L220.0 80.7 L221.3 80.7 L222.5 80.7 L223.7 80.7 L224.9 80.7 L226.1 80.7 L227.4 80.7 L228.6 80.7 L229.8 80.7 L231.0 80.7 L232.3 80.7 L233.5 80.7 L234.7 80.7 L235.9 80.7 L237.1 80.7 L238.4 80.7 L239.6 80.7 L240.8 80.7 L242.0 80.7 L243.3 80.7 L244.5 80.7 L245.7 80.7 L246.9 80.7 L248.1 80.7 L249.4 80.7 L250.6 80.7 L251.8 80.7 L253.0 80.7 L254.2 80.7 L255.5 80.7 L256.7 80.7 L257.9 80.7 L259.1 80.7 L260.4 80.7 L261.6 80.7 L262.8 80.7 L264.0 80.7 L265.2 80.7 L266.5 78.2 L267.7 78.2 L268.9 78.2 L270.1 78.2 L271.3 78.2 L272.6 78.2 L273.8 78.2 L275.0 78.2 L276.2 78.2 L277.5 78.2 L278.7 78.2 L279.9 78.2 L281.1 78.2 L282.3 78.2 L283.6 78.2 L284.8 78.2 L286.0 78.2 L287.2 78.2 L288.4 78.2 L289.7 78.2 L290.9 78.2 L292.1 78.2 L293.3 78.2 L294.6 78.2 L295.8 78.2 L297.0 78.2 L298.2 78.2 L299.4 78.2 L300.7 78.2 L301.9 78.2 L303.1 78.2 L304.3 78.2 L305.6 78.2 L306.8 78.2 L308.0 78.2 L309.2 78.2 L310.4 78.2 L311.7 78.2 L312.9 78.2 L314.1 78.2 L315.3 78.2 L316.5 78.2 L317.8 78.2 L319.0 78.2 L320.2 78.2 L321.4 78.2 L322.7 78.2 L323.9 78.2 L325.1 78.2 L326.3 78.2 L327.5 78.2 L328.8 78.2 L330.0 78.2 L331.2 78.2 L332.4 78.2 L333.6 78.2 L334.9 78.2 L336.1 78.2 L337.3 78.2 L338.5 78.2 L339.8 78.2 L341.0 78.2 L342.2 78.2 L343.4 78.2 L344.6 78.2 L345.9 78.2 L347.1 78.2 L348.3 78.2 L349.5 78.2 L350.8 78.2 L352.0 78.2 L353.2 78.2 L354.4 78.2 L355.6 78.2 L356.9 78.2 L358.1 78.2 L359.3 78.2 L360.5 78.2 L361.7 78.2 L363.0 78.2 L364.2 78.2 L365.4 78.2 L366.6 78.2 L367.9 78.2 L369.1 78.2 L370.3 78.2 L371.5 78.2 L372.7 78.2 L374.0 78.2 L375.2 78.2 L376.4 78.2 L377.6 78.2 L378.8 78.2 L380.1 78.2 L381.3 78.2 L382.5 78.2 L383.7 78.2 L385.0 78.2 L386.2 78.2 L387.4 78.2 L388.6 78.2 L389.8 78.2 L391.1 78.2 L392.3 78.2 L393.5 78.2 L394.7 78.2 L395.9 78.2 L397.2 78.2 L398.4 78.2 L399.6 78.2 L400.8 78.2 L402.1 78.2 L403.3 78.2 L404.5 78.2 L405.7 78.2 L406.9 78.2 L408.2 78.2 L409.4 78.2 L410.6 78.2 L411.8 78.2 L413.1 78.2 L414.3 78.2 L415.5 78.2 L416.7 78.2 L417.9 78.2 L419.2 78.2 L420.4 78.2 L421.6 78.2 L422.8 77.8 L424.0 77.8 L425.3 77.8 L426.5 77.8 L427.7 77.8 L428.9 77.8 L430.2 77.8 L431.4 77.8 L432.6 77.8 L433.8 74.0 L435.0 74.0 L436.3 74.0 L437.5 74.0 L438.7 74.0 L439.9 74.0 L441.1 74.0 L442.4 74.0 L443.6 74.0 L444.8 74.0 L446.0 74.0 L447.3 74.0 L448.5 74.0 L449.7 74.0 L450.9 74.0 L452.1 74.0 L453.4 74.0 L454.6 74.0 L455.8 74.0 L457.0 74.0 L458.3 74.0 L459.5 74.0 L460.7 74.0 L461.9 74.0 L463.1 74.0 L464.4 74.0 L465.6 74.0 L466.8 74.0 L468.0 74.0 L469.2 74.0 L470.5 74.0 L471.7 74.0 L472.9 74.0 L474.1 74.0 L475.4 74.0 L476.6 74.0 L477.8 74.0 L479.0 74.0 L480.2 74.0 L481.5 74.0 L482.7 74.0 L483.9 74.0 L485.1 74.0 L486.3 74.0 L487.6 74.0 L488.8 74.0 L490.0 74.0 L491.2 74.0 L492.5 74.0 L493.7 74.0 L494.9 74.0 L496.1 74.0 L497.3 74.0 L498.6 74.0 L499.8 74.0 L501.0 74.0 L502.2 74.0 L503.4 74.0 L504.7 74.0 L505.9 74.0 L507.1 74.0 L508.3 74.0 L509.6 74.0 L510.8 74.0 L512.0 74.0" />
+            <g class="result-objective-baseline"><circle cx="82.0" cy="260.0" r="4.2" /></g>
+            <g class="result-objective-accepted"><circle cx="433.8" cy="74.0" r="4.8" /></g>
+            <text class="result-axis-tick" x="82.0" y="282">0</text>
+<text class="result-axis-tick" x="83.2" y="282" text-anchor="middle">1</text>
+<text class="result-axis-tick" x="155.3" y="282" text-anchor="middle">60</text>
+<text class="result-axis-tick" x="266.5" y="282" text-anchor="middle">151</text>
+<text class="result-axis-tick" x="433.8" y="282" text-anchor="middle">288</text>
+<text class="result-axis-tick" x="512.0" y="282" text-anchor="end">352</text>
+            <text class="result-axis-label result-x-axis-title" x="297.0" y="306">global generation</text>
+            <text class="result-axis-label result-objective-y-title" x="34" y="167.0" transform="rotate(-90 34 167.0)">Σr<tspan baseline-shift="sub" font-size="8">i</tspan></text>
+          </svg>
+          <figcaption>Figure 3. Public scoring trace for total radius. Faint points are valid candidate evaluations, values below the baseline are clipped to the bottom edge, and the solid frontier shows the best-so-far geometry that survived the evaluator.</figcaption>
+        </figure>
+<figure class="result-paper-table" id="table-2">
+          <div class="result-table-wrap">
+            <table class="result-table">
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>Baseline</th>
+                  <th>Accepted</th>
+                  <th>Change</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Total radius \(R(P)\)</td>
+                  <td>0.959778</td>
+                  <td>2.635977</td>
+                  <td>+1.676199</td>
+                </tr>
+                <tr>
+                  <td>Evaluator score \(J(P)\)</td>
+                  <td>-0.959778</td>
+                  <td>-2.635977</td>
+                  <td>-1.676199</td>
+                </tr>
+                <tr>
+                  <td>Relative radius gain</td>
+                  <td>reference</td>
+                  <td>174.64%</td>
+                  <td>174.64% gain</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <figcaption>Table 2. Reported comparison for the curated public circle-packing chain.</figcaption>
+        </figure>
+<p>The accepted packing is tight in the sense exposed by the public diagnostics: 20 boundary contacts and 58 pairwise contacts are detected at the public tolerance. The smallest boundary and pairwise slacks are near machine precision, so the contact readout acts as a structural check on the geometry rather than a separate optimization claim.</p>
+<figure class="result-primer-card result-paper-figure circle-packing-inline-figure circle-packing-layout-figure" id="fig-4">
+          <svg class="result-primer-svg circle-packing-paper-svg" viewBox="0 0 560 490" role="img" aria-label="Accepted 26-circle packing in the unit square.">
+            <text class="result-axis-label result-figure-title" x="82" y="34">Accepted 26-circle packing</text>
+            <rect class="circle-packing-square" x="82" y="62" width="396" height="396" />
+            <path class="circle-packing-grid" d="M82 260H478M280 62V458" />
+<circle class="circle-packing-disk circle-packing-disk-strong" cx="125.98" cy="414.02" r="43.98" />
+<circle class="circle-packing-disk" cx="434.02" cy="414.02" r="43.98" />
+<circle class="circle-packing-disk" cx="115.54" cy="95.54" r="33.54" />
+<circle class="circle-packing-disk" cx="444.46" cy="95.54" r="33.54" />
+<circle class="circle-packing-disk" cx="177.24" cy="364.25" r="27.47" />
+<circle class="circle-packing-disk circle-packing-disk-strong" cx="206.24" cy="421.39" r="36.61" />
+<circle class="circle-packing-disk" cx="280.00" cy="420.85" r="37.15" />
+<circle class="circle-packing-disk" cx="353.76" cy="421.39" r="36.61" />
+<circle class="circle-packing-disk" cx="382.76" cy="364.25" r="27.47" />
+<circle class="circle-packing-disk" cx="120.08" cy="332.17" r="38.08" />
+<circle class="circle-packing-disk circle-packing-disk-strong" cx="242.09" cy="356.06" r="37.91" />
+<circle class="circle-packing-disk" cx="317.91" cy="356.06" r="37.91" />
+<circle class="circle-packing-disk" cx="369.82" cy="298.23" r="39.81" />
+<circle class="circle-packing-disk" cx="439.92" cy="332.17" r="38.08" />
+<circle class="circle-packing-disk" cx="123.07" cy="253.08" r="41.07" />
+<circle class="circle-packing-disk circle-packing-disk-strong" cx="190.18" cy="298.23" r="39.81" />
+<circle class="circle-packing-disk" cx="280.00" cy="272.88" r="53.51" />
+<circle class="circle-packing-disk" cx="359.55" cy="212.93" r="46.10" />
+<circle class="circle-packing-disk" cx="436.93" cy="253.08" r="41.07" />
+<circle class="circle-packing-disk" cx="123.69" cy="170.32" r="41.69" />
+<circle class="circle-packing-disk circle-packing-disk-strong" cx="200.45" cy="212.93" r="46.10" />
+<circle class="circle-packing-disk" cx="280.00" cy="168.84" r="44.85" />
+<circle class="circle-packing-disk" cx="360.61" cy="114.41" r="52.41" />
+<circle class="circle-packing-disk" cx="436.31" cy="170.32" r="41.69" />
+<circle class="circle-packing-disk" cx="199.39" cy="114.41" r="52.41" />
+<circle class="circle-packing-disk circle-packing-disk-strong" cx="280.00" cy="92.99" r="30.99" />
+          </svg>
+          <figcaption>Figure 4. Accepted packing geometry produced by the deterministic reconstruction candidate and validated by the evaluator. The 26 returned radii sum to 2.635977.</figcaption>
+        </figure>
+<figure class="result-primer-card result-paper-figure circle-packing-inline-figure circle-packing-contact-figure" id="fig-5">
+          <svg class="result-primer-svg circle-packing-paper-svg" viewBox="0 0 560 190" role="img" aria-label="Contact diagnostics for the accepted circle packing.">
+            <text class="result-axis-label result-figure-title" x="72" y="34">Accepted contact readout</text>
+<g>
+              <text class="circle-packing-section-label" x="72" y="82">Boundary contacts</text>
+              <text class="circle-packing-value circle-packing-contact-value" x="488" y="82" text-anchor="end">20</text>
+            </g>
+<g>
+              <text class="circle-packing-section-label" x="72" y="126">Pairwise contacts</text>
+              <text class="circle-packing-value circle-packing-contact-value" x="488" y="126" text-anchor="end">58</text>
+            </g>
+<g>
+              <text class="circle-packing-section-label" x="72" y="170">Interior circles</text>
+              <text class="circle-packing-value circle-packing-contact-value" x="488" y="170" text-anchor="end">10</text>
+            </g>
+          </svg>
+          <figcaption>Figure 5. Accepted contact diagnostics. Boundary and pairwise contacts are a structural tightness readout under the public tolerance, not a separate optimality proof.</figcaption>
+        </figure>
+<h3>5. Limitations</h3>
+<p>This is a result for the 26-circle unit-square packing contract only. It is not a proof of global optimality, and it does not claim a general packing solver for other circle counts, other containers, or changed objectives.</p>
+<p>Relative to public AI-discovery references, this validated total radius exceeds the original AlphaEvolve value later reported as 2.635862 for \(n = 26\), but it does not match newer 2.635983 reports from AlphaEvolve V2, ThetaEvolve, and TTT-Discover, or the 2.635982 ShinkaEvolve report. The gap from this result to 2.635983 is about 0.000006 in total radius, or 0.000213%; equivalently, this result reaches 99.999787% of that reference value. These comparison values are stored in <code>artifacts/reference-comparison.json</code> and are taken from the circle-packing table in <a href="https://test-time-training.github.io/discover.pdf" target="_blank" rel="noreferrer">Learning to Discover at Test Time</a>.</p>
+<p>The accepted candidate is deterministic and reconstructs this validated contact graph. It is not a general-purpose solver for arbitrary circle-packing instances; changing the circle count, container, objective, or contact graph creates a new evaluation.</p>
+<h3>6. Reproducibility</h3>
+<p>The bundle includes the accepted candidate, evaluation contract, curated evolution chain, scored-candidate trace, metrics, provenance, replay confirmation, and a public <a href="./run/">animated run surface</a>. The run page is a presentation layer over the same public artifacts and excludes raw operational material.</p>
+<p>The source bundle is available in <a href="https://github.com/Gother-Labs/gother-labs-results/tree/main/results/circle-packing-26-unit-square" target="_blank" rel="noreferrer">Göther Labs results repository</a>.</p>
+          </article>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© <span id="year">2026</span> Göther Labs</p>
+      </footer>
+    </div>
+
+    <script src="../../scripts.js?v=nav-wordmark-v1"></script>
+  </body>
+</html>
