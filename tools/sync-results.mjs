@@ -259,26 +259,38 @@ function resultCardMeasureItems(result) {
 function resultCardVisual(result) {
   if (result.website?.card_visual === "circle-packing") {
     const circles = [
-      [108, 108, 44],
-      [198, 98, 42],
-      [284, 110, 48],
-      [382, 92, 40],
-      [454, 148, 36],
-      [112, 212, 50],
-      [218, 212, 44],
-      [316, 214, 42],
-      [414, 238, 54],
-      [168, 304, 38],
-      [262, 306, 46],
-      [360, 318, 36],
+      [118.202, 421.798, 46.202],
+      [441.798, 421.798, 46.202],
+      [107.23, 87.23, 35.23],
+      [452.77, 87.23, 35.23],
+      [172.049, 369.512, 28.853],
+      [202.512, 429.538, 38.462],
+      [280, 428.971, 39.029],
+      [357.488, 429.538, 38.462],
+      [387.951, 369.512, 28.853],
+      [112.002, 335.817, 40.002],
+      [240.181, 360.916, 39.819],
+      [319.819, 360.916, 39.819],
+      [374.352, 300.156, 41.824],
+      [447.998, 335.817, 40.002],
+      [115.146, 252.728, 43.146],
+      [185.648, 300.156, 41.824],
+      [280, 273.528, 56.213],
+      [363.569, 210.548, 48.43],
+      [444.854, 252.728, 43.146],
+      [115.795, 165.789, 43.795],
+      [196.431, 210.548, 48.43],
+      [280, 164.234, 47.114],
+      [364.683, 107.062, 55.062],
+      [444.205, 165.789, 43.795],
+      [195.317, 107.062, 55.062],
+      [280, 84.56, 32.56],
     ];
-    return `<svg class="result-card-visual result-card-visual--packing" viewBox="0 0 560 360" aria-hidden="true" focusable="false">
-                <g class="result-card-packing">
-                  <rect class="packing-frame" x="62" y="48" width="436" height="264" />
-                  <path class="packing-grid" d="M62 136H498M62 224H498M171 48V312M280 48V312M389 48V312" />
-${circles.map(([cx, cy, r], index) => `                  <circle class="${index % 3 === 0 ? "is-accepted" : ""}" cx="${cx}" cy="${cy}" r="${r}" />`).join("\n")}
-                  <path class="packing-contact packing-contact-a" d="M108 108C168 88 232 88 284 110S392 116 454 148" />
-                  <path class="packing-contact packing-contact-b" d="M112 212C182 210 248 210 316 214S390 224 414 238" />
+    return `<svg class="result-card-visual result-card-visual--packing" viewBox="0 0 560 500" aria-hidden="true" focusable="false">
+                <g class="result-card-packing result-card-packing--figure4">
+                  <rect class="packing-frame" x="72" y="52" width="416" height="416" />
+                  <path class="packing-grid" d="M72 260H488M280 52V468" />
+${circles.map(([cx, cy, r]) => `                  <circle cx="${cx}" cy="${cy}" r="${r}" />`).join("\n")}
                 </g>
               </svg>`;
   }
