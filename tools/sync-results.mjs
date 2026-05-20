@@ -2211,6 +2211,7 @@ async function writeDetail(result) {
     full.artifacts?.evolution_trace,
     full.artifacts?.metrics,
     full.artifacts?.provenance,
+    full.artifacts?.reference_comparison,
     full.artifacts?.replay,
     full.artifacts?.schedule_example,
     full.artifacts?.score_trace,
