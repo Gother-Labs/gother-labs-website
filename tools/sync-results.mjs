@@ -1868,7 +1868,7 @@ function circlePackingObjectiveCurveFigure(evolution, scoreTrace) {
 
   return paperInlineFigure({
     number: 3,
-    caption: "Best-so-far total radius across all scored public candidates. Faint points are valid candidate evaluations, with values below the baseline clipped to the bottom edge, and the vertical scale is transformed by distance to the accepted value so the post-baseline curve remains visible.",
+    caption: "Public scoring trace for total radius. Faint points are valid candidate evaluations, values below the baseline are clipped to the bottom edge, and the solid frontier shows the best-so-far geometry that survived the evaluator.",
     className: "circle-packing-inline-figure result-objective-figure",
     svg: `          <svg class="result-primer-svg result-objective-svg circle-packing-paper-svg" viewBox="0 0 560 328" role="img" aria-label="Best so far total radius across public circle-packing candidates.">
             <text class="result-axis-label result-figure-title" x="${left}" y="34">Best-so-far total radius</text>
@@ -1936,7 +1936,7 @@ function circlePackingLayoutFigure(replay) {
 
   return paperInlineFigure({
     number: 4,
-    caption: `Accepted packing geometry. The deterministic public candidate returns these 26 centers and radii, with total radius ${formatMetric(replay?.metrics?.sum_radii ?? trace.reported_sum, { maximumFractionDigits: 6, minimumFractionDigits: 6 })}.`,
+    caption: `Accepted packing geometry produced by the deterministic reconstruction candidate and validated by the evaluator. The 26 returned radii sum to ${formatMetric(replay?.metrics?.sum_radii ?? trace.reported_sum, { maximumFractionDigits: 6, minimumFractionDigits: 6 })}.`,
     className: "circle-packing-inline-figure circle-packing-layout-figure",
     svg: `          <svg class="result-primer-svg circle-packing-paper-svg" viewBox="0 0 560 490" role="img" aria-label="Accepted 26-circle packing in the unit square.">
             <text class="result-axis-label result-figure-title" x="${left}" y="34">Accepted 26-circle packing</text>
@@ -1963,7 +1963,7 @@ function circlePackingContactFigure(full) {
 
   return paperInlineFigure({
     number: 5,
-    caption: "Accepted geometry diagnostics. Contact counts use the public tolerance and the minimum slacks are near machine precision.",
+    caption: "Accepted contact diagnostics. Boundary and pairwise contacts are a structural tightness readout under the public tolerance, not a separate optimality proof.",
     className: "circle-packing-inline-figure circle-packing-contact-figure",
     svg: `          <svg class="result-primer-svg circle-packing-paper-svg" viewBox="0 0 560 190" role="img" aria-label="Contact diagnostics for the accepted circle packing.">
             <text class="result-axis-label result-figure-title" x="72" y="34">Accepted contact readout</text>
@@ -1975,7 +1975,7 @@ ${rows}
 function circlePackingImplementationCodeFigure(candidateCode) {
   return pythonImplementationCodeFigure({
     source: extractCandidateCode(candidateCode),
-    caption: "Accepted deterministic packing candidate. The public entrypoint returns the validated replay geometry.",
+    caption: "Accepted deterministic reconstruction candidate. The public entrypoint rebuilds the validated packing before returning centers and radii.",
     className: "circle-packing-code-figure",
   });
 }
