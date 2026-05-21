@@ -430,6 +430,34 @@ a {
   font-size: 0.98rem;
 }
 
+.home-proof-phrase {
+  display: inline-flex;
+  gap: 0.35rem;
+  position: fixed;
+  left: 50%;
+  bottom: clamp(1.6rem, 4dvh, 3rem);
+  z-index: 15;
+  max-width: calc(100vw - (var(--content-gutter) * 2));
+  transform: translateX(-50%);
+  color: var(--muted-soft);
+  font-size: 0.92rem;
+  font-weight: 300;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.home-proof-phrase span {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.home-proof-phrase:hover span,
+.home-proof-phrase:focus-visible span {
+  color: var(--text);
+}
+
 .home-thesis-section {
   padding: 0 var(--content-gutter) clamp(4.8rem, 8vw, 7rem);
 }
@@ -3069,6 +3097,13 @@ a {
   .home-hero {
     width: 100%;
     padding: 0.65rem 0 clamp(20rem, 38dvh, 26rem);
+  }
+
+  .home-proof-phrase {
+    display: inline-block;
+    max-width: 28ch;
+    text-align: center;
+    white-space: normal;
   }
 
   .home-thesis-section {
