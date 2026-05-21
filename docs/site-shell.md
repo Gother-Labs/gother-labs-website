@@ -12,7 +12,7 @@ The shared shell includes:
 - Inter font preload.
 - Favicon.
 - Shared `styles.css` and `scripts.js` includes.
-- Shared shell cache-busting version, currently `nav-wordmark-v1`.
+- Shared shell cache-busting version, currently `nav-wordmark-v2`.
 - Canonical URL, Open Graph metadata, Twitter card metadata, and page-specific metadata exceptions.
 
 The hand-authored shell currently appears in:
