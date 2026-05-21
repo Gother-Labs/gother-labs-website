@@ -69,7 +69,7 @@ Review each affected route at:
 
 For each viewport, verify:
 
-- Header navigation is visible, aligned, and ordered `Company`, `Results`, `Contact`.
+- Header navigation is visible, aligned, and ordered `Results`, `Company`, `Contact`.
 - The animated wordmark appears with the expected colored symbol dots where the shared shell uses it.
 - Text does not wrap unexpectedly or overlap adjacent content.
 - There is no horizontal overflow.
