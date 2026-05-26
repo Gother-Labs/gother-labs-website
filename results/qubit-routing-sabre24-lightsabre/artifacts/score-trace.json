@@ -1,0 +1,63 @@
+{
+  "schema_version": "score-trace/v1",
+  "metric": "weighted_cnot_delta",
+  "direction": "higher_is_better_readout",
+  "score_direction": "lower_is_better",
+  "candidates": [
+    {
+      "index": 0,
+      "generation": 0,
+      "candidate_id": "initial-public-baseline",
+      "score": -8938.800000000047,
+      "weighted_cnot_delta": 8938.800000000047,
+      "label": "Initial public baseline"
+    },
+    {
+      "index": 1,
+      "generation": 1,
+      "candidate_id": "gen-1-i0-w3-a0-3db34e9ba786bce1",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "label": "First accepted probe"
+    },
+    {
+      "index": 2,
+      "generation": 47,
+      "candidate_id": "gen-47-i0-w1-a0-49f54a0d014201b1",
+      "score": -10343.999999999985,
+      "weighted_cnot_delta": 10343.999999999985,
+      "label": "Resume checkpoint"
+    },
+    {
+      "index": 3,
+      "generation": 62,
+      "candidate_id": "gen-62-i0-w3-a0-8185f10d0dff4245",
+      "score": -11506.200000000026,
+      "weighted_cnot_delta": 11506.200000000026,
+      "label": "Accepted replayed candidate"
+    }
+  ],
+  "best_by_generation": [
+    {
+      "generation": 0,
+      "score": -8938.800000000047,
+      "weighted_cnot_delta": 8938.800000000047
+    },
+    {
+      "generation": 1,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "generation": 47,
+      "score": -10343.999999999985,
+      "weighted_cnot_delta": 10343.999999999985
+    },
+    {
+      "generation": 62,
+      "score": -11506.200000000026,
+      "weighted_cnot_delta": 11506.200000000026
+    }
+  ],
+  "generation_end": 62
+}

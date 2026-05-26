@@ -979,6 +979,15 @@ a {
   max-width: 35ch;
 }
 
+.result-card--qubit-routing h2 {
+  max-width: 12ch;
+  font-size: clamp(2.6rem, 5.2vw, 5rem);
+}
+
+.result-card--qubit-routing p {
+  max-width: 35ch;
+}
+
 .result-card-visual {
   position: absolute;
   right: clamp(-8rem, -5.5vw, -2.5rem);
@@ -1103,6 +1112,116 @@ a {
   width: min(64%, 38rem);
 }
 
+.result-card--qubit-routing .result-card-visual {
+  right: clamp(-6rem, -4vw, -1.4rem);
+  bottom: clamp(0.6rem, 1.8vw, 1.8rem);
+  width: min(66%, 39rem);
+}
+
+.result-card-qubit-routing path,
+.result-card-qubit-routing rect,
+.result-card-qubit-routing circle,
+.result-card-qubit-routing line {
+  vector-effect: non-scaling-stroke;
+}
+
+.result-card-qubit-routing .qr-edge {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 38%, transparent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.result-card-qubit-routing .qr-soft circle {
+  fill: color-mix(in srgb, var(--accent) 11%, transparent);
+  stroke: color-mix(in srgb, var(--accent) 58%, transparent);
+  stroke-width: 1.8;
+}
+
+.result-card-qubit-routing .qr-active circle {
+  fill: var(--accent);
+  stroke: color-mix(in srgb, var(--bg) 85%, transparent);
+  stroke-width: 2;
+}
+
+.result-card-qubit-routing .qr-baseline {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 52%, transparent);
+  stroke-width: 1.2;
+}
+
+.result-card-qubit-routing .qr-reference {
+  fill: color-mix(in srgb, var(--text) 20%, transparent);
+}
+
+.result-card-qubit-routing .qr-accepted {
+  fill: color-mix(in srgb, var(--accent) 68%, transparent);
+}
+
+.result-card-qubit-routing .qr-delta {
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.result-card-qubit-circuit path,
+.result-card-qubit-circuit rect,
+.result-card-qubit-circuit circle {
+  vector-effect: non-scaling-stroke;
+}
+
+.result-card-qubit-circuit .qc-wire {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 24%, transparent);
+  stroke-width: 1.4;
+}
+
+.result-card-qubit-circuit .qc-link {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 62%, transparent);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.result-card-qubit-circuit .qc-control {
+  fill: var(--text);
+}
+
+.result-card-qubit-circuit .qc-target,
+.result-card-qubit-circuit .qc-plus,
+.result-card-qubit-circuit .qc-swap {
+  fill: none;
+  stroke: var(--accent);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.4;
+}
+
+.result-card-qubit-circuit .qc-muted {
+  opacity: 0.72;
+}
+
+.result-card-qubit-circuit .qc-active .qc-link,
+.result-card-qubit-circuit .qc-active .qc-swap {
+  stroke: var(--accent);
+  stroke-width: 3;
+}
+
+.result-card-qubit-circuit .qc-axis {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 50%, transparent);
+  stroke-width: 1.2;
+}
+
+.result-card-qubit-circuit .qc-reference {
+  fill: color-mix(in srgb, var(--text) 18%, transparent);
+}
+
+.result-card-qubit-circuit .qc-accepted {
+  fill: color-mix(in srgb, var(--accent) 72%, transparent);
+}
+
 .result-card-packing rect,
 .result-card-packing path,
 .result-card-packing circle {
@@ -1199,6 +1318,11 @@ a {
   .result-card--circle-packing .result-card-visual {
     right: 0.9rem;
     width: min(50%, 27rem);
+  }
+
+  .result-card--qubit-routing .result-card-visual {
+    right: 0.8rem;
+    width: min(52%, 28rem);
   }
 }
 
@@ -2286,8 +2410,8 @@ a {
 }
 
 .result-whitepaper {
-  width: min(100%, 64rem);
-  max-width: 64rem;
+  width: min(100%, 70rem);
+  max-width: 70rem;
   min-width: 0;
 }
 
@@ -2309,7 +2433,7 @@ a {
 }
 
 .result-whitepaper p {
-  max-width: 76ch;
+  max-width: 82ch;
   font-size: clamp(1.02rem, 1.45vw, 1.18rem);
   line-height: 1.62;
   letter-spacing: -0.01em;
@@ -2439,6 +2563,488 @@ a {
 
 .rcpsp-whitepaper .result-paper-code {
   width: min(100%, 56rem);
+}
+
+.qubit-routing-whitepaper-shell {
+  padding-top: clamp(3rem, 5.2vw, 4.8rem);
+}
+
+.qubit-routing-whitepaper .result-paper-table,
+.qubit-routing-whitepaper .result-contract-table {
+  width: min(100%, 54rem);
+}
+
+.qubit-routing-whitepaper .result-table td code {
+  color: var(--text);
+  font-size: 0.92em;
+}
+
+.qubit-routing-whitepaper .result-paper-code {
+  width: min(100%, 58rem);
+}
+
+.qubit-routing-whitepaper .qubit-circuit-figure {
+  width: min(100%, 66rem);
+}
+
+.qubit-routing-whitepaper .qubit-gate-primer-figure {
+  width: min(100%, 66rem);
+}
+
+.qubit-routing-whitepaper .qubit-swap-saving-figure {
+  width: min(100%, 66rem);
+}
+
+.qubit-routing-whitepaper .qubit-routing-code-figure pre {
+  max-height: 38rem;
+  scrollbar-width: thin;
+}
+
+.qubit-routing-paper-svg .qubit-routing-note {
+  fill: var(--muted);
+  font-size: 0.82rem;
+}
+
+.qubit-routing-paper-svg .qubit-routing-section-label {
+  fill: var(--text);
+  font-size: 0.9rem;
+  font-weight: 650;
+}
+
+.qubit-routing-paper-svg .qubit-routing-value {
+  fill: var(--muted-soft);
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.78rem;
+}
+
+.qubit-routing-paper-svg .qubit-routing-big-value {
+  fill: var(--text);
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.qubit-routing-paper-svg .qubit-routing-edge,
+.qubit-routing-paper-svg .qubit-routing-transfer,
+.qubit-routing-paper-svg .qubit-routing-swap,
+.qubit-routing-paper-svg .qubit-routing-divider {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 42%, transparent);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+}
+
+.qubit-routing-paper-svg .qubit-routing-transfer {
+  stroke: var(--accent);
+  stroke-dasharray: 6 7;
+}
+
+.qubit-routing-paper-svg .qubit-routing-swap {
+  stroke: var(--accent);
+  stroke-width: 2.4;
+}
+
+.qubit-routing-paper-svg circle {
+  fill: color-mix(in srgb, var(--accent) 13%, transparent);
+  stroke: color-mix(in srgb, var(--accent) 72%, transparent);
+  stroke-width: 1.7;
+}
+
+.qubit-routing-paper-svg .qubit-routing-reference-fill {
+  fill: color-mix(in srgb, var(--text) 16%, transparent);
+}
+
+.qubit-routing-paper-svg .qubit-routing-accent-fill {
+  fill: color-mix(in srgb, var(--accent) 68%, transparent);
+}
+
+.qubit-routing-paper-svg .qubit-routing-accepted-label {
+  fill: var(--text);
+}
+
+.qubit-circuit-figure figcaption {
+  max-width: 45rem;
+}
+
+.qubit-circuit-svg {
+  overflow: visible;
+}
+
+.qubit-circuit-svg text {
+  font-family: "Inter", Arial, sans-serif;
+}
+
+.qubit-circuit-wire,
+.qubit-circuit-link,
+.qubit-circuit-target,
+.qubit-circuit-target-plus,
+.qubit-circuit-cross {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 76%, transparent);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.2;
+  vector-effect: non-scaling-stroke;
+}
+
+.qubit-circuit-wire {
+  stroke: color-mix(in srgb, var(--text) 48%, transparent);
+}
+
+.qubit-circuit-link {
+  stroke: color-mix(in srgb, var(--text) 82%, transparent);
+}
+
+.qubit-circuit-control {
+  fill: var(--text);
+  stroke: none;
+}
+
+.qubit-circuit-target {
+  stroke-width: 1.35;
+}
+
+.qubit-circuit-cross {
+  stroke-width: 1.45;
+}
+
+.qubit-circuit-cross.is-inserted,
+.qubit-circuit-swap.is-inserted .qubit-circuit-cross {
+  stroke: var(--accent);
+}
+
+.qubit-circuit-swap.is-inserted .qubit-circuit-link {
+  stroke: color-mix(in srgb, var(--accent) 70%, var(--text) 30%);
+}
+
+.qubit-circuit-label,
+.qubit-circuit-equals {
+  fill: var(--muted);
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+.qubit-circuit-label {
+  font-size: 0.72rem;
+}
+
+.qubit-circuit-equals {
+  fill: var(--text);
+  font-size: 1.9rem;
+  font-weight: 600;
+}
+
+.qubit-circuit-svg .result-figure-title {
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.qubit-circuit-svg .qubit-routing-note {
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.qubit-circuit-legend .qubit-routing-note {
+  font-size: 10px;
+}
+
+.qubit-swap-saving-svg {
+  overflow: visible;
+}
+
+.qubit-swap-saving-svg text {
+  font-family: "Inter", Arial, sans-serif;
+}
+
+.qubit-swap-saving-svg .result-figure-title,
+.qubit-route-stage-title {
+  fill: var(--text);
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 650;
+}
+
+.qubit-swap-saving-svg .qubit-routing-note {
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.qubit-route-path,
+.qubit-route-arrow,
+.qubit-route-cnot path,
+.qubit-route-swap path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.qubit-route-path {
+  stroke: color-mix(in srgb, var(--text) 35%, transparent);
+  stroke-width: 1.35;
+}
+
+.qubit-route-arrow {
+  stroke: var(--accent);
+  stroke-width: 1.8;
+  marker-end: none;
+}
+
+.qubit-route-chip circle {
+  fill: var(--bg);
+  stroke: color-mix(in srgb, var(--text) 44%, transparent);
+  stroke-width: 1.35;
+}
+
+.qubit-route-chip text {
+  fill: var(--muted-soft);
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 10px;
+  font-weight: 650;
+}
+
+.qubit-route-chip.is-hot circle {
+  fill: color-mix(in srgb, var(--accent) 12%, var(--bg));
+  stroke: var(--accent);
+  stroke-width: 1.8;
+}
+
+.qubit-route-chip.is-hot text,
+.qubit-route-chip.is-next text {
+  fill: var(--text);
+}
+
+.qubit-route-chip.is-next circle {
+  fill: color-mix(in srgb, var(--text) 8%, var(--bg));
+  stroke: color-mix(in srgb, var(--accent) 70%, transparent);
+  stroke-dasharray: 4 4;
+}
+
+.qubit-route-cnot path {
+  stroke: color-mix(in srgb, var(--text) 70%, transparent);
+  stroke-width: 1.35;
+}
+
+.qubit-route-cnot circle {
+  fill: var(--bg);
+  stroke: var(--accent);
+  stroke-width: 1.6;
+}
+
+.qubit-route-cnot circle:first-of-type {
+  fill: var(--text);
+  stroke: none;
+}
+
+.qubit-route-cnot.is-next path,
+.qubit-route-cnot.is-next circle {
+  stroke: var(--accent);
+}
+
+.qubit-route-swap path {
+  stroke: var(--accent);
+  stroke-width: 1.8;
+}
+
+.qubit-route-swap.is-muted path {
+  stroke: color-mix(in srgb, var(--accent) 46%, transparent);
+}
+
+.qubit-route-swap.is-waste path {
+  stroke: color-mix(in srgb, var(--accent) 62%, var(--text) 38%);
+}
+
+.qubit-route-swap text {
+  fill: var(--muted);
+  font-size: 9.5px;
+}
+
+.qubit-route-swap.is-waste text {
+  fill: var(--muted-soft);
+}
+
+.qubit-route-badge rect {
+  fill: color-mix(in srgb, var(--accent) 9%, transparent);
+  stroke: color-mix(in srgb, var(--accent) 28%, transparent);
+  stroke-width: 1;
+}
+
+.qubit-route-badge text {
+  fill: var(--text);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.quantum-circuit-svg {
+  overflow: visible;
+}
+
+.quantum-circuit-svg text {
+  font-family: "Inter", Arial, sans-serif;
+}
+
+.quantum-circuit-svg .result-figure-title {
+  fill: var(--text);
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 650;
+  letter-spacing: 0;
+}
+
+.quantum-panel-title,
+.quantum-route-label,
+.quantum-row-note,
+.quantum-legend-text {
+  fill: var(--muted);
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 550;
+  letter-spacing: 0.01em;
+}
+
+.quantum-panel-title {
+  fill: var(--text);
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.quantum-wire,
+.quantum-gate-link,
+.quantum-target,
+.quantum-target-plus,
+.quantum-swap-cross,
+.quantum-route-arrow,
+.quantum-decision-divider {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.quantum-wire {
+  stroke: color-mix(in srgb, var(--text) 42%, transparent);
+  stroke-width: 1.1;
+}
+
+.quantum-wire-label {
+  fill: var(--muted);
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.quantum-gate-link {
+  stroke: color-mix(in srgb, var(--text) 70%, transparent);
+  stroke-width: 1.2;
+}
+
+.quantum-control {
+  fill: var(--text);
+  stroke: none;
+}
+
+.quantum-target {
+  fill: var(--bg);
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+
+.quantum-target-plus,
+.quantum-swap-cross {
+  stroke: var(--accent);
+  stroke-width: 1.55;
+}
+
+.quantum-swap.is-inserted .quantum-gate-link,
+.quantum-swap.is-inserted .quantum-swap-cross {
+  stroke: var(--accent);
+}
+
+.quantum-cnot.is-reference .quantum-gate-link {
+  stroke: color-mix(in srgb, var(--text) 72%, transparent);
+}
+
+.quantum-cnot.is-muted {
+  opacity: 0.42;
+}
+
+.quantum-cnot.is-next .quantum-gate-link,
+.quantum-cnot.is-next .quantum-target,
+.quantum-cnot.is-next .quantum-target-plus {
+  stroke: var(--accent);
+}
+
+.quantum-route-arrow {
+  stroke: var(--accent);
+  stroke-width: 1.5;
+}
+
+.quantum-decision-divider {
+  stroke: var(--line-strong);
+  stroke-width: 1;
+}
+
+.quantum-row-note {
+  fill: var(--muted-soft);
+}
+
+.quantum-table-heading,
+.quantum-truth-cell,
+.quantum-matrix-cell,
+.quantum-ket-cell {
+  fill: var(--muted-soft);
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 11px;
+}
+
+.quantum-table-heading {
+  fill: var(--text);
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.quantum-table-rule,
+.quantum-matrix-bracket {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 38%, transparent);
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+.quantum-matrix-cell {
+  fill: var(--text);
+  font-family: "STIX Two Math", "Cambria Math", Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+.quantum-ket-cell {
+  fill: var(--muted-soft);
+  font-family: "STIX Two Math", "Cambria Math", Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+.result-whitepaper figcaption .math-ket {
+  font-family: "STIX Two Math", "Cambria Math", Georgia, "Times New Roman", serif;
+  font-style: normal;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  white-space: nowrap;
 }
 
 .result-whitepaper .result-code-figure {

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 310" role="img">
+  <style>
+    text{font-family:Inter,Arial,sans-serif;fill:#17201b} .muted{fill:#6f7a74}.axis,.grid{fill:none;stroke:#cbd5cf;stroke-width:1}.grid{opacity:.65}.accent{fill:#2f6f62}.soft{fill:#dce8e2}.warn{fill:#a2604a}.line{fill:none;stroke:#2f6f62;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.dot{fill:#2f6f62}.base{fill:#9aa7a1}.small{font-size:13px}.label{font-size:15px;font-weight:600}.title{font-size:22px;font-weight:650}.value{font-size:28px;font-weight:700}
+  </style>
+  <text class="title" x="48" y="34">Per-topology added CNOT readout</text>
+  <text class="small muted" x="170" y="56">LightSABRE</text><text class="small" x="260" y="56">accepted candidate</text>
+  <text class="label" x="48" y="78">heron_fez</text>
+  <rect class="soft" x="170" y="56" width="308.9" height="16"/>
+  <rect class="accent" x="170" y="80" width="310.0" height="16"/>
+  <text class="small muted" x="500" y="69">LightSABRE 137,481</text>
+  <text class="small" x="500" y="93">accepted 137,991 (-0.37%)</text>
+  <text class="small muted" x="650" y="93" text-anchor="end">W/T/L 7/1/16</text>
+  <text class="label" x="48" y="150">q20</text>
+  <rect class="soft" x="170" y="128" width="310.0" height="16"/>
+  <rect class="accent" x="170" y="152" width="256.1" height="16"/>
+  <text class="small muted" x="500" y="141">LightSABRE 60,189</text>
+  <text class="small" x="500" y="165">accepted 49,725 (17.39%)</text>
+  <text class="small muted" x="650" y="165" text-anchor="end">W/T/L 12/3/9</text>
+  <text class="label" x="48" y="222">willow</text>
+  <rect class="soft" x="170" y="200" width="310.0" height="16"/>
+  <rect class="accent" x="170" y="224" width="303.4" height="16"/>
+  <text class="small muted" x="500" y="213">LightSABRE 110,406</text>
+  <text class="small" x="500" y="237">accepted 108,066 (2.12%)</text>
+  <text class="small muted" x="650" y="237" text-anchor="end">W/T/L 12/2/10</text>
+</svg>

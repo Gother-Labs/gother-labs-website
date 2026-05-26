@@ -80,7 +80,7 @@
 <p>RCPSP schedules a project made of activities, precedence constraints, and renewable resource limits. An activity can start only after its predecessors finish, and the resource demand of all activities active at the same time must fit within the available capacity. The schedule objective is the project makespan: the finish time of the terminal activity.</p>
 <div class="formula-block" id="eq-1">
   <div class="formula-math">\[
-C_{max}(S) = \max_i F_i
+C_{\max}(S) = \max_i F_i
 \]</div>
   <span class="equation-number">(1)</span>
 </div>
@@ -199,18 +199,28 @@ C_{max}(S) = \max_i F_i
 <p>For one instance \(k\), the evaluator computes a makespan gap against the proven optimum:</p>
 <div class="formula-block" id="eq-2">
   <div class="formula-math">\[
-g_k = 100 \cdot \frac{C_{max,k}^{candidate} - C_{max,k}^{optimal}}{C_{max,k}^{optimal}}.
+g_k =
+100 \cdot
+\frac{
+  C_{\max,k}^{\mathrm{cand}} - C_{\max,k}^{\star}
+}{
+  C_{\max,k}^{\star}
+}.
 \]</div>
   <span class="equation-number">(2)</span>
 </div>
+<p>Here \(C_{\max,k}^{\mathrm{cand}}\) is the candidate makespan on instance \(k\), and \(C_{\max,k}^{\star}\) is the proven optimum for the same instance.</p>
 <p>The retained objective combines portfolio mean quality with a tail-risk term:</p>
 <div class="formula-block" id="eq-3">
   <div class="formula-math">\[
-score = mean(g_k) + 0.35 \cdot p95(g_k) + feasibility\_penalty.
+J =
+\operatorname{mean}_{k}(g_k)
++ 0.35\,\operatorname{p95}_{k}(g_k)
++ \lambda_{\mathrm{feas}}.
 \]</div>
   <span class="equation-number">(3)</span>
 </div>
-<p>A candidate must keep the feasibility penalty at zero. It must return finite priority scores, choose only eligible activities, schedule every activity exactly once, respect all precedences, and never exceed renewable resource capacities.</p>
+<p>A candidate must keep \(\lambda_{\mathrm{feas}}=0\). It must return finite priority scores, choose only eligible activities, schedule every activity exactly once, respect all precedences, and never exceed renewable resource capacities.</p>
 <h3>3. Accepted candidate</h3>
 <p>The accepted candidate keeps the serial schedule generator unchanged and changes only the activity-ranking policy. The final rule combines critical-path urgency, successor-unlocking pressure, bottleneck resource pressure, resource pressure, wait pressure, and remaining-work pressure. The selector then prefers activities that can start earlier and uses the priority score as the second-order decision.</p>
 <figure class="result-paper-code result-code-figure rcpsp-code-figure" id="listing-1">

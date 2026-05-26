@@ -1,0 +1,186 @@
+{
+  "schema_version": "evolution/v1",
+  "domain": {
+    "name": "qubit_routing_sabre24_lightsabre",
+    "benchmark": "SABRE24 swap-reduction portfolio",
+    "circuits": 24,
+    "topologies": 3,
+    "cases": 72,
+    "trial_mode": "full",
+    "layout_trials": 20,
+    "routing_trials": 20,
+    "score": "negative weighted CNOT reduction versus LightSABRE; lower is better"
+  },
+  "steps": [
+    {
+      "index": 0,
+      "generation": 0,
+      "candidate_id": "initial-public-baseline",
+      "label": "Initial public baseline",
+      "score": -8938.800000000047,
+      "weighted_cnot_delta": 8938.800000000047,
+      "valid": true,
+      "metrics": {
+        "score": -8938.800000000047,
+        "weighted_cnot_delta": 8938.800000000047,
+        "note": "Baseline from the seed/manual probe in the linked run chain."
+      }
+    },
+    {
+      "index": 1,
+      "generation": 1,
+      "candidate_id": "gen-1-i0-w3-a0-3db34e9ba786bce1",
+      "label": "First accepted probe",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "valid": true,
+      "metrics": {
+        "build_time": 300.7514009475708,
+        "candidate_added_cnot": 301698,
+        "combined_score": 9856.200000000026,
+        "cpu_time_s": 13.745979000000002,
+        "eval_time": 1074.4850261211395,
+        "failed_cases": 0,
+        "heron_fez_candidate_added_cnot": 137343,
+        "lightsabre_added_cnot": 308076,
+        "lightsabre_relative_improvement_pct": 2.070268375335956,
+        "losses_vs_lightsabre": 52,
+        "max_rss_mb": 561808,
+        "ok_cases": 72,
+        "q20_candidate_added_cnot": 53307,
+        "router_time": 772.7517890930176,
+        "score": -9856.200000000026,
+        "ties_vs_lightsabre": 4,
+        "total_cases": 72,
+        "total_depth": 363995,
+        "total_swaps": 100566,
+        "validity": 1,
+        "willow_candidate_added_cnot": 111048,
+        "wins_vs_lightsabre": 16
+      }
+    },
+    {
+      "index": 2,
+      "generation": 47,
+      "candidate_id": "gen-47-i0-w1-a0-49f54a0d014201b1",
+      "label": "Resume checkpoint",
+      "score": -10343.999999999985,
+      "weighted_cnot_delta": 10343.999999999985,
+      "valid": true,
+      "metrics": {
+        "build_time": 2.140509843826294,
+        "candidate_added_cnot": 299664,
+        "combined_score": 10343.999999999985,
+        "cpu_time_s": 0.08883999999999759,
+        "eval_time": 164.89337706565857,
+        "failed_cases": 0,
+        "heron_fez_candidate_added_cnot": 138645,
+        "lightsabre_added_cnot": 308076,
+        "lightsabre_relative_improvement_pct": 2.7304950726444126,
+        "losses_vs_lightsabre": 39,
+        "max_rss_mb": 219824,
+        "ok_cases": 72,
+        "q20_candidate_added_cnot": 51678,
+        "router_time": 162.6690812110901,
+        "score": -10343.999999999985,
+        "ties_vs_lightsabre": 6,
+        "total_cases": 72,
+        "total_depth": 369262,
+        "total_swaps": 99888,
+        "validity": 1,
+        "willow_candidate_added_cnot": 109341,
+        "wins_vs_lightsabre": 27
+      }
+    },
+    {
+      "index": 3,
+      "generation": 62,
+      "candidate_id": "gen-62-i0-w3-a0-8185f10d0dff4245",
+      "label": "Accepted replayed candidate",
+      "score": -11506.200000000026,
+      "weighted_cnot_delta": 11506.200000000026,
+      "valid": true,
+      "metrics": {
+        "build_time": 1.9402260780334473,
+        "candidate_added_cnot": 295782,
+        "combined_score": 11506.200000000026,
+        "eval_time": 156.96027612686157,
+        "failed_cases": 0,
+        "heron_fez_candidate_added_cnot": 137991,
+        "lightsabre_added_cnot": 308076,
+        "lightsabre_relative_improvement_pct": 3.9905737545281035,
+        "losses_vs_lightsabre": 35,
+        "ok_cases": 72,
+        "q20_candidate_added_cnot": 49725,
+        "router_time": 154.94721698760986,
+        "score": -11506.200000000026,
+        "ties_vs_lightsabre": 6,
+        "total_cases": 72,
+        "total_depth": 368811,
+        "total_swaps": 98594,
+        "validity": 1,
+        "willow_candidate_added_cnot": 108066,
+        "wins_vs_lightsabre": 31
+      }
+    }
+  ],
+  "topology_summary": [
+    {
+      "candidate_added_cnot": 137991,
+      "cases": 24,
+      "lightsabre_added_cnot": 137481,
+      "losses": 16,
+      "ok_cases": 24,
+      "relative_improvement_pct": -0.3709603508848495,
+      "ties": 1,
+      "topology": "heron_fez",
+      "wins": 7,
+      "wtl": "7/1/16"
+    },
+    {
+      "candidate_added_cnot": 49725,
+      "cases": 24,
+      "lightsabre_added_cnot": 60189,
+      "losses": 9,
+      "ok_cases": 24,
+      "relative_improvement_pct": 17.38523650500922,
+      "ties": 3,
+      "topology": "q20",
+      "wins": 12,
+      "wtl": "12/3/9"
+    },
+    {
+      "candidate_added_cnot": 108066,
+      "cases": 24,
+      "lightsabre_added_cnot": 110406,
+      "losses": 10,
+      "ok_cases": 24,
+      "relative_improvement_pct": 2.11945002988968,
+      "ties": 2,
+      "topology": "willow",
+      "wins": 12,
+      "wtl": "12/2/10"
+    }
+  ],
+  "lightsabre_totals": {
+    "all": 308076,
+    "heron_fez": 137481,
+    "q20": 60189,
+    "willow": 110406
+  },
+  "sabre_totals": {
+    "all": 333756,
+    "heron_fez": 150558,
+    "q20": 68142,
+    "willow": 115056
+  },
+  "public_run_chain": [
+    "sabre24_lightsabre_workers4_llm1_slots4_20260522_145009",
+    "sabre24_lightsabre_large_9am_20260522_181129",
+    "sabre24_lightsabre_macstudio_9am_20260522_221135",
+    "sabre24_lightsabre_macstudio_9am_20260523_093900",
+    "sabre24_lightsabre_macstudio_16h_20260524_120011",
+    "sabre24_lightsabre_macstudio_20h_20260524_161705",
+    "sabre24_lightsabre_macstudio_9am_20260524_225843"
+  ]
+}
