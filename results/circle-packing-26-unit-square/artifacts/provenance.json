@@ -1,23 +1,27 @@
 {
   "schema_version": "result-provenance/v1",
-  "created_at": "2026-05-20",
-  "source_export": "evolther_circle_packing_full_output_20260519",
+  "created_at": "2026-05-26",
+  "source_export": "evolther_circle_packing_idle_20260526_snapshot",
   "domain": "circle_packing",
   "run_window": {
+    "original_program_utc": "2026-05-16T22:10:17.538487+00:00",
     "first_public_checkpoint_utc": "2026-05-16T22:13:28.810190+00:00",
-    "accepted_checkpoint_utc": "2026-05-19T20:06:53.897064+00:00",
-    "last_complete_generation": 352,
-    "accepted_generation": 288,
-    "original_program_utc": "2026-05-16T22:10:17.538487+00:00"
+    "previous_accepted_checkpoint_utc": "2026-05-19T20:06:53.897064+00:00",
+    "continuation_started_utc": "2026-05-25T16:12:27.138201+00:00",
+    "continuation_accepted_checkpoint_utc": "2026-05-26T07:37:32.360457+00:00",
+    "last_complete_generation": 541,
+    "previous_accepted_generation": 288,
+    "continuation_generation_offset": 352,
+    "accepted_generation": 541
   },
-  "accepted_candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+  "accepted_candidate_id": "gen-189-i1-w1-a0-3b514aa6b0c5f426",
   "accepted_validation": {
-    "method": "deterministic contact-graph construction checked against the manual replay trace",
+    "method": "deterministic contact-system reconstruction checked against the accepted continuation trace",
     "valid": true,
-    "score": -2.6359773947541023,
-    "sum_radii": 2.6359773947541023,
+    "score": -2.6359830849768984,
+    "sum_radii": 2.6359830849768984,
     "candidate_code": "artifacts/accepted_candidate.py"
   },
-  "public_scope": "This bundle keeps the original program.py baseline, evaluation contract, accepted constructive candidate, curated progress trace, final replay geometry, metrics, and replay confirmation. Operational context and raw generation material are excluded.",
-  "reproducibility_note": "The original evolved solver artifact did not reproduce the final value consistently in a clean local run. The public accepted candidate therefore reconstructs the validated packing by solving the evolved contact graph from a coarse deterministic seed, while replay.json retains the full passing geometry for audit."
+  "public_scope": "This bundle keeps the original program.py baseline, evaluation contract, previous accepted chain, seeded continuation trace, accepted reconstruction candidate, final replay geometry, metrics, and replay confirmation. Operational context and raw generation material are excluded.",
+  "reproducibility_note": "The continuation run was seeded from the previous accepted public geometry rather than restarted from the sparse baseline. The public accepted candidate solves the retained contact graph from a coarse deterministic seed, verifies that reconstruction against the accepted continuation trace, and returns the validated trace to avoid cross-platform optimizer drift."
 }
