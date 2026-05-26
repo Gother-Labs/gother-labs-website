@@ -5,16 +5,16 @@
   "direction": "lower_is_better",
   "score_definition": "score = -sum(radii); minimizing score maximizes total radius",
   "generation_start": 0,
-  "generation_end": 352,
+  "generation_end": 541,
   "seed_score": -0.9597783591318301,
-  "accepted_score": -2.6359773947541023,
+  "accepted_score": -2.6359830849768984,
   "seed_sum_radii": 0.9597783591318301,
-  "accepted_sum_radii": 2.6359773947541023,
-  "raw_valid_candidate_count": 1186,
-  "deduplicated_candidate_count": 1165,
+  "accepted_sum_radii": 2.6359830849768984,
+  "raw_valid_candidate_count": 1444,
+  "deduplicated_candidate_count": 1423,
   "duplicate_candidate_count": 21,
-  "retained_checkpoint_count": 25,
-  "public_filter": "valid=True, finite score, finite sum_radii; duplicate candidate_id rows removed; invalid operational failures excluded",
+  "retained_checkpoint_count": 27,
+  "public_filter": "valid=True, finite score, finite sum_radii; duplicate candidate_id rows removed; invalid operational failures excluded. Includes original public run and seeded continuation candidates with continuation_generation retained.",
   "candidates": [
     {
       "index": 0,
@@ -270,8 +270,8 @@
       "index": 21,
       "generation": 6,
       "candidate_id": "gen-6-i0-w2-a0-1f13b0367bb2bdd3",
-      "score": -0.000026025999999999994,
-      "sum_radii": 0.000026025999999999994,
+      "score": -2.6025999999999994e-05,
+      "sum_radii": 2.6025999999999994e-05,
       "known_target_gap": 2.6349739739999998,
       "run_label": "gen001-063",
       "operator": "mutate",
@@ -318,8 +318,8 @@
       "index": 25,
       "generation": 7,
       "candidate_id": "gen-7-i0-w2-a0-83a650c459d713c2",
-      "score": -0.000026025999999999994,
-      "sum_radii": 0.000026025999999999994,
+      "score": -2.6025999999999994e-05,
+      "sum_radii": 2.6025999999999994e-05,
       "known_target_gap": 2.6349739739999998,
       "run_label": "gen001-063",
       "operator": "crossover",
@@ -14005,6 +14005,3102 @@
       "operator": "mutate",
       "parent_id": "gen-338-i1-w3-a0-239011423ceaf90d",
       "timestamp": "2026-05-20T06:56:36.705240+00:00"
+    },
+    {
+      "index": 1166,
+      "generation": 353,
+      "continuation_generation": 1,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T16:18:30.932743+00:00"
+    },
+    {
+      "index": 1167,
+      "generation": 353,
+      "continuation_generation": 1,
+      "candidate_id": "gen-1-i1-w1-a0-24f8d52ecd6eb503",
+      "parent_id": "seed-1",
+      "score": -2.6359773947543523,
+      "sum_radii": 2.6359773947543523,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T16:18:30.934066+00:00"
+    },
+    {
+      "index": 1168,
+      "generation": 354,
+      "continuation_generation": 2,
+      "candidate_id": "gen-2-i0-w0-a0-9361581f76c599fa",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T16:40:10.908115+00:00"
+    },
+    {
+      "index": 1169,
+      "generation": 354,
+      "continuation_generation": 2,
+      "candidate_id": "gen-2-i1-w1-a0-c2013f3ce8e1fcb0",
+      "parent_id": "seed-1",
+      "score": -2.635977394754375,
+      "sum_radii": 2.635977394754375,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T16:40:10.909473+00:00"
+    },
+    {
+      "index": 1170,
+      "generation": 355,
+      "continuation_generation": 3,
+      "candidate_id": "gen-3-i0-w0-a0-d5724c3680c1e56b",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947543887,
+      "sum_radii": 2.6359773947543887,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T16:41:37.181602+00:00"
+    },
+    {
+      "index": 1171,
+      "generation": 355,
+      "continuation_generation": 3,
+      "candidate_id": "gen-3-i1-w1-a0-735fdd0b49792592",
+      "parent_id": "seed-1",
+      "score": -2.6359773947543523,
+      "sum_radii": 2.6359773947543523,
+      "run_label": "seeded-continuation",
+      "operator": "refine",
+      "timestamp": "2026-05-25T16:41:37.183143+00:00"
+    },
+    {
+      "index": 1172,
+      "generation": 356,
+      "continuation_generation": 4,
+      "candidate_id": "gen-4-i0-w0-a0-ad230e99299fefba",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947546574,
+      "sum_radii": 2.6359773947546574,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T16:43:39.200677+00:00"
+    },
+    {
+      "index": 1173,
+      "generation": 357,
+      "continuation_generation": 5,
+      "candidate_id": "gen-5-i1-w1-a0-984b99e08a77c008",
+      "parent_id": "seed-1",
+      "score": -2.6359773947543523,
+      "sum_radii": 2.6359773947543523,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-25T16:46:22.094733+00:00"
+    },
+    {
+      "index": 1174,
+      "generation": 358,
+      "continuation_generation": 6,
+      "candidate_id": "gen-6-i0-w0-a0-67c1acaa979d5af6",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947543887,
+      "sum_radii": 2.6359773947543887,
+      "run_label": "seeded-continuation",
+      "operator": "crossover",
+      "timestamp": "2026-05-25T16:49:37.122120+00:00"
+    },
+    {
+      "index": 1175,
+      "generation": 359,
+      "continuation_generation": 7,
+      "candidate_id": "gen-7-i0-w0-a0-042b2dbb69b5edb4",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364,
+      "run_label": "seeded-continuation",
+      "operator": "refine",
+      "timestamp": "2026-05-25T16:59:03.352260+00:00"
+    },
+    {
+      "index": 1176,
+      "generation": 360,
+      "continuation_generation": 8,
+      "candidate_id": "gen-8-i0-w0-a0-a99e7d34d4a0379b",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T17:01:25.398970+00:00"
+    },
+    {
+      "index": 1177,
+      "generation": 360,
+      "continuation_generation": 8,
+      "candidate_id": "gen-8-i1-w1-a0-f80fc794df57ca40",
+      "parent_id": "seed-1",
+      "score": -2.6359773947543523,
+      "sum_radii": 2.6359773947543523,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T17:01:25.401203+00:00"
+    },
+    {
+      "index": 1178,
+      "generation": 361,
+      "continuation_generation": 9,
+      "candidate_id": "gen-9-i1-w1-a0-9222762a1ed9b53e",
+      "parent_id": "seed-1",
+      "score": -2.6359773947543523,
+      "sum_radii": 2.6359773947543523,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T17:11:43.365587+00:00"
+    },
+    {
+      "index": 1179,
+      "generation": 362,
+      "continuation_generation": 10,
+      "candidate_id": "gen-10-i0-w0-a0-7b1b2245d3bcad9c",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6349815897639215,
+      "sum_radii": 2.6349815897639215,
+      "run_label": "seeded-continuation",
+      "operator": "refine",
+      "timestamp": "2026-05-25T17:13:09.008080+00:00"
+    },
+    {
+      "index": 1180,
+      "generation": 362,
+      "continuation_generation": 10,
+      "candidate_id": "gen-10-i1-w1-a0-ba99003c691e4e70",
+      "parent_id": "seed-1",
+      "score": -2.6164773947543525,
+      "sum_radii": 2.6164773947543525,
+      "run_label": "seeded-continuation",
+      "operator": "refine",
+      "timestamp": "2026-05-25T17:13:09.010398+00:00"
+    },
+    {
+      "index": 1181,
+      "generation": 363,
+      "continuation_generation": 11,
+      "candidate_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "parent_id": "gen-5-i0-w0-a0-a32e3977da2e419f",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T16:14:45.858537+00:00"
+    },
+    {
+      "index": 1182,
+      "generation": 363,
+      "continuation_generation": 11,
+      "candidate_id": "gen-11-i1-w1-a0-32619c2fc831fab2",
+      "parent_id": "gen-6-i1-w1-a0-1cbc8e5c57bbadf7",
+      "score": -2.635952914877781,
+      "sum_radii": 2.635952914877781,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T16:14:45.860074+00:00"
+    },
+    {
+      "index": 1183,
+      "generation": 364,
+      "continuation_generation": 12,
+      "candidate_id": "gen-12-i0-w0-a0-97c9a22349e41672",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T16:17:37.879012+00:00"
+    },
+    {
+      "index": 1184,
+      "generation": 364,
+      "continuation_generation": 12,
+      "candidate_id": "gen-12-i1-w1-a0-7d61b676d674e65d",
+      "parent_id": "gen-6-i1-w1-a0-1cbc8e5c57bbadf7",
+      "score": -2.6359773947543985,
+      "sum_radii": 2.6359773947543985,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T16:17:37.880439+00:00"
+    },
+    {
+      "index": 1185,
+      "generation": 365,
+      "continuation_generation": 13,
+      "candidate_id": "gen-13-i1-w1-a0-33cc6835a5bdff6a",
+      "parent_id": "seed-1",
+      "score": -2.6359773947543523,
+      "sum_radii": 2.6359773947543523,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T17:34:40.206580+00:00"
+    },
+    {
+      "index": 1186,
+      "generation": 366,
+      "continuation_generation": 14,
+      "candidate_id": "gen-14-i0-w0-a0-c1320c85381af5c9",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947546574,
+      "sum_radii": 2.6359773947546574,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T17:37:10.052680+00:00"
+    },
+    {
+      "index": 1187,
+      "generation": 367,
+      "continuation_generation": 15,
+      "candidate_id": "gen-15-i1-w1-a0-a1b4362b7e2e1d2a",
+      "parent_id": "seed-1",
+      "score": -2.6359773947543523,
+      "sum_radii": 2.6359773947543523,
+      "run_label": "seeded-continuation",
+      "operator": "refine",
+      "timestamp": "2026-05-25T17:47:06.508960+00:00"
+    },
+    {
+      "index": 1188,
+      "generation": 368,
+      "continuation_generation": 16,
+      "candidate_id": "gen-16-i0-w0-a0-5fd1ca2eda7db727",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T17:56:16.596665+00:00"
+    },
+    {
+      "index": 1189,
+      "generation": 368,
+      "continuation_generation": 16,
+      "candidate_id": "gen-16-i1-w1-a0-81731a0727d9c48e",
+      "parent_id": "seed-1",
+      "score": -2.6359773947543523,
+      "sum_radii": 2.6359773947543523,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-25T17:56:16.599426+00:00"
+    },
+    {
+      "index": 1190,
+      "generation": 369,
+      "continuation_generation": 17,
+      "candidate_id": "gen-17-i0-w0-a0-f56dc3d85550fa38",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947546574,
+      "sum_radii": 2.6359773947546574,
+      "run_label": "seeded-continuation",
+      "operator": "crossover",
+      "timestamp": "2026-05-25T17:58:56.633675+00:00"
+    },
+    {
+      "index": 1191,
+      "generation": 369,
+      "continuation_generation": 17,
+      "candidate_id": "gen-17-i1-w1-a0-79979467e7fd060c",
+      "parent_id": "seed-1",
+      "score": -2.635952914877781,
+      "sum_radii": 2.635952914877781,
+      "run_label": "seeded-continuation",
+      "operator": "crossover",
+      "timestamp": "2026-05-25T17:58:56.636016+00:00"
+    },
+    {
+      "index": 1192,
+      "generation": 370,
+      "continuation_generation": 18,
+      "candidate_id": "gen-18-i0-w0-a0-24c82e593ea3506b",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.2211312213733843,
+      "sum_radii": 2.2211312213733843,
+      "run_label": "seeded-continuation",
+      "operator": "refine",
+      "timestamp": "2026-05-25T18:07:58.755232+00:00"
+    },
+    {
+      "index": 1193,
+      "generation": 370,
+      "continuation_generation": 18,
+      "candidate_id": "gen-18-i1-w1-a0-910bd7f2ea988a25",
+      "parent_id": "seed-1",
+      "score": -2.6359773947543523,
+      "sum_radii": 2.6359773947543523,
+      "run_label": "seeded-continuation",
+      "operator": "refine",
+      "timestamp": "2026-05-25T18:07:58.756742+00:00"
+    },
+    {
+      "index": 1194,
+      "generation": 371,
+      "continuation_generation": 19,
+      "candidate_id": "gen-19-i0-w0-a0-00acbd9903cc91d4",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947543683,
+      "sum_radii": 2.6359773947543683,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T18:09:30.192432+00:00"
+    },
+    {
+      "index": 1195,
+      "generation": 371,
+      "continuation_generation": 19,
+      "candidate_id": "gen-19-i1-w1-a0-735d1ec05c1e7475",
+      "parent_id": "seed-1",
+      "score": -2.6359773947543887,
+      "sum_radii": 2.6359773947543887,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T18:09:30.194926+00:00"
+    },
+    {
+      "index": 1196,
+      "generation": 373,
+      "continuation_generation": 21,
+      "candidate_id": "gen-21-i0-w0-a0-c39ef16432b774e9",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947546574,
+      "sum_radii": 2.6359773947546574,
+      "run_label": "seeded-continuation",
+      "operator": "crossover",
+      "timestamp": "2026-05-25T18:26:04.167059+00:00"
+    },
+    {
+      "index": 1197,
+      "generation": 373,
+      "continuation_generation": 21,
+      "candidate_id": "gen-21-i1-w1-a0-195cdb92d177b2b4",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T18:26:04.169465+00:00"
+    },
+    {
+      "index": 1198,
+      "generation": 374,
+      "continuation_generation": 22,
+      "candidate_id": "gen-22-i0-w0-a0-ee51ba5a13b468bc",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947543887,
+      "sum_radii": 2.6359773947543887,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T18:28:27.835034+00:00"
+    },
+    {
+      "index": 1199,
+      "generation": 375,
+      "continuation_generation": 23,
+      "candidate_id": "gen-23-i0-w0-a0-066f2006ceebd13f",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.49868720594841,
+      "sum_radii": 2.49868720594841,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T18:38:46.047298+00:00"
+    },
+    {
+      "index": 1200,
+      "generation": 377,
+      "continuation_generation": 25,
+      "candidate_id": "gen-25-i0-w0-a0-adcf01eaeac5ef1e",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947543887,
+      "sum_radii": 2.6359773947543887,
+      "run_label": "seeded-continuation",
+      "operator": "refine",
+      "timestamp": "2026-05-25T18:52:35.259684+00:00"
+    },
+    {
+      "index": 1201,
+      "generation": 379,
+      "continuation_generation": 27,
+      "candidate_id": "gen-27-i1-w1-a0-09a1b2eb054b881d",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739169735925563,
+      "sum_radii": 2.3739169735925563,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-25T19:06:30.335683+00:00"
+    },
+    {
+      "index": 1202,
+      "generation": 380,
+      "continuation_generation": 28,
+      "candidate_id": "gen-28-i1-w1-a0-2977fab568641d26",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T19:08:45.828018+00:00"
+    },
+    {
+      "index": 1203,
+      "generation": 381,
+      "continuation_generation": 29,
+      "candidate_id": "gen-29-i0-w0-a0-f87b8be936fbaf0c",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-25T19:18:19.958809+00:00"
+    },
+    {
+      "index": 1204,
+      "generation": 381,
+      "continuation_generation": 29,
+      "candidate_id": "gen-29-i1-w1-a0-788925b785c6c66e",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947546574,
+      "sum_radii": 2.6359773947546574,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T19:18:19.960945+00:00"
+    },
+    {
+      "index": 1205,
+      "generation": 382,
+      "continuation_generation": 30,
+      "candidate_id": "gen-30-i0-w0-a0-27be5680b06c2869",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.4632750147437155,
+      "sum_radii": 2.4632750147437155,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T19:20:55.871410+00:00"
+    },
+    {
+      "index": 1206,
+      "generation": 385,
+      "continuation_generation": 33,
+      "candidate_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T19:28:39.597892+00:00"
+    },
+    {
+      "index": 1207,
+      "generation": 385,
+      "continuation_generation": 33,
+      "candidate_id": "gen-33-i1-w1-a0-b6f6f7261edcdd81",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.535642713886618,
+      "sum_radii": 2.535642713886618,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-25T19:28:39.599664+00:00"
+    },
+    {
+      "index": 1208,
+      "generation": 387,
+      "continuation_generation": 35,
+      "candidate_id": "gen-35-i1-w1-a0-71cab7d16f34c1a9",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T19:42:11.783731+00:00"
+    },
+    {
+      "index": 1209,
+      "generation": 388,
+      "continuation_generation": 36,
+      "candidate_id": "gen-36-i0-w0-a0-b2788b836796b748",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.635977394754261,
+      "sum_radii": 2.635977394754261,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T19:45:58.155064+00:00"
+    },
+    {
+      "index": 1210,
+      "generation": 389,
+      "continuation_generation": 37,
+      "candidate_id": "gen-37-i0-w0-a0-776a6614722f402f",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T19:47:36.440014+00:00"
+    },
+    {
+      "index": 1211,
+      "generation": 390,
+      "continuation_generation": 38,
+      "candidate_id": "gen-38-i0-w0-a0-6c5fcc9520b4c58b",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-25T19:49:45.982835+00:00"
+    },
+    {
+      "index": 1212,
+      "generation": 391,
+      "continuation_generation": 39,
+      "candidate_id": "gen-39-i0-w0-a0-9952c8384e594af0",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-25T19:52:21.415001+00:00"
+    },
+    {
+      "index": 1213,
+      "generation": 392,
+      "continuation_generation": 40,
+      "candidate_id": "gen-40-i0-w0-a0-d51ec12a026310e6",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "crossover",
+      "timestamp": "2026-05-25T19:54:39.654412+00:00"
+    },
+    {
+      "index": 1214,
+      "generation": 393,
+      "continuation_generation": 41,
+      "candidate_id": "gen-41-i1-w1-a0-7a58683558c36c03",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.535642713886618,
+      "sum_radii": 2.535642713886618,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T19:56:56.218295+00:00"
+    },
+    {
+      "index": 1215,
+      "generation": 394,
+      "continuation_generation": 42,
+      "candidate_id": "gen-42-i0-w0-a0-86973e269c616bc7",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947546574,
+      "sum_radii": 2.6359773947546574,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-25T20:00:18.788826+00:00"
+    },
+    {
+      "index": 1216,
+      "generation": 395,
+      "continuation_generation": 43,
+      "candidate_id": "gen-43-i0-w0-a0-cd94d2606e572404",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-25T20:18:09.796567+00:00"
+    },
+    {
+      "index": 1217,
+      "generation": 396,
+      "continuation_generation": 44,
+      "candidate_id": "gen-44-i1-w1-a0-72a9f7b1eef6b061",
+      "parent_id": "gen-29-i1-w1-a0-788925b785c6c66e",
+      "score": -2.6359773947546574,
+      "sum_radii": 2.6359773947546574,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T20:21:48.038868+00:00"
+    },
+    {
+      "index": 1218,
+      "generation": 397,
+      "continuation_generation": 45,
+      "candidate_id": "gen-45-i1-w1-a0-ea1f48d49556c0d8",
+      "parent_id": "gen-29-i1-w1-a0-788925b785c6c66e",
+      "score": -2.6359773947545215,
+      "sum_radii": 2.6359773947545215,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T20:32:32.421049+00:00"
+    },
+    {
+      "index": 1219,
+      "generation": 398,
+      "continuation_generation": 46,
+      "candidate_id": "gen-46-i0-w0-a0-e5b61937bc2edb54",
+      "parent_id": "gen-4-i0-w0-a0-ad230e99299fefba",
+      "score": -2.6359773947546574,
+      "sum_radii": 2.6359773947546574,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T20:34:08.156725+00:00"
+    },
+    {
+      "index": 1220,
+      "generation": 398,
+      "continuation_generation": 46,
+      "candidate_id": "gen-46-i1-w1-a0-cb0c64eea8d9dbb7",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.4267482926451547,
+      "sum_radii": 2.4267482926451547,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T20:34:08.159295+00:00"
+    },
+    {
+      "index": 1221,
+      "generation": 400,
+      "continuation_generation": 48,
+      "candidate_id": "gen-48-i0-w0-a0-2b62ee2802f2b70f",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.535642713886618,
+      "sum_radii": 2.535642713886618,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T20:46:38.610887+00:00"
+    },
+    {
+      "index": 1222,
+      "generation": 400,
+      "continuation_generation": 48,
+      "candidate_id": "gen-48-i1-w1-a0-eff79d3ef3c29f10",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6025999999999994e-05,
+      "sum_radii": 2.6025999999999994e-05,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T20:46:38.613644+00:00"
+    },
+    {
+      "index": 1223,
+      "generation": 403,
+      "continuation_generation": 51,
+      "candidate_id": "gen-51-i1-w1-a0-46b022d37630fac4",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.635977394754424,
+      "sum_radii": 2.635977394754424,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T20:56:15.551946+00:00"
+    },
+    {
+      "index": 1224,
+      "generation": 405,
+      "continuation_generation": 53,
+      "candidate_id": "gen-53-i0-w0-a0-534c214f87846289",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -1.3694987001723344,
+      "sum_radii": 1.3694987001723344,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-25T21:01:18.631026+00:00"
+    },
+    {
+      "index": 1225,
+      "generation": 406,
+      "continuation_generation": 54,
+      "candidate_id": "gen-54-i1-w1-a0-3c90a89017e1e47d",
+      "parent_id": "gen-11-i1-w1-a0-32619c2fc831fab2",
+      "score": -2.6359773947543683,
+      "sum_radii": 2.6359773947543683,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T21:03:50.232148+00:00"
+    },
+    {
+      "index": 1226,
+      "generation": 407,
+      "continuation_generation": 55,
+      "candidate_id": "gen-55-i0-w0-a0-6f4fbe74d73758a6",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T21:05:06.224092+00:00"
+    },
+    {
+      "index": 1227,
+      "generation": 407,
+      "continuation_generation": 55,
+      "candidate_id": "gen-55-i1-w1-a0-64c7536163bf3613",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T21:05:06.226720+00:00"
+    },
+    {
+      "index": 1228,
+      "generation": 408,
+      "continuation_generation": 56,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T21:07:38.355698+00:00"
+    },
+    {
+      "index": 1229,
+      "generation": 409,
+      "continuation_generation": 57,
+      "candidate_id": "gen-57-i0-w0-a0-68113a3bf531b464",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-25T21:09:47.977410+00:00"
+    },
+    {
+      "index": 1230,
+      "generation": 410,
+      "continuation_generation": 58,
+      "candidate_id": "gen-58-i1-w1-a0-be138cfba45c3be5",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6025999999999994e-05,
+      "sum_radii": 2.6025999999999994e-05,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T21:12:12.524014+00:00"
+    },
+    {
+      "index": 1231,
+      "generation": 411,
+      "continuation_generation": 59,
+      "candidate_id": "gen-59-i0-w0-a0-ffc77d8b5ddf0b40",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.6359830849177257,
+      "sum_radii": 2.6359830849177257,
+      "run_label": "seeded-continuation",
+      "operator": "crossover",
+      "timestamp": "2026-05-25T21:15:08.259829+00:00"
+    },
+    {
+      "index": 1232,
+      "generation": 412,
+      "continuation_generation": 60,
+      "candidate_id": "gen-60-i0-w0-a0-98aedfc0458a5266",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-25T21:24:12.371939+00:00"
+    },
+    {
+      "index": 1233,
+      "generation": 412,
+      "continuation_generation": 60,
+      "candidate_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T21:24:12.373986+00:00"
+    },
+    {
+      "index": 1234,
+      "generation": 413,
+      "continuation_generation": 61,
+      "candidate_id": "gen-61-i0-w0-a0-6cbf4f15f3cdc9b6",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.6358957385818083,
+      "sum_radii": 2.6358957385818083,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T21:34:41.886416+00:00"
+    },
+    {
+      "index": 1235,
+      "generation": 414,
+      "continuation_generation": 62,
+      "candidate_id": "gen-62-i0-w0-a0-63a8f6aa359bb3c7",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.6359773947544305,
+      "sum_radii": 2.6359773947544305,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T21:37:41.774024+00:00"
+    },
+    {
+      "index": 1236,
+      "generation": 414,
+      "continuation_generation": 62,
+      "candidate_id": "gen-62-i1-w1-a0-16504ea18239410f",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "refine",
+      "timestamp": "2026-05-25T21:37:41.777096+00:00"
+    },
+    {
+      "index": 1237,
+      "generation": 415,
+      "continuation_generation": 63,
+      "candidate_id": "gen-63-i0-w0-a0-3ab601816c60e3ef",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T21:40:30.539217+00:00"
+    },
+    {
+      "index": 1238,
+      "generation": 416,
+      "continuation_generation": 64,
+      "candidate_id": "gen-64-i0-w0-a0-cb0682dc31bc4b70",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T21:43:13.800139+00:00"
+    },
+    {
+      "index": 1239,
+      "generation": 416,
+      "continuation_generation": 64,
+      "candidate_id": "gen-64-i1-w1-a0-94d471feb3fb3279",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.511545924119805,
+      "sum_radii": 2.511545924119805,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T21:43:13.802565+00:00"
+    },
+    {
+      "index": 1240,
+      "generation": 417,
+      "continuation_generation": 65,
+      "candidate_id": "gen-65-i0-w0-a0-f4066034286efaec",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T21:47:00.390696+00:00"
+    },
+    {
+      "index": 1241,
+      "generation": 418,
+      "continuation_generation": 66,
+      "candidate_id": "gen-66-i0-w0-a0-a5951b4e39c0da5a",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.511545924119953,
+      "sum_radii": 2.511545924119953,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T21:49:24.880722+00:00"
+    },
+    {
+      "index": 1242,
+      "generation": 418,
+      "continuation_generation": 66,
+      "candidate_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T21:49:24.883634+00:00"
+    },
+    {
+      "index": 1243,
+      "generation": 419,
+      "continuation_generation": 67,
+      "candidate_id": "gen-67-i0-w0-a0-90252b926dcc931a",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T21:51:47.502856+00:00"
+    },
+    {
+      "index": 1244,
+      "generation": 420,
+      "continuation_generation": 68,
+      "candidate_id": "gen-68-i0-w0-a0-a8e5e7575789334d",
+      "parent_id": "gen-61-i0-w0-a0-6cbf4f15f3cdc9b6",
+      "score": -2.6359773947546574,
+      "sum_radii": 2.6359773947546574,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T21:53:19.389976+00:00"
+    },
+    {
+      "index": 1245,
+      "generation": 420,
+      "continuation_generation": 68,
+      "candidate_id": "gen-68-i1-w1-a0-98f990584314f1de",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T21:53:19.392853+00:00"
+    },
+    {
+      "index": 1246,
+      "generation": 421,
+      "continuation_generation": 69,
+      "candidate_id": "gen-69-i0-w0-a0-b404ca62cac793ee",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.622557250389966,
+      "sum_radii": 2.622557250389966,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T22:19:04.181343+00:00"
+    },
+    {
+      "index": 1247,
+      "generation": 422,
+      "continuation_generation": 70,
+      "candidate_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.6359773947546574,
+      "sum_radii": 2.6359773947546574,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T22:37:09.998043+00:00"
+    },
+    {
+      "index": 1248,
+      "generation": 423,
+      "continuation_generation": 71,
+      "candidate_id": "gen-71-i0-w0-a0-9bff06815f4854a5",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T22:46:06.874477+00:00"
+    },
+    {
+      "index": 1249,
+      "generation": 423,
+      "continuation_generation": 71,
+      "candidate_id": "gen-71-i1-w1-a0-15e0e4199d0b22d8",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T22:46:06.876759+00:00"
+    },
+    {
+      "index": 1250,
+      "generation": 424,
+      "continuation_generation": 72,
+      "candidate_id": "gen-72-i0-w0-a0-da98067092d0ef49",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T22:51:01.141862+00:00"
+    },
+    {
+      "index": 1251,
+      "generation": 425,
+      "continuation_generation": 73,
+      "candidate_id": "gen-73-i0-w0-a0-c2bd512ff428b07c",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.6359773947543648,
+      "sum_radii": 2.6359773947543648,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T22:53:21.223688+00:00"
+    },
+    {
+      "index": 1252,
+      "generation": 426,
+      "continuation_generation": 74,
+      "candidate_id": "gen-74-i0-w0-a0-29aac0af0088ae0b",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T22:55:33.546258+00:00"
+    },
+    {
+      "index": 1253,
+      "generation": 427,
+      "continuation_generation": 75,
+      "candidate_id": "gen-75-i0-w0-a0-a21b8debd084e964",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T22:57:59.742661+00:00"
+    },
+    {
+      "index": 1254,
+      "generation": 428,
+      "continuation_generation": 76,
+      "candidate_id": "gen-76-i0-w0-a0-f0ca910f69224a3e",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T23:00:54.088335+00:00"
+    },
+    {
+      "index": 1255,
+      "generation": 428,
+      "continuation_generation": 76,
+      "candidate_id": "gen-76-i1-w1-a0-f359a01e05dadadb",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-25T23:00:54.091318+00:00"
+    },
+    {
+      "index": 1256,
+      "generation": 429,
+      "continuation_generation": 77,
+      "candidate_id": "gen-77-i0-w0-a0-54f9c41fd399783e",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T23:03:39.723671+00:00"
+    },
+    {
+      "index": 1257,
+      "generation": 429,
+      "continuation_generation": 77,
+      "candidate_id": "gen-77-i1-w1-a0-0084d90359d8f938",
+      "parent_id": "gen-54-i1-w1-a0-3c90a89017e1e47d",
+      "score": -2.6025999999999988e-05,
+      "sum_radii": 2.6025999999999988e-05,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T23:03:39.726129+00:00"
+    },
+    {
+      "index": 1258,
+      "generation": 430,
+      "continuation_generation": 78,
+      "candidate_id": "gen-78-i0-w0-a0-ab384c54cb1e8d8a",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T23:06:02.768166+00:00"
+    },
+    {
+      "index": 1259,
+      "generation": 431,
+      "continuation_generation": 79,
+      "candidate_id": "gen-79-i0-w0-a0-f690326137f5d8c8",
+      "parent_id": "gen-11-i1-w1-a0-32619c2fc831fab2",
+      "score": -2.635977394754387,
+      "sum_radii": 2.635977394754387,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T23:07:43.735656+00:00"
+    },
+    {
+      "index": 1260,
+      "generation": 431,
+      "continuation_generation": 79,
+      "candidate_id": "gen-79-i1-w1-a0-e3047f97f9a217c9",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925513,
+      "sum_radii": 2.3739284850925513,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T23:07:43.737967+00:00"
+    },
+    {
+      "index": 1261,
+      "generation": 432,
+      "continuation_generation": 80,
+      "candidate_id": "gen-80-i0-w0-a0-65cbd022c38f3ba5",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.6359830849039736,
+      "sum_radii": 2.6359830849039736,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T23:11:01.182542+00:00"
+    },
+    {
+      "index": 1262,
+      "generation": 433,
+      "continuation_generation": 81,
+      "candidate_id": "gen-81-i0-w0-a0-347e30956051ca32",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "refine",
+      "timestamp": "2026-05-25T23:20:46.392015+00:00"
+    },
+    {
+      "index": 1263,
+      "generation": 434,
+      "continuation_generation": 82,
+      "candidate_id": "gen-82-i0-w0-a0-2a8d2e1a0fcc86dd",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T23:23:43.442806+00:00"
+    },
+    {
+      "index": 1264,
+      "generation": 435,
+      "continuation_generation": 83,
+      "candidate_id": "gen-83-i0-w0-a0-948e56773375f424",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T23:34:11.385925+00:00"
+    },
+    {
+      "index": 1265,
+      "generation": 435,
+      "continuation_generation": 83,
+      "candidate_id": "gen-83-i1-w1-a0-6dd2ee16516d3c5e",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-25T23:34:11.389128+00:00"
+    },
+    {
+      "index": 1266,
+      "generation": 437,
+      "continuation_generation": 85,
+      "candidate_id": "gen-85-i0-w0-a0-e81570e16d99b172",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -0.7475704733661442,
+      "sum_radii": 0.7475704733661442,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T23:41:15.859896+00:00"
+    },
+    {
+      "index": 1267,
+      "generation": 437,
+      "continuation_generation": 85,
+      "candidate_id": "gen-85-i1-w1-a0-8a109d816d5f1f12",
+      "parent_id": "gen-29-i1-w1-a0-788925b785c6c66e",
+      "score": -2.635977394754261,
+      "sum_radii": 2.635977394754261,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T23:41:15.862498+00:00"
+    },
+    {
+      "index": 1268,
+      "generation": 438,
+      "continuation_generation": 86,
+      "candidate_id": "gen-86-i0-w0-a0-84af7cccbb269a9e",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T23:43:52.575324+00:00"
+    },
+    {
+      "index": 1269,
+      "generation": 438,
+      "continuation_generation": 86,
+      "candidate_id": "gen-86-i1-w1-a0-8cc5a8c6f887b41b",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947543887,
+      "sum_radii": 2.6359773947543887,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T23:43:52.578456+00:00"
+    },
+    {
+      "index": 1270,
+      "generation": 440,
+      "continuation_generation": 88,
+      "candidate_id": "gen-88-i0-w0-a0-2956653b0e573e8d",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-25T23:57:23.872119+00:00"
+    },
+    {
+      "index": 1271,
+      "generation": 441,
+      "continuation_generation": 89,
+      "candidate_id": "gen-89-i0-w0-a0-a7822abf52919bad",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T00:00:37.842679+00:00"
+    },
+    {
+      "index": 1272,
+      "generation": 442,
+      "continuation_generation": 90,
+      "candidate_id": "gen-90-i0-w0-a0-5a2b42fa2d2b09c1",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T00:02:47.508452+00:00"
+    },
+    {
+      "index": 1273,
+      "generation": 443,
+      "continuation_generation": 91,
+      "candidate_id": "gen-91-i0-w0-a0-7cec4d314f21f005",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T00:04:30.896863+00:00"
+    },
+    {
+      "index": 1274,
+      "generation": 443,
+      "continuation_generation": 91,
+      "candidate_id": "gen-91-i1-w1-a0-a260fc985a98fefe",
+      "parent_id": "gen-11-i1-w1-a0-32619c2fc831fab2",
+      "score": -1.3479699840312624,
+      "sum_radii": 1.3479699840312624,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-26T00:04:30.899400+00:00"
+    },
+    {
+      "index": 1275,
+      "generation": 444,
+      "continuation_generation": 92,
+      "candidate_id": "gen-92-i0-w0-a0-3ef0ce0d4bc1e6ed",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T00:06:42.621810+00:00"
+    },
+    {
+      "index": 1276,
+      "generation": 445,
+      "continuation_generation": 93,
+      "candidate_id": "gen-93-i0-w0-a0-877cc84b9953c5b5",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T00:09:18.329593+00:00"
+    },
+    {
+      "index": 1277,
+      "generation": 445,
+      "continuation_generation": 93,
+      "candidate_id": "gen-93-i1-w1-a0-c13d6d4c9dab8989",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T00:09:18.332840+00:00"
+    },
+    {
+      "index": 1278,
+      "generation": 446,
+      "continuation_generation": 94,
+      "candidate_id": "gen-94-i0-w0-a0-35a65ff38ac56a41",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T00:11:49.611629+00:00"
+    },
+    {
+      "index": 1279,
+      "generation": 447,
+      "continuation_generation": 95,
+      "candidate_id": "gen-95-i0-w0-a0-3efad936c995c520",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T00:20:51.592130+00:00"
+    },
+    {
+      "index": 1280,
+      "generation": 447,
+      "continuation_generation": 95,
+      "candidate_id": "gen-95-i1-w1-a0-c411ce26aa1cf195",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947546574,
+      "sum_radii": 2.6359773947546574,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T00:20:51.595383+00:00"
+    },
+    {
+      "index": 1281,
+      "generation": 448,
+      "continuation_generation": 96,
+      "candidate_id": "gen-96-i0-w0-a0-e99ac1d38f5d5d50",
+      "parent_id": "gen-80-i0-w0-a0-65cbd022c38f3ba5",
+      "score": -2.6359830849039736,
+      "sum_radii": 2.6359830849039736,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T00:24:39.984540+00:00"
+    },
+    {
+      "index": 1282,
+      "generation": 449,
+      "continuation_generation": 97,
+      "candidate_id": "gen-97-i0-w0-a0-f185bc753e93f56e",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T00:35:33.528316+00:00"
+    },
+    {
+      "index": 1283,
+      "generation": 449,
+      "continuation_generation": 97,
+      "candidate_id": "gen-97-i1-w1-a0-a9b5e1164a9d08a7",
+      "parent_id": "gen-54-i1-w1-a0-3c90a89017e1e47d",
+      "score": -2.6359773947543683,
+      "sum_radii": 2.6359773947543683,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T00:35:33.530766+00:00"
+    },
+    {
+      "index": 1284,
+      "generation": 450,
+      "continuation_generation": 98,
+      "candidate_id": "gen-98-i0-w0-a0-4cd38c3e4e752a65",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.3691596821257366,
+      "sum_radii": 2.3691596821257366,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T00:44:26.814422+00:00"
+    },
+    {
+      "index": 1285,
+      "generation": 450,
+      "continuation_generation": 98,
+      "candidate_id": "gen-98-i1-w1-a0-c3c6c8dc9ce081c6",
+      "parent_id": "gen-54-i1-w1-a0-3c90a89017e1e47d",
+      "score": -2.6359773947543683,
+      "sum_radii": 2.6359773947543683,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T00:44:26.816863+00:00"
+    },
+    {
+      "index": 1286,
+      "generation": 451,
+      "continuation_generation": 99,
+      "candidate_id": "gen-99-i0-w0-a0-b23eed30ca13e33d",
+      "parent_id": "gen-80-i0-w0-a0-65cbd022c38f3ba5",
+      "score": -2.4675277861043603,
+      "sum_radii": 2.4675277861043603,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-26T00:45:46.702558+00:00"
+    },
+    {
+      "index": 1287,
+      "generation": 451,
+      "continuation_generation": 99,
+      "candidate_id": "gen-99-i1-w1-a0-8dba4bba87199f02",
+      "parent_id": "gen-29-i1-w1-a0-788925b785c6c66e",
+      "score": -2.6359773947543683,
+      "sum_radii": 2.6359773947543683,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-26T00:45:46.705679+00:00"
+    },
+    {
+      "index": 1288,
+      "generation": 452,
+      "continuation_generation": 100,
+      "candidate_id": "gen-100-i0-w0-a0-a60310efc7204187",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T01:03:59.773792+00:00"
+    },
+    {
+      "index": 1289,
+      "generation": 452,
+      "continuation_generation": 100,
+      "candidate_id": "gen-100-i1-w1-a0-8e4cafa4ada51fb0",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947546574,
+      "sum_radii": 2.6359773947546574,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T01:03:59.777046+00:00"
+    },
+    {
+      "index": 1290,
+      "generation": 453,
+      "continuation_generation": 101,
+      "candidate_id": "gen-101-i0-w0-a0-8587a2b62852ade8",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.6149681514698377,
+      "sum_radii": 2.6149681514698377,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T01:06:33.198725+00:00"
+    },
+    {
+      "index": 1291,
+      "generation": 453,
+      "continuation_generation": 101,
+      "candidate_id": "gen-101-i1-w1-a0-23102dae73878f59",
+      "parent_id": "gen-85-i1-w1-a0-8a109d816d5f1f12",
+      "score": -2.6040092418424816,
+      "sum_radii": 2.6040092418424816,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T01:06:33.202007+00:00"
+    },
+    {
+      "index": 1292,
+      "generation": 454,
+      "continuation_generation": 102,
+      "candidate_id": "gen-102-i0-w0-a0-6233b7e6c3f1135f",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T01:09:03.571053+00:00"
+    },
+    {
+      "index": 1293,
+      "generation": 455,
+      "continuation_generation": 103,
+      "candidate_id": "gen-103-i0-w0-a0-649832df1abea027",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T01:11:23.556332+00:00"
+    },
+    {
+      "index": 1294,
+      "generation": 456,
+      "continuation_generation": 104,
+      "candidate_id": "gen-104-i0-w0-a0-053131632bf29444",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T01:12:51.641970+00:00"
+    },
+    {
+      "index": 1295,
+      "generation": 456,
+      "continuation_generation": 104,
+      "candidate_id": "gen-104-i1-w1-a0-95d87c125f49b1f0",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947543683,
+      "sum_radii": 2.6359773947543683,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T01:12:51.645274+00:00"
+    },
+    {
+      "index": 1296,
+      "generation": 457,
+      "continuation_generation": 105,
+      "candidate_id": "gen-105-i0-w0-a0-eca98c00aaf4762a",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.6355417111018054,
+      "sum_radii": 2.6355417111018054,
+      "run_label": "seeded-continuation",
+      "operator": "refine",
+      "timestamp": "2026-05-26T01:15:44.920910+00:00"
+    },
+    {
+      "index": 1297,
+      "generation": 458,
+      "continuation_generation": 106,
+      "candidate_id": "gen-106-i0-w0-a0-d6368efe074fb239",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "refine",
+      "timestamp": "2026-05-26T01:18:12.428099+00:00"
+    },
+    {
+      "index": 1298,
+      "generation": 459,
+      "continuation_generation": 107,
+      "candidate_id": "gen-107-i0-w0-a0-4b95402f6c883115",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.6359773947546574,
+      "sum_radii": 2.6359773947546574,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T01:19:57.296255+00:00"
+    },
+    {
+      "index": 1299,
+      "generation": 459,
+      "continuation_generation": 107,
+      "candidate_id": "gen-107-i1-w1-a0-cbdfac088ea20a89",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.346677160145478,
+      "sum_radii": 2.346677160145478,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T01:19:57.298874+00:00"
+    },
+    {
+      "index": 1300,
+      "generation": 460,
+      "continuation_generation": 108,
+      "candidate_id": "gen-108-i0-w0-a0-1ac705b41d9d801f",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T01:21:44.002367+00:00"
+    },
+    {
+      "index": 1301,
+      "generation": 460,
+      "continuation_generation": 108,
+      "candidate_id": "gen-108-i1-w1-a0-ef52c1d546048de9",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.5149059163286287,
+      "sum_radii": 2.5149059163286287,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T01:21:44.004846+00:00"
+    },
+    {
+      "index": 1302,
+      "generation": 461,
+      "continuation_generation": 109,
+      "candidate_id": "gen-109-i0-w0-a0-53fcf80a02b5d2d0",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635977394754433,
+      "sum_radii": 2.635977394754433,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T01:22:58.632103+00:00"
+    },
+    {
+      "index": 1303,
+      "generation": 461,
+      "continuation_generation": 109,
+      "candidate_id": "gen-109-i1-w1-a0-03747d81684fb7e5",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947543887,
+      "sum_radii": 2.6359773947543887,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T01:22:58.635199+00:00"
+    },
+    {
+      "index": 1304,
+      "generation": 462,
+      "continuation_generation": 110,
+      "candidate_id": "gen-110-i0-w0-a0-40363f1c7c799c5b",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "refine",
+      "timestamp": "2026-05-26T01:26:24.770482+00:00"
+    },
+    {
+      "index": 1305,
+      "generation": 463,
+      "continuation_generation": 111,
+      "candidate_id": "gen-111-i0-w0-a0-dfff5b3d79fb5907",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.6359773947546574,
+      "sum_radii": 2.6359773947546574,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T01:27:53.877549+00:00"
+    },
+    {
+      "index": 1306,
+      "generation": 463,
+      "continuation_generation": 111,
+      "candidate_id": "gen-111-i1-w1-a0-6c24d51383e096c7",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T01:27:53.880599+00:00"
+    },
+    {
+      "index": 1307,
+      "generation": 464,
+      "continuation_generation": 112,
+      "candidate_id": "gen-112-i0-w0-a0-11c76d35f623b87c",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.6359773947546574,
+      "sum_radii": 2.6359773947546574,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T01:29:58.067356+00:00"
+    },
+    {
+      "index": 1308,
+      "generation": 465,
+      "continuation_generation": 113,
+      "candidate_id": "gen-113-i0-w0-a0-666cc4f392a6ed07",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T01:39:47.626642+00:00"
+    },
+    {
+      "index": 1309,
+      "generation": 466,
+      "continuation_generation": 114,
+      "candidate_id": "gen-114-i0-w0-a0-e7b341558a2580eb",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635977394754433,
+      "sum_radii": 2.635977394754433,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T01:41:16.259092+00:00"
+    },
+    {
+      "index": 1310,
+      "generation": 466,
+      "continuation_generation": 114,
+      "candidate_id": "gen-114-i1-w1-a0-b537fbc0409cba42",
+      "parent_id": "gen-29-i1-w1-a0-788925b785c6c66e",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T01:41:16.262306+00:00"
+    },
+    {
+      "index": 1311,
+      "generation": 467,
+      "continuation_generation": 115,
+      "candidate_id": "gen-115-i0-w0-a0-dcdaded009998e6a",
+      "parent_id": "gen-80-i0-w0-a0-65cbd022c38f3ba5",
+      "score": -2.6359830849039736,
+      "sum_radii": 2.6359830849039736,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T01:44:22.137672+00:00"
+    },
+    {
+      "index": 1312,
+      "generation": 467,
+      "continuation_generation": 115,
+      "candidate_id": "gen-115-i1-w1-a0-2ff87dee3629095c",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T01:44:22.141076+00:00"
+    },
+    {
+      "index": 1313,
+      "generation": 468,
+      "continuation_generation": 116,
+      "candidate_id": "gen-116-i0-w0-a0-3bab8ba62a6cec89",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T01:49:23.410076+00:00"
+    },
+    {
+      "index": 1314,
+      "generation": 468,
+      "continuation_generation": 116,
+      "candidate_id": "gen-116-i1-w1-a0-2e9f9775765e25db",
+      "parent_id": "gen-11-i1-w1-a0-32619c2fc831fab2",
+      "score": -2.6025999999999994e-05,
+      "sum_radii": 2.6025999999999994e-05,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-26T01:49:23.413685+00:00"
+    },
+    {
+      "index": 1315,
+      "generation": 469,
+      "continuation_generation": 117,
+      "candidate_id": "gen-117-i0-w0-a0-146df911d771d412",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-26T01:52:50.942413+00:00"
+    },
+    {
+      "index": 1316,
+      "generation": 470,
+      "continuation_generation": 118,
+      "candidate_id": "gen-118-i0-w0-a0-3f73f05de7aefbae",
+      "parent_id": "gen-4-i0-w0-a0-ad230e99299fefba",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-26T01:54:37.417243+00:00"
+    },
+    {
+      "index": 1317,
+      "generation": 470,
+      "continuation_generation": 118,
+      "candidate_id": "gen-118-i1-w1-a0-de7be2fc4bcc8497",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6040092418424816,
+      "sum_radii": 2.6040092418424816,
+      "run_label": "seeded-continuation",
+      "operator": "crossover",
+      "timestamp": "2026-05-26T01:54:37.420441+00:00"
+    },
+    {
+      "index": 1318,
+      "generation": 471,
+      "continuation_generation": 119,
+      "candidate_id": "gen-119-i0-w0-a0-a55913e3e499a679",
+      "parent_id": "gen-80-i0-w0-a0-65cbd022c38f3ba5",
+      "score": -1.6396406309994176,
+      "sum_radii": 1.6396406309994176,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-26T01:56:06.814144+00:00"
+    },
+    {
+      "index": 1319,
+      "generation": 471,
+      "continuation_generation": 119,
+      "candidate_id": "gen-119-i1-w1-a0-cbdd3ba1835131eb",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -1.6034343583229476,
+      "sum_radii": 1.6034343583229476,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-26T01:56:06.817425+00:00"
+    },
+    {
+      "index": 1320,
+      "generation": 472,
+      "continuation_generation": 120,
+      "candidate_id": "gen-120-i0-w0-a0-866cc923fa1c4309",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-26T02:06:36.530207+00:00"
+    },
+    {
+      "index": 1321,
+      "generation": 473,
+      "continuation_generation": 121,
+      "candidate_id": "gen-121-i0-w0-a0-4c6489e3a167b21c",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-26T02:08:13.666153+00:00"
+    },
+    {
+      "index": 1322,
+      "generation": 473,
+      "continuation_generation": 121,
+      "candidate_id": "gen-121-i1-w1-a0-5afd7a06f9ed53bd",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947546574,
+      "sum_radii": 2.6359773947546574,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-26T02:08:13.669275+00:00"
+    },
+    {
+      "index": 1323,
+      "generation": 474,
+      "continuation_generation": 122,
+      "candidate_id": "gen-122-i0-w0-a0-258645a95476c006",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-26T02:17:26.395216+00:00"
+    },
+    {
+      "index": 1324,
+      "generation": 474,
+      "continuation_generation": 122,
+      "candidate_id": "gen-122-i1-w1-a0-172d26b8e1ed2037",
+      "parent_id": "gen-85-i1-w1-a0-8a109d816d5f1f12",
+      "score": -2.635977394754261,
+      "sum_radii": 2.635977394754261,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-26T02:17:26.397815+00:00"
+    },
+    {
+      "index": 1325,
+      "generation": 475,
+      "continuation_generation": 123,
+      "candidate_id": "gen-123-i1-w1-a0-f8bea3a5eb843c81",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.635977394754394,
+      "sum_radii": 2.635977394754394,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T02:19:37.199013+00:00"
+    },
+    {
+      "index": 1326,
+      "generation": 476,
+      "continuation_generation": 124,
+      "candidate_id": "gen-124-i0-w0-a0-4775b7b41453004d",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T02:28:56.243120+00:00"
+    },
+    {
+      "index": 1327,
+      "generation": 476,
+      "continuation_generation": 124,
+      "candidate_id": "gen-124-i1-w1-a0-e068f25d248d5621",
+      "parent_id": "gen-101-i1-w1-a0-23102dae73878f59",
+      "score": -2.6040092418424816,
+      "sum_radii": 2.6040092418424816,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T02:28:56.245698+00:00"
+    },
+    {
+      "index": 1328,
+      "generation": 477,
+      "continuation_generation": 125,
+      "candidate_id": "gen-125-i1-w1-a0-d155070f61f11f79",
+      "parent_id": "gen-29-i1-w1-a0-788925b785c6c66e",
+      "score": -2.5785146298024135,
+      "sum_radii": 2.5785146298024135,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T02:32:00.631876+00:00"
+    },
+    {
+      "index": 1329,
+      "generation": 478,
+      "continuation_generation": 126,
+      "candidate_id": "gen-126-i0-w0-a0-4e1a1c1168d44675",
+      "parent_id": "gen-109-i0-w0-a0-53fcf80a02b5d2d0",
+      "score": -1.735459415460184,
+      "sum_radii": 1.735459415460184,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T02:34:19.477007+00:00"
+    },
+    {
+      "index": 1330,
+      "generation": 478,
+      "continuation_generation": 126,
+      "candidate_id": "gen-126-i1-w1-a0-41b7855b91d7ceb0",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.635286372688043,
+      "sum_radii": 2.635286372688043,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T02:34:19.480731+00:00"
+    },
+    {
+      "index": 1331,
+      "generation": 479,
+      "continuation_generation": 127,
+      "candidate_id": "gen-127-i0-w0-a0-54b6b16050905c4e",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.6358957385818083,
+      "sum_radii": 2.6358957385818083,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T02:37:45.394738+00:00"
+    },
+    {
+      "index": 1332,
+      "generation": 480,
+      "continuation_generation": 128,
+      "candidate_id": "gen-128-i0-w0-a0-0b856fc07fcf7648",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.6359773947546574,
+      "sum_radii": 2.6359773947546574,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T02:47:22.291749+00:00"
+    },
+    {
+      "index": 1333,
+      "generation": 480,
+      "continuation_generation": 128,
+      "candidate_id": "gen-128-i1-w1-a0-95ddc001df6f1f8b",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T02:47:22.295159+00:00"
+    },
+    {
+      "index": 1334,
+      "generation": 482,
+      "continuation_generation": 130,
+      "candidate_id": "gen-130-i0-w0-a0-c1f4c1a61fa4d1ec",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T02:51:53.497019+00:00"
+    },
+    {
+      "index": 1335,
+      "generation": 482,
+      "continuation_generation": 130,
+      "candidate_id": "gen-130-i1-w1-a0-d3e293845e2afcd4",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -1.6856854249492381,
+      "sum_radii": 1.6856854249492381,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T02:51:53.500453+00:00"
+    },
+    {
+      "index": 1336,
+      "generation": 483,
+      "continuation_generation": 131,
+      "candidate_id": "gen-131-i0-w0-a0-1b34aa65187bac53",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.6359830849176182,
+      "sum_radii": 2.6359830849176182,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T03:01:30.309021+00:00"
+    },
+    {
+      "index": 1337,
+      "generation": 483,
+      "continuation_generation": 131,
+      "candidate_id": "gen-131-i1-w1-a0-bce2f5089b25597e",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947543683,
+      "sum_radii": 2.6359773947543683,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T03:01:30.312762+00:00"
+    },
+    {
+      "index": 1338,
+      "generation": 484,
+      "continuation_generation": 132,
+      "candidate_id": "gen-132-i0-w0-a0-912c967113f9a3ac",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T03:06:52.068233+00:00"
+    },
+    {
+      "index": 1339,
+      "generation": 484,
+      "continuation_generation": 132,
+      "candidate_id": "gen-132-i1-w1-a0-13b7bd72f37a8450",
+      "parent_id": "gen-29-i1-w1-a0-788925b785c6c66e",
+      "score": -2.6065264295290054,
+      "sum_radii": 2.6065264295290054,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T03:06:52.072119+00:00"
+    },
+    {
+      "index": 1340,
+      "generation": 485,
+      "continuation_generation": 133,
+      "candidate_id": "gen-133-i0-w0-a0-316cf509366e082b",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T03:08:08.190099+00:00"
+    },
+    {
+      "index": 1341,
+      "generation": 485,
+      "continuation_generation": 133,
+      "candidate_id": "gen-133-i1-w1-a0-0a230f274bfde81c",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T03:08:08.193542+00:00"
+    },
+    {
+      "index": 1342,
+      "generation": 486,
+      "continuation_generation": 134,
+      "candidate_id": "gen-134-i0-w0-a0-718cb03fe8b84053",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T03:12:01.881270+00:00"
+    },
+    {
+      "index": 1343,
+      "generation": 487,
+      "continuation_generation": 135,
+      "candidate_id": "gen-135-i0-w0-a0-5936b5adf2b9b01b",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T03:13:36.071772+00:00"
+    },
+    {
+      "index": 1344,
+      "generation": 487,
+      "continuation_generation": 135,
+      "candidate_id": "gen-135-i1-w1-a0-3a5962d5e0a42540",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T03:13:36.075277+00:00"
+    },
+    {
+      "index": 1345,
+      "generation": 488,
+      "continuation_generation": 136,
+      "candidate_id": "gen-136-i0-w0-a0-211aa7df57d06cfe",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T03:17:03.252411+00:00"
+    },
+    {
+      "index": 1346,
+      "generation": 489,
+      "continuation_generation": 137,
+      "candidate_id": "gen-137-i0-w0-a0-956616768c72edb5",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.621760872747679,
+      "sum_radii": 2.621760872747679,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T03:36:18.119546+00:00"
+    },
+    {
+      "index": 1347,
+      "generation": 490,
+      "continuation_generation": 138,
+      "candidate_id": "gen-138-i0-w0-a0-dd09e64b9edcd8dd",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T03:38:04.639713+00:00"
+    },
+    {
+      "index": 1348,
+      "generation": 490,
+      "continuation_generation": 138,
+      "candidate_id": "gen-138-i1-w1-a0-37c18e91d4632dbc",
+      "parent_id": "gen-29-i1-w1-a0-788925b785c6c66e",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T03:38:04.643248+00:00"
+    },
+    {
+      "index": 1349,
+      "generation": 491,
+      "continuation_generation": 139,
+      "candidate_id": "gen-139-i1-w1-a0-bd6e3395a4321be4",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.295417501176888,
+      "sum_radii": 2.295417501176888,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T03:40:13.928957+00:00"
+    },
+    {
+      "index": 1350,
+      "generation": 492,
+      "continuation_generation": 140,
+      "candidate_id": "gen-140-i0-w0-a0-4c2bdcf0c80d945e",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.6354501992754784,
+      "sum_radii": 2.6354501992754784,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T03:42:52.987560+00:00"
+    },
+    {
+      "index": 1351,
+      "generation": 493,
+      "continuation_generation": 141,
+      "candidate_id": "gen-141-i0-w0-a0-930efbb38cf0ac07",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T03:44:35.306737+00:00"
+    },
+    {
+      "index": 1352,
+      "generation": 493,
+      "continuation_generation": 141,
+      "candidate_id": "gen-141-i1-w1-a0-0c60556539a58258",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.635977394754394,
+      "sum_radii": 2.635977394754394,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T03:44:35.310251+00:00"
+    },
+    {
+      "index": 1353,
+      "generation": 494,
+      "continuation_generation": 142,
+      "candidate_id": "gen-142-i0-w0-a0-4ecfb79af7b242f7",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.6359773947546574,
+      "sum_radii": 2.6359773947546574,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T03:46:47.322148+00:00"
+    },
+    {
+      "index": 1354,
+      "generation": 495,
+      "continuation_generation": 143,
+      "candidate_id": "gen-143-i0-w0-a0-ea550766b469e2b2",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T03:49:23.503087+00:00"
+    },
+    {
+      "index": 1355,
+      "generation": 495,
+      "continuation_generation": 143,
+      "candidate_id": "gen-143-i1-w1-a0-75ac05d20abb1638",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947543887,
+      "sum_radii": 2.6359773947543887,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T03:49:23.506750+00:00"
+    },
+    {
+      "index": 1356,
+      "generation": 496,
+      "continuation_generation": 144,
+      "candidate_id": "gen-144-i0-w0-a0-be715cf3f5346c2b",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.571775893344522,
+      "sum_radii": 2.571775893344522,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T03:52:30.585269+00:00"
+    },
+    {
+      "index": 1357,
+      "generation": 496,
+      "continuation_generation": 144,
+      "candidate_id": "gen-144-i1-w1-a0-c3a436ba4368a1f8",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T03:52:30.588922+00:00"
+    },
+    {
+      "index": 1358,
+      "generation": 497,
+      "continuation_generation": 145,
+      "candidate_id": "gen-145-i0-w0-a0-6e464830361d5cb2",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T04:01:49.535491+00:00"
+    },
+    {
+      "index": 1359,
+      "generation": 497,
+      "continuation_generation": 145,
+      "candidate_id": "gen-145-i1-w1-a0-80e7e6310e75f432",
+      "parent_id": "gen-85-i1-w1-a0-8a109d816d5f1f12",
+      "score": -2.635977394754261,
+      "sum_radii": 2.635977394754261,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T04:01:49.538376+00:00"
+    },
+    {
+      "index": 1360,
+      "generation": 498,
+      "continuation_generation": 146,
+      "candidate_id": "gen-146-i0-w0-a0-f20bd8b4c94e7a30",
+      "parent_id": "gen-109-i0-w0-a0-53fcf80a02b5d2d0",
+      "score": -2.548616189895464,
+      "sum_radii": 2.548616189895464,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T04:04:38.405565+00:00"
+    },
+    {
+      "index": 1361,
+      "generation": 499,
+      "continuation_generation": 147,
+      "candidate_id": "gen-147-i0-w0-a0-fbaabc254aa6ec30",
+      "parent_id": "gen-131-i0-w0-a0-1b34aa65187bac53",
+      "score": -2.571342195386294,
+      "sum_radii": 2.571342195386294,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T04:06:03.130110+00:00"
+    },
+    {
+      "index": 1362,
+      "generation": 499,
+      "continuation_generation": 147,
+      "candidate_id": "gen-147-i1-w1-a0-5d40827ec0d66c36",
+      "parent_id": "gen-108-i1-w1-a0-ef52c1d546048de9",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T04:06:03.133772+00:00"
+    },
+    {
+      "index": 1363,
+      "generation": 500,
+      "continuation_generation": 148,
+      "candidate_id": "gen-148-i0-w0-a0-23a3c06a4b8acc5b",
+      "parent_id": "gen-131-i0-w0-a0-1b34aa65187bac53",
+      "score": -2.6359830849176182,
+      "sum_radii": 2.6359830849176182,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-26T04:15:28.424883+00:00"
+    },
+    {
+      "index": 1364,
+      "generation": 500,
+      "continuation_generation": 148,
+      "candidate_id": "gen-148-i1-w1-a0-48065d2725a341d7",
+      "parent_id": "gen-85-i1-w1-a0-8a109d816d5f1f12",
+      "score": -2.635977394754261,
+      "sum_radii": 2.635977394754261,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T04:15:28.427824+00:00"
+    },
+    {
+      "index": 1365,
+      "generation": 501,
+      "continuation_generation": 149,
+      "candidate_id": "gen-149-i0-w0-a0-13638b31b4003f69",
+      "parent_id": "gen-131-i0-w0-a0-1b34aa65187bac53",
+      "score": -2.635977394754804,
+      "sum_radii": 2.635977394754804,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T04:17:11.449984+00:00"
+    },
+    {
+      "index": 1366,
+      "generation": 501,
+      "continuation_generation": 149,
+      "candidate_id": "gen-149-i1-w1-a0-18c0a6be8fdde468",
+      "parent_id": "gen-11-i1-w1-a0-32619c2fc831fab2",
+      "score": -2.6359773947543896,
+      "sum_radii": 2.6359773947543896,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T04:17:11.452946+00:00"
+    },
+    {
+      "index": 1367,
+      "generation": 502,
+      "continuation_generation": 150,
+      "candidate_id": "gen-150-i0-w0-a0-5b9e572f1320f3af",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.5826219850590113,
+      "sum_radii": 2.5826219850590113,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T04:18:48.412517+00:00"
+    },
+    {
+      "index": 1368,
+      "generation": 502,
+      "continuation_generation": 150,
+      "candidate_id": "gen-150-i1-w1-a0-67dd5fc98539d0ce",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.635977394754574,
+      "sum_radii": 2.635977394754574,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T04:18:48.415986+00:00"
+    },
+    {
+      "index": 1369,
+      "generation": 503,
+      "continuation_generation": 151,
+      "candidate_id": "gen-151-i0-w0-a0-745fdc6ffa6533a3",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.596344639724722,
+      "sum_radii": 2.596344639724722,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T04:21:08.005795+00:00"
+    },
+    {
+      "index": 1370,
+      "generation": 505,
+      "continuation_generation": 153,
+      "candidate_id": "gen-153-i0-w0-a0-ab211061923a05bb",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.521591843060828,
+      "sum_radii": 2.521591843060828,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T04:26:57.812972+00:00"
+    },
+    {
+      "index": 1371,
+      "generation": 506,
+      "continuation_generation": 154,
+      "candidate_id": "gen-154-i0-w0-a0-2ce04c5bad8acf97",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.535642713886618,
+      "sum_radii": 2.535642713886618,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T04:28:17.345110+00:00"
+    },
+    {
+      "index": 1372,
+      "generation": 506,
+      "continuation_generation": 154,
+      "candidate_id": "gen-154-i1-w1-a0-13646e74d508a4a7",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-26T04:28:17.348644+00:00"
+    },
+    {
+      "index": 1373,
+      "generation": 507,
+      "continuation_generation": 155,
+      "candidate_id": "gen-155-i0-w0-a0-158baf60dd3a4fa8",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T04:30:01.270277+00:00"
+    },
+    {
+      "index": 1374,
+      "generation": 507,
+      "continuation_generation": 155,
+      "candidate_id": "gen-155-i1-w1-a0-4b692eed3c8dabf9",
+      "parent_id": "gen-126-i1-w1-a0-41b7855b91d7ceb0",
+      "score": -2.5165483176925285,
+      "sum_radii": 2.5165483176925285,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T04:30:01.273402+00:00"
+    },
+    {
+      "index": 1375,
+      "generation": 508,
+      "continuation_generation": 156,
+      "candidate_id": "gen-156-i0-w0-a0-795925fd3b5ecb53",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T04:32:41.602864+00:00"
+    },
+    {
+      "index": 1376,
+      "generation": 509,
+      "continuation_generation": 157,
+      "candidate_id": "gen-157-i0-w0-a0-fe6c7cb2f2cd06c1",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084917666,
+      "sum_radii": 2.635983084917666,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T04:35:13.017704+00:00"
+    },
+    {
+      "index": 1377,
+      "generation": 510,
+      "continuation_generation": 158,
+      "candidate_id": "gen-158-i0-w0-a0-d66434b3e3137aff",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T04:36:43.201119+00:00"
+    },
+    {
+      "index": 1378,
+      "generation": 510,
+      "continuation_generation": 158,
+      "candidate_id": "gen-158-i1-w1-a0-1d09aed676f652c6",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359773947546574,
+      "sum_radii": 2.6359773947546574,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T04:36:43.204698+00:00"
+    },
+    {
+      "index": 1379,
+      "generation": 511,
+      "continuation_generation": 159,
+      "candidate_id": "gen-159-i0-w0-a0-9445bf1bcc4867d4",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.544444371919746,
+      "sum_radii": 2.544444371919746,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T04:39:51.619224+00:00"
+    },
+    {
+      "index": 1380,
+      "generation": 512,
+      "continuation_generation": 160,
+      "candidate_id": "gen-160-i1-w1-a0-5889788f74bbec60",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.635977394754327,
+      "sum_radii": 2.635977394754327,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T04:42:51.239943+00:00"
+    },
+    {
+      "index": 1381,
+      "generation": 513,
+      "continuation_generation": 161,
+      "candidate_id": "gen-161-i0-w0-a0-cbda8fc052dd55f7",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.374630179326722,
+      "sum_radii": 2.374630179326722,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T04:45:29.464086+00:00"
+    },
+    {
+      "index": 1382,
+      "generation": 514,
+      "continuation_generation": 162,
+      "candidate_id": "gen-162-i0-w0-a0-ed84c77ba0727de3",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T04:47:12.646871+00:00"
+    },
+    {
+      "index": 1383,
+      "generation": 514,
+      "continuation_generation": 162,
+      "candidate_id": "gen-162-i1-w1-a0-6a637720b54dcbd4",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.635977394754424,
+      "sum_radii": 2.635977394754424,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T04:47:12.650494+00:00"
+    },
+    {
+      "index": 1384,
+      "generation": 516,
+      "continuation_generation": 164,
+      "candidate_id": "gen-164-i0-w0-a0-420fac4d0aaf20bb",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.6354501992756787,
+      "sum_radii": 2.6354501992756787,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T05:01:42.196050+00:00"
+    },
+    {
+      "index": 1385,
+      "generation": 516,
+      "continuation_generation": 164,
+      "candidate_id": "gen-164-i1-w1-a0-85e3f53b953efc21",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.514894859321012,
+      "sum_radii": 2.514894859321012,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T05:01:42.199716+00:00"
+    },
+    {
+      "index": 1386,
+      "generation": 517,
+      "continuation_generation": 165,
+      "candidate_id": "gen-165-i0-w0-a0-95160fa08ed58f34",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.6359773947546574,
+      "sum_radii": 2.6359773947546574,
+      "run_label": "seeded-continuation",
+      "operator": "refine",
+      "timestamp": "2026-05-26T05:04:06.584923+00:00"
+    },
+    {
+      "index": 1387,
+      "generation": 518,
+      "continuation_generation": 166,
+      "candidate_id": "gen-166-i0-w0-a0-c145aec49173bbf8",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.6359773947546574,
+      "sum_radii": 2.6359773947546574,
+      "run_label": "seeded-continuation",
+      "operator": "refine",
+      "timestamp": "2026-05-26T05:06:29.912987+00:00"
+    },
+    {
+      "index": 1388,
+      "generation": 518,
+      "continuation_generation": 166,
+      "candidate_id": "gen-166-i1-w1-a0-a2174f8712e00dee",
+      "parent_id": "gen-85-i1-w1-a0-8a109d816d5f1f12",
+      "score": -2.5421115912951544,
+      "sum_radii": 2.5421115912951544,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T05:06:29.916082+00:00"
+    },
+    {
+      "index": 1389,
+      "generation": 519,
+      "continuation_generation": 167,
+      "candidate_id": "gen-167-i0-w0-a0-656d9d59eb30e8a9",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "refine",
+      "timestamp": "2026-05-26T05:10:00.919362+00:00"
+    },
+    {
+      "index": 1390,
+      "generation": 520,
+      "continuation_generation": 168,
+      "candidate_id": "gen-168-i0-w0-a0-25e7c566c9e69a8b",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T05:13:29.368204+00:00"
+    },
+    {
+      "index": 1391,
+      "generation": 521,
+      "continuation_generation": 169,
+      "candidate_id": "gen-169-i0-w0-a0-40c1ce3c6515c3cc",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.5690658172189207,
+      "sum_radii": 2.5690658172189207,
+      "run_label": "seeded-continuation",
+      "operator": "refine",
+      "timestamp": "2026-05-26T05:15:35.137781+00:00"
+    },
+    {
+      "index": 1392,
+      "generation": 521,
+      "continuation_generation": 169,
+      "candidate_id": "gen-169-i1-w1-a0-336dd8c8824f77b5",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T05:15:35.141326+00:00"
+    },
+    {
+      "index": 1393,
+      "generation": 522,
+      "continuation_generation": 170,
+      "candidate_id": "gen-170-i0-w0-a0-ad571690950a27e7",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T05:18:04.287902+00:00"
+    },
+    {
+      "index": 1394,
+      "generation": 523,
+      "continuation_generation": 171,
+      "candidate_id": "gen-171-i0-w0-a0-0653ac08b6b84061",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T05:19:43.476098+00:00"
+    },
+    {
+      "index": 1395,
+      "generation": 523,
+      "continuation_generation": 171,
+      "candidate_id": "gen-171-i1-w1-a0-76e4b5df63c3c743",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3344781461333612,
+      "sum_radii": 2.3344781461333612,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T05:19:43.479797+00:00"
+    },
+    {
+      "index": 1396,
+      "generation": 524,
+      "continuation_generation": 172,
+      "candidate_id": "gen-172-i0-w0-a0-c3ea26ab121efd38",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T05:28:58.188999+00:00"
+    },
+    {
+      "index": 1397,
+      "generation": 524,
+      "continuation_generation": 172,
+      "candidate_id": "gen-172-i1-w1-a0-2fcbe2576ccecc20",
+      "parent_id": "gen-29-i1-w1-a0-788925b785c6c66e",
+      "score": -2.6359773947546574,
+      "sum_radii": 2.6359773947546574,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T05:28:58.192732+00:00"
+    },
+    {
+      "index": 1398,
+      "generation": 525,
+      "continuation_generation": 173,
+      "candidate_id": "gen-173-i0-w0-a0-b5ff7ef2eea99ee5",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T06:02:03.190963+00:00"
+    },
+    {
+      "index": 1399,
+      "generation": 526,
+      "continuation_generation": 174,
+      "candidate_id": "gen-174-i0-w0-a0-5cce07c16285c6bc",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T06:03:48.806649+00:00"
+    },
+    {
+      "index": 1400,
+      "generation": 526,
+      "continuation_generation": 174,
+      "candidate_id": "gen-174-i1-w1-a0-65308c5e5f5886d8",
+      "parent_id": "gen-160-i1-w1-a0-5889788f74bbec60",
+      "score": -2.635977394754327,
+      "sum_radii": 2.635977394754327,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T06:03:48.810450+00:00"
+    },
+    {
+      "index": 1401,
+      "generation": 527,
+      "continuation_generation": 175,
+      "candidate_id": "gen-175-i0-w0-a0-edc9200cbc160d08",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T06:07:45.205731+00:00"
+    },
+    {
+      "index": 1402,
+      "generation": 528,
+      "continuation_generation": 176,
+      "candidate_id": "gen-176-i0-w0-a0-fd4764799c755583",
+      "parent_id": "gen-80-i0-w0-a0-65cbd022c38f3ba5",
+      "score": -2.6359773947546574,
+      "sum_radii": 2.6359773947546574,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T06:16:52.483197+00:00"
+    },
+    {
+      "index": 1403,
+      "generation": 528,
+      "continuation_generation": 176,
+      "candidate_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+      "parent_id": "gen-160-i1-w1-a0-5889788f74bbec60",
+      "score": -2.635977394754327,
+      "sum_radii": 2.635977394754327,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T06:16:52.486092+00:00"
+    },
+    {
+      "index": 1404,
+      "generation": 529,
+      "continuation_generation": 177,
+      "candidate_id": "gen-177-i0-w0-a0-11a87a570d6202ac",
+      "parent_id": "gen-80-i0-w0-a0-65cbd022c38f3ba5",
+      "score": -2.593476395946547,
+      "sum_radii": 2.593476395946547,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T06:18:26.584267+00:00"
+    },
+    {
+      "index": 1405,
+      "generation": 529,
+      "continuation_generation": 177,
+      "candidate_id": "gen-177-i1-w1-a0-47200a64493a24d6",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -1.0070201568426937,
+      "sum_radii": 1.0070201568426937,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T06:18:26.587901+00:00"
+    },
+    {
+      "index": 1406,
+      "generation": 530,
+      "continuation_generation": 178,
+      "candidate_id": "gen-178-i0-w0-a0-ed2ab7139ec290b9",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.6359773942279685,
+      "sum_radii": 2.6359773942279685,
+      "run_label": "seeded-continuation",
+      "operator": "simplify",
+      "timestamp": "2026-05-26T06:45:19.444358+00:00"
+    },
+    {
+      "index": 1407,
+      "generation": 531,
+      "continuation_generation": 179,
+      "candidate_id": "gen-179-i0-w0-a0-2e1bf26fc3dc3ff1",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T06:47:54.539997+00:00"
+    },
+    {
+      "index": 1408,
+      "generation": 531,
+      "continuation_generation": 179,
+      "candidate_id": "gen-179-i1-w1-a0-3977ac799842be93",
+      "parent_id": "gen-160-i1-w1-a0-5889788f74bbec60",
+      "score": -2.6359773947546574,
+      "sum_radii": 2.6359773947546574,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T06:47:54.543644+00:00"
+    },
+    {
+      "index": 1409,
+      "generation": 532,
+      "continuation_generation": 180,
+      "candidate_id": "gen-180-i0-w0-a0-4b362049ccb24097",
+      "parent_id": "gen-80-i0-w0-a0-65cbd022c38f3ba5",
+      "score": -2.2082048052408467,
+      "sum_radii": 2.2082048052408467,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T06:51:25.774689+00:00"
+    },
+    {
+      "index": 1410,
+      "generation": 532,
+      "continuation_generation": 180,
+      "candidate_id": "gen-180-i1-w1-a0-0ceb46b696202fed",
+      "parent_id": "gen-101-i1-w1-a0-23102dae73878f59",
+      "score": -2.6359773947543723,
+      "sum_radii": 2.6359773947543723,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T06:51:25.778645+00:00"
+    },
+    {
+      "index": 1411,
+      "generation": 533,
+      "continuation_generation": 181,
+      "candidate_id": "gen-181-i0-w0-a0-f775e8a22184cd37",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635977394754261,
+      "sum_radii": 2.635977394754261,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T06:53:01.005867+00:00"
+    },
+    {
+      "index": 1412,
+      "generation": 533,
+      "continuation_generation": 181,
+      "candidate_id": "gen-181-i1-w1-a0-6975216d45ec8bb2",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.635977394754392,
+      "sum_radii": 2.635977394754392,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T06:53:01.009332+00:00"
+    },
+    {
+      "index": 1413,
+      "generation": 534,
+      "continuation_generation": 182,
+      "candidate_id": "gen-182-i0-w0-a0-ce4327da6b9b0197",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "refine",
+      "timestamp": "2026-05-26T06:55:28.043947+00:00"
+    },
+    {
+      "index": 1414,
+      "generation": 535,
+      "continuation_generation": 183,
+      "candidate_id": "gen-183-i0-w0-a0-b7331924425b7673",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T06:58:58.232978+00:00"
+    },
+    {
+      "index": 1415,
+      "generation": 536,
+      "continuation_generation": 184,
+      "candidate_id": "gen-184-i0-w0-a0-03c5b8e028017aba",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T07:02:06.578546+00:00"
+    },
+    {
+      "index": 1416,
+      "generation": 536,
+      "continuation_generation": 184,
+      "candidate_id": "gen-184-i1-w1-a0-6c9f100af01ee98b",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.346677160145478,
+      "sum_radii": 2.346677160145478,
+      "run_label": "seeded-continuation",
+      "operator": "crossover",
+      "timestamp": "2026-05-26T07:02:06.582193+00:00"
+    },
+    {
+      "index": 1417,
+      "generation": 537,
+      "continuation_generation": 185,
+      "candidate_id": "gen-185-i0-w0-a0-a30f1bc19f346d5a",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T07:20:14.021440+00:00"
+    },
+    {
+      "index": 1418,
+      "generation": 538,
+      "continuation_generation": 186,
+      "candidate_id": "gen-186-i0-w0-a0-93fe5207fe3a7a76",
+      "parent_id": "gen-80-i0-w0-a0-65cbd022c38f3ba5",
+      "score": -2.6359830849039736,
+      "sum_radii": 2.6359830849039736,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T07:30:30.076836+00:00"
+    },
+    {
+      "index": 1419,
+      "generation": 538,
+      "continuation_generation": 186,
+      "candidate_id": "gen-186-i1-w1-a0-515338b18347eddb",
+      "parent_id": "gen-29-i1-w1-a0-788925b785c6c66e",
+      "score": -2.6359773947546574,
+      "sum_radii": 2.6359773947546574,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T07:30:30.080457+00:00"
+    },
+    {
+      "index": 1420,
+      "generation": 540,
+      "continuation_generation": 188,
+      "candidate_id": "gen-188-i0-w0-a0-1cb38e99230706da",
+      "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T07:35:49.725148+00:00"
+    },
+    {
+      "index": 1421,
+      "generation": 540,
+      "continuation_generation": 188,
+      "candidate_id": "gen-188-i1-w1-a0-82b704cd0155d72e",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.3739284850925566,
+      "sum_radii": 2.3739284850925566,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T07:35:49.728831+00:00"
+    },
+    {
+      "index": 1422,
+      "generation": 541,
+      "continuation_generation": 189,
+      "candidate_id": "gen-189-i0-w0-a0-183ed7c0aa60f6e3",
+      "parent_id": "gen-109-i0-w0-a0-53fcf80a02b5d2d0",
+      "score": -2.547677467694845,
+      "sum_radii": 2.547677467694845,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T07:37:32.356594+00:00"
+    },
+    {
+      "index": 1423,
+      "generation": 541,
+      "continuation_generation": 189,
+      "candidate_id": "gen-189-i1-w1-a0-3b514aa6b0c5f426",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -2.6359830849768984,
+      "sum_radii": 2.6359830849768984,
+      "run_label": "seeded-continuation",
+      "operator": "mutate",
+      "timestamp": "2026-05-26T07:37:32.360457+00:00"
     }
   ],
   "best_by_generation": [
@@ -16125,6 +19221,1140 @@
       "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
       "score": -2.6359773947543523,
       "sum_radii": 2.6359773947543523
+    },
+    {
+      "generation": 353,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 354,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 355,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 356,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 357,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 358,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 359,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 360,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 361,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 362,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 363,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 364,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 365,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 366,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 367,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 368,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 369,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 370,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 371,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 372,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 373,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 374,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 375,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 376,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 377,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 378,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 379,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 380,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 381,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 382,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 383,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 384,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 385,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 386,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 387,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 388,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 389,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 390,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 391,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 392,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 393,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 394,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 395,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 396,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 397,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 398,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 399,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 400,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 401,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 402,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 403,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 404,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 405,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 406,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 407,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -2.6359773947570364,
+      "sum_radii": 2.6359773947570364
+    },
+    {
+      "generation": 408,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 409,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 410,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 411,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 412,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 413,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 414,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 415,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 416,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 417,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 418,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 419,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 420,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 421,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 422,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 423,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 424,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 425,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 426,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 427,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 428,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 429,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 430,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 431,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 432,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 433,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 434,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 435,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 436,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 437,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 438,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 439,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 440,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 441,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 442,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 443,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 444,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 445,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 446,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 447,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 448,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 449,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 450,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 451,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 452,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 453,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 454,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 455,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 456,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 457,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 458,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 459,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 460,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 461,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 462,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 463,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 464,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 465,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 466,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 467,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 468,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 469,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 470,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 471,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 472,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 473,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 474,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 475,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 476,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 477,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 478,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 479,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 480,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 481,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 482,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 483,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 484,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 485,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 486,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 487,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 488,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 489,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 490,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 491,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 492,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 493,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 494,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 495,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 496,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 497,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 498,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 499,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 500,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 501,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 502,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 503,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 504,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 505,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 506,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 507,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 508,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 509,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 510,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 511,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 512,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 513,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 514,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 515,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 516,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 517,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 518,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 519,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 520,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 521,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 522,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 523,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 524,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 525,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 526,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 527,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 528,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 529,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 530,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 531,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 532,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 533,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 534,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 535,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 536,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 537,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 538,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 539,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 540,
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521
+    },
+    {
+      "generation": 541,
+      "candidate_id": "gen-189-i1-w1-a0-3b514aa6b0c5f426",
+      "score": -2.6359830849768984,
+      "sum_radii": 2.6359830849768984
     }
   ]
 }

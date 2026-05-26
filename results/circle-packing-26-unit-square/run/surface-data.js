@@ -2,11 +2,11 @@ window.CIRCLE_PACKING_SURFACE_DATA = {
   "meta": {
     "title": "26-circle unit-square packing",
     "seed_score": -0.9597783591318301,
-    "best_score": -2.6359773947541023,
+    "best_score": -2.6359830849768984,
     "seed_sum_radii": 0.9597783591318301,
-    "accepted_sum_radii": 2.6359773947541023,
-    "sum_radii_gain": 1.6761990356222722,
-    "improvement_pct": 174.64438739153093,
+    "accepted_sum_radii": 2.6359830849768984,
+    "sum_radii_gain": 1.6762047258450683,
+    "improvement_pct": 174.6449802599512,
     "circle_count": 26,
     "boundary_contact_count": 20,
     "pairwise_contact_count": 58,
@@ -24,7 +24,7 @@ window.CIRCLE_PACKING_SURFACE_DATA = {
       "known_target_gap": 1.6752216408681697,
       "operator": "original-program",
       "accepted": true,
-      "delta_sum_radii": 0,
+      "delta_sum_radii": 0.0,
       "note": "Original domain program.py baseline evaluated before generated candidates.",
       "packing": {
         "centers": [
@@ -153,13 +153,13 @@ window.CIRCLE_PACKING_SURFACE_DATA = {
           0.01,
           0.01,
           0.01,
-          0.0000070675340448427655,
+          7.0675340448427655e-06,
           0.01,
           0.01,
           0.01,
           0.01,
           0.010000000000000009,
-          0.000007074601578887608
+          7.074601578887608e-06
         ]
       }
     },
@@ -304,13 +304,13 @@ window.CIRCLE_PACKING_SURFACE_DATA = {
           0.005,
           0.005,
           0.005,
-          0.000007071067811865187,
+          7.071067811865187e-06,
           0.005,
           0.005,
           0.005,
           0.005,
           0.0050000000000000044,
-          0.000007071067811865187
+          7.071067811865187e-06
         ]
       }
     },
@@ -3617,17 +3617,17 @@ window.CIRCLE_PACKING_SURFACE_DATA = {
     },
     {
       "index": 24,
-      "label": "accepted",
+      "label": "previous-accepted",
       "generation": 288,
       "date": "2026-05-19T20:06:53.897064+00:00",
       "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
       "score": -2.6359773947541023,
       "sum_radii": 2.6359773947541023,
-      "known_target_gap": 0,
+      "known_target_gap": 0.0,
       "operator": "curated-best-so-far",
       "accepted": true,
       "delta_sum_radii": 0.005805457388651458,
-      "note": "Final accepted packing from manual replay.",
+      "note": "Previous accepted public result used as the seed for the continuation run.",
       "packing": {
         "centers": [
           [
@@ -3764,6 +3764,310 @@ window.CIRCLE_PACKING_SURFACE_DATA = {
           0.07826927088834504
         ]
       }
+    },
+    {
+      "index": 25,
+      "label": "continuation-improvement",
+      "generation": 408,
+      "continuation_generation": 56,
+      "date": "2026-05-25T21:07:38.355698+00:00",
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "score": -2.635983084928521,
+      "sum_radii": 2.635983084928521,
+      "known_target_gap": 0.0,
+      "operator": "mutate",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "accepted": true,
+      "delta_sum_radii": 5.690174418759852e-06,
+      "note": "First retained continuation improvement over the previous accepted geometry.",
+      "packing": {
+        "centers": [
+          [
+            0.11077901279061399,
+            0.11077901279041968
+          ],
+          [
+            0.8888438205897905,
+            0.11115617941073319
+          ],
+          [
+            0.08463950069590967,
+            0.9153604993043506
+          ],
+          [
+            0.9150737375451161,
+            0.9150737375452926
+          ],
+          [
+            0.2397105279277395,
+            0.23632643061634365
+          ],
+          [
+            0.31311580997034055,
+            0.09239155157122575
+          ],
+          [
+            0.4994283691391194,
+            0.09392733727744718
+          ],
+          [
+            0.6859430219869391,
+            0.09259209495168039
+          ],
+          [
+            0.7593524015610434,
+            0.23704113634611262
+          ],
+          [
+            0.09573232930699954,
+            0.31674146502688816
+          ],
+          [
+            0.9038486659544026,
+            0.31791995706777637
+          ],
+          [
+            0.10306052014164732,
+            0.5153991973478492
+          ],
+          [
+            0.4033587836026571,
+            0.2575829504985138
+          ],
+          [
+            0.5952197329399431,
+            0.2579505565394483
+          ],
+          [
+            0.726905714311892,
+            0.4039572980919279
+          ],
+          [
+            0.2716298514861302,
+            0.40236520361238665
+          ],
+          [
+            0.498668075503085,
+            0.47003658024707207
+          ],
+          [
+            0.7026096036990087,
+            0.6183341555473323
+          ],
+          [
+            0.8965327666419693,
+            0.5174044177898722
+          ],
+          [
+            0.10679014462896559,
+            0.7252167166488217
+          ],
+          [
+            0.2947460590486193,
+            0.6130764465904895
+          ],
+          [
+            0.49553176067395754,
+            0.7246573832286944
+          ],
+          [
+            0.7023095250891535,
+            0.866741427229503
+          ],
+          [
+            0.8948174397309718,
+            0.7260471603759725
+          ],
+          [
+            0.2946094887818936,
+            0.8697788989344031
+          ],
+          [
+            0.49728444620419276,
+            0.9211396270840986
+          ]
+        ],
+        "radii": [
+          0.11077901279112082,
+          0.11115617941096823,
+          0.08463950069605984,
+          0.08492626245530487,
+          0.06918067635744193,
+          0.09239155157144188,
+          0.09392733727765201,
+          0.09259209495219571,
+          0.06944019371182177,
+          0.0957323293069744,
+          0.09615133404632764,
+          0.10306052014198837,
+          0.09584232574567358,
+          0.09601897575854142,
+          0.10060036781911637,
+          0.09989835059327815,
+          0.13701043012383704,
+          0.11514888016038831,
+          0.10346723335843543,
+          0.10679014462973684,
+          0.11207708895109378,
+          0.11762968804734207,
+          0.13325857277098094,
+          0.10518256026879944,
+          0.13022110106562976,
+          0.07886037291637048
+        ]
+      }
+    },
+    {
+      "index": 26,
+      "label": "accepted",
+      "generation": 541,
+      "continuation_generation": 189,
+      "date": "2026-05-26T07:37:32.360457+00:00",
+      "candidate_id": "gen-189-i1-w1-a0-3b514aa6b0c5f426",
+      "score": -2.6359830849768984,
+      "sum_radii": 2.6359830849768984,
+      "known_target_gap": 0.0,
+      "operator": "mutate",
+      "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "accepted": true,
+      "delta_sum_radii": 4.837730216422642e-11,
+      "note": "Accepted continuation geometry used for the updated public result.",
+      "packing": {
+        "centers": [
+          [
+            0.11077901279364274,
+            0.11077901279355457
+          ],
+          [
+            0.8888438205888403,
+            0.11115617941098548
+          ],
+          [
+            0.08463950069534451,
+            0.9153604993049241
+          ],
+          [
+            0.9150737375490033,
+            0.9150737375488359
+          ],
+          [
+            0.23971052793208728,
+            0.2363264306231994
+          ],
+          [
+            0.3131158099767116,
+            0.0923915515737816
+          ],
+          [
+            0.4994283691476152,
+            0.09392733728012849
+          ],
+          [
+            0.685943021989605,
+            0.09259209494820304
+          ],
+          [
+            0.7593524015586192,
+            0.23704113635341204
+          ],
+          [
+            0.09573232930886312,
+            0.31674146503447387
+          ],
+          [
+            0.903848665948665,
+            0.31791995707343096
+          ],
+          [
+            0.10306052014333585,
+            0.5153991973589621
+          ],
+          [
+            0.403358783609369,
+            0.25758295050270297
+          ],
+          [
+            0.5952197329547124,
+            0.2579505565412831
+          ],
+          [
+            0.7269057143138715,
+            0.4039572981006056
+          ],
+          [
+            0.2716298514917999,
+            0.4023652036218599
+          ],
+          [
+            0.49866807551444825,
+            0.4700365802532063
+          ],
+          [
+            0.7026096037112929,
+            0.6183341555542937
+          ],
+          [
+            0.8965327666343095,
+            0.5174044178087025
+          ],
+          [
+            0.10679014462412563,
+            0.7252167166548484
+          ],
+          [
+            0.29474605905732326,
+            0.6130764466215791
+          ],
+          [
+            0.49553176069576454,
+            0.7246573832339701
+          ],
+          [
+            0.7023095251020096,
+            0.8667414272336256
+          ],
+          [
+            0.8948174397378384,
+            0.7260471603907755
+          ],
+          [
+            0.2946094887898283,
+            0.8697788989223353
+          ],
+          [
+            0.4972844462250011,
+            0.9211396270815225
+          ]
+        ],
+        "radii": [
+          0.11077901279375828,
+          0.11115617941117303,
+          0.08463950069528964,
+          0.08492626245124503,
+          0.06918067635842222,
+          0.09239155157398098,
+          0.09392733728001253,
+          0.09259209494819712,
+          0.06944019372198032,
+          0.09573232930888503,
+          0.09615133405137682,
+          0.10306052014336829,
+          0.09584232574801364,
+          0.09601897576392525,
+          0.1006003678107661,
+          0.09989835059601744,
+          0.13701043012592073,
+          0.11514888016663019,
+          0.10346723336578298,
+          0.10679014462431484,
+          0.11207708896887669,
+          0.11762968804367435,
+          0.13325857276666464,
+          0.10518256026223712,
+          0.1302211010779452,
+          0.07886037291843986
+        ]
+      }
     }
   ],
   "checkpoints": [
@@ -3897,13 +4201,13 @@ window.CIRCLE_PACKING_SURFACE_DATA = {
         0.01,
         0.01,
         0.01,
-        0.0000070675340448427655,
+        7.0675340448427655e-06,
         0.01,
         0.01,
         0.01,
         0.01,
         0.010000000000000009,
-        0.000007074601578887608
+        7.074601578887608e-06
       ]
     },
     {
@@ -4036,13 +4340,13 @@ window.CIRCLE_PACKING_SURFACE_DATA = {
         0.005,
         0.005,
         0.005,
-        0.000007071067811865187,
+        7.071067811865187e-06,
         0.005,
         0.005,
         0.005,
         0.005,
         0.0050000000000000044,
-        0.000007071067811865187
+        7.071067811865187e-06
       ]
     },
     {
@@ -7241,6 +7545,284 @@ window.CIRCLE_PACKING_SURFACE_DATA = {
         0.13236009424044626,
         0.07826927088834504
       ]
+    },
+    {
+      "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+      "generation": 408,
+      "sum_radii": 2.635983084928521,
+      "centers": [
+        [
+          0.11077901279061399,
+          0.11077901279041968
+        ],
+        [
+          0.8888438205897905,
+          0.11115617941073319
+        ],
+        [
+          0.08463950069590967,
+          0.9153604993043506
+        ],
+        [
+          0.9150737375451161,
+          0.9150737375452926
+        ],
+        [
+          0.2397105279277395,
+          0.23632643061634365
+        ],
+        [
+          0.31311580997034055,
+          0.09239155157122575
+        ],
+        [
+          0.4994283691391194,
+          0.09392733727744718
+        ],
+        [
+          0.6859430219869391,
+          0.09259209495168039
+        ],
+        [
+          0.7593524015610434,
+          0.23704113634611262
+        ],
+        [
+          0.09573232930699954,
+          0.31674146502688816
+        ],
+        [
+          0.9038486659544026,
+          0.31791995706777637
+        ],
+        [
+          0.10306052014164732,
+          0.5153991973478492
+        ],
+        [
+          0.4033587836026571,
+          0.2575829504985138
+        ],
+        [
+          0.5952197329399431,
+          0.2579505565394483
+        ],
+        [
+          0.726905714311892,
+          0.4039572980919279
+        ],
+        [
+          0.2716298514861302,
+          0.40236520361238665
+        ],
+        [
+          0.498668075503085,
+          0.47003658024707207
+        ],
+        [
+          0.7026096036990087,
+          0.6183341555473323
+        ],
+        [
+          0.8965327666419693,
+          0.5174044177898722
+        ],
+        [
+          0.10679014462896559,
+          0.7252167166488217
+        ],
+        [
+          0.2947460590486193,
+          0.6130764465904895
+        ],
+        [
+          0.49553176067395754,
+          0.7246573832286944
+        ],
+        [
+          0.7023095250891535,
+          0.866741427229503
+        ],
+        [
+          0.8948174397309718,
+          0.7260471603759725
+        ],
+        [
+          0.2946094887818936,
+          0.8697788989344031
+        ],
+        [
+          0.49728444620419276,
+          0.9211396270840986
+        ]
+      ],
+      "radii": [
+        0.11077901279112082,
+        0.11115617941096823,
+        0.08463950069605984,
+        0.08492626245530487,
+        0.06918067635744193,
+        0.09239155157144188,
+        0.09392733727765201,
+        0.09259209495219571,
+        0.06944019371182177,
+        0.0957323293069744,
+        0.09615133404632764,
+        0.10306052014198837,
+        0.09584232574567358,
+        0.09601897575854142,
+        0.10060036781911637,
+        0.09989835059327815,
+        0.13701043012383704,
+        0.11514888016038831,
+        0.10346723335843543,
+        0.10679014462973684,
+        0.11207708895109378,
+        0.11762968804734207,
+        0.13325857277098094,
+        0.10518256026879944,
+        0.13022110106562976,
+        0.07886037291637048
+      ]
+    },
+    {
+      "candidate_id": "gen-189-i1-w1-a0-3b514aa6b0c5f426",
+      "generation": 541,
+      "sum_radii": 2.6359830849768984,
+      "centers": [
+        [
+          0.11077901279364274,
+          0.11077901279355457
+        ],
+        [
+          0.8888438205888403,
+          0.11115617941098548
+        ],
+        [
+          0.08463950069534451,
+          0.9153604993049241
+        ],
+        [
+          0.9150737375490033,
+          0.9150737375488359
+        ],
+        [
+          0.23971052793208728,
+          0.2363264306231994
+        ],
+        [
+          0.3131158099767116,
+          0.0923915515737816
+        ],
+        [
+          0.4994283691476152,
+          0.09392733728012849
+        ],
+        [
+          0.685943021989605,
+          0.09259209494820304
+        ],
+        [
+          0.7593524015586192,
+          0.23704113635341204
+        ],
+        [
+          0.09573232930886312,
+          0.31674146503447387
+        ],
+        [
+          0.903848665948665,
+          0.31791995707343096
+        ],
+        [
+          0.10306052014333585,
+          0.5153991973589621
+        ],
+        [
+          0.403358783609369,
+          0.25758295050270297
+        ],
+        [
+          0.5952197329547124,
+          0.2579505565412831
+        ],
+        [
+          0.7269057143138715,
+          0.4039572981006056
+        ],
+        [
+          0.2716298514917999,
+          0.4023652036218599
+        ],
+        [
+          0.49866807551444825,
+          0.4700365802532063
+        ],
+        [
+          0.7026096037112929,
+          0.6183341555542937
+        ],
+        [
+          0.8965327666343095,
+          0.5174044178087025
+        ],
+        [
+          0.10679014462412563,
+          0.7252167166548484
+        ],
+        [
+          0.29474605905732326,
+          0.6130764466215791
+        ],
+        [
+          0.49553176069576454,
+          0.7246573832339701
+        ],
+        [
+          0.7023095251020096,
+          0.8667414272336256
+        ],
+        [
+          0.8948174397378384,
+          0.7260471603907755
+        ],
+        [
+          0.2946094887898283,
+          0.8697788989223353
+        ],
+        [
+          0.4972844462250011,
+          0.9211396270815225
+        ]
+      ],
+      "radii": [
+        0.11077901279375828,
+        0.11115617941117303,
+        0.08463950069528964,
+        0.08492626245124503,
+        0.06918067635842222,
+        0.09239155157398098,
+        0.09392733728001253,
+        0.09259209494819712,
+        0.06944019372198032,
+        0.09573232930888503,
+        0.09615133405137682,
+        0.10306052014336829,
+        0.09584232574801364,
+        0.09601897576392525,
+        0.1006003678107661,
+        0.09989835059601744,
+        0.13701043012592073,
+        0.11514888016663019,
+        0.10346723336578298,
+        0.10679014462431484,
+        0.11207708896887669,
+        0.11762968804367435,
+        0.13325857276666464,
+        0.10518256026223712,
+        0.1302211010779452,
+        0.07886037291843986
+      ]
     }
   ],
   "accepted_trace": {
@@ -7382,7 +7964,7 @@ window.CIRCLE_PACKING_SURFACE_DATA = {
   },
   "code_surface": {
     "source_baseline": "gother-labs-evolther/domains/circle_packing/program.py",
-    "source_accepted": "desktop export accepted candidate program.py per accepted state",
+    "source_accepted": "desktop snapshot accepted continuation candidate plus retained accepted trace",
     "public_listing_anchor": "../#listing-1",
     "snapshots": [
       {
@@ -15091,6095 +15673,20559 @@ window.CIRCLE_PACKING_SURFACE_DATA = {
           "",
           "    return best_centers, best_radii"
         ]
+      },
+      {
+        "candidate_id": "gen-189-i1-w1-a0-3b514aa6b0c5f426",
+        "generation": 541,
+        "sum_radii": 2.6359830849768984,
+        "label": "accepted continuation candidate",
+        "source": "desktop-snapshot/telemetry/gen-189-i1-w1-a0-3b514aa6b0c5f426",
+        "lines": [
+          "\"\"\"Accepted constructive candidate for 26-circle unit-square packing.\"\"\"",
+          "from __future__ import annotations",
+          "",
+          "import math",
+          "",
+          "N_CIRCLES = 26",
+          "MIN_RADIUS = 1e-6",
+          "Point = tuple[float, float]",
+          "",
+          "# Retained continuation topology and accepted trace.",
+          "BOUNDARY_CONTACTS = (... 20 boundary contacts ...)",
+          "CONTACT_EDGES = (... 58 pairwise tangencies ...)",
+          "ACCEPTED_TRACE = (... 26 validated centers and radii ...)",
+          "",
+          "def _accepted_trace() -> tuple[list[Point], list[float]]:",
+          "    \"\"\"Return the retained accepted geometry from the continuation replay.\"\"\"",
+          "    centers = [(float(x), float(y)) for x, y, _radius in ACCEPTED_TRACE]",
+          "    radii = [float(radius) for _x, _y, radius in ACCEPTED_TRACE]",
+          "    return centers, radii",
+          "",
+          "",
+          "def _contact_residuals(values: list[float]) -> list[float]:",
+          "    \"\"\"Residuals for boundary contacts and pairwise tangent contacts.\"\"\"",
+          "    residuals: list[float] = []",
+          "",
+          "    for index, side in BOUNDARY_CONTACTS:",
+          "        x = values[3 * index]",
+          "        y = values[3 * index + 1]",
+          "        radius = values[3 * index + 2]",
+          "        if side == \"left\":",
+          "            residuals.append(x - radius)",
+          "        elif side == \"right\":",
+          "            residuals.append(1.0 - x - radius)",
+          "        elif side == \"bottom\":",
+          "            residuals.append(y - radius)",
+          "        elif side == \"top\":",
+          "            residuals.append(1.0 - y - radius)",
+          "        else:",
+          "            raise ValueError(f\"unknown boundary side: {side}\")",
+          "",
+          "    for left, right in CONTACT_EDGES:",
+          "        dx = values[3 * left] - values[3 * right]",
+          "        dy = values[3 * left + 1] - values[3 * right + 1]",
+          "        residuals.append(math.hypot(dx, dy) - values[3 * left + 2] - values[3 * right + 2])",
+          "",
+          "    return residuals",
+          "",
+          "",
+          "def _residual_norm(values: list[float]) -> float:",
+          "    \"\"\"Return the infinity norm of the contact residual vector.\"\"\"",
+          "    return max(abs(value) for value in _contact_residuals(values))",
+          "",
+          "",
+          "def _contact_jacobian(values: list[float], residuals: list[float]) -> list[list[float]]:",
+          "    \"\"\"Build a finite-difference Jacobian for the contact equations.\"\"\"",
+          "    jacobian = [[0.0 for _ in values] for _ in residuals]",
+          "    for column, value in enumerate(values):",
+          "        step = 1e-6 * max(1.0, abs(value))",
+          "        shifted = list(values)",
+          "        shifted[column] += step",
+          "        shifted_residuals = _contact_residuals(shifted)",
+          "        for row, residual in enumerate(residuals):",
+          "            jacobian[row][column] = (shifted_residuals[row] - residual) / step",
+          "    return jacobian",
+          "",
+          "",
+          "def _solve_linear_system(matrix: list[list[float]], rhs: list[float]) -> list[float]:",
+          "    \"\"\"Solve a dense square system with partial-pivot Gauss-Jordan elimination.\"\"\"",
+          "    size = len(rhs)",
+          "    augmented = [matrix[row][:] + [rhs[row]] for row in range(size)]",
+          "",
+          "    for column in range(size):",
+          "        pivot = max(range(column, size), key=lambda row: abs(augmented[row][column]))",
+          "        if abs(augmented[pivot][column]) < 1e-14:",
+          "            raise RuntimeError(\"contact Jacobian became singular\")",
+          "        augmented[column], augmented[pivot] = augmented[pivot], augmented[column]",
+          "",
+          "        pivot_value = augmented[column][column]",
+          "        for item in range(column, size + 1):",
+          "            augmented[column][item] /= pivot_value",
+          "",
+          "        for row in range(size):",
+          "            if row == column:",
+          "                continue",
+          "            factor = augmented[row][column]",
+          "            if factor == 0.0:",
+          "                continue",
+          "            for item in range(column, size + 1):",
+          "                augmented[row][item] -= factor * augmented[column][item]",
+          "",
+          "    return [augmented[row][size] for row in range(size)]",
+          "",
+          "",
+          "def _bounded_step(values: list[float], step: list[float], scale: float) -> list[float]:",
+          "    \"\"\"Apply one damped Newton step while keeping variables in valid ranges.\"\"\"",
+          "    updated: list[float] = []",
+          "    for index, value in enumerate(values):",
+          "        candidate = value + scale * step[index]",
+          "        if index % 3 == 2:",
+          "            updated.append(min(0.5, max(MIN_RADIUS, candidate)))",
+          "        else:",
+          "            updated.append(min(1.0, max(0.0, candidate)))",
+          "    return updated",
+          "",
+          "",
+          "def _solve_contact_system() -> tuple[list[Point], list[float]]:",
+          "    \"\"\"Solve the accepted continuation contact graph into centers and radii.\"\"\"",
+          "    values = _coarse_seed_layout()",
+          "    for _ in range(20):",
+          "        residuals = _contact_residuals(values)",
+          "        if max(abs(value) for value in residuals) < 1e-12:",
+          "            break",
+          "        jacobian = _contact_jacobian(values, residuals)",
+          "        newton_step = _solve_linear_system(jacobian, [-value for value in residuals])",
+          "        baseline_norm = _residual_norm(values)",
+          "        step_scale = 1.0",
+          "        while step_scale > 1e-8:",
+          "            candidate = _bounded_step(values, newton_step, step_scale)",
+          "            if _residual_norm(candidate) < baseline_norm:",
+          "                values = candidate",
+          "                break",
+          "            step_scale *= 0.5",
+          "        else:",
+          "            raise RuntimeError(\"contact solve failed to find a decreasing Newton step\")",
+          "",
+          "    if _residual_norm(values) >= 1e-10:",
+          "        raise RuntimeError(\"contact solve did not converge to evaluator tolerance\")",
+          "",
+          "    solved_centers = [(values[3 * index], values[3 * index + 1]) for index in range(N_CIRCLES)]",
+          "    solved_radii = [values[3 * index + 2] for index in range(N_CIRCLES)]",
+          "    return solved_centers, solved_radii",
+          "",
+          "",
+          "def _assert_valid(centers: list[Point], radii: list[float]) -> None:",
+          "    \"\"\"Fail fast if numerical drift breaks the public geometry contract.\"\"\"",
+          "    tolerance = 1e-10",
+          "    for index, ((x, y), radius) in enumerate(zip(centers, radii, strict=True)):",
+          "        if radius <= MIN_RADIUS:",
+          "            raise ValueError(f\"circle {index} has non-positive radius\")",
+          "        if x - radius < -tolerance or x + radius > 1.0 + tolerance:",
+          "            raise ValueError(f\"circle {index} exceeds x-boundary\")",
+          "        if y - radius < -tolerance or y + radius > 1.0 + tolerance:",
+          "            raise ValueError(f\"circle {index} exceeds y-boundary\")",
+          "",
+          "    for left in range(N_CIRCLES):",
+          "        for right in range(left + 1, N_CIRCLES):",
+          "            dx = centers[left][0] - centers[right][0]",
+          "            dy = centers[left][1] - centers[right][1]",
+          "            if math.hypot(dx, dy) + tolerance < radii[left] + radii[right]:",
+          "                raise ValueError(f\"circles {left} and {right} overlap\")",
+          "",
+          "",
+          "def _assert_matches_trace(centers: list[Point], radii: list[float]) -> None:",
+          "    \"\"\"Ensure the contact solve stayed on the accepted continuation geometry.\"\"\"",
+          "    accepted_centers, accepted_radii = _accepted_trace()",
+          "    max_center_delta = max(",
+          "        max(abs(a - b) for a, b in zip(center, accepted_center, strict=True))",
+          "        for center, accepted_center in zip(centers, accepted_centers, strict=True)",
+          "    )",
+          "    max_radius_delta = max(abs(radius - accepted_radius) for radius, accepted_radius in zip(radii, accepted_radii, strict=True))",
+          "    if max(max_center_delta, max_radius_delta) > 1e-7:",
+          "        raise RuntimeError(\"contact reconstruction drifted away from accepted trace\")",
+          "",
+          "",
+          "def construct_packing() -> tuple[list[Point], list[float]]:",
+          "    \"\"\"Construct and validate the accepted continuation 26-circle packing.\"\"\"",
+          "    solved_centers, solved_radii = _solve_contact_system()",
+          "    _assert_valid(solved_centers, solved_radii)",
+          "    _assert_matches_trace(solved_centers, solved_radii)",
+          "",
+          "    accepted_centers, accepted_radii = _accepted_trace()",
+          "    _assert_valid(accepted_centers, accepted_radii)",
+          "    return accepted_centers, accepted_radii",
+          "",
+          "",
+          "def run_packing() -> tuple[list[Point], list[float], float]:",
+          "    \"\"\"Return centers, radii, and total radius for the evaluator.\"\"\"",
+          "    centers, radii = construct_packing()",
+          "    return centers, radii, float(sum(radii))",
+          "# EVOLVE_END",
+          "",
+          "",
+          "__all__ = [\"N_CIRCLES\", \"MIN_RADIUS\", \"Point\", \"construct_packing\", \"run_packing\"]"
+        ]
       }
     ],
     "snapshot_policy": "one sanitized EVOLVE block per validated accepted state"
   },
   "score_trace": {
     "schema_version": "score-trace/v1",
+    "source": "evolther_circle_packing_full_output_20260519/combined/generation_events_gen001_352.csv",
+    "benchmark": "26-circle unit-square packing",
+    "direction": "lower_is_better",
+    "score_definition": "score = -sum(radii); minimizing score maximizes total radius",
     "generation_start": 0,
-    "generation_end": 352,
+    "generation_end": 541,
+    "seed_score": -0.9597783591318301,
+    "accepted_score": -2.6359830849768984,
     "seed_sum_radii": 0.9597783591318301,
-    "accepted_sum_radii": 2.6359773947541023,
-    "deduplicated_candidate_count": 1165,
+    "accepted_sum_radii": 2.6359830849768984,
+    "raw_valid_candidate_count": 1444,
+    "deduplicated_candidate_count": 1423,
+    "duplicate_candidate_count": 21,
+    "retained_checkpoint_count": 27,
+    "public_filter": "valid=True, finite score, finite sum_radii; duplicate candidate_id rows removed; invalid operational failures excluded. Includes original public run and seeded continuation candidates with continuation_generation retained.",
     "candidates": [
       {
+        "index": 0,
         "generation": 0,
-        "sum_radii": 0.9597783591318301
+        "candidate_id": "program.py@4ffbc1f783ddfa8fe3108afd0d7414e3cfefa354",
+        "score": -0.9597783591318301,
+        "sum_radii": 0.9597783591318301,
+        "run_label": "baseline",
+        "operator": "original-program",
+        "timestamp": "2026-05-16T22:10:17.538487+00:00"
       },
       {
+        "index": 1,
         "generation": 1,
-        "sum_radii": 1.0642342609737314
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -1.0642342609737314,
+        "sum_radii": 1.0642342609737314,
+        "known_target_gap": 1.5707657390262684,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "seed",
+        "timestamp": "2026-05-16T22:13:28.810190+00:00"
       },
       {
+        "index": 2,
         "generation": 1,
-        "sum_radii": 2.1789840712262865
+        "candidate_id": "gen-1-i1-w1-a0-24f8d52ecd6eb503",
+        "score": -2.1789840712262865,
+        "sum_radii": 2.1789840712262865,
+        "known_target_gap": 0.45601592877371333,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "seed-1",
+        "timestamp": "2026-05-16T22:13:28.811392+00:00"
       },
       {
+        "index": 3,
         "generation": 1,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-1-i1-w3-a0-2f9885e8a9babfe4",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "seed-1",
+        "timestamp": "2026-05-16T22:13:28.813375+00:00"
       },
       {
+        "index": 4,
         "generation": 2,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-2-i1-w1-a0-c2013f3ce8e1fcb0",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen001-063",
+        "operator": "refine",
+        "parent_id": "gen-1-i1-w3-a0-2f9885e8a9babfe4",
+        "timestamp": "2026-05-16T22:17:22.966546+00:00"
       },
       {
+        "index": 5,
         "generation": 2,
-        "sum_radii": 1.6849999999999998
+        "candidate_id": "gen-2-i0-w2-a0-ea00b79a7d395614",
+        "score": -1.6849999999999998,
+        "sum_radii": 1.6849999999999998,
+        "known_target_gap": 0.95,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "timestamp": "2026-05-16T22:17:22.968008+00:00"
       },
       {
+        "index": 6,
         "generation": 2,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-2-i1-w3-a0-8777b001d4c7c34d",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen001-063",
+        "operator": "refine",
+        "parent_id": "gen-1-i1-w3-a0-2f9885e8a9babfe4",
+        "timestamp": "2026-05-16T22:17:22.969195+00:00"
       },
       {
+        "index": 7,
         "generation": 3,
-        "sum_radii": 1.6449653012413559
+        "candidate_id": "gen-3-i0-w0-a0-d5724c3680c1e56b",
+        "score": -1.6449653012413559,
+        "sum_radii": 1.6449653012413559,
+        "known_target_gap": 0.9900346987586439,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-2-i0-w2-a0-ea00b79a7d395614",
+        "timestamp": "2026-05-16T22:20:45.162498+00:00"
       },
       {
+        "index": 8,
         "generation": 3,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-3-i1-w1-a0-735fdd0b49792592",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen001-063",
+        "operator": "simplify",
+        "parent_id": "gen-1-i1-w3-a0-2f9885e8a9babfe4",
+        "timestamp": "2026-05-16T22:20:45.164158+00:00"
       },
       {
+        "index": 9,
         "generation": 3,
-        "sum_radii": 1.3260025894800378
+        "candidate_id": "gen-3-i0-w2-a0-534c19aa34829255",
+        "score": -1.3260025894800378,
+        "sum_radii": 1.3260025894800378,
+        "known_target_gap": 1.308997410519962,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-2-i0-w2-a0-ea00b79a7d395614",
+        "timestamp": "2026-05-16T22:20:45.165833+00:00"
       },
       {
+        "index": 10,
         "generation": 3,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-3-i1-w3-a0-20dc2cd83fc9f65d",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen001-063",
+        "operator": "simplify",
+        "parent_id": "gen-1-i1-w3-a0-2f9885e8a9babfe4",
+        "timestamp": "2026-05-16T22:20:45.167309+00:00"
       },
       {
+        "index": 11,
         "generation": 4,
-        "sum_radii": 1.3260025894800378
+        "candidate_id": "gen-4-i0-w0-a0-ad230e99299fefba",
+        "score": -1.3260025894800378,
+        "sum_radii": 1.3260025894800378,
+        "known_target_gap": 1.308997410519962,
+        "run_label": "gen001-063",
+        "operator": "crossover",
+        "parent_id": "gen-2-i0-w2-a0-ea00b79a7d395614",
+        "timestamp": "2026-05-16T22:28:23.424671+00:00"
       },
       {
+        "index": 12,
         "generation": 4,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-4-i1-w1-a0-e1744789e1e1443c",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen001-063",
+        "operator": "crossover",
+        "parent_id": "gen-1-i1-w3-a0-2f9885e8a9babfe4",
+        "timestamp": "2026-05-16T22:28:23.426568+00:00"
       },
       {
+        "index": 13,
         "generation": 4,
-        "sum_radii": 0.9597783591318301
+        "candidate_id": "gen-4-i1-w3-a0-d31f51ffbf6c9bb4",
+        "score": -0.9597783591318301,
+        "sum_radii": 0.9597783591318301,
+        "known_target_gap": 1.6752216408681697,
+        "run_label": "gen001-063",
+        "operator": "crossover",
+        "parent_id": "gen-1-i1-w3-a0-2f9885e8a9babfe4",
+        "timestamp": "2026-05-16T22:28:23.430495+00:00"
       },
       {
+        "index": 14,
         "generation": 4,
-        "sum_radii": 1.7799911733910911
+        "candidate_id": "gen-4-i0-w2-a0-405a3d87aa719c26",
+        "score": -1.7799911733910911,
+        "sum_radii": 1.7799911733910911,
+        "known_target_gap": 0.8550088266089086,
+        "run_label": "gen001-063",
+        "operator": "crossover",
+        "parent_id": "gen-2-i0-w2-a0-ea00b79a7d395614",
+        "timestamp": "2026-05-17T07:18:15.257651+00:00"
       },
       {
+        "index": 15,
         "generation": 5,
-        "sum_radii": 2.3324423739820954
+        "candidate_id": "gen-5-i0-w0-a0-a32e3977da2e419f",
+        "score": -2.3324423739820954,
+        "sum_radii": 2.3324423739820954,
+        "known_target_gap": 0.30255762601790437,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-2-i0-w2-a0-ea00b79a7d395614",
+        "timestamp": "2026-05-16T22:32:30.400025+00:00"
       },
       {
+        "index": 16,
         "generation": 5,
-        "sum_radii": 2.112206746524073
+        "candidate_id": "gen-5-i1-w1-a0-984b99e08a77c008",
+        "score": -2.112206746524073,
+        "sum_radii": 2.112206746524073,
+        "known_target_gap": 0.522793253475927,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-1-i1-w3-a0-2f9885e8a9babfe4",
+        "timestamp": "2026-05-16T22:32:30.402093+00:00"
       },
       {
+        "index": 17,
         "generation": 5,
-        "sum_radii": 1.5806277683220311
+        "candidate_id": "gen-5-i0-w2-a0-58109074ffc0abe5",
+        "score": -1.5806277683220311,
+        "sum_radii": 1.5806277683220311,
+        "known_target_gap": 1.0543722316779687,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-2-i0-w2-a0-ea00b79a7d395614",
+        "timestamp": "2026-05-16T22:32:30.404036+00:00"
       },
       {
+        "index": 18,
         "generation": 5,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-5-i1-w3-a0-09cc27f4c24e2a9c",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-1-i1-w3-a0-2f9885e8a9babfe4",
+        "timestamp": "2026-05-16T22:32:30.405946+00:00"
       },
       {
+        "index": 19,
         "generation": 6,
-        "sum_radii": 1.6329255253378916
+        "candidate_id": "gen-6-i0-w0-a0-67c1acaa979d5af6",
+        "score": -1.6329255253378916,
+        "sum_radii": 1.6329255253378916,
+        "known_target_gap": 1.0020744746621082,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-5-i0-w0-a0-a32e3977da2e419f",
+        "timestamp": "2026-05-16T22:36:13.551997+00:00"
       },
       {
+        "index": 20,
         "generation": 6,
-        "sum_radii": 1.2999999999999998
+        "candidate_id": "gen-6-i1-w1-a0-1cbc8e5c57bbadf7",
+        "score": -1.2999999999999998,
+        "sum_radii": 1.2999999999999998,
+        "known_target_gap": 1.335,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-1-i1-w3-a0-2f9885e8a9babfe4",
+        "timestamp": "2026-05-16T22:36:13.554466+00:00"
       },
       {
+        "index": 21,
         "generation": 6,
-        "sum_radii": 0.000026025999999999994
+        "candidate_id": "gen-6-i0-w2-a0-1f13b0367bb2bdd3",
+        "score": -2.6025999999999994e-05,
+        "sum_radii": 2.6025999999999994e-05,
+        "known_target_gap": 2.6349739739999998,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-5-i0-w0-a0-a32e3977da2e419f",
+        "timestamp": "2026-05-16T22:36:13.556687+00:00"
       },
       {
+        "index": 22,
         "generation": 6,
-        "sum_radii": 2.546258975927309
+        "candidate_id": "gen-6-i1-w3-a0-cc432eba69902a21",
+        "score": -2.546258975927309,
+        "sum_radii": 2.546258975927309,
+        "known_target_gap": 0.08874102407269069,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-1-i1-w3-a0-2f9885e8a9babfe4",
+        "timestamp": "2026-05-17T07:29:38.527386+00:00"
       },
       {
+        "index": 23,
         "generation": 7,
-        "sum_radii": 2.412947414377742
+        "candidate_id": "gen-7-i0-w0-a0-042b2dbb69b5edb4",
+        "score": -2.412947414377742,
+        "sum_radii": 2.412947414377742,
+        "known_target_gap": 0.22205258562225794,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-5-i0-w0-a0-a32e3977da2e419f",
+        "timestamp": "2026-05-16T22:40:56.571966+00:00"
       },
       {
+        "index": 24,
         "generation": 7,
-        "sum_radii": 2.4389662625017023
+        "candidate_id": "gen-7-i1-w1-a0-23e964e5f3c01dc2",
+        "score": -2.4389662625017023,
+        "sum_radii": 2.4389662625017023,
+        "known_target_gap": 0.19603373749829744,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-1-i1-w3-a0-2f9885e8a9babfe4",
+        "timestamp": "2026-05-16T22:40:56.574758+00:00"
       },
       {
+        "index": 25,
         "generation": 7,
-        "sum_radii": 0.000026025999999999994
+        "candidate_id": "gen-7-i0-w2-a0-83a650c459d713c2",
+        "score": -2.6025999999999994e-05,
+        "sum_radii": 2.6025999999999994e-05,
+        "known_target_gap": 2.6349739739999998,
+        "run_label": "gen001-063",
+        "operator": "crossover",
+        "parent_id": "gen-5-i0-w0-a0-a32e3977da2e419f",
+        "timestamp": "2026-05-16T22:40:56.578186+00:00"
       },
       {
+        "index": 26,
         "generation": 7,
-        "sum_radii": 2.495590414514377
+        "candidate_id": "gen-7-i1-w3-a0-519797a52e0bcee1",
+        "score": -2.495590414514377,
+        "sum_radii": 2.495590414514377,
+        "known_target_gap": 0.13940958548562277,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-6-i1-w3-a0-cc432eba69902a21",
+        "timestamp": "2026-05-17T07:32:33.502901+00:00"
       },
       {
+        "index": 27,
         "generation": 8,
-        "sum_radii": 2.2917191541347113
+        "candidate_id": "gen-8-i0-w0-a0-a99e7d34d4a0379b",
+        "score": -2.2917191541347113,
+        "sum_radii": 2.2917191541347113,
+        "known_target_gap": 0.3432808458652885,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-7-i0-w0-a0-042b2dbb69b5edb4",
+        "timestamp": "2026-05-16T22:45:10.368328+00:00"
       },
       {
+        "index": 28,
         "generation": 8,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-8-i1-w1-a0-f80fc794df57ca40",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-1-i1-w3-a0-2f9885e8a9babfe4",
+        "timestamp": "2026-05-16T22:45:10.371092+00:00"
       },
       {
+        "index": 29,
         "generation": 8,
-        "sum_radii": 0.6994278227450776
+        "candidate_id": "gen-8-i0-w2-a0-e86cc6dd5e25c63d",
+        "score": -0.6994278227450776,
+        "sum_radii": 0.6994278227450776,
+        "known_target_gap": 1.9355721772549221,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-7-i0-w0-a0-042b2dbb69b5edb4",
+        "timestamp": "2026-05-16T22:45:10.373889+00:00"
       },
       {
+        "index": 30,
         "generation": 8,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-8-i1-w3-a0-7c52365243a9907f",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-1-i1-w3-a0-2f9885e8a9babfe4",
+        "timestamp": "2026-05-16T22:45:10.377448+00:00"
       },
       {
+        "index": 31,
         "generation": 9,
-        "sum_radii": 1.581373804981735
+        "candidate_id": "gen-9-i0-w0-a0-cc3f9ef64a4710ce",
+        "score": -1.581373804981735,
+        "sum_radii": 1.581373804981735,
+        "known_target_gap": 1.0536261950182648,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-7-i0-w0-a0-042b2dbb69b5edb4",
+        "timestamp": "2026-05-16T22:51:33.494457+00:00"
       },
       {
+        "index": 32,
         "generation": 9,
-        "sum_radii": 2.3636363636363638
+        "candidate_id": "gen-9-i1-w1-a0-9222762a1ed9b53e",
+        "score": -2.3636363636363638,
+        "sum_radii": 2.3636363636363638,
+        "known_target_gap": 0.27136363636363603,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-1-i1-w3-a0-2f9885e8a9babfe4",
+        "timestamp": "2026-05-16T22:51:33.497900+00:00"
       },
       {
+        "index": 33,
         "generation": 9,
-        "sum_radii": 2.412947414377742
+        "candidate_id": "gen-9-i0-w2-a0-5582f1a3444bac7b",
+        "score": -2.412947414377742,
+        "sum_radii": 2.412947414377742,
+        "known_target_gap": 0.22205258562225794,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-7-i0-w0-a0-042b2dbb69b5edb4",
+        "timestamp": "2026-05-16T22:51:33.501396+00:00"
       },
       {
+        "index": 34,
         "generation": 9,
-        "sum_radii": 2.1666666666666665
+        "candidate_id": "gen-9-i1-w3-a0-4aad95b3bd3bda25",
+        "score": -2.1666666666666665,
+        "sum_radii": 2.1666666666666665,
+        "known_target_gap": 0.46833333333333327,
+        "run_label": "gen001-063",
+        "operator": "simplify",
+        "parent_id": "gen-1-i1-w3-a0-2f9885e8a9babfe4",
+        "timestamp": "2026-05-16T22:51:33.504623+00:00"
       },
       {
+        "index": 35,
         "generation": 10,
-        "sum_radii": 2.412947414377742
+        "candidate_id": "gen-10-i0-w0-a0-7b1b2245d3bcad9c",
+        "score": -2.412947414377742,
+        "sum_radii": 2.412947414377742,
+        "known_target_gap": 0.22205258562225794,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-7-i0-w0-a0-042b2dbb69b5edb4",
+        "timestamp": "2026-05-16T22:55:12.550824+00:00"
       },
       {
+        "index": 36,
         "generation": 10,
-        "sum_radii": 2.617321682048581
+        "candidate_id": "gen-10-i1-w1-a0-ba99003c691e4e70",
+        "score": -2.617321682048581,
+        "sum_radii": 2.617321682048581,
+        "known_target_gap": 0.01767831795141861,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-1-i1-w3-a0-2f9885e8a9babfe4",
+        "timestamp": "2026-05-16T22:55:12.553297+00:00"
       },
       {
+        "index": 37,
         "generation": 10,
-        "sum_radii": 1.857142857142857
+        "candidate_id": "gen-10-i1-w3-a0-867c37d9b374d661",
+        "score": -1.857142857142857,
+        "sum_radii": 1.857142857142857,
+        "known_target_gap": 0.7778571428571428,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-1-i1-w3-a0-2f9885e8a9babfe4",
+        "timestamp": "2026-05-16T22:55:12.558119+00:00"
       },
       {
+        "index": 38,
         "generation": 11,
-        "sum_radii": 1.7286238372094629
+        "candidate_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -1.7286238372094629,
+        "sum_radii": 1.7286238372094629,
+        "known_target_gap": 0.9063761627905369,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-7-i0-w0-a0-042b2dbb69b5edb4",
+        "timestamp": "2026-05-16T22:58:15.898954+00:00"
       },
       {
+        "index": 39,
         "generation": 11,
-        "sum_radii": 2.6173216820650103
+        "candidate_id": "gen-11-i1-w1-a0-32619c2fc831fab2",
+        "score": -2.6173216820650103,
+        "sum_radii": 2.6173216820650103,
+        "known_target_gap": 0.01767831793498953,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-10-i1-w1-a0-ba99003c691e4e70",
+        "timestamp": "2026-05-16T22:58:15.901765+00:00"
       },
       {
+        "index": 40,
         "generation": 11,
-        "sum_radii": 2.4350416065886553
+        "candidate_id": "gen-11-i0-w2-a0-e436e98182f9b8b7",
+        "score": -2.4350416065886553,
+        "sum_radii": 2.4350416065886553,
+        "known_target_gap": 0.19995839341134447,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-7-i0-w0-a0-042b2dbb69b5edb4",
+        "timestamp": "2026-05-16T22:58:15.904387+00:00"
       },
       {
+        "index": 41,
         "generation": 11,
-        "sum_radii": 2.617321682048581
+        "candidate_id": "gen-11-i1-w3-a0-141f05b7d11e0f4b",
+        "score": -2.617321682048581,
+        "sum_radii": 2.617321682048581,
+        "known_target_gap": 0.01767831795141861,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-10-i1-w1-a0-ba99003c691e4e70",
+        "timestamp": "2026-05-16T22:58:15.906828+00:00"
       },
       {
+        "index": 42,
         "generation": 12,
-        "sum_radii": 2.4350416065886553
+        "candidate_id": "gen-12-i0-w0-a0-97c9a22349e41672",
+        "score": -2.4350416065886553,
+        "sum_radii": 2.4350416065886553,
+        "known_target_gap": 0.19995839341134447,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-11-i0-w2-a0-e436e98182f9b8b7",
+        "timestamp": "2026-05-16T23:03:27.064004+00:00"
       },
       {
+        "index": 43,
         "generation": 12,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-12-i1-w1-a0-7d61b676d674e65d",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-11-i1-w1-a0-32619c2fc831fab2",
+        "timestamp": "2026-05-16T23:03:27.067251+00:00"
       },
       {
+        "index": 44,
         "generation": 12,
-        "sum_radii": 2.4350416065886553
+        "candidate_id": "gen-12-i0-w2-a0-3dd01f9968d944db",
+        "score": -2.4350416065886553,
+        "sum_radii": 2.4350416065886553,
+        "known_target_gap": 0.19995839341134447,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-11-i0-w2-a0-e436e98182f9b8b7",
+        "timestamp": "2026-05-16T23:03:27.071416+00:00"
       },
       {
+        "index": 45,
         "generation": 12,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-12-i1-w3-a0-89c650d4830d9d5b",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-11-i1-w1-a0-32619c2fc831fab2",
+        "timestamp": "2026-05-16T23:03:27.075007+00:00"
       },
       {
+        "index": 46,
         "generation": 13,
-        "sum_radii": 2.6173216820650103
+        "candidate_id": "gen-13-i1-w1-a0-33cc6835a5bdff6a",
+        "score": -2.6173216820650103,
+        "sum_radii": 2.6173216820650103,
+        "known_target_gap": 0.01767831793498953,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-11-i1-w1-a0-32619c2fc831fab2",
+        "timestamp": "2026-05-16T23:09:37.919870+00:00"
       },
       {
+        "index": 47,
         "generation": 13,
-        "sum_radii": 2.4510478773101836
+        "candidate_id": "gen-13-i0-w2-a0-b03acc350f0fd228",
+        "score": -2.4510478773101836,
+        "sum_radii": 2.4510478773101836,
+        "known_target_gap": 0.1839521226898162,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-11-i0-w2-a0-e436e98182f9b8b7",
+        "timestamp": "2026-05-16T23:09:37.923391+00:00"
       },
       {
+        "index": 48,
         "generation": 13,
-        "sum_radii": 2.618068255734119
+        "candidate_id": "gen-13-i1-w3-a0-589a5a23c163a88e",
+        "score": -2.618068255734119,
+        "sum_radii": 2.618068255734119,
+        "known_target_gap": 0.016931744265880955,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-11-i1-w1-a0-32619c2fc831fab2",
+        "timestamp": "2026-05-16T23:09:37.926670+00:00"
       },
       {
+        "index": 49,
         "generation": 14,
-        "sum_radii": 2.4510478773101836
+        "candidate_id": "gen-14-i0-w0-a0-c1320c85381af5c9",
+        "score": -2.4510478773101836,
+        "sum_radii": 2.4510478773101836,
+        "known_target_gap": 0.1839521226898162,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-13-i0-w2-a0-b03acc350f0fd228",
+        "timestamp": "2026-05-16T23:17:43.937548+00:00"
       },
       {
+        "index": 50,
         "generation": 14,
-        "sum_radii": 2.6180680997819943
+        "candidate_id": "gen-14-i1-w1-a0-01e923565c87fd0a",
+        "score": -2.6180680997819943,
+        "sum_radii": 2.6180680997819943,
+        "known_target_gap": 0.016931900218005502,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-13-i1-w3-a0-589a5a23c163a88e",
+        "timestamp": "2026-05-16T23:17:43.940131+00:00"
       },
       {
+        "index": 51,
         "generation": 14,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-13-i1-w3-a0-589a5a23c163a88e",
+        "timestamp": "2026-05-16T23:17:43.945111+00:00"
       },
       {
+        "index": 52,
         "generation": 15,
-        "sum_radii": 2.6205144927284927
+        "candidate_id": "gen-15-i1-w1-a0-a1b4362b7e2e1d2a",
+        "score": -2.6205144927284927,
+        "sum_radii": 2.6205144927284927,
+        "known_target_gap": 0.014485507271507103,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "timestamp": "2026-05-16T23:23:53.875047+00:00"
       },
       {
+        "index": 53,
         "generation": 15,
-        "sum_radii": 1.890954494130202
+        "candidate_id": "gen-15-i0-w2-a0-ffcc13725e652e99",
+        "score": -1.890954494130202,
+        "sum_radii": 1.890954494130202,
+        "known_target_gap": 0.7440455058697979,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-13-i0-w2-a0-b03acc350f0fd228",
+        "timestamp": "2026-05-16T23:23:53.877663+00:00"
       },
       {
+        "index": 54,
         "generation": 15,
-        "sum_radii": 2.598213076567644
+        "candidate_id": "gen-15-i1-w3-a0-ece4e2afe6eebd34",
+        "score": -2.598213076567644,
+        "sum_radii": 2.598213076567644,
+        "known_target_gap": 0.03678692343235568,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "timestamp": "2026-05-16T23:23:53.880074+00:00"
       },
       {
+        "index": 55,
         "generation": 16,
-        "sum_radii": 1.7599999999999998
+        "candidate_id": "gen-16-i0-w0-a0-5fd1ca2eda7db727",
+        "score": -1.7599999999999998,
+        "sum_radii": 1.7599999999999998,
+        "known_target_gap": 0.875,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-13-i0-w2-a0-b03acc350f0fd228",
+        "timestamp": "2026-05-16T23:29:22.084035+00:00"
       },
       {
+        "index": 56,
         "generation": 16,
-        "sum_radii": 2.6205139803845547
+        "candidate_id": "gen-16-i1-w1-a0-81731a0727d9c48e",
+        "score": -2.6205139803845547,
+        "sum_radii": 2.6205139803845547,
+        "known_target_gap": 0.014486019615445045,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "timestamp": "2026-05-16T23:29:22.086821+00:00"
       },
       {
+        "index": 57,
         "generation": 16,
-        "sum_radii": 2.4510478773101836
+        "candidate_id": "gen-16-i0-w2-a0-dc306c5c292681c0",
+        "score": -2.4510478773101836,
+        "sum_radii": 2.4510478773101836,
+        "known_target_gap": 0.1839521226898162,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-13-i0-w2-a0-b03acc350f0fd228",
+        "timestamp": "2026-05-16T23:29:22.089375+00:00"
       },
       {
+        "index": 58,
         "generation": 16,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-16-i1-w3-a0-fbc1b67dd0183e5f",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "timestamp": "2026-05-16T23:29:22.091736+00:00"
       },
       {
+        "index": 59,
         "generation": 17,
-        "sum_radii": 0.9762570471870409
+        "candidate_id": "gen-17-i0-w0-a0-f56dc3d85550fa38",
+        "score": -0.9762570471870409,
+        "sum_radii": 0.9762570471870409,
+        "known_target_gap": 1.658742952812959,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-13-i0-w2-a0-b03acc350f0fd228",
+        "timestamp": "2026-05-16T23:35:52.580053+00:00"
       },
       {
+        "index": 60,
         "generation": 17,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-17-i1-w3-a0-0511281567acb932",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "timestamp": "2026-05-16T23:35:52.587753+00:00"
       },
       {
+        "index": 61,
         "generation": 18,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-18-i1-w1-a0-910bd7f2ea988a25",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "timestamp": "2026-05-16T23:44:25.749680+00:00"
       },
       {
+        "index": 62,
         "generation": 18,
-        "sum_radii": 2.4510478773101836
+        "candidate_id": "gen-18-i0-w2-a0-2f1faee4d109c09b",
+        "score": -2.4510478773101836,
+        "sum_radii": 2.4510478773101836,
+        "known_target_gap": 0.1839521226898162,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-13-i0-w2-a0-b03acc350f0fd228",
+        "timestamp": "2026-05-16T23:44:25.753508+00:00"
       },
       {
+        "index": 63,
         "generation": 18,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-18-i1-w3-a0-f879963fb860ff9d",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "timestamp": "2026-05-16T23:44:25.756236+00:00"
       },
       {
+        "index": 64,
         "generation": 19,
-        "sum_radii": 1.4368102384782246
+        "candidate_id": "gen-19-i0-w0-a0-00acbd9903cc91d4",
+        "score": -1.4368102384782246,
+        "sum_radii": 1.4368102384782246,
+        "known_target_gap": 1.1981897615217751,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-13-i0-w2-a0-b03acc350f0fd228",
+        "timestamp": "2026-05-16T23:49:49.121593+00:00"
       },
       {
+        "index": 65,
         "generation": 19,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-19-i1-w1-a0-735d1ec05c1e7475",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "timestamp": "2026-05-16T23:49:49.124423+00:00"
       },
       {
+        "index": 66,
         "generation": 19,
-        "sum_radii": 2.1776242624947897
+        "candidate_id": "gen-19-i0-w2-a0-a2bca718d3a47f88",
+        "score": -2.1776242624947897,
+        "sum_radii": 2.1776242624947897,
+        "known_target_gap": 0.4573757375052101,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-13-i0-w2-a0-b03acc350f0fd228",
+        "timestamp": "2026-05-16T23:49:49.127226+00:00"
       },
       {
+        "index": 67,
         "generation": 19,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-19-i1-w3-a0-d3d9a96004e6c341",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "timestamp": "2026-05-16T23:49:49.129873+00:00"
       },
       {
+        "index": 68,
         "generation": 20,
-        "sum_radii": 2.5866691392381607
+        "candidate_id": "gen-20-i0-w0-a0-63d632d9b84ff31b",
+        "score": -2.5866691392381607,
+        "sum_radii": 2.5866691392381607,
+        "known_target_gap": 0.04833086076183912,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-15-i1-w3-a0-ece4e2afe6eebd34",
+        "timestamp": "2026-05-16T23:58:46.937082+00:00"
       },
       {
+        "index": 69,
         "generation": 20,
-        "sum_radii": 2.6230682250496113
+        "candidate_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "score": -2.6230682250496113,
+        "sum_radii": 2.6230682250496113,
+        "known_target_gap": 0.01193177495038844,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "timestamp": "2026-05-16T23:58:46.940293+00:00"
       },
       {
+        "index": 70,
         "generation": 20,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-20-i0-w2-a0-87fed0569345a92e",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-15-i1-w3-a0-ece4e2afe6eebd34",
+        "timestamp": "2026-05-16T23:58:46.943128+00:00"
       },
       {
+        "index": 71,
         "generation": 20,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-20-i1-w3-a0-bec19afe119113fb",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "timestamp": "2026-05-16T23:58:46.945973+00:00"
       },
       {
+        "index": 72,
         "generation": 21,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-21-i0-w0-a0-c39ef16432b774e9",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "crossover",
+        "parent_id": "gen-20-i0-w2-a0-87fed0569345a92e",
+        "timestamp": "2026-05-17T00:07:32.010288+00:00"
       },
       {
+        "index": 73,
         "generation": 21,
-        "sum_radii": 2.6230682250496113
+        "candidate_id": "gen-21-i1-w1-a0-195cdb92d177b2b4",
+        "score": -2.6230682250496113,
+        "sum_radii": 2.6230682250496113,
+        "known_target_gap": 0.01193177495038844,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "timestamp": "2026-05-17T00:07:32.013534+00:00"
       },
       {
+        "index": 74,
         "generation": 21,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-21-i0-w2-a0-a97f477bb2fbbe09",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "crossover",
+        "parent_id": "gen-20-i0-w2-a0-87fed0569345a92e",
+        "timestamp": "2026-05-17T00:07:32.017723+00:00"
       },
       {
+        "index": 75,
         "generation": 21,
-        "sum_radii": 2.6230682250496113
+        "candidate_id": "gen-21-i1-w3-a0-83141b6bc00d045e",
+        "score": -2.6230682250496113,
+        "sum_radii": 2.6230682250496113,
+        "known_target_gap": 0.01193177495038844,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "timestamp": "2026-05-17T00:07:32.020474+00:00"
       },
       {
+        "index": 76,
         "generation": 22,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-22-i0-w0-a0-ee51ba5a13b468bc",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i0-w2-a0-87fed0569345a92e",
+        "timestamp": "2026-05-17T00:13:49.570650+00:00"
       },
       {
+        "index": 77,
         "generation": 22,
-        "sum_radii": 2.617321682263658
+        "candidate_id": "gen-22-i1-w1-a0-e8bbba2b348116c7",
+        "score": -2.617321682263658,
+        "sum_radii": 2.617321682263658,
+        "known_target_gap": 0.017678317736341764,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "timestamp": "2026-05-17T00:13:49.574577+00:00"
       },
       {
+        "index": 78,
         "generation": 22,
-        "sum_radii": 2.6230682250496113
+        "candidate_id": "gen-22-i1-w3-a0-c0166fa73f1b1855",
+        "score": -2.6230682250496113,
+        "sum_radii": 2.6230682250496113,
+        "known_target_gap": 0.01193177495038844,
+        "run_label": "gen001-063",
+        "operator": "crossover",
+        "parent_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "timestamp": "2026-05-17T00:13:49.580307+00:00"
       },
       {
+        "index": 79,
         "generation": 23,
-        "sum_radii": 1.625
+        "candidate_id": "gen-23-i0-w0-a0-066f2006ceebd13f",
+        "score": -1.625,
+        "sum_radii": 1.625,
+        "known_target_gap": 1.0099999999999998,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i0-w2-a0-87fed0569345a92e",
+        "timestamp": "2026-05-17T00:20:33.410644+00:00"
       },
       {
+        "index": 80,
         "generation": 23,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-23-i1-w1-a0-28ce8822acdb4f8e",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "timestamp": "2026-05-17T00:20:33.414584+00:00"
       },
       {
+        "index": 81,
         "generation": 23,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-23-i0-w2-a0-33b04afa9f426b50",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i0-w2-a0-87fed0569345a92e",
+        "timestamp": "2026-05-17T00:20:33.418457+00:00"
       },
       {
+        "index": 82,
         "generation": 23,
-        "sum_radii": 2.620514504487439
+        "candidate_id": "gen-23-i1-w3-a0-f19651842bc44e25",
+        "score": -2.620514504487439,
+        "sum_radii": 2.620514504487439,
+        "known_target_gap": 0.014485495512560842,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "timestamp": "2026-05-17T00:20:33.421228+00:00"
       },
       {
+        "index": 83,
         "generation": 24,
-        "sum_radii": 2.6230682250496113
+        "candidate_id": "gen-24-i1-w1-a0-21d2d28c132e90f0",
+        "score": -2.6230682250496113,
+        "sum_radii": 2.6230682250496113,
+        "known_target_gap": 0.01193177495038844,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "timestamp": "2026-05-17T00:37:45.026426+00:00"
       },
       {
+        "index": 84,
         "generation": 24,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-24-i0-w2-a0-765ee0efe5d28ee7",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "refine",
+        "parent_id": "gen-20-i0-w2-a0-87fed0569345a92e",
+        "timestamp": "2026-05-17T00:37:45.030511+00:00"
       },
       {
+        "index": 85,
         "generation": 24,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-24-i1-w3-a0-3ecbc0813b36b68c",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "refine",
+        "parent_id": "gen-17-i1-w3-a0-0511281567acb932",
+        "timestamp": "2026-05-17T00:37:45.034270+00:00"
       },
       {
+        "index": 86,
         "generation": 25,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-25-i0-w0-a0-adcf01eaeac5ef1e",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i0-w2-a0-87fed0569345a92e",
+        "timestamp": "2026-05-17T00:45:07.663307+00:00"
       },
       {
+        "index": 87,
         "generation": 25,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-25-i1-w1-a0-28c5b3566baa6163",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "timestamp": "2026-05-17T00:45:07.667229+00:00"
       },
       {
+        "index": 88,
         "generation": 25,
-        "sum_radii": 2.592755351072685
+        "candidate_id": "gen-25-i0-w2-a0-0948771ba5d2d2e9",
+        "score": -2.592755351072685,
+        "sum_radii": 2.592755351072685,
+        "known_target_gap": 0.04224464892731472,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i0-w2-a0-87fed0569345a92e",
+        "timestamp": "2026-05-17T00:45:07.670997+00:00"
       },
       {
+        "index": 89,
         "generation": 25,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-25-i1-w3-a0-d4b41e3e1274cc68",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "timestamp": "2026-05-17T00:45:07.675094+00:00"
       },
       {
+        "index": 90,
         "generation": 26,
-        "sum_radii": 1.396223648675343
+        "candidate_id": "gen-26-i0-w0-a0-85f48b490c296e29",
+        "score": -1.396223648675343,
+        "sum_radii": 1.396223648675343,
+        "known_target_gap": 1.2387763513246568,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-13-i0-w2-a0-b03acc350f0fd228",
+        "timestamp": "2026-05-17T00:52:52.004378+00:00"
       },
       {
+        "index": 91,
         "generation": 26,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-26-i1-w1-a0-5f390fb9a0632fee",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "timestamp": "2026-05-17T00:52:52.008229+00:00"
       },
       {
+        "index": 92,
         "generation": 26,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-26-i0-w2-a0-7823e83f2dcabbc5",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i0-w2-a0-87fed0569345a92e",
+        "timestamp": "2026-05-17T00:52:52.012164+00:00"
       },
       {
+        "index": 93,
         "generation": 26,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-26-i1-w3-a0-b0fcc4a7814e785a",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "timestamp": "2026-05-17T00:52:52.016219+00:00"
       },
       {
+        "index": 94,
         "generation": 27,
-        "sum_radii": 1.8407919369058439
+        "candidate_id": "gen-27-i0-w0-a0-94e6c8dd040380a9",
+        "score": -1.8407919369058439,
+        "sum_radii": 1.8407919369058439,
+        "known_target_gap": 0.7942080630941559,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i0-w2-a0-87fed0569345a92e",
+        "timestamp": "2026-05-17T00:59:30.077502+00:00"
       },
       {
+        "index": 95,
         "generation": 27,
-        "sum_radii": 2.6060569684549555
+        "candidate_id": "gen-27-i1-w1-a0-09a1b2eb054b881d",
+        "score": -2.6060569684549555,
+        "sum_radii": 2.6060569684549555,
+        "known_target_gap": 0.028943031545044295,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-15-i1-w3-a0-ece4e2afe6eebd34",
+        "timestamp": "2026-05-17T00:59:30.081681+00:00"
       },
       {
+        "index": 96,
         "generation": 27,
-        "sum_radii": 2.6117402405041075
+        "candidate_id": "gen-27-i0-w2-a0-c1e7949f42f02a9b",
+        "score": -2.6117402405041075,
+        "sum_radii": 2.6117402405041075,
+        "known_target_gap": 0.023259759495892318,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i0-w2-a0-87fed0569345a92e",
+        "timestamp": "2026-05-17T00:59:30.085614+00:00"
       },
       {
+        "index": 97,
         "generation": 27,
-        "sum_radii": 2.620514504487393
+        "candidate_id": "gen-27-i1-w3-a0-cb1de75e9f23a078",
+        "score": -2.620514504487393,
+        "sum_radii": 2.620514504487393,
+        "known_target_gap": 0.014485495512606583,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-16-i1-w1-a0-81731a0727d9c48e",
+        "timestamp": "2026-05-17T00:59:30.088685+00:00"
       },
       {
+        "index": 98,
         "generation": 28,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-28-i0-w0-a0-fe7575f5b072c34e",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i0-w2-a0-87fed0569345a92e",
+        "timestamp": "2026-05-17T01:09:16.096969+00:00"
       },
       {
+        "index": 99,
         "generation": 28,
-        "sum_radii": 2.6230682250496113
+        "candidate_id": "gen-28-i1-w1-a0-2977fab568641d26",
+        "score": -2.6230682250496113,
+        "sum_radii": 2.6230682250496113,
+        "known_target_gap": 0.01193177495038844,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "timestamp": "2026-05-17T01:09:16.099980+00:00"
       },
       {
+        "index": 100,
         "generation": 28,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-28-i0-w2-a0-faedaf9eb9aa4a93",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i0-w2-a0-87fed0569345a92e",
+        "timestamp": "2026-05-17T01:09:16.104088+00:00"
       },
       {
+        "index": 101,
         "generation": 29,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-29-i0-w0-a0-f87b8be936fbaf0c",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i0-w2-a0-87fed0569345a92e",
+        "timestamp": "2026-05-17T01:20:53.122949+00:00"
       },
       {
+        "index": 102,
         "generation": 29,
-        "sum_radii": 2.6230682250496113
+        "candidate_id": "gen-29-i1-w1-a0-788925b785c6c66e",
+        "score": -2.6230682250496113,
+        "sum_radii": 2.6230682250496113,
+        "known_target_gap": 0.01193177495038844,
+        "run_label": "gen001-063",
+        "operator": "crossover",
+        "parent_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "timestamp": "2026-05-17T01:20:53.126209+00:00"
       },
       {
+        "index": 103,
         "generation": 29,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-29-i0-w2-a0-6390e6cd2d81bdc9",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i0-w2-a0-87fed0569345a92e",
+        "timestamp": "2026-05-17T01:20:53.130449+00:00"
       },
       {
+        "index": 104,
         "generation": 29,
-        "sum_radii": 2.6230682250496113
+        "candidate_id": "gen-29-i1-w3-a0-a17ac04ba11ddd19",
+        "score": -2.6230682250496113,
+        "sum_radii": 2.6230682250496113,
+        "known_target_gap": 0.01193177495038844,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "timestamp": "2026-05-17T01:20:53.133490+00:00"
       },
       {
+        "index": 105,
         "generation": 30,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-30-i0-w0-a0-27be5680b06c2869",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i0-w2-a0-87fed0569345a92e",
+        "timestamp": "2026-05-17T01:30:15.071345+00:00"
       },
       {
+        "index": 106,
         "generation": 30,
-        "sum_radii": 2.6230682250496113
+        "candidate_id": "gen-30-i1-w1-a0-4fdb70340d9f28e5",
+        "score": -2.6230682250496113,
+        "sum_radii": 2.6230682250496113,
+        "known_target_gap": 0.01193177495038844,
+        "run_label": "gen001-063",
+        "operator": "refine",
+        "parent_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "timestamp": "2026-05-17T01:30:15.074586+00:00"
       },
       {
+        "index": 107,
         "generation": 30,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-30-i0-w2-a0-2ee2ccd5c87f36ee",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i0-w2-a0-87fed0569345a92e",
+        "timestamp": "2026-05-17T01:30:15.078637+00:00"
       },
       {
+        "index": 108,
         "generation": 30,
-        "sum_radii": 2.6230682250496113
+        "candidate_id": "gen-30-i1-w3-a0-341fd12fea5fbb48",
+        "score": -2.6230682250496113,
+        "sum_radii": 2.6230682250496113,
+        "known_target_gap": 0.01193177495038844,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "timestamp": "2026-05-17T01:30:15.081759+00:00"
       },
       {
+        "index": 109,
         "generation": 31,
-        "sum_radii": 2.601125963697713
+        "candidate_id": "gen-31-i0-w0-a0-d1644e501719b066",
+        "score": -2.601125963697713,
+        "sum_radii": 2.601125963697713,
+        "known_target_gap": 0.033874036302286914,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i0-w2-a0-87fed0569345a92e",
+        "timestamp": "2026-05-17T01:39:22.638825+00:00"
       },
       {
+        "index": 110,
         "generation": 31,
-        "sum_radii": 2.6221949282573327
+        "candidate_id": "gen-31-i1-w1-a0-0af35f7c94f53e31",
+        "score": -2.6221949282573327,
+        "sum_radii": 2.6221949282573327,
+        "known_target_gap": 0.012805071742667096,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-27-i1-w3-a0-cb1de75e9f23a078",
+        "timestamp": "2026-05-17T01:39:22.648552+00:00"
       },
       {
+        "index": 111,
         "generation": 31,
-        "sum_radii": 1.4776524417805528
+        "candidate_id": "gen-31-i0-w2-a0-95d5080d2b0974c0",
+        "score": -1.4776524417805528,
+        "sum_radii": 1.4776524417805528,
+        "known_target_gap": 1.157347558219447,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-19-i0-w2-a0-a2bca718d3a47f88",
+        "timestamp": "2026-05-17T01:39:22.658184+00:00"
       },
       {
+        "index": 112,
         "generation": 32,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-32-i0-w0-a0-91bc57699ba65a1e",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "simplify",
+        "parent_id": "gen-20-i0-w2-a0-87fed0569345a92e",
+        "timestamp": "2026-05-17T01:48:59.139505+00:00"
       },
       {
+        "index": 113,
         "generation": 32,
-        "sum_radii": 2.618068255734119
+        "candidate_id": "gen-32-i1-w1-a0-447b5df7529ec300",
+        "score": -2.618068255734119,
+        "sum_radii": 2.618068255734119,
+        "known_target_gap": 0.016931744265880955,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-13-i1-w3-a0-589a5a23c163a88e",
+        "timestamp": "2026-05-17T01:48:59.143769+00:00"
       },
       {
+        "index": 114,
         "generation": 32,
-        "sum_radii": 2.6230682250496113
+        "candidate_id": "gen-32-i1-w3-a0-bc05b188cd3ed61f",
+        "score": -2.6230682250496113,
+        "sum_radii": 2.6230682250496113,
+        "known_target_gap": 0.01193177495038844,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "timestamp": "2026-05-17T01:48:59.151123+00:00"
       },
       {
+        "index": 115,
         "generation": 33,
-        "sum_radii": 2.6205145044874665
+        "candidate_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "score": -2.6205145044874665,
+        "sum_radii": 2.6205145044874665,
+        "known_target_gap": 0.014485495512533308,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i0-w2-a0-87fed0569345a92e",
+        "timestamp": "2026-05-17T01:59:28.472641+00:00"
       },
       {
+        "index": 116,
         "generation": 33,
-        "sum_radii": 2.6230682250496113
+        "candidate_id": "gen-33-i1-w1-a0-b6f6f7261edcdd81",
+        "score": -2.6230682250496113,
+        "sum_radii": 2.6230682250496113,
+        "known_target_gap": 0.01193177495038844,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "timestamp": "2026-05-17T01:59:28.477263+00:00"
       },
       {
+        "index": 117,
         "generation": 33,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-33-i0-w2-a0-400b04c81c9c3e43",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i0-w2-a0-87fed0569345a92e",
+        "timestamp": "2026-05-17T01:59:28.481789+00:00"
       },
       {
+        "index": 118,
         "generation": 33,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-33-i1-w3-a0-254d3a55a4cc137b",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "timestamp": "2026-05-17T01:59:28.486165+00:00"
       },
       {
+        "index": 119,
         "generation": 34,
-        "sum_radii": 2.6205145044874665
+        "candidate_id": "gen-34-i0-w0-a0-15459a4dd1b28e40",
+        "score": -2.6205145044874665,
+        "sum_radii": 2.6205145044874665,
+        "known_target_gap": 0.014485495512533308,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T02:07:05.628068+00:00"
       },
       {
+        "index": 120,
         "generation": 34,
-        "sum_radii": 2.1666666666666665
+        "candidate_id": "gen-34-i0-w2-a0-99a6bf88f766431d",
+        "score": -2.1666666666666665,
+        "sum_radii": 2.1666666666666665,
+        "known_target_gap": 0.46833333333333327,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T02:07:05.635763+00:00"
       },
       {
+        "index": 121,
         "generation": 34,
-        "sum_radii": 2.6230682250497566
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
+        "sum_radii": 2.6230682250497566,
+        "known_target_gap": 0.011931774950243224,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "timestamp": "2026-05-17T02:07:05.639118+00:00"
       },
       {
+        "index": 122,
         "generation": 35,
-        "sum_radii": 2.6205145044874665
+        "candidate_id": "gen-35-i0-w0-a0-cba12f7254067bb1",
+        "score": -2.6205145044874665,
+        "sum_radii": 2.6205145044874665,
+        "known_target_gap": 0.014485495512533308,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T02:17:14.458292+00:00"
       },
       {
+        "index": 123,
         "generation": 35,
-        "sum_radii": 2.6205145044874665
+        "candidate_id": "gen-35-i0-w2-a0-b4565e24e60faa5b",
+        "score": -2.6205145044874665,
+        "sum_radii": 2.6205145044874665,
+        "known_target_gap": 0.014485495512533308,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T02:17:14.465550+00:00"
       },
       {
+        "index": 124,
         "generation": 35,
-        "sum_radii": 2.623068225049729
+        "candidate_id": "gen-35-i1-w3-a0-fbe59738f4ec4b0c",
+        "score": -2.623068225049729,
+        "sum_radii": 2.623068225049729,
+        "known_target_gap": 0.011931774950270757,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T02:17:14.468888+00:00"
       },
       {
+        "index": 125,
         "generation": 36,
-        "sum_radii": 2.6205145044874665
+        "candidate_id": "gen-36-i0-w0-a0-b2788b836796b748",
+        "score": -2.6205145044874665,
+        "sum_radii": 2.6205145044874665,
+        "known_target_gap": 0.014485495512533308,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T02:29:16.516624+00:00"
       },
       {
+        "index": 126,
         "generation": 36,
-        "sum_radii": 2.5893175464820155
+        "candidate_id": "gen-36-i0-w2-a0-9316365b99c59516",
+        "score": -2.5893175464820155,
+        "sum_radii": 2.5893175464820155,
+        "known_target_gap": 0.04568245351798428,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T02:29:16.524269+00:00"
       },
       {
+        "index": 127,
         "generation": 36,
-        "sum_radii": 2.6230682250497566
+        "candidate_id": "gen-36-i1-w3-a0-9ae4b822ae365873",
+        "score": -2.6230682250497566,
+        "sum_radii": 2.6230682250497566,
+        "known_target_gap": 0.011931774950243224,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T02:29:16.527678+00:00"
       },
       {
+        "index": 128,
         "generation": 37,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-37-i0-w0-a0-776a6614722f402f",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T02:37:51.311732+00:00"
       },
       {
+        "index": 129,
         "generation": 37,
-        "sum_radii": 2.6230682250497566
+        "candidate_id": "gen-37-i1-w1-a0-28e7ae8846df8dd7",
+        "score": -2.6230682250497566,
+        "sum_radii": 2.6230682250497566,
+        "known_target_gap": 0.011931774950243224,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T02:37:51.314978+00:00"
       },
       {
+        "index": 130,
         "generation": 37,
-        "sum_radii": 2.6205145044874665
+        "candidate_id": "gen-37-i0-w2-a0-a735cda8326e3145",
+        "score": -2.6205145044874665,
+        "sum_radii": 2.6205145044874665,
+        "known_target_gap": 0.014485495512533308,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T02:37:51.319279+00:00"
       },
       {
+        "index": 131,
         "generation": 37,
-        "sum_radii": 2.6230682250497566
+        "candidate_id": "gen-37-i1-w3-a0-9fb2ea5c52e481f8",
+        "score": -2.6230682250497566,
+        "sum_radii": 2.6230682250497566,
+        "known_target_gap": 0.011931774950243224,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T02:37:51.322359+00:00"
       },
       {
+        "index": 132,
         "generation": 38,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-38-i0-w0-a0-6c5fcc9520b4c58b",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i0-w2-a0-87fed0569345a92e",
+        "timestamp": "2026-05-17T02:46:14.613080+00:00"
       },
       {
+        "index": 133,
         "generation": 38,
-        "sum_radii": 2.6230682250497095
+        "candidate_id": "gen-38-i1-w1-a0-9515b4260125a6b0",
+        "score": -2.6230682250497095,
+        "sum_radii": 2.6230682250497095,
+        "known_target_gap": 0.011931774950290297,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "timestamp": "2026-05-17T02:46:14.616521+00:00"
       },
       {
+        "index": 134,
         "generation": 38,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-38-i0-w2-a0-7c82be81cc6d97e8",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i0-w2-a0-87fed0569345a92e",
+        "timestamp": "2026-05-17T02:46:14.621277+00:00"
       },
       {
+        "index": 135,
         "generation": 38,
-        "sum_radii": 2.620514504487471
+        "candidate_id": "gen-38-i1-w3-a0-7def869edae316b0",
+        "score": -2.620514504487471,
+        "sum_radii": 2.620514504487471,
+        "known_target_gap": 0.014485495512528868,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T02:46:14.624899+00:00"
       },
       {
+        "index": 136,
         "generation": 39,
-        "sum_radii": 2.619089253148755
+        "candidate_id": "gen-39-i0-w0-a0-9952c8384e594af0",
+        "score": -2.619089253148755,
+        "sum_radii": 2.619089253148755,
+        "known_target_gap": 0.015910746851244717,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-31-i0-w0-a0-d1644e501719b066",
+        "timestamp": "2026-05-17T02:57:28.758959+00:00"
       },
       {
+        "index": 137,
         "generation": 39,
-        "sum_radii": 2.6230682250497566
+        "candidate_id": "gen-39-i1-w1-a0-f7eddc451a0f0142",
+        "score": -2.6230682250497566,
+        "sum_radii": 2.6230682250497566,
+        "known_target_gap": 0.011931774950243224,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T02:57:28.762380+00:00"
       },
       {
+        "index": 138,
         "generation": 39,
-        "sum_radii": 2.61212362412395
+        "candidate_id": "gen-39-i0-w2-a0-10e424fa79611579",
+        "score": -2.61212362412395,
+        "sum_radii": 2.61212362412395,
+        "known_target_gap": 0.02287637587604996,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-31-i0-w0-a0-d1644e501719b066",
+        "timestamp": "2026-05-17T02:57:28.765705+00:00"
       },
       {
+        "index": 139,
         "generation": 40,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-40-i0-w0-a0-d51ec12a026310e6",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen001-063",
+        "operator": "crossover",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T03:21:23.102108+00:00"
       },
       {
+        "index": 140,
         "generation": 40,
-        "sum_radii": 2.6230682250497495
+        "candidate_id": "gen-40-i1-w1-a0-c25045190102b218",
+        "score": -2.6230682250497495,
+        "sum_radii": 2.6230682250497495,
+        "known_target_gap": 0.011931774950250329,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T03:21:23.106010+00:00"
       },
       {
+        "index": 141,
         "generation": 40,
-        "sum_radii": 2.6205145044874665
+        "candidate_id": "gen-40-i0-w2-a0-d544ea5fc2b28490",
+        "score": -2.6205145044874665,
+        "sum_radii": 2.6205145044874665,
+        "known_target_gap": 0.014485495512533308,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T03:21:23.109521+00:00"
       },
       {
+        "index": 142,
         "generation": 40,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-40-i1-w3-a0-f0b22eb9b08c1023",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T03:21:23.112850+00:00"
       },
       {
+        "index": 143,
         "generation": 41,
-        "sum_radii": 2.6205145044874665
+        "candidate_id": "gen-41-i0-w0-a0-7b9d63610af6fdd0",
+        "score": -2.6205145044874665,
+        "sum_radii": 2.6205145044874665,
+        "known_target_gap": 0.014485495512533308,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T03:34:32.691436+00:00"
       },
       {
+        "index": 144,
         "generation": 41,
-        "sum_radii": 1.625
+        "candidate_id": "gen-41-i1-w1-a0-7a58683558c36c03",
+        "score": -1.625,
+        "sum_radii": 1.625,
+        "known_target_gap": 1.0099999999999998,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T03:34:32.696661+00:00"
       },
       {
+        "index": 145,
         "generation": 41,
-        "sum_radii": 2.6230682250497566
+        "candidate_id": "gen-41-i1-w3-a0-da214297ca8fc36f",
+        "score": -2.6230682250497566,
+        "sum_radii": 2.6230682250497566,
+        "known_target_gap": 0.011931774950243224,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T03:34:32.703315+00:00"
       },
       {
+        "index": 146,
         "generation": 42,
-        "sum_radii": 2.6205145044874665
+        "candidate_id": "gen-42-i0-w0-a0-86973e269c616bc7",
+        "score": -2.6205145044874665,
+        "sum_radii": 2.6205145044874665,
+        "known_target_gap": 0.014485495512533308,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T03:42:59.528508+00:00"
       },
       {
+        "index": 147,
         "generation": 42,
-        "sum_radii": 2.4389662673796355
+        "candidate_id": "gen-42-i1-w1-a0-8943002668ba98ca",
+        "score": -2.4389662673796355,
+        "sum_radii": 2.4389662673796355,
+        "known_target_gap": 0.19603373262036428,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T03:42:59.532521+00:00"
       },
       {
+        "index": 148,
         "generation": 42,
-        "sum_radii": 2.6205145044874665
+        "candidate_id": "gen-42-i0-w2-a0-f167a7c6909f229e",
+        "score": -2.6205145044874665,
+        "sum_radii": 2.6205145044874665,
+        "known_target_gap": 0.014485495512533308,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T03:42:59.537520+00:00"
       },
       {
+        "index": 149,
         "generation": 42,
-        "sum_radii": 2.6230682250496113
+        "candidate_id": "gen-42-i1-w3-a0-1d565f949e5c30bf",
+        "score": -2.6230682250496113,
+        "sum_radii": 2.6230682250496113,
+        "known_target_gap": 0.01193177495038844,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T03:42:59.542046+00:00"
       },
       {
+        "index": 150,
         "generation": 43,
-        "sum_radii": 2.6230682250497566
+        "candidate_id": "gen-43-i1-w1-a0-2e55bee7392ffcaf",
+        "score": -2.6230682250497566,
+        "sum_radii": 2.6230682250497566,
+        "known_target_gap": 0.011931774950243224,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T03:54:28.016442+00:00"
       },
       {
+        "index": 151,
         "generation": 43,
-        "sum_radii": 2.6205139803845547
+        "candidate_id": "gen-43-i0-w2-a0-b48ebbe04544858c",
+        "score": -2.6205139803845547,
+        "sum_radii": 2.6205139803845547,
+        "known_target_gap": 0.014486019615445045,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-16-i1-w1-a0-81731a0727d9c48e",
+        "timestamp": "2026-05-17T03:54:28.021453+00:00"
       },
       {
+        "index": 152,
         "generation": 43,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-43-i1-w3-a0-956072cb48269ada",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T03:54:28.026519+00:00"
       },
       {
+        "index": 153,
         "generation": 44,
-        "sum_radii": 2.6230682250497566
+        "candidate_id": "gen-44-i1-w1-a0-72a9f7b1eef6b061",
+        "score": -2.6230682250497566,
+        "sum_radii": 2.6230682250497566,
+        "known_target_gap": 0.011931774950243224,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T04:09:44.187965+00:00"
       },
       {
+        "index": 154,
         "generation": 45,
-        "sum_radii": 2.6230682250422452
+        "candidate_id": "gen-45-i1-w1-a0-ea1f48d49556c0d8",
+        "score": -2.6230682250422452,
+        "sum_radii": 2.6230682250422452,
+        "known_target_gap": 0.011931774957754548,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-40-i1-w1-a0-c25045190102b218",
+        "timestamp": "2026-05-17T04:18:23.541003+00:00"
       },
       {
+        "index": 155,
         "generation": 45,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-45-i0-w2-a0-22382473f0aae545",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-20-i0-w2-a0-87fed0569345a92e",
+        "timestamp": "2026-05-17T04:18:23.545800+00:00"
       },
       {
+        "index": 156,
         "generation": 45,
-        "sum_radii": 2.6230682122961344
+        "candidate_id": "gen-45-i1-w3-a0-de95c310f57e99cb",
+        "score": -2.6230682122961344,
+        "sum_radii": 2.6230682122961344,
+        "known_target_gap": 0.011931787703865382,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-40-i1-w1-a0-c25045190102b218",
+        "timestamp": "2026-05-17T04:18:23.549408+00:00"
       },
       {
+        "index": 157,
         "generation": 46,
-        "sum_radii": 2.6158881254955237
+        "candidate_id": "gen-46-i0-w0-a0-e5b61937bc2edb54",
+        "score": -2.6158881254955237,
+        "sum_radii": 2.6158881254955237,
+        "known_target_gap": 0.019111874504476045,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-39-i0-w0-a0-9952c8384e594af0",
+        "timestamp": "2026-05-17T04:27:14.097896+00:00"
       },
       {
+        "index": 158,
         "generation": 46,
-        "sum_radii": 2.6230682250497566
+        "candidate_id": "gen-46-i1-w1-a0-cb0c64eea8d9dbb7",
+        "score": -2.6230682250497566,
+        "sum_radii": 2.6230682250497566,
+        "known_target_gap": 0.011931774950243224,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T04:27:14.101567+00:00"
       },
       {
+        "index": 159,
         "generation": 46,
-        "sum_radii": 2.61212362412395
+        "candidate_id": "gen-46-i0-w2-a0-f210e6c8c0bbf9d6",
+        "score": -2.61212362412395,
+        "sum_radii": 2.61212362412395,
+        "known_target_gap": 0.02287637587604996,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-39-i0-w2-a0-10e424fa79611579",
+        "timestamp": "2026-05-17T04:27:14.106085+00:00"
       },
       {
+        "index": 160,
         "generation": 46,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-46-i1-w3-a0-aa1d5bcea160ec54",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T04:27:14.110683+00:00"
       },
       {
+        "index": 161,
         "generation": 47,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-47-i0-w0-a0-fec2a216dc821ace",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-16-i1-w1-a0-81731a0727d9c48e",
+        "timestamp": "2026-05-17T04:42:52.670869+00:00"
       },
       {
+        "index": 162,
         "generation": 47,
-        "sum_radii": 2.6230682250497566
+        "candidate_id": "gen-47-i1-w1-a0-a6b90bcbda8268d4",
+        "score": -2.6230682250497566,
+        "sum_radii": 2.6230682250497566,
+        "known_target_gap": 0.011931774950243224,
+        "run_label": "gen001-063",
+        "operator": "refine",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T04:42:52.675183+00:00"
       },
       {
+        "index": 163,
         "generation": 47,
-        "sum_radii": 2.6173216820807643
+        "candidate_id": "gen-47-i0-w2-a0-31963b1026d11a93",
+        "score": -2.6173216820807643,
+        "sum_radii": 2.6173216820807643,
+        "known_target_gap": 0.017678317919235464,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T04:42:52.680504+00:00"
       },
       {
+        "index": 164,
         "generation": 48,
-        "sum_radii": 2.4510478773101836
+        "candidate_id": "gen-48-i0-w0-a0-2b62ee2802f2b70f",
+        "score": -2.4510478773101836,
+        "sum_radii": 2.4510478773101836,
+        "known_target_gap": 0.1839521226898162,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-13-i0-w2-a0-b03acc350f0fd228",
+        "timestamp": "2026-05-17T04:49:12.423664+00:00"
       },
       {
+        "index": 165,
         "generation": 48,
-        "sum_radii": 2.6230682250497566
+        "candidate_id": "gen-48-i1-w1-a0-eff79d3ef3c29f10",
+        "score": -2.6230682250497566,
+        "sum_radii": 2.6230682250497566,
+        "known_target_gap": 0.011931774950243224,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T04:49:12.428449+00:00"
       },
       {
+        "index": 166,
         "generation": 48,
-        "sum_radii": 1.7669224911651285
+        "candidate_id": "gen-48-i0-w2-a0-07da11b624fd85fe",
+        "score": -1.7669224911651285,
+        "sum_radii": 1.7669224911651285,
+        "known_target_gap": 0.8680775088348713,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-13-i0-w2-a0-b03acc350f0fd228",
+        "timestamp": "2026-05-17T04:49:12.432418+00:00"
       },
       {
+        "index": 167,
         "generation": 48,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-48-i1-w3-a0-24fcb5e20e415f8a",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T04:49:12.436807+00:00"
       },
       {
+        "index": 168,
         "generation": 49,
-        "sum_radii": 2.6205145044874665
+        "candidate_id": "gen-49-i0-w0-a0-9d413c2dfd9b6259",
+        "score": -2.6205145044874665,
+        "sum_radii": 2.6205145044874665,
+        "known_target_gap": 0.014485495512533308,
+        "run_label": "gen001-063",
+        "operator": "refine",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T04:58:58.015878+00:00"
       },
       {
+        "index": 169,
         "generation": 49,
-        "sum_radii": 2.6230682250422452
+        "candidate_id": "gen-49-i1-w1-a0-a43c51c90eb4872b",
+        "score": -2.6230682250422452,
+        "sum_radii": 2.6230682250422452,
+        "known_target_gap": 0.011931774957754548,
+        "run_label": "gen001-063",
+        "operator": "refine",
+        "parent_id": "gen-45-i1-w1-a0-ea1f48d49556c0d8",
+        "timestamp": "2026-05-17T04:58:58.020734+00:00"
       },
       {
+        "index": 170,
         "generation": 49,
-        "sum_radii": 2.6180682559625916
+        "candidate_id": "gen-49-i0-w2-a0-99d70f2b82ddbe58",
+        "score": -2.6180682559625916,
+        "sum_radii": 2.6180682559625916,
+        "known_target_gap": 0.01693174403740816,
+        "run_label": "gen001-063",
+        "operator": "refine",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T04:58:58.025437+00:00"
       },
       {
+        "index": 171,
         "generation": 49,
-        "sum_radii": 2.6230682122958786
+        "candidate_id": "gen-49-i1-w3-a0-134fcabedda776a2",
+        "score": -2.6230682122958786,
+        "sum_radii": 2.6230682122958786,
+        "known_target_gap": 0.011931787704121177,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-45-i1-w3-a0-de95c310f57e99cb",
+        "timestamp": "2026-05-17T04:58:58.030180+00:00"
       },
       {
+        "index": 172,
         "generation": 50,
-        "sum_radii": 2.6205145044874665
+        "candidate_id": "gen-50-i0-w0-a0-fe3d20901c05fcd4",
+        "score": -2.6205145044874665,
+        "sum_radii": 2.6205145044874665,
+        "known_target_gap": 0.014485495512533308,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T05:08:15.331499+00:00"
       },
       {
+        "index": 173,
         "generation": 50,
-        "sum_radii": 2.6230682250497495
+        "candidate_id": "gen-50-i1-w1-a0-2d42caf87b761591",
+        "score": -2.6230682250497495,
+        "sum_radii": 2.6230682250497495,
+        "known_target_gap": 0.011931774950250329,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-40-i1-w1-a0-c25045190102b218",
+        "timestamp": "2026-05-17T05:08:15.336761+00:00"
       },
       {
+        "index": 174,
         "generation": 50,
-        "sum_radii": 2.4367452446095847
+        "candidate_id": "gen-50-i0-w2-a0-0d04cd35dd40a1b2",
+        "score": -2.4367452446095847,
+        "sum_radii": 2.4367452446095847,
+        "known_target_gap": 0.19825475539041504,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T05:08:15.341430+00:00"
       },
       {
+        "index": 175,
         "generation": 50,
-        "sum_radii": 2.6230682122961344
+        "candidate_id": "gen-50-i1-w3-a0-cff3196093299fcc",
+        "score": -2.6230682122961344,
+        "sum_radii": 2.6230682122961344,
+        "known_target_gap": 0.011931787703865382,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-45-i1-w3-a0-de95c310f57e99cb",
+        "timestamp": "2026-05-17T05:08:15.346217+00:00"
       },
       {
+        "index": 176,
         "generation": 51,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-51-i0-w0-a0-742c00e2981bf3c4",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T05:19:50.188286+00:00"
       },
       {
+        "index": 177,
         "generation": 51,
-        "sum_radii": 1.726716445198231
+        "candidate_id": "gen-51-i1-w1-a0-46b022d37630fac4",
+        "score": -1.726716445198231,
+        "sum_radii": 1.726716445198231,
+        "known_target_gap": 0.9082835548017687,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-40-i1-w1-a0-c25045190102b218",
+        "timestamp": "2026-05-17T05:19:50.193394+00:00"
       },
       {
+        "index": 178,
         "generation": 51,
-        "sum_radii": 2.375225579596867
+        "candidate_id": "gen-51-i0-w2-a0-19690c96d830db25",
+        "score": -2.375225579596867,
+        "sum_radii": 2.375225579596867,
+        "known_target_gap": 0.2597744204031329,
+        "run_label": "gen001-063",
+        "operator": "simplify",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T05:19:50.198854+00:00"
       },
       {
+        "index": 179,
         "generation": 51,
-        "sum_radii": 2.6230682250497566
+        "candidate_id": "gen-51-i1-w3-a0-496998a1276ffd36",
+        "score": -2.6230682250497566,
+        "sum_radii": 2.6230682250497566,
+        "known_target_gap": 0.011931774950243224,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T05:19:50.203532+00:00"
       },
       {
+        "index": 180,
         "generation": 52,
-        "sum_radii": 2.6205145044874723
+        "candidate_id": "gen-52-i1-w1-a0-04ea7c3d5fd63afb",
+        "score": -2.6205145044874723,
+        "sum_radii": 2.6205145044874723,
+        "known_target_gap": 0.014485495512527535,
+        "run_label": "gen001-063",
+        "operator": "simplify",
+        "parent_id": "gen-40-i1-w1-a0-c25045190102b218",
+        "timestamp": "2026-05-17T05:27:05.409030+00:00"
       },
       {
+        "index": 181,
         "generation": 52,
-        "sum_radii": 2.317017953622195
+        "candidate_id": "gen-52-i0-w2-a0-3cc731d418e69d8f",
+        "score": -2.317017953622195,
+        "sum_radii": 2.317017953622195,
+        "known_target_gap": 0.3179820463778049,
+        "run_label": "gen001-063",
+        "operator": "simplify",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T05:27:05.413067+00:00"
       },
       {
+        "index": 182,
         "generation": 52,
-        "sum_radii": 2.6230682250497566
+        "candidate_id": "gen-52-i1-w3-a0-0ce5d80291fb28ee",
+        "score": -2.6230682250497566,
+        "sum_radii": 2.6230682250497566,
+        "known_target_gap": 0.011931774950243224,
+        "run_label": "gen001-063",
+        "operator": "simplify",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T05:27:05.417815+00:00"
       },
       {
+        "index": 183,
         "generation": 53,
-        "sum_radii": 2.62051450448744
+        "candidate_id": "gen-53-i0-w0-a0-534c214f87846289",
+        "score": -2.62051450448744,
+        "sum_radii": 2.62051450448744,
+        "known_target_gap": 0.014485495512559954,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T05:33:13.730248+00:00"
       },
       {
+        "index": 184,
         "generation": 53,
-        "sum_radii": 2.098076211353316
+        "candidate_id": "gen-53-i1-w1-a0-0bbc3e1ff1ca7cc0",
+        "score": -2.098076211353316,
+        "sum_radii": 2.098076211353316,
+        "known_target_gap": 0.5369237886466838,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T05:33:13.734172+00:00"
       },
       {
+        "index": 185,
         "generation": 53,
-        "sum_radii": 2.62051450448744
+        "candidate_id": "gen-53-i0-w2-a0-063645798432b101",
+        "score": -2.62051450448744,
+        "sum_radii": 2.62051450448744,
+        "known_target_gap": 0.014485495512559954,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T05:33:13.738707+00:00"
       },
       {
+        "index": 186,
         "generation": 53,
-        "sum_radii": 2.6180682559624637
+        "candidate_id": "gen-53-i1-w3-a0-8ee794a8efbc4192",
+        "score": -2.6180682559624637,
+        "sum_radii": 2.6180682559624637,
+        "known_target_gap": 0.016931744037536056,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-13-i1-w3-a0-589a5a23c163a88e",
+        "timestamp": "2026-05-17T05:33:13.743903+00:00"
       },
       {
+        "index": 187,
         "generation": 54,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-54-i1-w1-a0-3c90a89017e1e47d",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T05:40:51.078662+00:00"
       },
       {
+        "index": 188,
         "generation": 54,
-        "sum_radii": 2.6205145044874665
+        "candidate_id": "gen-54-i0-w2-a0-7a03d40b48cba45c",
+        "score": -2.6205145044874665,
+        "sum_radii": 2.6205145044874665,
+        "known_target_gap": 0.014485495512533308,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T05:40:51.083161+00:00"
       },
       {
+        "index": 189,
         "generation": 54,
-        "sum_radii": 2.4389662673796355
+        "candidate_id": "gen-54-i1-w3-a0-06a29b780dc94a72",
+        "score": -2.4389662673796355,
+        "sum_radii": 2.4389662673796355,
+        "known_target_gap": 0.19603373262036428,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T05:40:51.087668+00:00"
       },
       {
+        "index": 190,
         "generation": 55,
-        "sum_radii": 2.623068225049745
+        "candidate_id": "gen-55-i1-w1-a0-64c7536163bf3613",
+        "score": -2.623068225049745,
+        "sum_radii": 2.623068225049745,
+        "known_target_gap": 0.01193177495025477,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T05:47:46.127040+00:00"
       },
       {
+        "index": 191,
         "generation": 55,
-        "sum_radii": 2.6205145044874647
+        "candidate_id": "gen-55-i0-w2-a0-870ab9298435ba26",
+        "score": -2.6205145044874647,
+        "sum_radii": 2.6205145044874647,
+        "known_target_gap": 0.014485495512535085,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T05:47:46.134673+00:00"
       },
       {
+        "index": 192,
         "generation": 55,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-55-i1-w3-a0-a85270ba8fb08c77",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T05:47:46.141161+00:00"
       },
       {
+        "index": 193,
         "generation": 56,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-56-i0-w2-a0-192076711c9b8168",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T06:01:21.380638+00:00"
       },
       {
+        "index": 194,
         "generation": 56,
-        "sum_radii": 2.6230682250497512
+        "candidate_id": "gen-56-i1-w3-a0-7cfa82a8a7a5f87b",
+        "score": -2.6230682250497512,
+        "sum_radii": 2.6230682250497512,
+        "known_target_gap": 0.011931774950248553,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T06:01:21.385228+00:00"
       },
       {
+        "index": 195,
         "generation": 57,
-        "sum_radii": 2.612840522666359
+        "candidate_id": "gen-57-i0-w0-a0-68113a3bf531b464",
+        "score": -2.612840522666359,
+        "sum_radii": 2.612840522666359,
+        "known_target_gap": 0.022159477333640876,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-31-i0-w0-a0-d1644e501719b066",
+        "timestamp": "2026-05-17T06:12:41.759976+00:00"
       },
       {
+        "index": 196,
         "generation": 57,
-        "sum_radii": 2.6205145044874665
+        "candidate_id": "gen-57-i0-w2-a0-c533a7e4f25dc4f1",
+        "score": -2.6205145044874665,
+        "sum_radii": 2.6205145044874665,
+        "known_target_gap": 0.014485495512533308,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T06:12:41.768495+00:00"
       },
       {
+        "index": 197,
         "generation": 57,
-        "sum_radii": 1.6504753600157
+        "candidate_id": "gen-57-i1-w3-a0-84ee4666c56b4498",
+        "score": -1.6504753600157,
+        "sum_radii": 1.6504753600157,
+        "known_target_gap": 0.9845246399842997,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "timestamp": "2026-05-17T06:12:41.773201+00:00"
       },
       {
+        "index": 198,
         "generation": 58,
-        "sum_radii": 2.6230682250497197
+        "candidate_id": "gen-58-i1-w1-a0-be138cfba45c3be5",
+        "score": -2.6230682250497197,
+        "sum_radii": 2.6230682250497197,
+        "known_target_gap": 0.011931774950280083,
+        "run_label": "gen001-063",
+        "operator": "simplify",
+        "parent_id": "gen-40-i1-w1-a0-c25045190102b218",
+        "timestamp": "2026-05-17T06:18:43.564101+00:00"
       },
       {
+        "index": 199,
         "generation": 58,
-        "sum_radii": 1.2541531628991829
+        "candidate_id": "gen-58-i0-w2-a0-137503395da83520",
+        "score": -1.2541531628991829,
+        "sum_radii": 1.2541531628991829,
+        "known_target_gap": 1.380846837100817,
+        "run_label": "gen001-063",
+        "operator": "simplify",
+        "parent_id": "gen-16-i1-w1-a0-81731a0727d9c48e",
+        "timestamp": "2026-05-17T06:18:43.568874+00:00"
       },
       {
+        "index": 200,
         "generation": 59,
-        "sum_radii": 2.61212362412395
+        "candidate_id": "gen-59-i0-w0-a0-ffc77d8b5ddf0b40",
+        "score": -2.61212362412395,
+        "sum_radii": 2.61212362412395,
+        "known_target_gap": 0.02287637587604996,
+        "run_label": "gen001-063",
+        "operator": "crossover",
+        "parent_id": "gen-39-i0-w2-a0-10e424fa79611579",
+        "timestamp": "2026-05-17T06:28:38.065741+00:00"
       },
       {
+        "index": 201,
         "generation": 59,
-        "sum_radii": 0.3286943132135109
+        "candidate_id": "gen-59-i0-w2-a0-8a542ee47dcd21a6",
+        "score": -0.3286943132135109,
+        "sum_radii": 0.3286943132135109,
+        "known_target_gap": 2.306305686786489,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T06:28:38.073777+00:00"
       },
       {
+        "index": 202,
         "generation": 59,
-        "sum_radii": 2.6205145044873888
+        "candidate_id": "gen-59-i1-w3-a0-34a7e6661b3c20a3",
+        "score": -2.6205145044873888,
+        "sum_radii": 2.6205145044873888,
+        "known_target_gap": 0.014485495512611024,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "timestamp": "2026-05-17T06:28:38.078462+00:00"
       },
       {
+        "index": 203,
         "generation": 60,
-        "sum_radii": 2.6230682250513833
+        "candidate_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "score": -2.6230682250513833,
+        "sum_radii": 2.6230682250513833,
+        "known_target_gap": 0.011931774948616525,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-40-i1-w1-a0-c25045190102b218",
+        "timestamp": "2026-05-17T06:36:54.346615+00:00"
       },
       {
+        "index": 204,
         "generation": 60,
-        "sum_radii": 2.598213076567644
+        "candidate_id": "gen-60-i1-w3-a0-85d56ab5ea4ea066",
+        "score": -2.598213076567644,
+        "sum_radii": 2.598213076567644,
+        "known_target_gap": 0.03678692343235568,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-27-i1-w1-a0-09a1b2eb054b881d",
+        "timestamp": "2026-05-17T06:36:54.355019+00:00"
       },
       {
+        "index": 205,
         "generation": 61,
-        "sum_radii": 2.6205139803845547
+        "candidate_id": "gen-61-i0-w0-a0-6cbf4f15f3cdc9b6",
+        "score": -2.6205139803845547,
+        "sum_radii": 2.6205139803845547,
+        "known_target_gap": 0.014486019615445045,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-16-i1-w1-a0-81731a0727d9c48e",
+        "timestamp": "2026-05-17T06:47:20.641369+00:00"
       },
       {
+        "index": 206,
         "generation": 61,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-61-i1-w1-a0-b81df17e166ef9ec",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "timestamp": "2026-05-17T06:47:20.646174+00:00"
       },
       {
+        "index": 207,
         "generation": 61,
-        "sum_radii": 2.620514499246416
+        "candidate_id": "gen-61-i0-w2-a0-93492c1296e2a72e",
+        "score": -2.620514499246416,
+        "sum_radii": 2.620514499246416,
+        "known_target_gap": 0.014485500753583569,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-16-i1-w1-a0-81731a0727d9c48e",
+        "timestamp": "2026-05-17T06:47:20.650559+00:00"
       },
       {
+        "index": 208,
         "generation": 61,
-        "sum_radii": 1.411820313530954
+        "candidate_id": "gen-61-i1-w3-a0-7089fd84b28c9724",
+        "score": -1.411820313530954,
+        "sum_radii": 1.411820313530954,
+        "known_target_gap": 1.2231796864690458,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "timestamp": "2026-05-17T06:47:20.655496+00:00"
       },
       {
+        "index": 209,
         "generation": 62,
-        "sum_radii": 2.6230682250513833
+        "candidate_id": "gen-62-i1-w1-a0-16504ea18239410f",
+        "score": -2.6230682250513833,
+        "sum_radii": 2.6230682250513833,
+        "known_target_gap": 0.011931774948616525,
+        "run_label": "gen001-063",
+        "operator": "refine",
+        "parent_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "timestamp": "2026-05-17T06:57:35.671346+00:00"
       },
       {
+        "index": 210,
         "generation": 62,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-62-i0-w2-a0-890ca53faf338ca8",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen001-063",
+        "operator": "simplify",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T06:57:35.675906+00:00"
       },
       {
+        "index": 211,
         "generation": 63,
-        "sum_radii": 2.6205145044874665
+        "candidate_id": "gen-63-i0-w0-a0-3ab601816c60e3ef",
+        "score": -2.6205145044874665,
+        "sum_radii": 2.6205145044874665,
+        "known_target_gap": 0.014485495512533308,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T07:03:57.066591+00:00"
       },
       {
+        "index": 212,
         "generation": 63,
-        "sum_radii": 2.6230682250513833
+        "candidate_id": "gen-63-i1-w1-a0-81ae986e03c5cde3",
+        "score": -2.6230682250513833,
+        "sum_radii": 2.6230682250513833,
+        "known_target_gap": 0.011931774948616525,
+        "run_label": "gen001-063",
+        "operator": "refine",
+        "parent_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "timestamp": "2026-05-17T07:03:57.070168+00:00"
       },
       {
+        "index": 213,
         "generation": 63,
-        "sum_radii": 2.4374865072449294
+        "candidate_id": "gen-63-i0-w2-a0-129fc30d8a2ef8e0",
+        "score": -2.4374865072449294,
+        "sum_radii": 2.4374865072449294,
+        "known_target_gap": 0.19751349275507035,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T07:03:57.074009+00:00"
       },
       {
+        "index": 214,
         "generation": 63,
-        "sum_radii": 2.6230682250513833
+        "candidate_id": "gen-63-i1-w3-a0-e6558646fb701a86",
+        "score": -2.6230682250513833,
+        "sum_radii": 2.6230682250513833,
+        "known_target_gap": 0.011931774948616525,
+        "run_label": "gen001-063",
+        "operator": "mutate",
+        "parent_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "timestamp": "2026-05-17T07:03:57.077701+00:00"
       },
       {
+        "index": 215,
         "generation": 64,
-        "sum_radii": 2.6205145044874665
+        "candidate_id": "gen-64-i0-w0-a0-cb0682dc31bc4b70",
+        "score": -2.6205145044874665,
+        "sum_radii": 2.6205145044874665,
+        "known_target_gap": 0.014485495512533308,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T21:56:35.730204+00:00"
       },
       {
+        "index": 216,
         "generation": 64,
-        "sum_radii": 2.6230682250497495
+        "candidate_id": "gen-64-i1-w1-a0-94d471feb3fb3279",
+        "score": -2.6230682250497495,
+        "sum_radii": 2.6230682250497495,
+        "known_target_gap": 0.011931774950250329,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "timestamp": "2026-05-17T21:56:35.734555+00:00"
       },
       {
+        "index": 217,
         "generation": 64,
-        "sum_radii": 2.6069506453193974
+        "candidate_id": "gen-64-i0-w2-a0-a5597e6c13c20c95",
+        "score": -2.6069506453193974,
+        "sum_radii": 2.6069506453193974,
+        "known_target_gap": 0.028049354680602434,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T21:56:35.738735+00:00"
       },
       {
+        "index": 218,
         "generation": 64,
-        "sum_radii": 2.6230682250513833
+        "candidate_id": "gen-64-i1-w3-a0-2fec5be5b4378d6b",
+        "score": -2.6230682250513833,
+        "sum_radii": 2.6230682250513833,
+        "known_target_gap": 0.011931774948616525,
+        "run_label": "gen064-143",
+        "operator": "crossover",
+        "parent_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "timestamp": "2026-05-17T21:56:35.741317+00:00"
       },
       {
+        "index": 219,
         "generation": 65,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-65-i0-w0-a0-f4066034286efaec",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T22:04:47.436352+00:00"
       },
       {
+        "index": 220,
         "generation": 65,
-        "sum_radii": 2.4593554530287864
+        "candidate_id": "gen-65-i1-w1-a0-c4c29bc0c0dfbc7d",
+        "score": -2.4593554530287864,
+        "sum_radii": 2.4593554530287864,
+        "known_target_gap": 0.17564454697121334,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "timestamp": "2026-05-17T22:04:47.440194+00:00"
       },
       {
+        "index": 221,
         "generation": 65,
-        "sum_radii": 1.9530487659785465
+        "candidate_id": "gen-65-i0-w2-a0-3316ef2f242a4606",
+        "score": -1.9530487659785465,
+        "sum_radii": 1.9530487659785465,
+        "known_target_gap": 0.6819512340214533,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T22:04:47.444418+00:00"
       },
       {
+        "index": 222,
         "generation": 65,
-        "sum_radii": 2.6230682250513833
+        "candidate_id": "gen-65-i1-w3-a0-ab6d9b6a4c40d079",
+        "score": -2.6230682250513833,
+        "sum_radii": 2.6230682250513833,
+        "known_target_gap": 0.011931774948616525,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "timestamp": "2026-05-17T22:04:47.447441+00:00"
       },
       {
+        "index": 223,
         "generation": 66,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-66-i0-w0-a0-a5951b4e39c0da5a",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T22:18:26.875602+00:00"
       },
       {
+        "index": 224,
         "generation": 66,
-        "sum_radii": 2.625636752776619
+        "candidate_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "score": -2.625636752776619,
+        "sum_radii": 2.625636752776619,
+        "known_target_gap": 0.009363247223380888,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "timestamp": "2026-05-17T22:18:26.879421+00:00"
       },
       {
+        "index": 225,
         "generation": 66,
-        "sum_radii": 2.6205145044874665
+        "candidate_id": "gen-66-i0-w2-a0-393257a4030e0ce0",
+        "score": -2.6205145044874665,
+        "sum_radii": 2.6205145044874665,
+        "known_target_gap": 0.014485495512533308,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T22:18:26.883512+00:00"
       },
       {
+        "index": 226,
         "generation": 66,
-        "sum_radii": 2.6230682250513833
+        "candidate_id": "gen-66-i1-w3-a0-4ac5d0785dd557f4",
+        "score": -2.6230682250513833,
+        "sum_radii": 2.6230682250513833,
+        "known_target_gap": 0.011931774948616525,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "timestamp": "2026-05-17T22:18:26.886467+00:00"
       },
       {
+        "index": 227,
         "generation": 67,
-        "sum_radii": 2.6205145044874665
+        "candidate_id": "gen-67-i0-w2-a0-e8789eb99e1c1871",
+        "score": -2.6205145044874665,
+        "sum_radii": 2.6205145044874665,
+        "known_target_gap": 0.014485495512533308,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T22:33:46.471449+00:00"
       },
       {
+        "index": 228,
         "generation": 67,
-        "sum_radii": 2.625636752776619
+        "candidate_id": "gen-67-i1-w3-a0-2963539d7f37c35f",
+        "score": -2.625636752776619,
+        "sum_radii": 2.625636752776619,
+        "known_target_gap": 0.009363247223380888,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "timestamp": "2026-05-17T22:33:46.473647+00:00"
       },
       {
+        "index": 229,
         "generation": 68,
-        "sum_radii": 2.4389662803927616
+        "candidate_id": "gen-68-i0-w0-a0-a8e5e7575789334d",
+        "score": -2.4389662803927616,
+        "sum_radii": 2.4389662803927616,
+        "known_target_gap": 0.19603371960723814,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T22:38:33.456202+00:00"
       },
       {
+        "index": 230,
         "generation": 68,
-        "sum_radii": 2.625636752776404
+        "candidate_id": "gen-68-i1-w1-a0-98f990584314f1de",
+        "score": -2.625636752776404,
+        "sum_radii": 2.625636752776404,
+        "known_target_gap": 0.009363247223595828,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "timestamp": "2026-05-17T22:38:33.458947+00:00"
       },
       {
+        "index": 231,
         "generation": 68,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-68-i0-w2-a0-89473041ce518a6b",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T22:38:33.462528+00:00"
       },
       {
+        "index": 232,
         "generation": 69,
-        "sum_radii": 2.6205145044874665
+        "candidate_id": "gen-69-i0-w0-a0-b404ca62cac793ee",
+        "score": -2.6205145044874665,
+        "sum_radii": 2.6205145044874665,
+        "known_target_gap": 0.014485495512533308,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T22:46:48.809290+00:00"
       },
       {
+        "index": 233,
         "generation": 69,
-        "sum_radii": 2.625636752776619
+        "candidate_id": "gen-69-i1-w1-a0-0f78a76719b020f9",
+        "score": -2.625636752776619,
+        "sum_radii": 2.625636752776619,
+        "known_target_gap": 0.009363247223380888,
+        "run_label": "gen064-143",
+        "operator": "crossover",
+        "parent_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "timestamp": "2026-05-17T22:46:48.812336+00:00"
       },
       {
+        "index": 234,
         "generation": 69,
-        "sum_radii": 2.6205145044874665
+        "candidate_id": "gen-69-i0-w2-a0-36fd94a39e4a0640",
+        "score": -2.6205145044874665,
+        "sum_radii": 2.6205145044874665,
+        "known_target_gap": 0.014485495512533308,
+        "run_label": "gen064-143",
+        "operator": "crossover",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T22:46:48.814945+00:00"
       },
       {
+        "index": 235,
         "generation": 69,
-        "sum_radii": 1.3115354894457145
+        "candidate_id": "gen-69-i1-w3-a0-330351091a4155eb",
+        "score": -1.3115354894457145,
+        "sum_radii": 1.3115354894457145,
+        "known_target_gap": 1.3234645105542853,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "timestamp": "2026-05-17T22:46:48.817476+00:00"
       },
       {
+        "index": 236,
         "generation": 70,
-        "sum_radii": 2.620514504487474
+        "candidate_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "score": -2.620514504487474,
+        "sum_radii": 2.620514504487474,
+        "known_target_gap": 0.014485495512525759,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T22:53:33.985079+00:00"
       },
       {
+        "index": 237,
         "generation": 70,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-70-i0-w2-a0-24894c98944ab0bf",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "timestamp": "2026-05-17T22:53:33.991175+00:00"
       },
       {
+        "index": 238,
         "generation": 70,
-        "sum_radii": 2.625636752776619
+        "candidate_id": "gen-70-i1-w3-a0-4f945dcf7ed62388",
+        "score": -2.625636752776619,
+        "sum_radii": 2.625636752776619,
+        "known_target_gap": 0.009363247223380888,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "timestamp": "2026-05-17T22:53:33.993855+00:00"
       },
       {
+        "index": 239,
         "generation": 71,
-        "sum_radii": 2.6204969803845546
+        "candidate_id": "gen-71-i0-w0-a0-9bff06815f4854a5",
+        "score": -2.6204969803845546,
+        "sum_radii": 2.6204969803845546,
+        "known_target_gap": 0.0145030196154452,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-17T22:59:01.611128+00:00"
       },
       {
+        "index": 240,
         "generation": 71,
-        "sum_radii": 2.625636752776619
+        "candidate_id": "gen-71-i1-w1-a0-15e0e4199d0b22d8",
+        "score": -2.625636752776619,
+        "sum_radii": 2.625636752776619,
+        "known_target_gap": 0.009363247223380888,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "timestamp": "2026-05-17T22:59:01.613943+00:00"
       },
       {
+        "index": 241,
         "generation": 71,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-71-i0-w2-a0-c6c0158fcc348248",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-17T22:59:01.617643+00:00"
       },
       {
+        "index": 242,
         "generation": 71,
-        "sum_radii": 2.625636752776619
+        "candidate_id": "gen-71-i1-w3-a0-d04cd7494771ebda",
+        "score": -2.625636752776619,
+        "sum_radii": 2.625636752776619,
+        "known_target_gap": 0.009363247223380888,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "timestamp": "2026-05-17T22:59:01.620113+00:00"
       },
       {
+        "index": 243,
         "generation": 72,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-72-i0-w0-a0-da98067092d0ef49",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-17T23:07:29.443947+00:00"
       },
       {
+        "index": 244,
         "generation": 72,
-        "sum_radii": 2.625636752776619
+        "candidate_id": "gen-72-i1-w1-a0-47795b356652bf76",
+        "score": -2.625636752776619,
+        "sum_radii": 2.625636752776619,
+        "known_target_gap": 0.009363247223380888,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "timestamp": "2026-05-17T23:07:29.446755+00:00"
       },
       {
+        "index": 245,
         "generation": 72,
-        "sum_radii": 2.625636752776619
+        "candidate_id": "gen-72-i1-w3-a0-95a7ef0481326d6a",
+        "score": -2.625636752776619,
+        "sum_radii": 2.625636752776619,
+        "known_target_gap": 0.009363247223380888,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "timestamp": "2026-05-17T23:07:29.451739+00:00"
       },
       {
+        "index": 246,
         "generation": 73,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-73-i0-w0-a0-c2bd512ff428b07c",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-17T23:12:30.854949+00:00"
       },
       {
+        "index": 247,
         "generation": 73,
-        "sum_radii": 2.6256354795937678
+        "candidate_id": "gen-73-i1-w1-a0-6bf142627866d0db",
+        "score": -2.6256354795937678,
+        "sum_radii": 2.6256354795937678,
+        "known_target_gap": 0.009364520406232035,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "timestamp": "2026-05-17T23:12:30.859898+00:00"
       },
       {
+        "index": 248,
         "generation": 73,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-73-i0-w2-a0-c81851cdfcf0f910",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-17T23:12:30.864746+00:00"
       },
       {
+        "index": 249,
         "generation": 74,
-        "sum_radii": 0.52
+        "candidate_id": "gen-74-i0-w0-a0-29aac0af0088ae0b",
+        "score": -0.52,
+        "sum_radii": 0.52,
+        "known_target_gap": 2.1149999999999998,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-68-i0-w0-a0-a8e5e7575789334d",
+        "timestamp": "2026-05-17T23:25:27.217578+00:00"
       },
       {
+        "index": 250,
         "generation": 74,
-        "sum_radii": 2.625636752776619
+        "candidate_id": "gen-74-i1-w1-a0-fa01a593bcd80fdb",
+        "score": -2.625636752776619,
+        "sum_radii": 2.625636752776619,
+        "known_target_gap": 0.009363247223380888,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "timestamp": "2026-05-17T23:25:27.220440+00:00"
       },
       {
+        "index": 251,
         "generation": 74,
-        "sum_radii": 2.4389552673796344
+        "candidate_id": "gen-74-i0-w2-a0-5dfc258683359b38",
+        "score": -2.4389552673796344,
+        "sum_radii": 2.4389552673796344,
+        "known_target_gap": 0.19604473262036537,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-71-i0-w0-a0-9bff06815f4854a5",
+        "timestamp": "2026-05-17T23:25:27.224089+00:00"
       },
       {
+        "index": 252,
         "generation": 75,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-75-i1-w3-a0-8560521a7a150d49",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "timestamp": "2026-05-17T23:34:48.343791+00:00"
       },
       {
+        "index": 253,
         "generation": 76,
-        "sum_radii": 2.620514504487474
+        "candidate_id": "gen-76-i0-w0-a0-f0ca910f69224a3e",
+        "score": -2.620514504487474,
+        "sum_radii": 2.620514504487474,
+        "known_target_gap": 0.014485495512525759,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-17T23:49:28.597744+00:00"
       },
       {
+        "index": 254,
         "generation": 76,
-        "sum_radii": 2.625636752776619
+        "candidate_id": "gen-76-i1-w1-a0-f359a01e05dadadb",
+        "score": -2.625636752776619,
+        "sum_radii": 2.625636752776619,
+        "known_target_gap": 0.009363247223380888,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "timestamp": "2026-05-17T23:49:28.600443+00:00"
       },
       {
+        "index": 255,
         "generation": 76,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-76-i0-w2-a0-44b8207fbcc49132",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-17T23:49:28.604003+00:00"
       },
       {
+        "index": 256,
         "generation": 76,
-        "sum_radii": 2.625636752776619
+        "candidate_id": "gen-76-i1-w3-a0-4bc68b796368b566",
+        "score": -2.625636752776619,
+        "sum_radii": 2.625636752776619,
+        "known_target_gap": 0.009363247223380888,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "timestamp": "2026-05-17T23:49:28.607703+00:00"
       },
       {
+        "index": 257,
         "generation": 77,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-77-i0-w0-a0-54f9c41fd399783e",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-17T23:53:27.670270+00:00"
       },
       {
+        "index": 258,
         "generation": 77,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-77-i1-w1-a0-0084d90359d8f938",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "timestamp": "2026-05-17T23:53:27.674385+00:00"
       },
       {
+        "index": 259,
         "generation": 77,
-        "sum_radii": 1.9638907993736072
+        "candidate_id": "gen-77-i0-w2-a0-7a53d3fb29af5af0",
+        "score": -1.9638907993736072,
+        "sum_radii": 1.9638907993736072,
+        "known_target_gap": 0.6711092006263926,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-71-i0-w0-a0-9bff06815f4854a5",
+        "timestamp": "2026-05-17T23:53:27.677325+00:00"
       },
       {
+        "index": 260,
         "generation": 77,
-        "sum_radii": 2.625636752776619
+        "candidate_id": "gen-77-i1-w3-a0-cade2fd703c957c7",
+        "score": -2.625636752776619,
+        "sum_radii": 2.625636752776619,
+        "known_target_gap": 0.009363247223380888,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "timestamp": "2026-05-17T23:53:27.680968+00:00"
       },
       {
+        "index": 261,
         "generation": 78,
-        "sum_radii": 2.620514504487474
+        "candidate_id": "gen-78-i0-w0-a0-ab384c54cb1e8d8a",
+        "score": -2.620514504487474,
+        "sum_radii": 2.620514504487474,
+        "known_target_gap": 0.014485495512525759,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T00:00:30.783216+00:00"
       },
       {
+        "index": 262,
         "generation": 78,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-78-i1-w1-a0-63d5f411e91f6007",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "timestamp": "2026-05-18T00:00:30.787466+00:00"
       },
       {
+        "index": 263,
         "generation": 78,
-        "sum_radii": 2.620514504487474
+        "candidate_id": "gen-78-i0-w2-a0-52d35d2dc06208c0",
+        "score": -2.620514504487474,
+        "sum_radii": 2.620514504487474,
+        "known_target_gap": 0.014485495512525759,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T00:00:30.791655+00:00"
       },
       {
+        "index": 264,
         "generation": 78,
-        "sum_radii": 2.377030216371802
+        "candidate_id": "gen-78-i1-w3-a0-41287bb19b15f512",
+        "score": -2.377030216371802,
+        "sum_radii": 2.377030216371802,
+        "known_target_gap": 0.257969783628198,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "timestamp": "2026-05-18T00:00:30.795783+00:00"
       },
       {
+        "index": 265,
         "generation": 79,
-        "sum_radii": 2.625636752776619
+        "candidate_id": "gen-79-i1-w1-a0-e3047f97f9a217c9",
+        "score": -2.625636752776619,
+        "sum_radii": 2.625636752776619,
+        "known_target_gap": 0.009363247223380888,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "timestamp": "2026-05-18T00:04:31.789203+00:00"
       },
       {
+        "index": 266,
         "generation": 79,
-        "sum_radii": 1.6189235007430496
+        "candidate_id": "gen-79-i0-w2-a0-86c0c2b6194b662e",
+        "score": -1.6189235007430496,
+        "sum_radii": 1.6189235007430496,
+        "known_target_gap": 1.0160764992569502,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T00:04:31.793202+00:00"
       },
       {
+        "index": 267,
         "generation": 79,
-        "sum_radii": 2.438966267379634
+        "candidate_id": "gen-79-i1-w3-a0-ac10cdba7987c4fa",
+        "score": -2.438966267379634,
+        "sum_radii": 2.438966267379634,
+        "known_target_gap": 0.1960337326203656,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "timestamp": "2026-05-18T00:04:31.795961+00:00"
       },
       {
+        "index": 268,
         "generation": 80,
-        "sum_radii": 2.5118894998173014
+        "candidate_id": "gen-80-i0-w0-a0-65cbd022c38f3ba5",
+        "score": -2.5118894998173014,
+        "sum_radii": 2.5118894998173014,
+        "known_target_gap": 0.12311050018269842,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T00:17:25.561609+00:00"
       },
       {
+        "index": 269,
         "generation": 80,
-        "sum_radii": 2.625636752776619
+        "candidate_id": "gen-80-i1-w1-a0-053cabd0cc749941",
+        "score": -2.625636752776619,
+        "sum_radii": 2.625636752776619,
+        "known_target_gap": 0.009363247223380888,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "timestamp": "2026-05-18T00:17:25.566340+00:00"
       },
       {
+        "index": 270,
         "generation": 80,
-        "sum_radii": 2.605386839252572
+        "candidate_id": "gen-80-i1-w3-a0-2376d12e77ec5a6d",
+        "score": -2.605386839252572,
+        "sum_radii": 2.605386839252572,
+        "known_target_gap": 0.029613160747427703,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "timestamp": "2026-05-18T00:17:25.573539+00:00"
       },
       {
+        "index": 271,
         "generation": 81,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-81-i0-w0-a0-347e30956051ca32",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T00:21:08.302651+00:00"
       },
       {
+        "index": 272,
         "generation": 81,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "timestamp": "2026-05-18T00:21:08.306074+00:00"
       },
       {
+        "index": 273,
         "generation": 81,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-81-i0-w2-a0-606869c93449ad47",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T00:21:08.310079+00:00"
       },
       {
+        "index": 274,
         "generation": 81,
-        "sum_radii": 2.625636752776619
+        "candidate_id": "gen-81-i1-w3-a0-efa6f8968db9ad32",
+        "score": -2.625636752776619,
+        "sum_radii": 2.625636752776619,
+        "known_target_gap": 0.009363247223380888,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "timestamp": "2026-05-18T00:21:08.313879+00:00"
       },
       {
+        "index": 275,
         "generation": 82,
-        "sum_radii": 1.857142857142857
+        "candidate_id": "gen-82-i0-w0-a0-2a8d2e1a0fcc86dd",
+        "score": -1.857142857142857,
+        "sum_radii": 1.857142857142857,
+        "known_target_gap": 0.7778571428571428,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T00:26:33.923800+00:00"
       },
       {
+        "index": 276,
         "generation": 82,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-82-i1-w1-a0-967c77fd93278ba5",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T00:26:33.927052+00:00"
       },
       {
+        "index": 277,
         "generation": 82,
-        "sum_radii": 2.620514504487474
+        "candidate_id": "gen-82-i0-w2-a0-28785e58c0a31449",
+        "score": -2.620514504487474,
+        "sum_radii": 2.620514504487474,
+        "known_target_gap": 0.014485495512525759,
+        "run_label": "gen064-143",
+        "operator": "crossover",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T00:26:33.930249+00:00"
       },
       {
+        "index": 278,
         "generation": 82,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-82-i1-w3-a0-ac85d07583840212",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T00:26:33.934295+00:00"
       },
       {
+        "index": 279,
         "generation": 83,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-83-i1-w3-a0-d46d4977c07bb4ed",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T00:33:07.777527+00:00"
       },
       {
+        "index": 280,
         "generation": 84,
-        "sum_radii": 1.5728068570642249
+        "candidate_id": "gen-84-i0-w0-a0-38c9dafccc31af48",
+        "score": -1.5728068570642249,
+        "sum_radii": 1.5728068570642249,
+        "known_target_gap": 1.062193142935775,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T00:37:38.569862+00:00"
       },
       {
+        "index": 281,
         "generation": 84,
-        "sum_radii": 2.6173216822636465
+        "candidate_id": "gen-84-i1-w1-a0-7dc0936b280afceb",
+        "score": -2.6173216822636465,
+        "sum_radii": 2.6173216822636465,
+        "known_target_gap": 0.01767831773635331,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-73-i1-w1-a0-6bf142627866d0db",
+        "timestamp": "2026-05-18T00:37:38.576075+00:00"
       },
       {
+        "index": 282,
         "generation": 84,
-        "sum_radii": 2.6121844036035733
+        "candidate_id": "gen-84-i0-w2-a0-3f0762b3fd84e2f0",
+        "score": -2.6121844036035733,
+        "sum_radii": 2.6121844036035733,
+        "known_target_gap": 0.022815596396426496,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T00:37:38.579599+00:00"
       },
       {
+        "index": 283,
         "generation": 84,
-        "sum_radii": 2.617321643896705
+        "candidate_id": "gen-84-i1-w3-a0-16ceefa4950ddf04",
+        "score": -2.617321643896705,
+        "sum_radii": 2.617321643896705,
+        "known_target_gap": 0.017678356103294934,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T00:37:38.583294+00:00"
       },
       {
+        "index": 284,
         "generation": 85,
-        "sum_radii": 2.6180682554818873
+        "candidate_id": "gen-85-i0-w0-a0-e81570e16d99b172",
+        "score": -2.6180682554818873,
+        "sum_radii": 2.6180682554818873,
+        "known_target_gap": 0.016931744518112524,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T00:41:26.138756+00:00"
       },
       {
+        "index": 285,
         "generation": 85,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-85-i1-w1-a0-8a109d816d5f1f12",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T00:41:26.143462+00:00"
       },
       {
+        "index": 286,
         "generation": 85,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-85-i0-w2-a0-b19c300804391e86",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T00:41:26.147725+00:00"
       },
       {
+        "index": 287,
         "generation": 85,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-85-i1-w3-a0-3c9f30315b5a91c7",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T00:41:26.151103+00:00"
       },
       {
+        "index": 288,
         "generation": 86,
-        "sum_radii": 2.6205145044873523
+        "candidate_id": "gen-86-i1-w3-a0-827156ad6e8f1f5c",
+        "score": -2.6205145044873523,
+        "sum_radii": 2.6205145044873523,
+        "known_target_gap": 0.01448549551264744,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T00:48:54.524530+00:00"
       },
       {
+        "index": 289,
         "generation": 87,
-        "sum_radii": 2.620514504487474
+        "candidate_id": "gen-87-i0-w0-a0-62d514e305f80fdd",
+        "score": -2.620514504487474,
+        "sum_radii": 2.620514504487474,
+        "known_target_gap": 0.014485495512525759,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T00:53:54.424709+00:00"
       },
       {
+        "index": 290,
         "generation": 87,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-87-i1-w1-a0-368fd3a22ab4c058",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T00:53:54.428412+00:00"
       },
       {
+        "index": 291,
         "generation": 87,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-87-i0-w2-a0-02a9881e109e4ddb",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T00:53:54.432744+00:00"
       },
       {
+        "index": 292,
         "generation": 87,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-87-i1-w3-a0-a1dbbcb561c06e2c",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T00:53:54.435933+00:00"
       },
       {
+        "index": 293,
         "generation": 88,
-        "sum_radii": 2.6173216822636465
+        "candidate_id": "gen-88-i1-w1-a0-603d7b33aa2e4ad8",
+        "score": -2.6173216822636465,
+        "sum_radii": 2.6173216822636465,
+        "known_target_gap": 0.01767831773635331,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T01:02:01.319107+00:00"
       },
       {
+        "index": 294,
         "generation": 88,
-        "sum_radii": 2.3399999999999994
+        "candidate_id": "gen-88-i0-w2-a0-c7f446545f5f2c16",
+        "score": -2.3399999999999994,
+        "sum_radii": 2.3399999999999994,
+        "known_target_gap": 0.2950000000000004,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-71-i0-w0-a0-9bff06815f4854a5",
+        "timestamp": "2026-05-18T01:02:01.323501+00:00"
       },
       {
+        "index": 295,
         "generation": 88,
-        "sum_radii": 2.613149510730524
+        "candidate_id": "gen-88-i1-w3-a0-8d11a1ea52028d3a",
+        "score": -2.613149510730524,
+        "sum_radii": 2.613149510730524,
+        "known_target_gap": 0.021850489269475748,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T01:02:01.327925+00:00"
       },
       {
+        "index": 296,
         "generation": 89,
-        "sum_radii": 2.6173216462055833
+        "candidate_id": "gen-89-i1-w1-a0-cfdaa298243eba6d",
+        "score": -2.6173216462055833,
+        "sum_radii": 2.6173216462055833,
+        "known_target_gap": 0.017678353794416513,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T01:06:01.446854+00:00"
       },
       {
+        "index": 297,
         "generation": 89,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-89-i0-w2-a0-f7cb52be4f5867c6",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T01:06:01.451171+00:00"
       },
       {
+        "index": 298,
         "generation": 89,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-89-i1-w3-a0-7287aca14686fcda",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T01:06:01.454460+00:00"
       },
       {
+        "index": 299,
         "generation": 90,
-        "sum_radii": 2.620514504487474
+        "candidate_id": "gen-90-i0-w0-a0-5a2b42fa2d2b09c1",
+        "score": -2.620514504487474,
+        "sum_radii": 2.620514504487474,
+        "known_target_gap": 0.014485495512525759,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T01:15:41.626583+00:00"
       },
       {
+        "index": 300,
         "generation": 90,
-        "sum_radii": 2.6205145044873523
+        "candidate_id": "gen-90-i1-w1-a0-132492ee7d6b3f3c",
+        "score": -2.6205145044873523,
+        "sum_radii": 2.6205145044873523,
+        "known_target_gap": 0.01448549551264744,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-86-i1-w3-a0-827156ad6e8f1f5c",
+        "timestamp": "2026-05-18T01:15:41.631371+00:00"
       },
       {
+        "index": 301,
         "generation": 90,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-90-i0-w2-a0-3b9b16838332aa4e",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T01:15:41.635908+00:00"
       },
       {
+        "index": 302,
         "generation": 90,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-90-i1-w3-a0-a80da8bbe40760d7",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T01:15:41.639452+00:00"
       },
       {
+        "index": 303,
         "generation": 91,
-        "sum_radii": 2.1008472878371673
+        "candidate_id": "gen-91-i0-w0-a0-7cec4d314f21f005",
+        "score": -2.1008472878371673,
+        "sum_radii": 2.1008472878371673,
+        "known_target_gap": 0.5341527121628324,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T01:20:28.242902+00:00"
       },
       {
+        "index": 304,
         "generation": 91,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-91-i0-w2-a0-af254b87d02a69c4",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T01:20:28.250453+00:00"
       },
       {
+        "index": 305,
         "generation": 91,
-        "sum_radii": 1.627472120773323
+        "candidate_id": "gen-91-i1-w3-a0-62d8f47c9eef3866",
+        "score": -1.627472120773323,
+        "sum_radii": 1.627472120773323,
+        "known_target_gap": 1.0075278792266769,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-86-i1-w3-a0-827156ad6e8f1f5c",
+        "timestamp": "2026-05-18T01:20:28.254003+00:00"
       },
       {
+        "index": 306,
         "generation": 92,
-        "sum_radii": 2.4389562573796346
+        "candidate_id": "gen-92-i0-w0-a0-3ef0ce0d4bc1e6ed",
+        "score": -2.4389562573796346,
+        "sum_radii": 2.4389562573796346,
+        "known_target_gap": 0.19604374262036517,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-71-i0-w0-a0-9bff06815f4854a5",
+        "timestamp": "2026-05-18T01:24:46.149334+00:00"
       },
       {
+        "index": 307,
         "generation": 92,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-92-i1-w1-a0-1b0ff21416a02f2e",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T01:24:46.154432+00:00"
       },
       {
+        "index": 308,
         "generation": 92,
-        "sum_radii": 1.9638907993736072
+        "candidate_id": "gen-92-i0-w2-a0-b6cc18c048618eb2",
+        "score": -1.9638907993736072,
+        "sum_radii": 1.9638907993736072,
+        "known_target_gap": 0.6711092006263926,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-77-i0-w2-a0-7a53d3fb29af5af0",
+        "timestamp": "2026-05-18T01:24:46.158840+00:00"
       },
       {
+        "index": 309,
         "generation": 92,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-92-i1-w3-a0-e0fbfd1132866649",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T01:24:46.162303+00:00"
       },
       {
+        "index": 310,
         "generation": 93,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-93-i1-w1-a0-c13d6d4c9dab8989",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T01:29:41.330191+00:00"
       },
       {
+        "index": 311,
         "generation": 93,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-93-i0-w2-a0-fbf0b8a0b215795e",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T01:29:41.334817+00:00"
       },
       {
+        "index": 312,
         "generation": 93,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-93-i1-w3-a0-5611a141b199e643",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T01:29:41.338939+00:00"
       },
       {
+        "index": 313,
         "generation": 94,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-94-i0-w0-a0-35a65ff38ac56a41",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T01:32:49.449380+00:00"
       },
       {
+        "index": 314,
         "generation": 94,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-94-i1-w1-a0-6bcc9d5273c130f9",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T01:32:49.454266+00:00"
       },
       {
+        "index": 315,
         "generation": 94,
-        "sum_radii": 2.34
+        "candidate_id": "gen-94-i0-w2-a0-2d575b92bf1b620b",
+        "score": -2.34,
+        "sum_radii": 2.34,
+        "known_target_gap": 0.29499999999999993,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T01:32:49.458723+00:00"
       },
       {
+        "index": 316,
         "generation": 94,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-94-i1-w3-a0-8cd6fcfa2e15760f",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T01:32:49.462830+00:00"
       },
       {
+        "index": 317,
         "generation": 95,
-        "sum_radii": 2.5462819892239077
+        "candidate_id": "gen-95-i0-w0-a0-3efad936c995c520",
+        "score": -2.5462819892239077,
+        "sum_radii": 2.5462819892239077,
+        "known_target_gap": 0.0887180107760921,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-84-i0-w2-a0-3f0762b3fd84e2f0",
+        "timestamp": "2026-05-18T01:36:48.271469+00:00"
       },
       {
+        "index": 318,
         "generation": 95,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-95-i1-w1-a0-c411ce26aa1cf195",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T01:36:48.276118+00:00"
       },
       {
+        "index": 319,
         "generation": 95,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-95-i0-w2-a0-2d7650308d28db2c",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T01:36:48.280721+00:00"
       },
       {
+        "index": 320,
         "generation": 95,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-95-i1-w3-a0-18e345cf30874d36",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-73-i1-w1-a0-6bf142627866d0db",
+        "timestamp": "2026-05-18T01:36:48.285029+00:00"
       },
       {
+        "index": 321,
         "generation": 96,
-        "sum_radii": 2.620514504487474
+        "candidate_id": "gen-96-i0-w0-a0-e99ac1d38f5d5d50",
+        "score": -2.620514504487474,
+        "sum_radii": 2.620514504487474,
+        "known_target_gap": 0.014485495512525759,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T01:44:11.609705+00:00"
       },
       {
+        "index": 322,
         "generation": 96,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-96-i1-w1-a0-3d4ffd2a757025e3",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T01:44:11.614182+00:00"
       },
       {
+        "index": 323,
         "generation": 97,
-        "sum_radii": 2.620514504487474
+        "candidate_id": "gen-97-i0-w0-a0-f185bc753e93f56e",
+        "score": -2.620514504487474,
+        "sum_radii": 2.620514504487474,
+        "known_target_gap": 0.014485495512525759,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T01:48:51.244770+00:00"
       },
       {
+        "index": 324,
         "generation": 97,
-        "sum_radii": 2.5828422402358178
+        "candidate_id": "gen-97-i1-w1-a0-a9b5e1164a9d08a7",
+        "score": -2.5828422402358178,
+        "sum_radii": 2.5828422402358178,
+        "known_target_gap": 0.05215775976418202,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T01:48:51.249406+00:00"
       },
       {
+        "index": 325,
         "generation": 97,
-        "sum_radii": 2.4389662413796342
+        "candidate_id": "gen-97-i1-w3-a0-067a32bf2bec6668",
+        "score": -2.4389662413796342,
+        "sum_radii": 2.4389662413796342,
+        "known_target_gap": 0.19603375862036554,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-71-i0-w0-a0-9bff06815f4854a5",
+        "timestamp": "2026-05-18T01:48:51.257349+00:00"
       },
       {
+        "index": 326,
         "generation": 98,
-        "sum_radii": 2.6014555313400836
+        "candidate_id": "gen-98-i0-w0-a0-4cd38c3e4e752a65",
+        "score": -2.6014555313400836,
+        "sum_radii": 2.6014555313400836,
+        "known_target_gap": 0.03354446865991623,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-84-i0-w2-a0-3f0762b3fd84e2f0",
+        "timestamp": "2026-05-18T01:57:09.387774+00:00"
       },
       {
+        "index": 327,
         "generation": 98,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-98-i1-w1-a0-c3c6c8dc9ce081c6",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T01:57:09.392598+00:00"
       },
       {
+        "index": 328,
         "generation": 98,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-98-i0-w2-a0-164fb28cb7bafeac",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-85-i0-w0-a0-e81570e16d99b172",
+        "timestamp": "2026-05-18T01:57:09.397160+00:00"
       },
       {
+        "index": 329,
         "generation": 98,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-98-i1-w3-a0-4e9233a8ba17002c",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T01:57:09.402036+00:00"
       },
       {
+        "index": 330,
         "generation": 99,
-        "sum_radii": 1.6713399582997832
+        "candidate_id": "gen-99-i0-w0-a0-b23eed30ca13e33d",
+        "score": -1.6713399582997832,
+        "sum_radii": 1.6713399582997832,
+        "known_target_gap": 0.9636600417002166,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T02:07:13.647295+00:00"
       },
       {
+        "index": 331,
         "generation": 99,
-        "sum_radii": 2.6230682250513833
+        "candidate_id": "gen-99-i1-w1-a0-8dba4bba87199f02",
+        "score": -2.6230682250513833,
+        "sum_radii": 2.6230682250513833,
+        "known_target_gap": 0.011931774948616525,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "timestamp": "2026-05-18T02:07:13.653447+00:00"
       },
       {
+        "index": 332,
         "generation": 99,
-        "sum_radii": 2.438966267379635
+        "candidate_id": "gen-99-i1-w3-a0-46a0d7e20c1f9ba3",
+        "score": -2.438966267379635,
+        "sum_radii": 2.438966267379635,
+        "known_target_gap": 0.19603373262036472,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "timestamp": "2026-05-18T02:07:13.661668+00:00"
       },
       {
+        "index": 333,
         "generation": 100,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-100-i0-w0-a0-a60310efc7204187",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T02:15:24.010339+00:00"
       },
       {
+        "index": 334,
         "generation": 100,
-        "sum_radii": 2.1666666666666665
+        "candidate_id": "gen-100-i0-w2-a0-d1ca9ff0f65d17e7",
+        "score": -2.1666666666666665,
+        "sum_radii": 2.1666666666666665,
+        "known_target_gap": 0.46833333333333327,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T02:15:24.018969+00:00"
       },
       {
+        "index": 335,
         "generation": 100,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-100-i1-w3-a0-0d8ec255f876d90c",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T02:15:24.023842+00:00"
       },
       {
+        "index": 336,
         "generation": 101,
-        "sum_radii": 2.6180682559573434
+        "candidate_id": "gen-101-i0-w0-a0-8587a2b62852ade8",
+        "score": -2.6180682559573434,
+        "sum_radii": 2.6180682559573434,
+        "known_target_gap": 0.016931744042656405,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T02:19:47.377717+00:00"
       },
       {
+        "index": 337,
         "generation": 101,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-101-i1-w1-a0-23102dae73878f59",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T02:19:47.382482+00:00"
       },
       {
+        "index": 338,
         "generation": 101,
-        "sum_radii": 2.4070959234882507
+        "candidate_id": "gen-101-i0-w2-a0-a2d723b20dfd791d",
+        "score": -2.4070959234882507,
+        "sum_radii": 2.4070959234882507,
+        "known_target_gap": 0.22790407651174904,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T02:19:47.385967+00:00"
       },
       {
+        "index": 339,
         "generation": 101,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-101-i1-w3-a0-24cf7271da92b077",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T02:19:47.390066+00:00"
       },
       {
+        "index": 340,
         "generation": 102,
-        "sum_radii": 2.620514504487474
+        "candidate_id": "gen-102-i0-w0-a0-6233b7e6c3f1135f",
+        "score": -2.620514504487474,
+        "sum_radii": 2.620514504487474,
+        "known_target_gap": 0.014485495512525759,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T02:27:48.936717+00:00"
       },
       {
+        "index": 341,
         "generation": 102,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-102-i1-w1-a0-c4a737c8538944ef",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T02:27:48.941296+00:00"
       },
       {
+        "index": 342,
         "generation": 102,
-        "sum_radii": 2.620514504487474
+        "candidate_id": "gen-102-i0-w2-a0-6a6153facbacf284",
+        "score": -2.620514504487474,
+        "sum_radii": 2.620514504487474,
+        "known_target_gap": 0.014485495512525759,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T02:27:48.945694+00:00"
       },
       {
+        "index": 343,
         "generation": 102,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-102-i1-w3-a0-accc137c250e84d9",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T02:27:48.949954+00:00"
       },
       {
+        "index": 344,
         "generation": 103,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-103-i0-w0-a0-649832df1abea027",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T02:35:57.776184+00:00"
       },
       {
+        "index": 345,
         "generation": 103,
-        "sum_radii": 2.6205145044873523
+        "candidate_id": "gen-103-i1-w1-a0-d61c3d7384d06b8f",
+        "score": -2.6205145044873523,
+        "sum_radii": 2.6205145044873523,
+        "known_target_gap": 0.01448549551264744,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-86-i1-w3-a0-827156ad6e8f1f5c",
+        "timestamp": "2026-05-18T02:35:57.780714+00:00"
       },
       {
+        "index": 346,
         "generation": 104,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-104-i0-w0-a0-053131632bf29444",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T02:39:51.548890+00:00"
       },
       {
+        "index": 347,
         "generation": 104,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-104-i1-w1-a0-95d87c125f49b1f0",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T02:39:51.553429+00:00"
       },
       {
+        "index": 348,
         "generation": 104,
-        "sum_radii": 2.103005289925549
+        "candidate_id": "gen-104-i0-w2-a0-384da5246dcb45ea",
+        "score": -2.103005289925549,
+        "sum_radii": 2.103005289925549,
+        "known_target_gap": 0.5319947100744509,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T02:39:51.558378+00:00"
       },
       {
+        "index": 349,
         "generation": 104,
-        "sum_radii": 2.6230682250513833
+        "candidate_id": "gen-104-i1-w3-a0-2c4f7159e524ba85",
+        "score": -2.6230682250513833,
+        "sum_radii": 2.6230682250513833,
+        "known_target_gap": 0.011931774948616525,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "timestamp": "2026-05-18T02:39:51.562713+00:00"
       },
       {
+        "index": 350,
         "generation": 105,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-105-i0-w0-a0-eca98c00aaf4762a",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T02:44:16.253651+00:00"
       },
       {
+        "index": 351,
         "generation": 105,
-        "sum_radii": 2.625636752776619
+        "candidate_id": "gen-105-i1-w1-a0-a1ee67b1b3717bef",
+        "score": -2.625636752776619,
+        "sum_radii": 2.625636752776619,
+        "known_target_gap": 0.009363247223380888,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-73-i1-w1-a0-6bf142627866d0db",
+        "timestamp": "2026-05-18T02:44:16.258662+00:00"
       },
       {
+        "index": 352,
         "generation": 105,
-        "sum_radii": 2.0253797765950154
+        "candidate_id": "gen-105-i0-w2-a0-b1608dde881db117",
+        "score": -2.0253797765950154,
+        "sum_radii": 2.0253797765950154,
+        "known_target_gap": 0.6096202234049843,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T02:44:16.263233+00:00"
       },
       {
+        "index": 353,
         "generation": 105,
-        "sum_radii": 2.4389562573796346
+        "candidate_id": "gen-105-i1-w3-a0-6c93898b19dd5b75",
+        "score": -2.4389562573796346,
+        "sum_radii": 2.4389562573796346,
+        "known_target_gap": 0.19604374262036517,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-71-i0-w0-a0-9bff06815f4854a5",
+        "timestamp": "2026-05-18T02:44:16.266873+00:00"
       },
       {
+        "index": 354,
         "generation": 106,
-        "sum_radii": 1.7065381721075081
+        "candidate_id": "gen-106-i0-w0-a0-d6368efe074fb239",
+        "score": -1.7065381721075081,
+        "sum_radii": 1.7065381721075081,
+        "known_target_gap": 0.9284618278924917,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T02:55:14.810211+00:00"
       },
       {
+        "index": 355,
         "generation": 106,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-106-i1-w1-a0-0db9cc9403797dd0",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T02:55:14.813964+00:00"
       },
       {
+        "index": 356,
         "generation": 106,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-106-i0-w2-a0-5125778d433fff61",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T02:55:14.818073+00:00"
       },
       {
+        "index": 357,
         "generation": 106,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-106-i1-w3-a0-d0d38c7919239bf1",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T02:55:14.821631+00:00"
       },
       {
+        "index": 358,
         "generation": 107,
-        "sum_radii": 2.620514504487474
+        "candidate_id": "gen-107-i0-w0-a0-4b95402f6c883115",
+        "score": -2.620514504487474,
+        "sum_radii": 2.620514504487474,
+        "known_target_gap": 0.014485495512525759,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T02:58:19.132801+00:00"
       },
       {
+        "index": 359,
         "generation": 107,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-107-i1-w1-a0-cbdfac088ea20a89",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "crossover",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T02:58:19.136292+00:00"
       },
       {
+        "index": 360,
         "generation": 107,
-        "sum_radii": 1.2999999999999996
+        "candidate_id": "gen-107-i0-w2-a0-378900b775c812ad",
+        "score": -1.2999999999999996,
+        "sum_radii": 1.2999999999999996,
+        "known_target_gap": 1.3350000000000002,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T02:58:19.139553+00:00"
       },
       {
+        "index": 361,
         "generation": 107,
-        "sum_radii": 2.5532973190191286
+        "candidate_id": "gen-107-i1-w3-a0-59f1c34de6aca6bf",
+        "score": -2.5532973190191286,
+        "sum_radii": 2.5532973190191286,
+        "known_target_gap": 0.08170268098087119,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T02:58:19.143758+00:00"
       },
       {
+        "index": 362,
         "generation": 108,
-        "sum_radii": 2.166666666666667
+        "candidate_id": "gen-108-i0-w0-a0-1ac705b41d9d801f",
+        "score": -2.166666666666667,
+        "sum_radii": 2.166666666666667,
+        "known_target_gap": 0.4683333333333328,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T03:05:52.205037+00:00"
       },
       {
+        "index": 363,
         "generation": 108,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-108-i1-w3-a0-9850014466fcdca8",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T03:05:52.215954+00:00"
       },
       {
+        "index": 364,
         "generation": 109,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-109-i0-w0-a0-53fcf80a02b5d2d0",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T03:11:15.868177+00:00"
       },
       {
+        "index": 365,
         "generation": 109,
-        "sum_radii": 2.1666666666666665
+        "candidate_id": "gen-109-i1-w1-a0-03747d81684fb7e5",
+        "score": -2.1666666666666665,
+        "sum_radii": 2.1666666666666665,
+        "known_target_gap": 0.46833333333333327,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T03:11:15.872833+00:00"
       },
       {
+        "index": 366,
         "generation": 109,
-        "sum_radii": 2.620514504487474
+        "candidate_id": "gen-109-i0-w2-a0-f9f9a44aeb1b5edd",
+        "score": -2.620514504487474,
+        "sum_radii": 2.620514504487474,
+        "known_target_gap": 0.014485495512525759,
+        "run_label": "gen064-143",
+        "operator": "crossover",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T03:11:15.876213+00:00"
       },
       {
+        "index": 367,
         "generation": 109,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-109-i1-w3-a0-9e30a90431320af0",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T03:11:15.880390+00:00"
       },
       {
+        "index": 368,
         "generation": 110,
-        "sum_radii": 2.1666666666666665
+        "candidate_id": "gen-110-i0-w0-a0-40363f1c7c799c5b",
+        "score": -2.1666666666666665,
+        "sum_radii": 2.1666666666666665,
+        "known_target_gap": 0.46833333333333327,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T03:16:40.393223+00:00"
       },
       {
+        "index": 369,
         "generation": 110,
-        "sum_radii": 2.6256367527762805
+        "candidate_id": "gen-110-i1-w3-a0-b2de01896bff3695",
+        "score": -2.6256367527762805,
+        "sum_radii": 2.6256367527762805,
+        "known_target_gap": 0.009363247223719284,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-73-i1-w1-a0-6bf142627866d0db",
+        "timestamp": "2026-05-18T03:16:40.403867+00:00"
       },
       {
+        "index": 370,
         "generation": 111,
-        "sum_radii": 2.342151585619908
+        "candidate_id": "gen-111-i0-w0-a0-dfff5b3d79fb5907",
+        "score": -2.342151585619908,
+        "sum_radii": 2.342151585619908,
+        "known_target_gap": 0.2928484143800918,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T03:21:35.807362+00:00"
       },
       {
+        "index": 371,
         "generation": 111,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-111-i1-w1-a0-6c24d51383e096c7",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T03:21:35.811918+00:00"
       },
       {
+        "index": 372,
         "generation": 111,
-        "sum_radii": 2.617321682062661
+        "candidate_id": "gen-111-i0-w2-a0-927aa7248c7fd040",
+        "score": -2.617321682062661,
+        "sum_radii": 2.617321682062661,
+        "known_target_gap": 0.01767831793733876,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-101-i0-w0-a0-8587a2b62852ade8",
+        "timestamp": "2026-05-18T03:21:35.816431+00:00"
       },
       {
+        "index": 373,
         "generation": 111,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-111-i1-w3-a0-f98f3793aef95ce5",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-73-i1-w1-a0-6bf142627866d0db",
+        "timestamp": "2026-05-18T03:21:35.820740+00:00"
       },
       {
+        "index": 374,
         "generation": 112,
-        "sum_radii": 1.727995996
+        "candidate_id": "gen-112-i0-w0-a0-11c76d35f623b87c",
+        "score": -1.727995996,
+        "sum_radii": 1.727995996,
+        "known_target_gap": 0.9070040039999998,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-71-i0-w0-a0-9bff06815f4854a5",
+        "timestamp": "2026-05-18T03:26:47.037664+00:00"
       },
       {
+        "index": 375,
         "generation": 112,
-        "sum_radii": 2.235456296862389
+        "candidate_id": "gen-112-i1-w1-a0-ce3e6449f243aa54",
+        "score": -2.235456296862389,
+        "sum_radii": 2.235456296862389,
+        "known_target_gap": 0.3995437031376108,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "timestamp": "2026-05-18T03:26:47.042509+00:00"
       },
       {
+        "index": 376,
         "generation": 112,
-        "sum_radii": 2.3399999999999994
+        "candidate_id": "gen-112-i0-w2-a0-a7aea0d6d75a2fc7",
+        "score": -2.3399999999999994,
+        "sum_radii": 2.3399999999999994,
+        "known_target_gap": 0.2950000000000004,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T03:26:47.047023+00:00"
       },
       {
+        "index": 377,
         "generation": 112,
-        "sum_radii": 2.6256354795937678
+        "candidate_id": "gen-112-i1-w3-a0-e182c8216b9474a7",
+        "score": -2.6256354795937678,
+        "sum_radii": 2.6256354795937678,
+        "known_target_gap": 0.009364520406232035,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-73-i1-w1-a0-6bf142627866d0db",
+        "timestamp": "2026-05-18T03:26:47.050510+00:00"
       },
       {
+        "index": 378,
         "generation": 113,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-113-i1-w1-a0-d30d1476ee468938",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-73-i1-w1-a0-6bf142627866d0db",
+        "timestamp": "2026-05-18T03:30:42.089973+00:00"
       },
       {
+        "index": 379,
         "generation": 113,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-113-i0-w2-a0-d35652eccdc372b2",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T03:30:42.094247+00:00"
       },
       {
+        "index": 380,
         "generation": 113,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-113-i1-w3-a0-f18a26af3e45a960",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-73-i1-w1-a0-6bf142627866d0db",
+        "timestamp": "2026-05-18T03:30:42.098346+00:00"
       },
       {
+        "index": 381,
         "generation": 114,
-        "sum_radii": 2.620514504487474
+        "candidate_id": "gen-114-i0-w0-a0-e7b341558a2580eb",
+        "score": -2.620514504487474,
+        "sum_radii": 2.620514504487474,
+        "known_target_gap": 0.014485495512525759,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T03:37:11.927367+00:00"
       },
       {
+        "index": 382,
         "generation": 114,
-        "sum_radii": 2.4639530046172484
+        "candidate_id": "gen-114-i0-w2-a0-83b92927bff0f387",
+        "score": -2.4639530046172484,
+        "sum_radii": 2.4639530046172484,
+        "known_target_gap": 0.17104699538275137,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T03:37:11.935601+00:00"
       },
       {
+        "index": 383,
         "generation": 114,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-114-i1-w3-a0-57c1e3cbcafdd39b",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T03:37:11.939952+00:00"
       },
       {
+        "index": 384,
         "generation": 115,
-        "sum_radii": 2.620514504487474
+        "candidate_id": "gen-115-i0-w0-a0-dcdaded009998e6a",
+        "score": -2.620514504487474,
+        "sum_radii": 2.620514504487474,
+        "known_target_gap": 0.014485495512525759,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T03:42:54.760009+00:00"
       },
       {
+        "index": 385,
         "generation": 115,
-        "sum_radii": 2.6230682250513833
+        "candidate_id": "gen-115-i1-w1-a0-2ff87dee3629095c",
+        "score": -2.6230682250513833,
+        "sum_radii": 2.6230682250513833,
+        "known_target_gap": 0.011931774948616525,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "timestamp": "2026-05-18T03:42:54.764099+00:00"
       },
       {
+        "index": 386,
         "generation": 115,
-        "sum_radii": 2.1666666666666665
+        "candidate_id": "gen-115-i0-w2-a0-8f76792b53aaf4e2",
+        "score": -2.1666666666666665,
+        "sum_radii": 2.1666666666666665,
+        "known_target_gap": 0.46833333333333327,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T03:42:54.767475+00:00"
       },
       {
+        "index": 387,
         "generation": 115,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-115-i1-w3-a0-dbd17797d053faeb",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "timestamp": "2026-05-18T03:42:54.771972+00:00"
       },
       {
+        "index": 388,
         "generation": 116,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-116-i1-w1-a0-2e9f9775765e25db",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T03:48:35.540435+00:00"
       },
       {
+        "index": 389,
         "generation": 117,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-117-i0-w0-a0-146df911d771d412",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T04:00:35.078249+00:00"
       },
       {
+        "index": 390,
         "generation": 117,
-        "sum_radii": 2.6249134867076584
+        "candidate_id": "gen-117-i1-w1-a0-d0a5b7f11460e51e",
+        "score": -2.6249134867076584,
+        "sum_radii": 2.6249134867076584,
+        "known_target_gap": 0.010086513292341337,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-71-i0-w0-a0-9bff06815f4854a5",
+        "timestamp": "2026-05-18T04:00:35.082782+00:00"
       },
       {
+        "index": 391,
         "generation": 117,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-117-i0-w2-a0-2d7a2bb7221b839a",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T04:00:35.087427+00:00"
       },
       {
+        "index": 392,
         "generation": 118,
-        "sum_radii": 2.1666666666668593
+        "candidate_id": "gen-118-i0-w0-a0-3f73f05de7aefbae",
+        "score": -2.1666666666668593,
+        "sum_radii": 2.1666666666668593,
+        "known_target_gap": 0.46833333333314053,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T04:04:24.475411+00:00"
       },
       {
+        "index": 393,
         "generation": 118,
-        "sum_radii": 2.6256354795937678
+        "candidate_id": "gen-118-i1-w1-a0-de7be2fc4bcc8497",
+        "score": -2.6256354795937678,
+        "sum_radii": 2.6256354795937678,
+        "known_target_gap": 0.009364520406232035,
+        "run_label": "gen064-143",
+        "operator": "crossover",
+        "parent_id": "gen-73-i1-w1-a0-6bf142627866d0db",
+        "timestamp": "2026-05-18T04:04:24.479278+00:00"
       },
       {
+        "index": 394,
         "generation": 118,
-        "sum_radii": 2.5893175464839624
+        "candidate_id": "gen-118-i0-w2-a0-9c9e740d8136593d",
+        "score": -2.5893175464839624,
+        "sum_radii": 2.5893175464839624,
+        "known_target_gap": 0.04568245351603739,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T04:04:24.483295+00:00"
       },
       {
+        "index": 395,
         "generation": 118,
-        "sum_radii": 2.6173216822628618
+        "candidate_id": "gen-118-i1-w3-a0-aa005261b26431df",
+        "score": -2.6173216822628618,
+        "sum_radii": 2.6173216822628618,
+        "known_target_gap": 0.017678317737138016,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-106-i1-w3-a0-d0d38c7919239bf1",
+        "timestamp": "2026-05-18T04:04:24.487675+00:00"
       },
       {
+        "index": 396,
         "generation": 119,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-119-i1-w1-a0-cbdd3ba1835131eb",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T04:17:28.641619+00:00"
       },
       {
+        "index": 397,
         "generation": 119,
-        "sum_radii": 2.4639530046172484
+        "candidate_id": "gen-119-i0-w2-a0-69db0ac525731181",
+        "score": -2.4639530046172484,
+        "sum_radii": 2.4639530046172484,
+        "known_target_gap": 0.17104699538275137,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-114-i0-w2-a0-83b92927bff0f387",
+        "timestamp": "2026-05-18T04:17:28.647987+00:00"
       },
       {
+        "index": 398,
         "generation": 120,
-        "sum_radii": 2.377030216371802
+        "candidate_id": "gen-120-i0-w2-a0-1b64b579da1787fa",
+        "score": -2.377030216371802,
+        "sum_radii": 2.377030216371802,
+        "known_target_gap": 0.257969783628198,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-71-i0-w0-a0-9bff06815f4854a5",
+        "timestamp": "2026-05-18T04:30:26.642975+00:00"
       },
       {
+        "index": 399,
         "generation": 120,
-        "sum_radii": 2.6256354795937678
+        "candidate_id": "gen-120-i1-w3-a0-49c1a50caa591502",
+        "score": -2.6256354795937678,
+        "sum_radii": 2.6256354795937678,
+        "known_target_gap": 0.009364520406232035,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-73-i1-w1-a0-6bf142627866d0db",
+        "timestamp": "2026-05-18T04:30:26.646697+00:00"
       },
       {
+        "index": 400,
         "generation": 121,
-        "sum_radii": 2.6180682559573434
+        "candidate_id": "gen-121-i0-w0-a0-4c6489e3a167b21c",
+        "score": -2.6180682559573434,
+        "sum_radii": 2.6180682559573434,
+        "known_target_gap": 0.016931744042656405,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-101-i0-w0-a0-8587a2b62852ade8",
+        "timestamp": "2026-05-18T04:39:26.408395+00:00"
       },
       {
+        "index": 401,
         "generation": 121,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-121-i1-w1-a0-5afd7a06f9ed53bd",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T04:39:26.413502+00:00"
       },
       {
+        "index": 402,
         "generation": 121,
-        "sum_radii": 2.6204969803845546
+        "candidate_id": "gen-121-i0-w2-a0-66b682e01b1c8785",
+        "score": -2.6204969803845546,
+        "sum_radii": 2.6204969803845546,
+        "known_target_gap": 0.0145030196154452,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-71-i0-w0-a0-9bff06815f4854a5",
+        "timestamp": "2026-05-18T04:39:26.417210+00:00"
       },
       {
+        "index": 403,
         "generation": 121,
-        "sum_radii": 2.2474009587514088
+        "candidate_id": "gen-121-i1-w3-a0-4ff031c05b5c5518",
+        "score": -2.2474009587514088,
+        "sum_radii": 2.2474009587514088,
+        "known_target_gap": 0.387599041248591,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-114-i0-w2-a0-83b92927bff0f387",
+        "timestamp": "2026-05-18T04:39:26.421620+00:00"
       },
       {
+        "index": 404,
         "generation": 122,
-        "sum_radii": 1.8571428571428568
+        "candidate_id": "gen-122-i0-w0-a0-258645a95476c006",
+        "score": -1.8571428571428568,
+        "sum_radii": 1.8571428571428568,
+        "known_target_gap": 0.777857142857143,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-84-i0-w2-a0-3f0762b3fd84e2f0",
+        "timestamp": "2026-05-18T04:47:39.263760+00:00"
       },
       {
+        "index": 405,
         "generation": 122,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-122-i1-w1-a0-172d26b8e1ed2037",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T04:47:39.269281+00:00"
       },
       {
+        "index": 406,
         "generation": 122,
-        "sum_radii": 2.6230682250513833
+        "candidate_id": "gen-122-i1-w3-a0-ad8df72c9871a83d",
+        "score": -2.6230682250513833,
+        "sum_radii": 2.6230682250513833,
+        "known_target_gap": 0.011931774948616525,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "timestamp": "2026-05-18T04:47:39.276886+00:00"
       },
       {
+        "index": 407,
         "generation": 123,
-        "sum_radii": 2.1666666666666665
+        "candidate_id": "gen-123-i0-w0-a0-3705a5cc9541822b",
+        "score": -2.1666666666666665,
+        "sum_radii": 2.1666666666666665,
+        "known_target_gap": 0.46833333333333327,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T04:56:13.965131+00:00"
       },
       {
+        "index": 408,
         "generation": 123,
-        "sum_radii": 2.438973550919538
+        "candidate_id": "gen-123-i1-w1-a0-f8bea3a5eb843c81",
+        "score": -2.438973550919538,
+        "sum_radii": 2.438973550919538,
+        "known_target_gap": 0.19602644908046196,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-71-i0-w0-a0-9bff06815f4854a5",
+        "timestamp": "2026-05-18T04:56:13.970860+00:00"
       },
       {
+        "index": 409,
         "generation": 123,
-        "sum_radii": 2.5895985145577023
+        "candidate_id": "gen-123-i0-w2-a0-33a0d55941c19e93",
+        "score": -2.5895985145577023,
+        "sum_radii": 2.5895985145577023,
+        "known_target_gap": 0.045401485442297496,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T04:56:13.976375+00:00"
       },
       {
+        "index": 410,
         "generation": 124,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-124-i0-w0-a0-4775b7b41453004d",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T05:02:58.428360+00:00"
       },
       {
+        "index": 411,
         "generation": 124,
-        "sum_radii": 2.098076211353316
+        "candidate_id": "gen-124-i1-w1-a0-e068f25d248d5621",
+        "score": -2.098076211353316,
+        "sum_radii": 2.098076211353316,
+        "known_target_gap": 0.5369237886466838,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T05:02:58.432333+00:00"
       },
       {
+        "index": 412,
         "generation": 124,
-        "sum_radii": 2.618068255935242
+        "candidate_id": "gen-124-i0-w2-a0-df75cde0377e96ef",
+        "score": -2.618068255935242,
+        "sum_radii": 2.618068255935242,
+        "known_target_gap": 0.016931744064757837,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T05:02:58.437086+00:00"
       },
       {
+        "index": 413,
         "generation": 124,
-        "sum_radii": 2.6230682250513833
+        "candidate_id": "gen-124-i1-w3-a0-c0e7e9c964ea2e49",
+        "score": -2.6230682250513833,
+        "sum_radii": 2.6230682250513833,
+        "known_target_gap": 0.011931774948616525,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "timestamp": "2026-05-18T05:02:58.441728+00:00"
       },
       {
+        "index": 414,
         "generation": 125,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-125-i1-w1-a0-d155070f61f11f79",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T05:15:34.849511+00:00"
       },
       {
+        "index": 415,
         "generation": 125,
-        "sum_radii": 2.620514504487474
+        "candidate_id": "gen-125-i0-w2-a0-e4cb226281f94c66",
+        "score": -2.620514504487474,
+        "sum_radii": 2.620514504487474,
+        "known_target_gap": 0.014485495512525759,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T05:15:34.853098+00:00"
       },
       {
+        "index": 416,
         "generation": 125,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-125-i1-w3-a0-5568818743592dd7",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T05:15:34.857243+00:00"
       },
       {
+        "index": 417,
         "generation": 126,
-        "sum_radii": 2.437374581449948
+        "candidate_id": "gen-126-i0-w0-a0-4e1a1c1168d44675",
+        "score": -2.437374581449948,
+        "sum_radii": 2.437374581449948,
+        "known_target_gap": 0.1976254185500519,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T05:21:06.237377+00:00"
       },
       {
+        "index": 418,
         "generation": 126,
-        "sum_radii": 2.0799999931829665
+        "candidate_id": "gen-126-i0-w2-a0-8c0d2f6e7804e317",
+        "score": -2.0799999931829665,
+        "sum_radii": 2.0799999931829665,
+        "known_target_gap": 0.5550000068170333,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T05:21:06.245840+00:00"
       },
       {
+        "index": 419,
         "generation": 127,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-127-i0-w0-a0-54b6b16050905c4e",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T05:28:59.194502+00:00"
       },
       {
+        "index": 420,
         "generation": 127,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-127-i1-w1-a0-9839be92ae18b9bd",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "timestamp": "2026-05-18T05:28:59.199544+00:00"
       },
       {
+        "index": 421,
         "generation": 127,
-        "sum_radii": 2.6180682559573434
+        "candidate_id": "gen-127-i0-w2-a0-cbf2f2b94bfbb5f4",
+        "score": -2.6180682559573434,
+        "sum_radii": 2.6180682559573434,
+        "known_target_gap": 0.016931744042656405,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T05:28:59.204391+00:00"
       },
       {
+        "index": 422,
         "generation": 127,
-        "sum_radii": 2.6230682250513833
+        "candidate_id": "gen-127-i1-w3-a0-76202c9c0be812aa",
+        "score": -2.6230682250513833,
+        "sum_radii": 2.6230682250513833,
+        "known_target_gap": 0.011931774948616525,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "timestamp": "2026-05-18T05:28:59.209039+00:00"
       },
       {
+        "index": 423,
         "generation": 128,
-        "sum_radii": 2.507751654895015
+        "candidate_id": "gen-128-i0-w0-a0-0b856fc07fcf7648",
+        "score": -2.507751654895015,
+        "sum_radii": 2.507751654895015,
+        "known_target_gap": 0.12724834510498484,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T05:32:45.606511+00:00"
       },
       {
+        "index": 424,
         "generation": 128,
-        "sum_radii": 1.9999999999999996
+        "candidate_id": "gen-128-i1-w1-a0-95ddc001df6f1f8b",
+        "score": -1.9999999999999996,
+        "sum_radii": 1.9999999999999996,
+        "known_target_gap": 0.6350000000000002,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-86-i1-w3-a0-827156ad6e8f1f5c",
+        "timestamp": "2026-05-18T05:32:45.611527+00:00"
       },
       {
+        "index": 425,
         "generation": 128,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-128-i0-w2-a0-2754a589db3d10b5",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T05:32:45.615896+00:00"
       },
       {
+        "index": 426,
         "generation": 128,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-128-i1-w3-a0-7fa5d2ef81018255",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T05:32:45.620567+00:00"
       },
       {
+        "index": 427,
         "generation": 130,
-        "sum_radii": 2.166666666666667
+        "candidate_id": "gen-130-i0-w0-a0-c1f4c1a61fa4d1ec",
+        "score": -2.166666666666667,
+        "sum_radii": 2.166666666666667,
+        "known_target_gap": 0.4683333333333328,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T05:44:00.980690+00:00"
       },
       {
+        "index": 428,
         "generation": 130,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-130-i0-w2-a0-2265ab4726b9f972",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T05:44:00.988530+00:00"
       },
       {
+        "index": 429,
         "generation": 130,
-        "sum_radii": 2.620514491728477
+        "candidate_id": "gen-130-i1-w3-a0-0b89425eebcb0763",
+        "score": -2.620514491728477,
+        "sum_radii": 2.620514491728477,
+        "known_target_gap": 0.014485508271522729,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-73-i1-w1-a0-6bf142627866d0db",
+        "timestamp": "2026-05-18T05:44:00.993272+00:00"
       },
       {
+        "index": 430,
         "generation": 131,
-        "sum_radii": 2.438966267379635
+        "candidate_id": "gen-131-i0-w0-a0-1b34aa65187bac53",
+        "score": -2.438966267379635,
+        "sum_radii": 2.438966267379635,
+        "known_target_gap": 0.19603373262036472,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-99-i1-w3-a0-46a0d7e20c1f9ba3",
+        "timestamp": "2026-05-18T05:48:33.570228+00:00"
       },
       {
+        "index": 431,
         "generation": 131,
-        "sum_radii": 2.625636752776412
+        "candidate_id": "gen-131-i1-w1-a0-bce2f5089b25597e",
+        "score": -2.625636752776412,
+        "sum_radii": 2.625636752776412,
+        "known_target_gap": 0.009363247223587834,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T05:48:33.575316+00:00"
       },
       {
+        "index": 432,
         "generation": 131,
-        "sum_radii": 1.7423074889580896
+        "candidate_id": "gen-131-i0-w2-a0-ed6e507d0b61b736",
+        "score": -1.7423074889580896,
+        "sum_radii": 1.7423074889580896,
+        "known_target_gap": 0.8926925110419102,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-84-i0-w2-a0-3f0762b3fd84e2f0",
+        "timestamp": "2026-05-18T05:48:33.580508+00:00"
       },
       {
+        "index": 433,
         "generation": 131,
-        "sum_radii": 2.591219435331865
+        "candidate_id": "gen-131-i1-w3-a0-eceb4db8938dafd5",
+        "score": -2.591219435331865,
+        "sum_radii": 2.591219435331865,
+        "known_target_gap": 0.04378056466813485,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T05:48:33.584814+00:00"
       },
       {
+        "index": 434,
         "generation": 132,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-132-i0-w0-a0-912c967113f9a3ac",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T05:53:03.543349+00:00"
       },
       {
+        "index": 435,
         "generation": 132,
-        "sum_radii": 2.098076211353316
+        "candidate_id": "gen-132-i1-w1-a0-13b7bd72f37a8450",
+        "score": -2.098076211353316,
+        "sum_radii": 2.098076211353316,
+        "known_target_gap": 0.5369237886466838,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-73-i1-w1-a0-6bf142627866d0db",
+        "timestamp": "2026-05-18T05:53:03.548331+00:00"
       },
       {
+        "index": 436,
         "generation": 133,
-        "sum_radii": 2.6230682250497406
+        "candidate_id": "gen-133-i0-w0-a0-316cf509366e082b",
+        "score": -2.6230682250497406,
+        "sum_radii": 2.6230682250497406,
+        "known_target_gap": 0.01193177495025921,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T05:58:18.122974+00:00"
       },
       {
+        "index": 437,
         "generation": 133,
-        "sum_radii": 2.249211788628243
+        "candidate_id": "gen-133-i1-w1-a0-0a230f274bfde81c",
+        "score": -2.249211788628243,
+        "sum_radii": 2.249211788628243,
+        "known_target_gap": 0.3857882113717568,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-114-i0-w2-a0-83b92927bff0f387",
+        "timestamp": "2026-05-18T05:58:18.128315+00:00"
       },
       {
+        "index": 438,
         "generation": 133,
-        "sum_radii": 2.2200160383151855
+        "candidate_id": "gen-133-i0-w2-a0-7e5d7b8098807acd",
+        "score": -2.2200160383151855,
+        "sum_radii": 2.2200160383151855,
+        "known_target_gap": 0.41498396168481433,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "timestamp": "2026-05-18T05:58:18.133032+00:00"
       },
       {
+        "index": 439,
         "generation": 133,
-        "sum_radii": 2.6230682250513833
+        "candidate_id": "gen-133-i1-w3-a0-f02d2344a9d2a704",
+        "score": -2.6230682250513833,
+        "sum_radii": 2.6230682250513833,
+        "known_target_gap": 0.011931774948616525,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "timestamp": "2026-05-18T05:58:18.137743+00:00"
       },
       {
+        "index": 440,
         "generation": 134,
-        "sum_radii": 2.6230682250497406
+        "candidate_id": "gen-134-i0-w0-a0-718cb03fe8b84053",
+        "score": -2.6230682250497406,
+        "sum_radii": 2.6230682250497406,
+        "known_target_gap": 0.01193177495025921,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-133-i0-w0-a0-316cf509366e082b",
+        "timestamp": "2026-05-18T06:04:39.391297+00:00"
       },
       {
+        "index": 441,
         "generation": 134,
-        "sum_radii": 2.6230682250497406
+        "candidate_id": "gen-134-i0-w2-a0-357f6fae52e647bc",
+        "score": -2.6230682250497406,
+        "sum_radii": 2.6230682250497406,
+        "known_target_gap": 0.01193177495025921,
+        "run_label": "gen064-143",
+        "operator": "refine",
+        "parent_id": "gen-133-i0-w0-a0-316cf509366e082b",
+        "timestamp": "2026-05-18T06:04:39.399846+00:00"
       },
       {
+        "index": 442,
         "generation": 135,
-        "sum_radii": 2.1462903152940784
+        "candidate_id": "gen-135-i0-w0-a0-5936b5adf2b9b01b",
+        "score": -2.1462903152940784,
+        "sum_radii": 2.1462903152940784,
+        "known_target_gap": 0.48870968470592135,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-133-i0-w0-a0-316cf509366e082b",
+        "timestamp": "2026-05-18T06:12:55.599081+00:00"
       },
       {
+        "index": 443,
         "generation": 135,
-        "sum_radii": 2.438966267379635
+        "candidate_id": "gen-135-i1-w1-a0-3a5962d5e0a42540",
+        "score": -2.438966267379635,
+        "sum_radii": 2.438966267379635,
+        "known_target_gap": 0.19603373262036472,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-99-i1-w3-a0-46a0d7e20c1f9ba3",
+        "timestamp": "2026-05-18T06:12:55.604933+00:00"
       },
       {
+        "index": 444,
         "generation": 135,
-        "sum_radii": 2.6230682250497406
+        "candidate_id": "gen-135-i0-w2-a0-9b60c74997480b02",
+        "score": -2.6230682250497406,
+        "sum_radii": 2.6230682250497406,
+        "known_target_gap": 0.01193177495025921,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-133-i0-w0-a0-316cf509366e082b",
+        "timestamp": "2026-05-18T06:12:55.609798+00:00"
       },
       {
+        "index": 445,
         "generation": 135,
-        "sum_radii": 2.6205145044873523
+        "candidate_id": "gen-135-i1-w3-a0-339407bcb07c41e9",
+        "score": -2.6205145044873523,
+        "sum_radii": 2.6205145044873523,
+        "known_target_gap": 0.01448549551264744,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-86-i1-w3-a0-827156ad6e8f1f5c",
+        "timestamp": "2026-05-18T06:12:55.614712+00:00"
       },
       {
+        "index": 446,
         "generation": 136,
-        "sum_radii": 2.110643885232376
+        "candidate_id": "gen-136-i0-w0-a0-211aa7df57d06cfe",
+        "score": -2.110643885232376,
+        "sum_radii": 2.110643885232376,
+        "known_target_gap": 0.5243561147676239,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-133-i0-w0-a0-316cf509366e082b",
+        "timestamp": "2026-05-18T06:17:25.920219+00:00"
       },
       {
+        "index": 447,
         "generation": 136,
-        "sum_radii": 2.166666666666666
+        "candidate_id": "gen-136-i0-w2-a0-3697fd4bef8bfd57",
+        "score": -2.166666666666666,
+        "sum_radii": 2.166666666666666,
+        "known_target_gap": 0.4683333333333337,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-133-i0-w0-a0-316cf509366e082b",
+        "timestamp": "2026-05-18T06:17:25.928638+00:00"
       },
       {
+        "index": 448,
         "generation": 136,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-136-i1-w3-a0-02296e23275ecfac",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-73-i1-w1-a0-6bf142627866d0db",
+        "timestamp": "2026-05-18T06:17:25.933379+00:00"
       },
       {
+        "index": 449,
         "generation": 137,
-        "sum_radii": 2.164871595283608
+        "candidate_id": "gen-137-i0-w0-a0-956616768c72edb5",
+        "score": -2.164871595283608,
+        "sum_radii": 2.164871595283608,
+        "known_target_gap": 0.47012840471639183,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-133-i0-w0-a0-316cf509366e082b",
+        "timestamp": "2026-05-18T06:27:49.027577+00:00"
       },
       {
+        "index": 450,
         "generation": 137,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-137-i1-w1-a0-942433471b9a2115",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-73-i1-w1-a0-6bf142627866d0db",
+        "timestamp": "2026-05-18T06:27:49.032577+00:00"
       },
       {
+        "index": 451,
         "generation": 137,
-        "sum_radii": 2.6230682250497406
+        "candidate_id": "gen-137-i0-w2-a0-9c8ed5b91b3c07ac",
+        "score": -2.6230682250497406,
+        "sum_radii": 2.6230682250497406,
+        "known_target_gap": 0.01193177495025921,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-133-i0-w0-a0-316cf509366e082b",
+        "timestamp": "2026-05-18T06:27:49.037402+00:00"
       },
       {
+        "index": 452,
         "generation": 137,
-        "sum_radii": 2.6205009631537615
+        "candidate_id": "gen-137-i1-w3-a0-d41e1f9706a2cb56",
+        "score": -2.6205009631537615,
+        "sum_radii": 2.6205009631537615,
+        "known_target_gap": 0.014499036846238322,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-71-i0-w0-a0-9bff06815f4854a5",
+        "timestamp": "2026-05-18T06:27:49.041411+00:00"
       },
       {
+        "index": 453,
         "generation": 138,
-        "sum_radii": 2.164662222552765
+        "candidate_id": "gen-138-i0-w0-a0-dd09e64b9edcd8dd",
+        "score": -2.164662222552765,
+        "sum_radii": 2.164662222552765,
+        "known_target_gap": 0.4703377774472348,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-133-i0-w0-a0-316cf509366e082b",
+        "timestamp": "2026-05-18T06:33:15.766457+00:00"
       },
       {
+        "index": 454,
         "generation": 138,
-        "sum_radii": 2.1666666666666665
+        "candidate_id": "gen-138-i0-w2-a0-9a4a157e85ffd5ed",
+        "score": -2.1666666666666665,
+        "sum_radii": 2.1666666666666665,
+        "known_target_gap": 0.46833333333333327,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-133-i0-w0-a0-316cf509366e082b",
+        "timestamp": "2026-05-18T06:33:15.774667+00:00"
       },
       {
+        "index": 455,
         "generation": 138,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-138-i1-w3-a0-28796beaadd2aadb",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T06:33:15.779448+00:00"
       },
       {
+        "index": 456,
         "generation": 139,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-139-i1-w1-a0-bd6e3395a4321be4",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T06:37:48.854166+00:00"
       },
       {
+        "index": 457,
         "generation": 139,
-        "sum_radii": 2.1462903152940784
+        "candidate_id": "gen-139-i0-w2-a0-e0ec7bebe6188963",
+        "score": -2.1462903152940784,
+        "sum_radii": 2.1462903152940784,
+        "known_target_gap": 0.48870968470592135,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-133-i0-w0-a0-316cf509366e082b",
+        "timestamp": "2026-05-18T06:37:48.859086+00:00"
       },
       {
+        "index": 458,
         "generation": 139,
-        "sum_radii": 1.4061552812808829
+        "candidate_id": "gen-139-i1-w3-a0-d5259ab1e3422ffe",
+        "score": -1.4061552812808829,
+        "sum_radii": 1.4061552812808829,
+        "known_target_gap": 1.228844718719117,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T06:37:48.863964+00:00"
       },
       {
+        "index": 459,
         "generation": 140,
-        "sum_radii": 2.6230682250497406
+        "candidate_id": "gen-140-i0-w0-a0-4c2bdcf0c80d945e",
+        "score": -2.6230682250497406,
+        "sum_radii": 2.6230682250497406,
+        "known_target_gap": 0.01193177495025921,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-133-i0-w0-a0-316cf509366e082b",
+        "timestamp": "2026-05-18T06:40:39.344507+00:00"
       },
       {
+        "index": 460,
         "generation": 140,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-140-i1-w1-a0-de4cdd52187347f6",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T06:40:39.349519+00:00"
       },
       {
+        "index": 461,
         "generation": 140,
-        "sum_radii": 2.1462903152940784
+        "candidate_id": "gen-140-i0-w2-a0-a590720022dd4fe5",
+        "score": -2.1462903152940784,
+        "sum_radii": 2.1462903152940784,
+        "known_target_gap": 0.48870968470592135,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-133-i0-w0-a0-316cf509366e082b",
+        "timestamp": "2026-05-18T06:40:39.354344+00:00"
       },
       {
+        "index": 462,
         "generation": 140,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-140-i1-w3-a0-2ab638c9adb09df3",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T06:40:39.358815+00:00"
       },
       {
+        "index": 463,
         "generation": 141,
-        "sum_radii": 2.561675327984077
+        "candidate_id": "gen-141-i0-w0-a0-930efbb38cf0ac07",
+        "score": -2.561675327984077,
+        "sum_radii": 2.561675327984077,
+        "known_target_gap": 0.07332467201592285,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-84-i0-w2-a0-3f0762b3fd84e2f0",
+        "timestamp": "2026-05-18T06:47:22.575951+00:00"
       },
       {
+        "index": 464,
         "generation": 141,
-        "sum_radii": 1.6489414655900356
+        "candidate_id": "gen-141-i1-w1-a0-0c60556539a58258",
+        "score": -1.6489414655900356,
+        "sum_radii": 1.6489414655900356,
+        "known_target_gap": 0.9860585344099642,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T06:47:22.581135+00:00"
       },
       {
+        "index": 465,
         "generation": 141,
-        "sum_radii": 1.8870567693910085
+        "candidate_id": "gen-141-i0-w2-a0-1e8f9a3c300f73cc",
+        "score": -1.8870567693910085,
+        "sum_radii": 1.8870567693910085,
+        "known_target_gap": 0.7479432306089913,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-124-i0-w0-a0-4775b7b41453004d",
+        "timestamp": "2026-05-18T06:47:22.585892+00:00"
       },
       {
+        "index": 466,
         "generation": 141,
-        "sum_radii": 2.44416086020421
+        "candidate_id": "gen-141-i1-w3-a0-6dfb3f7fa2eb1d8e",
+        "score": -2.44416086020421,
+        "sum_radii": 2.44416086020421,
+        "known_target_gap": 0.1908391397957896,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-99-i1-w3-a0-46a0d7e20c1f9ba3",
+        "timestamp": "2026-05-18T06:47:22.590743+00:00"
       },
       {
+        "index": 467,
         "generation": 142,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-142-i1-w1-a0-683aca0d22f3fcdc",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T06:53:26.592658+00:00"
       },
       {
+        "index": 468,
         "generation": 142,
-        "sum_radii": 2.6138825121196283
+        "candidate_id": "gen-142-i1-w3-a0-0d8f4f630f73d5c6",
+        "score": -2.6138825121196283,
+        "sum_radii": 2.6138825121196283,
+        "known_target_gap": 0.02111748788037149,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T06:53:26.603996+00:00"
       },
       {
+        "index": 469,
         "generation": 143,
-        "sum_radii": 2.5780545092332305
+        "candidate_id": "gen-143-i0-w2-a0-92b290d2a60dd7f9",
+        "score": -2.5780545092332305,
+        "sum_radii": 2.5780545092332305,
+        "known_target_gap": 0.05694549076676925,
+        "run_label": "gen064-143",
+        "operator": "simplify",
+        "parent_id": "gen-71-i0-w0-a0-9bff06815f4854a5",
+        "timestamp": "2026-05-18T07:04:35.351587+00:00"
       },
       {
+        "index": 470,
         "generation": 143,
-        "sum_radii": 2.6205145044873523
+        "candidate_id": "gen-143-i1-w3-a0-b1f84539bea2a735",
+        "score": -2.6205145044873523,
+        "sum_radii": 2.6205145044873523,
+        "known_target_gap": 0.01448549551264744,
+        "run_label": "gen064-143",
+        "operator": "mutate",
+        "parent_id": "gen-86-i1-w3-a0-827156ad6e8f1f5c",
+        "timestamp": "2026-05-18T07:04:35.356651+00:00"
       },
       {
+        "index": 471,
         "generation": 144,
-        "sum_radii": 1.1694896231579006
+        "candidate_id": "gen-144-i0-w2-a0-6be6a7d4a99b68c2",
+        "score": -1.1694896231579006,
+        "sum_radii": 1.1694896231579006,
+        "known_target_gap": 1.4655103768420992,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T15:01:48.160395+00:00"
       },
       {
+        "index": 472,
         "generation": 144,
-        "sum_radii": 2.625636752776009
+        "candidate_id": "gen-144-i1-w3-a0-30e1f811afca6555",
+        "score": -2.625636752776009,
+        "sum_radii": 2.625636752776009,
+        "known_target_gap": 0.009363247223990623,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T15:01:48.163509+00:00"
       },
       {
+        "index": 473,
         "generation": 145,
-        "sum_radii": 2.158255222961286
+        "candidate_id": "gen-145-i0-w0-a0-6e464830361d5cb2",
+        "score": -2.158255222961286,
+        "sum_radii": 2.158255222961286,
+        "known_target_gap": 0.4767447770387139,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T15:06:56.500839+00:00"
       },
       {
+        "index": 474,
         "generation": 145,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-145-i1-w1-a0-80e7e6310e75f432",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T15:06:56.504729+00:00"
       },
       {
+        "index": 475,
         "generation": 145,
-        "sum_radii": 1.4950320705600202
+        "candidate_id": "gen-145-i0-w2-a0-cfc6d06ec4dc9a6a",
+        "score": -1.4950320705600202,
+        "sum_radii": 1.4950320705600202,
+        "known_target_gap": 1.1399679294399796,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T15:06:56.508892+00:00"
       },
       {
+        "index": 476,
         "generation": 146,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-146-i1-w1-a0-ff6a4826ce8f61dd",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T15:18:01.414837+00:00"
       },
       {
+        "index": 477,
         "generation": 146,
-        "sum_radii": 2.162477442040313
+        "candidate_id": "gen-146-i1-w3-a0-5e2227d73ac42edc",
+        "score": -2.162477442040313,
+        "sum_radii": 2.162477442040313,
+        "known_target_gap": 0.472522557959687,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T15:18:01.418341+00:00"
       },
       {
+        "index": 478,
         "generation": 147,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-147-i1-w1-a0-5d40827ec0d66c36",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen144-199",
+        "operator": "simplify",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T15:21:56.521202+00:00"
       },
       {
+        "index": 479,
         "generation": 147,
-        "sum_radii": 2.6256315014926863
+        "candidate_id": "gen-147-i1-w3-a0-2a01482ac8ce21e5",
+        "score": -2.6256315014926863,
+        "sum_radii": 2.6256315014926863,
+        "known_target_gap": 0.009368498507313472,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T15:21:56.525978+00:00"
       },
       {
+        "index": 480,
         "generation": 148,
-        "sum_radii": 1.2900592623303633
+        "candidate_id": "gen-148-i0-w0-a0-23a3c06a4b8acc5b",
+        "score": -1.2900592623303633,
+        "sum_radii": 1.2900592623303633,
+        "known_target_gap": 1.3449407376696365,
+        "run_label": "gen144-199",
+        "operator": "simplify",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T15:26:00.981677+00:00"
       },
       {
+        "index": 481,
         "generation": 148,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-148-i1-w1-a0-48065d2725a341d7",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T15:26:00.986673+00:00"
       },
       {
+        "index": 482,
         "generation": 148,
-        "sum_radii": 1.3493651093455141
+        "candidate_id": "gen-148-i0-w2-a0-3b687aae91a4422f",
+        "score": -1.3493651093455141,
+        "sum_radii": 1.3493651093455141,
+        "known_target_gap": 1.2856348906544857,
+        "run_label": "gen144-199",
+        "operator": "simplify",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T15:26:00.990259+00:00"
       },
       {
+        "index": 483,
         "generation": 148,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-148-i1-w3-a0-c4a186bbb07f9a22",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen144-199",
+        "operator": "crossover",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T15:26:00.995045+00:00"
       },
       {
+        "index": 484,
         "generation": 149,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-149-i1-w1-a0-18c0a6be8fdde468",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen144-199",
+        "operator": "crossover",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T15:30:45.141479+00:00"
       },
       {
+        "index": 485,
         "generation": 149,
-        "sum_radii": 0.9597783591318301
+        "candidate_id": "gen-149-i0-w2-a0-d82094861b4d731d",
+        "score": -0.9597783591318301,
+        "sum_radii": 0.9597783591318301,
+        "known_target_gap": 1.6752216408681697,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T15:30:45.143543+00:00"
       },
       {
+        "index": 486,
         "generation": 149,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-149-i1-w3-a0-7ed03a5916756777",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen144-199",
+        "operator": "crossover",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T15:30:45.145256+00:00"
       },
       {
+        "index": 487,
         "generation": 150,
-        "sum_radii": 1.6103226649356983
+        "candidate_id": "gen-150-i0-w0-a0-5b9e572f1320f3af",
+        "score": -1.6103226649356983,
+        "sum_radii": 1.6103226649356983,
+        "known_target_gap": 1.0246773350643015,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T15:34:10.515733+00:00"
       },
       {
+        "index": 488,
         "generation": 150,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-150-i1-w1-a0-67dd5fc98539d0ce",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T15:34:10.519435+00:00"
       },
       {
+        "index": 489,
         "generation": 150,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-150-i1-w3-a0-7e4031a28964efe3",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T15:34:10.527369+00:00"
       },
       {
+        "index": 490,
         "generation": 151,
-        "sum_radii": 1.1343911901534116
+        "candidate_id": "gen-151-i0-w0-a0-745fdc6ffa6533a3",
+        "score": -1.1343911901534116,
+        "sum_radii": 1.1343911901534116,
+        "known_target_gap": 1.5006088098465882,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T15:38:10.096673+00:00"
       },
       {
+        "index": 491,
         "generation": 151,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-151-i1-w1-a0-5b29ca62825a9212",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T15:38:10.099182+00:00"
       },
       {
+        "index": 492,
         "generation": 151,
-        "sum_radii": 2.629628001378367
+        "candidate_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "score": -2.629628001378367,
+        "sum_radii": 2.629628001378367,
+        "known_target_gap": 0.005371998621632734,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T15:38:10.102937+00:00"
       },
       {
+        "index": 493,
         "generation": 152,
-        "sum_radii": 2.629628001378367
+        "candidate_id": "gen-152-i1-w1-a0-bc069b2d89fb12bd",
+        "score": -2.629628001378367,
+        "sum_radii": 2.629628001378367,
+        "known_target_gap": 0.005371998621632734,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "timestamp": "2026-05-18T15:42:03.940961+00:00"
       },
       {
+        "index": 494,
         "generation": 152,
-        "sum_radii": 2.629628001378367
+        "candidate_id": "gen-152-i1-w3-a0-3f2663ec0d2fbd99",
+        "score": -2.629628001378367,
+        "sum_radii": 2.629628001378367,
+        "known_target_gap": 0.005371998621632734,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "timestamp": "2026-05-18T15:42:03.945596+00:00"
       },
       {
+        "index": 495,
         "generation": 153,
-        "sum_radii": 0.9597783591318301
+        "candidate_id": "gen-153-i0-w2-a0-e75ac0bfb6a48c9b",
+        "score": -0.9597783591318301,
+        "sum_radii": 0.9597783591318301,
+        "known_target_gap": 1.6752216408681697,
+        "run_label": "gen144-199",
+        "operator": "simplify",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T15:54:46.286844+00:00"
       },
       {
+        "index": 496,
         "generation": 154,
-        "sum_radii": 2.629628001378367
+        "candidate_id": "gen-154-i1-w1-a0-13646e74d508a4a7",
+        "score": -2.629628001378367,
+        "sum_radii": 2.629628001378367,
+        "known_target_gap": 0.005371998621632734,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "timestamp": "2026-05-18T15:59:58.958869+00:00"
       },
       {
+        "index": 497,
         "generation": 154,
-        "sum_radii": 2.629628001378367
+        "candidate_id": "gen-154-i1-w3-a0-416a15e885aee3b7",
+        "score": -2.629628001378367,
+        "sum_radii": 2.629628001378367,
+        "known_target_gap": 0.005371998621632734,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "timestamp": "2026-05-18T15:59:58.962899+00:00"
       },
       {
+        "index": 498,
         "generation": 155,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-155-i1-w1-a0-4b692eed3c8dabf9",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen144-199",
+        "operator": "crossover",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T16:03:34.773671+00:00"
       },
       {
+        "index": 499,
         "generation": 155,
-        "sum_radii": 2.162477442040313
+        "candidate_id": "gen-155-i1-w3-a0-4c3d1f620289ed2a",
+        "score": -2.162477442040313,
+        "sum_radii": 2.162477442040313,
+        "known_target_gap": 0.472522557959687,
+        "run_label": "gen144-199",
+        "operator": "crossover",
+        "parent_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "timestamp": "2026-05-18T16:03:34.778599+00:00"
       },
       {
+        "index": 500,
         "generation": 156,
-        "sum_radii": 1.5916651355662115
+        "candidate_id": "gen-156-i0-w0-a0-795925fd3b5ecb53",
+        "score": -1.5916651355662115,
+        "sum_radii": 1.5916651355662115,
+        "known_target_gap": 1.0433348644337883,
+        "run_label": "gen144-199",
+        "operator": "simplify",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T16:07:58.853292+00:00"
       },
       {
+        "index": 501,
         "generation": 156,
-        "sum_radii": 2.629628001378367
+        "candidate_id": "gen-156-i1-w1-a0-92eb77275af24b02",
+        "score": -2.629628001378367,
+        "sum_radii": 2.629628001378367,
+        "known_target_gap": 0.005371998621632734,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "timestamp": "2026-05-18T16:07:58.855928+00:00"
       },
       {
+        "index": 502,
         "generation": 156,
-        "sum_radii": 1.713140956982914
+        "candidate_id": "gen-156-i0-w2-a0-32bd97a8418eb3d2",
+        "score": -1.713140956982914,
+        "sum_radii": 1.713140956982914,
+        "known_target_gap": 0.9218590430170859,
+        "run_label": "gen144-199",
+        "operator": "simplify",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T16:07:58.859246+00:00"
       },
       {
+        "index": 503,
         "generation": 156,
-        "sum_radii": 2.629628001378367
+        "candidate_id": "gen-156-i1-w3-a0-a3c93f47f72a787d",
+        "score": -2.629628001378367,
+        "sum_radii": 2.629628001378367,
+        "known_target_gap": 0.005371998621632734,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "timestamp": "2026-05-18T16:07:58.861266+00:00"
       },
       {
+        "index": 504,
         "generation": 157,
-        "sum_radii": 0.9597783591318301
+        "candidate_id": "gen-157-i0-w0-a0-fe6c7cb2f2cd06c1",
+        "score": -0.9597783591318301,
+        "sum_radii": 0.9597783591318301,
+        "known_target_gap": 1.6752216408681697,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T16:13:23.166252+00:00"
       },
       {
+        "index": 505,
         "generation": 157,
-        "sum_radii": 1.2592717882110602
+        "candidate_id": "gen-157-i0-w2-a0-74d431bafbe5d34a",
+        "score": -1.2592717882110602,
+        "sum_radii": 1.2592717882110602,
+        "known_target_gap": 1.3757282117889396,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T16:13:23.171930+00:00"
       },
       {
+        "index": 506,
         "generation": 157,
-        "sum_radii": 2.6198169678774623
+        "candidate_id": "gen-157-i1-w3-a0-42c7b1e12b129203",
+        "score": -2.6198169678774623,
+        "sum_radii": 2.6198169678774623,
+        "known_target_gap": 0.015183032122537465,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "timestamp": "2026-05-18T16:13:23.174432+00:00"
       },
       {
+        "index": 507,
         "generation": 158,
-        "sum_radii": 2.629628001378367
+        "candidate_id": "gen-158-i1-w1-a0-1d09aed676f652c6",
+        "score": -2.629628001378367,
+        "sum_radii": 2.629628001378367,
+        "known_target_gap": 0.005371998621632734,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "timestamp": "2026-05-18T16:18:55.887355+00:00"
       },
       {
+        "index": 508,
         "generation": 158,
-        "sum_radii": 2.629628001378367
+        "candidate_id": "gen-158-i1-w3-a0-c13546d48cd21cd3",
+        "score": -2.629628001378367,
+        "sum_radii": 2.629628001378367,
+        "known_target_gap": 0.005371998621632734,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "timestamp": "2026-05-18T16:18:55.891412+00:00"
       },
       {
+        "index": 509,
         "generation": 159,
-        "sum_radii": 2.158255222961286
+        "candidate_id": "gen-159-i0-w2-a0-b3d86b3c1d9dc72d",
+        "score": -2.158255222961286,
+        "sum_radii": 2.158255222961286,
+        "known_target_gap": 0.4767447770387139,
+        "run_label": "gen144-199",
+        "operator": "crossover",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T16:23:20.735273+00:00"
       },
       {
+        "index": 510,
         "generation": 159,
-        "sum_radii": 2.6173216822636842
+        "candidate_id": "gen-159-i1-w3-a0-7ea7ecf597af8deb",
+        "score": -2.6173216822636842,
+        "sum_radii": 2.6173216822636842,
+        "known_target_gap": 0.017678317736315563,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "timestamp": "2026-05-18T16:23:20.738552+00:00"
       },
       {
+        "index": 511,
         "generation": 160,
-        "sum_radii": 0.9192759901539507
+        "candidate_id": "gen-160-i0-w0-a0-da5fab8cbfc3045c",
+        "score": -0.9192759901539507,
+        "sum_radii": 0.9192759901539507,
+        "known_target_gap": 1.7157240098460491,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T16:35:27.209268+00:00"
       },
       {
+        "index": 512,
         "generation": 160,
-        "sum_radii": 2.629628001378367
+        "candidate_id": "gen-160-i1-w1-a0-5889788f74bbec60",
+        "score": -2.629628001378367,
+        "sum_radii": 2.629628001378367,
+        "known_target_gap": 0.005371998621632734,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "timestamp": "2026-05-18T16:35:27.211794+00:00"
       },
       {
+        "index": 513,
         "generation": 160,
-        "sum_radii": 1.1700621458906804
+        "candidate_id": "gen-160-i0-w2-a0-8c095c8de89f18d5",
+        "score": -1.1700621458906804,
+        "sum_radii": 1.1700621458906804,
+        "known_target_gap": 1.4649378541093194,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T16:35:27.214744+00:00"
       },
       {
+        "index": 514,
         "generation": 160,
-        "sum_radii": 2.629628001378367
+        "candidate_id": "gen-160-i1-w3-a0-80184dde960660b6",
+        "score": -2.629628001378367,
+        "sum_radii": 2.629628001378367,
+        "known_target_gap": 0.005371998621632734,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "timestamp": "2026-05-18T16:35:27.217197+00:00"
       },
       {
+        "index": 515,
         "generation": 161,
-        "sum_radii": 2.617321682263785
+        "candidate_id": "gen-161-i0-w0-a0-cbda8fc052dd55f7",
+        "score": -2.617321682263785,
+        "sum_radii": 2.617321682263785,
+        "known_target_gap": 0.017678317736214755,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-157-i1-w3-a0-42c7b1e12b129203",
+        "timestamp": "2026-05-18T16:40:55.390202+00:00"
       },
       {
+        "index": 516,
         "generation": 161,
-        "sum_radii": 2.6214986510094076
+        "candidate_id": "gen-161-i1-w1-a0-94db8c6974055c46",
+        "score": -2.6214986510094076,
+        "sum_radii": 2.6214986510094076,
+        "known_target_gap": 0.013501348990592188,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T16:40:55.393030+00:00"
       },
       {
+        "index": 517,
         "generation": 161,
-        "sum_radii": 2.618068255962512
+        "candidate_id": "gen-161-i1-w3-a0-3fc0055526308887",
+        "score": -2.618068255962512,
+        "sum_radii": 2.618068255962512,
+        "known_target_gap": 0.01693174403748765,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T16:40:55.398316+00:00"
       },
       {
+        "index": 518,
         "generation": 162,
-        "sum_radii": 2.029159202754396
+        "candidate_id": "gen-162-i1-w1-a0-6a637720b54dcbd4",
+        "score": -2.029159202754396,
+        "sum_radii": 2.029159202754396,
+        "known_target_gap": 0.6058407972456039,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "timestamp": "2026-05-18T16:46:47.513436+00:00"
       },
       {
+        "index": 519,
         "generation": 162,
-        "sum_radii": 0.7755710072945075
+        "candidate_id": "gen-162-i0-w2-a0-5aa0b675d9fa65d4",
+        "score": -0.7755710072945075,
+        "sum_radii": 0.7755710072945075,
+        "known_target_gap": 1.8594289927054923,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T16:46:47.516974+00:00"
       },
       {
+        "index": 520,
         "generation": 163,
-        "sum_radii": 0.9597783591318301
+        "candidate_id": "gen-163-i0-w0-a0-84d1e94b58b8a773",
+        "score": -0.9597783591318301,
+        "sum_radii": 0.9597783591318301,
+        "known_target_gap": 1.6752216408681697,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T16:58:45.857933+00:00"
       },
       {
+        "index": 521,
         "generation": 163,
-        "sum_radii": 2.6173216822636465
+        "candidate_id": "gen-163-i1-w1-a0-34bfb1ecf3c397f9",
+        "score": -2.6173216822636465,
+        "sum_radii": 2.6173216822636465,
+        "known_target_gap": 0.01767831773635331,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "timestamp": "2026-05-18T16:58:45.861513+00:00"
       },
       {
+        "index": 522,
         "generation": 163,
-        "sum_radii": 2.629628001378367
+        "candidate_id": "gen-163-i1-w3-a0-bda57b223b728c8e",
+        "score": -2.629628001378367,
+        "sum_radii": 2.629628001378367,
+        "known_target_gap": 0.005371998621632734,
+        "run_label": "gen144-199",
+        "operator": "crossover",
+        "parent_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "timestamp": "2026-05-18T16:58:45.866157+00:00"
       },
       {
+        "index": 523,
         "generation": 164,
-        "sum_radii": 1.4879594499614057
+        "candidate_id": "gen-164-i0-w0-a0-420fac4d0aaf20bb",
+        "score": -1.4879594499614057,
+        "sum_radii": 1.4879594499614057,
+        "known_target_gap": 1.147040550038594,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T17:02:33.349113+00:00"
       },
       {
+        "index": 524,
         "generation": 164,
-        "sum_radii": 2.629628001378367
+        "candidate_id": "gen-164-i1-w1-a0-85e3f53b953efc21",
+        "score": -2.629628001378367,
+        "sum_radii": 2.629628001378367,
+        "known_target_gap": 0.005371998621632734,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "timestamp": "2026-05-18T17:02:33.353314+00:00"
       },
       {
+        "index": 525,
         "generation": 164,
-        "sum_radii": 2.6296280013791566
+        "candidate_id": "gen-164-i1-w3-a0-fc80217ab0c3befd",
+        "score": -2.6296280013791566,
+        "sum_radii": 2.6296280013791566,
+        "known_target_gap": 0.005371998620843144,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "timestamp": "2026-05-18T17:02:33.358138+00:00"
       },
       {
+        "index": 526,
         "generation": 165,
-        "sum_radii": 0.5646322871900241
+        "candidate_id": "gen-165-i0-w0-a0-95160fa08ed58f34",
+        "score": -0.5646322871900241,
+        "sum_radii": 0.5646322871900241,
+        "known_target_gap": 2.0703677128099756,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T17:08:51.951936+00:00"
       },
       {
+        "index": 527,
         "generation": 165,
-        "sum_radii": 2.609482490675171
+        "candidate_id": "gen-165-i1-w1-a0-6fc91ba7ea0341af",
+        "score": -2.609482490675171,
+        "sum_radii": 2.609482490675171,
+        "known_target_gap": 0.02551750932482877,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-164-i1-w3-a0-fc80217ab0c3befd",
+        "timestamp": "2026-05-18T17:08:51.956035+00:00"
       },
       {
+        "index": 528,
         "generation": 165,
-        "sum_radii": 2.6296280013791566
+        "candidate_id": "gen-165-i1-w3-a0-6f10bc78bdfbbd54",
+        "score": -2.6296280013791566,
+        "sum_radii": 2.6296280013791566,
+        "known_target_gap": 0.005371998620843144,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-164-i1-w3-a0-fc80217ab0c3befd",
+        "timestamp": "2026-05-18T17:08:51.960828+00:00"
       },
       {
+        "index": 529,
         "generation": 166,
-        "sum_radii": 1.104646220877945
+        "candidate_id": "gen-166-i0-w0-a0-c145aec49173bbf8",
+        "score": -1.104646220877945,
+        "sum_radii": 1.104646220877945,
+        "known_target_gap": 1.5303537791220547,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T17:19:40.725297+00:00"
       },
       {
+        "index": 530,
         "generation": 166,
-        "sum_radii": 2.6173216822636225
+        "candidate_id": "gen-166-i1-w1-a0-a2174f8712e00dee",
+        "score": -2.6173216822636225,
+        "sum_radii": 2.6173216822636225,
+        "known_target_gap": 0.01767831773637729,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-164-i1-w3-a0-fc80217ab0c3befd",
+        "timestamp": "2026-05-18T17:19:40.729398+00:00"
       },
       {
+        "index": 531,
         "generation": 166,
-        "sum_radii": 0.9597783591318301
+        "candidate_id": "gen-166-i0-w2-a0-5ebec8192c051058",
+        "score": -0.9597783591318301,
+        "sum_radii": 0.9597783591318301,
+        "known_target_gap": 1.6752216408681697,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T17:19:40.731807+00:00"
       },
       {
+        "index": 532,
         "generation": 166,
-        "sum_radii": 2.6296227421031535
+        "candidate_id": "gen-166-i1-w3-a0-bfaed62a3e50f31e",
+        "score": -2.6296227421031535,
+        "sum_radii": 2.6296227421031535,
+        "known_target_gap": 0.005377257896846288,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-164-i1-w3-a0-fc80217ab0c3befd",
+        "timestamp": "2026-05-18T17:19:40.734424+00:00"
       },
       {
+        "index": 533,
         "generation": 167,
-        "sum_radii": 2.629628001380883
+        "candidate_id": "gen-167-i1-w1-a0-45e58b7b0ddd1371",
+        "score": -2.629628001380883,
+        "sum_radii": 2.629628001380883,
+        "known_target_gap": 0.005371998619116969,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-164-i1-w3-a0-fc80217ab0c3befd",
+        "timestamp": "2026-05-18T17:27:38.811145+00:00"
       },
       {
+        "index": 534,
         "generation": 167,
-        "sum_radii": 2.6198169678770364
+        "candidate_id": "gen-167-i0-w2-a0-2a546e326550b015",
+        "score": -2.6198169678770364,
+        "sum_radii": 2.6198169678770364,
+        "known_target_gap": 0.015183032122963347,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-157-i1-w3-a0-42c7b1e12b129203",
+        "timestamp": "2026-05-18T17:27:38.814905+00:00"
       },
       {
+        "index": 535,
         "generation": 167,
-        "sum_radii": 2.6296280013791566
+        "candidate_id": "gen-167-i1-w3-a0-c1a3de1a645cae26",
+        "score": -2.6296280013791566,
+        "sum_radii": 2.6296280013791566,
+        "known_target_gap": 0.005371998620843144,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-164-i1-w3-a0-fc80217ab0c3befd",
+        "timestamp": "2026-05-18T17:27:38.817581+00:00"
       },
       {
+        "index": 536,
         "generation": 168,
-        "sum_radii": 0.9597783591318301
+        "candidate_id": "gen-168-i0-w0-a0-25e7c566c9e69a8b",
+        "score": -0.9597783591318301,
+        "sum_radii": 0.9597783591318301,
+        "known_target_gap": 1.6752216408681697,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T17:31:31.701259+00:00"
       },
       {
+        "index": 537,
         "generation": 168,
-        "sum_radii": 2.438966267379634
+        "candidate_id": "gen-168-i1-w1-a0-d210bf7ec5478556",
+        "score": -2.438966267379634,
+        "sum_radii": 2.438966267379634,
+        "known_target_gap": 0.1960337326203656,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-167-i1-w1-a0-45e58b7b0ddd1371",
+        "timestamp": "2026-05-18T17:31:31.703919+00:00"
       },
       {
+        "index": 538,
         "generation": 169,
-        "sum_radii": 2.6198169678774623
+        "candidate_id": "gen-169-i0-w0-a0-40c1ce3c6515c3cc",
+        "score": -2.6198169678774623,
+        "sum_radii": 2.6198169678774623,
+        "known_target_gap": 0.015183032122537465,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-157-i1-w3-a0-42c7b1e12b129203",
+        "timestamp": "2026-05-18T17:43:45.097470+00:00"
       },
       {
+        "index": 539,
         "generation": 169,
-        "sum_radii": 2.629628001380883
+        "candidate_id": "gen-169-i1-w1-a0-336dd8c8824f77b5",
+        "score": -2.629628001380883,
+        "sum_radii": 2.629628001380883,
+        "known_target_gap": 0.005371998619116969,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-167-i1-w1-a0-45e58b7b0ddd1371",
+        "timestamp": "2026-05-18T17:43:45.100533+00:00"
       },
       {
+        "index": 540,
         "generation": 169,
-        "sum_radii": 0.9597783591318301
+        "candidate_id": "gen-169-i0-w2-a0-09046c83a885b062",
+        "score": -0.9597783591318301,
+        "sum_radii": 0.9597783591318301,
+        "known_target_gap": 1.6752216408681697,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T17:43:45.103216+00:00"
       },
       {
+        "index": 541,
         "generation": 169,
-        "sum_radii": 2.629628001380883
+        "candidate_id": "gen-169-i1-w3-a0-9ee11ef7a58c8156",
+        "score": -2.629628001380883,
+        "sum_radii": 2.629628001380883,
+        "known_target_gap": 0.005371998619116969,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-167-i1-w1-a0-45e58b7b0ddd1371",
+        "timestamp": "2026-05-18T17:43:45.105441+00:00"
       },
       {
+        "index": 542,
         "generation": 170,
-        "sum_radii": 2.629628001380883
+        "candidate_id": "gen-170-i1-w1-a0-b9c5848372a9ac0a",
+        "score": -2.629628001380883,
+        "sum_radii": 2.629628001380883,
+        "known_target_gap": 0.005371998619116969,
+        "run_label": "gen144-199",
+        "operator": "simplify",
+        "parent_id": "gen-167-i1-w1-a0-45e58b7b0ddd1371",
+        "timestamp": "2026-05-18T17:52:16.562038+00:00"
       },
       {
+        "index": 543,
         "generation": 170,
-        "sum_radii": 2.619816967877035
+        "candidate_id": "gen-170-i0-w2-a0-56f4f218468c0b16",
+        "score": -2.619816967877035,
+        "sum_radii": 2.619816967877035,
+        "known_target_gap": 0.01518303212296468,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-157-i1-w3-a0-42c7b1e12b129203",
+        "timestamp": "2026-05-18T17:52:16.565954+00:00"
       },
       {
+        "index": 544,
         "generation": 171,
-        "sum_radii": 1.5321146345902286
+        "candidate_id": "gen-171-i0-w0-a0-0653ac08b6b84061",
+        "score": -1.5321146345902286,
+        "sum_radii": 1.5321146345902286,
+        "known_target_gap": 1.1028853654097712,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T17:56:30.751918+00:00"
       },
       {
+        "index": 545,
         "generation": 171,
-        "sum_radii": 2.629627475454509
+        "candidate_id": "gen-171-i1-w1-a0-76e4b5df63c3c743",
+        "score": -2.629627475454509,
+        "sum_radii": 2.629627475454509,
+        "known_target_gap": 0.005372524545490975,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-167-i1-w1-a0-45e58b7b0ddd1371",
+        "timestamp": "2026-05-18T17:56:30.755849+00:00"
       },
       {
+        "index": 546,
         "generation": 171,
-        "sum_radii": 1.8139881303018845
+        "candidate_id": "gen-171-i0-w2-a0-8b0162b1790d7abe",
+        "score": -1.8139881303018845,
+        "sum_radii": 1.8139881303018845,
+        "known_target_gap": 0.8210118696981152,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T17:56:30.759500+00:00"
       },
       {
+        "index": 547,
         "generation": 171,
-        "sum_radii": 2.438966267379634
+        "candidate_id": "gen-171-i1-w3-a0-f55df8adea26aa41",
+        "score": -2.438966267379634,
+        "sum_radii": 2.438966267379634,
+        "known_target_gap": 0.1960337326203656,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-167-i1-w1-a0-45e58b7b0ddd1371",
+        "timestamp": "2026-05-18T17:56:30.762994+00:00"
       },
       {
+        "index": 548,
         "generation": 172,
-        "sum_radii": 1.1604285335683
+        "candidate_id": "gen-172-i0-w0-a0-c3ea26ab121efd38",
+        "score": -1.1604285335683,
+        "sum_radii": 1.1604285335683,
+        "known_target_gap": 1.4745714664316998,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T17:59:53.628853+00:00"
       },
       {
+        "index": 549,
         "generation": 172,
-        "sum_radii": 2.6139007073238587
+        "candidate_id": "gen-172-i1-w1-a0-2fcbe2576ccecc20",
+        "score": -2.6139007073238587,
+        "sum_radii": 2.6139007073238587,
+        "known_target_gap": 0.02109929267614108,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-167-i1-w1-a0-45e58b7b0ddd1371",
+        "timestamp": "2026-05-18T17:59:53.632603+00:00"
       },
       {
+        "index": 550,
         "generation": 172,
-        "sum_radii": 0.9011494777649107
+        "candidate_id": "gen-172-i0-w2-a0-42884b617bd51aba",
+        "score": -0.9011494777649107,
+        "sum_radii": 0.9011494777649107,
+        "known_target_gap": 1.733850522235089,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T17:59:53.636192+00:00"
       },
       {
+        "index": 551,
         "generation": 172,
-        "sum_radii": 2.629628001380883
+        "candidate_id": "gen-172-i1-w3-a0-037073120adbb367",
+        "score": -2.629628001380883,
+        "sum_radii": 2.629628001380883,
+        "known_target_gap": 0.005371998619116969,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-167-i1-w1-a0-45e58b7b0ddd1371",
+        "timestamp": "2026-05-18T17:59:53.638527+00:00"
       },
       {
+        "index": 552,
         "generation": 173,
-        "sum_radii": 2.629628001380883
+        "candidate_id": "gen-173-i1-w1-a0-01e9aebf2947b9e5",
+        "score": -2.629628001380883,
+        "sum_radii": 2.629628001380883,
+        "known_target_gap": 0.005371998619116969,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-167-i1-w1-a0-45e58b7b0ddd1371",
+        "timestamp": "2026-05-18T18:03:38.040301+00:00"
       },
       {
+        "index": 553,
         "generation": 173,
-        "sum_radii": 0.14842722533565939
+        "candidate_id": "gen-173-i0-w2-a0-70ca47c79593d382",
+        "score": -0.14842722533565939,
+        "sum_radii": 0.14842722533565939,
+        "known_target_gap": 2.4865727746643405,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T18:03:38.043779+00:00"
       },
       {
+        "index": 554,
         "generation": 173,
-        "sum_radii": 2.629628001380883
+        "candidate_id": "gen-173-i1-w3-a0-28735dbd13638f8b",
+        "score": -2.629628001380883,
+        "sum_radii": 2.629628001380883,
+        "known_target_gap": 0.005371998619116969,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-167-i1-w1-a0-45e58b7b0ddd1371",
+        "timestamp": "2026-05-18T18:03:38.046088+00:00"
       },
       {
+        "index": 555,
         "generation": 174,
-        "sum_radii": 0.9597783591318301
+        "candidate_id": "gen-174-i0-w2-a0-2936601bfb6dffc0",
+        "score": -0.9597783591318301,
+        "sum_radii": 0.9597783591318301,
+        "known_target_gap": 1.6752216408681697,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T18:10:00.856128+00:00"
       },
       {
+        "index": 556,
         "generation": 174,
-        "sum_radii": 2.629627995010643
+        "candidate_id": "gen-174-i1-w3-a0-0c0027e3a92b5ec3",
+        "score": -2.629627995010643,
+        "sum_radii": 2.629627995010643,
+        "known_target_gap": 0.00537200498935686,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-167-i1-w1-a0-45e58b7b0ddd1371",
+        "timestamp": "2026-05-18T18:10:00.859445+00:00"
       },
       {
+        "index": 557,
         "generation": 175,
-        "sum_radii": 1.6449376080856946
+        "candidate_id": "gen-175-i0-w0-a0-edc9200cbc160d08",
+        "score": -1.6449376080856946,
+        "sum_radii": 1.6449376080856946,
+        "known_target_gap": 0.9900623919143052,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T18:13:20.324639+00:00"
       },
       {
+        "index": 558,
         "generation": 175,
-        "sum_radii": 2.6296280013808926
+        "candidate_id": "gen-175-i1-w1-a0-d25291534fc55255",
+        "score": -2.6296280013808926,
+        "sum_radii": 2.6296280013808926,
+        "known_target_gap": 0.005371998619107199,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-167-i1-w1-a0-45e58b7b0ddd1371",
+        "timestamp": "2026-05-18T18:13:20.327543+00:00"
       },
       {
+        "index": 559,
         "generation": 175,
-        "sum_radii": 1.7574043904602152
+        "candidate_id": "gen-175-i0-w2-a0-d83c151876e60a6e",
+        "score": -1.7574043904602152,
+        "sum_radii": 1.7574043904602152,
+        "known_target_gap": 0.8775956095397845,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T18:13:20.331043+00:00"
       },
       {
+        "index": 560,
         "generation": 175,
-        "sum_radii": 2.1404033403945406
+        "candidate_id": "gen-175-i1-w3-a0-a17523be1b11e3a2",
+        "score": -2.1404033403945406,
+        "sum_radii": 2.1404033403945406,
+        "known_target_gap": 0.4945966596054592,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-147-i1-w3-a0-2a01482ac8ce21e5",
+        "timestamp": "2026-05-18T18:13:20.334504+00:00"
       },
       {
+        "index": 561,
         "generation": 176,
-        "sum_radii": 1.3098974712232394
+        "candidate_id": "gen-176-i0-w0-a0-fd4764799c755583",
+        "score": -1.3098974712232394,
+        "sum_radii": 1.3098974712232394,
+        "known_target_gap": 1.3251025287767604,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T18:18:13.962262+00:00"
       },
       {
+        "index": 562,
         "generation": 176,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-175-i1-w1-a0-d25291534fc55255",
+        "timestamp": "2026-05-18T18:18:13.965182+00:00"
       },
       {
+        "index": 563,
         "generation": 176,
-        "sum_radii": 1.4798731047827396
+        "candidate_id": "gen-176-i0-w2-a0-6e75bf4ff4e180b6",
+        "score": -1.4798731047827396,
+        "sum_radii": 1.4798731047827396,
+        "known_target_gap": 1.1551268952172602,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T18:18:13.968667+00:00"
       },
       {
+        "index": 564,
         "generation": 176,
-        "sum_radii": 2.6296280013808926
+        "candidate_id": "gen-176-i1-w3-a0-37dcf6ba8d090a75",
+        "score": -2.6296280013808926,
+        "sum_radii": 2.6296280013808926,
+        "known_target_gap": 0.005371998619107199,
+        "run_label": "gen144-199",
+        "operator": "simplify",
+        "parent_id": "gen-175-i1-w1-a0-d25291534fc55255",
+        "timestamp": "2026-05-18T18:18:13.971081+00:00"
       },
       {
+        "index": 565,
         "generation": 177,
-        "sum_radii": 2.61777298883043
+        "candidate_id": "gen-177-i1-w1-a0-47200a64493a24d6",
+        "score": -2.61777298883043,
+        "sum_radii": 2.61777298883043,
+        "known_target_gap": 0.017227011169569817,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T18:25:31.532272+00:00"
       },
       {
+        "index": 566,
         "generation": 177,
-        "sum_radii": 1.8168808149723716
+        "candidate_id": "gen-177-i0-w2-a0-74173a0f29f4b59a",
+        "score": -1.8168808149723716,
+        "sum_radii": 1.8168808149723716,
+        "known_target_gap": 0.8181191850276281,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T18:25:31.535976+00:00"
       },
       {
+        "index": 567,
         "generation": 177,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-177-i1-w3-a0-b486871fc0ebc427",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T18:25:31.538419+00:00"
       },
       {
+        "index": 568,
         "generation": 178,
-        "sum_radii": 1.0624543325545373
+        "candidate_id": "gen-178-i0-w0-a0-ed2ab7139ec290b9",
+        "score": -1.0624543325545373,
+        "sum_radii": 1.0624543325545373,
+        "known_target_gap": 1.5725456674454625,
+        "run_label": "gen144-199",
+        "operator": "simplify",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T18:29:55.736697+00:00"
       },
       {
+        "index": 569,
         "generation": 178,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-178-i1-w1-a0-37dc5c7e5effc72d",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "crossover",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T18:29:55.739553+00:00"
       },
       {
+        "index": 570,
         "generation": 178,
-        "sum_radii": 2.6186582625988324
+        "candidate_id": "gen-178-i1-w3-a0-42fa94f735a7780e",
+        "score": -2.6186582625988324,
+        "sum_radii": 2.6186582625988324,
+        "known_target_gap": 0.0163417374011674,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T18:29:55.745064+00:00"
       },
       {
+        "index": 571,
         "generation": 179,
-        "sum_radii": 1.4025864874268668
+        "candidate_id": "gen-179-i0-w0-a0-2e1bf26fc3dc3ff1",
+        "score": -1.4025864874268668,
+        "sum_radii": 1.4025864874268668,
+        "known_target_gap": 1.232413512573133,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "seed",
+        "timestamp": "2026-05-18T18:35:16.610826+00:00"
       },
       {
+        "index": 572,
         "generation": 179,
-        "sum_radii": 2.2475686470023537
+        "candidate_id": "gen-179-i1-w1-a0-3977ac799842be93",
+        "score": -2.2475686470023537,
+        "sum_radii": 2.2475686470023537,
+        "known_target_gap": 0.3874313529976461,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T18:35:16.614666+00:00"
       },
       {
+        "index": 573,
         "generation": 179,
-        "sum_radii": 2.617769306434297
+        "candidate_id": "gen-179-i1-w3-a0-0893f88682ec30ef",
+        "score": -2.617769306434297,
+        "sum_radii": 2.617769306434297,
+        "known_target_gap": 0.017230693565702726,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T18:35:16.620456+00:00"
       },
       {
+        "index": 574,
         "generation": 180,
-        "sum_radii": 2.6103091178580247
+        "candidate_id": "gen-180-i0-w0-a0-4b362049ccb24097",
+        "score": -2.6103091178580247,
+        "sum_radii": 2.6103091178580247,
+        "known_target_gap": 0.024690882141975123,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T18:43:01.626686+00:00"
       },
       {
+        "index": 575,
         "generation": 180,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-180-i1-w1-a0-0ceb46b696202fed",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T18:43:01.629957+00:00"
       },
       {
+        "index": 576,
         "generation": 180,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-180-i0-w2-a0-750daf4bafff7131",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T18:43:01.632903+00:00"
       },
       {
+        "index": 577,
         "generation": 180,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-180-i1-w3-a0-1d837ea5f6dc58ab",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T18:43:01.635639+00:00"
       },
       {
+        "index": 578,
         "generation": 181,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-181-i0-w0-a0-f775e8a22184cd37",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T18:49:30.613450+00:00"
       },
       {
+        "index": 579,
         "generation": 181,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-181-i1-w1-a0-6975216d45ec8bb2",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T18:49:30.616545+00:00"
       },
       {
+        "index": 580,
         "generation": 181,
-        "sum_radii": 2.617321682263609
+        "candidate_id": "gen-181-i0-w2-a0-034f212d78ba6a9b",
+        "score": -2.617321682263609,
+        "sum_radii": 2.617321682263609,
+        "known_target_gap": 0.017678317736390614,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T18:49:30.619080+00:00"
       },
       {
+        "index": 581,
         "generation": 181,
-        "sum_radii": 2.1666666666666665
+        "candidate_id": "gen-181-i1-w3-a0-b0eadff9df04d1d8",
+        "score": -2.1666666666666665,
+        "sum_radii": 2.1666666666666665,
+        "known_target_gap": 0.46833333333333327,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T18:49:30.622716+00:00"
       },
       {
+        "index": 582,
         "generation": 182,
-        "sum_radii": 2.5661677303877317
+        "candidate_id": "gen-182-i0-w0-a0-ce4327da6b9b0197",
+        "score": -2.5661677303877317,
+        "sum_radii": 2.5661677303877317,
+        "known_target_gap": 0.06883226961226807,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T18:58:42.508822+00:00"
       },
       {
+        "index": 583,
         "generation": 182,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-182-i1-w1-a0-e861bd2fa15efa83",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T18:58:42.511776+00:00"
       },
       {
+        "index": 584,
         "generation": 182,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-182-i0-w2-a0-a6da86d374ca733d",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T18:58:42.514733+00:00"
       },
       {
+        "index": 585,
         "generation": 182,
-        "sum_radii": 1.841099330581392
+        "candidate_id": "gen-182-i1-w3-a0-ab3596ee95ea86a7",
+        "score": -1.841099330581392,
+        "sum_radii": 1.841099330581392,
+        "known_target_gap": 0.7939006694186077,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T18:58:42.518544+00:00"
       },
       {
+        "index": 586,
         "generation": 183,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-183-i1-w1-a0-53bb9f436f44c253",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "refine",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:08:20.148019+00:00"
       },
       {
+        "index": 587,
         "generation": 183,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-183-i0-w2-a0-8dc6f85bc9ac9835",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:08:20.152069+00:00"
       },
       {
+        "index": 588,
         "generation": 183,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-183-i1-w3-a0-bc921d54322f9385",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:08:20.156105+00:00"
       },
       {
+        "index": 589,
         "generation": 184,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-184-i0-w0-a0-03c5b8e028017aba",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:13:34.779869+00:00"
       },
       {
+        "index": 590,
         "generation": 184,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-184-i1-w1-a0-6c9f100af01ee98b",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "crossover",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:13:34.782911+00:00"
       },
       {
+        "index": 591,
         "generation": 184,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-184-i0-w2-a0-42012d5529d625b3",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:13:34.786157+00:00"
       },
       {
+        "index": 592,
         "generation": 184,
-        "sum_radii": 2.620514504487086
+        "candidate_id": "gen-184-i1-w3-a0-df0b518302eeb12c",
+        "score": -2.620514504487086,
+        "sum_radii": 2.620514504487086,
+        "known_target_gap": 0.014485495512913893,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:13:34.789933+00:00"
       },
       {
+        "index": 593,
         "generation": 185,
-        "sum_radii": 2.617321682263609
+        "candidate_id": "gen-185-i0-w0-a0-a30f1bc19f346d5a",
+        "score": -2.617321682263609,
+        "sum_radii": 2.617321682263609,
+        "known_target_gap": 0.017678317736390614,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:18:32.106082+00:00"
       },
       {
+        "index": 594,
         "generation": 185,
-        "sum_radii": 2.6195233642312115
+        "candidate_id": "gen-185-i1-w1-a0-852ea9a93bed6dbb",
+        "score": -2.6195233642312115,
+        "sum_radii": 2.6195233642312115,
+        "known_target_gap": 0.015476635768788327,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:18:32.110331+00:00"
       },
       {
+        "index": 595,
         "generation": 185,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-185-i0-w2-a0-d220e5372e7e7002",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:18:32.113221+00:00"
       },
       {
+        "index": 596,
         "generation": 185,
-        "sum_radii": 2.6256315014926863
+        "candidate_id": "gen-185-i1-w3-a0-9017df850e416549",
+        "score": -2.6256315014926863,
+        "sum_radii": 2.6256315014926863,
+        "known_target_gap": 0.009368498507313472,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-147-i1-w3-a0-2a01482ac8ce21e5",
+        "timestamp": "2026-05-18T19:18:32.117137+00:00"
       },
       {
+        "index": 597,
         "generation": 186,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-186-i0-w0-a0-93fe5207fe3a7a76",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:24:46.061269+00:00"
       },
       {
+        "index": 598,
         "generation": 186,
-        "sum_radii": 2.629627475454509
+        "candidate_id": "gen-186-i1-w1-a0-515338b18347eddb",
+        "score": -2.629627475454509,
+        "sum_radii": 2.629627475454509,
+        "known_target_gap": 0.005372524545490975,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-171-i1-w1-a0-76e4b5df63c3c743",
+        "timestamp": "2026-05-18T19:24:46.065589+00:00"
       },
       {
+        "index": 599,
         "generation": 186,
-        "sum_radii": 2.5434746812087723
+        "candidate_id": "gen-186-i0-w2-a0-5da12dcf60bf7e6a",
+        "score": -2.5434746812087723,
+        "sum_radii": 2.5434746812087723,
+        "known_target_gap": 0.0915253187912275,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:24:46.068561+00:00"
       },
       {
+        "index": 600,
         "generation": 186,
-        "sum_radii": 2.629627475454509
+        "candidate_id": "gen-186-i1-w3-a0-0f415f6cb55ae8cd",
+        "score": -2.629627475454509,
+        "sum_radii": 2.629627475454509,
+        "known_target_gap": 0.005372524545490975,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-171-i1-w1-a0-76e4b5df63c3c743",
+        "timestamp": "2026-05-18T19:24:46.072587+00:00"
       },
       {
+        "index": 601,
         "generation": 187,
-        "sum_radii": 1.6785714285714284
+        "candidate_id": "gen-187-i0-w0-a0-33dfa14529cc7edc",
+        "score": -1.6785714285714284,
+        "sum_radii": 1.6785714285714284,
+        "known_target_gap": 0.9564285714285714,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:32:00.953842+00:00"
       },
       {
+        "index": 602,
         "generation": 187,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-187-i0-w2-a0-2faff6ad3d734e93",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:32:00.959480+00:00"
       },
       {
+        "index": 603,
         "generation": 187,
-        "sum_radii": 2.6215949899261273
+        "candidate_id": "gen-187-i1-w3-a0-ea0dd6fca12491a2",
+        "score": -2.6215949899261273,
+        "sum_radii": 2.6215949899261273,
+        "known_target_gap": 0.013405010073872514,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:32:00.963185+00:00"
       },
       {
+        "index": 604,
         "generation": 188,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-188-i0-w0-a0-1cb38e99230706da",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:38:26.012071+00:00"
       },
       {
+        "index": 605,
         "generation": 188,
-        "sum_radii": 2.617321682263609
+        "candidate_id": "gen-188-i1-w1-a0-82b704cd0155d72e",
+        "score": -2.617321682263609,
+        "sum_radii": 2.617321682263609,
+        "known_target_gap": 0.017678317736390614,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:38:26.016568+00:00"
       },
       {
+        "index": 606,
         "generation": 188,
-        "sum_radii": 2.629628001380891
+        "candidate_id": "gen-188-i0-w2-a0-57c76aa7adf07f69",
+        "score": -2.629628001380891,
+        "sum_radii": 2.629628001380891,
+        "known_target_gap": 0.005371998619108975,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:38:26.020640+00:00"
       },
       {
+        "index": 607,
         "generation": 188,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-188-i1-w3-a0-64822dd26632c725",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:38:26.024531+00:00"
       },
       {
+        "index": 608,
         "generation": 189,
-        "sum_radii": 2.6268040637225663
+        "candidate_id": "gen-189-i0-w0-a0-183ed7c0aa60f6e3",
+        "score": -2.6268040637225663,
+        "sum_radii": 2.6268040637225663,
+        "known_target_gap": 0.008195936277433535,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:45:52.634324+00:00"
       },
       {
+        "index": 609,
         "generation": 189,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-189-i1-w1-a0-3b514aa6b0c5f426",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:45:52.638744+00:00"
       },
       {
+        "index": 610,
         "generation": 189,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-189-i0-w2-a0-cad128cea6e8c59c",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:45:52.641635+00:00"
       },
       {
+        "index": 611,
         "generation": 189,
-        "sum_radii": 2.6078038255292566
+        "candidate_id": "gen-189-i1-w3-a0-ff40cbcf69926532",
+        "score": -2.6078038255292566,
+        "sum_radii": 2.6078038255292566,
+        "known_target_gap": 0.027196174470743184,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:45:52.645253+00:00"
       },
       {
+        "index": 612,
         "generation": 190,
-        "sum_radii": 2.4070959234882503
+        "candidate_id": "gen-190-i0-w0-a0-65749a14ef74d0b9",
+        "score": -2.4070959234882503,
+        "sum_radii": 2.4070959234882503,
+        "known_target_gap": 0.2279040765117495,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-181-i0-w2-a0-034f212d78ba6a9b",
+        "timestamp": "2026-05-18T19:53:44.653082+00:00"
       },
       {
+        "index": 613,
         "generation": 190,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-190-i1-w1-a0-7ec80ff22e6c8244",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:53:44.657395+00:00"
       },
       {
+        "index": 614,
         "generation": 190,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-190-i0-w2-a0-2b5a7db668c68323",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:53:44.661672+00:00"
       },
       {
+        "index": 615,
         "generation": 190,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-190-i1-w3-a0-151889ce0921ad43",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T19:53:44.665899+00:00"
       },
       {
+        "index": 616,
         "generation": 191,
-        "sum_radii": 2.098076211353315
+        "candidate_id": "gen-191-i0-w0-a0-336267746a223b93",
+        "score": -2.098076211353315,
+        "sum_radii": 2.098076211353315,
+        "known_target_gap": 0.5369237886466847,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T20:04:06.049249+00:00"
       },
       {
+        "index": 617,
         "generation": 191,
-        "sum_radii": 2.6256367527766944
+        "candidate_id": "gen-191-i1-w1-a0-87ff4a29e5a2f58a",
+        "score": -2.6256367527766944,
+        "sum_radii": 2.6256367527766944,
+        "known_target_gap": 0.009363247223305393,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T20:04:06.053717+00:00"
       },
       {
+        "index": 618,
         "generation": 191,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-191-i0-w2-a0-5ce7bc3c6b5614c4",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T20:04:06.057745+00:00"
       },
       {
+        "index": 619,
         "generation": 191,
-        "sum_radii": 2.6215949899261273
+        "candidate_id": "gen-191-i1-w3-a0-06eba0e86a175152",
+        "score": -2.6215949899261273,
+        "sum_radii": 2.6215949899261273,
+        "known_target_gap": 0.013405010073872514,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-187-i1-w3-a0-ea0dd6fca12491a2",
+        "timestamp": "2026-05-18T20:04:06.062085+00:00"
       },
       {
+        "index": 620,
         "generation": 192,
-        "sum_radii": 1.4522157177769979
+        "candidate_id": "gen-192-i0-w0-a0-85bf5a76d3d78de4",
+        "score": -1.4522157177769979,
+        "sum_radii": 1.4522157177769979,
+        "known_target_gap": 1.182784282223002,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T20:13:59.008341+00:00"
       },
       {
+        "index": 621,
         "generation": 192,
-        "sum_radii": 2.625630127139706
+        "candidate_id": "gen-192-i1-w1-a0-3c6e730b3192a2b1",
+        "score": -2.625630127139706,
+        "sum_radii": 2.625630127139706,
+        "known_target_gap": 0.009369872860293782,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "timestamp": "2026-05-18T20:13:59.011933+00:00"
       },
       {
+        "index": 622,
         "generation": 192,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-192-i0-w2-a0-d3d5b57ae1a1b60f",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T20:13:59.014951+00:00"
       },
       {
+        "index": 623,
         "generation": 192,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-192-i1-w3-a0-55d48587fd9189df",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T20:13:59.018777+00:00"
       },
       {
+        "index": 624,
         "generation": 193,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-193-i0-w0-a0-a9b3c373e48125e3",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T20:21:36.844178+00:00"
       },
       {
+        "index": 625,
         "generation": 193,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-193-i1-w1-a0-085e8ef256b4f11c",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T20:21:36.847269+00:00"
       },
       {
+        "index": 626,
         "generation": 193,
-        "sum_radii": 2.604962605926205
+        "candidate_id": "gen-193-i0-w2-a0-ca5a8f7f735868a6",
+        "score": -2.604962605926205,
+        "sum_radii": 2.604962605926205,
+        "known_target_gap": 0.030037394073794577,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T20:21:36.851257+00:00"
       },
       {
+        "index": 627,
         "generation": 193,
-        "sum_radii": 2.617321682263609
+        "candidate_id": "gen-193-i1-w3-a0-08e298c08ef0bb4c",
+        "score": -2.617321682263609,
+        "sum_radii": 2.617321682263609,
+        "known_target_gap": 0.017678317736390614,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T20:21:36.855654+00:00"
       },
       {
+        "index": 628,
         "generation": 194,
-        "sum_radii": 1.8568065027452703
+        "candidate_id": "gen-194-i0-w0-a0-ed4456885e144e23",
+        "score": -1.8568065027452703,
+        "sum_radii": 1.8568065027452703,
+        "known_target_gap": 0.7781934972547295,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-181-i0-w2-a0-034f212d78ba6a9b",
+        "timestamp": "2026-05-18T20:27:58.289088+00:00"
       },
       {
+        "index": 629,
         "generation": 194,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-194-i1-w1-a0-2d010090298aa980",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T20:27:58.293428+00:00"
       },
       {
+        "index": 630,
         "generation": 194,
-        "sum_radii": 2.5978064993377203
+        "candidate_id": "gen-194-i0-w2-a0-ea6d9ea3ba90be32",
+        "score": -2.5978064993377203,
+        "sum_radii": 2.5978064993377203,
+        "known_target_gap": 0.037193500662279444,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-186-i0-w2-a0-5da12dcf60bf7e6a",
+        "timestamp": "2026-05-18T20:27:58.297735+00:00"
       },
       {
+        "index": 631,
         "generation": 194,
-        "sum_radii": 2.6152612059026215
+        "candidate_id": "gen-194-i1-w3-a0-8ca5dd1f557c456b",
+        "score": -2.6152612059026215,
+        "sum_radii": 2.6152612059026215,
+        "known_target_gap": 0.01973879409737833,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T20:27:58.301911+00:00"
       },
       {
+        "index": 632,
         "generation": 195,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-195-i0-w0-a0-1a4101bda2757508",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T20:37:02.156070+00:00"
       },
       {
+        "index": 633,
         "generation": 195,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-195-i1-w1-a0-ffca9ce67300591f",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T20:37:02.161022+00:00"
       },
       {
+        "index": 634,
         "generation": 195,
-        "sum_radii": 2.4702406149402476
+        "candidate_id": "gen-195-i0-w2-a0-930cfc7f88e23baa",
+        "score": -2.4702406149402476,
+        "sum_radii": 2.4702406149402476,
+        "known_target_gap": 0.16475938505975218,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-185-i0-w2-a0-d220e5372e7e7002",
+        "timestamp": "2026-05-18T20:37:02.164783+00:00"
       },
       {
+        "index": 635,
         "generation": 195,
-        "sum_radii": 2.617321682263609
+        "candidate_id": "gen-195-i1-w3-a0-9a3e0ab1550f0025",
+        "score": -2.617321682263609,
+        "sum_radii": 2.617321682263609,
+        "known_target_gap": 0.017678317736390614,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T20:37:02.169052+00:00"
       },
       {
+        "index": 636,
         "generation": 196,
-        "sum_radii": 1.450195947585632
+        "candidate_id": "gen-196-i0-w0-a0-bff574c98ee1c7e6",
+        "score": -1.450195947585632,
+        "sum_radii": 1.450195947585632,
+        "known_target_gap": 1.1848040524143677,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T20:44:52.454677+00:00"
       },
       {
+        "index": 637,
         "generation": 196,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-196-i1-w1-a0-01c304e4f5957539",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T20:44:52.459322+00:00"
       },
       {
+        "index": 638,
         "generation": 196,
-        "sum_radii": 2.610309117857981
+        "candidate_id": "gen-196-i1-w3-a0-9c53a34ad9780b34",
+        "score": -2.610309117857981,
+        "sum_radii": 2.610309117857981,
+        "known_target_gap": 0.024690882142018644,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T20:44:52.466679+00:00"
       },
       {
+        "index": 639,
         "generation": 197,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-197-i0-w0-a0-89d1bbabfa265895",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T20:50:34.510791+00:00"
       },
       {
+        "index": 640,
         "generation": 197,
-        "sum_radii": 2.6176885188551546
+        "candidate_id": "gen-197-i1-w1-a0-8376387befc60a70",
+        "score": -2.6176885188551546,
+        "sum_radii": 2.6176885188551546,
+        "known_target_gap": 0.017311481144845153,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T20:50:34.515218+00:00"
       },
       {
+        "index": 641,
         "generation": 197,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-197-i0-w2-a0-fb17ac58aaa1a623",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T20:50:34.519675+00:00"
       },
       {
+        "index": 642,
         "generation": 197,
-        "sum_radii": 2.629627475454509
+        "candidate_id": "gen-197-i1-w3-a0-23ec6cfac3dc3c4e",
+        "score": -2.629627475454509,
+        "sum_radii": 2.629627475454509,
+        "known_target_gap": 0.005372524545490975,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-171-i1-w1-a0-76e4b5df63c3c743",
+        "timestamp": "2026-05-18T20:50:34.523199+00:00"
       },
       {
+        "index": 643,
         "generation": 198,
-        "sum_radii": 2.6296280013809037
+        "candidate_id": "gen-198-i0-w0-a0-324aad7240f2ed98",
+        "score": -2.6296280013809037,
+        "sum_radii": 2.6296280013809037,
+        "known_target_gap": 0.005371998619096097,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T20:56:24.365239+00:00"
       },
       {
+        "index": 644,
         "generation": 198,
-        "sum_radii": 2.617321682263609
+        "candidate_id": "gen-198-i1-w1-a0-c612ce7f184f1c86",
+        "score": -2.617321682263609,
+        "sum_radii": 2.617321682263609,
+        "known_target_gap": 0.017678317736390614,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T20:56:24.369895+00:00"
       },
       {
+        "index": 645,
         "generation": 198,
-        "sum_radii": 2.612763159259125
+        "candidate_id": "gen-198-i0-w2-a0-659a62760797466b",
+        "score": -2.612763159259125,
+        "sum_radii": 2.612763159259125,
+        "known_target_gap": 0.02223684074087462,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T20:56:24.374289+00:00"
       },
       {
+        "index": 646,
         "generation": 198,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T20:56:24.377568+00:00"
       },
       {
+        "index": 647,
         "generation": 199,
-        "sum_radii": 2.5434746812087723
+        "candidate_id": "gen-199-i0-w0-a0-a644bdcb3ae4136f",
+        "score": -2.5434746812087723,
+        "sum_radii": 2.5434746812087723,
+        "known_target_gap": 0.0915253187912275,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-186-i0-w2-a0-5da12dcf60bf7e6a",
+        "timestamp": "2026-05-18T21:03:15.916029+00:00"
       },
       {
+        "index": 648,
         "generation": 199,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-199-i1-w1-a0-030f582553f1d97c",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T21:03:15.919652+00:00"
       },
       {
+        "index": 649,
         "generation": 199,
-        "sum_radii": 2.618544707995471
+        "candidate_id": "gen-199-i0-w2-a0-2cf088373e298ed3",
+        "score": -2.618544707995471,
+        "sum_radii": 2.618544707995471,
+        "known_target_gap": 0.016455292004528665,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "timestamp": "2026-05-18T21:03:15.924172+00:00"
       },
       {
+        "index": 650,
         "generation": 199,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-199-i1-w3-a0-668bc105325cb371",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen144-199",
+        "operator": "mutate",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T21:03:15.927262+00:00"
       },
       {
+        "index": 651,
         "generation": 200,
-        "sum_radii": 2.6078038255292553
+        "candidate_id": "gen-200-i0-w0-a0-1e3dfa785e3ef4a9",
+        "score": -2.6078038255292553,
+        "sum_radii": 2.6078038255292553,
+        "known_target_gap": 0.027196174470744516,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T22:04:48.778160+00:00"
       },
       {
+        "index": 652,
         "generation": 200,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-200-i1-w1-a0-8f064e9eb96eedbd",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T22:04:48.781065+00:00"
       },
       {
+        "index": 653,
         "generation": 200,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-200-i0-w2-a0-e91757581a390f74",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T22:04:48.783192+00:00"
       },
       {
+        "index": 654,
         "generation": 200,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T22:04:48.785551+00:00"
       },
       {
+        "index": 655,
         "generation": 201,
-        "sum_radii": 2.617321682263609
+        "candidate_id": "gen-201-i0-w0-a0-906f9373e7b0db5c",
+        "score": -2.617321682263609,
+        "sum_radii": 2.617321682263609,
+        "known_target_gap": 0.017678317736390614,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T22:12:02.312001+00:00"
       },
       {
+        "index": 656,
         "generation": 201,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-201-i1-w1-a0-91681384d5246aa5",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T22:12:02.315026+00:00"
       },
       {
+        "index": 657,
         "generation": 201,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-201-i0-w2-a0-194d3d9e2d7a86e6",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T22:12:02.317470+00:00"
       },
       {
+        "index": 658,
         "generation": 201,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-201-i1-w3-a0-1d003e42781f41cf",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T22:12:02.319510+00:00"
       },
       {
+        "index": 659,
         "generation": 202,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-202-i0-w0-a0-f64a7822ee177089",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen200-276",
+        "operator": "refine",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T22:18:57.737521+00:00"
       },
       {
+        "index": 660,
         "generation": 202,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-202-i1-w1-a0-e8ce5548b6d9a9f0",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T22:18:57.740441+00:00"
       },
       {
+        "index": 661,
         "generation": 202,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-202-i0-w2-a0-26db26ab20798804",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen200-276",
+        "operator": "refine",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T22:18:57.743269+00:00"
       },
       {
+        "index": 662,
         "generation": 202,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-202-i1-w3-a0-043cd28a6ceaaad3",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T22:18:57.745590+00:00"
       },
       {
+        "index": 663,
         "generation": 203,
-        "sum_radii": 2.438966267379634
+        "candidate_id": "gen-203-i0-w0-a0-321c29e0f81b29f9",
+        "score": -2.438966267379634,
+        "sum_radii": 2.438966267379634,
+        "known_target_gap": 0.1960337326203656,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T22:27:16.562774+00:00"
       },
       {
+        "index": 664,
         "generation": 203,
-        "sum_radii": 2.6043975659587133
+        "candidate_id": "gen-203-i1-w1-a0-70acbeea7a3158b8",
+        "score": -2.6043975659587133,
+        "sum_radii": 2.6043975659587133,
+        "known_target_gap": 0.030602434041286486,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T22:27:16.566030+00:00"
       },
       {
+        "index": 665,
         "generation": 203,
-        "sum_radii": 2.589317546482001
+        "candidate_id": "gen-203-i0-w2-a0-73d6123ba93f14fb",
+        "score": -2.589317546482001,
+        "sum_radii": 2.589317546482001,
+        "known_target_gap": 0.04568245351799893,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T22:27:16.568623+00:00"
       },
       {
+        "index": 666,
         "generation": 203,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-203-i1-w3-a0-d42e362a04d1246f",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T22:27:16.571069+00:00"
       },
       {
+        "index": 667,
         "generation": 204,
-        "sum_radii": 2.617321682263632
+        "candidate_id": "gen-204-i1-w1-a0-d1adc9d1b6461947",
+        "score": -2.617321682263632,
+        "sum_radii": 2.617321682263632,
+        "known_target_gap": 0.017678317736367966,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T22:34:08.733439+00:00"
       },
       {
+        "index": 668,
         "generation": 204,
-        "sum_radii": 2.6296280013808975
+        "candidate_id": "gen-204-i0-w2-a0-4d2e09b26d001a23",
+        "score": -2.6296280013808975,
+        "sum_radii": 2.6296280013808975,
+        "known_target_gap": 0.005371998619102314,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T22:34:08.736173+00:00"
       },
       {
+        "index": 669,
         "generation": 204,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-204-i1-w3-a0-3667be6cc1685e87",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T22:34:08.738940+00:00"
       },
       {
+        "index": 670,
         "generation": 205,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-205-i0-w0-a0-fae0c8df79f4f3c5",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen200-276",
+        "operator": "crossover",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T22:39:43.370944+00:00"
       },
       {
+        "index": 671,
         "generation": 205,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-205-i1-w1-a0-a36c1a52d07cebec",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "crossover",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T22:39:43.373370+00:00"
       },
       {
+        "index": 672,
         "generation": 205,
-        "sum_radii": 2.1897563145057592
+        "candidate_id": "gen-205-i0-w2-a0-a8d2bf5179b3f470",
+        "score": -2.1897563145057592,
+        "sum_radii": 2.1897563145057592,
+        "known_target_gap": 0.44524368549424054,
+        "run_label": "gen200-276",
+        "operator": "crossover",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T22:39:43.375819+00:00"
       },
       {
+        "index": 673,
         "generation": 205,
-        "sum_radii": 2.029159202754396
+        "candidate_id": "gen-205-i1-w3-a0-f8894f8fc46d9b99",
+        "score": -2.029159202754396,
+        "sum_radii": 2.029159202754396,
+        "known_target_gap": 0.6058407972456039,
+        "run_label": "gen200-276",
+        "operator": "crossover",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T22:39:43.379231+00:00"
       },
       {
+        "index": 674,
         "generation": 206,
-        "sum_radii": 2.49437455224166
+        "candidate_id": "gen-206-i0-w0-a0-2f26059fff31268f",
+        "score": -2.49437455224166,
+        "sum_radii": 2.49437455224166,
+        "known_target_gap": 0.14062544775833974,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T22:46:03.816215+00:00"
       },
       {
+        "index": 675,
         "generation": 206,
-        "sum_radii": 2.607803825529255
+        "candidate_id": "gen-206-i1-w3-a0-31b8416422047807",
+        "score": -2.607803825529255,
+        "sum_radii": 2.607803825529255,
+        "known_target_gap": 0.02719617447074496,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T22:46:03.825169+00:00"
       },
       {
+        "index": 676,
         "generation": 207,
-        "sum_radii": 1.56
+        "candidate_id": "gen-207-i0-w2-a0-cc2c2634ce6f47ca",
+        "score": -1.56,
+        "sum_radii": 1.56,
+        "known_target_gap": 1.0749999999999997,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T22:51:41.710786+00:00"
       },
       {
+        "index": 677,
         "generation": 208,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-208-i0-w0-a0-5ef601ecf0f2cd76",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T23:05:15.337870+00:00"
       },
       {
+        "index": 678,
         "generation": 208,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-208-i1-w1-a0-abf42a81ad699a06",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T23:05:15.340392+00:00"
       },
       {
+        "index": 679,
         "generation": 208,
-        "sum_radii": 1.857142857142856
+        "candidate_id": "gen-208-i0-w2-a0-f503598d23aed9c9",
+        "score": -1.857142857142856,
+        "sum_radii": 1.857142857142856,
+        "known_target_gap": 0.7778571428571437,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T23:05:15.343814+00:00"
       },
       {
+        "index": 680,
         "generation": 208,
-        "sum_radii": 1.8571428571428563
+        "candidate_id": "gen-208-i1-w3-a0-92a7a0633890113e",
+        "score": -1.8571428571428563,
+        "sum_radii": 1.8571428571428563,
+        "known_target_gap": 0.7778571428571435,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T23:05:15.346384+00:00"
       },
       {
+        "index": 681,
         "generation": 209,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-209-i0-w0-a0-d128a3402cdf9a7a",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T23:13:22.266778+00:00"
       },
       {
+        "index": 682,
         "generation": 209,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-209-i1-w1-a0-b036594127fc0854",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T23:13:22.270410+00:00"
       },
       {
+        "index": 683,
         "generation": 209,
-        "sum_radii": 2.438966267379634
+        "candidate_id": "gen-209-i0-w2-a0-3f5d855631a1be05",
+        "score": -2.438966267379634,
+        "sum_radii": 2.438966267379634,
+        "known_target_gap": 0.1960337326203656,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T23:13:22.274261+00:00"
       },
       {
+        "index": 684,
         "generation": 210,
-        "sum_radii": 2.534113690016468
+        "candidate_id": "gen-210-i0-w0-a0-161f0756644cda6a",
+        "score": -2.534113690016468,
+        "sum_radii": 2.534113690016468,
+        "known_target_gap": 0.10088630998353176,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T23:18:36.570102+00:00"
       },
       {
+        "index": 685,
         "generation": 210,
-        "sum_radii": 2.56623893418508
+        "candidate_id": "gen-210-i1-w1-a0-512414247eff9eac",
+        "score": -2.56623893418508,
+        "sum_radii": 2.56623893418508,
+        "known_target_gap": 0.06876106581491959,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T23:18:36.574722+00:00"
       },
       {
+        "index": 686,
         "generation": 210,
-        "sum_radii": 2.617321682263632
+        "candidate_id": "gen-210-i0-w2-a0-67e492429f31a255",
+        "score": -2.617321682263632,
+        "sum_radii": 2.617321682263632,
+        "known_target_gap": 0.017678317736367966,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T23:18:36.578116+00:00"
       },
       {
+        "index": 687,
         "generation": 210,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-210-i1-w3-a0-601c9d779110a79e",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T23:18:36.581613+00:00"
       },
       {
+        "index": 688,
         "generation": 211,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-211-i0-w0-a0-0c78346f533f55b8",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen200-276",
+        "operator": "crossover",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T23:24:49.611709+00:00"
       },
       {
+        "index": 689,
         "generation": 211,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-211-i1-w1-a0-60e1847f04d08668",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "crossover",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T23:24:49.614206+00:00"
       },
       {
+        "index": 690,
         "generation": 211,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-211-i0-w2-a0-b5590d45218a475d",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen200-276",
+        "operator": "crossover",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T23:24:49.616554+00:00"
       },
       {
+        "index": 691,
         "generation": 211,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-211-i1-w3-a0-fbd3ab0433e07e01",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "crossover",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T23:24:49.618877+00:00"
       },
       {
+        "index": 692,
         "generation": 212,
-        "sum_radii": 2.4389662673796337
+        "candidate_id": "gen-212-i0-w0-a0-1f2d8352dbe74f87",
+        "score": -2.4389662673796337,
+        "sum_radii": 2.4389662673796337,
+        "known_target_gap": 0.19603373262036605,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T23:28:50.470057+00:00"
       },
       {
+        "index": 693,
         "generation": 212,
-        "sum_radii": 1.857142857142857
+        "candidate_id": "gen-212-i1-w1-a0-f661d9238af54ce0",
+        "score": -1.857142857142857,
+        "sum_radii": 1.857142857142857,
+        "known_target_gap": 0.7778571428571428,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T23:28:50.473929+00:00"
       },
       {
+        "index": 694,
         "generation": 212,
-        "sum_radii": 2.438966267379634
+        "candidate_id": "gen-212-i0-w2-a0-6cb1f720a0eca141",
+        "score": -2.438966267379634,
+        "sum_radii": 2.438966267379634,
+        "known_target_gap": 0.1960337326203656,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T23:28:50.478117+00:00"
       },
       {
+        "index": 695,
         "generation": 212,
-        "sum_radii": 2.4389662673796337
+        "candidate_id": "gen-212-i1-w3-a0-8e7794a0d66e211c",
+        "score": -2.4389662673796337,
+        "sum_radii": 2.4389662673796337,
+        "known_target_gap": 0.19603373262036605,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T23:28:50.482181+00:00"
       },
       {
+        "index": 696,
         "generation": 213,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-213-i0-w0-a0-8aa0f6949b07c01e",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T23:34:33.411380+00:00"
       },
       {
+        "index": 697,
         "generation": 213,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-213-i0-w2-a0-f15fda025c3651f6",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T23:34:33.416305+00:00"
       },
       {
+        "index": 698,
         "generation": 213,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-213-i1-w3-a0-068d569cfbdfd8ef",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T23:34:33.418411+00:00"
       },
       {
+        "index": 699,
         "generation": 214,
-        "sum_radii": 2.6296280013808975
+        "candidate_id": "gen-214-i0-w0-a0-019ed7ddd9cf7977",
+        "score": -2.6296280013808975,
+        "sum_radii": 2.6296280013808975,
+        "known_target_gap": 0.005371998619102314,
+        "run_label": "gen200-276",
+        "operator": "refine",
+        "parent_id": "gen-204-i0-w2-a0-4d2e09b26d001a23",
+        "timestamp": "2026-05-18T23:42:22.734500+00:00"
       },
       {
+        "index": 700,
         "generation": 214,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-214-i1-w1-a0-beb4cc34fcf7f947",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T23:42:22.738525+00:00"
       },
       {
+        "index": 701,
         "generation": 214,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-214-i0-w2-a0-0836b753f26bdd0a",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-204-i0-w2-a0-4d2e09b26d001a23",
+        "timestamp": "2026-05-18T23:42:22.742320+00:00"
       },
       {
+        "index": 702,
         "generation": 214,
-        "sum_radii": 2.438966267379634
+        "candidate_id": "gen-214-i1-w3-a0-7066491af8a21b23",
+        "score": -2.438966267379634,
+        "sum_radii": 2.438966267379634,
+        "known_target_gap": 0.1960337326203656,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T23:42:22.745887+00:00"
       },
       {
+        "index": 703,
         "generation": 215,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-215-i0-w0-a0-52678bfeaf997111",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T23:51:09.134282+00:00"
       },
       {
+        "index": 704,
         "generation": 215,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-215-i1-w1-a0-c151142f7c33fcc9",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T23:51:09.139029+00:00"
       },
       {
+        "index": 705,
         "generation": 215,
-        "sum_radii": 2.5329029800909435
+        "candidate_id": "gen-215-i0-w2-a0-471b5e64b2d54519",
+        "score": -2.5329029800909435,
+        "sum_radii": 2.5329029800909435,
+        "known_target_gap": 0.10209701990905629,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T23:51:09.143161+00:00"
       },
       {
+        "index": 706,
         "generation": 215,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-215-i1-w3-a0-caed27ae435ba670",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T23:51:09.146955+00:00"
       },
       {
+        "index": 707,
         "generation": 216,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-216-i1-w1-a0-9ca8c8f1716a7786",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "refine",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T23:55:21.940860+00:00"
       },
       {
+        "index": 708,
         "generation": 216,
-        "sum_radii": 2.617321682263614
+        "candidate_id": "gen-216-i0-w2-a0-c1362e85a3b6e906",
+        "score": -2.617321682263614,
+        "sum_radii": 2.617321682263614,
+        "known_target_gap": 0.01767831773638573,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T23:55:21.944575+00:00"
       },
       {
+        "index": 709,
         "generation": 216,
-        "sum_radii": 2.6256367527765305
+        "candidate_id": "gen-216-i1-w3-a0-9cd72b966973d5df",
+        "score": -2.6256367527765305,
+        "sum_radii": 2.6256367527765305,
+        "known_target_gap": 0.009363247223469262,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T23:55:21.947366+00:00"
       },
       {
+        "index": 710,
         "generation": 217,
-        "sum_radii": 2.4430914790684874
+        "candidate_id": "gen-217-i0-w0-a0-d689e1e5cd49c8ab",
+        "score": -2.4430914790684874,
+        "sum_radii": 2.4430914790684874,
+        "known_target_gap": 0.19190852093151234,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-210-i0-w2-a0-67e492429f31a255",
+        "timestamp": "2026-05-18T23:59:38.629406+00:00"
       },
       {
+        "index": 711,
         "generation": 217,
-        "sum_radii": 2.617321682263614
+        "candidate_id": "gen-217-i1-w1-a0-3368008486627bdb",
+        "score": -2.617321682263614,
+        "sum_radii": 2.617321682263614,
+        "known_target_gap": 0.01767831773638573,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T23:59:38.634424+00:00"
       },
       {
+        "index": 712,
         "generation": 217,
-        "sum_radii": 1.838362284067493
+        "candidate_id": "gen-217-i0-w2-a0-e08a926140286439",
+        "score": -1.838362284067493,
+        "sum_radii": 1.838362284067493,
+        "known_target_gap": 0.7966377159325069,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-18T23:59:38.637387+00:00"
       },
       {
+        "index": 713,
         "generation": 217,
-        "sum_radii": 2.438966267379634
+        "candidate_id": "gen-217-i1-w3-a0-a756232d76a5b800",
+        "score": -2.438966267379634,
+        "sum_radii": 2.438966267379634,
+        "known_target_gap": 0.1960337326203656,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-18T23:59:38.641051+00:00"
       },
       {
+        "index": 714,
         "generation": 218,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-218-i0-w0-a0-f2a50e53e40fe4dd",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T00:08:46.878838+00:00"
       },
       {
+        "index": 715,
         "generation": 218,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-218-i1-w1-a0-e3ff367aee7c09bc",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T00:08:46.883074+00:00"
       },
       {
+        "index": 716,
         "generation": 218,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-218-i0-w2-a0-ef2ffdf63533bd91",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T00:08:46.887017+00:00"
       },
       {
+        "index": 717,
         "generation": 219,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-219-i0-w0-a0-d5b5d747d55b3ae5",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T00:13:27.223049+00:00"
       },
       {
+        "index": 718,
         "generation": 219,
-        "sum_radii": 2.61749173424557
+        "candidate_id": "gen-219-i1-w1-a0-337d3a20cea24513",
+        "score": -2.61749173424557,
+        "sum_radii": 2.61749173424557,
+        "known_target_gap": 0.017508265754429875,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T00:13:27.225890+00:00"
       },
       {
+        "index": 719,
         "generation": 219,
-        "sum_radii": 2.629628001380901
+        "candidate_id": "gen-219-i0-w2-a0-7b76e318b5249a1e",
+        "score": -2.629628001380901,
+        "sum_radii": 2.629628001380901,
+        "known_target_gap": 0.005371998619098761,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T00:13:27.229400+00:00"
       },
       {
+        "index": 720,
         "generation": 219,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-219-i1-w3-a0-d06805a4ee42bdaf",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T00:13:27.231953+00:00"
       },
       {
+        "index": 721,
         "generation": 220,
-        "sum_radii": 2.617321682263609
+        "candidate_id": "gen-220-i0-w0-a0-66428a93d7c0625f",
+        "score": -2.617321682263609,
+        "sum_radii": 2.617321682263609,
+        "known_target_gap": 0.017678317736390614,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T00:20:31.366766+00:00"
       },
       {
+        "index": 722,
         "generation": 220,
-        "sum_radii": 2.522994265017478
+        "candidate_id": "gen-220-i1-w1-a0-b88aaa61cd93dd11",
+        "score": -2.522994265017478,
+        "sum_radii": 2.522994265017478,
+        "known_target_gap": 0.11200573498252187,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T00:20:31.371534+00:00"
       },
       {
+        "index": 723,
         "generation": 220,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-220-i0-w2-a0-15d55844f9376736",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T00:20:31.375296+00:00"
       },
       {
+        "index": 724,
         "generation": 220,
-        "sum_radii": 2.617321682263632
+        "candidate_id": "gen-220-i1-w3-a0-ab425c296032c650",
+        "score": -2.617321682263632,
+        "sum_radii": 2.617321682263632,
+        "known_target_gap": 0.017678317736367966,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T00:20:31.379231+00:00"
       },
       {
+        "index": 725,
         "generation": 221,
-        "sum_radii": 1.857142857142857
+        "candidate_id": "gen-221-i0-w0-a0-7ed617e1b2f46267",
+        "score": -1.857142857142857,
+        "sum_radii": 1.857142857142857,
+        "known_target_gap": 0.7778571428571428,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T00:27:17.311495+00:00"
       },
       {
+        "index": 726,
         "generation": 221,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-221-i1-w1-a0-f8acc9682a6809c7",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T00:27:17.314730+00:00"
       },
       {
+        "index": 727,
         "generation": 221,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-221-i1-w3-a0-5829d35e726d967e",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T00:27:17.321020+00:00"
       },
       {
+        "index": 728,
         "generation": 222,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-222-i0-w0-a0-00815df7156c7d1f",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T00:33:05.073985+00:00"
       },
       {
+        "index": 729,
         "generation": 222,
-        "sum_radii": 2.098076211353315
+        "candidate_id": "gen-222-i1-w1-a0-cc7a6f862193d3e6",
+        "score": -2.098076211353315,
+        "sum_radii": 2.098076211353315,
+        "known_target_gap": 0.5369237886466847,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T00:33:05.078179+00:00"
       },
       {
+        "index": 730,
         "generation": 222,
-        "sum_radii": 1.2323649928956877
+        "candidate_id": "gen-222-i0-w2-a0-2158a51ebc0a5245",
+        "score": -1.2323649928956877,
+        "sum_radii": 1.2323649928956877,
+        "known_target_gap": 1.402635007104312,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T00:33:05.081826+00:00"
       },
       {
+        "index": 731,
         "generation": 223,
-        "sum_radii": 2.629628001380901
+        "candidate_id": "gen-223-i0-w0-a0-63a86781a9e5891b",
+        "score": -2.629628001380901,
+        "sum_radii": 2.629628001380901,
+        "known_target_gap": 0.005371998619098761,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-219-i0-w2-a0-7b76e318b5249a1e",
+        "timestamp": "2026-05-19T00:42:02.498932+00:00"
       },
       {
+        "index": 732,
         "generation": 223,
-        "sum_radii": 2.6198396425060495
+        "candidate_id": "gen-223-i1-w1-a0-1731a5705697a0c0",
+        "score": -2.6198396425060495,
+        "sum_radii": 2.6198396425060495,
+        "known_target_gap": 0.015160357493950283,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-216-i1-w3-a0-9cd72b966973d5df",
+        "timestamp": "2026-05-19T00:42:02.503959+00:00"
       },
       {
+        "index": 733,
         "generation": 223,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-223-i0-w2-a0-b2fafd6710550ed3",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T00:42:02.507021+00:00"
       },
       {
+        "index": 734,
         "generation": 223,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-223-i1-w3-a0-06b2c2afee16d99c",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T00:42:02.510693+00:00"
       },
       {
+        "index": 735,
         "generation": 224,
-        "sum_radii": 2.617321682263632
+        "candidate_id": "gen-224-i0-w0-a0-ce2e86215df854df",
+        "score": -2.617321682263632,
+        "sum_radii": 2.617321682263632,
+        "known_target_gap": 0.017678317736367966,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-210-i0-w2-a0-67e492429f31a255",
+        "timestamp": "2026-05-19T00:50:44.399457+00:00"
       },
       {
+        "index": 736,
         "generation": 224,
-        "sum_radii": 2.3890086462961424
+        "candidate_id": "gen-224-i1-w1-a0-95ae4b02fa9a1995",
+        "score": -2.3890086462961424,
+        "sum_radii": 2.3890086462961424,
+        "known_target_gap": 0.24599135370385738,
+        "run_label": "gen200-276",
+        "operator": "refine",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T00:50:44.403971+00:00"
       },
       {
+        "index": 737,
         "generation": 224,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-224-i0-w2-a0-985cbb0cca00b39b",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T00:50:44.408076+00:00"
       },
       {
+        "index": 738,
         "generation": 225,
-        "sum_radii": 2.629628001380901
+        "candidate_id": "gen-225-i0-w0-a0-84f00393a5853578",
+        "score": -2.629628001380901,
+        "sum_radii": 2.629628001380901,
+        "known_target_gap": 0.005371998619098761,
+        "run_label": "gen200-276",
+        "operator": "crossover",
+        "parent_id": "gen-219-i0-w2-a0-7b76e318b5249a1e",
+        "timestamp": "2026-05-19T00:57:23.435522+00:00"
       },
       {
+        "index": 739,
         "generation": 225,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-225-i1-w1-a0-d79eee842ee3d4ea",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T00:57:23.440151+00:00"
       },
       {
+        "index": 740,
         "generation": 225,
-        "sum_radii": 2.079999999999999
+        "candidate_id": "gen-225-i0-w2-a0-8527f277fd1c1fdc",
+        "score": -2.079999999999999,
+        "sum_radii": 2.079999999999999,
+        "known_target_gap": 0.5550000000000006,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T00:57:23.444250+00:00"
       },
       {
+        "index": 741,
         "generation": 226,
-        "sum_radii": 2.629628001380901
+        "candidate_id": "gen-226-i0-w0-a0-ce7d5abce8cddea8",
+        "score": -2.629628001380901,
+        "sum_radii": 2.629628001380901,
+        "known_target_gap": 0.005371998619098761,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-219-i0-w2-a0-7b76e318b5249a1e",
+        "timestamp": "2026-05-19T01:03:49.182046+00:00"
       },
       {
+        "index": 742,
         "generation": 226,
-        "sum_radii": 2.6256367527765305
+        "candidate_id": "gen-226-i1-w1-a0-8b0bc116bbfceef3",
+        "score": -2.6256367527765305,
+        "sum_radii": 2.6256367527765305,
+        "known_target_gap": 0.009363247223469262,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-216-i1-w3-a0-9cd72b966973d5df",
+        "timestamp": "2026-05-19T01:03:49.184968+00:00"
       },
       {
+        "index": 743,
         "generation": 226,
-        "sum_radii": 2.6198396425060495
+        "candidate_id": "gen-226-i1-w3-a0-439efd49107cb4d9",
+        "score": -2.6198396425060495,
+        "sum_radii": 2.6198396425060495,
+        "known_target_gap": 0.015160357493950283,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-223-i1-w1-a0-1731a5705697a0c0",
+        "timestamp": "2026-05-19T01:03:49.190832+00:00"
       },
       {
+        "index": 744,
         "generation": 227,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-227-i0-w0-a0-07e2405c3ba299a1",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T01:10:34.956530+00:00"
       },
       {
+        "index": 745,
         "generation": 227,
-        "sum_radii": 2.6256367527765305
+        "candidate_id": "gen-227-i1-w1-a0-f7dc455b72deecd9",
+        "score": -2.6256367527765305,
+        "sum_radii": 2.6256367527765305,
+        "known_target_gap": 0.009363247223469262,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-216-i1-w3-a0-9cd72b966973d5df",
+        "timestamp": "2026-05-19T01:10:34.960283+00:00"
       },
       {
+        "index": 746,
         "generation": 227,
-        "sum_radii": 2.6256367527765305
+        "candidate_id": "gen-227-i1-w3-a0-54301055051ee2f1",
+        "score": -2.6256367527765305,
+        "sum_radii": 2.6256367527765305,
+        "known_target_gap": 0.009363247223469262,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-216-i1-w3-a0-9cd72b966973d5df",
+        "timestamp": "2026-05-19T01:10:34.966392+00:00"
       },
       {
+        "index": 747,
         "generation": 228,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-228-i0-w0-a0-9e5ed0fbc81cd1ab",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen200-276",
+        "operator": "crossover",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T01:17:04.395990+00:00"
       },
       {
+        "index": 748,
         "generation": 228,
-        "sum_radii": 2.6256367527765305
+        "candidate_id": "gen-228-i1-w1-a0-1197bcbabc0f6d04",
+        "score": -2.6256367527765305,
+        "sum_radii": 2.6256367527765305,
+        "known_target_gap": 0.009363247223469262,
+        "run_label": "gen200-276",
+        "operator": "refine",
+        "parent_id": "gen-216-i1-w3-a0-9cd72b966973d5df",
+        "timestamp": "2026-05-19T01:17:04.404469+00:00"
       },
       {
+        "index": 749,
         "generation": 228,
-        "sum_radii": 1.3
+        "candidate_id": "gen-228-i1-w3-a0-5fda1a9960b2b92a",
+        "score": -1.3,
+        "sum_radii": 1.3,
+        "known_target_gap": 1.3349999999999997,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T01:17:04.415835+00:00"
       },
       {
+        "index": 750,
         "generation": 229,
-        "sum_radii": 2.599626150650846
+        "candidate_id": "gen-229-i0-w0-a0-25b4a5e50647df02",
+        "score": -2.599626150650846,
+        "sum_radii": 2.599626150650846,
+        "known_target_gap": 0.035373849349153996,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T01:24:37.240502+00:00"
       },
       {
+        "index": 751,
         "generation": 229,
-        "sum_radii": 2.6256367527765305
+        "candidate_id": "gen-229-i1-w1-a0-13619242bb7ad57b",
+        "score": -2.6256367527765305,
+        "sum_radii": 2.6256367527765305,
+        "known_target_gap": 0.009363247223469262,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-216-i1-w3-a0-9cd72b966973d5df",
+        "timestamp": "2026-05-19T01:24:37.244551+00:00"
       },
       {
+        "index": 752,
         "generation": 229,
-        "sum_radii": 2.629628001380901
+        "candidate_id": "gen-229-i0-w2-a0-89e1d43269f60593",
+        "score": -2.629628001380901,
+        "sum_radii": 2.629628001380901,
+        "known_target_gap": 0.005371998619098761,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-219-i0-w2-a0-7b76e318b5249a1e",
+        "timestamp": "2026-05-19T01:24:37.248481+00:00"
       },
       {
+        "index": 753,
         "generation": 229,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-229-i1-w3-a0-d3f3f1b833460f66",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T01:24:37.252326+00:00"
       },
       {
+        "index": 754,
         "generation": 230,
-        "sum_radii": 2.589317546481992
+        "candidate_id": "gen-230-i0-w0-a0-ed46c173fc642a30",
+        "score": -2.589317546481992,
+        "sum_radii": 2.589317546481992,
+        "known_target_gap": 0.045682453518007815,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T01:30:51.409615+00:00"
       },
       {
+        "index": 755,
         "generation": 230,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-230-i1-w1-a0-3bca3e0a2d8d0235",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "crossover",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T01:30:51.414553+00:00"
       },
       {
+        "index": 756,
         "generation": 231,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-231-i0-w0-a0-fda6022fa99d4603",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T01:35:39.260053+00:00"
       },
       {
+        "index": 757,
         "generation": 231,
-        "sum_radii": 2.6256367527765305
+        "candidate_id": "gen-231-i1-w1-a0-f98e2d92d4ac9fcb",
+        "score": -2.6256367527765305,
+        "sum_radii": 2.6256367527765305,
+        "known_target_gap": 0.009363247223469262,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-216-i1-w3-a0-9cd72b966973d5df",
+        "timestamp": "2026-05-19T01:35:39.266981+00:00"
       },
       {
+        "index": 758,
         "generation": 231,
-        "sum_radii": 2.583043766600225
+        "candidate_id": "gen-231-i1-w3-a0-2f0f8903f46123d0",
+        "score": -2.583043766600225,
+        "sum_radii": 2.583043766600225,
+        "known_target_gap": 0.05195623339977473,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T01:35:39.275163+00:00"
       },
       {
+        "index": 759,
         "generation": 232,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-232-i0-w0-a0-ef50559c1c72f9a8",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T01:42:00.722921+00:00"
       },
       {
+        "index": 760,
         "generation": 232,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-232-i1-w1-a0-b8ffb537a1c87b5b",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T01:42:00.726687+00:00"
       },
       {
+        "index": 761,
         "generation": 232,
-        "sum_radii": 2.629628001380901
+        "candidate_id": "gen-232-i0-w2-a0-33aa2c3403314d12",
+        "score": -2.629628001380901,
+        "sum_radii": 2.629628001380901,
+        "known_target_gap": 0.005371998619098761,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-219-i0-w2-a0-7b76e318b5249a1e",
+        "timestamp": "2026-05-19T01:42:00.730482+00:00"
       },
       {
+        "index": 762,
         "generation": 232,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-232-i1-w3-a0-b94eac7debb5e4e6",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T01:42:00.734281+00:00"
       },
       {
+        "index": 763,
         "generation": 233,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-233-i1-w1-a0-f4ad4ec71ee75918",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T01:57:00.045216+00:00"
       },
       {
+        "index": 764,
         "generation": 233,
-        "sum_radii": 2.6101767836188254
+        "candidate_id": "gen-233-i0-w2-a0-67e200dbdd210c84",
+        "score": -2.6101767836188254,
+        "sum_radii": 2.6101767836188254,
+        "known_target_gap": 0.02482321638117435,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T01:57:00.048748+00:00"
       },
       {
+        "index": 765,
         "generation": 233,
-        "sum_radii": 2.6251518286557434
+        "candidate_id": "gen-233-i1-w3-a0-8fae06c201a1a7a4",
+        "score": -2.6251518286557434,
+        "sum_radii": 2.6251518286557434,
+        "known_target_gap": 0.009848171344256418,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T01:57:00.052423+00:00"
       },
       {
+        "index": 766,
         "generation": 234,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-234-i0-w0-a0-8c7c1e13260f557c",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T02:05:22.969709+00:00"
       },
       {
+        "index": 767,
         "generation": 234,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-234-i1-w1-a0-77e3091f2a3c86ba",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T02:05:22.973681+00:00"
       },
       {
+        "index": 768,
         "generation": 234,
-        "sum_radii": 2.629628001380901
+        "candidate_id": "gen-234-i0-w2-a0-3c710b9ab945649e",
+        "score": -2.629628001380901,
+        "sum_radii": 2.629628001380901,
+        "known_target_gap": 0.005371998619098761,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-219-i0-w2-a0-7b76e318b5249a1e",
+        "timestamp": "2026-05-19T02:05:22.977497+00:00"
       },
       {
+        "index": 769,
         "generation": 234,
-        "sum_radii": 2.438966267379634
+        "candidate_id": "gen-234-i1-w3-a0-b69011da0e199f2e",
+        "score": -2.438966267379634,
+        "sum_radii": 2.438966267379634,
+        "known_target_gap": 0.1960337326203656,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T02:05:22.981319+00:00"
       },
       {
+        "index": 770,
         "generation": 235,
-        "sum_radii": 2.629628001380891
+        "candidate_id": "gen-235-i0-w0-a0-42def30d1dbc88fb",
+        "score": -2.629628001380891,
+        "sum_radii": 2.629628001380891,
+        "known_target_gap": 0.005371998619108975,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T02:09:46.640098+00:00"
       },
       {
+        "index": 771,
         "generation": 235,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-235-i1-w1-a0-b57866aec2e2e30c",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T02:09:46.643312+00:00"
       },
       {
+        "index": 772,
         "generation": 235,
-        "sum_radii": 2.604962605926205
+        "candidate_id": "gen-235-i0-w2-a0-3dbea96bd58a355e",
+        "score": -2.604962605926205,
+        "sum_radii": 2.604962605926205,
+        "known_target_gap": 0.030037394073794577,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T02:09:46.647077+00:00"
       },
       {
+        "index": 773,
         "generation": 235,
-        "sum_radii": 2.6256367527765265
+        "candidate_id": "gen-235-i1-w3-a0-9b360ae824631543",
+        "score": -2.6256367527765265,
+        "sum_radii": 2.6256367527765265,
+        "known_target_gap": 0.009363247223473259,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-216-i1-w3-a0-9cd72b966973d5df",
+        "timestamp": "2026-05-19T02:09:46.651293+00:00"
       },
       {
+        "index": 774,
         "generation": 236,
-        "sum_radii": 2.617321682263614
+        "candidate_id": "gen-236-i0-w0-a0-cc18f88956032beb",
+        "score": -2.617321682263614,
+        "sum_radii": 2.617321682263614,
+        "known_target_gap": 0.01767831773638573,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-219-i0-w2-a0-7b76e318b5249a1e",
+        "timestamp": "2026-05-19T02:19:30.701712+00:00"
       },
       {
+        "index": 775,
         "generation": 236,
-        "sum_radii": 2.5830437666002455
+        "candidate_id": "gen-236-i1-w1-a0-391f8a6442a1ce40",
+        "score": -2.5830437666002455,
+        "sum_radii": 2.5830437666002455,
+        "known_target_gap": 0.051956233399754304,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T02:19:30.706391+00:00"
       },
       {
+        "index": 776,
         "generation": 236,
-        "sum_radii": 2.6280829586229326
+        "candidate_id": "gen-236-i0-w2-a0-d70783b47fda9fa3",
+        "score": -2.6280829586229326,
+        "sum_radii": 2.6280829586229326,
+        "known_target_gap": 0.006917041377067168,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-219-i0-w2-a0-7b76e318b5249a1e",
+        "timestamp": "2026-05-19T02:19:30.709590+00:00"
       },
       {
+        "index": 777,
         "generation": 236,
-        "sum_radii": 2.438966267379634
+        "candidate_id": "gen-236-i1-w3-a0-401f46651452767a",
+        "score": -2.438966267379634,
+        "sum_radii": 2.438966267379634,
+        "known_target_gap": 0.1960337326203656,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-219-i1-w1-a0-337d3a20cea24513",
+        "timestamp": "2026-05-19T02:19:30.713549+00:00"
       },
       {
+        "index": 778,
         "generation": 237,
-        "sum_radii": 2.5360069883646195
+        "candidate_id": "gen-237-i1-w1-a0-2cf4176babfb5da3",
+        "score": -2.5360069883646195,
+        "sum_radii": 2.5360069883646195,
+        "known_target_gap": 0.09899301163538032,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T02:25:11.624804+00:00"
       },
       {
+        "index": 779,
         "generation": 237,
-        "sum_radii": 2.438966267379634
+        "candidate_id": "gen-237-i0-w2-a0-8fac8257eff67a7d",
+        "score": -2.438966267379634,
+        "sum_radii": 2.438966267379634,
+        "known_target_gap": 0.1960337326203656,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T02:25:11.628398+00:00"
       },
       {
+        "index": 780,
         "generation": 238,
-        "sum_radii": 2.4389662673796337
+        "candidate_id": "gen-238-i1-w1-a0-beb7896dab8e3e2b",
+        "score": -2.4389662673796337,
+        "sum_radii": 2.4389662673796337,
+        "known_target_gap": 0.19603373262036605,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T02:29:48.311847+00:00"
       },
       {
+        "index": 781,
         "generation": 238,
-        "sum_radii": 2.438966267379634
+        "candidate_id": "gen-238-i0-w2-a0-3530e43fc7b49b83",
+        "score": -2.438966267379634,
+        "sum_radii": 2.438966267379634,
+        "known_target_gap": 0.1960337326203656,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T02:29:48.315348+00:00"
       },
       {
+        "index": 782,
         "generation": 238,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-238-i1-w3-a0-a383740b8612ab48",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "crossover",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T02:29:48.317882+00:00"
       },
       {
+        "index": 783,
         "generation": 239,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-239-i0-w0-a0-bdf2185c86ae73ad",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T02:38:03.509699+00:00"
       },
       {
+        "index": 784,
         "generation": 239,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-239-i1-w1-a0-f4eed1f09d33c3fc",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T02:38:03.514619+00:00"
       },
       {
+        "index": 785,
         "generation": 239,
-        "sum_radii": 2.629628001380904
+        "candidate_id": "gen-239-i0-w2-a0-b8d8474ac2258110",
+        "score": -2.629628001380904,
+        "sum_radii": 2.629628001380904,
+        "known_target_gap": 0.005371998619095653,
+        "run_label": "gen200-276",
+        "operator": "crossover",
+        "parent_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "timestamp": "2026-05-19T02:38:03.517619+00:00"
       },
       {
+        "index": 786,
         "generation": 240,
-        "sum_radii": 1.4053390858899106
+        "candidate_id": "gen-240-i0-w0-a0-c96cf37f1a9669eb",
+        "score": -1.4053390858899106,
+        "sum_radii": 1.4053390858899106,
+        "known_target_gap": 1.2296609141100892,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T02:42:35.437910+00:00"
       },
       {
+        "index": 787,
         "generation": 240,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-240-i1-w1-a0-37d34dde8dbc2ac3",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T02:42:35.440813+00:00"
       },
       {
+        "index": 788,
         "generation": 240,
-        "sum_radii": 2.629628001380901
+        "candidate_id": "gen-240-i0-w2-a0-3f15828ffd66949a",
+        "score": -2.629628001380901,
+        "sum_radii": 2.629628001380901,
+        "known_target_gap": 0.005371998619098761,
+        "run_label": "gen200-276",
+        "operator": "crossover",
+        "parent_id": "gen-219-i0-w2-a0-7b76e318b5249a1e",
+        "timestamp": "2026-05-19T02:42:35.443409+00:00"
       },
       {
+        "index": 789,
         "generation": 240,
-        "sum_radii": 2.4389662673796253
+        "candidate_id": "gen-240-i1-w3-a0-d39e1002454ea842",
+        "score": -2.4389662673796253,
+        "sum_radii": 2.4389662673796253,
+        "known_target_gap": 0.1960337326203745,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T02:42:35.447067+00:00"
       },
       {
+        "index": 790,
         "generation": 241,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-241-i0-w0-a0-70ab7913c1c4e112",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "refine",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T02:47:34.945891+00:00"
       },
       {
+        "index": 791,
         "generation": 241,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T02:47:34.949551+00:00"
       },
       {
+        "index": 792,
         "generation": 241,
-        "sum_radii": 1.4483822170134844
+        "candidate_id": "gen-241-i0-w2-a0-d799b3e17d18040e",
+        "score": -1.4483822170134844,
+        "sum_radii": 1.4483822170134844,
+        "known_target_gap": 1.1866177829865154,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T02:47:34.952551+00:00"
       },
       {
+        "index": 793,
         "generation": 242,
-        "sum_radii": 2.617321682263632
+        "candidate_id": "gen-242-i0-w0-a0-e1d468c95f15836d",
+        "score": -2.617321682263632,
+        "sum_radii": 2.617321682263632,
+        "known_target_gap": 0.017678317736367966,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T02:51:16.939219+00:00"
       },
       {
+        "index": 794,
         "generation": 242,
-        "sum_radii": 2.6094830125738486
+        "candidate_id": "gen-242-i1-w1-a0-f3ce7c77a922d100",
+        "score": -2.6094830125738486,
+        "sum_radii": 2.6094830125738486,
+        "known_target_gap": 0.02551698742615116,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T02:51:16.943211+00:00"
       },
       {
+        "index": 795,
         "generation": 242,
-        "sum_radii": 2.6296280013809
+        "candidate_id": "gen-242-i0-w2-a0-6c6244b6d899414d",
+        "score": -2.6296280013809,
+        "sum_radii": 2.6296280013809,
+        "known_target_gap": 0.005371998619099649,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T02:51:16.946761+00:00"
       },
       {
+        "index": 796,
         "generation": 242,
-        "sum_radii": 1.857142857142857
+        "candidate_id": "gen-242-i1-w3-a0-4699912265994455",
+        "score": -1.857142857142857,
+        "sum_radii": 1.857142857142857,
+        "known_target_gap": 0.7778571428571428,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T02:51:16.950377+00:00"
       },
       {
+        "index": 797,
         "generation": 243,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-243-i0-w0-a0-86340db125284ea3",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T03:02:29.567964+00:00"
       },
       {
+        "index": 798,
         "generation": 243,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-243-i1-w1-a0-4de10173282127d7",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T03:02:29.570858+00:00"
       },
       {
+        "index": 799,
         "generation": 243,
-        "sum_radii": 2.2822422988854654
+        "candidate_id": "gen-243-i0-w2-a0-f09f91769bf6f10d",
+        "score": -2.2822422988854654,
+        "sum_radii": 2.2822422988854654,
+        "known_target_gap": 0.3527577011145344,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T03:02:29.574491+00:00"
       },
       {
+        "index": 800,
         "generation": 243,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-243-i1-w3-a0-8e1a381ed3ba1b76",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen200-276",
+        "operator": "crossover",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T03:02:29.577179+00:00"
       },
       {
+        "index": 801,
         "generation": 244,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-244-i0-w0-a0-c5debddd041d23ab",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T03:06:40.852240+00:00"
       },
       {
+        "index": 802,
         "generation": 244,
-        "sum_radii": 2.607803825529237
+        "candidate_id": "gen-244-i1-w1-a0-2cad3fb71d269894",
+        "score": -2.607803825529237,
+        "sum_radii": 2.607803825529237,
+        "known_target_gap": 0.027196174470762724,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T03:06:40.856361+00:00"
       },
       {
+        "index": 803,
         "generation": 244,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-244-i0-w2-a0-eb3a83a464ac7eb0",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T03:06:40.858965+00:00"
       },
       {
+        "index": 804,
         "generation": 244,
-        "sum_radii": 2.6173216822636634
+        "candidate_id": "gen-244-i1-w3-a0-6f5ebae22bca314a",
+        "score": -2.6173216822636634,
+        "sum_radii": 2.6173216822636634,
+        "known_target_gap": 0.017678317736336435,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T03:06:40.862141+00:00"
       },
       {
+        "index": 805,
         "generation": 245,
-        "sum_radii": 2.625093792100728
+        "candidate_id": "gen-245-i0-w0-a0-fb5b6c8506a883c6",
+        "score": -2.625093792100728,
+        "sum_radii": 2.625093792100728,
+        "known_target_gap": 0.00990620789927199,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-219-i0-w2-a0-7b76e318b5249a1e",
+        "timestamp": "2026-05-19T03:13:51.231276+00:00"
       },
       {
+        "index": 806,
         "generation": 245,
-        "sum_radii": 2.595422161183015
+        "candidate_id": "gen-245-i1-w1-a0-f392bd02e5f08f49",
+        "score": -2.595422161183015,
+        "sum_radii": 2.595422161183015,
+        "known_target_gap": 0.039577838816984734,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T03:13:51.236343+00:00"
       },
       {
+        "index": 807,
         "generation": 245,
-        "sum_radii": 2.0799999999999983
+        "candidate_id": "gen-245-i0-w2-a0-194c5747d9ac5e81",
+        "score": -2.0799999999999983,
+        "sum_radii": 2.0799999999999983,
+        "known_target_gap": 0.5550000000000015,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-236-i0-w2-a0-d70783b47fda9fa3",
+        "timestamp": "2026-05-19T03:13:51.241186+00:00"
       },
       {
+        "index": 808,
         "generation": 245,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-245-i1-w3-a0-15306d3ff752d24e",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T03:13:51.244023+00:00"
       },
       {
+        "index": 809,
         "generation": 246,
-        "sum_radii": 1.8447655720760512
+        "candidate_id": "gen-246-i0-w0-a0-bff6ab230d88f249",
+        "score": -1.8447655720760512,
+        "sum_radii": 1.8447655720760512,
+        "known_target_gap": 0.7902344279239486,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T03:20:27.541012+00:00"
       },
       {
+        "index": 810,
         "generation": 246,
-        "sum_radii": 2.1984544840410716
+        "candidate_id": "gen-246-i1-w1-a0-c0c9414c9c3bcfe1",
+        "score": -2.1984544840410716,
+        "sum_radii": 2.1984544840410716,
+        "known_target_gap": 0.4365455159589282,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-216-i1-w3-a0-9cd72b966973d5df",
+        "timestamp": "2026-05-19T03:20:27.545331+00:00"
       },
       {
+        "index": 811,
         "generation": 246,
-        "sum_radii": 2.629628001380901
+        "candidate_id": "gen-246-i0-w2-a0-dcb65ec28dd30f10",
+        "score": -2.629628001380901,
+        "sum_radii": 2.629628001380901,
+        "known_target_gap": 0.005371998619098761,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-219-i0-w2-a0-7b76e318b5249a1e",
+        "timestamp": "2026-05-19T03:20:27.549844+00:00"
       },
       {
+        "index": 812,
         "generation": 247,
-        "sum_radii": 0.1250250000000002
+        "candidate_id": "gen-247-i0-w0-a0-95c83b1da62b79bc",
+        "score": -0.1250250000000002,
+        "sum_radii": 0.1250250000000002,
+        "known_target_gap": 2.5099749999999994,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T03:24:31.446679+00:00"
       },
       {
+        "index": 813,
         "generation": 247,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-247-i1-w1-a0-604f1de66e36cda9",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T03:24:31.449553+00:00"
       },
       {
+        "index": 814,
         "generation": 247,
-        "sum_radii": 2.6173216822636634
+        "candidate_id": "gen-247-i1-w3-a0-5a534e4d06d21815",
+        "score": -2.6173216822636634,
+        "sum_radii": 2.6173216822636634,
+        "known_target_gap": 0.017678317736336435,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T03:24:31.455765+00:00"
       },
       {
+        "index": 815,
         "generation": 248,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-248-i0-w0-a0-83d602a97a1217a6",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T03:31:11.073017+00:00"
       },
       {
+        "index": 816,
         "generation": 248,
-        "sum_radii": 1.8571428571428563
+        "candidate_id": "gen-248-i1-w1-a0-b7a2c643f907e883",
+        "score": -1.8571428571428563,
+        "sum_radii": 1.8571428571428563,
+        "known_target_gap": 0.7778571428571435,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T03:31:11.077502+00:00"
       },
       {
+        "index": 817,
         "generation": 248,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-248-i0-w2-a0-f19a009f277b1ac0",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T03:31:11.081502+00:00"
       },
       {
+        "index": 818,
         "generation": 248,
-        "sum_radii": 1.8571428571428563
+        "candidate_id": "gen-248-i1-w3-a0-0e9caffdb9da1fe8",
+        "score": -1.8571428571428563,
+        "sum_radii": 1.8571428571428563,
+        "known_target_gap": 0.7778571428571435,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T03:31:11.085291+00:00"
       },
       {
+        "index": 819,
         "generation": 249,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-249-i0-w0-a0-bc98f65190aece89",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T03:36:08.296171+00:00"
       },
       {
+        "index": 820,
         "generation": 249,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-249-i1-w1-a0-b13455791a7b0435",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T03:36:08.299084+00:00"
       },
       {
+        "index": 821,
         "generation": 250,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-250-i1-w1-a0-ada06fbfb4d58a66",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "crossover",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T03:41:56.629500+00:00"
       },
       {
+        "index": 822,
         "generation": 250,
-        "sum_radii": 2.625636752776552
+        "candidate_id": "gen-250-i1-w3-a0-8d0f95ad132c43a2",
+        "score": -2.625636752776552,
+        "sum_radii": 2.625636752776552,
+        "known_target_gap": 0.009363247223447946,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-216-i1-w3-a0-9cd72b966973d5df",
+        "timestamp": "2026-05-19T03:41:56.636085+00:00"
       },
       {
+        "index": 823,
         "generation": 251,
-        "sum_radii": 2.629628001380901
+        "candidate_id": "gen-251-i0-w0-a0-aa04fd9cff619efa",
+        "score": -2.629628001380901,
+        "sum_radii": 2.629628001380901,
+        "known_target_gap": 0.005371998619098761,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-219-i0-w2-a0-7b76e318b5249a1e",
+        "timestamp": "2026-05-19T03:47:01.935962+00:00"
       },
       {
+        "index": 824,
         "generation": 251,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-251-i1-w1-a0-c4ac8dcece982e6d",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T03:47:01.938938+00:00"
       },
       {
+        "index": 825,
         "generation": 251,
-        "sum_radii": 2.6173216822635994
+        "candidate_id": "gen-251-i0-w2-a0-48ef0b5a9193d243",
+        "score": -2.6173216822635994,
+        "sum_radii": 2.6173216822635994,
+        "known_target_gap": 0.017678317736400384,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T03:47:01.943086+00:00"
       },
       {
+        "index": 826,
         "generation": 251,
-        "sum_radii": 2.607803825529237
+        "candidate_id": "gen-251-i1-w3-a0-7c12c725b362f5d0",
+        "score": -2.607803825529237,
+        "sum_radii": 2.607803825529237,
+        "known_target_gap": 0.027196174470762724,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T03:47:01.946801+00:00"
       },
       {
+        "index": 827,
         "generation": 252,
-        "sum_radii": 2.6296280013809015
+        "candidate_id": "gen-252-i0-w0-a0-ab81943f3940d074",
+        "score": -2.6296280013809015,
+        "sum_radii": 2.6296280013809015,
+        "known_target_gap": 0.005371998619098317,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T03:52:25.669545+00:00"
       },
       {
+        "index": 828,
         "generation": 252,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-252-i1-w1-a0-65d5affabe83216b",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T03:52:25.672763+00:00"
       },
       {
+        "index": 829,
         "generation": 252,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-252-i1-w3-a0-e60519c0141d7ff7",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T03:52:25.678282+00:00"
       },
       {
+        "index": 830,
         "generation": 253,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-253-i0-w0-a0-a4b84e8bfcc4de09",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T03:59:28.279663+00:00"
       },
       {
+        "index": 831,
         "generation": 253,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-253-i1-w1-a0-8b5083a737603d90",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T03:59:28.283164+00:00"
       },
       {
+        "index": 832,
         "generation": 253,
-        "sum_radii": 2.6173216822636056
+        "candidate_id": "gen-253-i0-w2-a0-8229bf003bf73aae",
+        "score": -2.6173216822636056,
+        "sum_radii": 2.6173216822636056,
+        "known_target_gap": 0.017678317736394167,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T03:59:28.287173+00:00"
       },
       {
+        "index": 833,
         "generation": 253,
-        "sum_radii": 2.6296280013808957
+        "candidate_id": "gen-253-i1-w3-a0-1b948148fb09cfd4",
+        "score": -2.6296280013808957,
+        "sum_radii": 2.6296280013808957,
+        "known_target_gap": 0.00537199861910409,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T03:59:28.290744+00:00"
       },
       {
+        "index": 834,
         "generation": 254,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-254-i0-w0-a0-091b81a52f951883",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T04:15:04.204350+00:00"
       },
       {
+        "index": 835,
         "generation": 254,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-254-i1-w1-a0-9315af288f532950",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T04:15:04.207309+00:00"
       },
       {
+        "index": 836,
         "generation": 254,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-254-i0-w2-a0-09094ae31476e8d5",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T04:15:04.209801+00:00"
       },
       {
+        "index": 837,
         "generation": 255,
-        "sum_radii": 2.6280829586229326
+        "candidate_id": "gen-255-i0-w0-a0-9042ad91471adf11",
+        "score": -2.6280829586229326,
+        "sum_radii": 2.6280829586229326,
+        "known_target_gap": 0.006917041377067168,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-236-i0-w2-a0-d70783b47fda9fa3",
+        "timestamp": "2026-05-19T04:24:20.973370+00:00"
       },
       {
+        "index": 838,
         "generation": 255,
-        "sum_radii": 2.6296280013808957
+        "candidate_id": "gen-255-i1-w1-a0-b9cd545c84d6ec75",
+        "score": -2.6296280013808957,
+        "sum_radii": 2.6296280013808957,
+        "known_target_gap": 0.00537199861910409,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T04:24:20.977845+00:00"
       },
       {
+        "index": 839,
         "generation": 255,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-255-i1-w3-a0-c0d02273730e874a",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen200-276",
+        "operator": "crossover",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T04:24:20.984374+00:00"
       },
       {
+        "index": 840,
         "generation": 256,
-        "sum_radii": 2.49437455224166
+        "candidate_id": "gen-256-i0-w0-a0-dbaad24db72c218e",
+        "score": -2.49437455224166,
+        "sum_radii": 2.49437455224166,
+        "known_target_gap": 0.14062544775833974,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-206-i0-w0-a0-2f26059fff31268f",
+        "timestamp": "2026-05-19T04:38:07.610454+00:00"
       },
       {
+        "index": 841,
         "generation": 256,
-        "sum_radii": 2.607803825529237
+        "candidate_id": "gen-256-i1-w1-a0-782291fceb059a8a",
+        "score": -2.607803825529237,
+        "sum_radii": 2.607803825529237,
+        "known_target_gap": 0.027196174470762724,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T04:38:07.614862+00:00"
       },
       {
+        "index": 842,
         "generation": 256,
-        "sum_radii": 2.6296280013809015
+        "candidate_id": "gen-256-i0-w2-a0-fd8887ae2ea7fec2",
+        "score": -2.6296280013809015,
+        "sum_radii": 2.6296280013809015,
+        "known_target_gap": 0.005371998619098317,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-252-i0-w0-a0-ab81943f3940d074",
+        "timestamp": "2026-05-19T04:38:07.618124+00:00"
       },
       {
+        "index": 843,
         "generation": 257,
-        "sum_radii": 0.49999999999999634
+        "candidate_id": "gen-257-i0-w0-a0-afff337f11c75d29",
+        "score": -0.49999999999999634,
+        "sum_radii": 0.49999999999999634,
+        "known_target_gap": 2.1350000000000033,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-236-i0-w2-a0-d70783b47fda9fa3",
+        "timestamp": "2026-05-19T04:43:41.836491+00:00"
       },
       {
+        "index": 844,
         "generation": 257,
-        "sum_radii": 2.6173216822636705
+        "candidate_id": "gen-257-i1-w1-a0-61c004f279bacbdb",
+        "score": -2.6173216822636705,
+        "sum_radii": 2.6173216822636705,
+        "known_target_gap": 0.01767831773632933,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T04:43:41.841468+00:00"
       },
       {
+        "index": 845,
         "generation": 257,
-        "sum_radii": 1.8833152452107607
+        "candidate_id": "gen-257-i0-w2-a0-2069011847e91e2c",
+        "score": -1.8833152452107607,
+        "sum_radii": 1.8833152452107607,
+        "known_target_gap": 0.7516847547892391,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-206-i0-w0-a0-2f26059fff31268f",
+        "timestamp": "2026-05-19T04:43:41.845832+00:00"
       },
       {
+        "index": 846,
         "generation": 257,
-        "sum_radii": 2.625636752776552
+        "candidate_id": "gen-257-i1-w3-a0-983becbdfb8ec2d6",
+        "score": -2.625636752776552,
+        "sum_radii": 2.625636752776552,
+        "known_target_gap": 0.009363247223447946,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-250-i1-w3-a0-8d0f95ad132c43a2",
+        "timestamp": "2026-05-19T04:43:41.849007+00:00"
       },
       {
+        "index": 847,
         "generation": 258,
-        "sum_radii": 1.955644437539651
+        "candidate_id": "gen-258-i0-w0-a0-9958461f17001935",
+        "score": -1.955644437539651,
+        "sum_radii": 1.955644437539651,
+        "known_target_gap": 0.6793555624603489,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T04:48:51.435652+00:00"
       },
       {
+        "index": 848,
         "generation": 258,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-258-i1-w1-a0-84be063ea7bb1d71",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T04:48:51.440054+00:00"
       },
       {
+        "index": 849,
         "generation": 258,
-        "sum_radii": 1.5413293137951132
+        "candidate_id": "gen-258-i0-w2-a0-f0f08433ec1448a4",
+        "score": -1.5413293137951132,
+        "sum_radii": 1.5413293137951132,
+        "known_target_gap": 1.0936706862048866,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T04:48:51.444281+00:00"
       },
       {
+        "index": 850,
         "generation": 258,
-        "sum_radii": 2.617321682263632
+        "candidate_id": "gen-258-i1-w3-a0-a33e98daf628913d",
+        "score": -2.617321682263632,
+        "sum_radii": 2.617321682263632,
+        "known_target_gap": 0.017678317736367966,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T04:48:51.448275+00:00"
       },
       {
+        "index": 851,
         "generation": 259,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-259-i0-w0-a0-1f3b41f152d8f828",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T04:55:07.771896+00:00"
       },
       {
+        "index": 852,
         "generation": 259,
-        "sum_radii": 2.6103091178579763
+        "candidate_id": "gen-259-i0-w2-a0-43ec55ed1dac2bd7",
+        "score": -2.6103091178579763,
+        "sum_radii": 2.6103091178579763,
+        "known_target_gap": 0.02469088214202353,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T04:55:07.778667+00:00"
       },
       {
+        "index": 853,
         "generation": 259,
-        "sum_radii": 2.6296280013808957
+        "candidate_id": "gen-259-i1-w3-a0-aa6c7156e76d519e",
+        "score": -2.6296280013808957,
+        "sum_radii": 2.6296280013808957,
+        "known_target_gap": 0.00537199861910409,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-253-i1-w3-a0-1b948148fb09cfd4",
+        "timestamp": "2026-05-19T04:55:07.783035+00:00"
       },
       {
+        "index": 854,
         "generation": 260,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-260-i0-w0-a0-c5cdc73157ff9b8c",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T04:59:24.084930+00:00"
       },
       {
+        "index": 855,
         "generation": 260,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-260-i1-w1-a0-7c989a715705506f",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T04:59:24.089235+00:00"
       },
       {
+        "index": 856,
         "generation": 260,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-260-i0-w2-a0-e9e4a89542c9fafd",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T04:59:24.093253+00:00"
       },
       {
+        "index": 857,
         "generation": 260,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-260-i1-w3-a0-95e3b4eb3b38a102",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen200-276",
+        "operator": "crossover",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T04:59:24.096664+00:00"
       },
       {
+        "index": 858,
         "generation": 261,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-261-i0-w0-a0-6e1c6a535d8e6061",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T05:11:39.888857+00:00"
       },
       {
+        "index": 859,
         "generation": 261,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-261-i1-w1-a0-b7ae958fbf9d2e51",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-253-i1-w3-a0-1b948148fb09cfd4",
+        "timestamp": "2026-05-19T05:11:39.893572+00:00"
       },
       {
+        "index": 860,
         "generation": 261,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-261-i0-w2-a0-fa56b9e4f03ab99a",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T05:11:39.897966+00:00"
       },
       {
+        "index": 861,
         "generation": 261,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-261-i1-w3-a0-aca3ce714782edb1",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T05:11:39.902505+00:00"
       },
       {
+        "index": 862,
         "generation": 262,
-        "sum_radii": 1.3
+        "candidate_id": "gen-262-i0-w0-a0-a6365eb4d3f01dbf",
+        "score": -1.3,
+        "sum_radii": 1.3,
+        "known_target_gap": 1.3349999999999997,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T05:18:25.200100+00:00"
       },
       {
+        "index": 863,
         "generation": 262,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-262-i1-w1-a0-b1987e72b61674a9",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T05:18:25.204565+00:00"
       },
       {
+        "index": 864,
         "generation": 262,
-        "sum_radii": 2.438966267379634
+        "candidate_id": "gen-262-i0-w2-a0-2e1fd56b5926dce0",
+        "score": -2.438966267379634,
+        "sum_radii": 2.438966267379634,
+        "known_target_gap": 0.1960337326203656,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T05:18:25.209024+00:00"
       },
       {
+        "index": 865,
         "generation": 262,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-262-i1-w3-a0-73fbd25bd8337d1b",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T05:18:25.213031+00:00"
       },
       {
+        "index": 866,
         "generation": 263,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-263-i0-w0-a0-3fe20649df20c0dc",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T05:27:51.814618+00:00"
       },
       {
+        "index": 867,
         "generation": 264,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-264-i1-w1-a0-2f6ac14ec2e55910",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T05:32:06.213491+00:00"
       },
       {
+        "index": 868,
         "generation": 264,
-        "sum_radii": 2.0980762113533156
+        "candidate_id": "gen-264-i0-w2-a0-2a44fbf7ba0c746c",
+        "score": -2.0980762113533156,
+        "sum_radii": 2.0980762113533156,
+        "known_target_gap": 0.5369237886466842,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T05:32:06.217832+00:00"
       },
       {
+        "index": 869,
         "generation": 264,
-        "sum_radii": 2.6296280013808957
+        "candidate_id": "gen-264-i1-w3-a0-c3e3b7d77656ade6",
+        "score": -2.6296280013808957,
+        "sum_radii": 2.6296280013808957,
+        "known_target_gap": 0.00537199861910409,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-253-i1-w3-a0-1b948148fb09cfd4",
+        "timestamp": "2026-05-19T05:32:06.221841+00:00"
       },
       {
+        "index": 870,
         "generation": 265,
-        "sum_radii": 1.0399999999999994
+        "candidate_id": "gen-265-i0-w0-a0-34ccb4ee4afc8c2c",
+        "score": -1.0399999999999994,
+        "sum_radii": 1.0399999999999994,
+        "known_target_gap": 1.5950000000000004,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-252-i0-w0-a0-ab81943f3940d074",
+        "timestamp": "2026-05-19T05:41:16.612228+00:00"
       },
       {
+        "index": 871,
         "generation": 265,
-        "sum_radii": 2.6280829586229326
+        "candidate_id": "gen-265-i1-w1-a0-426205b6b26a0bf0",
+        "score": -2.6280829586229326,
+        "sum_radii": 2.6280829586229326,
+        "known_target_gap": 0.006917041377067168,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-236-i0-w2-a0-d70783b47fda9fa3",
+        "timestamp": "2026-05-19T05:41:16.616850+00:00"
       },
       {
+        "index": 872,
         "generation": 265,
-        "sum_radii": 2.438966267379634
+        "candidate_id": "gen-265-i0-w2-a0-042ed064a9a7b5b9",
+        "score": -2.438966267379634,
+        "sum_radii": 2.438966267379634,
+        "known_target_gap": 0.1960337326203656,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-206-i0-w0-a0-2f26059fff31268f",
+        "timestamp": "2026-05-19T05:41:16.621367+00:00"
       },
       {
+        "index": 873,
         "generation": 265,
-        "sum_radii": 2.617321682263688
+        "candidate_id": "gen-265-i1-w3-a0-14113bb216e651ac",
+        "score": -2.617321682263688,
+        "sum_radii": 2.617321682263688,
+        "known_target_gap": 0.017678317736311566,
+        "run_label": "gen200-276",
+        "operator": "refine",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T05:41:16.625582+00:00"
       },
       {
+        "index": 874,
         "generation": 266,
-        "sum_radii": 2.0980762113533147
+        "candidate_id": "gen-266-i1-w1-a0-613be15023a522b6",
+        "score": -2.0980762113533147,
+        "sum_radii": 2.0980762113533147,
+        "known_target_gap": 0.5369237886466851,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T05:49:14.931850+00:00"
       },
       {
+        "index": 875,
         "generation": 266,
-        "sum_radii": 2.6103091178579763
+        "candidate_id": "gen-266-i0-w2-a0-c150f9d0497871cf",
+        "score": -2.6103091178579763,
+        "sum_radii": 2.6103091178579763,
+        "known_target_gap": 0.02469088214202353,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-259-i0-w2-a0-43ec55ed1dac2bd7",
+        "timestamp": "2026-05-19T05:49:14.936051+00:00"
       },
       {
+        "index": 876,
         "generation": 267,
-        "sum_radii": 2.6173216822636056
+        "candidate_id": "gen-267-i0-w0-a0-437f6d9d1c7431f7",
+        "score": -2.6173216822636056,
+        "sum_radii": 2.6173216822636056,
+        "known_target_gap": 0.017678317736394167,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T05:54:13.760748+00:00"
       },
       {
+        "index": 877,
         "generation": 267,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-267-i1-w1-a0-f4aee1907698a236",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T05:54:13.765674+00:00"
       },
       {
+        "index": 878,
         "generation": 267,
-        "sum_radii": 2.438966267379634
+        "candidate_id": "gen-267-i0-w2-a0-4281f59de1ba189c",
+        "score": -2.438966267379634,
+        "sum_radii": 2.438966267379634,
+        "known_target_gap": 0.1960337326203656,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T05:54:13.770010+00:00"
       },
       {
+        "index": 879,
         "generation": 267,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-267-i1-w3-a0-1967e75ffcf10444",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T05:54:13.773974+00:00"
       },
       {
+        "index": 880,
         "generation": 268,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-268-i0-w0-a0-813057d3f6454a64",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T06:04:10.370623+00:00"
       },
       {
+        "index": 881,
         "generation": 268,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-268-i1-w1-a0-0f7be24689fed08d",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T06:04:10.375317+00:00"
       },
       {
+        "index": 882,
         "generation": 268,
-        "sum_radii": 2.6280829586229326
+        "candidate_id": "gen-268-i0-w2-a0-00322a6fb741d0e0",
+        "score": -2.6280829586229326,
+        "sum_radii": 2.6280829586229326,
+        "known_target_gap": 0.006917041377067168,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-236-i0-w2-a0-d70783b47fda9fa3",
+        "timestamp": "2026-05-19T06:04:10.379856+00:00"
       },
       {
+        "index": 883,
         "generation": 268,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-268-i1-w3-a0-ffb033c1e17eb565",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T06:04:10.384079+00:00"
       },
       {
+        "index": 884,
         "generation": 269,
-        "sum_radii": 2.607803825529237
+        "candidate_id": "gen-269-i1-w1-a0-7378f0fd5c0596eb",
+        "score": -2.607803825529237,
+        "sum_radii": 2.607803825529237,
+        "known_target_gap": 0.027196174470762724,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-253-i1-w3-a0-1b948148fb09cfd4",
+        "timestamp": "2026-05-19T06:10:27.900015+00:00"
       },
       {
+        "index": 885,
         "generation": 269,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-269-i1-w3-a0-f185cd493492c937",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen200-276",
+        "operator": "simplify",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T06:10:27.906711+00:00"
       },
       {
+        "index": 886,
         "generation": 270,
-        "sum_radii": 2.6296280013808815
+        "candidate_id": "gen-270-i0-w0-a0-5bcc98aeb4531d8c",
+        "score": -2.6296280013808815,
+        "sum_radii": 2.6296280013808815,
+        "known_target_gap": 0.005371998619118301,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T06:15:22.994509+00:00"
       },
       {
+        "index": 887,
         "generation": 270,
-        "sum_radii": 2.6296279961216453
+        "candidate_id": "gen-270-i1-w1-a0-a31570d41d95cbc6",
+        "score": -2.6296279961216453,
+        "sum_radii": 2.6296279961216453,
+        "known_target_gap": 0.005372003878354459,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T06:15:22.998020+00:00"
       },
       {
+        "index": 888,
         "generation": 270,
-        "sum_radii": 2.3137289154441634
+        "candidate_id": "gen-270-i0-w2-a0-9918df18e7a3362a",
+        "score": -2.3137289154441634,
+        "sum_radii": 2.3137289154441634,
+        "known_target_gap": 0.3212710845558364,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-252-i0-w0-a0-ab81943f3940d074",
+        "timestamp": "2026-05-19T06:15:23.001513+00:00"
       },
       {
+        "index": 889,
         "generation": 270,
-        "sum_radii": 2.6296280013808957
+        "candidate_id": "gen-270-i1-w3-a0-2552265fcd36a2d7",
+        "score": -2.6296280013808957,
+        "sum_radii": 2.6296280013808957,
+        "known_target_gap": 0.00537199861910409,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-253-i1-w3-a0-1b948148fb09cfd4",
+        "timestamp": "2026-05-19T06:15:23.005536+00:00"
       },
       {
+        "index": 890,
         "generation": 271,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-271-i0-w0-a0-caecfff736d63ba7",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T06:23:01.578379+00:00"
       },
       {
+        "index": 891,
         "generation": 271,
-        "sum_radii": 2.607803825529237
+        "candidate_id": "gen-271-i1-w1-a0-1e22cb0092955df3",
+        "score": -2.607803825529237,
+        "sum_radii": 2.607803825529237,
+        "known_target_gap": 0.027196174470762724,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T06:23:01.582898+00:00"
       },
       {
+        "index": 892,
         "generation": 271,
-        "sum_radii": 2.6086313082745636
+        "candidate_id": "gen-271-i0-w2-a0-8bd4cd016ef4f601",
+        "score": -2.6086313082745636,
+        "sum_radii": 2.6086313082745636,
+        "known_target_gap": 0.02636869172543621,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T06:23:01.587020+00:00"
       },
       {
+        "index": 893,
         "generation": 271,
-        "sum_radii": 2.62159551164321
+        "candidate_id": "gen-271-i1-w3-a0-9e08b571410ebbc5",
+        "score": -2.62159551164321,
+        "sum_radii": 2.62159551164321,
+        "known_target_gap": 0.013404488356789646,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T06:23:01.591154+00:00"
       },
       {
+        "index": 894,
         "generation": 272,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-272-i0-w0-a0-4cf79bfb02f5853b",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T06:32:02.499757+00:00"
       },
       {
+        "index": 895,
         "generation": 272,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-272-i1-w1-a0-2dd75980730717b6",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T06:32:02.504605+00:00"
       },
       {
+        "index": 896,
         "generation": 272,
-        "sum_radii": 2.607803825529256
+        "candidate_id": "gen-272-i0-w2-a0-ab3077ca1ea35ade",
+        "score": -2.607803825529256,
+        "sum_radii": 2.607803825529256,
+        "known_target_gap": 0.027196174470743628,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T06:32:02.508817+00:00"
       },
       {
+        "index": 897,
         "generation": 273,
-        "sum_radii": 2.6296280013811155
+        "candidate_id": "gen-273-i1-w1-a0-e6f704761ae0e7b8",
+        "score": -2.6296280013811155,
+        "sum_radii": 2.6296280013811155,
+        "known_target_gap": 0.005371998618884266,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-253-i1-w3-a0-1b948148fb09cfd4",
+        "timestamp": "2026-05-19T06:38:08.034278+00:00"
       },
       {
+        "index": 898,
         "generation": 273,
-        "sum_radii": 2.5566101685921243
+        "candidate_id": "gen-273-i0-w2-a0-a1be49becaee0c64",
+        "score": -2.5566101685921243,
+        "sum_radii": 2.5566101685921243,
+        "known_target_gap": 0.07838983140787548,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T06:38:08.037694+00:00"
       },
       {
+        "index": 899,
         "generation": 273,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-273-i1-w3-a0-97f8e8b890cf8853",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T06:38:08.040930+00:00"
       },
       {
+        "index": 900,
         "generation": 274,
-        "sum_radii": 2.607803825529256
+        "candidate_id": "gen-274-i0-w0-a0-ddb037fe4cc03482",
+        "score": -2.607803825529256,
+        "sum_radii": 2.607803825529256,
+        "known_target_gap": 0.027196174470743628,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T06:44:51.418865+00:00"
       },
       {
+        "index": 901,
         "generation": 274,
-        "sum_radii": 2.6296280013811155
+        "candidate_id": "gen-274-i1-w1-a0-59bd61aba75a88f0",
+        "score": -2.6296280013811155,
+        "sum_radii": 2.6296280013811155,
+        "known_target_gap": 0.005371998618884266,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-273-i1-w1-a0-e6f704761ae0e7b8",
+        "timestamp": "2026-05-19T06:44:51.422818+00:00"
       },
       {
+        "index": 902,
         "generation": 274,
-        "sum_radii": 2.6173216822635967
+        "candidate_id": "gen-274-i0-w2-a0-52d73cb5d30e5dd2",
+        "score": -2.6173216822635967,
+        "sum_radii": 2.6173216822635967,
+        "known_target_gap": 0.01767831773640305,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T06:44:51.426950+00:00"
       },
       {
+        "index": 903,
         "generation": 274,
-        "sum_radii": 2.6296280013811155
+        "candidate_id": "gen-274-i1-w3-a0-50a35cd548d7b89f",
+        "score": -2.6296280013811155,
+        "sum_radii": 2.6296280013811155,
+        "known_target_gap": 0.005371998618884266,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-273-i1-w1-a0-e6f704761ae0e7b8",
+        "timestamp": "2026-05-19T06:44:51.430293+00:00"
       },
       {
+        "index": 904,
         "generation": 275,
-        "sum_radii": 2.5830437666002446
+        "candidate_id": "gen-275-i0-w0-a0-d693fe84f77b4650",
+        "score": -2.5830437666002446,
+        "sum_radii": 2.5830437666002446,
+        "known_target_gap": 0.05195623339975519,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T06:50:32.194700+00:00"
       },
       {
+        "index": 905,
         "generation": 275,
-        "sum_radii": 1.245152578410408
+        "candidate_id": "gen-275-i0-w2-a0-1b85dcd37c31467c",
+        "score": -1.245152578410408,
+        "sum_radii": 1.245152578410408,
+        "known_target_gap": 1.3898474215895917,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T06:50:32.205873+00:00"
       },
       {
+        "index": 906,
         "generation": 275,
-        "sum_radii": 2.598488158959296
+        "candidate_id": "gen-275-i1-w3-a0-e71338cb369167d5",
+        "score": -2.598488158959296,
+        "sum_radii": 2.598488158959296,
+        "known_target_gap": 0.03651184104070371,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-273-i1-w1-a0-e6f704761ae0e7b8",
+        "timestamp": "2026-05-19T06:50:32.211349+00:00"
       },
       {
+        "index": 907,
         "generation": 276,
-        "sum_radii": 2.6296280013809046
+        "candidate_id": "gen-276-i0-w0-a0-4112b839acf44f7c",
+        "score": -2.6296280013809046,
+        "sum_radii": 2.6296280013809046,
+        "known_target_gap": 0.0053719986190952085,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T06:56:19.860112+00:00"
       },
       {
+        "index": 908,
         "generation": 276,
-        "sum_radii": 2.6296280013811155
+        "candidate_id": "gen-276-i1-w1-a0-5a20eb91b21d2422",
+        "score": -2.6296280013811155,
+        "sum_radii": 2.6296280013811155,
+        "known_target_gap": 0.005371998618884266,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-273-i1-w1-a0-e6f704761ae0e7b8",
+        "timestamp": "2026-05-19T06:56:19.863495+00:00"
       },
       {
+        "index": 909,
         "generation": 276,
-        "sum_radii": 2.098076211353316
+        "candidate_id": "gen-276-i0-w2-a0-009baf4b3606c924",
+        "score": -2.098076211353316,
+        "sum_radii": 2.098076211353316,
+        "known_target_gap": 0.5369237886466838,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "timestamp": "2026-05-19T06:56:19.867488+00:00"
       },
       {
+        "index": 910,
         "generation": 276,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-276-i1-w3-a0-5eba0feb1904436f",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen200-276",
+        "operator": "mutate",
+        "parent_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "timestamp": "2026-05-19T06:56:19.871572+00:00"
       },
       {
+        "index": 911,
         "generation": 277,
-        "sum_radii": 2.589317546482001
+        "candidate_id": "gen-277-i0-w0-a0-ce77b77ab10de6b4",
+        "score": -2.589317546482001,
+        "sum_radii": 2.589317546482001,
+        "known_target_gap": 0.04568245351799893,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-203-i0-w2-a0-73d6123ba93f14fb",
+        "timestamp": "2026-05-19T18:30:26.065106+00:00"
       },
       {
+        "index": 912,
         "generation": 277,
-        "sum_radii": 2.629628001381243
+        "candidate_id": "gen-277-i1-w1-a0-6bcf5fc8010f07ec",
+        "score": -2.629628001381243,
+        "sum_radii": 2.629628001381243,
+        "known_target_gap": 0.0053719986187568125,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-273-i1-w1-a0-e6f704761ae0e7b8",
+        "timestamp": "2026-05-19T18:30:26.067692+00:00"
       },
       {
+        "index": 913,
         "generation": 277,
-        "sum_radii": 2.589317546482001
+        "candidate_id": "gen-277-i0-w2-a0-443be1f319351228",
+        "score": -2.589317546482001,
+        "sum_radii": 2.589317546482001,
+        "known_target_gap": 0.04568245351799893,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-203-i0-w2-a0-73d6123ba93f14fb",
+        "timestamp": "2026-05-19T18:30:26.070777+00:00"
       },
       {
+        "index": 914,
         "generation": 277,
-        "sum_radii": 2.6296280013811155
+        "candidate_id": "gen-277-i1-w3-a0-96213df0e2e19009",
+        "score": -2.6296280013811155,
+        "sum_radii": 2.6296280013811155,
+        "known_target_gap": 0.005371998618884266,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-273-i1-w1-a0-e6f704761ae0e7b8",
+        "timestamp": "2026-05-19T18:30:26.072981+00:00"
       },
       {
+        "index": 915,
         "generation": 278,
-        "sum_radii": 1.1258330249197706
+        "candidate_id": "gen-278-i0-w0-a0-9f4250629d819cbf",
+        "score": -1.1258330249197706,
+        "sum_radii": 1.1258330249197706,
+        "known_target_gap": 1.5091669750802292,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-203-i0-w2-a0-73d6123ba93f14fb",
+        "timestamp": "2026-05-19T18:37:07.770000+00:00"
       },
       {
+        "index": 916,
         "generation": 278,
-        "sum_radii": 2.6296280013811963
+        "candidate_id": "gen-278-i1-w1-a0-62cfa207b74d275b",
+        "score": -2.6296280013811963,
+        "sum_radii": 2.6296280013811963,
+        "known_target_gap": 0.005371998618803442,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-277-i1-w1-a0-6bcf5fc8010f07ec",
+        "timestamp": "2026-05-19T18:37:07.772494+00:00"
       },
       {
+        "index": 917,
         "generation": 278,
-        "sum_radii": 2.617321682263676
+        "candidate_id": "gen-278-i0-w2-a0-6efad66a77965f01",
+        "score": -2.617321682263676,
+        "sum_radii": 2.617321682263676,
+        "known_target_gap": 0.017678317736324,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-203-i0-w2-a0-73d6123ba93f14fb",
+        "timestamp": "2026-05-19T18:37:07.775043+00:00"
       },
       {
+        "index": 918,
         "generation": 278,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-278-i1-w3-a0-84fd6099be7fc7a9",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-277-i1-w1-a0-6bcf5fc8010f07ec",
+        "timestamp": "2026-05-19T18:37:07.777597+00:00"
       },
       {
+        "index": 919,
         "generation": 279,
-        "sum_radii": 2.617321682263676
+        "candidate_id": "gen-279-i0-w0-a0-cf96dcc3e42c7add",
+        "score": -2.617321682263676,
+        "sum_radii": 2.617321682263676,
+        "known_target_gap": 0.017678317736324,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-278-i0-w2-a0-6efad66a77965f01",
+        "timestamp": "2026-05-19T18:46:57.623811+00:00"
       },
       {
+        "index": 920,
         "generation": 279,
-        "sum_radii": 2.6235348955364834
+        "candidate_id": "gen-279-i1-w1-a0-957aa073f57187a1",
+        "score": -2.6235348955364834,
+        "sum_radii": 2.6235348955364834,
+        "known_target_gap": 0.01146510446351634,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-277-i1-w1-a0-6bcf5fc8010f07ec",
+        "timestamp": "2026-05-19T18:46:57.626994+00:00"
       },
       {
+        "index": 921,
         "generation": 279,
-        "sum_radii": 2.617321682263676
+        "candidate_id": "gen-279-i0-w2-a0-f06e5a06506092ef",
+        "score": -2.617321682263676,
+        "sum_radii": 2.617321682263676,
+        "known_target_gap": 0.017678317736324,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-278-i0-w2-a0-6efad66a77965f01",
+        "timestamp": "2026-05-19T18:46:57.630730+00:00"
       },
       {
+        "index": 922,
         "generation": 279,
-        "sum_radii": 2.630171937365451
+        "candidate_id": "gen-279-i1-w3-a0-be93488290e3048e",
+        "score": -2.630171937365451,
+        "sum_radii": 2.630171937365451,
+        "known_target_gap": 0.004828062634548935,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-277-i1-w1-a0-6bcf5fc8010f07ec",
+        "timestamp": "2026-05-19T18:46:57.633196+00:00"
       },
       {
+        "index": 923,
         "generation": 280,
-        "sum_radii": 2.6042667943343467
+        "candidate_id": "gen-280-i0-w0-a0-dad8b73b319c771e",
+        "score": -2.6042667943343467,
+        "sum_radii": 2.6042667943343467,
+        "known_target_gap": 0.030733205665653074,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-278-i0-w2-a0-6efad66a77965f01",
+        "timestamp": "2026-05-19T18:55:56.739766+00:00"
       },
       {
+        "index": 924,
         "generation": 280,
-        "sum_radii": 2.6198169678769414
+        "candidate_id": "gen-280-i1-w1-a0-c9707e481e4367cb",
+        "score": -2.6198169678769414,
+        "sum_radii": 2.6198169678769414,
+        "known_target_gap": 0.015183032123058382,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-279-i1-w3-a0-be93488290e3048e",
+        "timestamp": "2026-05-19T18:55:56.744177+00:00"
       },
       {
+        "index": 925,
         "generation": 280,
-        "sum_radii": 2.617321682263676
+        "candidate_id": "gen-280-i0-w2-a0-8ee2b8771f5831a1",
+        "score": -2.617321682263676,
+        "sum_radii": 2.617321682263676,
+        "known_target_gap": 0.017678317736324,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-278-i0-w2-a0-6efad66a77965f01",
+        "timestamp": "2026-05-19T18:55:56.748715+00:00"
       },
       {
+        "index": 926,
         "generation": 281,
-        "sum_radii": 2.617321682263676
+        "candidate_id": "gen-281-i0-w0-a0-c9b6a5d90ba9c6c6",
+        "score": -2.617321682263676,
+        "sum_radii": 2.617321682263676,
+        "known_target_gap": 0.017678317736324,
+        "run_label": "gen277-352",
+        "operator": "crossover",
+        "parent_id": "gen-278-i0-w2-a0-6efad66a77965f01",
+        "timestamp": "2026-05-19T19:03:54.946808+00:00"
       },
       {
+        "index": 927,
         "generation": 281,
-        "sum_radii": 2.6235348955102986
+        "candidate_id": "gen-281-i1-w1-a0-48f9bda5c38885d6",
+        "score": -2.6235348955102986,
+        "sum_radii": 2.6235348955102986,
+        "known_target_gap": 0.011465104489701172,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-279-i1-w3-a0-be93488290e3048e",
+        "timestamp": "2026-05-19T19:03:54.950351+00:00"
       },
       {
+        "index": 928,
         "generation": 281,
-        "sum_radii": 2.617321682263676
+        "candidate_id": "gen-281-i0-w2-a0-5f94b1b5c6213e38",
+        "score": -2.617321682263676,
+        "sum_radii": 2.617321682263676,
+        "known_target_gap": 0.017678317736324,
+        "run_label": "gen277-352",
+        "operator": "crossover",
+        "parent_id": "gen-278-i0-w2-a0-6efad66a77965f01",
+        "timestamp": "2026-05-19T19:03:54.954870+00:00"
       },
       {
+        "index": 929,
         "generation": 281,
-        "sum_radii": 2.630171937365451
+        "candidate_id": "gen-281-i1-w3-a0-085d10f77c65050d",
+        "score": -2.630171937365451,
+        "sum_radii": 2.630171937365451,
+        "known_target_gap": 0.004828062634548935,
+        "run_label": "gen277-352",
+        "operator": "crossover",
+        "parent_id": "gen-279-i1-w3-a0-be93488290e3048e",
+        "timestamp": "2026-05-19T19:03:54.957645+00:00"
       },
       {
+        "index": 930,
         "generation": 282,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-282-i1-w1-a0-9c0116c2ea8e3c57",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-279-i1-w3-a0-be93488290e3048e",
+        "timestamp": "2026-05-19T19:15:18.578250+00:00"
       },
       {
+        "index": 931,
         "generation": 282,
-        "sum_radii": 2.617321682263676
+        "candidate_id": "gen-282-i0-w2-a0-e693e867df1b3126",
+        "score": -2.617321682263676,
+        "sum_radii": 2.617321682263676,
+        "known_target_gap": 0.017678317736324,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-278-i0-w2-a0-6efad66a77965f01",
+        "timestamp": "2026-05-19T19:15:18.582235+00:00"
       },
       {
+        "index": 932,
         "generation": 282,
-        "sum_radii": 2.6296280013809246
+        "candidate_id": "gen-282-i1-w3-a0-f106bbeae5e82f4c",
+        "score": -2.6296280013809246,
+        "sum_radii": 2.6296280013809246,
+        "known_target_gap": 0.0053719986190752245,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-279-i1-w3-a0-be93488290e3048e",
+        "timestamp": "2026-05-19T19:15:18.585161+00:00"
       },
       {
+        "index": 933,
         "generation": 283,
-        "sum_radii": 2.6118638784270973
+        "candidate_id": "gen-283-i1-w1-a0-5c263baa47be1726",
+        "score": -2.6118638784270973,
+        "sum_radii": 2.6118638784270973,
+        "known_target_gap": 0.023136121572902457,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-279-i1-w3-a0-be93488290e3048e",
+        "timestamp": "2026-05-19T19:20:22.863663+00:00"
       },
       {
+        "index": 934,
         "generation": 283,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-283-i0-w2-a0-825826f4122e24f7",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-278-i0-w2-a0-6efad66a77965f01",
+        "timestamp": "2026-05-19T19:20:22.866309+00:00"
       },
       {
+        "index": 935,
         "generation": 283,
-        "sum_radii": 2.6235348955106885
+        "candidate_id": "gen-283-i1-w3-a0-842cee5936863d18",
+        "score": -2.6235348955106885,
+        "sum_radii": 2.6235348955106885,
+        "known_target_gap": 0.011465104489311262,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-279-i1-w3-a0-be93488290e3048e",
+        "timestamp": "2026-05-19T19:20:22.869553+00:00"
       },
       {
+        "index": 936,
         "generation": 284,
-        "sum_radii": 2.6068483371559785
+        "candidate_id": "gen-284-i0-w0-a0-1d9581ddfa9de561",
+        "score": -2.6068483371559785,
+        "sum_radii": 2.6068483371559785,
+        "known_target_gap": 0.028151662844021264,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-278-i0-w2-a0-6efad66a77965f01",
+        "timestamp": "2026-05-19T19:27:53.330250+00:00"
       },
       {
+        "index": 937,
         "generation": 284,
-        "sum_radii": 2.630171937365451
+        "candidate_id": "gen-284-i1-w1-a0-e4c0564d0ec137c9",
+        "score": -2.630171937365451,
+        "sum_radii": 2.630171937365451,
+        "known_target_gap": 0.004828062634548935,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-279-i1-w3-a0-be93488290e3048e",
+        "timestamp": "2026-05-19T19:27:53.333272+00:00"
       },
       {
+        "index": 938,
         "generation": 284,
-        "sum_radii": 2.584910082873642
+        "candidate_id": "gen-284-i0-w2-a0-162be519e201f8e2",
+        "score": -2.584910082873642,
+        "sum_radii": 2.584910082873642,
+        "known_target_gap": 0.0500899171263578,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-278-i0-w2-a0-6efad66a77965f01",
+        "timestamp": "2026-05-19T19:27:53.336337+00:00"
       },
       {
+        "index": 939,
         "generation": 284,
-        "sum_radii": 2.630171937365451
+        "candidate_id": "gen-284-i1-w3-a0-dc6ba72280df59d8",
+        "score": -2.630171937365451,
+        "sum_radii": 2.630171937365451,
+        "known_target_gap": 0.004828062634548935,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-279-i1-w3-a0-be93488290e3048e",
+        "timestamp": "2026-05-19T19:27:53.339282+00:00"
       },
       {
+        "index": 940,
         "generation": 285,
-        "sum_radii": 2.626443232465361
+        "candidate_id": "gen-285-i0-w0-a0-c642b63192d9df4c",
+        "score": -2.626443232465361,
+        "sum_radii": 2.626443232465361,
+        "known_target_gap": 0.008556767534638965,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-278-i0-w2-a0-6efad66a77965f01",
+        "timestamp": "2026-05-19T19:39:52.013102+00:00"
       },
       {
+        "index": 941,
         "generation": 285,
-        "sum_radii": 2.5893175464820035
+        "candidate_id": "gen-285-i0-w2-a0-99adfb3f50dda723",
+        "score": -2.5893175464820035,
+        "sum_radii": 2.5893175464820035,
+        "known_target_gap": 0.04568245351799627,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-278-i0-w2-a0-6efad66a77965f01",
+        "timestamp": "2026-05-19T19:39:52.020322+00:00"
       },
       {
+        "index": 942,
         "generation": 285,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-285-i1-w3-a0-86428c6df0ecc326",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-279-i1-w3-a0-be93488290e3048e",
+        "timestamp": "2026-05-19T19:39:52.025190+00:00"
       },
       {
+        "index": 943,
         "generation": 286,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-285-i0-w0-a0-c642b63192d9df4c",
+        "timestamp": "2026-05-19T19:52:21.699988+00:00"
       },
       {
+        "index": 944,
         "generation": 286,
-        "sum_radii": 2.630171937365451
+        "candidate_id": "gen-286-i1-w3-a0-5a6b1bbc45f6b22e",
+        "score": -2.630171937365451,
+        "sum_radii": 2.630171937365451,
+        "known_target_gap": 0.004828062634548935,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-279-i1-w3-a0-be93488290e3048e",
+        "timestamp": "2026-05-19T19:52:21.702601+00:00"
       },
       {
+        "index": 945,
         "generation": 287,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-287-i0-w0-a0-dae0591ca6baae55",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T19:58:20.100185+00:00"
       },
       {
+        "index": 946,
         "generation": 287,
-        "sum_radii": 2.6078038255292544
+        "candidate_id": "gen-287-i1-w1-a0-8ef0406c5e18ebc2",
+        "score": -2.6078038255292544,
+        "sum_radii": 2.6078038255292544,
+        "known_target_gap": 0.027196174470745405,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-277-i1-w1-a0-6bcf5fc8010f07ec",
+        "timestamp": "2026-05-19T19:58:20.104272+00:00"
       },
       {
+        "index": 947,
         "generation": 287,
-        "sum_radii": 2.6296280013808957
+        "candidate_id": "gen-287-i1-w3-a0-7d842b80af0b2d5b",
+        "score": -2.6296280013808957,
+        "sum_radii": 2.6296280013808957,
+        "known_target_gap": 0.00537199861910409,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-277-i1-w1-a0-6bcf5fc8010f07ec",
+        "timestamp": "2026-05-19T19:58:20.109851+00:00"
       },
       {
+        "index": 948,
         "generation": 288,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-279-i1-w3-a0-be93488290e3048e",
+        "timestamp": "2026-05-19T20:06:53.897064+00:00"
       },
       {
+        "index": 949,
         "generation": 288,
-        "sum_radii": 1.4503320331453218
+        "candidate_id": "gen-288-i0-w2-a0-d03193520332faee",
+        "score": -1.4503320331453218,
+        "sum_radii": 1.4503320331453218,
+        "known_target_gap": 1.184667966854678,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T20:06:53.901336+00:00"
       },
       {
+        "index": 950,
         "generation": 288,
-        "sum_radii": 2.6296280013809508
+        "candidate_id": "gen-288-i1-w3-a0-e4c2c61c41cfebda",
+        "score": -2.6296280013809508,
+        "sum_radii": 2.6296280013809508,
+        "known_target_gap": 0.005371998619049023,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-279-i1-w3-a0-be93488290e3048e",
+        "timestamp": "2026-05-19T20:06:53.904906+00:00"
       },
       {
+        "index": 951,
         "generation": 289,
-        "sum_radii": 2.6296280014065982
+        "candidate_id": "gen-289-i1-w1-a0-0604874c2f1e3ade",
+        "score": -2.6296280014065982,
+        "sum_radii": 2.6296280014065982,
+        "known_target_gap": 0.005371998593401539,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T20:15:00.562554+00:00"
       },
       {
+        "index": 952,
         "generation": 289,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-289-i0-w2-a0-37e432beb9a7d6a7",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T20:15:00.566744+00:00"
       },
       {
+        "index": 953,
         "generation": 290,
-        "sum_radii": 2.622194403844294
+        "candidate_id": "gen-290-i0-w0-a0-60d4118f57ba7b9b",
+        "score": -2.622194403844294,
+        "sum_radii": 2.622194403844294,
+        "known_target_gap": 0.012805596155705867,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T20:24:59.955459+00:00"
       },
       {
+        "index": 954,
         "generation": 290,
-        "sum_radii": 2.629628001380929
+        "candidate_id": "gen-290-i1-w1-a0-b3ac950d1d7e2b48",
+        "score": -2.629628001380929,
+        "sum_radii": 2.629628001380929,
+        "known_target_gap": 0.005371998619070784,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T20:24:59.960339+00:00"
       },
       {
+        "index": 955,
         "generation": 290,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-290-i0-w2-a0-5370a944ab6d08a9",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T20:24:59.964782+00:00"
       },
       {
+        "index": 956,
         "generation": 290,
-        "sum_radii": 2.6296280013809437
+        "candidate_id": "gen-290-i1-w3-a0-bd1ff94f11c625f9",
+        "score": -2.6296280013809437,
+        "sum_radii": 2.6296280013809437,
+        "known_target_gap": 0.005371998619056129,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T20:24:59.968958+00:00"
       },
       {
+        "index": 957,
         "generation": 291,
-        "sum_radii": 2.6093649138040744
+        "candidate_id": "gen-291-i0-w0-a0-69446ce225fb060a",
+        "score": -2.6093649138040744,
+        "sum_radii": 2.6093649138040744,
+        "known_target_gap": 0.02563508619592536,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T20:37:52.053428+00:00"
       },
       {
+        "index": 958,
         "generation": 291,
-        "sum_radii": 2.6177754096920416
+        "candidate_id": "gen-291-i1-w1-a0-b277a99f77b2378f",
+        "score": -2.6177754096920416,
+        "sum_radii": 2.6177754096920416,
+        "known_target_gap": 0.0172245903079582,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T20:37:52.058864+00:00"
       },
       {
+        "index": 959,
         "generation": 291,
-        "sum_radii": 2.629628001380929
+        "candidate_id": "gen-291-i1-w3-a0-9687cd2e22dea1ed",
+        "score": -2.629628001380929,
+        "sum_radii": 2.629628001380929,
+        "known_target_gap": 0.005371998619070784,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T20:37:52.065185+00:00"
       },
       {
+        "index": 960,
         "generation": 292,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-292-i0-w0-a0-9379846aeeaa0b5a",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T20:46:54.442010+00:00"
       },
       {
+        "index": 961,
         "generation": 292,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-292-i1-w1-a0-a4eea18201373667",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-277-i1-w1-a0-6bcf5fc8010f07ec",
+        "timestamp": "2026-05-19T20:46:54.445719+00:00"
       },
       {
+        "index": 962,
         "generation": 292,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-292-i0-w2-a0-6634d7af046ff342",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T20:46:54.449414+00:00"
       },
       {
+        "index": 963,
         "generation": 293,
-        "sum_radii": 2.626125484268723
+        "candidate_id": "gen-293-i0-w0-a0-bff93e42d209c6be",
+        "score": -2.626125484268723,
+        "sum_radii": 2.626125484268723,
+        "known_target_gap": 0.008874515731276844,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T20:53:48.957883+00:00"
       },
       {
+        "index": 964,
         "generation": 293,
-        "sum_radii": 2.6296280013809525
+        "candidate_id": "gen-293-i1-w1-a0-fa0c92626884d329",
+        "score": -2.6296280013809525,
+        "sum_radii": 2.6296280013809525,
+        "known_target_gap": 0.005371998619047247,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T20:53:48.961750+00:00"
       },
       {
+        "index": 965,
         "generation": 293,
-        "sum_radii": 2.6255144458604858
+        "candidate_id": "gen-293-i0-w2-a0-c635a75b961c6ea7",
+        "score": -2.6255144458604858,
+        "sum_radii": 2.6255144458604858,
+        "known_target_gap": 0.009485554139514019,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T20:53:48.965372+00:00"
       },
       {
+        "index": 966,
         "generation": 293,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-293-i1-w3-a0-672cab66c7e16394",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T20:53:48.968864+00:00"
       },
       {
+        "index": 967,
         "generation": 294,
-        "sum_radii": 2.626937303921965
+        "candidate_id": "gen-294-i0-w0-a0-389a3398f412d222",
+        "score": -2.626937303921965,
+        "sum_radii": 2.626937303921965,
+        "known_target_gap": 0.008062696078035003,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-291-i0-w0-a0-69446ce225fb060a",
+        "timestamp": "2026-05-19T21:07:29.450947+00:00"
       },
       {
+        "index": 968,
         "generation": 294,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-294-i1-w1-a0-d583e420708148ec",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T21:07:29.455073+00:00"
       },
       {
+        "index": 969,
         "generation": 294,
-        "sum_radii": 2.6230682250497748
+        "candidate_id": "gen-294-i0-w2-a0-2e0fb77ef33e0289",
+        "score": -2.6230682250497748,
+        "sum_radii": 2.6230682250497748,
+        "known_target_gap": 0.011931774950225016,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T21:07:29.459151+00:00"
       },
       {
+        "index": 970,
         "generation": 294,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-294-i1-w3-a0-52bf3f35ca4bacfb",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T21:07:29.462901+00:00"
       },
       {
+        "index": 971,
         "generation": 295,
-        "sum_radii": 2.3745168510951684
+        "candidate_id": "gen-295-i0-w0-a0-0dc27cd8390d3bbc",
+        "score": -2.3745168510951684,
+        "sum_radii": 2.3745168510951684,
+        "known_target_gap": 0.2604831489048314,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-291-i0-w0-a0-69446ce225fb060a",
+        "timestamp": "2026-05-19T21:17:48.005465+00:00"
       },
       {
+        "index": 972,
         "generation": 295,
-        "sum_radii": 2.629628001380929
+        "candidate_id": "gen-295-i1-w1-a0-2d07990d9199e293",
+        "score": -2.629628001380929,
+        "sum_radii": 2.629628001380929,
+        "known_target_gap": 0.005371998619070784,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T21:17:48.010143+00:00"
       },
       {
+        "index": 973,
         "generation": 295,
-        "sum_radii": 2.6049755760142927
+        "candidate_id": "gen-295-i0-w2-a0-5853e4750bed2769",
+        "score": -2.6049755760142927,
+        "sum_radii": 2.6049755760142927,
+        "known_target_gap": 0.03002442398570704,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T21:17:48.014015+00:00"
       },
       {
+        "index": 974,
         "generation": 295,
-        "sum_radii": 2.6215955116432608
+        "candidate_id": "gen-295-i1-w3-a0-7b04ea16b1d5b6b3",
+        "score": -2.6215955116432608,
+        "sum_radii": 2.6215955116432608,
+        "known_target_gap": 0.01340448835673902,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T21:17:48.017720+00:00"
       },
       {
+        "index": 975,
         "generation": 296,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-296-i0-w0-a0-52531b8dca527606",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T21:30:24.838001+00:00"
       },
       {
+        "index": 976,
         "generation": 296,
-        "sum_radii": 2.629628001380929
+        "candidate_id": "gen-296-i1-w1-a0-9a055401f0952bcc",
+        "score": -2.629628001380929,
+        "sum_radii": 2.629628001380929,
+        "known_target_gap": 0.005371998619070784,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T21:30:24.841965+00:00"
       },
       {
+        "index": 977,
         "generation": 296,
-        "sum_radii": 2.6235348955102475
+        "candidate_id": "gen-296-i1-w3-a0-1f7d6ae9c8ef9620",
+        "score": -2.6235348955102475,
+        "sum_radii": 2.6235348955102475,
+        "known_target_gap": 0.011465104489752243,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T21:30:24.848038+00:00"
       },
       {
+        "index": 978,
         "generation": 297,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-297-i0-w0-a0-4b4c995fbc841ba9",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T21:37:55.404501+00:00"
       },
       {
+        "index": 979,
         "generation": 297,
-        "sum_radii": 2.184699031259065
+        "candidate_id": "gen-297-i1-w1-a0-2211af699131ea8b",
+        "score": -2.184699031259065,
+        "sum_radii": 2.184699031259065,
+        "known_target_gap": 0.45030096874093495,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T21:37:55.407371+00:00"
       },
       {
+        "index": 980,
         "generation": 297,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-297-i0-w2-a0-2f841072afa9404b",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T21:37:55.409834+00:00"
       },
       {
+        "index": 981,
         "generation": 297,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-297-i1-w3-a0-0299cd6efc0c752e",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T21:37:55.412406+00:00"
       },
       {
+        "index": 982,
         "generation": 298,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-298-i0-w0-a0-abe1c10efd37d827",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T21:49:27.656596+00:00"
       },
       {
+        "index": 983,
         "generation": 298,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-298-i1-w1-a0-1dc182d69e1e1234",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T21:49:27.659436+00:00"
       },
       {
+        "index": 984,
         "generation": 298,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-298-i0-w2-a0-6a66b325d43fcfe9",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T21:49:27.663601+00:00"
       },
       {
+        "index": 985,
         "generation": 298,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-298-i1-w3-a0-411cefa4b862effb",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T21:49:27.666393+00:00"
       },
       {
+        "index": 986,
         "generation": 299,
-        "sum_radii": 2.617834609716792
+        "candidate_id": "gen-299-i0-w0-a0-b0dd20a2cedb36fd",
+        "score": -2.617834609716792,
+        "sum_radii": 2.617834609716792,
+        "known_target_gap": 0.01716539028320785,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T22:01:32.639108+00:00"
       },
       {
+        "index": 987,
         "generation": 299,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-299-i1-w1-a0-34a4a1e24c602e58",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T22:01:32.642325+00:00"
       },
       {
+        "index": 988,
         "generation": 299,
-        "sum_radii": 2.617178670433364
+        "candidate_id": "gen-299-i0-w2-a0-a1812924a3b6df97",
+        "score": -2.617178670433364,
+        "sum_radii": 2.617178670433364,
+        "known_target_gap": 0.017821329566635846,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T22:01:32.645552+00:00"
       },
       {
+        "index": 989,
         "generation": 299,
-        "sum_radii": 2.6301719373654575
+        "candidate_id": "gen-299-i1-w3-a0-0c1c8090730cfae0",
+        "score": -2.6301719373654575,
+        "sum_radii": 2.6301719373654575,
+        "known_target_gap": 0.004828062634542274,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T22:01:32.649337+00:00"
       },
       {
+        "index": 990,
         "generation": 300,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-300-i1-w1-a0-f957cd0c1576c718",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T22:13:37.989259+00:00"
       },
       {
+        "index": 991,
         "generation": 300,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-300-i0-w2-a0-a7c18c836b857d03",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "crossover",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T22:13:37.992273+00:00"
       },
       {
+        "index": 992,
         "generation": 300,
-        "sum_radii": 2.62576742767439
+        "candidate_id": "gen-300-i1-w3-a0-bcaca224fc7f7361",
+        "score": -2.62576742767439,
+        "sum_radii": 2.62576742767439,
+        "known_target_gap": 0.009232572325609922,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T22:13:37.994911+00:00"
       },
       {
+        "index": 993,
         "generation": 301,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-301-i0-w0-a0-1153d4aa81096bb6",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T22:22:16.337421+00:00"
       },
       {
+        "index": 994,
         "generation": 301,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-301-i1-w1-a0-6e204233f79956c4",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T22:22:16.340491+00:00"
       },
       {
+        "index": 995,
         "generation": 301,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-301-i0-w2-a0-ea70c1c5c558ce09",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T22:22:16.344381+00:00"
       },
       {
+        "index": 996,
         "generation": 301,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-301-i1-w3-a0-10176dfa60d66ff5",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T22:22:16.347294+00:00"
       },
       {
+        "index": 997,
         "generation": 302,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-302-i0-w0-a0-c16c0311f33df2f3",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T22:36:31.297539+00:00"
       },
       {
+        "index": 998,
         "generation": 302,
-        "sum_radii": 2.629628001380929
+        "candidate_id": "gen-302-i1-w1-a0-aac3d4f753811fd6",
+        "score": -2.629628001380929,
+        "sum_radii": 2.629628001380929,
+        "known_target_gap": 0.005371998619070784,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T22:36:31.302911+00:00"
       },
       {
+        "index": 999,
         "generation": 302,
-        "sum_radii": 2.62138085424729
+        "candidate_id": "gen-302-i0-w2-a0-6547aa958ee5f948",
+        "score": -2.62138085424729,
+        "sum_radii": 2.62138085424729,
+        "known_target_gap": 0.013619145752709727,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T22:36:31.307268+00:00"
       },
       {
+        "index": 1000,
         "generation": 302,
-        "sum_radii": 2.629622741087862
+        "candidate_id": "gen-302-i1-w3-a0-39b5029c60a3af95",
+        "score": -2.629622741087862,
+        "sum_radii": 2.629622741087862,
+        "known_target_gap": 0.005377258912137695,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T22:36:31.310393+00:00"
       },
       {
+        "index": 1001,
         "generation": 303,
-        "sum_radii": 2.284619280107825
+        "candidate_id": "gen-303-i0-w0-a0-6361265457842a8b",
+        "score": -2.284619280107825,
+        "sum_radii": 2.284619280107825,
+        "known_target_gap": 0.3503807198921747,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-299-i0-w2-a0-a1812924a3b6df97",
+        "timestamp": "2026-05-19T22:44:33.015681+00:00"
       },
       {
+        "index": 1002,
         "generation": 303,
-        "sum_radii": 2.4518143135521306
+        "candidate_id": "gen-303-i1-w1-a0-0322b4f05bbb262b",
+        "score": -2.4518143135521306,
+        "sum_radii": 2.4518143135521306,
+        "known_target_gap": 0.18318568644786914,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T22:44:33.019719+00:00"
       },
       {
+        "index": 1003,
         "generation": 303,
-        "sum_radii": 2.620514504487477
+        "candidate_id": "gen-303-i0-w2-a0-9bf4c901824b7d8d",
+        "score": -2.620514504487477,
+        "sum_radii": 2.620514504487477,
+        "known_target_gap": 0.01448549551252265,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T22:44:33.023485+00:00"
       },
       {
+        "index": 1004,
         "generation": 303,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-303-i1-w3-a0-ad996f3ebfff00f8",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T22:44:33.026283+00:00"
       },
       {
+        "index": 1005,
         "generation": 304,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-304-i0-w0-a0-b01b22cb9e3a7dbf",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T22:59:43.097136+00:00"
       },
       {
+        "index": 1006,
         "generation": 304,
-        "sum_radii": 2.630956770495744
+        "candidate_id": "gen-304-i1-w1-a0-6a4ab20ddd69bb02",
+        "score": -2.630956770495744,
+        "sum_radii": 2.630956770495744,
+        "known_target_gap": 0.004043229504255841,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T22:59:43.100624+00:00"
       },
       {
+        "index": 1007,
         "generation": 304,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-304-i0-w2-a0-63a6a8cebc8240b0",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T22:59:43.104666+00:00"
       },
       {
+        "index": 1008,
         "generation": 304,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-304-i1-w3-a0-50a28a90f230793a",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T22:59:43.107858+00:00"
       },
       {
+        "index": 1009,
         "generation": 305,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-305-i0-w0-a0-5e689cbbd0367dc3",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T23:08:56.686392+00:00"
       },
       {
+        "index": 1010,
         "generation": 305,
-        "sum_radii": 2.630956770495744
+        "candidate_id": "gen-305-i1-w1-a0-971dc616cf299826",
+        "score": -2.630956770495744,
+        "sum_radii": 2.630956770495744,
+        "known_target_gap": 0.004043229504255841,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T23:08:56.691469+00:00"
       },
       {
+        "index": 1011,
         "generation": 305,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-305-i0-w2-a0-a3515de773b3ba19",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T23:08:56.696331+00:00"
       },
       {
+        "index": 1012,
         "generation": 305,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-305-i1-w3-a0-d537013a83408604",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T23:08:56.700554+00:00"
       },
       {
+        "index": 1013,
         "generation": 306,
-        "sum_radii": 2.6104358438183355
+        "candidate_id": "gen-306-i0-w0-a0-48f0fc44740979a3",
+        "score": -2.6104358438183355,
+        "sum_radii": 2.6104358438183355,
+        "known_target_gap": 0.0245641561816643,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T23:22:55.959456+00:00"
       },
       {
+        "index": 1014,
         "generation": 306,
-        "sum_radii": 2.630956770495744
+        "candidate_id": "gen-306-i1-w1-a0-ab321d7b44afc717",
+        "score": -2.630956770495744,
+        "sum_radii": 2.630956770495744,
+        "known_target_gap": 0.004043229504255841,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T23:22:55.964023+00:00"
       },
       {
+        "index": 1015,
         "generation": 306,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-306-i1-w3-a0-66b26e062d3b15f6",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T23:22:55.971398+00:00"
       },
       {
+        "index": 1016,
         "generation": 307,
-        "sum_radii": 2.618068255962582
+        "candidate_id": "gen-307-i0-w0-a0-e0c037f25c041579",
+        "score": -2.618068255962582,
+        "sum_radii": 2.618068255962582,
+        "known_target_gap": 0.01693174403741793,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T23:30:16.419827+00:00"
       },
       {
+        "index": 1017,
         "generation": 307,
-        "sum_radii": 2.629622741087862
+        "candidate_id": "gen-307-i1-w1-a0-13f2b308491f32d2",
+        "score": -2.629622741087862,
+        "sum_radii": 2.629622741087862,
+        "known_target_gap": 0.005377258912137695,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-302-i1-w3-a0-39b5029c60a3af95",
+        "timestamp": "2026-05-19T23:30:16.424198+00:00"
       },
       {
+        "index": 1018,
         "generation": 307,
-        "sum_radii": 2.6205145044878333
+        "candidate_id": "gen-307-i0-w2-a0-ee5a5a012cdad0fe",
+        "score": -2.6205145044878333,
+        "sum_radii": 2.6205145044878333,
+        "known_target_gap": 0.01448549551216649,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-303-i0-w2-a0-9bf4c901824b7d8d",
+        "timestamp": "2026-05-19T23:30:16.428664+00:00"
       },
       {
+        "index": 1019,
         "generation": 307,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-307-i1-w3-a0-98bf90a0e84ab7f4",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T23:30:16.431745+00:00"
       },
       {
+        "index": 1020,
         "generation": 308,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-308-i0-w0-a0-fd9f0a68a8163e9d",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T23:39:25.039196+00:00"
       },
       {
+        "index": 1021,
         "generation": 308,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-308-i1-w1-a0-5016675fcefb7ffa",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-304-i1-w1-a0-6a4ab20ddd69bb02",
+        "timestamp": "2026-05-19T23:39:25.043680+00:00"
       },
       {
+        "index": 1022,
         "generation": 308,
-        "sum_radii": 2.6180682559626307
+        "candidate_id": "gen-308-i0-w2-a0-037d9767afd83ee5",
+        "score": -2.6180682559626307,
+        "sum_radii": 2.6180682559626307,
+        "known_target_gap": 0.01693174403736908,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T23:39:25.047766+00:00"
       },
       {
+        "index": 1023,
         "generation": 308,
-        "sum_radii": 2.630956770495744
+        "candidate_id": "gen-308-i1-w3-a0-78e18b584ebaf848",
+        "score": -2.630956770495744,
+        "sum_radii": 2.630956770495744,
+        "known_target_gap": 0.004043229504255841,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-304-i1-w1-a0-6a4ab20ddd69bb02",
+        "timestamp": "2026-05-19T23:39:25.051886+00:00"
       },
       {
+        "index": 1024,
         "generation": 309,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-309-i0-w0-a0-35db17712f69e7d7",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T23:49:43.816088+00:00"
       },
       {
+        "index": 1025,
         "generation": 309,
-        "sum_radii": 2.6296280013809525
+        "candidate_id": "gen-309-i1-w1-a0-3464e41ed8347fe0",
+        "score": -2.6296280013809525,
+        "sum_radii": 2.6296280013809525,
+        "known_target_gap": 0.005371998619047247,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-293-i1-w1-a0-fa0c92626884d329",
+        "timestamp": "2026-05-19T23:49:43.820753+00:00"
       },
       {
+        "index": 1026,
         "generation": 309,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-309-i0-w2-a0-a07c1550f062dbd4",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T23:49:43.824747+00:00"
       },
       {
+        "index": 1027,
         "generation": 309,
-        "sum_radii": 2.630956770495744
+        "candidate_id": "gen-309-i1-w3-a0-c840bfb3b2213121",
+        "score": -2.630956770495744,
+        "sum_radii": 2.630956770495744,
+        "known_target_gap": 0.004043229504255841,
+        "run_label": "gen277-352",
+        "operator": "crossover",
+        "parent_id": "gen-304-i1-w1-a0-6a4ab20ddd69bb02",
+        "timestamp": "2026-05-19T23:49:43.827742+00:00"
       },
       {
+        "index": 1028,
         "generation": 310,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-310-i0-w0-a0-a35a3f3184a57ec9",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-19T23:57:12.357595+00:00"
       },
       {
+        "index": 1029,
         "generation": 310,
-        "sum_radii": 2.6132213621565046
+        "candidate_id": "gen-310-i1-w1-a0-19ee5a7369d388b0",
+        "score": -2.6132213621565046,
+        "sum_radii": 2.6132213621565046,
+        "known_target_gap": 0.021778637843495208,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-19T23:57:12.362040+00:00"
       },
       {
+        "index": 1030,
         "generation": 310,
-        "sum_radii": 2.6301719373654575
+        "candidate_id": "gen-310-i1-w3-a0-27ac85af1a7d56bb",
+        "score": -2.6301719373654575,
+        "sum_radii": 2.6301719373654575,
+        "known_target_gap": 0.004828062634542274,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-299-i1-w3-a0-0c1c8090730cfae0",
+        "timestamp": "2026-05-19T23:57:12.369059+00:00"
       },
       {
+        "index": 1031,
         "generation": 311,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-311-i0-w0-a0-5182bebe8b459290",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "crossover",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-20T00:06:20.754016+00:00"
       },
       {
+        "index": 1032,
         "generation": 311,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-311-i1-w1-a0-6ff3c930d49625be",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T00:06:20.758699+00:00"
       },
       {
+        "index": 1033,
         "generation": 311,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-311-i0-w2-a0-73c13ca5af329064",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-20T00:06:20.763255+00:00"
       },
       {
+        "index": 1034,
         "generation": 311,
-        "sum_radii": 2.0799999999999996
+        "candidate_id": "gen-311-i1-w3-a0-919302d4f0eb2b5e",
+        "score": -2.0799999999999996,
+        "sum_radii": 2.0799999999999996,
+        "known_target_gap": 0.5550000000000002,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T00:06:20.767315+00:00"
       },
       {
+        "index": 1035,
         "generation": 312,
-        "sum_radii": 2.618068255962631
+        "candidate_id": "gen-312-i0-w0-a0-573107c5d7d4833d",
+        "score": -2.618068255962631,
+        "sum_radii": 2.618068255962631,
+        "known_target_gap": 0.016931744037368635,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-20T00:18:54.840476+00:00"
       },
       {
+        "index": 1036,
         "generation": 312,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-312-i1-w1-a0-aeeeb81655c21a61",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T00:18:54.843688+00:00"
       },
       {
+        "index": 1037,
         "generation": 312,
-        "sum_radii": 2.629628001380947
+        "candidate_id": "gen-312-i1-w3-a0-142c129e3cab3338",
+        "score": -2.629628001380947,
+        "sum_radii": 2.629628001380947,
+        "known_target_gap": 0.005371998619052576,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T00:18:54.850878+00:00"
       },
       {
+        "index": 1038,
         "generation": 313,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-313-i0-w0-a0-a7cc7e9d86430b59",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "crossover",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-20T00:28:01.013729+00:00"
       },
       {
+        "index": 1039,
         "generation": 313,
-        "sum_radii": 2.630956770495744
+        "candidate_id": "gen-313-i1-w1-a0-f45a2294b163a9b9",
+        "score": -2.630956770495744,
+        "sum_radii": 2.630956770495744,
+        "known_target_gap": 0.004043229504255841,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-304-i1-w1-a0-6a4ab20ddd69bb02",
+        "timestamp": "2026-05-20T00:28:01.016718+00:00"
       },
       {
+        "index": 1040,
         "generation": 313,
-        "sum_radii": 2.630214801408406
+        "candidate_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "score": -2.630214801408406,
+        "sum_radii": 2.630214801408406,
+        "known_target_gap": 0.0047851985915938755,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-20T00:28:01.020223+00:00"
       },
       {
+        "index": 1041,
         "generation": 313,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-313-i1-w3-a0-c1f79e3759ec9ec3",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T00:28:01.024541+00:00"
       },
       {
+        "index": 1042,
         "generation": 314,
-        "sum_radii": 2.630214801408406
+        "candidate_id": "gen-314-i0-w0-a0-c30fb239165ffc1f",
+        "score": -2.630214801408406,
+        "sum_radii": 2.630214801408406,
+        "known_target_gap": 0.0047851985915938755,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T00:43:03.176980+00:00"
       },
       {
+        "index": 1043,
         "generation": 314,
-        "sum_radii": 2.630956770495744
+        "candidate_id": "gen-314-i1-w1-a0-10dee736ebd85d7e",
+        "score": -2.630956770495744,
+        "sum_radii": 2.630956770495744,
+        "known_target_gap": 0.004043229504255841,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T00:43:03.181629+00:00"
       },
       {
+        "index": 1044,
         "generation": 314,
-        "sum_radii": 2.630214801408406
+        "candidate_id": "gen-314-i0-w2-a0-aefb9f0c81b7d4d6",
+        "score": -2.630214801408406,
+        "sum_radii": 2.630214801408406,
+        "known_target_gap": 0.0047851985915938755,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T00:43:03.187965+00:00"
       },
       {
+        "index": 1045,
         "generation": 314,
-        "sum_radii": 2.630956770495744
+        "candidate_id": "gen-314-i1-w3-a0-ca9c52a1b9eec82a",
+        "score": -2.630956770495744,
+        "sum_radii": 2.630956770495744,
+        "known_target_gap": 0.004043229504255841,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-304-i1-w1-a0-6a4ab20ddd69bb02",
+        "timestamp": "2026-05-20T00:43:03.192314+00:00"
       },
       {
+        "index": 1046,
         "generation": 315,
-        "sum_radii": 2.630214801408406
+        "candidate_id": "gen-315-i0-w0-a0-8294e1a01ca33cf5",
+        "score": -2.630214801408406,
+        "sum_radii": 2.630214801408406,
+        "known_target_gap": 0.0047851985915938755,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T00:56:21.539671+00:00"
       },
       {
+        "index": 1047,
         "generation": 315,
-        "sum_radii": 2.630214801408406
+        "candidate_id": "gen-315-i0-w2-a0-933bd6a7100495ff",
+        "score": -2.630214801408406,
+        "sum_radii": 2.630214801408406,
+        "known_target_gap": 0.0047851985915938755,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T00:56:21.547183+00:00"
       },
       {
+        "index": 1048,
         "generation": 315,
-        "sum_radii": 2.5865578286787474
+        "candidate_id": "gen-315-i1-w3-a0-8476d6e1b44c2664",
+        "score": -2.5865578286787474,
+        "sum_radii": 2.5865578286787474,
+        "known_target_gap": 0.04844217132125239,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-287-i1-w3-a0-7d842b80af0b2d5b",
+        "timestamp": "2026-05-20T00:56:21.550572+00:00"
       },
       {
+        "index": 1049,
         "generation": 316,
-        "sum_radii": 2.6286312927051063
+        "candidate_id": "gen-316-i1-w1-a0-aeb877babf278c99",
+        "score": -2.6286312927051063,
+        "sum_radii": 2.6286312927051063,
+        "known_target_gap": 0.006368707294893472,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T01:06:59.159325+00:00"
       },
       {
+        "index": 1050,
         "generation": 316,
-        "sum_radii": 2.630214801408406
+        "candidate_id": "gen-316-i0-w2-a0-dabb47321da1bae4",
+        "score": -2.630214801408406,
+        "sum_radii": 2.630214801408406,
+        "known_target_gap": 0.0047851985915938755,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T01:06:59.163516+00:00"
       },
       {
+        "index": 1051,
         "generation": 316,
-        "sum_radii": 2.617321682263611
+        "candidate_id": "gen-316-i1-w3-a0-8b9a913afae784bc",
+        "score": -2.617321682263611,
+        "sum_radii": 2.617321682263611,
+        "known_target_gap": 0.017678317736388838,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T01:06:59.167830+00:00"
       },
       {
+        "index": 1052,
         "generation": 317,
-        "sum_radii": 2.5977740878787103
+        "candidate_id": "gen-317-i1-w1-a0-5b5b26fe0b173f3a",
+        "score": -2.5977740878787103,
+        "sum_radii": 2.5977740878787103,
+        "known_target_gap": 0.03722591212128945,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T01:13:22.376950+00:00"
       },
       {
+        "index": 1053,
         "generation": 317,
-        "sum_radii": 2.067066330292103
+        "candidate_id": "gen-317-i0-w2-a0-9e8d586534bef20c",
+        "score": -2.067066330292103,
+        "sum_radii": 2.067066330292103,
+        "known_target_gap": 0.5679336697078967,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T01:13:22.380990+00:00"
       },
       {
+        "index": 1054,
         "generation": 317,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-317-i1-w3-a0-93d83d74f55f2d21",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T01:13:22.384893+00:00"
       },
       {
+        "index": 1055,
         "generation": 318,
-        "sum_radii": 2.620514504513304
+        "candidate_id": "gen-318-i0-w0-a0-0d8e78d142be1427",
+        "score": -2.620514504513304,
+        "sum_radii": 2.620514504513304,
+        "known_target_gap": 0.014485495486695754,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-307-i0-w2-a0-ee5a5a012cdad0fe",
+        "timestamp": "2026-05-20T01:22:31.912194+00:00"
       },
       {
+        "index": 1056,
         "generation": 318,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-318-i1-w1-a0-12cdfc6d856ce222",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T01:22:31.917165+00:00"
       },
       {
+        "index": 1057,
         "generation": 318,
-        "sum_radii": 2.6180682559626307
+        "candidate_id": "gen-318-i0-w2-a0-d994defceb1000b9",
+        "score": -2.6180682559626307,
+        "sum_radii": 2.6180682559626307,
+        "known_target_gap": 0.01693174403736908,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-20T01:22:31.921374+00:00"
       },
       {
+        "index": 1058,
         "generation": 318,
-        "sum_radii": 2.630166677047237
+        "candidate_id": "gen-318-i1-w3-a0-5108617bbd1a6bd6",
+        "score": -2.630166677047237,
+        "sum_radii": 2.630166677047237,
+        "known_target_gap": 0.004833322952762842,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T01:22:31.924836+00:00"
       },
       {
+        "index": 1059,
         "generation": 319,
-        "sum_radii": 2.6215955116432608
+        "candidate_id": "gen-319-i1-w1-a0-2b8bc9892903372f",
+        "score": -2.6215955116432608,
+        "sum_radii": 2.6215955116432608,
+        "known_target_gap": 0.01340448835673902,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T01:35:45.713852+00:00"
       },
       {
+        "index": 1060,
         "generation": 319,
-        "sum_radii": 2.6302148014083615
+        "candidate_id": "gen-319-i0-w2-a0-ea711a22fd4ef2fd",
+        "score": -2.6302148014083615,
+        "sum_radii": 2.6302148014083615,
+        "known_target_gap": 0.004785198591638284,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T01:35:45.718158+00:00"
       },
       {
+        "index": 1061,
         "generation": 319,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-319-i1-w3-a0-98f3ad64e78b4a04",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T01:35:45.722460+00:00"
       },
       {
+        "index": 1062,
         "generation": 320,
-        "sum_radii": 2.2657142857142856
+        "candidate_id": "gen-320-i0-w0-a0-fde7ef5e4889a013",
+        "score": -2.2657142857142856,
+        "sum_radii": 2.2657142857142856,
+        "known_target_gap": 0.3692857142857142,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T01:38:49.941474+00:00"
       },
       {
+        "index": 1063,
         "generation": 320,
-        "sum_radii": 2.6180682559623896
+        "candidate_id": "gen-320-i1-w1-a0-29c017c5313b0770",
+        "score": -2.6180682559623896,
+        "sum_radii": 2.6180682559623896,
+        "known_target_gap": 0.01693174403761022,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T01:38:49.946604+00:00"
       },
       {
+        "index": 1064,
         "generation": 320,
-        "sum_radii": 2.608631394225478
+        "candidate_id": "gen-320-i0-w2-a0-0e0a7bbefa977982",
+        "score": -2.608631394225478,
+        "sum_radii": 2.608631394225478,
+        "known_target_gap": 0.026368605774521825,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T01:38:49.950588+00:00"
       },
       {
+        "index": 1065,
         "generation": 320,
-        "sum_radii": 2.098076211353315
+        "candidate_id": "gen-320-i1-w3-a0-1d9377f981750b24",
+        "score": -2.098076211353315,
+        "sum_radii": 2.098076211353315,
+        "known_target_gap": 0.5369237886466847,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T01:38:49.954433+00:00"
       },
       {
+        "index": 1066,
         "generation": 321,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-321-i1-w1-a0-c31a89172b94aa6e",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T01:50:17.880541+00:00"
       },
       {
+        "index": 1067,
         "generation": 321,
-        "sum_radii": 2.6173216822636847
+        "candidate_id": "gen-321-i0-w2-a0-42c5b8feedd3ae76",
+        "score": -2.6173216822636847,
+        "sum_radii": 2.6173216822636847,
+        "known_target_gap": 0.01767831773631512,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-20T01:50:17.885318+00:00"
       },
       {
+        "index": 1068,
         "generation": 321,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-321-i1-w3-a0-81fa7827004c265e",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T01:50:17.889436+00:00"
       },
       {
+        "index": 1069,
         "generation": 322,
-        "sum_radii": 2.398367346938775
+        "candidate_id": "gen-322-i0-w0-a0-f4e149a4525e8ebe",
+        "score": -2.398367346938775,
+        "sum_radii": 2.398367346938775,
+        "known_target_gap": 0.23663265306122483,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-312-i0-w0-a0-573107c5d7d4833d",
+        "timestamp": "2026-05-20T01:58:15.572851+00:00"
       },
       {
+        "index": 1070,
         "generation": 322,
-        "sum_radii": 1.857142857142857
+        "candidate_id": "gen-322-i1-w1-a0-3819a0713caefadb",
+        "score": -1.857142857142857,
+        "sum_radii": 1.857142857142857,
+        "known_target_gap": 0.7778571428571428,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T01:58:15.577299+00:00"
       },
       {
+        "index": 1071,
         "generation": 322,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-322-i1-w3-a0-f234d23cdff410cd",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-20T01:58:15.584247+00:00"
       },
       {
+        "index": 1072,
         "generation": 323,
-        "sum_radii": 2.630214801408406
+        "candidate_id": "gen-323-i0-w0-a0-49893a682ed83a73",
+        "score": -2.630214801408406,
+        "sum_radii": 2.630214801408406,
+        "known_target_gap": 0.0047851985915938755,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T02:10:26.580142+00:00"
       },
       {
+        "index": 1073,
         "generation": 323,
-        "sum_radii": 2.623068225049706
+        "candidate_id": "gen-323-i0-w2-a0-7546257535f4e9da",
+        "score": -2.623068225049706,
+        "sum_radii": 2.623068225049706,
+        "known_target_gap": 0.01193177495029385,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T02:10:26.587501+00:00"
       },
       {
+        "index": 1074,
         "generation": 323,
-        "sum_radii": 2.6238579899935175
+        "candidate_id": "gen-323-i1-w3-a0-f7c51c78a36f943e",
+        "score": -2.6238579899935175,
+        "sum_radii": 2.6238579899935175,
+        "known_target_gap": 0.011142010006482295,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-304-i1-w1-a0-6a4ab20ddd69bb02",
+        "timestamp": "2026-05-20T02:10:26.591809+00:00"
       },
       {
+        "index": 1075,
         "generation": 324,
-        "sum_radii": 2.630214801408406
+        "candidate_id": "gen-324-i0-w0-a0-b0e0d514550fd768",
+        "score": -2.630214801408406,
+        "sum_radii": 2.630214801408406,
+        "known_target_gap": 0.0047851985915938755,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T02:19:35.540361+00:00"
       },
       {
+        "index": 1076,
         "generation": 324,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-324-i1-w1-a0-9678af57b29f824a",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T02:19:35.544901+00:00"
       },
       {
+        "index": 1077,
         "generation": 324,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-324-i0-w2-a0-4427c79168d7615c",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T02:19:35.549189+00:00"
       },
       {
+        "index": 1078,
         "generation": 324,
-        "sum_radii": 1.9499999999999993
+        "candidate_id": "gen-324-i1-w3-a0-9054d0fc3acab574",
+        "score": -1.9499999999999993,
+        "sum_radii": 1.9499999999999993,
+        "known_target_gap": 0.6850000000000005,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T02:19:35.553106+00:00"
       },
       {
+        "index": 1079,
         "generation": 325,
-        "sum_radii": 2.630214801408406
+        "candidate_id": "gen-325-i0-w0-a0-badd2abf196a05b5",
+        "score": -2.630214801408406,
+        "sum_radii": 2.630214801408406,
+        "known_target_gap": 0.0047851985915938755,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T02:32:51.523849+00:00"
       },
       {
+        "index": 1080,
         "generation": 325,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-325-i1-w1-a0-880731e4aa553860",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T02:32:51.528191+00:00"
       },
       {
+        "index": 1081,
         "generation": 325,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-325-i1-w3-a0-b9498e08015544bd",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T02:32:51.535191+00:00"
       },
       {
+        "index": 1082,
         "generation": 326,
-        "sum_radii": 2.630214801408406
+        "candidate_id": "gen-326-i0-w0-a0-962954059e57d162",
+        "score": -2.630214801408406,
+        "sum_radii": 2.630214801408406,
+        "known_target_gap": 0.0047851985915938755,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T02:42:47.808886+00:00"
       },
       {
+        "index": 1083,
         "generation": 326,
-        "sum_radii": 2.0240684719653665
+        "candidate_id": "gen-326-i1-w1-a0-08d693aaea4f3ee7",
+        "score": -2.0240684719653665,
+        "sum_radii": 2.0240684719653665,
+        "known_target_gap": 0.6109315280346332,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T02:42:47.812438+00:00"
       },
       {
+        "index": 1084,
         "generation": 326,
-        "sum_radii": 2.630214801408406
+        "candidate_id": "gen-326-i0-w2-a0-82d368dfe45334c8",
+        "score": -2.630214801408406,
+        "sum_radii": 2.630214801408406,
+        "known_target_gap": 0.0047851985915938755,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T02:42:47.816619+00:00"
       },
       {
+        "index": 1085,
         "generation": 326,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-326-i1-w3-a0-accc670cb9e2f005",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T02:42:47.820729+00:00"
       },
       {
+        "index": 1086,
         "generation": 327,
-        "sum_radii": 2.5075512512953
+        "candidate_id": "gen-327-i0-w0-a0-6290608ff7504bc7",
+        "score": -2.5075512512953,
+        "sum_radii": 2.5075512512953,
+        "known_target_gap": 0.1274487487046998,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-20T02:58:37.303203+00:00"
       },
       {
+        "index": 1087,
         "generation": 327,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-327-i1-w1-a0-2b545a1dd4f91b54",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T02:58:37.307910+00:00"
       },
       {
+        "index": 1088,
         "generation": 327,
-        "sum_radii": 2.6257674276744156
+        "candidate_id": "gen-327-i1-w3-a0-68ce6374b44730a8",
+        "score": -2.6257674276744156,
+        "sum_radii": 2.6257674276744156,
+        "known_target_gap": 0.009232572325584165,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T02:58:37.315422+00:00"
       },
       {
+        "index": 1089,
         "generation": 328,
-        "sum_radii": 2.3673684210526313
+        "candidate_id": "gen-328-i0-w0-a0-2b3810e39d298378",
+        "score": -2.3673684210526313,
+        "sum_radii": 2.3673684210526313,
+        "known_target_gap": 0.26763157894736844,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T03:03:11.521543+00:00"
       },
       {
+        "index": 1090,
         "generation": 328,
-        "sum_radii": 2.630214801408406
+        "candidate_id": "gen-328-i0-w2-a0-6ad990ba69cfd895",
+        "score": -2.630214801408406,
+        "sum_radii": 2.630214801408406,
+        "known_target_gap": 0.0047851985915938755,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T03:03:11.527384+00:00"
       },
       {
+        "index": 1091,
         "generation": 328,
-        "sum_radii": 2.6296280013809374
+        "candidate_id": "gen-328-i1-w3-a0-9745583bf045241e",
+        "score": -2.6296280013809374,
+        "sum_radii": 2.6296280013809374,
+        "known_target_gap": 0.005371998619062346,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T03:03:11.531154+00:00"
       },
       {
+        "index": 1092,
         "generation": 329,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-329-i1-w3-a0-50c6ad4e4157c05e",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T03:16:55.664576+00:00"
       },
       {
+        "index": 1093,
         "generation": 330,
-        "sum_radii": 2.6271298113853048
+        "candidate_id": "gen-330-i0-w0-a0-e2c17bec2d73887a",
+        "score": -2.6271298113853048,
+        "sum_radii": 2.6271298113853048,
+        "known_target_gap": 0.007870188614695017,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T03:24:54.464985+00:00"
       },
       {
+        "index": 1094,
         "generation": 330,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-330-i1-w1-a0-cb0284322f0e8a24",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T03:24:54.468453+00:00"
       },
       {
+        "index": 1095,
         "generation": 330,
-        "sum_radii": 2.630214801408406
+        "candidate_id": "gen-330-i0-w2-a0-de5f3cb24fcd6960",
+        "score": -2.630214801408406,
+        "sum_radii": 2.630214801408406,
+        "known_target_gap": 0.0047851985915938755,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T03:24:54.472149+00:00"
       },
       {
+        "index": 1096,
         "generation": 330,
-        "sum_radii": 2.629628001380878
+        "candidate_id": "gen-330-i1-w3-a0-7ecb864ca69ab6ec",
+        "score": -2.629628001380878,
+        "sum_radii": 2.629628001380878,
+        "known_target_gap": 0.005371998619121854,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T03:24:54.476361+00:00"
       },
       {
+        "index": 1097,
         "generation": 331,
-        "sum_radii": 2.228571428571428
+        "candidate_id": "gen-331-i0-w0-a0-5d54dfc9beadcab9",
+        "score": -2.228571428571428,
+        "sum_radii": 2.228571428571428,
+        "known_target_gap": 0.4064285714285716,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-20T03:37:35.758095+00:00"
       },
       {
+        "index": 1098,
         "generation": 331,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-331-i0-w2-a0-002754d6f35c12e9",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-20T03:37:35.765710+00:00"
       },
       {
+        "index": 1099,
         "generation": 331,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-331-i1-w3-a0-3b939ace999067ea",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T03:37:35.769948+00:00"
       },
       {
+        "index": 1100,
         "generation": 332,
-        "sum_radii": 2.630214801408406
+        "candidate_id": "gen-332-i0-w0-a0-99ab92b91ecec852",
+        "score": -2.630214801408406,
+        "sum_radii": 2.630214801408406,
+        "known_target_gap": 0.0047851985915938755,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T03:45:31.973364+00:00"
       },
       {
+        "index": 1101,
         "generation": 332,
-        "sum_radii": 2.6173216822636847
+        "candidate_id": "gen-332-i0-w2-a0-e6ad82cde733f3f7",
+        "score": -2.6173216822636847,
+        "sum_radii": 2.6173216822636847,
+        "known_target_gap": 0.01767831773631512,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-323-i0-w2-a0-7546257535f4e9da",
+        "timestamp": "2026-05-20T03:45:31.980365+00:00"
       },
       {
+        "index": 1102,
         "generation": 333,
-        "sum_radii": 1.9129967926590026
+        "candidate_id": "gen-333-i0-w0-a0-673451171c31c173",
+        "score": -1.9129967926590026,
+        "sum_radii": 1.9129967926590026,
+        "known_target_gap": 0.7220032073409972,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-318-i0-w0-a0-0d8e78d142be1427",
+        "timestamp": "2026-05-20T03:55:12.525015+00:00"
       },
       {
+        "index": 1103,
         "generation": 333,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-333-i1-w3-a0-6b17cba8eb328bc3",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T03:55:12.535071+00:00"
       },
       {
+        "index": 1104,
         "generation": 334,
-        "sum_radii": 2.614164097201098
+        "candidate_id": "gen-334-i0-w0-a0-ae296c92ec7b8903",
+        "score": -2.614164097201098,
+        "sum_radii": 2.614164097201098,
+        "known_target_gap": 0.020835902798901795,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T04:05:48.062205+00:00"
       },
       {
+        "index": 1105,
         "generation": 334,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-334-i1-w1-a0-da6b5526151c2229",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T04:05:48.065737+00:00"
       },
       {
+        "index": 1106,
         "generation": 334,
-        "sum_radii": 2.62451258105122
+        "candidate_id": "gen-334-i0-w2-a0-21b79bf716e8152e",
+        "score": -2.62451258105122,
+        "sum_radii": 2.62451258105122,
+        "known_target_gap": 0.010487418948779581,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T04:05:48.069932+00:00"
       },
       {
+        "index": 1107,
         "generation": 334,
-        "sum_radii": 2.6301719373653984
+        "candidate_id": "gen-334-i1-w3-a0-5449d14488bb522f",
+        "score": -2.6301719373653984,
+        "sum_radii": 2.6301719373653984,
+        "known_target_gap": 0.004828062634601338,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-304-i1-w1-a0-6a4ab20ddd69bb02",
+        "timestamp": "2026-05-20T04:05:48.074485+00:00"
       },
       {
+        "index": 1108,
         "generation": 335,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-335-i1-w1-a0-e85d85e84f6b5d8e",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T04:19:12.084398+00:00"
       },
       {
+        "index": 1109,
         "generation": 335,
-        "sum_radii": 2.629628001380929
+        "candidate_id": "gen-335-i1-w3-a0-ca74128407c373aa",
+        "score": -2.629628001380929,
+        "sum_radii": 2.629628001380929,
+        "known_target_gap": 0.005371998619070784,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T04:19:12.091576+00:00"
       },
       {
+        "index": 1110,
         "generation": 336,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-336-i1-w1-a0-07de50b005641821",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T04:30:34.022314+00:00"
       },
       {
+        "index": 1111,
         "generation": 336,
-        "sum_radii": 2.630214801408406
+        "candidate_id": "gen-336-i0-w2-a0-d02ebff284cc5666",
+        "score": -2.630214801408406,
+        "sum_radii": 2.630214801408406,
+        "known_target_gap": 0.0047851985915938755,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T04:30:34.026524+00:00"
       },
       {
+        "index": 1112,
         "generation": 336,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-336-i1-w3-a0-a8de4bf71b35bbad",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T04:30:34.030650+00:00"
       },
       {
+        "index": 1113,
         "generation": 337,
-        "sum_radii": 2.61806825596262
+        "candidate_id": "gen-337-i0-w0-a0-886a57fc8b2820c0",
+        "score": -2.61806825596262,
+        "sum_radii": 2.61806825596262,
+        "known_target_gap": 0.016931744037379737,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T04:38:59.706305+00:00"
       },
       {
+        "index": 1114,
         "generation": 337,
-        "sum_radii": 2.623068225049706
+        "candidate_id": "gen-337-i0-w2-a0-9e09ee090ca42386",
+        "score": -2.623068225049706,
+        "sum_radii": 2.623068225049706,
+        "known_target_gap": 0.01193177495029385,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-323-i0-w2-a0-7546257535f4e9da",
+        "timestamp": "2026-05-20T04:38:59.713627+00:00"
       },
       {
+        "index": 1115,
         "generation": 337,
-        "sum_radii": 2.6301719373654575
+        "candidate_id": "gen-337-i1-w3-a0-cf4437fe81ce885f",
+        "score": -2.6301719373654575,
+        "sum_radii": 2.6301719373654575,
+        "known_target_gap": 0.004828062634542274,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-299-i1-w3-a0-0c1c8090730cfae0",
+        "timestamp": "2026-05-20T04:38:59.717050+00:00"
       },
       {
+        "index": 1116,
         "generation": 338,
-        "sum_radii": 2.630214801408406
+        "candidate_id": "gen-338-i0-w0-a0-ffb7d670ef675602",
+        "score": -2.630214801408406,
+        "sum_radii": 2.630214801408406,
+        "known_target_gap": 0.0047851985915938755,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T04:51:24.898284+00:00"
       },
       {
+        "index": 1117,
         "generation": 338,
-        "sum_radii": 2.6317301707535465
+        "candidate_id": "gen-338-i0-w2-a0-47cdfcf6f310246d",
+        "score": -2.6317301707535465,
+        "sum_radii": 2.6317301707535465,
+        "known_target_gap": 0.0032698292464532486,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-20T04:51:24.905203+00:00"
       },
       {
+        "index": 1118,
         "generation": 338,
-        "sum_radii": 2.624298544070346
+        "candidate_id": "gen-338-i1-w3-a0-239011423ceaf90d",
+        "score": -2.624298544070346,
+        "sum_radii": 2.624298544070346,
+        "known_target_gap": 0.010701455929653658,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-318-i1-w3-a0-5108617bbd1a6bd6",
+        "timestamp": "2026-05-20T04:51:24.908699+00:00"
       },
       {
+        "index": 1119,
         "generation": 339,
-        "sum_radii": 2.6248929535232626
+        "candidate_id": "gen-339-i0-w0-a0-aefcc32866d11a33",
+        "score": -2.6248929535232626,
+        "sum_radii": 2.6248929535232626,
+        "known_target_gap": 0.010107046476737214,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-338-i0-w2-a0-47cdfcf6f310246d",
+        "timestamp": "2026-05-20T04:58:57.296207+00:00"
       },
       {
+        "index": 1120,
         "generation": 339,
-        "sum_radii": 2.6296280014065982
+        "candidate_id": "gen-339-i1-w1-a0-49ba266579a878d3",
+        "score": -2.6296280014065982,
+        "sum_radii": 2.6296280014065982,
+        "known_target_gap": 0.005371998593401539,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T04:58:57.300783+00:00"
       },
       {
+        "index": 1121,
         "generation": 339,
-        "sum_radii": 2.618068255962584
+        "candidate_id": "gen-339-i0-w2-a0-a703c4b94d2dcd73",
+        "score": -2.618068255962584,
+        "sum_radii": 2.618068255962584,
+        "known_target_gap": 0.016931744037415708,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-338-i0-w2-a0-47cdfcf6f310246d",
+        "timestamp": "2026-05-20T04:58:57.305277+00:00"
       },
       {
+        "index": 1122,
         "generation": 339,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-339-i1-w3-a0-8985fdd1bc937e27",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T04:58:57.309507+00:00"
       },
       {
+        "index": 1123,
         "generation": 340,
-        "sum_radii": 2.6190882122760146
+        "candidate_id": "gen-340-i0-w0-a0-6cbc3cc5adc26ab6",
+        "score": -2.6190882122760146,
+        "sum_radii": 2.6190882122760146,
+        "known_target_gap": 0.01591178772398516,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-338-i0-w2-a0-47cdfcf6f310246d",
+        "timestamp": "2026-05-20T05:08:04.791859+00:00"
       },
       {
+        "index": 1124,
         "generation": 340,
-        "sum_radii": 2.621938628696455
+        "candidate_id": "gen-340-i0-w2-a0-8c8b3fb53d122963",
+        "score": -2.621938628696455,
+        "sum_radii": 2.621938628696455,
+        "known_target_gap": 0.013061371303544789,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-338-i0-w2-a0-47cdfcf6f310246d",
+        "timestamp": "2026-05-20T05:08:04.800006+00:00"
       },
       {
+        "index": 1125,
         "generation": 340,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-340-i1-w3-a0-768363029cf01fb5",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T05:08:04.804284+00:00"
       },
       {
+        "index": 1126,
         "generation": 341,
-        "sum_radii": 2.5937592293429588
+        "candidate_id": "gen-341-i0-w0-a0-277a27382c446ab4",
+        "score": -2.5937592293429588,
+        "sum_radii": 2.5937592293429588,
+        "known_target_gap": 0.041240770657041015,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-338-i0-w2-a0-47cdfcf6f310246d",
+        "timestamp": "2026-05-20T05:18:15.694391+00:00"
       },
       {
+        "index": 1127,
         "generation": 341,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-341-i1-w1-a0-95bf3e75c29ed622",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T05:18:15.698042+00:00"
       },
       {
+        "index": 1128,
         "generation": 341,
-        "sum_radii": 2.339999999999999
+        "candidate_id": "gen-341-i0-w2-a0-151290c5aadd8b7d",
+        "score": -2.339999999999999,
+        "sum_radii": 2.339999999999999,
+        "known_target_gap": 0.2950000000000008,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-338-i0-w2-a0-47cdfcf6f310246d",
+        "timestamp": "2026-05-20T05:18:15.701889+00:00"
       },
       {
+        "index": 1129,
         "generation": 341,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-341-i1-w3-a0-24141a09cc15fb56",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T05:18:15.706303+00:00"
       },
       {
+        "index": 1130,
         "generation": 342,
-        "sum_radii": 2.615320771102084
+        "candidate_id": "gen-342-i0-w0-a0-7710df69cbec17f7",
+        "score": -2.615320771102084,
+        "sum_radii": 2.615320771102084,
+        "known_target_gap": 0.019679228897915735,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-338-i0-w2-a0-47cdfcf6f310246d",
+        "timestamp": "2026-05-20T05:24:22.241491+00:00"
       },
       {
+        "index": 1131,
         "generation": 342,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-342-i1-w1-a0-520f5bedfc61a87e",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-334-i1-w1-a0-da6b5526151c2229",
+        "timestamp": "2026-05-20T05:24:22.246269+00:00"
       },
       {
+        "index": 1132,
         "generation": 342,
-        "sum_radii": 2.520251380586728
+        "candidate_id": "gen-342-i0-w2-a0-0fa0a4a7767d6d62",
+        "score": -2.520251380586728,
+        "sum_radii": 2.520251380586728,
+        "known_target_gap": 0.11474861941327186,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-338-i0-w2-a0-47cdfcf6f310246d",
+        "timestamp": "2026-05-20T05:24:22.250809+00:00"
       },
       {
+        "index": 1133,
         "generation": 342,
-        "sum_radii": 2.62806977662951
+        "candidate_id": "gen-342-i1-w3-a0-e9bccfc4b49de39d",
+        "score": -2.62806977662951,
+        "sum_radii": 2.62806977662951,
+        "known_target_gap": 0.006930223370489763,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T05:24:22.255389+00:00"
       },
       {
+        "index": 1134,
         "generation": 343,
-        "sum_radii": 2.6258029304034722
+        "candidate_id": "gen-343-i0-w0-a0-abc36bd817908e94",
+        "score": -2.6258029304034722,
+        "sum_radii": 2.6258029304034722,
+        "known_target_gap": 0.009197069596527552,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-338-i0-w2-a0-47cdfcf6f310246d",
+        "timestamp": "2026-05-20T05:31:39.274164+00:00"
       },
       {
+        "index": 1135,
         "generation": 343,
-        "sum_radii": 2.6196179502275876
+        "candidate_id": "gen-343-i1-w1-a0-f43c621090588e51",
+        "score": -2.6196179502275876,
+        "sum_radii": 2.6196179502275876,
+        "known_target_gap": 0.015382049772412199,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T05:31:39.278596+00:00"
       },
       {
+        "index": 1136,
         "generation": 343,
-        "sum_radii": 2.6100407643004315
+        "candidate_id": "gen-343-i0-w2-a0-dbaa016bbf8d1fc2",
+        "score": -2.6100407643004315,
+        "sum_radii": 2.6100407643004315,
+        "known_target_gap": 0.02495923569956826,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-338-i0-w2-a0-47cdfcf6f310246d",
+        "timestamp": "2026-05-20T05:31:39.283078+00:00"
       },
       {
+        "index": 1137,
         "generation": 343,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-343-i1-w3-a0-bfab25aeaf365d62",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T05:31:39.287156+00:00"
       },
       {
+        "index": 1138,
         "generation": 344,
-        "sum_radii": 2.618068255962592
+        "candidate_id": "gen-344-i0-w0-a0-d96c9c248d310414",
+        "score": -2.618068255962592,
+        "sum_radii": 2.618068255962592,
+        "known_target_gap": 0.016931744037407714,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-338-i0-w2-a0-47cdfcf6f310246d",
+        "timestamp": "2026-05-20T05:45:02.208091+00:00"
       },
       {
+        "index": 1139,
         "generation": 344,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-344-i1-w1-a0-6676964ba5bbf38f",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T05:45:02.212740+00:00"
       },
       {
+        "index": 1140,
         "generation": 344,
-        "sum_radii": 2.6180682559625725
+        "candidate_id": "gen-344-i0-w2-a0-35a66a7a5cc82cb0",
+        "score": -2.6180682559625725,
+        "sum_radii": 2.6180682559625725,
+        "known_target_gap": 0.016931744037427254,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-338-i0-w2-a0-47cdfcf6f310246d",
+        "timestamp": "2026-05-20T05:45:02.217363+00:00"
       },
       {
+        "index": 1141,
         "generation": 344,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-344-i1-w3-a0-cfd63a7338ad1206",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T05:45:02.222196+00:00"
       },
       {
+        "index": 1142,
         "generation": 345,
-        "sum_radii": 2.6258029304034722
+        "candidate_id": "gen-345-i0-w0-a0-c677c863de52c779",
+        "score": -2.6258029304034722,
+        "sum_radii": 2.6258029304034722,
+        "known_target_gap": 0.009197069596527552,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-338-i0-w2-a0-47cdfcf6f310246d",
+        "timestamp": "2026-05-20T05:52:52.818559+00:00"
       },
       {
+        "index": 1143,
         "generation": 345,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-345-i1-w1-a0-233586d0ce7a2e7b",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T05:52:52.822914+00:00"
       },
       {
+        "index": 1144,
         "generation": 345,
-        "sum_radii": 2.4389662673796346
+        "candidate_id": "gen-345-i1-w3-a0-a8ed33344eee6b49",
+        "score": -2.4389662673796346,
+        "sum_radii": 2.4389662673796346,
+        "known_target_gap": 0.19603373262036516,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T05:52:52.830196+00:00"
       },
       {
+        "index": 1145,
         "generation": 346,
-        "sum_radii": 2.4199999999999995
+        "candidate_id": "gen-346-i0-w0-a0-5df7e6e660a7691f",
+        "score": -2.4199999999999995,
+        "sum_radii": 2.4199999999999995,
+        "known_target_gap": 0.2150000000000003,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-338-i0-w2-a0-47cdfcf6f310246d",
+        "timestamp": "2026-05-20T05:57:23.363812+00:00"
       },
       {
+        "index": 1146,
         "generation": 346,
-        "sum_radii": 2.628069776629493
+        "candidate_id": "gen-346-i0-w2-a0-354cd4a456d7c792",
+        "score": -2.628069776629493,
+        "sum_radii": 2.628069776629493,
+        "known_target_gap": 0.0069302233705066385,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-338-i0-w2-a0-47cdfcf6f310246d",
+        "timestamp": "2026-05-20T05:57:23.371360+00:00"
       },
       {
+        "index": 1147,
         "generation": 346,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-346-i1-w3-a0-87d3b0b1d37a411c",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-287-i1-w3-a0-7d842b80af0b2d5b",
+        "timestamp": "2026-05-20T05:57:23.375670+00:00"
       },
       {
+        "index": 1148,
         "generation": 347,
-        "sum_radii": 2.617381854443572
+        "candidate_id": "gen-347-i0-w0-a0-3ad8bd9e3f374e8b",
+        "score": -2.617381854443572,
+        "sum_radii": 2.617381854443572,
+        "known_target_gap": 0.017618145556427933,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-338-i0-w2-a0-47cdfcf6f310246d",
+        "timestamp": "2026-05-20T06:05:00.627543+00:00"
       },
       {
+        "index": 1149,
         "generation": 347,
-        "sum_radii": 2.629628001380929
+        "candidate_id": "gen-347-i1-w1-a0-4c05681b115db286",
+        "score": -2.629628001380929,
+        "sum_radii": 2.629628001380929,
+        "known_target_gap": 0.005371998619070784,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T06:05:00.632509+00:00"
       },
       {
+        "index": 1150,
         "generation": 347,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-347-i1-w3-a0-b64bc49da99813fd",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-334-i1-w1-a0-da6b5526151c2229",
+        "timestamp": "2026-05-20T06:05:00.639821+00:00"
       },
       {
+        "index": 1151,
         "generation": 348,
-        "sum_radii": 2.6262937029726925
+        "candidate_id": "gen-348-i0-w0-a0-744032fcef5f7a7e",
+        "score": -2.6262937029726925,
+        "sum_radii": 2.6262937029726925,
+        "known_target_gap": 0.008706297027307297,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-338-i0-w2-a0-47cdfcf6f310246d",
+        "timestamp": "2026-05-20T06:14:42.540435+00:00"
       },
       {
+        "index": 1152,
         "generation": 348,
-        "sum_radii": 2.4467549418793446
+        "candidate_id": "gen-348-i1-w1-a0-1cc74b533b5aaae5",
+        "score": -2.4467549418793446,
+        "sum_radii": 2.4467549418793446,
+        "known_target_gap": 0.18824505812065517,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T06:14:42.544815+00:00"
       },
       {
+        "index": 1153,
         "generation": 348,
-        "sum_radii": 2.6317301707535465
+        "candidate_id": "gen-348-i0-w2-a0-f52bd9f86e01a5f7",
+        "score": -2.6317301707535465,
+        "sum_radii": 2.6317301707535465,
+        "known_target_gap": 0.0032698292464532486,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-338-i0-w2-a0-47cdfcf6f310246d",
+        "timestamp": "2026-05-20T06:14:42.549466+00:00"
       },
       {
+        "index": 1154,
         "generation": 348,
-        "sum_radii": 2.6296280013809215
+        "candidate_id": "gen-348-i1-w3-a0-4d87819a096bec12",
+        "score": -2.6296280013809215,
+        "sum_radii": 2.6296280013809215,
+        "known_target_gap": 0.005371998619078333,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T06:14:42.553854+00:00"
       },
       {
+        "index": 1155,
         "generation": 349,
-        "sum_radii": 2.6296189481749717
+        "candidate_id": "gen-349-i0-w2-a0-bbba21783ce379e3",
+        "score": -2.6296189481749717,
+        "sum_radii": 2.6296189481749717,
+        "known_target_gap": 0.005381051825028127,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-286-i0-w2-a0-f3e74405f8d9f5a3",
+        "timestamp": "2026-05-20T06:26:38.188534+00:00"
       },
       {
+        "index": 1156,
         "generation": 349,
-        "sum_radii": 2.623857989993629
+        "candidate_id": "gen-349-i1-w3-a0-2522a591a5f5ae78",
+        "score": -2.623857989993629,
+        "sum_radii": 2.623857989993629,
+        "known_target_gap": 0.011142010006370828,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T06:26:38.193082+00:00"
       },
       {
+        "index": 1157,
         "generation": 350,
-        "sum_radii": 2.630214801408406
+        "candidate_id": "gen-350-i0-w0-a0-6d47dab9b316c533",
+        "score": -2.630214801408406,
+        "sum_radii": 2.630214801408406,
+        "known_target_gap": 0.0047851985915938755,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T06:38:18.494870+00:00"
       },
       {
+        "index": 1158,
         "generation": 350,
-        "sum_radii": 2.6301719373654575
+        "candidate_id": "gen-350-i1-w1-a0-c0d8a89e503c9bc8",
+        "score": -2.6301719373654575,
+        "sum_radii": 2.6301719373654575,
+        "known_target_gap": 0.004828062634542274,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-299-i1-w3-a0-0c1c8090730cfae0",
+        "timestamp": "2026-05-20T06:38:18.499571+00:00"
       },
       {
+        "index": 1159,
         "generation": 350,
-        "sum_radii": 2.611718973016651
+        "candidate_id": "gen-350-i1-w3-a0-ceb1e59e1a93d0fa",
+        "score": -2.611718973016651,
+        "sum_radii": 2.611718973016651,
+        "known_target_gap": 0.023281026983348774,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T06:38:18.506711+00:00"
       },
       {
+        "index": 1160,
         "generation": 351,
-        "sum_radii": 2.630214801408406
+        "candidate_id": "gen-351-i0-w0-a0-8a9d60e3a016ac49",
+        "score": -2.630214801408406,
+        "sum_radii": 2.630214801408406,
+        "known_target_gap": 0.0047851985915938755,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T06:46:29.710409+00:00"
       },
       {
+        "index": 1161,
         "generation": 351,
-        "sum_radii": 2.6215955116433056
+        "candidate_id": "gen-351-i1-w1-a0-fe251892496bf730",
+        "score": -2.6215955116433056,
+        "sum_radii": 2.6215955116433056,
+        "known_target_gap": 0.013404488356694166,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T06:46:29.715139+00:00"
       },
       {
+        "index": 1162,
         "generation": 351,
-        "sum_radii": 2.630214801408406
+        "candidate_id": "gen-351-i0-w2-a0-93a9bc044915176a",
+        "score": -2.630214801408406,
+        "sum_radii": 2.630214801408406,
+        "known_target_gap": 0.0047851985915938755,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-313-i0-w2-a0-2914d85cc21f92ed",
+        "timestamp": "2026-05-20T06:46:29.719473+00:00"
       },
       {
+        "index": 1163,
         "generation": 351,
-        "sum_radii": 2.6359773947543523
+        "candidate_id": "gen-351-i1-w3-a0-da76148ff37974b3",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "known_target_gap": 0,
+        "run_label": "gen277-352",
+        "operator": "refine",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T06:46:29.723699+00:00"
       },
       {
+        "index": 1164,
         "generation": 352,
-        "sum_radii": 2.5984881589590985
+        "candidate_id": "gen-352-i1-w1-a0-33dce4090a0e2190",
+        "score": -2.5984881589590985,
+        "sum_radii": 2.5984881589590985,
+        "known_target_gap": 0.03651184104090133,
+        "run_label": "gen277-352",
+        "operator": "simplify",
+        "parent_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "timestamp": "2026-05-20T06:56:36.699206+00:00"
       },
       {
+        "index": 1165,
         "generation": 352,
-        "sum_radii": 2.624298544070346
+        "candidate_id": "gen-352-i0-w2-a0-d598d95b7bd1e4cc",
+        "score": -2.624298544070346,
+        "sum_radii": 2.624298544070346,
+        "known_target_gap": 0.010701455929653658,
+        "run_label": "gen277-352",
+        "operator": "mutate",
+        "parent_id": "gen-338-i1-w3-a0-239011423ceaf90d",
+        "timestamp": "2026-05-20T06:56:36.705240+00:00"
+      },
+      {
+        "index": 1166,
+        "generation": 353,
+        "continuation_generation": 1,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T16:18:30.932743+00:00"
+      },
+      {
+        "index": 1167,
+        "generation": 353,
+        "continuation_generation": 1,
+        "candidate_id": "gen-1-i1-w1-a0-24f8d52ecd6eb503",
+        "parent_id": "seed-1",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T16:18:30.934066+00:00"
+      },
+      {
+        "index": 1168,
+        "generation": 354,
+        "continuation_generation": 2,
+        "candidate_id": "gen-2-i0-w0-a0-9361581f76c599fa",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T16:40:10.908115+00:00"
+      },
+      {
+        "index": 1169,
+        "generation": 354,
+        "continuation_generation": 2,
+        "candidate_id": "gen-2-i1-w1-a0-c2013f3ce8e1fcb0",
+        "parent_id": "seed-1",
+        "score": -2.635977394754375,
+        "sum_radii": 2.635977394754375,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T16:40:10.909473+00:00"
+      },
+      {
+        "index": 1170,
+        "generation": 355,
+        "continuation_generation": 3,
+        "candidate_id": "gen-3-i0-w0-a0-d5724c3680c1e56b",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947543887,
+        "sum_radii": 2.6359773947543887,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T16:41:37.181602+00:00"
+      },
+      {
+        "index": 1171,
+        "generation": 355,
+        "continuation_generation": 3,
+        "candidate_id": "gen-3-i1-w1-a0-735fdd0b49792592",
+        "parent_id": "seed-1",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "run_label": "seeded-continuation",
+        "operator": "refine",
+        "timestamp": "2026-05-25T16:41:37.183143+00:00"
+      },
+      {
+        "index": 1172,
+        "generation": 356,
+        "continuation_generation": 4,
+        "candidate_id": "gen-4-i0-w0-a0-ad230e99299fefba",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947546574,
+        "sum_radii": 2.6359773947546574,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T16:43:39.200677+00:00"
+      },
+      {
+        "index": 1173,
+        "generation": 357,
+        "continuation_generation": 5,
+        "candidate_id": "gen-5-i1-w1-a0-984b99e08a77c008",
+        "parent_id": "seed-1",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-25T16:46:22.094733+00:00"
+      },
+      {
+        "index": 1174,
+        "generation": 358,
+        "continuation_generation": 6,
+        "candidate_id": "gen-6-i0-w0-a0-67c1acaa979d5af6",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947543887,
+        "sum_radii": 2.6359773947543887,
+        "run_label": "seeded-continuation",
+        "operator": "crossover",
+        "timestamp": "2026-05-25T16:49:37.122120+00:00"
+      },
+      {
+        "index": 1175,
+        "generation": 359,
+        "continuation_generation": 7,
+        "candidate_id": "gen-7-i0-w0-a0-042b2dbb69b5edb4",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364,
+        "run_label": "seeded-continuation",
+        "operator": "refine",
+        "timestamp": "2026-05-25T16:59:03.352260+00:00"
+      },
+      {
+        "index": 1176,
+        "generation": 360,
+        "continuation_generation": 8,
+        "candidate_id": "gen-8-i0-w0-a0-a99e7d34d4a0379b",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T17:01:25.398970+00:00"
+      },
+      {
+        "index": 1177,
+        "generation": 360,
+        "continuation_generation": 8,
+        "candidate_id": "gen-8-i1-w1-a0-f80fc794df57ca40",
+        "parent_id": "seed-1",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T17:01:25.401203+00:00"
+      },
+      {
+        "index": 1178,
+        "generation": 361,
+        "continuation_generation": 9,
+        "candidate_id": "gen-9-i1-w1-a0-9222762a1ed9b53e",
+        "parent_id": "seed-1",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T17:11:43.365587+00:00"
+      },
+      {
+        "index": 1179,
+        "generation": 362,
+        "continuation_generation": 10,
+        "candidate_id": "gen-10-i0-w0-a0-7b1b2245d3bcad9c",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6349815897639215,
+        "sum_radii": 2.6349815897639215,
+        "run_label": "seeded-continuation",
+        "operator": "refine",
+        "timestamp": "2026-05-25T17:13:09.008080+00:00"
+      },
+      {
+        "index": 1180,
+        "generation": 362,
+        "continuation_generation": 10,
+        "candidate_id": "gen-10-i1-w1-a0-ba99003c691e4e70",
+        "parent_id": "seed-1",
+        "score": -2.6164773947543525,
+        "sum_radii": 2.6164773947543525,
+        "run_label": "seeded-continuation",
+        "operator": "refine",
+        "timestamp": "2026-05-25T17:13:09.010398+00:00"
+      },
+      {
+        "index": 1181,
+        "generation": 363,
+        "continuation_generation": 11,
+        "candidate_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "parent_id": "gen-5-i0-w0-a0-a32e3977da2e419f",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T16:14:45.858537+00:00"
+      },
+      {
+        "index": 1182,
+        "generation": 363,
+        "continuation_generation": 11,
+        "candidate_id": "gen-11-i1-w1-a0-32619c2fc831fab2",
+        "parent_id": "gen-6-i1-w1-a0-1cbc8e5c57bbadf7",
+        "score": -2.635952914877781,
+        "sum_radii": 2.635952914877781,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T16:14:45.860074+00:00"
+      },
+      {
+        "index": 1183,
+        "generation": 364,
+        "continuation_generation": 12,
+        "candidate_id": "gen-12-i0-w0-a0-97c9a22349e41672",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T16:17:37.879012+00:00"
+      },
+      {
+        "index": 1184,
+        "generation": 364,
+        "continuation_generation": 12,
+        "candidate_id": "gen-12-i1-w1-a0-7d61b676d674e65d",
+        "parent_id": "gen-6-i1-w1-a0-1cbc8e5c57bbadf7",
+        "score": -2.6359773947543985,
+        "sum_radii": 2.6359773947543985,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T16:17:37.880439+00:00"
+      },
+      {
+        "index": 1185,
+        "generation": 365,
+        "continuation_generation": 13,
+        "candidate_id": "gen-13-i1-w1-a0-33cc6835a5bdff6a",
+        "parent_id": "seed-1",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T17:34:40.206580+00:00"
+      },
+      {
+        "index": 1186,
+        "generation": 366,
+        "continuation_generation": 14,
+        "candidate_id": "gen-14-i0-w0-a0-c1320c85381af5c9",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947546574,
+        "sum_radii": 2.6359773947546574,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T17:37:10.052680+00:00"
+      },
+      {
+        "index": 1187,
+        "generation": 367,
+        "continuation_generation": 15,
+        "candidate_id": "gen-15-i1-w1-a0-a1b4362b7e2e1d2a",
+        "parent_id": "seed-1",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "run_label": "seeded-continuation",
+        "operator": "refine",
+        "timestamp": "2026-05-25T17:47:06.508960+00:00"
+      },
+      {
+        "index": 1188,
+        "generation": 368,
+        "continuation_generation": 16,
+        "candidate_id": "gen-16-i0-w0-a0-5fd1ca2eda7db727",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T17:56:16.596665+00:00"
+      },
+      {
+        "index": 1189,
+        "generation": 368,
+        "continuation_generation": 16,
+        "candidate_id": "gen-16-i1-w1-a0-81731a0727d9c48e",
+        "parent_id": "seed-1",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-25T17:56:16.599426+00:00"
+      },
+      {
+        "index": 1190,
+        "generation": 369,
+        "continuation_generation": 17,
+        "candidate_id": "gen-17-i0-w0-a0-f56dc3d85550fa38",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947546574,
+        "sum_radii": 2.6359773947546574,
+        "run_label": "seeded-continuation",
+        "operator": "crossover",
+        "timestamp": "2026-05-25T17:58:56.633675+00:00"
+      },
+      {
+        "index": 1191,
+        "generation": 369,
+        "continuation_generation": 17,
+        "candidate_id": "gen-17-i1-w1-a0-79979467e7fd060c",
+        "parent_id": "seed-1",
+        "score": -2.635952914877781,
+        "sum_radii": 2.635952914877781,
+        "run_label": "seeded-continuation",
+        "operator": "crossover",
+        "timestamp": "2026-05-25T17:58:56.636016+00:00"
+      },
+      {
+        "index": 1192,
+        "generation": 370,
+        "continuation_generation": 18,
+        "candidate_id": "gen-18-i0-w0-a0-24c82e593ea3506b",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.2211312213733843,
+        "sum_radii": 2.2211312213733843,
+        "run_label": "seeded-continuation",
+        "operator": "refine",
+        "timestamp": "2026-05-25T18:07:58.755232+00:00"
+      },
+      {
+        "index": 1193,
+        "generation": 370,
+        "continuation_generation": 18,
+        "candidate_id": "gen-18-i1-w1-a0-910bd7f2ea988a25",
+        "parent_id": "seed-1",
+        "score": -2.6359773947543523,
+        "sum_radii": 2.6359773947543523,
+        "run_label": "seeded-continuation",
+        "operator": "refine",
+        "timestamp": "2026-05-25T18:07:58.756742+00:00"
+      },
+      {
+        "index": 1194,
+        "generation": 371,
+        "continuation_generation": 19,
+        "candidate_id": "gen-19-i0-w0-a0-00acbd9903cc91d4",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947543683,
+        "sum_radii": 2.6359773947543683,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T18:09:30.192432+00:00"
+      },
+      {
+        "index": 1195,
+        "generation": 371,
+        "continuation_generation": 19,
+        "candidate_id": "gen-19-i1-w1-a0-735d1ec05c1e7475",
+        "parent_id": "seed-1",
+        "score": -2.6359773947543887,
+        "sum_radii": 2.6359773947543887,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T18:09:30.194926+00:00"
+      },
+      {
+        "index": 1196,
+        "generation": 373,
+        "continuation_generation": 21,
+        "candidate_id": "gen-21-i0-w0-a0-c39ef16432b774e9",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947546574,
+        "sum_radii": 2.6359773947546574,
+        "run_label": "seeded-continuation",
+        "operator": "crossover",
+        "timestamp": "2026-05-25T18:26:04.167059+00:00"
+      },
+      {
+        "index": 1197,
+        "generation": 373,
+        "continuation_generation": 21,
+        "candidate_id": "gen-21-i1-w1-a0-195cdb92d177b2b4",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T18:26:04.169465+00:00"
+      },
+      {
+        "index": 1198,
+        "generation": 374,
+        "continuation_generation": 22,
+        "candidate_id": "gen-22-i0-w0-a0-ee51ba5a13b468bc",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947543887,
+        "sum_radii": 2.6359773947543887,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T18:28:27.835034+00:00"
+      },
+      {
+        "index": 1199,
+        "generation": 375,
+        "continuation_generation": 23,
+        "candidate_id": "gen-23-i0-w0-a0-066f2006ceebd13f",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.49868720594841,
+        "sum_radii": 2.49868720594841,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T18:38:46.047298+00:00"
+      },
+      {
+        "index": 1200,
+        "generation": 377,
+        "continuation_generation": 25,
+        "candidate_id": "gen-25-i0-w0-a0-adcf01eaeac5ef1e",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947543887,
+        "sum_radii": 2.6359773947543887,
+        "run_label": "seeded-continuation",
+        "operator": "refine",
+        "timestamp": "2026-05-25T18:52:35.259684+00:00"
+      },
+      {
+        "index": 1201,
+        "generation": 379,
+        "continuation_generation": 27,
+        "candidate_id": "gen-27-i1-w1-a0-09a1b2eb054b881d",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739169735925563,
+        "sum_radii": 2.3739169735925563,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-25T19:06:30.335683+00:00"
+      },
+      {
+        "index": 1202,
+        "generation": 380,
+        "continuation_generation": 28,
+        "candidate_id": "gen-28-i1-w1-a0-2977fab568641d26",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T19:08:45.828018+00:00"
+      },
+      {
+        "index": 1203,
+        "generation": 381,
+        "continuation_generation": 29,
+        "candidate_id": "gen-29-i0-w0-a0-f87b8be936fbaf0c",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-25T19:18:19.958809+00:00"
+      },
+      {
+        "index": 1204,
+        "generation": 381,
+        "continuation_generation": 29,
+        "candidate_id": "gen-29-i1-w1-a0-788925b785c6c66e",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947546574,
+        "sum_radii": 2.6359773947546574,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T19:18:19.960945+00:00"
+      },
+      {
+        "index": 1205,
+        "generation": 382,
+        "continuation_generation": 30,
+        "candidate_id": "gen-30-i0-w0-a0-27be5680b06c2869",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.4632750147437155,
+        "sum_radii": 2.4632750147437155,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T19:20:55.871410+00:00"
+      },
+      {
+        "index": 1206,
+        "generation": 385,
+        "continuation_generation": 33,
+        "candidate_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T19:28:39.597892+00:00"
+      },
+      {
+        "index": 1207,
+        "generation": 385,
+        "continuation_generation": 33,
+        "candidate_id": "gen-33-i1-w1-a0-b6f6f7261edcdd81",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.535642713886618,
+        "sum_radii": 2.535642713886618,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-25T19:28:39.599664+00:00"
+      },
+      {
+        "index": 1208,
+        "generation": 387,
+        "continuation_generation": 35,
+        "candidate_id": "gen-35-i1-w1-a0-71cab7d16f34c1a9",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T19:42:11.783731+00:00"
+      },
+      {
+        "index": 1209,
+        "generation": 388,
+        "continuation_generation": 36,
+        "candidate_id": "gen-36-i0-w0-a0-b2788b836796b748",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.635977394754261,
+        "sum_radii": 2.635977394754261,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T19:45:58.155064+00:00"
+      },
+      {
+        "index": 1210,
+        "generation": 389,
+        "continuation_generation": 37,
+        "candidate_id": "gen-37-i0-w0-a0-776a6614722f402f",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T19:47:36.440014+00:00"
+      },
+      {
+        "index": 1211,
+        "generation": 390,
+        "continuation_generation": 38,
+        "candidate_id": "gen-38-i0-w0-a0-6c5fcc9520b4c58b",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-25T19:49:45.982835+00:00"
+      },
+      {
+        "index": 1212,
+        "generation": 391,
+        "continuation_generation": 39,
+        "candidate_id": "gen-39-i0-w0-a0-9952c8384e594af0",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-25T19:52:21.415001+00:00"
+      },
+      {
+        "index": 1213,
+        "generation": 392,
+        "continuation_generation": 40,
+        "candidate_id": "gen-40-i0-w0-a0-d51ec12a026310e6",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "crossover",
+        "timestamp": "2026-05-25T19:54:39.654412+00:00"
+      },
+      {
+        "index": 1214,
+        "generation": 393,
+        "continuation_generation": 41,
+        "candidate_id": "gen-41-i1-w1-a0-7a58683558c36c03",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.535642713886618,
+        "sum_radii": 2.535642713886618,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T19:56:56.218295+00:00"
+      },
+      {
+        "index": 1215,
+        "generation": 394,
+        "continuation_generation": 42,
+        "candidate_id": "gen-42-i0-w0-a0-86973e269c616bc7",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947546574,
+        "sum_radii": 2.6359773947546574,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-25T20:00:18.788826+00:00"
+      },
+      {
+        "index": 1216,
+        "generation": 395,
+        "continuation_generation": 43,
+        "candidate_id": "gen-43-i0-w0-a0-cd94d2606e572404",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-25T20:18:09.796567+00:00"
+      },
+      {
+        "index": 1217,
+        "generation": 396,
+        "continuation_generation": 44,
+        "candidate_id": "gen-44-i1-w1-a0-72a9f7b1eef6b061",
+        "parent_id": "gen-29-i1-w1-a0-788925b785c6c66e",
+        "score": -2.6359773947546574,
+        "sum_radii": 2.6359773947546574,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T20:21:48.038868+00:00"
+      },
+      {
+        "index": 1218,
+        "generation": 397,
+        "continuation_generation": 45,
+        "candidate_id": "gen-45-i1-w1-a0-ea1f48d49556c0d8",
+        "parent_id": "gen-29-i1-w1-a0-788925b785c6c66e",
+        "score": -2.6359773947545215,
+        "sum_radii": 2.6359773947545215,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T20:32:32.421049+00:00"
+      },
+      {
+        "index": 1219,
+        "generation": 398,
+        "continuation_generation": 46,
+        "candidate_id": "gen-46-i0-w0-a0-e5b61937bc2edb54",
+        "parent_id": "gen-4-i0-w0-a0-ad230e99299fefba",
+        "score": -2.6359773947546574,
+        "sum_radii": 2.6359773947546574,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T20:34:08.156725+00:00"
+      },
+      {
+        "index": 1220,
+        "generation": 398,
+        "continuation_generation": 46,
+        "candidate_id": "gen-46-i1-w1-a0-cb0c64eea8d9dbb7",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.4267482926451547,
+        "sum_radii": 2.4267482926451547,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T20:34:08.159295+00:00"
+      },
+      {
+        "index": 1221,
+        "generation": 400,
+        "continuation_generation": 48,
+        "candidate_id": "gen-48-i0-w0-a0-2b62ee2802f2b70f",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.535642713886618,
+        "sum_radii": 2.535642713886618,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T20:46:38.610887+00:00"
+      },
+      {
+        "index": 1222,
+        "generation": 400,
+        "continuation_generation": 48,
+        "candidate_id": "gen-48-i1-w1-a0-eff79d3ef3c29f10",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6025999999999994e-05,
+        "sum_radii": 2.6025999999999994e-05,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T20:46:38.613644+00:00"
+      },
+      {
+        "index": 1223,
+        "generation": 403,
+        "continuation_generation": 51,
+        "candidate_id": "gen-51-i1-w1-a0-46b022d37630fac4",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.635977394754424,
+        "sum_radii": 2.635977394754424,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T20:56:15.551946+00:00"
+      },
+      {
+        "index": 1224,
+        "generation": 405,
+        "continuation_generation": 53,
+        "candidate_id": "gen-53-i0-w0-a0-534c214f87846289",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -1.3694987001723344,
+        "sum_radii": 1.3694987001723344,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-25T21:01:18.631026+00:00"
+      },
+      {
+        "index": 1225,
+        "generation": 406,
+        "continuation_generation": 54,
+        "candidate_id": "gen-54-i1-w1-a0-3c90a89017e1e47d",
+        "parent_id": "gen-11-i1-w1-a0-32619c2fc831fab2",
+        "score": -2.6359773947543683,
+        "sum_radii": 2.6359773947543683,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T21:03:50.232148+00:00"
+      },
+      {
+        "index": 1226,
+        "generation": 407,
+        "continuation_generation": 55,
+        "candidate_id": "gen-55-i0-w0-a0-6f4fbe74d73758a6",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T21:05:06.224092+00:00"
+      },
+      {
+        "index": 1227,
+        "generation": 407,
+        "continuation_generation": 55,
+        "candidate_id": "gen-55-i1-w1-a0-64c7536163bf3613",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T21:05:06.226720+00:00"
+      },
+      {
+        "index": 1228,
+        "generation": 408,
+        "continuation_generation": 56,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T21:07:38.355698+00:00"
+      },
+      {
+        "index": 1229,
+        "generation": 409,
+        "continuation_generation": 57,
+        "candidate_id": "gen-57-i0-w0-a0-68113a3bf531b464",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-25T21:09:47.977410+00:00"
+      },
+      {
+        "index": 1230,
+        "generation": 410,
+        "continuation_generation": 58,
+        "candidate_id": "gen-58-i1-w1-a0-be138cfba45c3be5",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6025999999999994e-05,
+        "sum_radii": 2.6025999999999994e-05,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T21:12:12.524014+00:00"
+      },
+      {
+        "index": 1231,
+        "generation": 411,
+        "continuation_generation": 59,
+        "candidate_id": "gen-59-i0-w0-a0-ffc77d8b5ddf0b40",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.6359830849177257,
+        "sum_radii": 2.6359830849177257,
+        "run_label": "seeded-continuation",
+        "operator": "crossover",
+        "timestamp": "2026-05-25T21:15:08.259829+00:00"
+      },
+      {
+        "index": 1232,
+        "generation": 412,
+        "continuation_generation": 60,
+        "candidate_id": "gen-60-i0-w0-a0-98aedfc0458a5266",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-25T21:24:12.371939+00:00"
+      },
+      {
+        "index": 1233,
+        "generation": 412,
+        "continuation_generation": 60,
+        "candidate_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T21:24:12.373986+00:00"
+      },
+      {
+        "index": 1234,
+        "generation": 413,
+        "continuation_generation": 61,
+        "candidate_id": "gen-61-i0-w0-a0-6cbf4f15f3cdc9b6",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.6358957385818083,
+        "sum_radii": 2.6358957385818083,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T21:34:41.886416+00:00"
+      },
+      {
+        "index": 1235,
+        "generation": 414,
+        "continuation_generation": 62,
+        "candidate_id": "gen-62-i0-w0-a0-63a8f6aa359bb3c7",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.6359773947544305,
+        "sum_radii": 2.6359773947544305,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T21:37:41.774024+00:00"
+      },
+      {
+        "index": 1236,
+        "generation": 414,
+        "continuation_generation": 62,
+        "candidate_id": "gen-62-i1-w1-a0-16504ea18239410f",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "refine",
+        "timestamp": "2026-05-25T21:37:41.777096+00:00"
+      },
+      {
+        "index": 1237,
+        "generation": 415,
+        "continuation_generation": 63,
+        "candidate_id": "gen-63-i0-w0-a0-3ab601816c60e3ef",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T21:40:30.539217+00:00"
+      },
+      {
+        "index": 1238,
+        "generation": 416,
+        "continuation_generation": 64,
+        "candidate_id": "gen-64-i0-w0-a0-cb0682dc31bc4b70",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T21:43:13.800139+00:00"
+      },
+      {
+        "index": 1239,
+        "generation": 416,
+        "continuation_generation": 64,
+        "candidate_id": "gen-64-i1-w1-a0-94d471feb3fb3279",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.511545924119805,
+        "sum_radii": 2.511545924119805,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T21:43:13.802565+00:00"
+      },
+      {
+        "index": 1240,
+        "generation": 417,
+        "continuation_generation": 65,
+        "candidate_id": "gen-65-i0-w0-a0-f4066034286efaec",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T21:47:00.390696+00:00"
+      },
+      {
+        "index": 1241,
+        "generation": 418,
+        "continuation_generation": 66,
+        "candidate_id": "gen-66-i0-w0-a0-a5951b4e39c0da5a",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.511545924119953,
+        "sum_radii": 2.511545924119953,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T21:49:24.880722+00:00"
+      },
+      {
+        "index": 1242,
+        "generation": 418,
+        "continuation_generation": 66,
+        "candidate_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T21:49:24.883634+00:00"
+      },
+      {
+        "index": 1243,
+        "generation": 419,
+        "continuation_generation": 67,
+        "candidate_id": "gen-67-i0-w0-a0-90252b926dcc931a",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T21:51:47.502856+00:00"
+      },
+      {
+        "index": 1244,
+        "generation": 420,
+        "continuation_generation": 68,
+        "candidate_id": "gen-68-i0-w0-a0-a8e5e7575789334d",
+        "parent_id": "gen-61-i0-w0-a0-6cbf4f15f3cdc9b6",
+        "score": -2.6359773947546574,
+        "sum_radii": 2.6359773947546574,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T21:53:19.389976+00:00"
+      },
+      {
+        "index": 1245,
+        "generation": 420,
+        "continuation_generation": 68,
+        "candidate_id": "gen-68-i1-w1-a0-98f990584314f1de",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T21:53:19.392853+00:00"
+      },
+      {
+        "index": 1246,
+        "generation": 421,
+        "continuation_generation": 69,
+        "candidate_id": "gen-69-i0-w0-a0-b404ca62cac793ee",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.622557250389966,
+        "sum_radii": 2.622557250389966,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T22:19:04.181343+00:00"
+      },
+      {
+        "index": 1247,
+        "generation": 422,
+        "continuation_generation": 70,
+        "candidate_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.6359773947546574,
+        "sum_radii": 2.6359773947546574,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T22:37:09.998043+00:00"
+      },
+      {
+        "index": 1248,
+        "generation": 423,
+        "continuation_generation": 71,
+        "candidate_id": "gen-71-i0-w0-a0-9bff06815f4854a5",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T22:46:06.874477+00:00"
+      },
+      {
+        "index": 1249,
+        "generation": 423,
+        "continuation_generation": 71,
+        "candidate_id": "gen-71-i1-w1-a0-15e0e4199d0b22d8",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T22:46:06.876759+00:00"
+      },
+      {
+        "index": 1250,
+        "generation": 424,
+        "continuation_generation": 72,
+        "candidate_id": "gen-72-i0-w0-a0-da98067092d0ef49",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T22:51:01.141862+00:00"
+      },
+      {
+        "index": 1251,
+        "generation": 425,
+        "continuation_generation": 73,
+        "candidate_id": "gen-73-i0-w0-a0-c2bd512ff428b07c",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.6359773947543648,
+        "sum_radii": 2.6359773947543648,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T22:53:21.223688+00:00"
+      },
+      {
+        "index": 1252,
+        "generation": 426,
+        "continuation_generation": 74,
+        "candidate_id": "gen-74-i0-w0-a0-29aac0af0088ae0b",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T22:55:33.546258+00:00"
+      },
+      {
+        "index": 1253,
+        "generation": 427,
+        "continuation_generation": 75,
+        "candidate_id": "gen-75-i0-w0-a0-a21b8debd084e964",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T22:57:59.742661+00:00"
+      },
+      {
+        "index": 1254,
+        "generation": 428,
+        "continuation_generation": 76,
+        "candidate_id": "gen-76-i0-w0-a0-f0ca910f69224a3e",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T23:00:54.088335+00:00"
+      },
+      {
+        "index": 1255,
+        "generation": 428,
+        "continuation_generation": 76,
+        "candidate_id": "gen-76-i1-w1-a0-f359a01e05dadadb",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-25T23:00:54.091318+00:00"
+      },
+      {
+        "index": 1256,
+        "generation": 429,
+        "continuation_generation": 77,
+        "candidate_id": "gen-77-i0-w0-a0-54f9c41fd399783e",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T23:03:39.723671+00:00"
+      },
+      {
+        "index": 1257,
+        "generation": 429,
+        "continuation_generation": 77,
+        "candidate_id": "gen-77-i1-w1-a0-0084d90359d8f938",
+        "parent_id": "gen-54-i1-w1-a0-3c90a89017e1e47d",
+        "score": -2.6025999999999988e-05,
+        "sum_radii": 2.6025999999999988e-05,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T23:03:39.726129+00:00"
+      },
+      {
+        "index": 1258,
+        "generation": 430,
+        "continuation_generation": 78,
+        "candidate_id": "gen-78-i0-w0-a0-ab384c54cb1e8d8a",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T23:06:02.768166+00:00"
+      },
+      {
+        "index": 1259,
+        "generation": 431,
+        "continuation_generation": 79,
+        "candidate_id": "gen-79-i0-w0-a0-f690326137f5d8c8",
+        "parent_id": "gen-11-i1-w1-a0-32619c2fc831fab2",
+        "score": -2.635977394754387,
+        "sum_radii": 2.635977394754387,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T23:07:43.735656+00:00"
+      },
+      {
+        "index": 1260,
+        "generation": 431,
+        "continuation_generation": 79,
+        "candidate_id": "gen-79-i1-w1-a0-e3047f97f9a217c9",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925513,
+        "sum_radii": 2.3739284850925513,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T23:07:43.737967+00:00"
+      },
+      {
+        "index": 1261,
+        "generation": 432,
+        "continuation_generation": 80,
+        "candidate_id": "gen-80-i0-w0-a0-65cbd022c38f3ba5",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.6359830849039736,
+        "sum_radii": 2.6359830849039736,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T23:11:01.182542+00:00"
+      },
+      {
+        "index": 1262,
+        "generation": 433,
+        "continuation_generation": 81,
+        "candidate_id": "gen-81-i0-w0-a0-347e30956051ca32",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "refine",
+        "timestamp": "2026-05-25T23:20:46.392015+00:00"
+      },
+      {
+        "index": 1263,
+        "generation": 434,
+        "continuation_generation": 82,
+        "candidate_id": "gen-82-i0-w0-a0-2a8d2e1a0fcc86dd",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T23:23:43.442806+00:00"
+      },
+      {
+        "index": 1264,
+        "generation": 435,
+        "continuation_generation": 83,
+        "candidate_id": "gen-83-i0-w0-a0-948e56773375f424",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T23:34:11.385925+00:00"
+      },
+      {
+        "index": 1265,
+        "generation": 435,
+        "continuation_generation": 83,
+        "candidate_id": "gen-83-i1-w1-a0-6dd2ee16516d3c5e",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-25T23:34:11.389128+00:00"
+      },
+      {
+        "index": 1266,
+        "generation": 437,
+        "continuation_generation": 85,
+        "candidate_id": "gen-85-i0-w0-a0-e81570e16d99b172",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -0.7475704733661442,
+        "sum_radii": 0.7475704733661442,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T23:41:15.859896+00:00"
+      },
+      {
+        "index": 1267,
+        "generation": 437,
+        "continuation_generation": 85,
+        "candidate_id": "gen-85-i1-w1-a0-8a109d816d5f1f12",
+        "parent_id": "gen-29-i1-w1-a0-788925b785c6c66e",
+        "score": -2.635977394754261,
+        "sum_radii": 2.635977394754261,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T23:41:15.862498+00:00"
+      },
+      {
+        "index": 1268,
+        "generation": 438,
+        "continuation_generation": 86,
+        "candidate_id": "gen-86-i0-w0-a0-84af7cccbb269a9e",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T23:43:52.575324+00:00"
+      },
+      {
+        "index": 1269,
+        "generation": 438,
+        "continuation_generation": 86,
+        "candidate_id": "gen-86-i1-w1-a0-8cc5a8c6f887b41b",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947543887,
+        "sum_radii": 2.6359773947543887,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T23:43:52.578456+00:00"
+      },
+      {
+        "index": 1270,
+        "generation": 440,
+        "continuation_generation": 88,
+        "candidate_id": "gen-88-i0-w0-a0-2956653b0e573e8d",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-25T23:57:23.872119+00:00"
+      },
+      {
+        "index": 1271,
+        "generation": 441,
+        "continuation_generation": 89,
+        "candidate_id": "gen-89-i0-w0-a0-a7822abf52919bad",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T00:00:37.842679+00:00"
+      },
+      {
+        "index": 1272,
+        "generation": 442,
+        "continuation_generation": 90,
+        "candidate_id": "gen-90-i0-w0-a0-5a2b42fa2d2b09c1",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T00:02:47.508452+00:00"
+      },
+      {
+        "index": 1273,
+        "generation": 443,
+        "continuation_generation": 91,
+        "candidate_id": "gen-91-i0-w0-a0-7cec4d314f21f005",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T00:04:30.896863+00:00"
+      },
+      {
+        "index": 1274,
+        "generation": 443,
+        "continuation_generation": 91,
+        "candidate_id": "gen-91-i1-w1-a0-a260fc985a98fefe",
+        "parent_id": "gen-11-i1-w1-a0-32619c2fc831fab2",
+        "score": -1.3479699840312624,
+        "sum_radii": 1.3479699840312624,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-26T00:04:30.899400+00:00"
+      },
+      {
+        "index": 1275,
+        "generation": 444,
+        "continuation_generation": 92,
+        "candidate_id": "gen-92-i0-w0-a0-3ef0ce0d4bc1e6ed",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T00:06:42.621810+00:00"
+      },
+      {
+        "index": 1276,
+        "generation": 445,
+        "continuation_generation": 93,
+        "candidate_id": "gen-93-i0-w0-a0-877cc84b9953c5b5",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T00:09:18.329593+00:00"
+      },
+      {
+        "index": 1277,
+        "generation": 445,
+        "continuation_generation": 93,
+        "candidate_id": "gen-93-i1-w1-a0-c13d6d4c9dab8989",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T00:09:18.332840+00:00"
+      },
+      {
+        "index": 1278,
+        "generation": 446,
+        "continuation_generation": 94,
+        "candidate_id": "gen-94-i0-w0-a0-35a65ff38ac56a41",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T00:11:49.611629+00:00"
+      },
+      {
+        "index": 1279,
+        "generation": 447,
+        "continuation_generation": 95,
+        "candidate_id": "gen-95-i0-w0-a0-3efad936c995c520",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T00:20:51.592130+00:00"
+      },
+      {
+        "index": 1280,
+        "generation": 447,
+        "continuation_generation": 95,
+        "candidate_id": "gen-95-i1-w1-a0-c411ce26aa1cf195",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947546574,
+        "sum_radii": 2.6359773947546574,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T00:20:51.595383+00:00"
+      },
+      {
+        "index": 1281,
+        "generation": 448,
+        "continuation_generation": 96,
+        "candidate_id": "gen-96-i0-w0-a0-e99ac1d38f5d5d50",
+        "parent_id": "gen-80-i0-w0-a0-65cbd022c38f3ba5",
+        "score": -2.6359830849039736,
+        "sum_radii": 2.6359830849039736,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T00:24:39.984540+00:00"
+      },
+      {
+        "index": 1282,
+        "generation": 449,
+        "continuation_generation": 97,
+        "candidate_id": "gen-97-i0-w0-a0-f185bc753e93f56e",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T00:35:33.528316+00:00"
+      },
+      {
+        "index": 1283,
+        "generation": 449,
+        "continuation_generation": 97,
+        "candidate_id": "gen-97-i1-w1-a0-a9b5e1164a9d08a7",
+        "parent_id": "gen-54-i1-w1-a0-3c90a89017e1e47d",
+        "score": -2.6359773947543683,
+        "sum_radii": 2.6359773947543683,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T00:35:33.530766+00:00"
+      },
+      {
+        "index": 1284,
+        "generation": 450,
+        "continuation_generation": 98,
+        "candidate_id": "gen-98-i0-w0-a0-4cd38c3e4e752a65",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.3691596821257366,
+        "sum_radii": 2.3691596821257366,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T00:44:26.814422+00:00"
+      },
+      {
+        "index": 1285,
+        "generation": 450,
+        "continuation_generation": 98,
+        "candidate_id": "gen-98-i1-w1-a0-c3c6c8dc9ce081c6",
+        "parent_id": "gen-54-i1-w1-a0-3c90a89017e1e47d",
+        "score": -2.6359773947543683,
+        "sum_radii": 2.6359773947543683,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T00:44:26.816863+00:00"
+      },
+      {
+        "index": 1286,
+        "generation": 451,
+        "continuation_generation": 99,
+        "candidate_id": "gen-99-i0-w0-a0-b23eed30ca13e33d",
+        "parent_id": "gen-80-i0-w0-a0-65cbd022c38f3ba5",
+        "score": -2.4675277861043603,
+        "sum_radii": 2.4675277861043603,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-26T00:45:46.702558+00:00"
+      },
+      {
+        "index": 1287,
+        "generation": 451,
+        "continuation_generation": 99,
+        "candidate_id": "gen-99-i1-w1-a0-8dba4bba87199f02",
+        "parent_id": "gen-29-i1-w1-a0-788925b785c6c66e",
+        "score": -2.6359773947543683,
+        "sum_radii": 2.6359773947543683,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-26T00:45:46.705679+00:00"
+      },
+      {
+        "index": 1288,
+        "generation": 452,
+        "continuation_generation": 100,
+        "candidate_id": "gen-100-i0-w0-a0-a60310efc7204187",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T01:03:59.773792+00:00"
+      },
+      {
+        "index": 1289,
+        "generation": 452,
+        "continuation_generation": 100,
+        "candidate_id": "gen-100-i1-w1-a0-8e4cafa4ada51fb0",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947546574,
+        "sum_radii": 2.6359773947546574,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T01:03:59.777046+00:00"
+      },
+      {
+        "index": 1290,
+        "generation": 453,
+        "continuation_generation": 101,
+        "candidate_id": "gen-101-i0-w0-a0-8587a2b62852ade8",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.6149681514698377,
+        "sum_radii": 2.6149681514698377,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T01:06:33.198725+00:00"
+      },
+      {
+        "index": 1291,
+        "generation": 453,
+        "continuation_generation": 101,
+        "candidate_id": "gen-101-i1-w1-a0-23102dae73878f59",
+        "parent_id": "gen-85-i1-w1-a0-8a109d816d5f1f12",
+        "score": -2.6040092418424816,
+        "sum_radii": 2.6040092418424816,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T01:06:33.202007+00:00"
+      },
+      {
+        "index": 1292,
+        "generation": 454,
+        "continuation_generation": 102,
+        "candidate_id": "gen-102-i0-w0-a0-6233b7e6c3f1135f",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T01:09:03.571053+00:00"
+      },
+      {
+        "index": 1293,
+        "generation": 455,
+        "continuation_generation": 103,
+        "candidate_id": "gen-103-i0-w0-a0-649832df1abea027",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T01:11:23.556332+00:00"
+      },
+      {
+        "index": 1294,
+        "generation": 456,
+        "continuation_generation": 104,
+        "candidate_id": "gen-104-i0-w0-a0-053131632bf29444",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T01:12:51.641970+00:00"
+      },
+      {
+        "index": 1295,
+        "generation": 456,
+        "continuation_generation": 104,
+        "candidate_id": "gen-104-i1-w1-a0-95d87c125f49b1f0",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947543683,
+        "sum_radii": 2.6359773947543683,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T01:12:51.645274+00:00"
+      },
+      {
+        "index": 1296,
+        "generation": 457,
+        "continuation_generation": 105,
+        "candidate_id": "gen-105-i0-w0-a0-eca98c00aaf4762a",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.6355417111018054,
+        "sum_radii": 2.6355417111018054,
+        "run_label": "seeded-continuation",
+        "operator": "refine",
+        "timestamp": "2026-05-26T01:15:44.920910+00:00"
+      },
+      {
+        "index": 1297,
+        "generation": 458,
+        "continuation_generation": 106,
+        "candidate_id": "gen-106-i0-w0-a0-d6368efe074fb239",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "refine",
+        "timestamp": "2026-05-26T01:18:12.428099+00:00"
+      },
+      {
+        "index": 1298,
+        "generation": 459,
+        "continuation_generation": 107,
+        "candidate_id": "gen-107-i0-w0-a0-4b95402f6c883115",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.6359773947546574,
+        "sum_radii": 2.6359773947546574,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T01:19:57.296255+00:00"
+      },
+      {
+        "index": 1299,
+        "generation": 459,
+        "continuation_generation": 107,
+        "candidate_id": "gen-107-i1-w1-a0-cbdfac088ea20a89",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.346677160145478,
+        "sum_radii": 2.346677160145478,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T01:19:57.298874+00:00"
+      },
+      {
+        "index": 1300,
+        "generation": 460,
+        "continuation_generation": 108,
+        "candidate_id": "gen-108-i0-w0-a0-1ac705b41d9d801f",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T01:21:44.002367+00:00"
+      },
+      {
+        "index": 1301,
+        "generation": 460,
+        "continuation_generation": 108,
+        "candidate_id": "gen-108-i1-w1-a0-ef52c1d546048de9",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.5149059163286287,
+        "sum_radii": 2.5149059163286287,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T01:21:44.004846+00:00"
+      },
+      {
+        "index": 1302,
+        "generation": 461,
+        "continuation_generation": 109,
+        "candidate_id": "gen-109-i0-w0-a0-53fcf80a02b5d2d0",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635977394754433,
+        "sum_radii": 2.635977394754433,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T01:22:58.632103+00:00"
+      },
+      {
+        "index": 1303,
+        "generation": 461,
+        "continuation_generation": 109,
+        "candidate_id": "gen-109-i1-w1-a0-03747d81684fb7e5",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947543887,
+        "sum_radii": 2.6359773947543887,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T01:22:58.635199+00:00"
+      },
+      {
+        "index": 1304,
+        "generation": 462,
+        "continuation_generation": 110,
+        "candidate_id": "gen-110-i0-w0-a0-40363f1c7c799c5b",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "refine",
+        "timestamp": "2026-05-26T01:26:24.770482+00:00"
+      },
+      {
+        "index": 1305,
+        "generation": 463,
+        "continuation_generation": 111,
+        "candidate_id": "gen-111-i0-w0-a0-dfff5b3d79fb5907",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.6359773947546574,
+        "sum_radii": 2.6359773947546574,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T01:27:53.877549+00:00"
+      },
+      {
+        "index": 1306,
+        "generation": 463,
+        "continuation_generation": 111,
+        "candidate_id": "gen-111-i1-w1-a0-6c24d51383e096c7",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T01:27:53.880599+00:00"
+      },
+      {
+        "index": 1307,
+        "generation": 464,
+        "continuation_generation": 112,
+        "candidate_id": "gen-112-i0-w0-a0-11c76d35f623b87c",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.6359773947546574,
+        "sum_radii": 2.6359773947546574,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T01:29:58.067356+00:00"
+      },
+      {
+        "index": 1308,
+        "generation": 465,
+        "continuation_generation": 113,
+        "candidate_id": "gen-113-i0-w0-a0-666cc4f392a6ed07",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T01:39:47.626642+00:00"
+      },
+      {
+        "index": 1309,
+        "generation": 466,
+        "continuation_generation": 114,
+        "candidate_id": "gen-114-i0-w0-a0-e7b341558a2580eb",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635977394754433,
+        "sum_radii": 2.635977394754433,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T01:41:16.259092+00:00"
+      },
+      {
+        "index": 1310,
+        "generation": 466,
+        "continuation_generation": 114,
+        "candidate_id": "gen-114-i1-w1-a0-b537fbc0409cba42",
+        "parent_id": "gen-29-i1-w1-a0-788925b785c6c66e",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T01:41:16.262306+00:00"
+      },
+      {
+        "index": 1311,
+        "generation": 467,
+        "continuation_generation": 115,
+        "candidate_id": "gen-115-i0-w0-a0-dcdaded009998e6a",
+        "parent_id": "gen-80-i0-w0-a0-65cbd022c38f3ba5",
+        "score": -2.6359830849039736,
+        "sum_radii": 2.6359830849039736,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T01:44:22.137672+00:00"
+      },
+      {
+        "index": 1312,
+        "generation": 467,
+        "continuation_generation": 115,
+        "candidate_id": "gen-115-i1-w1-a0-2ff87dee3629095c",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T01:44:22.141076+00:00"
+      },
+      {
+        "index": 1313,
+        "generation": 468,
+        "continuation_generation": 116,
+        "candidate_id": "gen-116-i0-w0-a0-3bab8ba62a6cec89",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T01:49:23.410076+00:00"
+      },
+      {
+        "index": 1314,
+        "generation": 468,
+        "continuation_generation": 116,
+        "candidate_id": "gen-116-i1-w1-a0-2e9f9775765e25db",
+        "parent_id": "gen-11-i1-w1-a0-32619c2fc831fab2",
+        "score": -2.6025999999999994e-05,
+        "sum_radii": 2.6025999999999994e-05,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-26T01:49:23.413685+00:00"
+      },
+      {
+        "index": 1315,
+        "generation": 469,
+        "continuation_generation": 117,
+        "candidate_id": "gen-117-i0-w0-a0-146df911d771d412",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-26T01:52:50.942413+00:00"
+      },
+      {
+        "index": 1316,
+        "generation": 470,
+        "continuation_generation": 118,
+        "candidate_id": "gen-118-i0-w0-a0-3f73f05de7aefbae",
+        "parent_id": "gen-4-i0-w0-a0-ad230e99299fefba",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-26T01:54:37.417243+00:00"
+      },
+      {
+        "index": 1317,
+        "generation": 470,
+        "continuation_generation": 118,
+        "candidate_id": "gen-118-i1-w1-a0-de7be2fc4bcc8497",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6040092418424816,
+        "sum_radii": 2.6040092418424816,
+        "run_label": "seeded-continuation",
+        "operator": "crossover",
+        "timestamp": "2026-05-26T01:54:37.420441+00:00"
+      },
+      {
+        "index": 1318,
+        "generation": 471,
+        "continuation_generation": 119,
+        "candidate_id": "gen-119-i0-w0-a0-a55913e3e499a679",
+        "parent_id": "gen-80-i0-w0-a0-65cbd022c38f3ba5",
+        "score": -1.6396406309994176,
+        "sum_radii": 1.6396406309994176,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-26T01:56:06.814144+00:00"
+      },
+      {
+        "index": 1319,
+        "generation": 471,
+        "continuation_generation": 119,
+        "candidate_id": "gen-119-i1-w1-a0-cbdd3ba1835131eb",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -1.6034343583229476,
+        "sum_radii": 1.6034343583229476,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-26T01:56:06.817425+00:00"
+      },
+      {
+        "index": 1320,
+        "generation": 472,
+        "continuation_generation": 120,
+        "candidate_id": "gen-120-i0-w0-a0-866cc923fa1c4309",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-26T02:06:36.530207+00:00"
+      },
+      {
+        "index": 1321,
+        "generation": 473,
+        "continuation_generation": 121,
+        "candidate_id": "gen-121-i0-w0-a0-4c6489e3a167b21c",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-26T02:08:13.666153+00:00"
+      },
+      {
+        "index": 1322,
+        "generation": 473,
+        "continuation_generation": 121,
+        "candidate_id": "gen-121-i1-w1-a0-5afd7a06f9ed53bd",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947546574,
+        "sum_radii": 2.6359773947546574,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-26T02:08:13.669275+00:00"
+      },
+      {
+        "index": 1323,
+        "generation": 474,
+        "continuation_generation": 122,
+        "candidate_id": "gen-122-i0-w0-a0-258645a95476c006",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-26T02:17:26.395216+00:00"
+      },
+      {
+        "index": 1324,
+        "generation": 474,
+        "continuation_generation": 122,
+        "candidate_id": "gen-122-i1-w1-a0-172d26b8e1ed2037",
+        "parent_id": "gen-85-i1-w1-a0-8a109d816d5f1f12",
+        "score": -2.635977394754261,
+        "sum_radii": 2.635977394754261,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-26T02:17:26.397815+00:00"
+      },
+      {
+        "index": 1325,
+        "generation": 475,
+        "continuation_generation": 123,
+        "candidate_id": "gen-123-i1-w1-a0-f8bea3a5eb843c81",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.635977394754394,
+        "sum_radii": 2.635977394754394,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T02:19:37.199013+00:00"
+      },
+      {
+        "index": 1326,
+        "generation": 476,
+        "continuation_generation": 124,
+        "candidate_id": "gen-124-i0-w0-a0-4775b7b41453004d",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T02:28:56.243120+00:00"
+      },
+      {
+        "index": 1327,
+        "generation": 476,
+        "continuation_generation": 124,
+        "candidate_id": "gen-124-i1-w1-a0-e068f25d248d5621",
+        "parent_id": "gen-101-i1-w1-a0-23102dae73878f59",
+        "score": -2.6040092418424816,
+        "sum_radii": 2.6040092418424816,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T02:28:56.245698+00:00"
+      },
+      {
+        "index": 1328,
+        "generation": 477,
+        "continuation_generation": 125,
+        "candidate_id": "gen-125-i1-w1-a0-d155070f61f11f79",
+        "parent_id": "gen-29-i1-w1-a0-788925b785c6c66e",
+        "score": -2.5785146298024135,
+        "sum_radii": 2.5785146298024135,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T02:32:00.631876+00:00"
+      },
+      {
+        "index": 1329,
+        "generation": 478,
+        "continuation_generation": 126,
+        "candidate_id": "gen-126-i0-w0-a0-4e1a1c1168d44675",
+        "parent_id": "gen-109-i0-w0-a0-53fcf80a02b5d2d0",
+        "score": -1.735459415460184,
+        "sum_radii": 1.735459415460184,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T02:34:19.477007+00:00"
+      },
+      {
+        "index": 1330,
+        "generation": 478,
+        "continuation_generation": 126,
+        "candidate_id": "gen-126-i1-w1-a0-41b7855b91d7ceb0",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.635286372688043,
+        "sum_radii": 2.635286372688043,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T02:34:19.480731+00:00"
+      },
+      {
+        "index": 1331,
+        "generation": 479,
+        "continuation_generation": 127,
+        "candidate_id": "gen-127-i0-w0-a0-54b6b16050905c4e",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.6358957385818083,
+        "sum_radii": 2.6358957385818083,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T02:37:45.394738+00:00"
+      },
+      {
+        "index": 1332,
+        "generation": 480,
+        "continuation_generation": 128,
+        "candidate_id": "gen-128-i0-w0-a0-0b856fc07fcf7648",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.6359773947546574,
+        "sum_radii": 2.6359773947546574,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T02:47:22.291749+00:00"
+      },
+      {
+        "index": 1333,
+        "generation": 480,
+        "continuation_generation": 128,
+        "candidate_id": "gen-128-i1-w1-a0-95ddc001df6f1f8b",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T02:47:22.295159+00:00"
+      },
+      {
+        "index": 1334,
+        "generation": 482,
+        "continuation_generation": 130,
+        "candidate_id": "gen-130-i0-w0-a0-c1f4c1a61fa4d1ec",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T02:51:53.497019+00:00"
+      },
+      {
+        "index": 1335,
+        "generation": 482,
+        "continuation_generation": 130,
+        "candidate_id": "gen-130-i1-w1-a0-d3e293845e2afcd4",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -1.6856854249492381,
+        "sum_radii": 1.6856854249492381,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T02:51:53.500453+00:00"
+      },
+      {
+        "index": 1336,
+        "generation": 483,
+        "continuation_generation": 131,
+        "candidate_id": "gen-131-i0-w0-a0-1b34aa65187bac53",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.6359830849176182,
+        "sum_radii": 2.6359830849176182,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T03:01:30.309021+00:00"
+      },
+      {
+        "index": 1337,
+        "generation": 483,
+        "continuation_generation": 131,
+        "candidate_id": "gen-131-i1-w1-a0-bce2f5089b25597e",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947543683,
+        "sum_radii": 2.6359773947543683,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T03:01:30.312762+00:00"
+      },
+      {
+        "index": 1338,
+        "generation": 484,
+        "continuation_generation": 132,
+        "candidate_id": "gen-132-i0-w0-a0-912c967113f9a3ac",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T03:06:52.068233+00:00"
+      },
+      {
+        "index": 1339,
+        "generation": 484,
+        "continuation_generation": 132,
+        "candidate_id": "gen-132-i1-w1-a0-13b7bd72f37a8450",
+        "parent_id": "gen-29-i1-w1-a0-788925b785c6c66e",
+        "score": -2.6065264295290054,
+        "sum_radii": 2.6065264295290054,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T03:06:52.072119+00:00"
+      },
+      {
+        "index": 1340,
+        "generation": 485,
+        "continuation_generation": 133,
+        "candidate_id": "gen-133-i0-w0-a0-316cf509366e082b",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T03:08:08.190099+00:00"
+      },
+      {
+        "index": 1341,
+        "generation": 485,
+        "continuation_generation": 133,
+        "candidate_id": "gen-133-i1-w1-a0-0a230f274bfde81c",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T03:08:08.193542+00:00"
+      },
+      {
+        "index": 1342,
+        "generation": 486,
+        "continuation_generation": 134,
+        "candidate_id": "gen-134-i0-w0-a0-718cb03fe8b84053",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T03:12:01.881270+00:00"
+      },
+      {
+        "index": 1343,
+        "generation": 487,
+        "continuation_generation": 135,
+        "candidate_id": "gen-135-i0-w0-a0-5936b5adf2b9b01b",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T03:13:36.071772+00:00"
+      },
+      {
+        "index": 1344,
+        "generation": 487,
+        "continuation_generation": 135,
+        "candidate_id": "gen-135-i1-w1-a0-3a5962d5e0a42540",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T03:13:36.075277+00:00"
+      },
+      {
+        "index": 1345,
+        "generation": 488,
+        "continuation_generation": 136,
+        "candidate_id": "gen-136-i0-w0-a0-211aa7df57d06cfe",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T03:17:03.252411+00:00"
+      },
+      {
+        "index": 1346,
+        "generation": 489,
+        "continuation_generation": 137,
+        "candidate_id": "gen-137-i0-w0-a0-956616768c72edb5",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.621760872747679,
+        "sum_radii": 2.621760872747679,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T03:36:18.119546+00:00"
+      },
+      {
+        "index": 1347,
+        "generation": 490,
+        "continuation_generation": 138,
+        "candidate_id": "gen-138-i0-w0-a0-dd09e64b9edcd8dd",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T03:38:04.639713+00:00"
+      },
+      {
+        "index": 1348,
+        "generation": 490,
+        "continuation_generation": 138,
+        "candidate_id": "gen-138-i1-w1-a0-37c18e91d4632dbc",
+        "parent_id": "gen-29-i1-w1-a0-788925b785c6c66e",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T03:38:04.643248+00:00"
+      },
+      {
+        "index": 1349,
+        "generation": 491,
+        "continuation_generation": 139,
+        "candidate_id": "gen-139-i1-w1-a0-bd6e3395a4321be4",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.295417501176888,
+        "sum_radii": 2.295417501176888,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T03:40:13.928957+00:00"
+      },
+      {
+        "index": 1350,
+        "generation": 492,
+        "continuation_generation": 140,
+        "candidate_id": "gen-140-i0-w0-a0-4c2bdcf0c80d945e",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.6354501992754784,
+        "sum_radii": 2.6354501992754784,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T03:42:52.987560+00:00"
+      },
+      {
+        "index": 1351,
+        "generation": 493,
+        "continuation_generation": 141,
+        "candidate_id": "gen-141-i0-w0-a0-930efbb38cf0ac07",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T03:44:35.306737+00:00"
+      },
+      {
+        "index": 1352,
+        "generation": 493,
+        "continuation_generation": 141,
+        "candidate_id": "gen-141-i1-w1-a0-0c60556539a58258",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.635977394754394,
+        "sum_radii": 2.635977394754394,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T03:44:35.310251+00:00"
+      },
+      {
+        "index": 1353,
+        "generation": 494,
+        "continuation_generation": 142,
+        "candidate_id": "gen-142-i0-w0-a0-4ecfb79af7b242f7",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.6359773947546574,
+        "sum_radii": 2.6359773947546574,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T03:46:47.322148+00:00"
+      },
+      {
+        "index": 1354,
+        "generation": 495,
+        "continuation_generation": 143,
+        "candidate_id": "gen-143-i0-w0-a0-ea550766b469e2b2",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T03:49:23.503087+00:00"
+      },
+      {
+        "index": 1355,
+        "generation": 495,
+        "continuation_generation": 143,
+        "candidate_id": "gen-143-i1-w1-a0-75ac05d20abb1638",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947543887,
+        "sum_radii": 2.6359773947543887,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T03:49:23.506750+00:00"
+      },
+      {
+        "index": 1356,
+        "generation": 496,
+        "continuation_generation": 144,
+        "candidate_id": "gen-144-i0-w0-a0-be715cf3f5346c2b",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.571775893344522,
+        "sum_radii": 2.571775893344522,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T03:52:30.585269+00:00"
+      },
+      {
+        "index": 1357,
+        "generation": 496,
+        "continuation_generation": 144,
+        "candidate_id": "gen-144-i1-w1-a0-c3a436ba4368a1f8",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T03:52:30.588922+00:00"
+      },
+      {
+        "index": 1358,
+        "generation": 497,
+        "continuation_generation": 145,
+        "candidate_id": "gen-145-i0-w0-a0-6e464830361d5cb2",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T04:01:49.535491+00:00"
+      },
+      {
+        "index": 1359,
+        "generation": 497,
+        "continuation_generation": 145,
+        "candidate_id": "gen-145-i1-w1-a0-80e7e6310e75f432",
+        "parent_id": "gen-85-i1-w1-a0-8a109d816d5f1f12",
+        "score": -2.635977394754261,
+        "sum_radii": 2.635977394754261,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T04:01:49.538376+00:00"
+      },
+      {
+        "index": 1360,
+        "generation": 498,
+        "continuation_generation": 146,
+        "candidate_id": "gen-146-i0-w0-a0-f20bd8b4c94e7a30",
+        "parent_id": "gen-109-i0-w0-a0-53fcf80a02b5d2d0",
+        "score": -2.548616189895464,
+        "sum_radii": 2.548616189895464,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T04:04:38.405565+00:00"
+      },
+      {
+        "index": 1361,
+        "generation": 499,
+        "continuation_generation": 147,
+        "candidate_id": "gen-147-i0-w0-a0-fbaabc254aa6ec30",
+        "parent_id": "gen-131-i0-w0-a0-1b34aa65187bac53",
+        "score": -2.571342195386294,
+        "sum_radii": 2.571342195386294,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T04:06:03.130110+00:00"
+      },
+      {
+        "index": 1362,
+        "generation": 499,
+        "continuation_generation": 147,
+        "candidate_id": "gen-147-i1-w1-a0-5d40827ec0d66c36",
+        "parent_id": "gen-108-i1-w1-a0-ef52c1d546048de9",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T04:06:03.133772+00:00"
+      },
+      {
+        "index": 1363,
+        "generation": 500,
+        "continuation_generation": 148,
+        "candidate_id": "gen-148-i0-w0-a0-23a3c06a4b8acc5b",
+        "parent_id": "gen-131-i0-w0-a0-1b34aa65187bac53",
+        "score": -2.6359830849176182,
+        "sum_radii": 2.6359830849176182,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-26T04:15:28.424883+00:00"
+      },
+      {
+        "index": 1364,
+        "generation": 500,
+        "continuation_generation": 148,
+        "candidate_id": "gen-148-i1-w1-a0-48065d2725a341d7",
+        "parent_id": "gen-85-i1-w1-a0-8a109d816d5f1f12",
+        "score": -2.635977394754261,
+        "sum_radii": 2.635977394754261,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T04:15:28.427824+00:00"
+      },
+      {
+        "index": 1365,
+        "generation": 501,
+        "continuation_generation": 149,
+        "candidate_id": "gen-149-i0-w0-a0-13638b31b4003f69",
+        "parent_id": "gen-131-i0-w0-a0-1b34aa65187bac53",
+        "score": -2.635977394754804,
+        "sum_radii": 2.635977394754804,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T04:17:11.449984+00:00"
+      },
+      {
+        "index": 1366,
+        "generation": 501,
+        "continuation_generation": 149,
+        "candidate_id": "gen-149-i1-w1-a0-18c0a6be8fdde468",
+        "parent_id": "gen-11-i1-w1-a0-32619c2fc831fab2",
+        "score": -2.6359773947543896,
+        "sum_radii": 2.6359773947543896,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T04:17:11.452946+00:00"
+      },
+      {
+        "index": 1367,
+        "generation": 502,
+        "continuation_generation": 150,
+        "candidate_id": "gen-150-i0-w0-a0-5b9e572f1320f3af",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.5826219850590113,
+        "sum_radii": 2.5826219850590113,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T04:18:48.412517+00:00"
+      },
+      {
+        "index": 1368,
+        "generation": 502,
+        "continuation_generation": 150,
+        "candidate_id": "gen-150-i1-w1-a0-67dd5fc98539d0ce",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.635977394754574,
+        "sum_radii": 2.635977394754574,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T04:18:48.415986+00:00"
+      },
+      {
+        "index": 1369,
+        "generation": 503,
+        "continuation_generation": 151,
+        "candidate_id": "gen-151-i0-w0-a0-745fdc6ffa6533a3",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.596344639724722,
+        "sum_radii": 2.596344639724722,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T04:21:08.005795+00:00"
+      },
+      {
+        "index": 1370,
+        "generation": 505,
+        "continuation_generation": 153,
+        "candidate_id": "gen-153-i0-w0-a0-ab211061923a05bb",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.521591843060828,
+        "sum_radii": 2.521591843060828,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T04:26:57.812972+00:00"
+      },
+      {
+        "index": 1371,
+        "generation": 506,
+        "continuation_generation": 154,
+        "candidate_id": "gen-154-i0-w0-a0-2ce04c5bad8acf97",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.535642713886618,
+        "sum_radii": 2.535642713886618,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T04:28:17.345110+00:00"
+      },
+      {
+        "index": 1372,
+        "generation": 506,
+        "continuation_generation": 154,
+        "candidate_id": "gen-154-i1-w1-a0-13646e74d508a4a7",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-26T04:28:17.348644+00:00"
+      },
+      {
+        "index": 1373,
+        "generation": 507,
+        "continuation_generation": 155,
+        "candidate_id": "gen-155-i0-w0-a0-158baf60dd3a4fa8",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T04:30:01.270277+00:00"
+      },
+      {
+        "index": 1374,
+        "generation": 507,
+        "continuation_generation": 155,
+        "candidate_id": "gen-155-i1-w1-a0-4b692eed3c8dabf9",
+        "parent_id": "gen-126-i1-w1-a0-41b7855b91d7ceb0",
+        "score": -2.5165483176925285,
+        "sum_radii": 2.5165483176925285,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T04:30:01.273402+00:00"
+      },
+      {
+        "index": 1375,
+        "generation": 508,
+        "continuation_generation": 156,
+        "candidate_id": "gen-156-i0-w0-a0-795925fd3b5ecb53",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T04:32:41.602864+00:00"
+      },
+      {
+        "index": 1376,
+        "generation": 509,
+        "continuation_generation": 157,
+        "candidate_id": "gen-157-i0-w0-a0-fe6c7cb2f2cd06c1",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084917666,
+        "sum_radii": 2.635983084917666,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T04:35:13.017704+00:00"
+      },
+      {
+        "index": 1377,
+        "generation": 510,
+        "continuation_generation": 158,
+        "candidate_id": "gen-158-i0-w0-a0-d66434b3e3137aff",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T04:36:43.201119+00:00"
+      },
+      {
+        "index": 1378,
+        "generation": 510,
+        "continuation_generation": 158,
+        "candidate_id": "gen-158-i1-w1-a0-1d09aed676f652c6",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359773947546574,
+        "sum_radii": 2.6359773947546574,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T04:36:43.204698+00:00"
+      },
+      {
+        "index": 1379,
+        "generation": 511,
+        "continuation_generation": 159,
+        "candidate_id": "gen-159-i0-w0-a0-9445bf1bcc4867d4",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.544444371919746,
+        "sum_radii": 2.544444371919746,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T04:39:51.619224+00:00"
+      },
+      {
+        "index": 1380,
+        "generation": 512,
+        "continuation_generation": 160,
+        "candidate_id": "gen-160-i1-w1-a0-5889788f74bbec60",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.635977394754327,
+        "sum_radii": 2.635977394754327,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T04:42:51.239943+00:00"
+      },
+      {
+        "index": 1381,
+        "generation": 513,
+        "continuation_generation": 161,
+        "candidate_id": "gen-161-i0-w0-a0-cbda8fc052dd55f7",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.374630179326722,
+        "sum_radii": 2.374630179326722,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T04:45:29.464086+00:00"
+      },
+      {
+        "index": 1382,
+        "generation": 514,
+        "continuation_generation": 162,
+        "candidate_id": "gen-162-i0-w0-a0-ed84c77ba0727de3",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T04:47:12.646871+00:00"
+      },
+      {
+        "index": 1383,
+        "generation": 514,
+        "continuation_generation": 162,
+        "candidate_id": "gen-162-i1-w1-a0-6a637720b54dcbd4",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.635977394754424,
+        "sum_radii": 2.635977394754424,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T04:47:12.650494+00:00"
+      },
+      {
+        "index": 1384,
+        "generation": 516,
+        "continuation_generation": 164,
+        "candidate_id": "gen-164-i0-w0-a0-420fac4d0aaf20bb",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.6354501992756787,
+        "sum_radii": 2.6354501992756787,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T05:01:42.196050+00:00"
+      },
+      {
+        "index": 1385,
+        "generation": 516,
+        "continuation_generation": 164,
+        "candidate_id": "gen-164-i1-w1-a0-85e3f53b953efc21",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.514894859321012,
+        "sum_radii": 2.514894859321012,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T05:01:42.199716+00:00"
+      },
+      {
+        "index": 1386,
+        "generation": 517,
+        "continuation_generation": 165,
+        "candidate_id": "gen-165-i0-w0-a0-95160fa08ed58f34",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.6359773947546574,
+        "sum_radii": 2.6359773947546574,
+        "run_label": "seeded-continuation",
+        "operator": "refine",
+        "timestamp": "2026-05-26T05:04:06.584923+00:00"
+      },
+      {
+        "index": 1387,
+        "generation": 518,
+        "continuation_generation": 166,
+        "candidate_id": "gen-166-i0-w0-a0-c145aec49173bbf8",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.6359773947546574,
+        "sum_radii": 2.6359773947546574,
+        "run_label": "seeded-continuation",
+        "operator": "refine",
+        "timestamp": "2026-05-26T05:06:29.912987+00:00"
+      },
+      {
+        "index": 1388,
+        "generation": 518,
+        "continuation_generation": 166,
+        "candidate_id": "gen-166-i1-w1-a0-a2174f8712e00dee",
+        "parent_id": "gen-85-i1-w1-a0-8a109d816d5f1f12",
+        "score": -2.5421115912951544,
+        "sum_radii": 2.5421115912951544,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T05:06:29.916082+00:00"
+      },
+      {
+        "index": 1389,
+        "generation": 519,
+        "continuation_generation": 167,
+        "candidate_id": "gen-167-i0-w0-a0-656d9d59eb30e8a9",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "refine",
+        "timestamp": "2026-05-26T05:10:00.919362+00:00"
+      },
+      {
+        "index": 1390,
+        "generation": 520,
+        "continuation_generation": 168,
+        "candidate_id": "gen-168-i0-w0-a0-25e7c566c9e69a8b",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T05:13:29.368204+00:00"
+      },
+      {
+        "index": 1391,
+        "generation": 521,
+        "continuation_generation": 169,
+        "candidate_id": "gen-169-i0-w0-a0-40c1ce3c6515c3cc",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.5690658172189207,
+        "sum_radii": 2.5690658172189207,
+        "run_label": "seeded-continuation",
+        "operator": "refine",
+        "timestamp": "2026-05-26T05:15:35.137781+00:00"
+      },
+      {
+        "index": 1392,
+        "generation": 521,
+        "continuation_generation": 169,
+        "candidate_id": "gen-169-i1-w1-a0-336dd8c8824f77b5",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T05:15:35.141326+00:00"
+      },
+      {
+        "index": 1393,
+        "generation": 522,
+        "continuation_generation": 170,
+        "candidate_id": "gen-170-i0-w0-a0-ad571690950a27e7",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T05:18:04.287902+00:00"
+      },
+      {
+        "index": 1394,
+        "generation": 523,
+        "continuation_generation": 171,
+        "candidate_id": "gen-171-i0-w0-a0-0653ac08b6b84061",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T05:19:43.476098+00:00"
+      },
+      {
+        "index": 1395,
+        "generation": 523,
+        "continuation_generation": 171,
+        "candidate_id": "gen-171-i1-w1-a0-76e4b5df63c3c743",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3344781461333612,
+        "sum_radii": 2.3344781461333612,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T05:19:43.479797+00:00"
+      },
+      {
+        "index": 1396,
+        "generation": 524,
+        "continuation_generation": 172,
+        "candidate_id": "gen-172-i0-w0-a0-c3ea26ab121efd38",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T05:28:58.188999+00:00"
+      },
+      {
+        "index": 1397,
+        "generation": 524,
+        "continuation_generation": 172,
+        "candidate_id": "gen-172-i1-w1-a0-2fcbe2576ccecc20",
+        "parent_id": "gen-29-i1-w1-a0-788925b785c6c66e",
+        "score": -2.6359773947546574,
+        "sum_radii": 2.6359773947546574,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T05:28:58.192732+00:00"
+      },
+      {
+        "index": 1398,
+        "generation": 525,
+        "continuation_generation": 173,
+        "candidate_id": "gen-173-i0-w0-a0-b5ff7ef2eea99ee5",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T06:02:03.190963+00:00"
+      },
+      {
+        "index": 1399,
+        "generation": 526,
+        "continuation_generation": 174,
+        "candidate_id": "gen-174-i0-w0-a0-5cce07c16285c6bc",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T06:03:48.806649+00:00"
+      },
+      {
+        "index": 1400,
+        "generation": 526,
+        "continuation_generation": 174,
+        "candidate_id": "gen-174-i1-w1-a0-65308c5e5f5886d8",
+        "parent_id": "gen-160-i1-w1-a0-5889788f74bbec60",
+        "score": -2.635977394754327,
+        "sum_radii": 2.635977394754327,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T06:03:48.810450+00:00"
+      },
+      {
+        "index": 1401,
+        "generation": 527,
+        "continuation_generation": 175,
+        "candidate_id": "gen-175-i0-w0-a0-edc9200cbc160d08",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T06:07:45.205731+00:00"
+      },
+      {
+        "index": 1402,
+        "generation": 528,
+        "continuation_generation": 176,
+        "candidate_id": "gen-176-i0-w0-a0-fd4764799c755583",
+        "parent_id": "gen-80-i0-w0-a0-65cbd022c38f3ba5",
+        "score": -2.6359773947546574,
+        "sum_radii": 2.6359773947546574,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T06:16:52.483197+00:00"
+      },
+      {
+        "index": 1403,
+        "generation": 528,
+        "continuation_generation": 176,
+        "candidate_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "parent_id": "gen-160-i1-w1-a0-5889788f74bbec60",
+        "score": -2.635977394754327,
+        "sum_radii": 2.635977394754327,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T06:16:52.486092+00:00"
+      },
+      {
+        "index": 1404,
+        "generation": 529,
+        "continuation_generation": 177,
+        "candidate_id": "gen-177-i0-w0-a0-11a87a570d6202ac",
+        "parent_id": "gen-80-i0-w0-a0-65cbd022c38f3ba5",
+        "score": -2.593476395946547,
+        "sum_radii": 2.593476395946547,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T06:18:26.584267+00:00"
+      },
+      {
+        "index": 1405,
+        "generation": 529,
+        "continuation_generation": 177,
+        "candidate_id": "gen-177-i1-w1-a0-47200a64493a24d6",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -1.0070201568426937,
+        "sum_radii": 1.0070201568426937,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T06:18:26.587901+00:00"
+      },
+      {
+        "index": 1406,
+        "generation": 530,
+        "continuation_generation": 178,
+        "candidate_id": "gen-178-i0-w0-a0-ed2ab7139ec290b9",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.6359773942279685,
+        "sum_radii": 2.6359773942279685,
+        "run_label": "seeded-continuation",
+        "operator": "simplify",
+        "timestamp": "2026-05-26T06:45:19.444358+00:00"
+      },
+      {
+        "index": 1407,
+        "generation": 531,
+        "continuation_generation": 179,
+        "candidate_id": "gen-179-i0-w0-a0-2e1bf26fc3dc3ff1",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T06:47:54.539997+00:00"
+      },
+      {
+        "index": 1408,
+        "generation": 531,
+        "continuation_generation": 179,
+        "candidate_id": "gen-179-i1-w1-a0-3977ac799842be93",
+        "parent_id": "gen-160-i1-w1-a0-5889788f74bbec60",
+        "score": -2.6359773947546574,
+        "sum_radii": 2.6359773947546574,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T06:47:54.543644+00:00"
+      },
+      {
+        "index": 1409,
+        "generation": 532,
+        "continuation_generation": 180,
+        "candidate_id": "gen-180-i0-w0-a0-4b362049ccb24097",
+        "parent_id": "gen-80-i0-w0-a0-65cbd022c38f3ba5",
+        "score": -2.2082048052408467,
+        "sum_radii": 2.2082048052408467,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T06:51:25.774689+00:00"
+      },
+      {
+        "index": 1410,
+        "generation": 532,
+        "continuation_generation": 180,
+        "candidate_id": "gen-180-i1-w1-a0-0ceb46b696202fed",
+        "parent_id": "gen-101-i1-w1-a0-23102dae73878f59",
+        "score": -2.6359773947543723,
+        "sum_radii": 2.6359773947543723,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T06:51:25.778645+00:00"
+      },
+      {
+        "index": 1411,
+        "generation": 533,
+        "continuation_generation": 181,
+        "candidate_id": "gen-181-i0-w0-a0-f775e8a22184cd37",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635977394754261,
+        "sum_radii": 2.635977394754261,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T06:53:01.005867+00:00"
+      },
+      {
+        "index": 1412,
+        "generation": 533,
+        "continuation_generation": 181,
+        "candidate_id": "gen-181-i1-w1-a0-6975216d45ec8bb2",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.635977394754392,
+        "sum_radii": 2.635977394754392,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T06:53:01.009332+00:00"
+      },
+      {
+        "index": 1413,
+        "generation": 534,
+        "continuation_generation": 182,
+        "candidate_id": "gen-182-i0-w0-a0-ce4327da6b9b0197",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "refine",
+        "timestamp": "2026-05-26T06:55:28.043947+00:00"
+      },
+      {
+        "index": 1414,
+        "generation": 535,
+        "continuation_generation": 183,
+        "candidate_id": "gen-183-i0-w0-a0-b7331924425b7673",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T06:58:58.232978+00:00"
+      },
+      {
+        "index": 1415,
+        "generation": 536,
+        "continuation_generation": 184,
+        "candidate_id": "gen-184-i0-w0-a0-03c5b8e028017aba",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T07:02:06.578546+00:00"
+      },
+      {
+        "index": 1416,
+        "generation": 536,
+        "continuation_generation": 184,
+        "candidate_id": "gen-184-i1-w1-a0-6c9f100af01ee98b",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.346677160145478,
+        "sum_radii": 2.346677160145478,
+        "run_label": "seeded-continuation",
+        "operator": "crossover",
+        "timestamp": "2026-05-26T07:02:06.582193+00:00"
+      },
+      {
+        "index": 1417,
+        "generation": 537,
+        "continuation_generation": 185,
+        "candidate_id": "gen-185-i0-w0-a0-a30f1bc19f346d5a",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T07:20:14.021440+00:00"
+      },
+      {
+        "index": 1418,
+        "generation": 538,
+        "continuation_generation": 186,
+        "candidate_id": "gen-186-i0-w0-a0-93fe5207fe3a7a76",
+        "parent_id": "gen-80-i0-w0-a0-65cbd022c38f3ba5",
+        "score": -2.6359830849039736,
+        "sum_radii": 2.6359830849039736,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T07:30:30.076836+00:00"
+      },
+      {
+        "index": 1419,
+        "generation": 538,
+        "continuation_generation": 186,
+        "candidate_id": "gen-186-i1-w1-a0-515338b18347eddb",
+        "parent_id": "gen-29-i1-w1-a0-788925b785c6c66e",
+        "score": -2.6359773947546574,
+        "sum_radii": 2.6359773947546574,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T07:30:30.080457+00:00"
+      },
+      {
+        "index": 1420,
+        "generation": 540,
+        "continuation_generation": 188,
+        "candidate_id": "gen-188-i0-w0-a0-1cb38e99230706da",
+        "parent_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T07:35:49.725148+00:00"
+      },
+      {
+        "index": 1421,
+        "generation": 540,
+        "continuation_generation": 188,
+        "candidate_id": "gen-188-i1-w1-a0-82b704cd0155d72e",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.3739284850925566,
+        "sum_radii": 2.3739284850925566,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T07:35:49.728831+00:00"
+      },
+      {
+        "index": 1422,
+        "generation": 541,
+        "continuation_generation": 189,
+        "candidate_id": "gen-189-i0-w0-a0-183ed7c0aa60f6e3",
+        "parent_id": "gen-109-i0-w0-a0-53fcf80a02b5d2d0",
+        "score": -2.547677467694845,
+        "sum_radii": 2.547677467694845,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T07:37:32.356594+00:00"
+      },
+      {
+        "index": 1423,
+        "generation": 541,
+        "continuation_generation": 189,
+        "candidate_id": "gen-189-i1-w1-a0-3b514aa6b0c5f426",
+        "parent_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+        "score": -2.6359830849768984,
+        "sum_radii": 2.6359830849768984,
+        "run_label": "seeded-continuation",
+        "operator": "mutate",
+        "timestamp": "2026-05-26T07:37:32.360457+00:00"
       }
     ],
     "best_by_generation": [
       {
         "generation": 0,
+        "candidate_id": "program.py@4ffbc1f783ddfa8fe3108afd0d7414e3cfefa354",
+        "score": -0.9597783591318301,
         "sum_radii": 0.9597783591318301
       },
       {
         "generation": 1,
+        "candidate_id": "gen-1-i1-w3-a0-2f9885e8a9babfe4",
+        "score": -2.4389662673796346,
         "sum_radii": 2.4389662673796346
       },
       {
         "generation": 2,
+        "candidate_id": "gen-1-i1-w3-a0-2f9885e8a9babfe4",
+        "score": -2.4389662673796346,
         "sum_radii": 2.4389662673796346
       },
       {
         "generation": 3,
+        "candidate_id": "gen-1-i1-w3-a0-2f9885e8a9babfe4",
+        "score": -2.4389662673796346,
         "sum_radii": 2.4389662673796346
       },
       {
         "generation": 4,
+        "candidate_id": "gen-1-i1-w3-a0-2f9885e8a9babfe4",
+        "score": -2.4389662673796346,
         "sum_radii": 2.4389662673796346
       },
       {
         "generation": 5,
+        "candidate_id": "gen-1-i1-w3-a0-2f9885e8a9babfe4",
+        "score": -2.4389662673796346,
         "sum_radii": 2.4389662673796346
       },
       {
         "generation": 6,
+        "candidate_id": "gen-6-i1-w3-a0-cc432eba69902a21",
+        "score": -2.546258975927309,
         "sum_radii": 2.546258975927309
       },
       {
         "generation": 7,
+        "candidate_id": "gen-6-i1-w3-a0-cc432eba69902a21",
+        "score": -2.546258975927309,
         "sum_radii": 2.546258975927309
       },
       {
         "generation": 8,
+        "candidate_id": "gen-6-i1-w3-a0-cc432eba69902a21",
+        "score": -2.546258975927309,
         "sum_radii": 2.546258975927309
       },
       {
         "generation": 9,
+        "candidate_id": "gen-6-i1-w3-a0-cc432eba69902a21",
+        "score": -2.546258975927309,
         "sum_radii": 2.546258975927309
       },
       {
         "generation": 10,
+        "candidate_id": "gen-10-i1-w1-a0-ba99003c691e4e70",
+        "score": -2.617321682048581,
         "sum_radii": 2.617321682048581
       },
       {
         "generation": 11,
+        "candidate_id": "gen-11-i1-w1-a0-32619c2fc831fab2",
+        "score": -2.6173216820650103,
         "sum_radii": 2.6173216820650103
       },
       {
         "generation": 12,
+        "candidate_id": "gen-11-i1-w1-a0-32619c2fc831fab2",
+        "score": -2.6173216820650103,
         "sum_radii": 2.6173216820650103
       },
       {
         "generation": 13,
+        "candidate_id": "gen-13-i1-w3-a0-589a5a23c163a88e",
+        "score": -2.618068255734119,
         "sum_radii": 2.618068255734119
       },
       {
         "generation": 14,
+        "candidate_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "score": -2.6205145044873888,
         "sum_radii": 2.6205145044873888
       },
       {
         "generation": 15,
+        "candidate_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "score": -2.6205145044873888,
         "sum_radii": 2.6205145044873888
       },
       {
         "generation": 16,
+        "candidate_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "score": -2.6205145044873888,
         "sum_radii": 2.6205145044873888
       },
       {
         "generation": 17,
+        "candidate_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "score": -2.6205145044873888,
         "sum_radii": 2.6205145044873888
       },
       {
         "generation": 18,
+        "candidate_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "score": -2.6205145044873888,
         "sum_radii": 2.6205145044873888
       },
       {
         "generation": 19,
+        "candidate_id": "gen-14-i1-w3-a0-417d062ad0b8258f",
+        "score": -2.6205145044873888,
         "sum_radii": 2.6205145044873888
       },
       {
         "generation": 20,
+        "candidate_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "score": -2.6230682250496113,
         "sum_radii": 2.6230682250496113
       },
       {
         "generation": 21,
+        "candidate_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "score": -2.6230682250496113,
         "sum_radii": 2.6230682250496113
       },
       {
         "generation": 22,
+        "candidate_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "score": -2.6230682250496113,
         "sum_radii": 2.6230682250496113
       },
       {
         "generation": 23,
+        "candidate_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "score": -2.6230682250496113,
         "sum_radii": 2.6230682250496113
       },
       {
         "generation": 24,
+        "candidate_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "score": -2.6230682250496113,
         "sum_radii": 2.6230682250496113
       },
       {
         "generation": 25,
+        "candidate_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "score": -2.6230682250496113,
         "sum_radii": 2.6230682250496113
       },
       {
         "generation": 26,
+        "candidate_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "score": -2.6230682250496113,
         "sum_radii": 2.6230682250496113
       },
       {
         "generation": 27,
+        "candidate_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "score": -2.6230682250496113,
         "sum_radii": 2.6230682250496113
       },
       {
         "generation": 28,
+        "candidate_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "score": -2.6230682250496113,
         "sum_radii": 2.6230682250496113
       },
       {
         "generation": 29,
+        "candidate_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "score": -2.6230682250496113,
         "sum_radii": 2.6230682250496113
       },
       {
         "generation": 30,
+        "candidate_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "score": -2.6230682250496113,
         "sum_radii": 2.6230682250496113
       },
       {
         "generation": 31,
+        "candidate_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "score": -2.6230682250496113,
         "sum_radii": 2.6230682250496113
       },
       {
         "generation": 32,
+        "candidate_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "score": -2.6230682250496113,
         "sum_radii": 2.6230682250496113
       },
       {
         "generation": 33,
+        "candidate_id": "gen-20-i1-w1-a0-d65e6ea90f2b20c5",
+        "score": -2.6230682250496113,
         "sum_radii": 2.6230682250496113
       },
       {
         "generation": 34,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 35,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 36,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 37,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 38,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 39,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 40,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 41,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 42,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 43,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 44,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 45,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 46,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 47,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 48,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 49,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 50,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 51,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 52,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 53,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 54,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 55,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 56,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 57,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 58,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 59,
+        "candidate_id": "gen-34-i1-w3-a0-34e4f3b22643465c",
+        "score": -2.6230682250497566,
         "sum_radii": 2.6230682250497566
       },
       {
         "generation": 60,
+        "candidate_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "score": -2.6230682250513833,
         "sum_radii": 2.6230682250513833
       },
       {
         "generation": 61,
+        "candidate_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "score": -2.6230682250513833,
         "sum_radii": 2.6230682250513833
       },
       {
         "generation": 62,
+        "candidate_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "score": -2.6230682250513833,
         "sum_radii": 2.6230682250513833
       },
       {
         "generation": 63,
+        "candidate_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "score": -2.6230682250513833,
         "sum_radii": 2.6230682250513833
       },
       {
         "generation": 64,
+        "candidate_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "score": -2.6230682250513833,
         "sum_radii": 2.6230682250513833
       },
       {
         "generation": 65,
+        "candidate_id": "gen-60-i1-w1-a0-ec78a2b281114c23",
+        "score": -2.6230682250513833,
         "sum_radii": 2.6230682250513833
       },
       {
         "generation": 66,
+        "candidate_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "score": -2.625636752776619,
         "sum_radii": 2.625636752776619
       },
       {
         "generation": 67,
+        "candidate_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "score": -2.625636752776619,
         "sum_radii": 2.625636752776619
       },
       {
         "generation": 68,
+        "candidate_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "score": -2.625636752776619,
         "sum_radii": 2.625636752776619
       },
       {
         "generation": 69,
+        "candidate_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "score": -2.625636752776619,
         "sum_radii": 2.625636752776619
       },
       {
         "generation": 70,
+        "candidate_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "score": -2.625636752776619,
         "sum_radii": 2.625636752776619
       },
       {
         "generation": 71,
+        "candidate_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "score": -2.625636752776619,
         "sum_radii": 2.625636752776619
       },
       {
         "generation": 72,
+        "candidate_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "score": -2.625636752776619,
         "sum_radii": 2.625636752776619
       },
       {
         "generation": 73,
+        "candidate_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "score": -2.625636752776619,
         "sum_radii": 2.625636752776619
       },
       {
         "generation": 74,
+        "candidate_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "score": -2.625636752776619,
         "sum_radii": 2.625636752776619
       },
       {
         "generation": 75,
+        "candidate_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "score": -2.625636752776619,
         "sum_radii": 2.625636752776619
       },
       {
         "generation": 76,
+        "candidate_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "score": -2.625636752776619,
         "sum_radii": 2.625636752776619
       },
       {
         "generation": 77,
+        "candidate_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "score": -2.625636752776619,
         "sum_radii": 2.625636752776619
       },
       {
         "generation": 78,
+        "candidate_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "score": -2.625636752776619,
         "sum_radii": 2.625636752776619
       },
       {
         "generation": 79,
+        "candidate_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "score": -2.625636752776619,
         "sum_radii": 2.625636752776619
       },
       {
         "generation": 80,
+        "candidate_id": "gen-66-i1-w1-a0-1e7a5c6b4651acc5",
+        "score": -2.625636752776619,
         "sum_radii": 2.625636752776619
       },
       {
         "generation": 81,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 82,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 83,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 84,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 85,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 86,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 87,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 88,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 89,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 90,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 91,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 92,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 93,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 94,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 95,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 96,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 97,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 98,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 99,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 100,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 101,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 102,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 103,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 104,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 105,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 106,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 107,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 108,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 109,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 110,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 111,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 112,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 113,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 114,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 115,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 116,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 117,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 118,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 119,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 120,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 121,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 122,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 123,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 124,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 125,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 126,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 127,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 128,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 129,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 130,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 131,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 132,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 133,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 134,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 135,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 136,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 137,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 138,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 139,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 140,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 141,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 142,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 143,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 144,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 145,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 146,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 147,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 148,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 149,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 150,
+        "candidate_id": "gen-81-i1-w1-a0-790dca6b3b413fdd",
+        "score": -2.6256367527766944,
         "sum_radii": 2.6256367527766944
       },
       {
         "generation": 151,
+        "candidate_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "score": -2.629628001378367,
         "sum_radii": 2.629628001378367
       },
       {
         "generation": 152,
+        "candidate_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "score": -2.629628001378367,
         "sum_radii": 2.629628001378367
       },
       {
         "generation": 153,
+        "candidate_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "score": -2.629628001378367,
         "sum_radii": 2.629628001378367
       },
       {
         "generation": 154,
+        "candidate_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "score": -2.629628001378367,
         "sum_radii": 2.629628001378367
       },
       {
         "generation": 155,
+        "candidate_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "score": -2.629628001378367,
         "sum_radii": 2.629628001378367
       },
       {
         "generation": 156,
+        "candidate_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "score": -2.629628001378367,
         "sum_radii": 2.629628001378367
       },
       {
         "generation": 157,
+        "candidate_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "score": -2.629628001378367,
         "sum_radii": 2.629628001378367
       },
       {
         "generation": 158,
+        "candidate_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "score": -2.629628001378367,
         "sum_radii": 2.629628001378367
       },
       {
         "generation": 159,
+        "candidate_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "score": -2.629628001378367,
         "sum_radii": 2.629628001378367
       },
       {
         "generation": 160,
+        "candidate_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "score": -2.629628001378367,
         "sum_radii": 2.629628001378367
       },
       {
         "generation": 161,
+        "candidate_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "score": -2.629628001378367,
         "sum_radii": 2.629628001378367
       },
       {
         "generation": 162,
+        "candidate_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "score": -2.629628001378367,
         "sum_radii": 2.629628001378367
       },
       {
         "generation": 163,
+        "candidate_id": "gen-151-i1-w3-a0-fae0ff4de16b6652",
+        "score": -2.629628001378367,
         "sum_radii": 2.629628001378367
       },
       {
         "generation": 164,
+        "candidate_id": "gen-164-i1-w3-a0-fc80217ab0c3befd",
+        "score": -2.6296280013791566,
         "sum_radii": 2.6296280013791566
       },
       {
         "generation": 165,
+        "candidate_id": "gen-164-i1-w3-a0-fc80217ab0c3befd",
+        "score": -2.6296280013791566,
         "sum_radii": 2.6296280013791566
       },
       {
         "generation": 166,
+        "candidate_id": "gen-164-i1-w3-a0-fc80217ab0c3befd",
+        "score": -2.6296280013791566,
         "sum_radii": 2.6296280013791566
       },
       {
         "generation": 167,
+        "candidate_id": "gen-167-i1-w1-a0-45e58b7b0ddd1371",
+        "score": -2.629628001380883,
         "sum_radii": 2.629628001380883
       },
       {
         "generation": 168,
+        "candidate_id": "gen-167-i1-w1-a0-45e58b7b0ddd1371",
+        "score": -2.629628001380883,
         "sum_radii": 2.629628001380883
       },
       {
         "generation": 169,
+        "candidate_id": "gen-167-i1-w1-a0-45e58b7b0ddd1371",
+        "score": -2.629628001380883,
         "sum_radii": 2.629628001380883
       },
       {
         "generation": 170,
+        "candidate_id": "gen-167-i1-w1-a0-45e58b7b0ddd1371",
+        "score": -2.629628001380883,
         "sum_radii": 2.629628001380883
       },
       {
         "generation": 171,
+        "candidate_id": "gen-167-i1-w1-a0-45e58b7b0ddd1371",
+        "score": -2.629628001380883,
         "sum_radii": 2.629628001380883
       },
       {
         "generation": 172,
+        "candidate_id": "gen-167-i1-w1-a0-45e58b7b0ddd1371",
+        "score": -2.629628001380883,
         "sum_radii": 2.629628001380883
       },
       {
         "generation": 173,
+        "candidate_id": "gen-167-i1-w1-a0-45e58b7b0ddd1371",
+        "score": -2.629628001380883,
         "sum_radii": 2.629628001380883
       },
       {
         "generation": 174,
+        "candidate_id": "gen-167-i1-w1-a0-45e58b7b0ddd1371",
+        "score": -2.629628001380883,
         "sum_radii": 2.629628001380883
       },
       {
         "generation": 175,
+        "candidate_id": "gen-175-i1-w1-a0-d25291534fc55255",
+        "score": -2.6296280013808926,
         "sum_radii": 2.6296280013808926
       },
       {
         "generation": 176,
+        "candidate_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "score": -2.6296280013809037,
         "sum_radii": 2.6296280013809037
       },
       {
         "generation": 177,
+        "candidate_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "score": -2.6296280013809037,
         "sum_radii": 2.6296280013809037
       },
       {
         "generation": 178,
+        "candidate_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "score": -2.6296280013809037,
         "sum_radii": 2.6296280013809037
       },
       {
         "generation": 179,
+        "candidate_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "score": -2.6296280013809037,
         "sum_radii": 2.6296280013809037
       },
       {
         "generation": 180,
+        "candidate_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "score": -2.6296280013809037,
         "sum_radii": 2.6296280013809037
       },
       {
         "generation": 181,
+        "candidate_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "score": -2.6296280013809037,
         "sum_radii": 2.6296280013809037
       },
       {
         "generation": 182,
+        "candidate_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "score": -2.6296280013809037,
         "sum_radii": 2.6296280013809037
       },
       {
         "generation": 183,
+        "candidate_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "score": -2.6296280013809037,
         "sum_radii": 2.6296280013809037
       },
       {
         "generation": 184,
+        "candidate_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "score": -2.6296280013809037,
         "sum_radii": 2.6296280013809037
       },
       {
         "generation": 185,
+        "candidate_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "score": -2.6296280013809037,
         "sum_radii": 2.6296280013809037
       },
       {
         "generation": 186,
+        "candidate_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "score": -2.6296280013809037,
         "sum_radii": 2.6296280013809037
       },
       {
         "generation": 187,
+        "candidate_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "score": -2.6296280013809037,
         "sum_radii": 2.6296280013809037
       },
       {
         "generation": 188,
+        "candidate_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "score": -2.6296280013809037,
         "sum_radii": 2.6296280013809037
       },
       {
         "generation": 189,
+        "candidate_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "score": -2.6296280013809037,
         "sum_radii": 2.6296280013809037
       },
       {
         "generation": 190,
+        "candidate_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "score": -2.6296280013809037,
         "sum_radii": 2.6296280013809037
       },
       {
         "generation": 191,
+        "candidate_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "score": -2.6296280013809037,
         "sum_radii": 2.6296280013809037
       },
       {
         "generation": 192,
+        "candidate_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "score": -2.6296280013809037,
         "sum_radii": 2.6296280013809037
       },
       {
         "generation": 193,
+        "candidate_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "score": -2.6296280013809037,
         "sum_radii": 2.6296280013809037
       },
       {
         "generation": 194,
+        "candidate_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "score": -2.6296280013809037,
         "sum_radii": 2.6296280013809037
       },
       {
         "generation": 195,
+        "candidate_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "score": -2.6296280013809037,
         "sum_radii": 2.6296280013809037
       },
       {
         "generation": 196,
+        "candidate_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "score": -2.6296280013809037,
         "sum_radii": 2.6296280013809037
       },
       {
         "generation": 197,
+        "candidate_id": "gen-176-i1-w1-a0-1046ff050ec786fd",
+        "score": -2.6296280013809037,
         "sum_radii": 2.6296280013809037
       },
       {
         "generation": 198,
+        "candidate_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "score": -2.629628001380904,
         "sum_radii": 2.629628001380904
       },
       {
         "generation": 199,
+        "candidate_id": "gen-198-i1-w3-a0-12fbe90324c04d05",
+        "score": -2.629628001380904,
         "sum_radii": 2.629628001380904
       },
       {
         "generation": 200,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 201,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 202,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 203,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 204,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 205,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 206,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 207,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 208,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 209,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 210,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 211,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 212,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 213,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 214,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 215,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 216,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 217,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 218,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 219,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 220,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 221,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 222,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 223,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 224,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 225,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 226,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 227,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 228,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 229,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 230,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 231,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 232,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 233,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 234,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 235,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 236,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 237,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 238,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 239,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 240,
+        "candidate_id": "gen-200-i1-w3-a0-b9cd719e5f45ea90",
+        "score": -2.6296280013809046,
         "sum_radii": 2.6296280013809046
       },
       {
         "generation": 241,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 242,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 243,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 244,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 245,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 246,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 247,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 248,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 249,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 250,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 251,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 252,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 253,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 254,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 255,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 256,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 257,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 258,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 259,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 260,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 261,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 262,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 263,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 264,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 265,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 266,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 267,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 268,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 269,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 270,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 271,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 272,
+        "candidate_id": "gen-241-i1-w1-a0-646ad7735dca5b67",
+        "score": -2.6296280013809215,
         "sum_radii": 2.6296280013809215
       },
       {
         "generation": 273,
+        "candidate_id": "gen-273-i1-w1-a0-e6f704761ae0e7b8",
+        "score": -2.6296280013811155,
         "sum_radii": 2.6296280013811155
       },
       {
         "generation": 274,
+        "candidate_id": "gen-273-i1-w1-a0-e6f704761ae0e7b8",
+        "score": -2.6296280013811155,
         "sum_radii": 2.6296280013811155
       },
       {
         "generation": 275,
+        "candidate_id": "gen-273-i1-w1-a0-e6f704761ae0e7b8",
+        "score": -2.6296280013811155,
         "sum_radii": 2.6296280013811155
       },
       {
         "generation": 276,
+        "candidate_id": "gen-273-i1-w1-a0-e6f704761ae0e7b8",
+        "score": -2.6296280013811155,
         "sum_radii": 2.6296280013811155
       },
       {
         "generation": 277,
+        "candidate_id": "gen-277-i1-w1-a0-6bcf5fc8010f07ec",
+        "score": -2.629628001381243,
         "sum_radii": 2.629628001381243
       },
       {
         "generation": 278,
+        "candidate_id": "gen-277-i1-w1-a0-6bcf5fc8010f07ec",
+        "score": -2.629628001381243,
         "sum_radii": 2.629628001381243
       },
       {
         "generation": 279,
+        "candidate_id": "gen-279-i1-w3-a0-be93488290e3048e",
+        "score": -2.630171937365451,
         "sum_radii": 2.630171937365451
       },
       {
         "generation": 280,
+        "candidate_id": "gen-279-i1-w3-a0-be93488290e3048e",
+        "score": -2.630171937365451,
         "sum_radii": 2.630171937365451
       },
       {
         "generation": 281,
+        "candidate_id": "gen-279-i1-w3-a0-be93488290e3048e",
+        "score": -2.630171937365451,
         "sum_radii": 2.630171937365451
       },
       {
         "generation": 282,
+        "candidate_id": "gen-279-i1-w3-a0-be93488290e3048e",
+        "score": -2.630171937365451,
         "sum_radii": 2.630171937365451
       },
       {
         "generation": 283,
+        "candidate_id": "gen-279-i1-w3-a0-be93488290e3048e",
+        "score": -2.630171937365451,
         "sum_radii": 2.630171937365451
       },
       {
         "generation": 284,
+        "candidate_id": "gen-279-i1-w3-a0-be93488290e3048e",
+        "score": -2.630171937365451,
         "sum_radii": 2.630171937365451
       },
       {
         "generation": 285,
+        "candidate_id": "gen-279-i1-w3-a0-be93488290e3048e",
+        "score": -2.630171937365451,
         "sum_radii": 2.630171937365451
       },
       {
         "generation": 286,
+        "candidate_id": "gen-279-i1-w3-a0-be93488290e3048e",
+        "score": -2.630171937365451,
         "sum_radii": 2.630171937365451
       },
       {
         "generation": 287,
+        "candidate_id": "gen-279-i1-w3-a0-be93488290e3048e",
+        "score": -2.630171937365451,
         "sum_radii": 2.630171937365451
       },
       {
         "generation": 288,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 289,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 290,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 291,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 292,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 293,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 294,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 295,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 296,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 297,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 298,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 299,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 300,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 301,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 302,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 303,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 304,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 305,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 306,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 307,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 308,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 309,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 310,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 311,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 312,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 313,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 314,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 315,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 316,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 317,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 318,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 319,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 320,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 321,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 322,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 323,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 324,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 325,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 326,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 327,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 328,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 329,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 330,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 331,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 332,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 333,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 334,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 335,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 336,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 337,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 338,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 339,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 340,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 341,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 342,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 343,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 344,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 345,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 346,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 347,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 348,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 349,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 350,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 351,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
       },
       {
         "generation": 352,
+        "candidate_id": "gen-288-i1-w1-a0-baae1bca2c04c4d0",
+        "score": -2.6359773947543523,
         "sum_radii": 2.6359773947543523
+      },
+      {
+        "generation": 353,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 354,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 355,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 356,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 357,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 358,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 359,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 360,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 361,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 362,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 363,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 364,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 365,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 366,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 367,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 368,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 369,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 370,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 371,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 372,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 373,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 374,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 375,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 376,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 377,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 378,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 379,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 380,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 381,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 382,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 383,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 384,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 385,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 386,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 387,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 388,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 389,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 390,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 391,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 392,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 393,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 394,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 395,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 396,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 397,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 398,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 399,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 400,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 401,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 402,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 403,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 404,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 405,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 406,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 407,
+        "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+        "score": -2.6359773947570364,
+        "sum_radii": 2.6359773947570364
+      },
+      {
+        "generation": 408,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 409,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 410,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 411,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 412,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 413,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 414,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 415,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 416,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 417,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 418,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 419,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 420,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 421,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 422,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 423,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 424,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 425,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 426,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 427,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 428,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 429,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 430,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 431,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 432,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 433,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 434,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 435,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 436,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 437,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 438,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 439,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 440,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 441,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 442,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 443,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 444,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 445,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 446,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 447,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 448,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 449,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 450,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 451,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 452,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 453,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 454,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 455,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 456,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 457,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 458,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 459,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 460,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 461,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 462,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 463,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 464,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 465,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 466,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 467,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 468,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 469,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 470,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 471,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 472,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 473,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 474,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 475,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 476,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 477,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 478,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 479,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 480,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 481,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 482,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 483,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 484,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 485,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 486,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 487,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 488,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 489,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 490,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 491,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 492,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 493,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 494,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 495,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 496,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 497,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 498,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 499,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 500,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 501,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 502,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 503,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 504,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 505,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 506,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 507,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 508,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 509,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 510,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 511,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 512,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 513,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 514,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 515,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 516,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 517,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 518,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 519,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 520,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 521,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 522,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 523,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 524,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 525,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 526,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 527,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 528,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 529,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 530,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 531,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 532,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 533,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 534,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 535,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 536,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 537,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 538,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 539,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 540,
+        "candidate_id": "gen-56-i0-w0-a0-49de937715c45da4",
+        "score": -2.635983084928521,
+        "sum_radii": 2.635983084928521
+      },
+      {
+        "generation": 541,
+        "candidate_id": "gen-189-i1-w1-a0-3b514aa6b0c5f426",
+        "score": -2.6359830849768984,
+        "sum_radii": 2.6359830849768984
       }
     ]
   }

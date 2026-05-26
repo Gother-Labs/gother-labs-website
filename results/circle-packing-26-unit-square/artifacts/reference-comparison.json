@@ -4,8 +4,8 @@
   "objective": "maximize sum of radii",
   "direction": "higher_is_better",
   "our_result": {
-    "label": "Gother Labs accepted candidate",
-    "sum_radii": 2.6359773947541023,
+    "label": "Gother Labs accepted continuation candidate",
+    "sum_radii": 2.6359830849768984,
     "source_artifact": "artifacts/replay.json"
   },
   "external_source": {
@@ -14,51 +14,63 @@
     "table": "Table 3. Results for circle packing",
     "accessed_on": "2026-05-20"
   },
+  "leaderboard_check": {
+    "title": "Wizwand SOTA: Circle Packing on AlphaEvolve 26 circles in 1x1 unit square",
+    "url": "https://www.wizwand.com/sota/circle-packing-on-alphaevolve-26-circles-in-1x1-unit-square",
+    "accessed_on": "2026-05-26",
+    "note": "The page lists LoongFlow, SkyDiscover, and ASI-Evolve at 2.636, but only at three-decimal precision. Exact ordering versus 2.6359830849768984 is therefore unresolved without full-precision geometries or replay data."
+  },
   "references": [
-    {
-      "name": "AlphaEvolve",
-      "value": 2.635862,
-      "source_note": "Table 3 reports AlphaEvolve [50], Gemini-2.0 Pro + Flash, n = 26.",
-      "metric": "sum_radii",
-      "delta_vs_ours": 0.00011539475410238254,
-      "percent_delta_vs_reference": 0.004377875401002881,
-      "ours_as_percent_of_reference": 100.00437787540099
-    },
     {
       "name": "AlphaEvolve V2",
       "value": 2.635983,
       "source_note": "Table 3 reports AlphaEvolve V2 [14], Gemini-2.0 Pro + Flash, n = 26.",
       "metric": "sum_radii",
-      "delta_vs_ours": -0.000005605245897655209,
-      "percent_delta_vs_reference": -0.00021264347674682305,
-      "ours_as_percent_of_reference": 99.99978735652326
-    },
-    {
-      "name": "ShinkaEvolve",
-      "value": 2.635982,
-      "source_note": "Table 3 reports ShinkaEvolve [37], ensemble model, n = 26.",
-      "metric": "sum_radii",
-      "delta_vs_ours": -0.000004605245897515431,
-      "percent_delta_vs_reference": -0.00017470703128911468,
-      "ours_as_percent_of_reference": 99.99982529296871
+      "delta_vs_ours": 8.497689840680778e-08,
+      "percent_delta_vs_reference": 3.2237271032024022e-06,
+      "ours_as_percent_of_reference": 100.0000032237271
     },
     {
       "name": "ThetaEvolve",
       "value": 2.635983,
       "source_note": "Table 3 reports ThetaEvolve [78], R1-Qwen3-8B, n = 26.",
       "metric": "sum_radii",
-      "delta_vs_ours": -0.000005605245897655209,
-      "percent_delta_vs_reference": -0.00021264347674682305,
-      "ours_as_percent_of_reference": 99.99978735652326
+      "delta_vs_ours": 8.497689840680778e-08,
+      "percent_delta_vs_reference": 3.2237271032024022e-06,
+      "ours_as_percent_of_reference": 100.0000032237271
     },
     {
       "name": "TTT-Discover",
       "value": 2.635983,
       "source_note": "Table 3 reports TTT-Discover, Qwen3-8B, n = 26.",
       "metric": "sum_radii",
-      "delta_vs_ours": -0.000005605245897655209,
-      "percent_delta_vs_reference": -0.00021264347674682305,
-      "ours_as_percent_of_reference": 99.99978735652326
+      "delta_vs_ours": 8.497689840680778e-08,
+      "percent_delta_vs_reference": 3.2237271032024022e-06,
+      "ours_as_percent_of_reference": 100.0000032237271
+    },
+    {
+      "name": "LoongFlow",
+      "value": 2.636,
+      "precision": "three-decimal rounded public benchmark entry",
+      "source_note": "Wizwand lists LoongFlow at 2.636 for this benchmark.",
+      "metric": "sum_radii",
+      "rank_status": "unresolved_without_full_precision_replay"
+    },
+    {
+      "name": "SkyDiscover",
+      "value": 2.636,
+      "precision": "three-decimal rounded public benchmark entry",
+      "source_note": "Wizwand lists SkyDiscover at 2.636 for this benchmark.",
+      "metric": "sum_radii",
+      "rank_status": "unresolved_without_full_precision_replay"
+    },
+    {
+      "name": "ASI-Evolve",
+      "value": 2.636,
+      "precision": "three-decimal rounded public benchmark entry",
+      "source_note": "Wizwand lists ASI-Evolve at 2.636 for this benchmark.",
+      "metric": "sum_radii",
+      "rank_status": "unresolved_without_full_precision_replay"
     }
   ]
 }

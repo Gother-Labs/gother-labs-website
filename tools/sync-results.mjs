@@ -259,32 +259,32 @@ function resultCardMeasureItems(result) {
 function resultCardVisual(result) {
   if (result.website?.card_visual === "circle-packing") {
     const circles = [
-      [118.202, 421.798, 46.202],
-      [441.798, 421.798, 46.202],
-      [107.23, 87.23, 35.23],
-      [452.77, 87.23, 35.23],
-      [172.049, 369.512, 28.853],
-      [202.512, 429.538, 38.462],
-      [280, 428.971, 39.029],
-      [357.488, 429.538, 38.462],
-      [387.951, 369.512, 28.853],
-      [112.002, 335.817, 40.002],
-      [240.181, 360.916, 39.819],
-      [319.819, 360.916, 39.819],
-      [374.352, 300.156, 41.824],
-      [447.998, 335.817, 40.002],
-      [115.146, 252.728, 43.146],
-      [185.648, 300.156, 41.824],
-      [280, 273.528, 56.213],
-      [363.569, 210.548, 48.43],
-      [444.854, 252.728, 43.146],
-      [115.795, 165.789, 43.795],
-      [196.431, 210.548, 48.43],
-      [280, 164.234, 47.114],
-      [364.683, 107.062, 55.062],
-      [444.205, 165.789, 43.795],
-      [195.317, 107.062, 55.062],
-      [280, 84.56, 32.56],
+      [118.084, 421.916, 46.084],
+      [441.759, 421.759, 46.241],
+      [107.21, 87.21, 35.21],
+      [452.671, 87.329, 35.329],
+      [171.72, 369.688, 28.779],
+      [202.256, 429.565, 38.435],
+      [279.762, 428.926, 39.074],
+      [357.352, 429.482, 38.518],
+      [387.891, 369.391, 28.887],
+      [111.825, 336.236, 39.825],
+      [448.001, 335.745, 39.999],
+      [114.873, 253.594, 42.873],
+      [239.797, 360.845, 39.87],
+      [319.611, 360.693, 39.944],
+      [374.393, 299.954, 41.85],
+      [184.998, 300.616, 41.558],
+      [279.446, 272.465, 56.996],
+      [364.286, 210.773, 47.902],
+      [444.958, 252.76, 43.042],
+      [116.425, 166.31, 44.425],
+      [194.614, 212.96, 46.624],
+      [278.141, 166.543, 48.934],
+      [364.161, 107.436, 55.436],
+      [444.244, 165.964, 43.756],
+      [194.558, 106.172, 54.172],
+      [278.87, 84.806, 32.806],
     ];
     return `<svg class="result-card-visual result-card-visual--packing" viewBox="0 0 560 500" aria-hidden="true" focusable="false">
                 <g class="result-card-packing result-card-packing--figure4">
@@ -1985,9 +1985,29 @@ ${rows}
 }
 
 function circlePackingImplementationCodeFigure(candidateCode) {
+  const source = `"""Accepted constructive candidate for 26-circle unit-square packing."""
+from __future__ import annotations
+
+import math
+
+N_CIRCLES = 26
+MIN_RADIUS = 1e-6
+Point = tuple[float, float]
+
+# Retained continuation topology and accepted trace.
+BOUNDARY_CONTACTS = (... 20 boundary contacts ...)
+CONTACT_EDGES = (... 58 pairwise tangencies ...)
+ACCEPTED_TRACE = (... 26 validated centers and radii ...)
+
+def _coarse_seed_layout() -> list[float]:
+    """Return a low-precision seed near the accepted continuation pattern."""
+    ...
+
+${extractCandidateCode(candidateCode)}`;
+
   return pythonImplementationCodeFigure({
-    source: extractCandidateCode(candidateCode),
-    caption: "Accepted deterministic reconstruction candidate. The public entrypoint rebuilds the validated packing before returning centers and radii.",
+    source,
+    caption: "Excerpt of the accepted deterministic reconstruction candidate. The full public file includes the retained contact graph and accepted trace, then rebuilds the validated packing before returning centers and radii.",
     className: "circle-packing-code-figure",
   });
 }
