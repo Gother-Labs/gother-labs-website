@@ -1246,15 +1246,18 @@ function highlightPythonLine(line) {
   return html || " ";
 }
 
-function pythonImplementationCodeFigure({ source, caption, className = "" }) {
+function pythonImplementationCodeFigure({ source, caption, className = "", artifactHref = "./artifacts/accepted_candidate.py" }) {
   const lines = source.trim().split("\n");
   const markup = lines
     .map((line, index) => `<span class="code-line"><span class="line-no">${index + 1}</span><span class="line-src">${highlightPythonLine(line)}</span></span>`)
     .join("");
   const extraClass = className ? ` ${className}` : "";
+  const artifactLink = artifactHref
+    ? ` <a href="${escapeHtml(artifactHref)}">Full executable artifact</a>.`
+    : "";
   return `<figure class="result-paper-code result-code-figure${extraClass}" id="listing-1">
           <pre><code>${markup}</code></pre>
-          <figcaption>Listing 1. ${escapeHtml(caption)}</figcaption>
+          <figcaption>Listing 1. ${escapeHtml(caption)}${artifactLink}</figcaption>
         </figure>`;
 }
 
