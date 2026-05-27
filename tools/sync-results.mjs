@@ -1088,10 +1088,10 @@ function objectiveCurveFigure(evolution) {
   const scored = steps.filter((step) => typeof step.score === "number");
   if (!scored.length) return "";
 
-  const left = 82;
-  const right = 512;
-  const top = 74;
-  const bottom = 260;
+  const left = 112;
+  const right = 542;
+  const top = 96;
+  const bottom = 270;
   const width = right - left;
   const height = bottom - top;
   const maxScore = Math.ceil(Math.max(...scored.map((step) => step.score)) / 100) * 100;
@@ -1776,6 +1776,22 @@ function rcpspWhitepaperInserts(full, evolution, candidateCode, scheduleExample,
   };
 }
 
+function highlightRustLine(line) {
+  const escaped = escapeHtml(line);
+  const commentIndex = escaped.indexOf("//");
+  const code = commentIndex >= 0 ? escaped.slice(0, commentIndex) : escaped;
+  const comment = commentIndex >= 0 ? escaped.slice(commentIndex) : "";
+  let html = code.replace(/(&quot;.*?&quot;)/g, '<span class="rs-string">$1</span>');
+  html = html.replace(/\b(pub|struct|impl|for|fn|let|mut|if|else|return|match|Some|None|Ok|Err|true|false|self|Self|where|as)\b/g, '<span class="rs-keyword">$1</span>');
+  html = html.replace(/\b(Result|Option|Vec|Array2|CandidatePolicy|Policy|RoutingContext|RouterError|TopologyView|FrontLayerScores|ExtendedSetScores|usize|f64|bool)\b/g, '<span class="rs-type">$1</span>');
+  html = html.replace(/\b(enumerate_candidate_swaps|compute_dynamic_lookahead|build_extended_set|select_swap|score_delta|total_score|distance|topology|front_layer|extended_set)\b/g, '<span class="rs-function">$1</span>');
+  html = html.replace(/\b(\d+(?:\.\d+)?)\b/g, '<span class="rs-number">$1</span>');
+  if (comment) {
+    html += `<span class="rs-comment">${comment}</span>`;
+  }
+  return html || " ";
+}
+
 function rustImplementationCodeFigure(candidateCode) {
   const source = extractCandidateCode(candidateCode);
   const lines = source.trim().split("\n");
@@ -1791,9 +1807,13 @@ function rustImplementationCodeFigure(candidateCode) {
     ...lines.slice(policyStart, Math.min(lines.length, policyStart + 80)),
   ].filter((line, index, list) => !(line === "" && list[index - 1] === ""));
   const markup = excerpt
-    .map((line, index) => `<span class="code-line"><span class="line-no">${index + 1}</span><span class="line-src">${escapeHtml(line)}</span></span>`)
+    .map((line, index) => `<span class="code-line"><span class="line-no">${index + 1}</span><span class="line-src">${highlightRustLine(line)}</span></span>`)
     .join("");
   return `<figure class="result-paper-code result-code-figure qubit-routing-code-figure" id="listing-1">
+          <div class="result-code-titlebar" aria-hidden="true">
+            <span class="result-code-file">accepted_candidate.rs</span>
+            <span class="result-code-language">Rust routing policy</span>
+          </div>
           <pre><code>${markup}</code></pre>
           <figcaption>Listing 1. Accepted Rust routing-policy excerpt. The full public implementation is published as <a href="./artifacts/accepted_candidate.rs">accepted_candidate.rs</a>.</figcaption>
         </figure>`;
@@ -1983,56 +2003,131 @@ function qubitRoutingContractTable(evolution) {
   });
 }
 
+function topologyTargetLabel(topology) {
+  const labels = {
+    heron_fez: "Heron-FEZ",
+    q20: "Q20",
+    willow: "Willow",
+  };
+  return labels[topology] ?? topology;
+}
+
+function qubitRoutingTopologyTargetTable(replay) {
+  const rows = Array.isArray(replay?.trace?.topology_summary) ? replay.trace.topology_summary : [];
+  const ordered = [...rows].sort((a, b) => {
+    const order = { q20: 0, willow: 1, heron_fez: 2 };
+    return (order[a.topology] ?? 99) - (order[b.topology] ?? 99);
+  });
+  const typeByTarget = {
+    q20: "Small 20-qubit coupling graph.",
+    willow: "Large sparse device-style coupling graph.",
+    heron_fez: "Large sparse device-style coupling graph in a different family.",
+  };
+  const roleByTarget = {
+    q20: "Checks routing pressure when physical room is limited.",
+    willow: "Checks layout and lookahead on a wider target.",
+    heron_fez: "Checks transfer across a separate adjacency family.",
+  };
+
+  return paperTable({
+    className: "result-contract-table qubit-routing-target-table",
+    caption: "Table 1. Topology targets used by the frozen routing contract. These labels are benchmark coupling graphs, not hardware-performance claims.",
+    headers: ["Target", "Topology type", "Circuits", "Role in this report"],
+    rows: ordered.map((row) => [
+      `<span class="result-nowrap">${escapeHtml(topologyTargetLabel(row.topology))}</span>`,
+      escapeHtml(typeByTarget[row.topology] ?? "Frozen coupling graph in the routing portfolio."),
+      formatMetric(row.cases ?? 24, { maximumFractionDigits: 0 }),
+      escapeHtml(roleByTarget[row.topology] ?? "Frozen topology target in the routing portfolio."),
+    ]),
+  });
+}
+
 function qubitRoutingObjectiveCurveFigure(scoreTrace) {
   const candidates = Array.isArray(scoreTrace?.candidates) ? scoreTrace.candidates : [];
-  const best = Array.isArray(scoreTrace?.best_by_generation) ? scoreTrace.best_by_generation : [];
+  const best = Array.isArray(scoreTrace?.best_by_index)
+    ? scoreTrace.best_by_index
+    : Array.isArray(scoreTrace?.best_by_generation)
+      ? scoreTrace.best_by_generation
+      : [];
   const scored = candidates.filter((step) => typeof step.weighted_cnot_delta === "number");
   if (!scored.length) return "";
 
-  const left = 82;
-  const right = 512;
-  const top = 74;
-  const bottom = 260;
+  const left = 112;
+  const right = 542;
+  const top = 96;
+  const bottom = 270;
   const width = right - left;
   const height = bottom - top;
-  const generationEnd = Math.max(1, scoreTrace?.generation_end ?? 0, ...scored.map((step) => step.generation ?? 0));
+  const indexEnd = Math.max(1, ...scored.map((step, index) => step.index ?? index));
   const values = scored.map((step) => step.weighted_cnot_delta);
-  const minValue = Math.floor(Math.min(...values) / 500) * 500;
+  const displayFloor = Number.isFinite(scoreTrace?.display?.y_floor)
+    ? scoreTrace.display.y_floor
+    : Math.floor((scored[0]?.weighted_cnot_delta ?? Math.min(...values)) / 500) * 500;
+  const minValue = displayFloor;
   const maxValue = Math.ceil(Math.max(...values) / 500) * 500;
   const span = Math.max(1, maxValue - minValue);
-  const mapX = (generation) => left + (Math.max(0, Math.min(generationEnd, generation)) / generationEnd) * width;
-  const mapY = (value) => bottom - ((value - minValue) / span) * height;
+  const mapX = (index) => left + (Math.max(0, Math.min(indexEnd, index)) / indexEnd) * width;
+  const mapY = (value) => bottom - ((Math.max(minValue, value) - minValue) / span) * height;
   const bestPoints = (best.length ? best : scored).map((step) => [
-    mapX(step.generation ?? 0),
+    mapX(step.index ?? 0),
     mapY(step.weighted_cnot_delta),
   ]);
-  const dots = scored.map((step, index) => `<circle class="${index === 0 ? "result-legend-baseline-dot" : "result-objective-proposal"}" cx="${mapX(step.generation ?? 0).toFixed(1)}" cy="${mapY(step.weighted_cnot_delta).toFixed(1)}" r="${index === scored.length - 1 ? "4.8" : "3.5"}" />`).join("\n");
+  const baseline = scored[0];
+  const accepted = scored[scored.length - 1];
+  const baselineX = mapX(baseline.index ?? 0);
+  const baselineY = mapY(baseline.weighted_cnot_delta);
+  const acceptedX = mapX(accepted.index ?? indexEnd);
+  const acceptedY = mapY(accepted.weighted_cnot_delta);
+  const dots = scored.map((step) => {
+    const clipped = step.weighted_cnot_delta < minValue;
+    return `<circle class="result-objective-proposal${clipped ? " is-clipped" : ""}" cx="${mapX(step.index ?? 0).toFixed(1)}" cy="${mapY(step.weighted_cnot_delta).toFixed(1)}" r="${clipped ? "1.35" : "1.6"}" />`;
+  }).join("\n");
   const yTicks = [minValue, Math.round((minValue + maxValue) / 2), maxValue].map((value) => {
     const y = mapY(value);
     return `<g>
               <path class="result-objective-grid" d="M${left} ${y.toFixed(1)} H${right}" />
-              <text class="result-axis-tick result-objective-y-label" x="${left - 18}" y="${(y + 4).toFixed(1)}">${formatMetric(value, { maximumFractionDigits: 0 })}</text>
+              <text class="result-axis-tick result-objective-y-label" x="${left - 22}" y="${(y + 4).toFixed(1)}">${formatMetric(value, { maximumFractionDigits: 0 })}</text>
             </g>`;
   }).join("\n");
-  const xTicks = [0, 20, 40, generationEnd].map((generation) => {
-    const x = mapX(generation);
-    return `<text class="result-axis-tick" x="${x.toFixed(1)}" y="282" text-anchor="middle">${formatMetric(generation, { maximumFractionDigits: 0 })}</text>`;
+  const xTickValues = [0, Math.round(indexEnd / 3), Math.round((2 * indexEnd) / 3), indexEnd];
+  const xTicks = xTickValues.map((index, tickIndex, all) => {
+    const x = mapX(index);
+    const anchor = tickIndex === 0 ? "" : tickIndex === all.length - 1 ? ' text-anchor="end"' : ' text-anchor="middle"';
+    return `<g>
+              <path class="result-objective-x-tick" d="M${x.toFixed(1)} ${bottom} V${(bottom + 5).toFixed(1)}" />
+              <text class="result-axis-tick" x="${x.toFixed(1)}" y="${bottom + 22}"${anchor}>${formatMetric(index, { maximumFractionDigits: 0 })}</text>
+            </g>`;
   }).join("\n");
+  const clippedCount = scored.filter((step) => step.weighted_cnot_delta < minValue).length;
+  const clippingNote = clippedCount > 0
+    ? ` ${formatMetric(clippedCount, { maximumFractionDigits: 0 })} lower outlier candidates are clipped at the bottom of the plot.`
+    : "";
 
   return paperInlineFigure({
     number: 4,
-    caption: "Curated score chain shown as positive weighted CNOT reduction versus LightSABRE. The governed evaluator score is the negative of this readout, so larger plotted values correspond to lower evaluator scores.",
+    caption: `Objective trace for the curated public chain. Faint points are scored candidates from the sanitized telemetry trace, the solid line is retained best-so-far weighted CNOT reduction, and rings mark baseline and accepted.${clippingNote}`,
     className: "qubit-routing-inline-figure result-objective-figure",
-    svg: `          <svg class="result-primer-svg result-objective-svg qubit-routing-paper-svg" viewBox="0 0 560 328" role="img" aria-label="Best so far weighted CNOT reduction against LightSABRE.">
-            <text class="result-axis-label result-figure-title" x="${left}" y="34">Weighted CNOT reduction versus LightSABRE</text>
-            <text class="qubit-routing-note" x="${right}" y="34" text-anchor="end">positive readout; score is negative</text>
+    svg: `          <svg class="result-primer-svg result-objective-svg" viewBox="0 0 560 328" role="img" aria-label="Best so far weighted CNOT reduction against LightSABRE.">
+            <text class="result-axis-label result-figure-title" x="${left}" y="34">Best-so-far CNOT reduction (higher is better)</text>
+            <g class="result-objective-legend" transform="translate(${left} 48)">
+              <g><circle class="result-objective-legend-proposal" cx="0" cy="0" r="2.4" /><text x="12" y="4">scored candidate</text></g>
+              <g transform="translate(124 0)"><line class="result-objective-legend-best" x1="0" y1="0" x2="16" y2="0" /><text x="24" y="4">best-so-far reduction</text></g>
+              <g transform="translate(294 0)"><circle class="result-legend-baseline-dot" cx="0" cy="0" r="3.4" /><text x="16" y="4">baseline</text></g>
+              <g transform="translate(382 0)"><circle class="result-legend-accepted-dot" cx="0" cy="0" r="3.8" /><text x="16" y="4">accepted</text></g>
+            </g>
             ${yTicks}
             <path class="result-rule-paper-axis" d="M${left} ${top}V${bottom}H${right}" />
-            <path class="result-objective-best" d="${svgPolyline(bestPoints)}" />
-            <g>${dots}</g>
             ${xTicks}
-            <text class="result-axis-label result-x-axis-title" x="${(left + width / 2).toFixed(1)}" y="306">global generation checkpoint</text>
-            <text class="result-axis-label result-objective-y-title" x="34" y="${(top + height / 2).toFixed(1)}" transform="rotate(-90 34 ${(top + height / 2).toFixed(1)})">weighted ΔCNOT</text>
+            <text class="result-axis-label result-x-axis-title" x="${(left + width / 2).toFixed(1)}" y="306">scored candidate index</text>
+            <text class="result-axis-label result-objective-y-title" x="34" y="${(top + height / 2).toFixed(1)}" transform="rotate(-90 34 ${(top + height / 2).toFixed(1)})">weighted ΔCNOT reduction</text>
+            <g>${dots}</g>
+            <path class="result-objective-best" d="${svgPolyline(bestPoints)}" />
+            <g class="result-objective-baseline">
+              <circle cx="${baselineX.toFixed(1)}" cy="${baselineY.toFixed(1)}" r="4.2" />
+            </g>
+            <g class="result-objective-accepted">
+              <circle cx="${acceptedX.toFixed(1)}" cy="${acceptedY.toFixed(1)}" r="4.8" />
+            </g>
           </svg>`,
   });
 }
@@ -2043,12 +2138,6 @@ function qubitRoutingSummaryTable(full) {
     headers: ["Metric", "Baseline", "Accepted", "Change"],
     rows: [
       [
-        "Evaluator score \\(J(p)\\)",
-        formatMetric(full.metrics.seed, { maximumFractionDigits: 1, minimumFractionDigits: 1 }),
-        formatMetric(full.metrics.best, { maximumFractionDigits: 1, minimumFractionDigits: 1 }),
-        `-${formatMetric(full.metrics.improvement, { maximumFractionDigits: 1, minimumFractionDigits: 1 })}`,
-      ],
-      [
         "Weighted CNOT reduction",
         formatMetric(full.metrics.baseline_weighted_cnot_delta, { maximumFractionDigits: 1, minimumFractionDigits: 1 }),
         formatMetric(full.metrics.accepted_weighted_cnot_delta, { maximumFractionDigits: 1, minimumFractionDigits: 1 }),
@@ -2056,15 +2145,9 @@ function qubitRoutingSummaryTable(full) {
       ],
       [
         "Aggregate added CNOTs",
-        "LightSABRE reference",
+        formatMetric(full.metrics.lightsabre_added_cnot, { maximumFractionDigits: 0 }),
         formatMetric(full.metrics.candidate_added_cnot, { maximumFractionDigits: 0 }),
         `${formatMetric(full.metrics.added_cnot_reduction_vs_lightsabre, { maximumFractionDigits: 0 })} fewer`,
-      ],
-      [
-        "Replay validity",
-        "reference",
-        `${formatMetric(full.metrics.ok_cases, { maximumFractionDigits: 0 })}/${formatMetric(full.metrics.total_cases, { maximumFractionDigits: 0 })}`,
-        "all cases valid",
       ],
     ],
   });
@@ -2072,30 +2155,59 @@ function qubitRoutingSummaryTable(full) {
 
 function qubitRoutingTopologyFigure(replay) {
   const rows = Array.isArray(replay?.trace?.topology_summary) ? replay.trace.topology_summary : [];
+  const order = ["q20", "willow", "heron_fez"];
+  const orderedRows = [...rows].sort((a, b) => {
+    const ai = order.indexOf(a.topology);
+    const bi = order.indexOf(b.topology);
+    return (ai === -1 ? order.length : ai) - (bi === -1 ? order.length : bi);
+  });
   const maxCnot = Math.max(1, ...rows.flatMap((row) => [row.candidate_added_cnot ?? 0, row.lightsabre_added_cnot ?? 0]));
-  const body = rows.map((row, index) => {
-    const y = 84 + index * 64;
-    const lightWidth = ((row.lightsabre_added_cnot ?? 0) / maxCnot) * 258;
-    const candidateWidth = ((row.candidate_added_cnot ?? 0) / maxCnot) * 258;
-    const relative = formatPercent(row.relative_improvement_pct ?? 0);
+  const left = 174;
+  const right = 416;
+  const width = right - left;
+  const axisMax = Math.ceil(maxCnot / 25000) * 25000;
+  const xAt = (value) => left + (Math.max(0, Math.min(axisMax, value)) / axisMax) * width;
+  const ticks = [0, Math.round(axisMax / 2), axisMax].map((value, index, all) => {
+    const x = xAt(value);
+    const anchor = index === 0 ? "" : index === all.length - 1 ? ' text-anchor="end"' : ' text-anchor="middle"';
     return `<g>
-              <text class="qubit-routing-section-label" x="72" y="${y}">${escapeHtml(row.topology)}</text>
-              <rect class="qubit-routing-reference-fill" x="184" y="${y - 25}" width="${lightWidth.toFixed(1)}" height="14" />
-              <rect class="qubit-routing-accent-fill" x="184" y="${y - 3}" width="${candidateWidth.toFixed(1)}" height="14" />
-              <text class="qubit-routing-value" x="468" y="${y - 13}">${formatMetric(row.lightsabre_added_cnot, { maximumFractionDigits: 0 })}</text>
-              <text class="qubit-routing-value" x="468" y="${y + 9}">${formatMetric(row.candidate_added_cnot, { maximumFractionDigits: 0 })} (${relative})</text>
-              <text class="qubit-routing-note" x="72" y="${y + 26}">W/T/L ${escapeHtml(row.wtl)}</text>
+              <path class="qubit-routing-topology-tick" d="M${x.toFixed(1)} 224 V229" />
+              <text class="result-axis-tick" x="${x.toFixed(1)}" y="246"${anchor}>${formatMetric(value, { maximumFractionDigits: 0 })}</text>
+            </g>`;
+  }).join("\n");
+  const body = orderedRows.map((row, index) => {
+    const y = 92 + index * 48;
+    const lightX = xAt(row.lightsabre_added_cnot ?? 0);
+    const candidateX = xAt(row.candidate_added_cnot ?? 0);
+    const lightWidth = lightX - left;
+    const candidateWidth = candidateX - left;
+    const relative = formatPercent(row.relative_improvement_pct ?? 0);
+    const delta = (row.candidate_added_cnot ?? 0) - (row.lightsabre_added_cnot ?? 0);
+    const deltaText = `${delta > 0 ? "+" : ""}${formatMetric(delta, { maximumFractionDigits: 0 })}`;
+    return `<g>
+              <text class="qubit-routing-section-label" x="72" y="${y + 4}">${escapeHtml(topologyTargetLabel(row.topology))}</text>
+              <path class="qubit-routing-topology-grid" d="M${left} ${y} H${right}" />
+              <rect class="qubit-routing-comparison-baseline" x="${left}" y="${y - 8}" width="${lightWidth.toFixed(1)}" height="16" />
+              <rect class="qubit-routing-comparison-accepted" x="${left}" y="${y - 8}" width="${candidateWidth.toFixed(1)}" height="16" />
+              <line class="qubit-routing-baseline-end" x1="${lightX.toFixed(1)}" y1="${y - 11}" x2="${lightX.toFixed(1)}" y2="${y + 11}" />
+              <text class="qubit-routing-value" x="438" y="${y - 6}">Δ ${deltaText}</text>
+              <text class="qubit-routing-note" x="438" y="${y + 12}">${relative}</text>
             </g>`;
   }).join("\n");
   return paperInlineFigure({
     number: 5,
-    caption: "Per-topology added-CNOT comparison. Q20 improves strongly, Willow improves modestly, and Heron-FEZ is slightly worse than LightSABRE on aggregate.",
+    caption: "Per-topology added-CNOT comparison. Grey bars are LightSABRE, blue overlays are the accepted replay, and shorter bars mean fewer added CNOTs. Q20 improves strongly, Willow improves modestly, and Heron-FEZ is slightly worse on aggregate.",
     className: "qubit-routing-inline-figure qubit-routing-topology-figure",
-    svg: `          <svg class="result-primer-svg qubit-routing-paper-svg" viewBox="0 0 560 296" role="img" aria-label="Per topology added CNOT comparison.">
-            <text class="result-axis-label result-figure-title" x="72" y="34">Topology split stays visible</text>
-            <text class="qubit-routing-note" x="184" y="56">LightSABRE</text>
-            <text class="qubit-routing-note qubit-routing-accepted-label" x="284" y="56">accepted</text>
+    svg: `          <svg class="result-primer-svg qubit-routing-paper-svg" viewBox="0 0 560 276" role="img" aria-label="Per topology added CNOT comparison.">
+            <text class="result-axis-label result-figure-title" x="72" y="34">Added CNOTs by topology (lower is better)</text>
+            <g class="result-objective-legend" transform="translate(72 52)">
+              <g><rect class="qubit-routing-comparison-baseline" x="0" y="-7" width="18" height="14" /><text x="28" y="4">LightSABRE</text></g>
+              <g transform="translate(138 0)"><rect class="qubit-routing-comparison-accepted" x="0" y="-7" width="18" height="14" /><text x="28" y="4">accepted</text></g>
+            </g>
 ${body}
+            <path class="result-rule-paper-axis" d="M${left} 224 H${right}" />
+            ${ticks}
+            <text class="result-axis-label result-x-axis-title" x="${(left + width / 2).toFixed(1)}" y="264">added CNOTs</text>
           </svg>`,
   });
 }
@@ -2103,29 +2215,23 @@ ${body}
 function qubitRoutingReadoutFigure(full, replay) {
   const preview = Array.isArray(replay?.trace?.case_preview) ? replay.trace.case_preview.slice(0, 5) : [];
   const cases = preview.map((item, index) => {
-    const y = 182 + index * 22;
+    const y = 100 + index * 24;
     return `<g>
               <text class="qubit-routing-note" x="72" y="${y}">${escapeHtml(item.id)}</text>
-              <text class="qubit-routing-value" x="346" y="${y}" text-anchor="end">${formatMetric(item.candidate_added_cnot, { maximumFractionDigits: 0 })}</text>
-              <text class="qubit-routing-value" x="468" y="${y}" text-anchor="end">-${formatMetric(item.delta_vs_lightsabre, { maximumFractionDigits: 0 })}</text>
+              <text class="qubit-routing-value" x="354" y="${y}" text-anchor="end">${formatMetric(item.candidate_added_cnot, { maximumFractionDigits: 0 })}</text>
+              <text class="qubit-routing-value" x="488" y="${y}" text-anchor="end">-${formatMetric(item.delta_vs_lightsabre, { maximumFractionDigits: 0 })}</text>
             </g>`;
   }).join("\n");
   return paperInlineFigure({
     number: 6,
-    caption: "Accepted replay readout. The sample rows expose individual case deltas while the headline keeps full-portfolio validity and win/tie/loss behavior explicit.",
+    caption: "Accepted replay sample. These rows are a case-level diagnostic, not a second aggregate readout.",
     className: "qubit-routing-inline-figure qubit-routing-readout-figure",
-    svg: `          <svg class="result-primer-svg qubit-routing-paper-svg" viewBox="0 0 560 328" role="img" aria-label="Replay validity and case preview for accepted qubit routing candidate.">
-            <text class="result-axis-label result-figure-title" x="72" y="34">Replay readout</text>
-            <g class="qubit-routing-metric-row">
-              <text class="qubit-routing-big-value" x="72" y="94">${formatMetric(full.metrics.ok_cases, { maximumFractionDigits: 0 })}/${formatMetric(full.metrics.total_cases, { maximumFractionDigits: 0 })}</text>
-              <text class="qubit-routing-note" x="72" y="118">valid routing cases</text>
-              <text class="qubit-routing-big-value" x="258" y="94">${formatMetric(full.metrics.wins_vs_lightsabre, { maximumFractionDigits: 0 })}/${formatMetric(full.metrics.ties_vs_lightsabre, { maximumFractionDigits: 0 })}/${formatMetric(full.metrics.losses_vs_lightsabre, { maximumFractionDigits: 0 })}</text>
-              <text class="qubit-routing-note" x="258" y="118">wins / ties / losses</text>
-            </g>
-            <path class="qubit-routing-divider" d="M72 146H488" />
-            <text class="qubit-routing-note" x="72" y="164">sample case</text>
-            <text class="qubit-routing-note" x="346" y="164" text-anchor="end">accepted CNOTs</text>
-            <text class="qubit-routing-note" x="468" y="164" text-anchor="end">delta vs LightSABRE</text>
+    svg: `          <svg class="result-primer-svg qubit-routing-paper-svg" viewBox="0 0 560 232" role="img" aria-label="Case-level replay sample for accepted qubit routing candidate.">
+            <text class="result-axis-label result-figure-title" x="72" y="34">Case-level replay sample</text>
+            <path class="qubit-routing-divider" d="M72 72H488" />
+            <text class="qubit-routing-note" x="72" y="84">sample case</text>
+            <text class="qubit-routing-note" x="354" y="84" text-anchor="end">accepted</text>
+            <text class="qubit-routing-note" x="488" y="84" text-anchor="end">vs LightSABRE</text>
 ${cases}
           </svg>`,
   });
@@ -2136,7 +2242,7 @@ function qubitRoutingWhitepaperInserts(full, evolution, candidateCode, replay, s
     "gate-primer": qubitRoutingGatePrimerFigure(),
     "routing-primer": qubitRoutingPrimerFigure(),
     "swap-saving": qubitRoutingSwapSavingFigure(),
-    "contract-table": qubitRoutingContractTable(evolution),
+    "topology-targets": qubitRoutingTopologyTargetTable(replay),
     "implementation-code": rustImplementationCodeFigure(candidateCode),
     "objective-curve": qubitRoutingObjectiveCurveFigure(scoreTrace),
     "objective-summary-table": qubitRoutingSummaryTable(full),

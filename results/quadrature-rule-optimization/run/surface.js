@@ -123,7 +123,7 @@
   signalBest.textContent = `${meta.bestScore.toFixed(3)}`;
 
   const totalStepDuration = 4.8;
-  const loopEndHoldDuration = 2.2;
+  const loopEndHoldDuration = 3.0;
   const totalDuration = steps.length * totalStepDuration + loopEndHoldDuration;
 
   const scoreMin = Math.min(...allSteps.map((step) => step.score));

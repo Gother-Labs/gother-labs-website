@@ -420,7 +420,7 @@
       return;
     }
     const stepDuration = checkpointFrames.length > 12 ? 2.8 : 5.2;
-    const hold = 2.6;
+    const hold = 3.0;
     const total = checkpointFrames.length * stepDuration + hold;
     const t = reduceMotion ? checkpointFrames.length * stepDuration - 1e-6 : (now / 1000) % total;
     const effectiveT = Math.min(t, checkpointFrames.length * stepDuration - 1e-6);

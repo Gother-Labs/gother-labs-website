@@ -1,6 +1,6 @@
 // EVOLVE_START: CandidatePolicy
-// Seed policy body aligned with the external SimpleTES swap_reduction scaffold.
-// Evolther evaluates this block through a separately validated SimpleTES checkout.
+// Seed policy body aligned with the fixed public routing benchmark harness.
+// Evolther evaluates this block through a separately validated checkout.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum SetScaling {
     Constant,

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Qubit Routing Run Replay | Göther Labs</title>
+    <meta name="description" content="A curated animated replay of the qubit-routing SABRE24 LightSABRE result.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" href="../../../assets/gother-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../../styles.css?v=home-proof-inline-v2">
+    <link rel="stylesheet" href="./surface.css?v=qubit-routing-v22">
+  </head>
+  <body class="qubit-run-page">
+    <div class="page-shell site-shell">
+      <header class="site-header">
+        <nav class="site-nav" aria-label="Primary">
+          <a class="brand nav-brand nav-home-wordmark animated-symbol-scope" href="../../../" aria-label="Göther Labs home">
+            <span aria-hidden="true" class="wordmark-mark-wrap">
+              <svg class="animated-reference-geometry live-symbol-svg" viewBox="0 0 64 64" focusable="false">
+                <g class="source-geometry" aria-hidden="true">
+                  <circle class="source-geometry-dot" cx="34.5" cy="34.5" r="3.6" />
+                  <circle class="source-geometry-dot" cx="21" cy="58" r="3.6" />
+                  <circle class="source-geometry-dot" cx="48" cy="58" r="3.6" />
+                </g>
+                <path class="live-trail" d="" />
+                <path class="live-trail" d="" />
+                <path class="live-trail" d="" />
+                <circle class="geometry-dot live-geometry-dot" cx="34.2" cy="28.4" r="3.34" />
+                <circle class="geometry-dot live-geometry-dot" cx="20.9" cy="50.6" r="3.34" />
+                <circle class="geometry-dot live-geometry-dot" cx="47.5" cy="50.6" r="3.34" />
+              </svg>
+            </span>
+            <span class="nav-wordmark-text">Göther Labs</span>
+          </a>
+          <div class="nav-links">
+            <a href="../../../results/">Results</a>
+            <a href="../../../company/">Company</a>
+            <a href="../../../contact/">Contact</a>
+          </div>
+        </nav>
+      </header>
+
+      <main class="site-main">
+        <section class="hero compact-hero page-hero qubit-run-hero">
+          <h1 class="page-title">Qubit routing replay.</h1>
+        </section>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <section class="qubit-run-surface" aria-label="Qubit routing run surface">
+          <div class="qubit-run-summary">
+            <div class="qubit-run-summary-copy">
+              <p class="eyebrow">Result Replay</p>
+              <p class="qubit-run-summary-text">
+                Curated replay of the public score trace, routing-policy surface, topology split,
+                and case-level readout for the frozen SABRE24 LightSABRE portfolio.
+              </p>
+              <a class="qubit-run-link" href="../#fig-4">Open Figure 4: objective trace</a>
+            </div>
+            <div class="qubit-run-summary-panel">
+              <p class="eyebrow">Reported Comparison</p>
+              <div class="qubit-run-metrics" role="group" aria-label="Reported qubit-routing metrics">
+                <div class="qubit-run-metric">
+                  <span class="qubit-run-metric-label">CNOT REDUCTION</span>
+                  <strong class="qubit-run-metric-value" id="metric-reduction">12,294</strong>
+                </div>
+                <div class="qubit-run-metric">
+                  <span class="qubit-run-metric-label">BASELINE</span>
+                  <strong class="qubit-run-metric-value" id="metric-baseline">308,076</strong>
+                </div>
+                <div class="qubit-run-metric">
+                  <span class="qubit-run-metric-label">ACCEPTED</span>
+                  <strong class="qubit-run-metric-value" id="metric-accepted">295,782</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="qubit-run-stage">
+            <section class="qubit-run-code" aria-labelledby="qubit-run-code-title">
+              <div class="qubit-run-section-head">
+                <h2 class="qubit-run-section-title" id="qubit-run-code-title">Candidate surface</h2>
+                <a class="qubit-run-small-link" href="../#listing-1">Open Listing 1</a>
+              </div>
+              <div class="qubit-run-editor">
+                <div class="qubit-run-editor-head">
+                  <span>accepted_candidate.rs :: routing-policy replay</span>
+                  <span id="code-phase">front layer</span>
+                </div>
+                <div class="qubit-run-editor-body" id="code-surface" aria-label="Animated Rust routing-policy excerpt">
+                  <div class="qubit-run-editor-focus" id="code-focus"></div>
+                </div>
+              </div>
+            </section>
+
+            <aside class="qubit-run-visual" aria-labelledby="qubit-run-visual-title">
+              <div class="qubit-run-card">
+                <div class="qubit-run-section-head">
+                  <h2 class="qubit-run-section-title" id="qubit-run-visual-title">Weighted CNOT reduction</h2>
+                  <span class="qubit-run-stage-label" id="score-label">public trace</span>
+                </div>
+                <svg class="qubit-run-score-svg" id="score-svg" viewBox="0 0 460 250" role="img" aria-label="Animated weighted CNOT reduction trace"></svg>
+              </div>
+
+              <div class="qubit-run-card qubit-run-card--circuit">
+                <svg class="qubit-run-circuit-svg" id="circuit-svg" viewBox="0 0 640 330" role="img" aria-label="Animated qubit routing circuit"></svg>
+              </div>
+
+              <div class="qubit-run-card">
+                <svg class="qubit-run-topology-svg" id="topology-svg" viewBox="0 0 460 250" role="img" aria-label="Animated topology split"></svg>
+              </div>
+            </aside>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© <span id="year">2026</span> Göther Labs</p>
+      </footer>
+    </div>
+
+    <script src="../../../scripts.js?v=home-proof-inline-v2"></script>
+    <script src="./surface-data.js?v=qubit-routing-v22"></script>
+    <script src="./surface.js?v=qubit-routing-v22"></script>
+  </body>
+</html>
