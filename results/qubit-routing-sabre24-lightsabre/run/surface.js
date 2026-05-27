@@ -57,6 +57,20 @@
     return candidate?.index ?? fallback;
   }
 
+  function bestStepCandidates(candidates) {
+    const steps = [];
+    let retainedBest = -Infinity;
+    for (const item of candidates) {
+      const value = Number(item.weighted_cnot_delta);
+      if (!Number.isFinite(value)) continue;
+      if (value > retainedBest + 1e-9) {
+        retainedBest = value;
+        steps.push(item);
+      }
+    }
+    return steps;
+  }
+
   function codeMilestones() {
     const candidates = Array.isArray(scoreTrace?.candidates) ? scoreTrace.candidates : [];
     const lastIndex = Math.max(1, candidates[candidates.length - 1]?.index ?? candidates.length - 1);
@@ -319,19 +333,15 @@
     const yMax = 12000;
     const xAt = (index) => left + (clamp(index, 0, indexEnd) / indexEnd) * width;
     const yAt = (value) => bottom - ((Math.max(yMin, value) - yMin) / (yMax - yMin)) * height;
-    const surfaceMarkers = codeMilestones()
-      .filter((marker) => marker.stepIndex > 0)
-      .map((marker) => {
-        const candidate = candidates.find((item, index) => (item.index ?? index) === marker.index);
-        const value = candidate?.weighted_cnot_delta ?? yMin;
-        const x = xAt(marker.index);
-        const y = yAt(value);
-        const visible = marker.index <= visibleIndex ? "1" : "0.42";
-        return `
-          <path class="qubit-run-code-milestone-line" d="M${x.toFixed(1)} ${top}V${bottom}" opacity="${visible}" />
-          <rect class="qubit-run-code-milestone" x="${(x - 3).toFixed(1)}" y="${(y - 3).toFixed(1)}" width="6" height="6" opacity="${visible}" />
-          <text class="qubit-run-label" x="${x.toFixed(1)}" y="${top - 8}" text-anchor="middle" opacity="${visible}">s${marker.stepIndex}</text>
-        `;
+    const stepMarkers = bestStepCandidates(candidates)
+      .filter((item, markerIndex) => markerIndex > 0)
+      .map((item) => {
+        const itemIndex = item.index ?? 0;
+        const x = xAt(itemIndex);
+        const y = yAt(item.weighted_cnot_delta ?? yMin);
+        const visible = itemIndex <= visibleIndex ? " is-visible" : "";
+        const accepted = item.accepted ? " is-accepted" : "";
+        return `<circle class="qubit-run-step-marker${visible}${accepted}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${item.accepted ? "4.8" : "3.1"}" />`;
       }).join("");
     const dots = candidates.map((item, index) => {
       const x = xAt(item.index ?? index);
@@ -372,10 +382,10 @@
       <text class="qubit-run-label" x="${left - 10}" y="${top + height / 2 + 4}" text-anchor="end">${fmt((yMin + yMax) / 2)}</text>
       <text class="qubit-run-label" x="${left - 10}" y="${top + 4}" text-anchor="end">${fmt(yMax)}</text>
       <path class="qubit-run-axis" d="M${left} ${top}V${bottom}H${right}" />
-      <g>${surfaceMarkers}</g>
       <g>${dots}</g>
       <path class="qubit-run-best qubit-run-best--full" d="${linePath(fullBestPoints)}" />
       <path class="qubit-run-best" d="${linePath(visibleBestPoints)}" />
+      <g>${stepMarkers}</g>
       <circle class="qubit-run-baseline-ring" cx="${xAt(baseline.index ?? 0).toFixed(1)}" cy="${yAt(baseline.weighted_cnot_delta).toFixed(1)}" r="4" />
       ${acceptedVisible ? `<circle class="qubit-run-accepted-ring" cx="${xAt(accepted.index ?? indexEnd).toFixed(1)}" cy="${yAt(accepted.weighted_cnot_delta).toFixed(1)}" r="4.8" />` : ""}
       <circle class="qubit-run-current-ring" cx="${xAt(currentBest.index ?? 0).toFixed(1)}" cy="${yAt(currentBest.weighted_cnot_delta ?? yMin).toFixed(1)}" r="4.2" />
