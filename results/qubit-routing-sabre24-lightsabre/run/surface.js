@@ -21,7 +21,7 @@
   const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
   const mix = (a, b, t) => a + (b - a) * t;
   const ease = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
-  const loopActiveDuration = 13000;
+  const stepDuration = 5000;
   const loopEndHoldDuration = 3000;
 
   metricReduction.textContent = fmt(staticData.meta.added_cnot_reduction);
@@ -31,6 +31,7 @@
   let scoreTrace = null;
   let replay = null;
   let lastFrameKey = "";
+  let loopStartedAt = null;
   const editorLinePool = [];
   const codeSnapshots = (staticData.code_snapshots || staticData.code_phases || [])
     .filter((snapshot) => Array.isArray(snapshot.lines) && snapshot.lines.length);
@@ -48,7 +49,15 @@
 
   function visibleCandidateIndex(progress) {
     const candidates = Array.isArray(scoreTrace?.candidates) ? scoreTrace.candidates : [];
-    return Math.max(1, Math.floor(progress * Math.max(1, candidates.length - 1)));
+    const steps = bestStepCandidates(candidates);
+    if (steps.length < 2) return Math.max(1, Math.floor(progress * Math.max(1, candidates.length - 1)));
+    if (progress >= 1) return steps[steps.length - 1].index ?? candidates.length - 1;
+    const raw = clamp(progress, 0, 1) * (steps.length - 1);
+    const segment = clamp(Math.floor(raw), 0, steps.length - 2);
+    const localT = raw - segment;
+    const start = steps[segment].index ?? segment;
+    const end = steps[segment + 1].index ?? segment + 1;
+    return Math.floor(mix(start, end, localT));
   }
 
   function candidateIndexForId(candidateId, fallback) {
@@ -73,38 +82,26 @@
 
   function codeMilestones() {
     const candidates = Array.isArray(scoreTrace?.candidates) ? scoreTrace.candidates : [];
-    const lastIndex = Math.max(1, candidates[candidates.length - 1]?.index ?? candidates.length - 1);
-    return [
-      { stepIndex: 0, index: 0, label: "surface 0" },
-      { stepIndex: 1, index: candidateIndexForId("gen-1-i0-w3-a0-3db34e9ba786bce1", 3), label: "surface 1" },
-      { stepIndex: 2, index: candidateIndexForId("gen-32-i0-w7-a0-038b9bcf469e6c45", Math.round(lastIndex * 0.42)), label: "surface 2" },
-      { stepIndex: 3, index: candidateIndexForId("gen-62-i0-w3-a0-8185f10d0dff4245", lastIndex), label: "accepted surface" },
-    ].slice(0, Math.max(1, editorStages.length));
+    return bestStepCandidates(candidates)
+      .slice(0, Math.max(1, editorStages.length))
+      .map((step, index) => ({
+        stepIndex: index,
+        index: step.index ?? index,
+        label: index === 0 ? "baseline surface" : `best step ${index}`,
+      }));
   }
 
   function codePlayback(progress) {
-    const candidates = Array.isArray(scoreTrace?.candidates) ? scoreTrace.candidates : [];
-    const visibleIndex = visibleCandidateIndex(progress);
-    const lastIndex = Math.max(1, candidates[candidates.length - 1]?.index ?? candidates.length - 1);
     const milestones = codeMilestones();
-
-    let stepIndex = 0;
-    for (let index = 1; index < milestones.length; index += 1) {
-      if (visibleIndex >= milestones[index].index) stepIndex = index;
-    }
-
-    if (visibleIndex >= lastIndex) {
+    if (milestones.length < 2) return { stepIndex: 0, localT: 1 };
+    if (progress >= 1) {
       return { stepIndex: milestones.length - 1, localT: 1 };
     }
-
-    if (stepIndex === 0) return { stepIndex, localT: 1 };
-    const start = milestones[stepIndex].index;
-    const transitionSpan = stepIndex === milestones.length - 1
-      ? 1
-      : Math.min(18, Math.max(6, Math.round(lastIndex * 0.08)));
+    const raw = clamp(progress, 0, 1) * (milestones.length - 1);
+    const segment = clamp(Math.floor(raw), 0, milestones.length - 2);
     return {
-      stepIndex,
-      localT: clamp((visibleIndex - start) / transitionSpan, 0, 1),
+      stepIndex: milestones[segment + 1].stepIndex,
+      localT: raw - segment,
     };
   }
 
@@ -750,9 +747,10 @@
   }
 
   function tick(now) {
-    const activeDuration = reduceMotion ? 1 : loopActiveDuration;
+    const activeDuration = reduceMotion ? 1 : Math.max(1, codeMilestones().length - 1) * stepDuration;
     const totalDuration = activeDuration + (reduceMotion ? 0 : loopEndHoldDuration);
-    const loopT = reduceMotion ? activeDuration : now % totalDuration;
+    if (loopStartedAt === null) loopStartedAt = now;
+    const loopT = reduceMotion ? activeDuration : (now - loopStartedAt) % totalDuration;
     const effectiveT = Math.min(loopT, activeDuration);
     const cycle = reduceMotion ? 1 : effectiveT / activeDuration;
     const { stepIndex, localT } = codePlayback(cycle);
@@ -773,7 +771,7 @@
   ]).then(([loadedScoreTrace, loadedReplay]) => {
     scoreTrace = loadedScoreTrace;
     replay = loadedReplay;
-    tick(0);
+    tick(performance.now());
     if (!reduceMotion) window.requestAnimationFrame(tick);
   }).catch(() => {
     renderCode(0, 1);

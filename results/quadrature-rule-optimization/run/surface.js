@@ -122,7 +122,7 @@
   signalSeed.textContent = `${meta.seedScore.toFixed(3)}`;
   signalBest.textContent = `${meta.bestScore.toFixed(3)}`;
 
-  const totalStepDuration = 4.8;
+  const totalStepDuration = 5.0;
   const loopEndHoldDuration = 3.0;
   const totalDuration = steps.length * totalStepDuration + loopEndHoldDuration;
 

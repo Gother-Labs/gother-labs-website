@@ -419,7 +419,7 @@
       requestAnimationFrame(renderFrame);
       return;
     }
-    const stepDuration = checkpointFrames.length > 12 ? 2.8 : 5.2;
+    const stepDuration = 5.0;
     const hold = 3.0;
     const total = checkpointFrames.length * stepDuration + hold;
     const t = reduceMotion ? checkpointFrames.length * stepDuration - 1e-6 : (now / 1000) % total;
