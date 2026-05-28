@@ -242,6 +242,22 @@ ${body}
 }
 
 function resultCardMeasureItems(result) {
+  if (result.slug === "qubit-routing-lightsabre") {
+    return [
+      [
+        "Added CNOT reduction",
+        `${formatMetric(result.metrics?.added_cnot_reduction_vs_lightsabre, { maximumFractionDigits: 0 })} fewer`,
+      ],
+      [
+        "Q20 CNOT reduction",
+        `${formatMetric(result.metrics?.q20_relative_improvement_pct, {
+          maximumFractionDigits: 2,
+          minimumFractionDigits: 2,
+        })}%`,
+      ],
+    ];
+  }
+
   if (Array.isArray(result.website?.card_metrics) && result.website.card_metrics.length > 0) {
     return result.website.card_metrics.slice(0, 2).map((metric) => [
       metric.label,
@@ -354,33 +370,28 @@ ${circles.map(([cx, cy, r]) => `                  <circle cx="${cx}" cy="${cy}" 
   }
 
   if (result.website?.card_visual === "qubit-routing") {
-    return `<svg class="result-card-visual result-card-visual--qubit-routing" viewBox="0 0 560 360" aria-hidden="true" focusable="false">
-                <g class="result-card-qubit-circuit">
-                  <path class="qc-wire" d="M78 88H492M78 126H492M78 164H492M78 202H492M78 240H492M78 278H492" />
+    return `<svg class="result-card-visual result-card-visual--qubit-routing" viewBox="0 0 560 310" aria-hidden="true" focusable="false">
+                <g class="result-card-qubit-circuit" transform="translate(0 16)">
+                  <path class="qc-wire" d="M58 74H520M58 118H520M58 162H520M58 206H520M58 250H520" />
                   <g class="qc-muted">
-                    <path class="qc-link" d="M124 88V164" />
-                    <circle class="qc-control" cx="124" cy="88" r="5" />
-                    <circle class="qc-target" cx="124" cy="164" r="14" />
-                    <path class="qc-plus" d="M112 164H136M124 152V176" />
-                    <path class="qc-link" d="M206 126V240" />
-                    <circle class="qc-control" cx="206" cy="126" r="5" />
-                    <circle class="qc-target" cx="206" cy="240" r="14" />
-                    <path class="qc-plus" d="M194 240H218M206 228V252" />
-                    <path class="qc-link" d="M392 88V202" />
-                    <circle class="qc-control" cx="392" cy="88" r="5" />
-                    <circle class="qc-target" cx="392" cy="202" r="14" />
-                    <path class="qc-plus" d="M380 202H404M392 190V214" />
+                    <path class="qc-link" d="M116 74V162" />
+                    <circle class="qc-control" cx="116" cy="74" r="5" />
+                    <circle class="qc-target" cx="116" cy="162" r="15" />
+                    <path class="qc-plus" d="M103 162H129M116 149V175" />
+                    <path class="qc-link" d="M216 118V250" />
+                    <circle class="qc-control" cx="216" cy="118" r="5" />
+                    <circle class="qc-target" cx="216" cy="250" r="15" />
+                    <path class="qc-plus" d="M203 250H229M216 237V263" />
+                    <path class="qc-link" d="M440 74V206" />
+                    <circle class="qc-control" cx="440" cy="74" r="5" />
+                    <circle class="qc-target" cx="440" cy="206" r="15" />
+                    <path class="qc-plus" d="M427 206H453M440 193V219" />
                   </g>
                   <g class="qc-active">
-                    <path class="qc-link" d="M278 164V202" />
-                    <path class="qc-swap" d="M266 152L290 176M290 152L266 176M266 190L290 214M290 190L266 214" />
-                    <path class="qc-link" d="M326 202V240" />
-                    <path class="qc-swap" d="M314 190L338 214M338 190L314 214M314 228L338 252M338 228L314 252" />
-                  </g>
-                  <g class="qc-readout">
-                    <path class="qc-axis" d="M98 320H462" />
-                    <rect class="qc-reference" x="98" y="298" width="304" height="14" />
-                    <rect class="qc-accepted" x="98" y="274" width="268" height="14" />
+                    <path class="qc-link" d="M314 162V206" />
+                    <path class="qc-swap" d="M301 149L327 175M327 149L301 175M301 193L327 219M327 193L301 219" />
+                    <path class="qc-link" d="M366 206V250" />
+                    <path class="qc-swap" d="M353 193L379 219M379 193L353 219M353 237L379 263M379 237L353 263" />
                   </g>
                 </g>
               </svg>`;
@@ -2149,6 +2160,12 @@ function qubitRoutingSummaryTable(full) {
         formatMetric(full.metrics.candidate_added_cnot, { maximumFractionDigits: 0 }),
         `${formatMetric(full.metrics.added_cnot_reduction_vs_lightsabre, { maximumFractionDigits: 0 })} fewer`,
       ],
+      [
+        "Case outcome",
+        "reference",
+        `${formatMetric(full.metrics.wins_vs_lightsabre, { maximumFractionDigits: 0 })} / ${formatMetric(full.metrics.ties_vs_lightsabre, { maximumFractionDigits: 0 })} / ${formatMetric(full.metrics.losses_vs_lightsabre, { maximumFractionDigits: 0 })}`,
+        "wins / ties / losses",
+      ],
     ],
   });
 }
@@ -2215,23 +2232,31 @@ ${body}
 function qubitRoutingReadoutFigure(full, replay) {
   const preview = Array.isArray(replay?.trace?.case_preview) ? replay.trace.case_preview.slice(0, 5) : [];
   const cases = preview.map((item, index) => {
-    const y = 100 + index * 24;
+    const y = 116 + index * 26;
+    const light = item.lightsabre_added_cnot ?? 0;
+    const delta = item.delta_vs_lightsabre ?? 0;
+    const reduction = light > 0 ? (delta / light) * 100 : 0;
     return `<g>
-              <text class="qubit-routing-note" x="72" y="${y}">${escapeHtml(item.id)}</text>
-              <text class="qubit-routing-value" x="354" y="${y}" text-anchor="end">${formatMetric(item.candidate_added_cnot, { maximumFractionDigits: 0 })}</text>
-              <text class="qubit-routing-value" x="488" y="${y}" text-anchor="end">-${formatMetric(item.delta_vs_lightsabre, { maximumFractionDigits: 0 })}</text>
+              <text class="qubit-routing-note" x="52" y="${y}">${escapeHtml(item.id)}</text>
+              <text class="qubit-routing-value" x="278" y="${y}" text-anchor="end">${formatMetric(item.candidate_added_cnot, { maximumFractionDigits: 0 })}</text>
+              <text class="qubit-routing-value" x="386" y="${y}" text-anchor="end">${formatMetric(light, { maximumFractionDigits: 0 })}</text>
+              <text class="qubit-routing-value" x="458" y="${y}" text-anchor="end">${formatMetric(delta, { maximumFractionDigits: 0 })}</text>
+              <text class="qubit-routing-value" x="520" y="${y}" text-anchor="end">${formatMetric(reduction, { maximumFractionDigits: 2, minimumFractionDigits: 2 })}%</text>
             </g>`;
   }).join("\n");
   return paperInlineFigure({
     number: 6,
-    caption: "Accepted replay sample. These rows are a case-level diagnostic, not a second aggregate readout.",
+    caption: "Selected largest case-level savings from the replay export. The rows are sorted by absolute CNOT reduction versus LightSABRE; the final column gives the same reduction as a percentage of the LightSABRE case.",
     className: "qubit-routing-inline-figure qubit-routing-readout-figure",
-    svg: `          <svg class="result-primer-svg qubit-routing-paper-svg" viewBox="0 0 560 232" role="img" aria-label="Case-level replay sample for accepted qubit routing candidate.">
-            <text class="result-axis-label result-figure-title" x="72" y="34">Case-level replay sample</text>
-            <path class="qubit-routing-divider" d="M72 72H488" />
-            <text class="qubit-routing-note" x="72" y="84">sample case</text>
-            <text class="qubit-routing-note" x="354" y="84" text-anchor="end">accepted</text>
-            <text class="qubit-routing-note" x="488" y="84" text-anchor="end">vs LightSABRE</text>
+    svg: `          <svg class="result-primer-svg qubit-routing-paper-svg" viewBox="0 0 560 260" role="img" aria-label="Selected case-level replay examples comparing accepted routing with LightSABRE.">
+            <text class="result-axis-label result-figure-title" x="52" y="34">Selected largest case savings</text>
+            <path class="qubit-routing-divider" d="M52 72H520" />
+            <text class="qubit-routing-note" x="52" y="86">sample case</text>
+            <text class="qubit-routing-note" x="278" y="86" text-anchor="end">accepted</text>
+            <text class="qubit-routing-note" x="386" y="86" text-anchor="end">LightSABRE</text>
+            <text class="qubit-routing-note" x="458" y="86" text-anchor="end">saved</text>
+            <text class="qubit-routing-note" x="520" y="86" text-anchor="end">%</text>
+            <path class="qubit-routing-divider qubit-routing-divider--soft" d="M52 98H520" />
 ${cases}
           </svg>`,
   });
