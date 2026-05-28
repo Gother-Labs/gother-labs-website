@@ -73,8 +73,8 @@
         <section class="result-detail result-whitepaper-shell qubit-routing-whitepaper-shell">
           <article class="result-article result-whitepaper qubit-routing-whitepaper">
 <h3>Abstract</h3>
-<p>This note reports a deterministic qubit-routing policy for a frozen 24-circuit swap-reduction benchmark, a public scoring trace, and an exact replay candidate. The accepted policy reduces added CNOTs versus LightSABRE while preserving replay validity on the fixed public portfolio. The report exposes the scoring chain, the routing-policy surface, and the topology split together instead of compressing the result into a single aggregate number.</p>
-<p>For audit clarity, the public claim is not a universal quantum compiler result and not a runtime benchmark. It is the combination of the accepted Rust policy surface, the replayed scoring evidence, and the evaluator-validated routing readout on one frozen 24-circuit portfolio. The report keeps the candidate, scoring contract, replay confirmation, and topology split exposed together instead of compressing the result into only the aggregate score.</p>
+<p>This note reports a deterministic qubit-routing policy, a public scoring trace, and an exact replay candidate for a frozen swap-reduction benchmark. The accepted policy reduces added CNOTs by 12,294 versus LightSABRE while keeping the routing-policy surface and topology split visible.</p>
+<p>The claim is deliberately bounded: it is not a universal quantum compiler result, not a runtime benchmark, and not a hardware-performance claim.</p>
 <h3>1. Problem formulation</h3>
 <p>The two-qubit gate that matters in this benchmark is the CNOT. A CNOT flips the target qubit only when the control qubit is 1; together with arbitrary one-qubit gates, CNOT is a standard building block for universal quantum circuits. Hardware routing matters because a SWAP between adjacent physical qubits is normally decomposed into three CNOTs, so every extra SWAP directly inflates the added-CNOT readout.</p>
 <figure class="result-primer-card result-paper-figure qubit-routing-inline-figure qubit-gate-primer-figure" id="fig-1">
@@ -688,6 +688,12 @@ J(p) = -\Delta_{\mathrm{wCNOT}}(p),
                   <td>295,782</td>
                   <td>12,294 fewer</td>
                 </tr>
+                <tr>
+                  <td>Case outcome</td>
+                  <td>reference</td>
+                  <td>31 / 6 / 35</td>
+                  <td>wins / ties / losses</td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -745,47 +751,61 @@ J(p) = -\Delta_{\mathrm{wCNOT}}(p),
           <figcaption>Figure 5. Per-topology added-CNOT comparison. Grey bars are LightSABRE, blue overlays are the accepted replay, and shorter bars mean fewer added CNOTs. Q20 improves strongly, Willow improves modestly, and Heron-FEZ is slightly worse on aggregate.</figcaption>
         </figure>
 <figure class="result-primer-card result-paper-figure qubit-routing-inline-figure qubit-routing-readout-figure" id="fig-6">
-          <svg class="result-primer-svg qubit-routing-paper-svg" viewBox="0 0 560 232" role="img" aria-label="Case-level replay sample for accepted qubit routing candidate.">
-            <text class="result-axis-label result-figure-title" x="72" y="34">Case-level replay sample</text>
-            <path class="qubit-routing-divider" d="M72 72H488" />
-            <text class="qubit-routing-note" x="72" y="84">sample case</text>
-            <text class="qubit-routing-note" x="354" y="84" text-anchor="end">accepted</text>
-            <text class="qubit-routing-note" x="488" y="84" text-anchor="end">vs LightSABRE</text>
+          <svg class="result-primer-svg qubit-routing-paper-svg" viewBox="0 0 560 260" role="img" aria-label="Selected case-level replay examples comparing accepted routing with LightSABRE.">
+            <text class="result-axis-label result-figure-title" x="52" y="34">Selected largest case savings</text>
+            <path class="qubit-routing-divider" d="M52 72H520" />
+            <text class="qubit-routing-note" x="52" y="86">sample case</text>
+            <text class="qubit-routing-note" x="278" y="86" text-anchor="end">accepted</text>
+            <text class="qubit-routing-note" x="386" y="86" text-anchor="end">LightSABRE</text>
+            <text class="qubit-routing-note" x="458" y="86" text-anchor="end">saved</text>
+            <text class="qubit-routing-note" x="520" y="86" text-anchor="end">%</text>
+            <path class="qubit-routing-divider qubit-routing-divider--soft" d="M52 98H520" />
 <g>
-              <text class="qubit-routing-note" x="72" y="100">9symml_195_q20</text>
-              <text class="qubit-routing-value" x="354" y="100" text-anchor="end">12,057</text>
-              <text class="qubit-routing-value" x="488" y="100" text-anchor="end">-3,792</text>
+              <text class="qubit-routing-note" x="52" y="116">9symml_195_q20</text>
+              <text class="qubit-routing-value" x="278" y="116" text-anchor="end">12,057</text>
+              <text class="qubit-routing-value" x="386" y="116" text-anchor="end">15,849</text>
+              <text class="qubit-routing-value" x="458" y="116" text-anchor="end">3,792</text>
+              <text class="qubit-routing-value" x="520" y="116" text-anchor="end">23.93%</text>
             </g>
 <g>
-              <text class="qubit-routing-note" x="72" y="124">sym9_193_q20</text>
-              <text class="qubit-routing-value" x="354" y="124" text-anchor="end">12,057</text>
-              <text class="qubit-routing-value" x="488" y="124" text-anchor="end">-3,792</text>
+              <text class="qubit-routing-note" x="52" y="142">sym9_193_q20</text>
+              <text class="qubit-routing-value" x="278" y="142" text-anchor="end">12,057</text>
+              <text class="qubit-routing-value" x="386" y="142" text-anchor="end">15,849</text>
+              <text class="qubit-routing-value" x="458" y="142" text-anchor="end">3,792</text>
+              <text class="qubit-routing-value" x="520" y="142" text-anchor="end">23.93%</text>
             </g>
 <g>
-              <text class="qubit-routing-note" x="72" y="148">9symml_195_willow</text>
-              <text class="qubit-routing-value" x="354" y="148" text-anchor="end">25,155</text>
-              <text class="qubit-routing-value" x="488" y="148" text-anchor="end">-903</text>
+              <text class="qubit-routing-note" x="52" y="168">9symml_195_willow</text>
+              <text class="qubit-routing-value" x="278" y="168" text-anchor="end">25,155</text>
+              <text class="qubit-routing-value" x="386" y="168" text-anchor="end">26,058</text>
+              <text class="qubit-routing-value" x="458" y="168" text-anchor="end">903</text>
+              <text class="qubit-routing-value" x="520" y="168" text-anchor="end">3.47%</text>
             </g>
 <g>
-              <text class="qubit-routing-note" x="72" y="172">sym9_193_willow</text>
-              <text class="qubit-routing-value" x="354" y="172" text-anchor="end">25,155</text>
-              <text class="qubit-routing-value" x="488" y="172" text-anchor="end">-903</text>
+              <text class="qubit-routing-note" x="52" y="194">sym9_193_willow</text>
+              <text class="qubit-routing-value" x="278" y="194" text-anchor="end">25,155</text>
+              <text class="qubit-routing-value" x="386" y="194" text-anchor="end">26,058</text>
+              <text class="qubit-routing-value" x="458" y="194" text-anchor="end">903</text>
+              <text class="qubit-routing-value" x="520" y="194" text-anchor="end">3.47%</text>
             </g>
 <g>
-              <text class="qubit-routing-note" x="72" y="196">rd84_253_q20</text>
-              <text class="qubit-routing-value" x="354" y="196" text-anchor="end">4,884</text>
-              <text class="qubit-routing-value" x="488" y="196" text-anchor="end">-615</text>
+              <text class="qubit-routing-note" x="52" y="220">rd84_253_q20</text>
+              <text class="qubit-routing-value" x="278" y="220" text-anchor="end">4,884</text>
+              <text class="qubit-routing-value" x="386" y="220" text-anchor="end">5,499</text>
+              <text class="qubit-routing-value" x="458" y="220" text-anchor="end">615</text>
+              <text class="qubit-routing-value" x="520" y="220" text-anchor="end">11.18%</text>
             </g>
           </svg>
-          <figcaption>Figure 6. Accepted replay sample. These rows are a case-level diagnostic, not a second aggregate readout.</figcaption>
+          <figcaption>Figure 6. Selected largest case-level savings from the replay export. The rows are sorted by absolute CNOT reduction versus LightSABRE; the final column gives the same reduction as a percentage of the LightSABRE case.</figcaption>
         </figure>
-<p>The result is not uniform across topology families. Q20 carries the largest positive readout, Willow is modestly positive, and Heron-FEZ is slightly worse than LightSABRE on aggregate. The public result keeps that split visible instead of compressing it into only the all-portfolio score.</p>
+<p>The result is not uniform across topology families: Q20 carries the largest positive readout, Willow is modestly positive, and Heron-FEZ is slightly worse than LightSABRE on aggregate. Across individual cases the accepted policy records 31 wins, 6 ties, and 35 losses; Figure 6 highlights the largest positive case savings rather than the full case distribution.</p>
 <h3>5. Limitations</h3>
 <p>This report is limited to the frozen 24-circuit LightSABRE portfolio in the bundle. It does not claim improvement on arbitrary circuits, arbitrary hardware topologies, all related benchmark assets, or production compiler workloads.</p>
 <p>The benchmark measures routing quality through added CNOT count. It does not make a wall-clock speed claim, does not measure hardware execution fidelity, and does not evaluate downstream transpiler passes after routing.</p>
 <h3>6. Reproducibility</h3>
 <p>The public bundle includes the accepted Rust candidate, the evaluation contract, metrics, a curated evolution chain, replay confirmation, public figures, and a curated animated replay at <a href="./run/">the run page</a>. The replay excludes prompts, raw telemetry, local logs, private paths, and operational run state.</p>
-<p>The accepted candidate id is <code>gen-62-i0-w3-a0-8185f10d0dff4245</code>. The replay score matched the recorded score exactly at <code>-11506.200000000026</code> under the public score-tolerance policy.</p>
+<p>Replaying the result should use the same 24-circuit LightSABRE portfolio, the same Q20, Willow, and Heron-FEZ coupling graphs, the same added-CNOT objective, the same case weights, and the same lower-is-better governed score. Changing the topology set, case set, routing objective, or LightSABRE reference creates a new evaluation, not a replay of this result.</p>
+<p>Under that replay contract, the accepted Rust candidate reproduces 295,782 aggregate added CNOTs, 12,294 fewer than the LightSABRE reference, with a 31 / 6 / 35 win/tie/loss case split.</p>
 <p>The source bundle is available in <a href="https://github.com/Gother-Labs/gother-labs-results/tree/main/results" target="_blank" rel="noreferrer">Göther Labs results repository</a>.</p>
           </article>
         </section>
