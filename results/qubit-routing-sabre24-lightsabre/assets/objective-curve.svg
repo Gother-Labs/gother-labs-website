@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 370" role="img">
+  <style>
+    text{font-family:Inter,Arial,sans-serif;fill:#17201b} .muted{fill:#6f7a74}.axis,.grid{fill:none;stroke:#cbd5cf;stroke-width:1}.grid{opacity:.65}.accent{fill:#2f6f62}.soft{fill:#dce8e2}.warn{fill:#a2604a}.line{fill:none;stroke:#2f6f62;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.dot{fill:#2f6f62}.base{fill:#9aa7a1}.small{font-size:13px}.label{font-size:15px;font-weight:600}.title{font-size:22px;font-weight:650}.value{font-size:28px;font-weight:700}
+  </style>
+  <text class="title" x="48" y="34">Weighted CNOT reduction versus LightSABRE</text>
+  <path class="axis" d="M74 58V290H700"/>
+  <path class="grid" d="M74 256.9H700"/><text class="small muted" x="28" y="260.9">9000</text>
+  <path class="grid" d="M74 190.6H700"/><text class="small muted" x="28" y="194.6">10000</text>
+  <path class="grid" d="M74 124.3H700"/><text class="small muted" x="28" y="128.3">11000</text>
+  <path class="grid" d="M74 58.0H700"/><text class="small muted" x="28" y="62.0">12000</text>
+  <text class="small muted" x="74.0" y="320" text-anchor="middle">0</text>
+  <text class="small muted" x="275.9" y="320" text-anchor="middle">20</text>
+  <text class="small muted" x="477.9" y="320" text-anchor="middle">40</text>
+  <text class="small muted" x="700.0" y="320" text-anchor="middle">62</text>
+  <polyline class="line" points="74.0,260.9 84.1,200.1 548.5,167.8 700.0,90.7"/>
+  <circle class="base" cx="74.0" cy="260.9" r="5"/>
+  <circle class="dot" cx="84.1" cy="200.1" r="5"/>
+  <circle class="dot" cx="548.5" cy="167.8" r="5"/>
+  <circle class="dot" cx="700.0" cy="90.7" r="7"/>
+  <text class="small muted" x="387.0" y="350" text-anchor="middle">global generation checkpoint</text>
+  <text class="value" x="500" y="92">11506.2</text>
+  <text class="small muted" x="500" y="114">accepted weighted delta</text>
+</svg>

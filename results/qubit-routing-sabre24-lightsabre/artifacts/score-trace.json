@@ -1,0 +1,5408 @@
+{
+  "schema_version": "score-trace/v2",
+  "metric": "weighted_cnot_delta",
+  "direction": "higher_is_better_readout",
+  "score_direction": "lower_is_better",
+  "source": {
+    "telemetry_manifest": "Desktop/qubit-routing-sabre24-lightsabre-telemetry-20260526/TELEMETRY_COPY_MANIFEST.txt",
+    "telemetry_files": 7,
+    "public_fields_only": true,
+    "note": "Candidate dots are sanitized score-only records extracted from generation telemetry events; prompts, raw logs, and code bodies are not included."
+  },
+  "display": {
+    "x_axis": "candidate_index",
+    "y_floor": 8500,
+    "clipped_lower_values": 57
+  },
+  "candidates": [
+    {
+      "index": 0,
+      "generation": 0,
+      "candidate_id": "initial-public-baseline",
+      "score": -8938.800000000047,
+      "weighted_cnot_delta": 8938.800000000047,
+      "valid": true,
+      "retained_best": true,
+      "label": "Initial public baseline"
+    },
+    {
+      "index": 1,
+      "generation": 1,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -9541.199999999997,
+      "weighted_cnot_delta": 9541.199999999997,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": true
+    },
+    {
+      "index": 2,
+      "generation": 1,
+      "candidate_id": "gen-1-i0-w2-a0-8e6f514539092371",
+      "score": -9700.199999999983,
+      "weighted_cnot_delta": 9700.199999999983,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": true
+    },
+    {
+      "index": 3,
+      "generation": 1,
+      "candidate_id": "gen-1-i0-w3-a0-3db34e9ba786bce1",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": true
+    },
+    {
+      "index": 4,
+      "generation": 4,
+      "candidate_id": "gen-4-i0-w1-a0-4d2374d13a528144",
+      "score": -9052.800000000017,
+      "weighted_cnot_delta": 9052.800000000017,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 5,
+      "generation": 4,
+      "candidate_id": "gen-4-i0-w2-a0-405a3d87aa719c26",
+      "score": -9240.60000000002,
+      "weighted_cnot_delta": 9240.60000000002,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 6,
+      "generation": 4,
+      "candidate_id": "gen-4-i0-w3-a0-195d87cf0d2df9cb",
+      "score": -9486.00000000003,
+      "weighted_cnot_delta": 9486.00000000003,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 7,
+      "generation": 5,
+      "candidate_id": "gen-5-i0-w0-a0-a32e3977da2e419f",
+      "score": -9251.400000000023,
+      "weighted_cnot_delta": 9251.400000000023,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 8,
+      "generation": 5,
+      "candidate_id": "gen-5-i0-w1-a0-1c9cf9235b0eb5df",
+      "score": -9847.200000000012,
+      "weighted_cnot_delta": 9847.200000000012,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 9,
+      "generation": 5,
+      "candidate_id": "gen-5-i0-w3-a0-b080745fecb25b76",
+      "score": -8938.800000000047,
+      "weighted_cnot_delta": 8938.800000000047,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 10,
+      "generation": 6,
+      "candidate_id": "gen-6-i0-w0-a0-67c1acaa979d5af6",
+      "score": -9486.00000000003,
+      "weighted_cnot_delta": 9486.00000000003,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 11,
+      "generation": 6,
+      "candidate_id": "gen-6-i0-w1-a0-3e1adc05bd602a99",
+      "score": -9151.199999999997,
+      "weighted_cnot_delta": 9151.199999999997,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 12,
+      "generation": 6,
+      "candidate_id": "gen-6-i0-w2-a0-1f13b0367bb2bdd3",
+      "score": -8854.800000000032,
+      "weighted_cnot_delta": 8854.800000000032,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 13,
+      "generation": 6,
+      "candidate_id": "gen-6-i0-w3-a0-de3b7bab1eb47c18",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 14,
+      "generation": 7,
+      "candidate_id": "gen-7-i0-w0-a0-042b2dbb69b5edb4",
+      "score": -9151.199999999997,
+      "weighted_cnot_delta": 9151.199999999997,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 15,
+      "generation": 7,
+      "candidate_id": "gen-7-i0-w1-a0-04b3e001dae544e3",
+      "score": -7780.800000000003,
+      "weighted_cnot_delta": 7780.800000000003,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 16,
+      "generation": 7,
+      "candidate_id": "gen-7-i0-w2-a0-83a650c459d713c2",
+      "score": -9151.199999999997,
+      "weighted_cnot_delta": 9151.199999999997,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 17,
+      "generation": 7,
+      "candidate_id": "gen-7-i0-w3-a0-9861634612ada0c1",
+      "score": -8938.800000000047,
+      "weighted_cnot_delta": 8938.800000000047,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 18,
+      "generation": 8,
+      "candidate_id": "gen-8-i0-w0-a0-a99e7d34d4a0379b",
+      "score": -9393.000000000044,
+      "weighted_cnot_delta": 9393.000000000044,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 19,
+      "generation": 8,
+      "candidate_id": "gen-8-i0-w1-a0-0113c40bb1bdc5de",
+      "score": -9186.000000000015,
+      "weighted_cnot_delta": 9186.000000000015,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 20,
+      "generation": 10,
+      "candidate_id": "gen-10-i0-w0-a0-7b1b2245d3bcad9c",
+      "score": -7812.600000000035,
+      "weighted_cnot_delta": 7812.600000000035,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 21,
+      "generation": 10,
+      "candidate_id": "gen-10-i0-w1-a0-d515faf704c64f96",
+      "score": -7780.800000000003,
+      "weighted_cnot_delta": 7780.800000000003,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 22,
+      "generation": 10,
+      "candidate_id": "gen-10-i0-w2-a0-1cdfb1f9b5df07de",
+      "score": -9151.199999999997,
+      "weighted_cnot_delta": 9151.199999999997,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 23,
+      "generation": 10,
+      "candidate_id": "gen-10-i0-w3-a0-e16a31081958ca2a",
+      "score": -9186.000000000015,
+      "weighted_cnot_delta": 9186.000000000015,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 24,
+      "generation": 11,
+      "candidate_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -9084.00000000003,
+      "weighted_cnot_delta": 9084.00000000003,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 25,
+      "generation": 11,
+      "candidate_id": "gen-11-i0-w2-a0-e436e98182f9b8b7",
+      "score": -6267.600000000006,
+      "weighted_cnot_delta": 6267.600000000006,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 26,
+      "generation": 11,
+      "candidate_id": "gen-11-i0-w3-a0-5d16ca4c58d2bf51",
+      "score": -7720.1999999999825,
+      "weighted_cnot_delta": 7720.1999999999825,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 27,
+      "generation": 13,
+      "candidate_id": "gen-13-i0-w0-a0-2c56458db470e086",
+      "score": -7681.800000000003,
+      "weighted_cnot_delta": 7681.800000000003,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 28,
+      "generation": 13,
+      "candidate_id": "gen-13-i0-w2-a0-b03acc350f0fd228",
+      "score": -7999.800000000047,
+      "weighted_cnot_delta": 7999.800000000047,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 29,
+      "generation": 13,
+      "candidate_id": "gen-13-i0-w3-a0-37287bb737d9b9c4",
+      "score": -9182.399999999994,
+      "weighted_cnot_delta": 9182.399999999994,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 30,
+      "generation": 14,
+      "candidate_id": "gen-14-i0-w0-a0-c1320c85381af5c9",
+      "score": -7956.60000000002,
+      "weighted_cnot_delta": 7956.60000000002,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 31,
+      "generation": 14,
+      "candidate_id": "gen-14-i0-w1-a0-9686c1bc7a88d694",
+      "score": -9640.199999999968,
+      "weighted_cnot_delta": 9640.199999999968,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 32,
+      "generation": 14,
+      "candidate_id": "gen-14-i0-w3-a0-b3915dd1df30b946",
+      "score": -2471.400000000038,
+      "weighted_cnot_delta": 2471.400000000038,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 33,
+      "generation": 17,
+      "candidate_id": "gen-17-i0-w1-a0-2a0030d2a85c7cb4",
+      "score": -8938.800000000047,
+      "weighted_cnot_delta": 8938.800000000047,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 34,
+      "generation": 17,
+      "candidate_id": "gen-17-i0-w5-a0-349ef9d0ad0e9885",
+      "score": -8938.800000000047,
+      "weighted_cnot_delta": 8938.800000000047,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 35,
+      "generation": 17,
+      "candidate_id": "gen-17-i0-w6-a0-da77bcbdc1695dfa",
+      "score": -8938.800000000047,
+      "weighted_cnot_delta": 8938.800000000047,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 36,
+      "generation": 22,
+      "candidate_id": "gen-22-i0-w0-a0-ee51ba5a13b468bc",
+      "score": 51.60000000000582,
+      "weighted_cnot_delta": -51.60000000000582,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 37,
+      "generation": 22,
+      "candidate_id": "gen-22-i0-w1-a0-7163a16fcb1b181f",
+      "score": 51.60000000000582,
+      "weighted_cnot_delta": -51.60000000000582,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 38,
+      "generation": 22,
+      "candidate_id": "gen-22-i0-w2-a0-51aca01618a5312e",
+      "score": -8938.800000000047,
+      "weighted_cnot_delta": 8938.800000000047,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 39,
+      "generation": 22,
+      "candidate_id": "gen-22-i0-w3-a0-755189c2ee1efefe",
+      "score": -8938.800000000047,
+      "weighted_cnot_delta": 8938.800000000047,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 40,
+      "generation": 22,
+      "candidate_id": "gen-22-i0-w4-a0-30fab4cdd10db0c3",
+      "score": 51.60000000000582,
+      "weighted_cnot_delta": -51.60000000000582,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 41,
+      "generation": 22,
+      "candidate_id": "gen-22-i0-w5-a0-a9bb1af60e637d8a",
+      "score": 51.60000000000582,
+      "weighted_cnot_delta": -51.60000000000582,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 42,
+      "generation": 22,
+      "candidate_id": "gen-22-i0-w6-a0-4397eb7ba696e0f9",
+      "score": 51.60000000000582,
+      "weighted_cnot_delta": -51.60000000000582,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 43,
+      "generation": 22,
+      "candidate_id": "gen-22-i0-w7-a0-da3230bb8bdaf6f1",
+      "score": -8938.800000000047,
+      "weighted_cnot_delta": 8938.800000000047,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 44,
+      "generation": 23,
+      "candidate_id": "gen-23-i0-w0-a0-066f2006ceebd13f",
+      "score": -6256.200000000012,
+      "weighted_cnot_delta": 6256.200000000012,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 45,
+      "generation": 23,
+      "candidate_id": "gen-23-i0-w5-a0-e30749cbfcd3fff4",
+      "score": 39613.19999999997,
+      "weighted_cnot_delta": -39613.19999999997,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 46,
+      "generation": 23,
+      "candidate_id": "gen-23-i0-w6-a0-4255cf9563894bc6",
+      "score": -9736.200000000026,
+      "weighted_cnot_delta": 9736.200000000026,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 47,
+      "generation": 25,
+      "candidate_id": "gen-25-i0-w0-a0-adcf01eaeac5ef1e",
+      "score": -8152.200000000012,
+      "weighted_cnot_delta": 8152.200000000012,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 48,
+      "generation": 25,
+      "candidate_id": "gen-25-i0-w1-a0-8c4ae1bdaa40b2a0",
+      "score": 51.60000000000582,
+      "weighted_cnot_delta": -51.60000000000582,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 49,
+      "generation": 25,
+      "candidate_id": "gen-25-i0-w2-a0-0948771ba5d2d2e9",
+      "score": -8674.200000000012,
+      "weighted_cnot_delta": 8674.200000000012,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 50,
+      "generation": 25,
+      "candidate_id": "gen-25-i0-w3-a0-5cd3c246691ea008",
+      "score": -8938.800000000047,
+      "weighted_cnot_delta": 8938.800000000047,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 51,
+      "generation": 25,
+      "candidate_id": "gen-25-i0-w7-a0-90563291264c5985",
+      "score": -8938.800000000047,
+      "weighted_cnot_delta": 8938.800000000047,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 52,
+      "generation": 31,
+      "candidate_id": "gen-31-i0-w1-a0-6e65edf58bcbed8f",
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": true
+    },
+    {
+      "index": 53,
+      "generation": 31,
+      "candidate_id": "gen-31-i0-w2-a0-95d5080d2b0974c0",
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 54,
+      "generation": 31,
+      "candidate_id": "gen-31-i0-w3-a0-a2f987acf928e076",
+      "score": -7408.800000000003,
+      "weighted_cnot_delta": 7408.800000000003,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 55,
+      "generation": 31,
+      "candidate_id": "gen-31-i0-w4-a0-3e95f6eed0adbf1e",
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 56,
+      "generation": 31,
+      "candidate_id": "gen-31-i0-w5-a0-de9516aa4967ce71",
+      "score": -9273.000000000015,
+      "weighted_cnot_delta": 9273.000000000015,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 57,
+      "generation": 31,
+      "candidate_id": "gen-31-i0-w6-a0-3ff6215cea35a5e0",
+      "score": -9289.800000000003,
+      "weighted_cnot_delta": 9289.800000000003,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 58,
+      "generation": 32,
+      "candidate_id": "gen-32-i0-w2-a0-2f0f337ea60f3352",
+      "score": -8782.199999999983,
+      "weighted_cnot_delta": 8782.199999999983,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 59,
+      "generation": 32,
+      "candidate_id": "gen-32-i0-w3-a0-9d4102221bcf5549",
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 60,
+      "generation": 32,
+      "candidate_id": "gen-32-i0-w4-a0-bb5601fdc2b73087",
+      "score": -7408.800000000003,
+      "weighted_cnot_delta": 7408.800000000003,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 61,
+      "generation": 32,
+      "candidate_id": "gen-32-i0-w6-a0-6b9f6416e20aafb1",
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 62,
+      "generation": 1,
+      "candidate_id": "gen-1-i0-w5-a0-82ad2e46fe9406d0",
+      "score": -9355.200000000026,
+      "weighted_cnot_delta": 9355.200000000026,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 63,
+      "generation": 3,
+      "candidate_id": "gen-3-i0-w0-a0-d5724c3680c1e56b",
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": true
+    },
+    {
+      "index": 64,
+      "generation": 3,
+      "candidate_id": "gen-3-i0-w1-a0-bb62743038752f0d",
+      "score": -10233.600000000035,
+      "weighted_cnot_delta": 10233.600000000035,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 65,
+      "generation": 3,
+      "candidate_id": "gen-3-i0-w2-a0-534c19aa34829255",
+      "score": -9821.400000000067,
+      "weighted_cnot_delta": 9821.400000000067,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 66,
+      "generation": 3,
+      "candidate_id": "gen-3-i0-w3-a0-761318b072f1987f",
+      "score": -1318.800000000032,
+      "weighted_cnot_delta": 1318.800000000032,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 67,
+      "generation": 3,
+      "candidate_id": "gen-3-i0-w4-a0-5b3b4841b9fb850c",
+      "score": -9420.00000000003,
+      "weighted_cnot_delta": 9420.00000000003,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 68,
+      "generation": 3,
+      "candidate_id": "gen-3-i0-w5-a0-a27ad72541decdae",
+      "score": -9475.799999999988,
+      "weighted_cnot_delta": 9475.799999999988,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 69,
+      "generation": 8,
+      "candidate_id": "gen-8-i0-w3-a0-0a77930b7a50859f",
+      "score": -748.7999999999884,
+      "weighted_cnot_delta": 748.7999999999884,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 70,
+      "generation": 8,
+      "candidate_id": "gen-8-i0-w7-a0-8de22f1b9fc93762",
+      "score": 14014.799999999945,
+      "weighted_cnot_delta": -14014.799999999945,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 71,
+      "generation": 13,
+      "candidate_id": "gen-13-i0-w1-a0-a16a93365788f282",
+      "score": -8761.800000000061,
+      "weighted_cnot_delta": 8761.800000000061,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 72,
+      "generation": 13,
+      "candidate_id": "gen-13-i0-w4-a0-c132fb331430cde1",
+      "score": -9196.800000000032,
+      "weighted_cnot_delta": 9196.800000000032,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 73,
+      "generation": 13,
+      "candidate_id": "gen-13-i0-w5-a0-d6bcb673838d435f",
+      "score": -7601.999999999971,
+      "weighted_cnot_delta": 7601.999999999971,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 74,
+      "generation": 13,
+      "candidate_id": "gen-13-i0-w6-a0-27caedd4294f1dff",
+      "score": -8761.800000000061,
+      "weighted_cnot_delta": 8761.800000000061,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 75,
+      "generation": 13,
+      "candidate_id": "gen-13-i0-w7-a0-bfc180bd82c5a857",
+      "score": -8761.800000000061,
+      "weighted_cnot_delta": 8761.800000000061,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 76,
+      "generation": 16,
+      "candidate_id": "gen-16-i0-w1-a0-a23803ea4fb21f25",
+      "score": -8864.400000000052,
+      "weighted_cnot_delta": 8864.400000000052,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 77,
+      "generation": 16,
+      "candidate_id": "gen-16-i0-w2-a0-dc306c5c292681c0",
+      "score": -10920.600000000064,
+      "weighted_cnot_delta": 10920.600000000064,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": true
+    },
+    {
+      "index": 78,
+      "generation": 16,
+      "candidate_id": "gen-16-i0-w5-a0-db881cbdc96e1c1c",
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": true
+    },
+    {
+      "index": 79,
+      "generation": 16,
+      "candidate_id": "gen-16-i0-w6-a0-f6d4a30c00a18a89",
+      "score": -9364.800000000032,
+      "weighted_cnot_delta": 9364.800000000032,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 80,
+      "generation": 24,
+      "candidate_id": "gen-24-i0-w0-a0-47d320019d183110",
+      "score": 38412.59999999999,
+      "weighted_cnot_delta": -38412.59999999999,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 81,
+      "generation": 24,
+      "candidate_id": "gen-24-i0-w1-a0-4109fcb58f27b753",
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 82,
+      "generation": 24,
+      "candidate_id": "gen-24-i0-w2-a0-765ee0efe5d28ee7",
+      "score": 4369.799999999974,
+      "weighted_cnot_delta": -4369.799999999974,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 83,
+      "generation": 24,
+      "candidate_id": "gen-24-i0-w4-a0-c6e16b1f83556fec",
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 84,
+      "generation": 24,
+      "candidate_id": "gen-24-i0-w5-a0-049a2a3f004cd382",
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 85,
+      "generation": 24,
+      "candidate_id": "gen-24-i0-w6-a0-3e9ffdec7f34c5bf",
+      "score": -10920.600000000064,
+      "weighted_cnot_delta": 10920.600000000064,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 86,
+      "generation": 24,
+      "candidate_id": "gen-24-i0-w7-a0-8783869e1b51ef2d",
+      "score": -10095.000000000044,
+      "weighted_cnot_delta": 10095.000000000044,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 87,
+      "generation": 28,
+      "candidate_id": "gen-28-i0-w4-a0-7791fb4237a3dd07",
+      "score": -10557.60000000002,
+      "weighted_cnot_delta": 10557.60000000002,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 88,
+      "generation": 28,
+      "candidate_id": "gen-28-i0-w6-a0-2f1644e13333bbda",
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 89,
+      "generation": 28,
+      "candidate_id": "gen-28-i0-w7-a0-c0db155f58af0183",
+      "score": -9196.800000000032,
+      "weighted_cnot_delta": 9196.800000000032,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 90,
+      "generation": 30,
+      "candidate_id": "gen-30-i0-w1-a0-d563fdc8152db413",
+      "score": -9766.200000000026,
+      "weighted_cnot_delta": 9766.200000000026,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 91,
+      "generation": 30,
+      "candidate_id": "gen-30-i0-w2-a0-2ee2ccd5c87f36ee",
+      "score": 33437.40000000007,
+      "weighted_cnot_delta": -33437.40000000007,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 92,
+      "generation": 30,
+      "candidate_id": "gen-30-i0-w3-a0-5323d89276416479",
+      "score": -8233.20000000007,
+      "weighted_cnot_delta": 8233.20000000007,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 93,
+      "generation": 30,
+      "candidate_id": "gen-30-i0-w4-a0-437abccf96827285",
+      "score": -10792.20000000004,
+      "weighted_cnot_delta": 10792.20000000004,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 94,
+      "generation": 30,
+      "candidate_id": "gen-30-i0-w5-a0-8a52f5a2ee7fb275",
+      "score": -10920.600000000064,
+      "weighted_cnot_delta": 10920.600000000064,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 95,
+      "generation": 30,
+      "candidate_id": "gen-30-i0-w7-a0-cb44adbb56a97afa",
+      "score": -10773.60000000002,
+      "weighted_cnot_delta": 10773.60000000002,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 96,
+      "generation": 32,
+      "candidate_id": "gen-32-i0-w5-a0-30b27743876b8c1f",
+      "score": -10495.200000000026,
+      "weighted_cnot_delta": 10495.200000000026,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 97,
+      "generation": 32,
+      "candidate_id": "gen-32-i0-w7-a0-038b9bcf469e6c45",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": true
+    },
+    {
+      "index": 98,
+      "generation": 33,
+      "candidate_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+      "score": -9273.00000000003,
+      "weighted_cnot_delta": 9273.00000000003,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 99,
+      "generation": 33,
+      "candidate_id": "gen-33-i0-w1-a0-54540a2da3ec0312",
+      "score": -9603.00000000003,
+      "weighted_cnot_delta": 9603.00000000003,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 100,
+      "generation": 33,
+      "candidate_id": "gen-33-i0-w2-a0-400b04c81c9c3e43",
+      "score": -9273.00000000003,
+      "weighted_cnot_delta": 9273.00000000003,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 101,
+      "generation": 33,
+      "candidate_id": "gen-33-i0-w4-a0-607ffff339a1402d",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 102,
+      "generation": 33,
+      "candidate_id": "gen-33-i0-w6-a0-0d14c2d3e9070f56",
+      "score": 32038.19999999991,
+      "weighted_cnot_delta": -32038.19999999991,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 103,
+      "generation": 33,
+      "candidate_id": "gen-33-i0-w7-a0-ed0c4cf8bdaf9441",
+      "score": 32014.799999999916,
+      "weighted_cnot_delta": -32014.799999999916,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 104,
+      "generation": 36,
+      "candidate_id": "gen-36-i0-w1-a0-451c2a629b72cc0f",
+      "score": 31767.599999999962,
+      "weighted_cnot_delta": -31767.599999999962,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 105,
+      "generation": 36,
+      "candidate_id": "gen-36-i0-w3-a0-5d4691e55c9a8dd5",
+      "score": -9994.20000000007,
+      "weighted_cnot_delta": 9994.20000000007,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 106,
+      "generation": 36,
+      "candidate_id": "gen-36-i0-w4-a0-07457e8637067b2a",
+      "score": -9090.600000000035,
+      "weighted_cnot_delta": 9090.600000000035,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 107,
+      "generation": 36,
+      "candidate_id": "gen-36-i0-w5-a0-b07b3a931131c374",
+      "score": -9994.20000000007,
+      "weighted_cnot_delta": 9994.20000000007,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 108,
+      "generation": 37,
+      "candidate_id": "gen-37-i0-w0-a0-776a6614722f402f",
+      "score": -10063.20000000007,
+      "weighted_cnot_delta": 10063.20000000007,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 109,
+      "generation": 37,
+      "candidate_id": "gen-37-i0-w2-a0-a735cda8326e3145",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 110,
+      "generation": 37,
+      "candidate_id": "gen-37-i0-w3-a0-e7a6c2c08c35b673",
+      "score": -9462.60000000002,
+      "weighted_cnot_delta": 9462.60000000002,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 111,
+      "generation": 37,
+      "candidate_id": "gen-37-i0-w5-a0-cebaa5eb80116453",
+      "score": -10098.000000000073,
+      "weighted_cnot_delta": 10098.000000000073,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 112,
+      "generation": 37,
+      "candidate_id": "gen-37-i0-w6-a0-c634415e6baefe61",
+      "score": -10441.200000000026,
+      "weighted_cnot_delta": 10441.200000000026,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 113,
+      "generation": 37,
+      "candidate_id": "gen-37-i0-w7-a0-1de258f75b1223c4",
+      "score": -9930.00000000003,
+      "weighted_cnot_delta": 9930.00000000003,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 114,
+      "generation": 38,
+      "candidate_id": "gen-38-i0-w0-a0-6c5fcc9520b4c58b",
+      "score": -8761.800000000061,
+      "weighted_cnot_delta": 8761.800000000061,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 115,
+      "generation": 38,
+      "candidate_id": "gen-38-i0-w1-a0-a7d5b64750341246",
+      "score": -9755.400000000023,
+      "weighted_cnot_delta": 9755.400000000023,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 116,
+      "generation": 38,
+      "candidate_id": "gen-38-i0-w2-a0-7c82be81cc6d97e8",
+      "score": -9970.20000000007,
+      "weighted_cnot_delta": 9970.20000000007,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 117,
+      "generation": 38,
+      "candidate_id": "gen-38-i0-w5-a0-10eb002d4f63fd20",
+      "score": -9291.00000000003,
+      "weighted_cnot_delta": 9291.00000000003,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 118,
+      "generation": 38,
+      "candidate_id": "gen-38-i0-w6-a0-016359d0f2098695",
+      "score": -10608.000000000015,
+      "weighted_cnot_delta": 10608.000000000015,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 119,
+      "generation": 38,
+      "candidate_id": "gen-38-i0-w7-a0-f29b00d5984d4cc2",
+      "score": -8743.800000000032,
+      "weighted_cnot_delta": 8743.800000000032,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 120,
+      "generation": 39,
+      "candidate_id": "gen-39-i0-w0-a0-9952c8384e594af0",
+      "score": -10063.20000000007,
+      "weighted_cnot_delta": 10063.20000000007,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 121,
+      "generation": 39,
+      "candidate_id": "gen-39-i0-w2-a0-10e424fa79611579",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 122,
+      "generation": 39,
+      "candidate_id": "gen-39-i0-w3-a0-bf9a1bf5fbc9e515",
+      "score": -9273.00000000003,
+      "weighted_cnot_delta": 9273.00000000003,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 123,
+      "generation": 39,
+      "candidate_id": "gen-39-i0-w4-a0-7a8ee35d62475184",
+      "score": -9885.000000000044,
+      "weighted_cnot_delta": 9885.000000000044,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 124,
+      "generation": 39,
+      "candidate_id": "gen-39-i0-w5-a0-f3e39b7cefe02522",
+      "score": -10564.800000000017,
+      "weighted_cnot_delta": 10564.800000000017,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 125,
+      "generation": 39,
+      "candidate_id": "gen-39-i0-w6-a0-aedf920020a3a48d",
+      "score": -5784.000000000015,
+      "weighted_cnot_delta": 5784.000000000015,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 126,
+      "generation": 39,
+      "candidate_id": "gen-39-i0-w7-a0-3ec95b3b118c3501",
+      "score": -10004.400000000067,
+      "weighted_cnot_delta": 10004.400000000067,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 127,
+      "generation": 40,
+      "candidate_id": "gen-40-i0-w0-a0-d51ec12a026310e6",
+      "score": -5784.000000000015,
+      "weighted_cnot_delta": 5784.000000000015,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 128,
+      "generation": 40,
+      "candidate_id": "gen-40-i0-w1-a0-dfe82bb47c123050",
+      "score": -10564.800000000017,
+      "weighted_cnot_delta": 10564.800000000017,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 129,
+      "generation": 40,
+      "candidate_id": "gen-40-i0-w2-a0-d544ea5fc2b28490",
+      "score": -9994.20000000007,
+      "weighted_cnot_delta": 9994.20000000007,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 130,
+      "generation": 40,
+      "candidate_id": "gen-40-i0-w3-a0-4562ffd84b40a2c4",
+      "score": -8740.200000000026,
+      "weighted_cnot_delta": 8740.200000000026,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 131,
+      "generation": 40,
+      "candidate_id": "gen-40-i0-w4-a0-aacebdfc66c53c45",
+      "score": -10885.200000000055,
+      "weighted_cnot_delta": 10885.200000000055,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 132,
+      "generation": 40,
+      "candidate_id": "gen-40-i0-w6-a0-17d2df855c3f000d",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 133,
+      "generation": 40,
+      "candidate_id": "gen-40-i0-w7-a0-ccc66016a977ac19",
+      "score": 24863.999999999985,
+      "weighted_cnot_delta": -24863.999999999985,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 134,
+      "generation": 41,
+      "candidate_id": "gen-41-i0-w0-a0-7b9d63610af6fdd0",
+      "score": -9882.000000000015,
+      "weighted_cnot_delta": 9882.000000000015,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 135,
+      "generation": 41,
+      "candidate_id": "gen-41-i0-w1-a0-e08c85cd54de4b49",
+      "score": -9879.60000000002,
+      "weighted_cnot_delta": 9879.60000000002,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 136,
+      "generation": 41,
+      "candidate_id": "gen-41-i0-w2-a0-5dffea9e5e11ef4c",
+      "score": -6373.800000000032,
+      "weighted_cnot_delta": 6373.800000000032,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 137,
+      "generation": 41,
+      "candidate_id": "gen-41-i0-w4-a0-901756ecd23434da",
+      "score": -9584.399999999994,
+      "weighted_cnot_delta": 9584.399999999994,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 138,
+      "generation": 41,
+      "candidate_id": "gen-41-i0-w5-a0-1090603ebf62767e",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 139,
+      "generation": 43,
+      "candidate_id": "gen-43-i0-w0-a0-cd94d2606e572404",
+      "score": -10937.400000000038,
+      "weighted_cnot_delta": 10937.400000000038,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 140,
+      "generation": 43,
+      "candidate_id": "gen-43-i0-w1-a0-125e0038dfb3a5b9",
+      "score": -10309.200000000055,
+      "weighted_cnot_delta": 10309.200000000055,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 141,
+      "generation": 43,
+      "candidate_id": "gen-43-i0-w2-a0-b48ebbe04544858c",
+      "score": -10641.60000000005,
+      "weighted_cnot_delta": 10641.60000000005,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 142,
+      "generation": 43,
+      "candidate_id": "gen-43-i0-w3-a0-0e43ef13e6e922da",
+      "score": -10309.200000000055,
+      "weighted_cnot_delta": 10309.200000000055,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 143,
+      "generation": 43,
+      "candidate_id": "gen-43-i0-w5-a0-8858d68ba7e63898",
+      "score": -9994.20000000007,
+      "weighted_cnot_delta": 9994.20000000007,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 144,
+      "generation": 43,
+      "candidate_id": "gen-43-i0-w6-a0-f93b8633927ee763",
+      "score": -9945.60000000002,
+      "weighted_cnot_delta": 9945.60000000002,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 145,
+      "generation": 43,
+      "candidate_id": "gen-43-i0-w7-a0-d6afa4b2f1a2c3f4",
+      "score": -9577.199999999997,
+      "weighted_cnot_delta": 9577.199999999997,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 146,
+      "generation": 49,
+      "candidate_id": "gen-49-i0-w0-a0-9d413c2dfd9b6259",
+      "score": -3676.2000000000407,
+      "weighted_cnot_delta": 3676.2000000000407,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 147,
+      "generation": 49,
+      "candidate_id": "gen-49-i0-w1-a0-6318d05d354e6566",
+      "score": -11361,
+      "weighted_cnot_delta": 11361,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 148,
+      "generation": 49,
+      "candidate_id": "gen-49-i0-w2-a0-99d70f2b82ddbe58",
+      "score": -10399.200000000055,
+      "weighted_cnot_delta": 10399.200000000055,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 149,
+      "generation": 49,
+      "candidate_id": "gen-49-i0-w3-a0-539bc977a0d8ec87",
+      "score": 40070.99999999993,
+      "weighted_cnot_delta": -40070.99999999993,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 150,
+      "generation": 49,
+      "candidate_id": "gen-49-i0-w5-a0-6abea94c04c1334d",
+      "score": -9994.20000000007,
+      "weighted_cnot_delta": 9994.20000000007,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 151,
+      "generation": 49,
+      "candidate_id": "gen-49-i0-w7-a0-5b738304a469d6a6",
+      "score": -10641.60000000005,
+      "weighted_cnot_delta": 10641.60000000005,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 152,
+      "generation": 60,
+      "candidate_id": "gen-60-i0-w0-a0-98aedfc0458a5266",
+      "score": -10194.600000000006,
+      "weighted_cnot_delta": 10194.600000000006,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 153,
+      "generation": 60,
+      "candidate_id": "gen-60-i0-w1-a0-3ec10ea09c5b51cb",
+      "score": -10641.60000000005,
+      "weighted_cnot_delta": 10641.60000000005,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 154,
+      "generation": 60,
+      "candidate_id": "gen-60-i0-w2-a0-de475d651be79240",
+      "score": -10086.00000000003,
+      "weighted_cnot_delta": 10086.00000000003,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 155,
+      "generation": 60,
+      "candidate_id": "gen-60-i0-w3-a0-08727548d0fbe3f8",
+      "score": -8862.60000000002,
+      "weighted_cnot_delta": 8862.60000000002,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 156,
+      "generation": 60,
+      "candidate_id": "gen-60-i0-w5-a0-c782771033139533",
+      "score": -10694.400000000023,
+      "weighted_cnot_delta": 10694.400000000023,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 157,
+      "generation": 60,
+      "candidate_id": "gen-60-i0-w6-a0-14d118bbc3a21176",
+      "score": -10641.60000000005,
+      "weighted_cnot_delta": 10641.60000000005,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 158,
+      "generation": 60,
+      "candidate_id": "gen-60-i0-w7-a0-8b6ae41561c879d5",
+      "score": -10564.800000000017,
+      "weighted_cnot_delta": 10564.800000000017,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 159,
+      "generation": 63,
+      "candidate_id": "gen-63-i0-w0-a0-3ab601816c60e3ef",
+      "score": -7392.60000000002,
+      "weighted_cnot_delta": 7392.60000000002,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 160,
+      "generation": 63,
+      "candidate_id": "gen-63-i0-w3-a0-2e3f5384295e3db1",
+      "score": -9399.60000000002,
+      "weighted_cnot_delta": 9399.60000000002,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 161,
+      "generation": 63,
+      "candidate_id": "gen-63-i0-w4-a0-ed82d4ece09e1f55",
+      "score": -9381,
+      "weighted_cnot_delta": 9381,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 162,
+      "generation": 63,
+      "candidate_id": "gen-63-i0-w5-a0-8aab4f8f20fb2fb2",
+      "score": -11027.400000000038,
+      "weighted_cnot_delta": 11027.400000000038,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 163,
+      "generation": 63,
+      "candidate_id": "gen-63-i0-w6-a0-d6eaeb76a849fcbb",
+      "score": -10312.199999999983,
+      "weighted_cnot_delta": 10312.199999999983,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 164,
+      "generation": 63,
+      "candidate_id": "gen-63-i0-w7-a0-1debbeb625d7791e",
+      "score": 1434.5999999999622,
+      "weighted_cnot_delta": -1434.5999999999622,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 165,
+      "generation": 68,
+      "candidate_id": "gen-68-i0-w0-a0-a8e5e7575789334d",
+      "score": -9796.800000000047,
+      "weighted_cnot_delta": 9796.800000000047,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 166,
+      "generation": 68,
+      "candidate_id": "gen-68-i0-w1-a0-7225ea2bc5bebe1b",
+      "score": -10191,
+      "weighted_cnot_delta": 10191,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 167,
+      "generation": 68,
+      "candidate_id": "gen-68-i0-w2-a0-89473041ce518a6b",
+      "score": -10312.199999999983,
+      "weighted_cnot_delta": 10312.199999999983,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 168,
+      "generation": 68,
+      "candidate_id": "gen-68-i0-w3-a0-4091419f9d1b0828",
+      "score": -9291.00000000003,
+      "weighted_cnot_delta": 9291.00000000003,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 169,
+      "generation": 68,
+      "candidate_id": "gen-68-i0-w4-a0-c1ea011ecd5c1c51",
+      "score": -10193.39999999998,
+      "weighted_cnot_delta": 10193.39999999998,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 170,
+      "generation": 68,
+      "candidate_id": "gen-68-i0-w5-a0-4ca60b3cdfdf112a",
+      "score": -9895.199999999983,
+      "weighted_cnot_delta": 9895.199999999983,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 171,
+      "generation": 68,
+      "candidate_id": "gen-68-i0-w6-a0-1692202252619f19",
+      "score": -9537,
+      "weighted_cnot_delta": 9537,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 172,
+      "generation": 69,
+      "candidate_id": "gen-69-i0-w1-a0-4dd2161070984239",
+      "score": -9252.600000000006,
+      "weighted_cnot_delta": 9252.600000000006,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 173,
+      "generation": 69,
+      "candidate_id": "gen-69-i0-w2-a0-36fd94a39e4a0640",
+      "score": -10312.199999999983,
+      "weighted_cnot_delta": 10312.199999999983,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 174,
+      "generation": 69,
+      "candidate_id": "gen-69-i0-w3-a0-1056eb94f8ab30fa",
+      "score": -510.00000000001455,
+      "weighted_cnot_delta": 510.00000000001455,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 175,
+      "generation": 69,
+      "candidate_id": "gen-69-i0-w7-a0-3b0c0867291ee89d",
+      "score": -4096.200000000041,
+      "weighted_cnot_delta": 4096.200000000041,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 176,
+      "generation": 70,
+      "candidate_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+      "score": -9252.600000000006,
+      "weighted_cnot_delta": 9252.600000000006,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 177,
+      "generation": 70,
+      "candidate_id": "gen-70-i0-w1-a0-e256ce5689eb28e7",
+      "score": -9537,
+      "weighted_cnot_delta": 9537,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 178,
+      "generation": 70,
+      "candidate_id": "gen-70-i0-w2-a0-24894c98944ab0bf",
+      "score": -9537,
+      "weighted_cnot_delta": 9537,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 179,
+      "generation": 70,
+      "candidate_id": "gen-70-i0-w3-a0-383c14fdd61ce9c2",
+      "score": -9537,
+      "weighted_cnot_delta": 9537,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 180,
+      "generation": 70,
+      "candidate_id": "gen-70-i0-w4-a0-d226a419478ea351",
+      "score": -9537,
+      "weighted_cnot_delta": 9537,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 181,
+      "generation": 70,
+      "candidate_id": "gen-70-i0-w5-a0-3e6d3a9cc72e3e3b",
+      "score": -9537,
+      "weighted_cnot_delta": 9537,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 182,
+      "generation": 70,
+      "candidate_id": "gen-70-i0-w7-a0-c5bf17254002bd27",
+      "score": -8835,
+      "weighted_cnot_delta": 8835,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 183,
+      "generation": 72,
+      "candidate_id": "gen-72-i0-w1-a0-13af45ad2151ac01",
+      "score": -8980.20000000004,
+      "weighted_cnot_delta": 8980.20000000004,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 184,
+      "generation": 72,
+      "candidate_id": "gen-72-i0-w2-a0-a4106f17b92be598",
+      "score": -5774.999999999985,
+      "weighted_cnot_delta": 5774.999999999985,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 185,
+      "generation": 72,
+      "candidate_id": "gen-72-i0-w3-a0-3dec0b99c3bd15b5",
+      "score": -9897.600000000006,
+      "weighted_cnot_delta": 9897.600000000006,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 186,
+      "generation": 72,
+      "candidate_id": "gen-72-i0-w4-a0-126801c07ea189c0",
+      "score": -9291.00000000003,
+      "weighted_cnot_delta": 9291.00000000003,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 187,
+      "generation": 72,
+      "candidate_id": "gen-72-i0-w5-a0-52256a4a130b7487",
+      "score": -8730.600000000035,
+      "weighted_cnot_delta": 8730.600000000035,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 188,
+      "generation": 72,
+      "candidate_id": "gen-72-i0-w6-a0-e45ce29985323375",
+      "score": -8076.599999999977,
+      "weighted_cnot_delta": 8076.599999999977,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 189,
+      "generation": 72,
+      "candidate_id": "gen-72-i0-w7-a0-5ccee89fae610cc0",
+      "score": -9736.800000000047,
+      "weighted_cnot_delta": 9736.800000000047,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 190,
+      "generation": 73,
+      "candidate_id": "gen-73-i0-w0-a0-c2bd512ff428b07c",
+      "score": 8121.599999999977,
+      "weighted_cnot_delta": -8121.599999999977,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 191,
+      "generation": 73,
+      "candidate_id": "gen-73-i0-w2-a0-c81851cdfcf0f910",
+      "score": -8182.800000000003,
+      "weighted_cnot_delta": 8182.800000000003,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 192,
+      "generation": 73,
+      "candidate_id": "gen-73-i0-w4-a0-c98c4fd492e64994",
+      "score": -9885.000000000044,
+      "weighted_cnot_delta": 9885.000000000044,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 193,
+      "generation": 73,
+      "candidate_id": "gen-73-i0-w7-a0-3bae1c0790c21736",
+      "score": -10312.199999999983,
+      "weighted_cnot_delta": 10312.199999999983,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 194,
+      "generation": 75,
+      "candidate_id": "gen-75-i0-w0-a0-a21b8debd084e964",
+      "score": -9291.00000000003,
+      "weighted_cnot_delta": 9291.00000000003,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 195,
+      "generation": 75,
+      "candidate_id": "gen-75-i0-w1-a0-52f36831b4ef35b1",
+      "score": -4447.800000000032,
+      "weighted_cnot_delta": 4447.800000000032,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 196,
+      "generation": 75,
+      "candidate_id": "gen-75-i0-w2-a0-f4bfbb217ee821da",
+      "score": -9374.400000000009,
+      "weighted_cnot_delta": 9374.400000000009,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 197,
+      "generation": 75,
+      "candidate_id": "gen-75-i0-w3-a0-605cb9f600c45ea0",
+      "score": -9968.400000000038,
+      "weighted_cnot_delta": 9968.400000000038,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 198,
+      "generation": 75,
+      "candidate_id": "gen-75-i0-w4-a0-90dca4416d2e6410",
+      "score": -10312.199999999983,
+      "weighted_cnot_delta": 10312.199999999983,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 199,
+      "generation": 75,
+      "candidate_id": "gen-75-i0-w5-a0-2b31fe60172b1313",
+      "score": -9116.999999999985,
+      "weighted_cnot_delta": 9116.999999999985,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 200,
+      "generation": 75,
+      "candidate_id": "gen-75-i0-w6-a0-4a0d14faae22324c",
+      "score": -9910.20000000004,
+      "weighted_cnot_delta": 9910.20000000004,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 201,
+      "generation": 75,
+      "candidate_id": "gen-75-i0-w7-a0-9f0f6bce43491eb9",
+      "score": 39613.19999999997,
+      "weighted_cnot_delta": -39613.19999999997,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 202,
+      "generation": 76,
+      "candidate_id": "gen-76-i0-w0-a0-f0ca910f69224a3e",
+      "score": -7762.800000000003,
+      "weighted_cnot_delta": 7762.800000000003,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 203,
+      "generation": 76,
+      "candidate_id": "gen-76-i0-w1-a0-49468d3e5aeb957c",
+      "score": -8472.000000000015,
+      "weighted_cnot_delta": 8472.000000000015,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 204,
+      "generation": 76,
+      "candidate_id": "gen-76-i0-w2-a0-44b8207fbcc49132",
+      "score": -7392.60000000002,
+      "weighted_cnot_delta": 7392.60000000002,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 205,
+      "generation": 76,
+      "candidate_id": "gen-76-i0-w3-a0-f38b7a4c7c380955",
+      "score": -8528.400000000052,
+      "weighted_cnot_delta": 8528.400000000052,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 206,
+      "generation": 76,
+      "candidate_id": "gen-76-i0-w4-a0-731a9d2c6d987359",
+      "score": -8245.800000000047,
+      "weighted_cnot_delta": 8245.800000000047,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 207,
+      "generation": 76,
+      "candidate_id": "gen-76-i0-w5-a0-1a4ebf5d1f3d21d5",
+      "score": -6747.000000000044,
+      "weighted_cnot_delta": 6747.000000000044,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 208,
+      "generation": 76,
+      "candidate_id": "gen-76-i0-w6-a0-860afc4b5f5e5cc4",
+      "score": -10306.800000000047,
+      "weighted_cnot_delta": 10306.800000000047,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 209,
+      "generation": 76,
+      "candidate_id": "gen-76-i0-w7-a0-f53e9ab6620e10c9",
+      "score": -9909.000000000058,
+      "weighted_cnot_delta": 9909.000000000058,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 210,
+      "generation": 77,
+      "candidate_id": "gen-77-i0-w0-a0-54f9c41fd399783e",
+      "score": 2171.9999999999854,
+      "weighted_cnot_delta": -2171.9999999999854,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 211,
+      "generation": 77,
+      "candidate_id": "gen-77-i0-w1-a0-3a54f016a2c1eb79",
+      "score": -10307.399999999994,
+      "weighted_cnot_delta": 10307.399999999994,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 212,
+      "generation": 77,
+      "candidate_id": "gen-77-i0-w2-a0-7a53d3fb29af5af0",
+      "score": -4606.200000000026,
+      "weighted_cnot_delta": 4606.200000000026,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 213,
+      "generation": 77,
+      "candidate_id": "gen-77-i0-w3-a0-1b393de720a57091",
+      "score": -9958.800000000061,
+      "weighted_cnot_delta": 9958.800000000061,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 214,
+      "generation": 77,
+      "candidate_id": "gen-77-i0-w4-a0-2df75c54cc509faa",
+      "score": -9872.400000000038,
+      "weighted_cnot_delta": 9872.400000000038,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 215,
+      "generation": 77,
+      "candidate_id": "gen-77-i0-w5-a0-8dece9d18391033b",
+      "score": -8212.800000000017,
+      "weighted_cnot_delta": 8212.800000000017,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 216,
+      "generation": 77,
+      "candidate_id": "gen-77-i0-w6-a0-c874a815f8401eaf",
+      "score": -9691.800000000032,
+      "weighted_cnot_delta": 9691.800000000032,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 217,
+      "generation": 77,
+      "candidate_id": "gen-77-i0-w7-a0-f7fa6ab0ba1512b3",
+      "score": -4447.800000000032,
+      "weighted_cnot_delta": 4447.800000000032,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 218,
+      "generation": 78,
+      "candidate_id": "gen-78-i0-w1-a0-7c08f25765eb5d4a",
+      "score": -9989.39999999998,
+      "weighted_cnot_delta": 9989.39999999998,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 219,
+      "generation": 78,
+      "candidate_id": "gen-78-i0-w3-a0-e9d89192de612dd7",
+      "score": -8776.800000000032,
+      "weighted_cnot_delta": 8776.800000000032,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 220,
+      "generation": 78,
+      "candidate_id": "gen-78-i0-w5-a0-0b61562d11e29391",
+      "score": -10312.199999999983,
+      "weighted_cnot_delta": 10312.199999999983,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 221,
+      "generation": 4,
+      "candidate_id": "gen-4-i0-w6-a0-ab762d8ff2459ca5",
+      "score": -8938.800000000047,
+      "weighted_cnot_delta": 8938.800000000047,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 222,
+      "generation": 5,
+      "candidate_id": "gen-5-i0-w5-a0-2f5ad03889d8a8d2",
+      "score": -8938.800000000047,
+      "weighted_cnot_delta": 8938.800000000047,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 223,
+      "generation": 5,
+      "candidate_id": "gen-5-i0-w6-a0-d99c68234180edfa",
+      "score": -8734.20000000004,
+      "weighted_cnot_delta": 8734.20000000004,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 224,
+      "generation": 5,
+      "candidate_id": "gen-5-i0-w7-a0-8118b51581b7875f",
+      "score": -8938.800000000047,
+      "weighted_cnot_delta": 8938.800000000047,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 225,
+      "generation": 7,
+      "candidate_id": "gen-7-i0-w7-a0-45f30af3b8953b08",
+      "score": -8981.399999999994,
+      "weighted_cnot_delta": 8981.399999999994,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 226,
+      "generation": 9,
+      "candidate_id": "gen-9-i0-w0-a0-cc3f9ef64a4710ce",
+      "score": -8938.800000000047,
+      "weighted_cnot_delta": 8938.800000000047,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 227,
+      "generation": 9,
+      "candidate_id": "gen-9-i0-w2-a0-5582f1a3444bac7b",
+      "score": -8938.800000000047,
+      "weighted_cnot_delta": 8938.800000000047,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 228,
+      "generation": 9,
+      "candidate_id": "gen-9-i0-w3-a0-19a7a1180263c2cc",
+      "score": -8938.800000000047,
+      "weighted_cnot_delta": 8938.800000000047,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 229,
+      "generation": 9,
+      "candidate_id": "gen-9-i0-w4-a0-89e2820447041966",
+      "score": 51.60000000000582,
+      "weighted_cnot_delta": -51.60000000000582,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 230,
+      "generation": 9,
+      "candidate_id": "gen-9-i0-w6-a0-6e93b334c0d9d6d0",
+      "score": -9486.00000000003,
+      "weighted_cnot_delta": 9486.00000000003,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 231,
+      "generation": 9,
+      "candidate_id": "gen-9-i0-w7-a0-017f5c08e95b508e",
+      "score": -8938.800000000047,
+      "weighted_cnot_delta": 8938.800000000047,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 232,
+      "generation": 10,
+      "candidate_id": "gen-10-i0-w5-a0-dedc4798b5b8661b",
+      "score": -9027.599999999991,
+      "weighted_cnot_delta": 9027.599999999991,
+      "valid": true,
+      "source_event": "generation",
+      "retained_best": false
+    },
+    {
+      "index": 233,
+      "generation": 62,
+      "candidate_id": "gen-62-i0-w3-a0-8185f10d0dff4245",
+      "score": -11506.200000000026,
+      "weighted_cnot_delta": 11506.200000000026,
+      "valid": true,
+      "retained_best": true,
+      "label": "Accepted replayed candidate",
+      "accepted": true
+    }
+  ],
+  "best_by_index": [
+    {
+      "index": 0,
+      "generation": 0,
+      "candidate_id": "initial-public-baseline",
+      "score": -8938.800000000047,
+      "weighted_cnot_delta": 8938.800000000047
+    },
+    {
+      "index": 1,
+      "generation": 1,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b",
+      "score": -9541.199999999997,
+      "weighted_cnot_delta": 9541.199999999997
+    },
+    {
+      "index": 2,
+      "generation": 1,
+      "candidate_id": "gen-1-i0-w2-a0-8e6f514539092371",
+      "score": -9700.199999999983,
+      "weighted_cnot_delta": 9700.199999999983
+    },
+    {
+      "index": 3,
+      "generation": 1,
+      "candidate_id": "gen-1-i0-w3-a0-3db34e9ba786bce1",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 4,
+      "generation": 4,
+      "candidate_id": "gen-4-i0-w1-a0-4d2374d13a528144",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 5,
+      "generation": 4,
+      "candidate_id": "gen-4-i0-w2-a0-405a3d87aa719c26",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 6,
+      "generation": 4,
+      "candidate_id": "gen-4-i0-w3-a0-195d87cf0d2df9cb",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 7,
+      "generation": 5,
+      "candidate_id": "gen-5-i0-w0-a0-a32e3977da2e419f",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 8,
+      "generation": 5,
+      "candidate_id": "gen-5-i0-w1-a0-1c9cf9235b0eb5df",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 9,
+      "generation": 5,
+      "candidate_id": "gen-5-i0-w3-a0-b080745fecb25b76",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 10,
+      "generation": 6,
+      "candidate_id": "gen-6-i0-w0-a0-67c1acaa979d5af6",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 11,
+      "generation": 6,
+      "candidate_id": "gen-6-i0-w1-a0-3e1adc05bd602a99",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 12,
+      "generation": 6,
+      "candidate_id": "gen-6-i0-w2-a0-1f13b0367bb2bdd3",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 13,
+      "generation": 6,
+      "candidate_id": "gen-6-i0-w3-a0-de3b7bab1eb47c18",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 14,
+      "generation": 7,
+      "candidate_id": "gen-7-i0-w0-a0-042b2dbb69b5edb4",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 15,
+      "generation": 7,
+      "candidate_id": "gen-7-i0-w1-a0-04b3e001dae544e3",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 16,
+      "generation": 7,
+      "candidate_id": "gen-7-i0-w2-a0-83a650c459d713c2",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 17,
+      "generation": 7,
+      "candidate_id": "gen-7-i0-w3-a0-9861634612ada0c1",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 18,
+      "generation": 8,
+      "candidate_id": "gen-8-i0-w0-a0-a99e7d34d4a0379b",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 19,
+      "generation": 8,
+      "candidate_id": "gen-8-i0-w1-a0-0113c40bb1bdc5de",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 20,
+      "generation": 10,
+      "candidate_id": "gen-10-i0-w0-a0-7b1b2245d3bcad9c",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 21,
+      "generation": 10,
+      "candidate_id": "gen-10-i0-w1-a0-d515faf704c64f96",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 22,
+      "generation": 10,
+      "candidate_id": "gen-10-i0-w2-a0-1cdfb1f9b5df07de",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 23,
+      "generation": 10,
+      "candidate_id": "gen-10-i0-w3-a0-e16a31081958ca2a",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 24,
+      "generation": 11,
+      "candidate_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 25,
+      "generation": 11,
+      "candidate_id": "gen-11-i0-w2-a0-e436e98182f9b8b7",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 26,
+      "generation": 11,
+      "candidate_id": "gen-11-i0-w3-a0-5d16ca4c58d2bf51",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 27,
+      "generation": 13,
+      "candidate_id": "gen-13-i0-w0-a0-2c56458db470e086",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 28,
+      "generation": 13,
+      "candidate_id": "gen-13-i0-w2-a0-b03acc350f0fd228",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 29,
+      "generation": 13,
+      "candidate_id": "gen-13-i0-w3-a0-37287bb737d9b9c4",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 30,
+      "generation": 14,
+      "candidate_id": "gen-14-i0-w0-a0-c1320c85381af5c9",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 31,
+      "generation": 14,
+      "candidate_id": "gen-14-i0-w1-a0-9686c1bc7a88d694",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 32,
+      "generation": 14,
+      "candidate_id": "gen-14-i0-w3-a0-b3915dd1df30b946",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 33,
+      "generation": 17,
+      "candidate_id": "gen-17-i0-w1-a0-2a0030d2a85c7cb4",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 34,
+      "generation": 17,
+      "candidate_id": "gen-17-i0-w5-a0-349ef9d0ad0e9885",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 35,
+      "generation": 17,
+      "candidate_id": "gen-17-i0-w6-a0-da77bcbdc1695dfa",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 36,
+      "generation": 22,
+      "candidate_id": "gen-22-i0-w0-a0-ee51ba5a13b468bc",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 37,
+      "generation": 22,
+      "candidate_id": "gen-22-i0-w1-a0-7163a16fcb1b181f",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 38,
+      "generation": 22,
+      "candidate_id": "gen-22-i0-w2-a0-51aca01618a5312e",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 39,
+      "generation": 22,
+      "candidate_id": "gen-22-i0-w3-a0-755189c2ee1efefe",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 40,
+      "generation": 22,
+      "candidate_id": "gen-22-i0-w4-a0-30fab4cdd10db0c3",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 41,
+      "generation": 22,
+      "candidate_id": "gen-22-i0-w5-a0-a9bb1af60e637d8a",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 42,
+      "generation": 22,
+      "candidate_id": "gen-22-i0-w6-a0-4397eb7ba696e0f9",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 43,
+      "generation": 22,
+      "candidate_id": "gen-22-i0-w7-a0-da3230bb8bdaf6f1",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 44,
+      "generation": 23,
+      "candidate_id": "gen-23-i0-w0-a0-066f2006ceebd13f",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 45,
+      "generation": 23,
+      "candidate_id": "gen-23-i0-w5-a0-e30749cbfcd3fff4",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 46,
+      "generation": 23,
+      "candidate_id": "gen-23-i0-w6-a0-4255cf9563894bc6",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 47,
+      "generation": 25,
+      "candidate_id": "gen-25-i0-w0-a0-adcf01eaeac5ef1e",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 48,
+      "generation": 25,
+      "candidate_id": "gen-25-i0-w1-a0-8c4ae1bdaa40b2a0",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 49,
+      "generation": 25,
+      "candidate_id": "gen-25-i0-w2-a0-0948771ba5d2d2e9",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 50,
+      "generation": 25,
+      "candidate_id": "gen-25-i0-w3-a0-5cd3c246691ea008",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 51,
+      "generation": 25,
+      "candidate_id": "gen-25-i0-w7-a0-90563291264c5985",
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026
+    },
+    {
+      "index": 52,
+      "generation": 31,
+      "candidate_id": "gen-31-i0-w1-a0-6e65edf58bcbed8f",
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998
+    },
+    {
+      "index": 53,
+      "generation": 31,
+      "candidate_id": "gen-31-i0-w2-a0-95d5080d2b0974c0",
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998
+    },
+    {
+      "index": 54,
+      "generation": 31,
+      "candidate_id": "gen-31-i0-w3-a0-a2f987acf928e076",
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998
+    },
+    {
+      "index": 55,
+      "generation": 31,
+      "candidate_id": "gen-31-i0-w4-a0-3e95f6eed0adbf1e",
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998
+    },
+    {
+      "index": 56,
+      "generation": 31,
+      "candidate_id": "gen-31-i0-w5-a0-de9516aa4967ce71",
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998
+    },
+    {
+      "index": 57,
+      "generation": 31,
+      "candidate_id": "gen-31-i0-w6-a0-3ff6215cea35a5e0",
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998
+    },
+    {
+      "index": 58,
+      "generation": 32,
+      "candidate_id": "gen-32-i0-w2-a0-2f0f337ea60f3352",
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998
+    },
+    {
+      "index": 59,
+      "generation": 32,
+      "candidate_id": "gen-32-i0-w3-a0-9d4102221bcf5549",
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998
+    },
+    {
+      "index": 60,
+      "generation": 32,
+      "candidate_id": "gen-32-i0-w4-a0-bb5601fdc2b73087",
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998
+    },
+    {
+      "index": 61,
+      "generation": 32,
+      "candidate_id": "gen-32-i0-w6-a0-6b9f6416e20aafb1",
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998
+    },
+    {
+      "index": 62,
+      "generation": 1,
+      "candidate_id": "gen-1-i0-w5-a0-82ad2e46fe9406d0",
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998
+    },
+    {
+      "index": 63,
+      "generation": 3,
+      "candidate_id": "gen-3-i0-w0-a0-d5724c3680c1e56b",
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017
+    },
+    {
+      "index": 64,
+      "generation": 3,
+      "candidate_id": "gen-3-i0-w1-a0-bb62743038752f0d",
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017
+    },
+    {
+      "index": 65,
+      "generation": 3,
+      "candidate_id": "gen-3-i0-w2-a0-534c19aa34829255",
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017
+    },
+    {
+      "index": 66,
+      "generation": 3,
+      "candidate_id": "gen-3-i0-w3-a0-761318b072f1987f",
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017
+    },
+    {
+      "index": 67,
+      "generation": 3,
+      "candidate_id": "gen-3-i0-w4-a0-5b3b4841b9fb850c",
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017
+    },
+    {
+      "index": 68,
+      "generation": 3,
+      "candidate_id": "gen-3-i0-w5-a0-a27ad72541decdae",
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017
+    },
+    {
+      "index": 69,
+      "generation": 8,
+      "candidate_id": "gen-8-i0-w3-a0-0a77930b7a50859f",
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017
+    },
+    {
+      "index": 70,
+      "generation": 8,
+      "candidate_id": "gen-8-i0-w7-a0-8de22f1b9fc93762",
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017
+    },
+    {
+      "index": 71,
+      "generation": 13,
+      "candidate_id": "gen-13-i0-w1-a0-a16a93365788f282",
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017
+    },
+    {
+      "index": 72,
+      "generation": 13,
+      "candidate_id": "gen-13-i0-w4-a0-c132fb331430cde1",
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017
+    },
+    {
+      "index": 73,
+      "generation": 13,
+      "candidate_id": "gen-13-i0-w5-a0-d6bcb673838d435f",
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017
+    },
+    {
+      "index": 74,
+      "generation": 13,
+      "candidate_id": "gen-13-i0-w6-a0-27caedd4294f1dff",
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017
+    },
+    {
+      "index": 75,
+      "generation": 13,
+      "candidate_id": "gen-13-i0-w7-a0-bfc180bd82c5a857",
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017
+    },
+    {
+      "index": 76,
+      "generation": 16,
+      "candidate_id": "gen-16-i0-w1-a0-a23803ea4fb21f25",
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017
+    },
+    {
+      "index": 77,
+      "generation": 16,
+      "candidate_id": "gen-16-i0-w2-a0-dc306c5c292681c0",
+      "score": -10920.600000000064,
+      "weighted_cnot_delta": 10920.600000000064
+    },
+    {
+      "index": 78,
+      "generation": 16,
+      "candidate_id": "gen-16-i0-w5-a0-db881cbdc96e1c1c",
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991
+    },
+    {
+      "index": 79,
+      "generation": 16,
+      "candidate_id": "gen-16-i0-w6-a0-f6d4a30c00a18a89",
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991
+    },
+    {
+      "index": 80,
+      "generation": 24,
+      "candidate_id": "gen-24-i0-w0-a0-47d320019d183110",
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991
+    },
+    {
+      "index": 81,
+      "generation": 24,
+      "candidate_id": "gen-24-i0-w1-a0-4109fcb58f27b753",
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991
+    },
+    {
+      "index": 82,
+      "generation": 24,
+      "candidate_id": "gen-24-i0-w2-a0-765ee0efe5d28ee7",
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991
+    },
+    {
+      "index": 83,
+      "generation": 24,
+      "candidate_id": "gen-24-i0-w4-a0-c6e16b1f83556fec",
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991
+    },
+    {
+      "index": 84,
+      "generation": 24,
+      "candidate_id": "gen-24-i0-w5-a0-049a2a3f004cd382",
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991
+    },
+    {
+      "index": 85,
+      "generation": 24,
+      "candidate_id": "gen-24-i0-w6-a0-3e9ffdec7f34c5bf",
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991
+    },
+    {
+      "index": 86,
+      "generation": 24,
+      "candidate_id": "gen-24-i0-w7-a0-8783869e1b51ef2d",
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991
+    },
+    {
+      "index": 87,
+      "generation": 28,
+      "candidate_id": "gen-28-i0-w4-a0-7791fb4237a3dd07",
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991
+    },
+    {
+      "index": 88,
+      "generation": 28,
+      "candidate_id": "gen-28-i0-w6-a0-2f1644e13333bbda",
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991
+    },
+    {
+      "index": 89,
+      "generation": 28,
+      "candidate_id": "gen-28-i0-w7-a0-c0db155f58af0183",
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991
+    },
+    {
+      "index": 90,
+      "generation": 30,
+      "candidate_id": "gen-30-i0-w1-a0-d563fdc8152db413",
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991
+    },
+    {
+      "index": 91,
+      "generation": 30,
+      "candidate_id": "gen-30-i0-w2-a0-2ee2ccd5c87f36ee",
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991
+    },
+    {
+      "index": 92,
+      "generation": 30,
+      "candidate_id": "gen-30-i0-w3-a0-5323d89276416479",
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991
+    },
+    {
+      "index": 93,
+      "generation": 30,
+      "candidate_id": "gen-30-i0-w4-a0-437abccf96827285",
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991
+    },
+    {
+      "index": 94,
+      "generation": 30,
+      "candidate_id": "gen-30-i0-w5-a0-8a52f5a2ee7fb275",
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991
+    },
+    {
+      "index": 95,
+      "generation": 30,
+      "candidate_id": "gen-30-i0-w7-a0-cb44adbb56a97afa",
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991
+    },
+    {
+      "index": 96,
+      "generation": 32,
+      "candidate_id": "gen-32-i0-w5-a0-30b27743876b8c1f",
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991
+    },
+    {
+      "index": 97,
+      "generation": 32,
+      "candidate_id": "gen-32-i0-w7-a0-038b9bcf469e6c45",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 98,
+      "generation": 33,
+      "candidate_id": "gen-33-i0-w0-a0-04529a4a451daaa3",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 99,
+      "generation": 33,
+      "candidate_id": "gen-33-i0-w1-a0-54540a2da3ec0312",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 100,
+      "generation": 33,
+      "candidate_id": "gen-33-i0-w2-a0-400b04c81c9c3e43",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 101,
+      "generation": 33,
+      "candidate_id": "gen-33-i0-w4-a0-607ffff339a1402d",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 102,
+      "generation": 33,
+      "candidate_id": "gen-33-i0-w6-a0-0d14c2d3e9070f56",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 103,
+      "generation": 33,
+      "candidate_id": "gen-33-i0-w7-a0-ed0c4cf8bdaf9441",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 104,
+      "generation": 36,
+      "candidate_id": "gen-36-i0-w1-a0-451c2a629b72cc0f",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 105,
+      "generation": 36,
+      "candidate_id": "gen-36-i0-w3-a0-5d4691e55c9a8dd5",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 106,
+      "generation": 36,
+      "candidate_id": "gen-36-i0-w4-a0-07457e8637067b2a",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 107,
+      "generation": 36,
+      "candidate_id": "gen-36-i0-w5-a0-b07b3a931131c374",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 108,
+      "generation": 37,
+      "candidate_id": "gen-37-i0-w0-a0-776a6614722f402f",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 109,
+      "generation": 37,
+      "candidate_id": "gen-37-i0-w2-a0-a735cda8326e3145",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 110,
+      "generation": 37,
+      "candidate_id": "gen-37-i0-w3-a0-e7a6c2c08c35b673",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 111,
+      "generation": 37,
+      "candidate_id": "gen-37-i0-w5-a0-cebaa5eb80116453",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 112,
+      "generation": 37,
+      "candidate_id": "gen-37-i0-w6-a0-c634415e6baefe61",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 113,
+      "generation": 37,
+      "candidate_id": "gen-37-i0-w7-a0-1de258f75b1223c4",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 114,
+      "generation": 38,
+      "candidate_id": "gen-38-i0-w0-a0-6c5fcc9520b4c58b",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 115,
+      "generation": 38,
+      "candidate_id": "gen-38-i0-w1-a0-a7d5b64750341246",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 116,
+      "generation": 38,
+      "candidate_id": "gen-38-i0-w2-a0-7c82be81cc6d97e8",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 117,
+      "generation": 38,
+      "candidate_id": "gen-38-i0-w5-a0-10eb002d4f63fd20",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 118,
+      "generation": 38,
+      "candidate_id": "gen-38-i0-w6-a0-016359d0f2098695",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 119,
+      "generation": 38,
+      "candidate_id": "gen-38-i0-w7-a0-f29b00d5984d4cc2",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 120,
+      "generation": 39,
+      "candidate_id": "gen-39-i0-w0-a0-9952c8384e594af0",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 121,
+      "generation": 39,
+      "candidate_id": "gen-39-i0-w2-a0-10e424fa79611579",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 122,
+      "generation": 39,
+      "candidate_id": "gen-39-i0-w3-a0-bf9a1bf5fbc9e515",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 123,
+      "generation": 39,
+      "candidate_id": "gen-39-i0-w4-a0-7a8ee35d62475184",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 124,
+      "generation": 39,
+      "candidate_id": "gen-39-i0-w5-a0-f3e39b7cefe02522",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 125,
+      "generation": 39,
+      "candidate_id": "gen-39-i0-w6-a0-aedf920020a3a48d",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 126,
+      "generation": 39,
+      "candidate_id": "gen-39-i0-w7-a0-3ec95b3b118c3501",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 127,
+      "generation": 40,
+      "candidate_id": "gen-40-i0-w0-a0-d51ec12a026310e6",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 128,
+      "generation": 40,
+      "candidate_id": "gen-40-i0-w1-a0-dfe82bb47c123050",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 129,
+      "generation": 40,
+      "candidate_id": "gen-40-i0-w2-a0-d544ea5fc2b28490",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 130,
+      "generation": 40,
+      "candidate_id": "gen-40-i0-w3-a0-4562ffd84b40a2c4",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 131,
+      "generation": 40,
+      "candidate_id": "gen-40-i0-w4-a0-aacebdfc66c53c45",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 132,
+      "generation": 40,
+      "candidate_id": "gen-40-i0-w6-a0-17d2df855c3f000d",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 133,
+      "generation": 40,
+      "candidate_id": "gen-40-i0-w7-a0-ccc66016a977ac19",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 134,
+      "generation": 41,
+      "candidate_id": "gen-41-i0-w0-a0-7b9d63610af6fdd0",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 135,
+      "generation": 41,
+      "candidate_id": "gen-41-i0-w1-a0-e08c85cd54de4b49",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 136,
+      "generation": 41,
+      "candidate_id": "gen-41-i0-w2-a0-5dffea9e5e11ef4c",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 137,
+      "generation": 41,
+      "candidate_id": "gen-41-i0-w4-a0-901756ecd23434da",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 138,
+      "generation": 41,
+      "candidate_id": "gen-41-i0-w5-a0-1090603ebf62767e",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 139,
+      "generation": 43,
+      "candidate_id": "gen-43-i0-w0-a0-cd94d2606e572404",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 140,
+      "generation": 43,
+      "candidate_id": "gen-43-i0-w1-a0-125e0038dfb3a5b9",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 141,
+      "generation": 43,
+      "candidate_id": "gen-43-i0-w2-a0-b48ebbe04544858c",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 142,
+      "generation": 43,
+      "candidate_id": "gen-43-i0-w3-a0-0e43ef13e6e922da",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 143,
+      "generation": 43,
+      "candidate_id": "gen-43-i0-w5-a0-8858d68ba7e63898",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 144,
+      "generation": 43,
+      "candidate_id": "gen-43-i0-w6-a0-f93b8633927ee763",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 145,
+      "generation": 43,
+      "candidate_id": "gen-43-i0-w7-a0-d6afa4b2f1a2c3f4",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 146,
+      "generation": 49,
+      "candidate_id": "gen-49-i0-w0-a0-9d413c2dfd9b6259",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 147,
+      "generation": 49,
+      "candidate_id": "gen-49-i0-w1-a0-6318d05d354e6566",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 148,
+      "generation": 49,
+      "candidate_id": "gen-49-i0-w2-a0-99d70f2b82ddbe58",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 149,
+      "generation": 49,
+      "candidate_id": "gen-49-i0-w3-a0-539bc977a0d8ec87",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 150,
+      "generation": 49,
+      "candidate_id": "gen-49-i0-w5-a0-6abea94c04c1334d",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 151,
+      "generation": 49,
+      "candidate_id": "gen-49-i0-w7-a0-5b738304a469d6a6",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 152,
+      "generation": 60,
+      "candidate_id": "gen-60-i0-w0-a0-98aedfc0458a5266",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 153,
+      "generation": 60,
+      "candidate_id": "gen-60-i0-w1-a0-3ec10ea09c5b51cb",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 154,
+      "generation": 60,
+      "candidate_id": "gen-60-i0-w2-a0-de475d651be79240",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 155,
+      "generation": 60,
+      "candidate_id": "gen-60-i0-w3-a0-08727548d0fbe3f8",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 156,
+      "generation": 60,
+      "candidate_id": "gen-60-i0-w5-a0-c782771033139533",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 157,
+      "generation": 60,
+      "candidate_id": "gen-60-i0-w6-a0-14d118bbc3a21176",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 158,
+      "generation": 60,
+      "candidate_id": "gen-60-i0-w7-a0-8b6ae41561c879d5",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 159,
+      "generation": 63,
+      "candidate_id": "gen-63-i0-w0-a0-3ab601816c60e3ef",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 160,
+      "generation": 63,
+      "candidate_id": "gen-63-i0-w3-a0-2e3f5384295e3db1",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 161,
+      "generation": 63,
+      "candidate_id": "gen-63-i0-w4-a0-ed82d4ece09e1f55",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 162,
+      "generation": 63,
+      "candidate_id": "gen-63-i0-w5-a0-8aab4f8f20fb2fb2",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 163,
+      "generation": 63,
+      "candidate_id": "gen-63-i0-w6-a0-d6eaeb76a849fcbb",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 164,
+      "generation": 63,
+      "candidate_id": "gen-63-i0-w7-a0-1debbeb625d7791e",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 165,
+      "generation": 68,
+      "candidate_id": "gen-68-i0-w0-a0-a8e5e7575789334d",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 166,
+      "generation": 68,
+      "candidate_id": "gen-68-i0-w1-a0-7225ea2bc5bebe1b",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 167,
+      "generation": 68,
+      "candidate_id": "gen-68-i0-w2-a0-89473041ce518a6b",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 168,
+      "generation": 68,
+      "candidate_id": "gen-68-i0-w3-a0-4091419f9d1b0828",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 169,
+      "generation": 68,
+      "candidate_id": "gen-68-i0-w4-a0-c1ea011ecd5c1c51",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 170,
+      "generation": 68,
+      "candidate_id": "gen-68-i0-w5-a0-4ca60b3cdfdf112a",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 171,
+      "generation": 68,
+      "candidate_id": "gen-68-i0-w6-a0-1692202252619f19",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 172,
+      "generation": 69,
+      "candidate_id": "gen-69-i0-w1-a0-4dd2161070984239",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 173,
+      "generation": 69,
+      "candidate_id": "gen-69-i0-w2-a0-36fd94a39e4a0640",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 174,
+      "generation": 69,
+      "candidate_id": "gen-69-i0-w3-a0-1056eb94f8ab30fa",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 175,
+      "generation": 69,
+      "candidate_id": "gen-69-i0-w7-a0-3b0c0867291ee89d",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 176,
+      "generation": 70,
+      "candidate_id": "gen-70-i0-w0-a0-108952ab359d32b5",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 177,
+      "generation": 70,
+      "candidate_id": "gen-70-i0-w1-a0-e256ce5689eb28e7",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 178,
+      "generation": 70,
+      "candidate_id": "gen-70-i0-w2-a0-24894c98944ab0bf",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 179,
+      "generation": 70,
+      "candidate_id": "gen-70-i0-w3-a0-383c14fdd61ce9c2",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 180,
+      "generation": 70,
+      "candidate_id": "gen-70-i0-w4-a0-d226a419478ea351",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 181,
+      "generation": 70,
+      "candidate_id": "gen-70-i0-w5-a0-3e6d3a9cc72e3e3b",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 182,
+      "generation": 70,
+      "candidate_id": "gen-70-i0-w7-a0-c5bf17254002bd27",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 183,
+      "generation": 72,
+      "candidate_id": "gen-72-i0-w1-a0-13af45ad2151ac01",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 184,
+      "generation": 72,
+      "candidate_id": "gen-72-i0-w2-a0-a4106f17b92be598",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 185,
+      "generation": 72,
+      "candidate_id": "gen-72-i0-w3-a0-3dec0b99c3bd15b5",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 186,
+      "generation": 72,
+      "candidate_id": "gen-72-i0-w4-a0-126801c07ea189c0",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 187,
+      "generation": 72,
+      "candidate_id": "gen-72-i0-w5-a0-52256a4a130b7487",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 188,
+      "generation": 72,
+      "candidate_id": "gen-72-i0-w6-a0-e45ce29985323375",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 189,
+      "generation": 72,
+      "candidate_id": "gen-72-i0-w7-a0-5ccee89fae610cc0",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 190,
+      "generation": 73,
+      "candidate_id": "gen-73-i0-w0-a0-c2bd512ff428b07c",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 191,
+      "generation": 73,
+      "candidate_id": "gen-73-i0-w2-a0-c81851cdfcf0f910",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 192,
+      "generation": 73,
+      "candidate_id": "gen-73-i0-w4-a0-c98c4fd492e64994",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 193,
+      "generation": 73,
+      "candidate_id": "gen-73-i0-w7-a0-3bae1c0790c21736",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 194,
+      "generation": 75,
+      "candidate_id": "gen-75-i0-w0-a0-a21b8debd084e964",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 195,
+      "generation": 75,
+      "candidate_id": "gen-75-i0-w1-a0-52f36831b4ef35b1",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 196,
+      "generation": 75,
+      "candidate_id": "gen-75-i0-w2-a0-f4bfbb217ee821da",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 197,
+      "generation": 75,
+      "candidate_id": "gen-75-i0-w3-a0-605cb9f600c45ea0",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 198,
+      "generation": 75,
+      "candidate_id": "gen-75-i0-w4-a0-90dca4416d2e6410",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 199,
+      "generation": 75,
+      "candidate_id": "gen-75-i0-w5-a0-2b31fe60172b1313",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 200,
+      "generation": 75,
+      "candidate_id": "gen-75-i0-w6-a0-4a0d14faae22324c",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 201,
+      "generation": 75,
+      "candidate_id": "gen-75-i0-w7-a0-9f0f6bce43491eb9",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 202,
+      "generation": 76,
+      "candidate_id": "gen-76-i0-w0-a0-f0ca910f69224a3e",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 203,
+      "generation": 76,
+      "candidate_id": "gen-76-i0-w1-a0-49468d3e5aeb957c",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 204,
+      "generation": 76,
+      "candidate_id": "gen-76-i0-w2-a0-44b8207fbcc49132",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 205,
+      "generation": 76,
+      "candidate_id": "gen-76-i0-w3-a0-f38b7a4c7c380955",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 206,
+      "generation": 76,
+      "candidate_id": "gen-76-i0-w4-a0-731a9d2c6d987359",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 207,
+      "generation": 76,
+      "candidate_id": "gen-76-i0-w5-a0-1a4ebf5d1f3d21d5",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 208,
+      "generation": 76,
+      "candidate_id": "gen-76-i0-w6-a0-860afc4b5f5e5cc4",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 209,
+      "generation": 76,
+      "candidate_id": "gen-76-i0-w7-a0-f53e9ab6620e10c9",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 210,
+      "generation": 77,
+      "candidate_id": "gen-77-i0-w0-a0-54f9c41fd399783e",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 211,
+      "generation": 77,
+      "candidate_id": "gen-77-i0-w1-a0-3a54f016a2c1eb79",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 212,
+      "generation": 77,
+      "candidate_id": "gen-77-i0-w2-a0-7a53d3fb29af5af0",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 213,
+      "generation": 77,
+      "candidate_id": "gen-77-i0-w3-a0-1b393de720a57091",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 214,
+      "generation": 77,
+      "candidate_id": "gen-77-i0-w4-a0-2df75c54cc509faa",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 215,
+      "generation": 77,
+      "candidate_id": "gen-77-i0-w5-a0-8dece9d18391033b",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 216,
+      "generation": 77,
+      "candidate_id": "gen-77-i0-w6-a0-c874a815f8401eaf",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 217,
+      "generation": 77,
+      "candidate_id": "gen-77-i0-w7-a0-f7fa6ab0ba1512b3",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 218,
+      "generation": 78,
+      "candidate_id": "gen-78-i0-w1-a0-7c08f25765eb5d4a",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 219,
+      "generation": 78,
+      "candidate_id": "gen-78-i0-w3-a0-e9d89192de612dd7",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 220,
+      "generation": 78,
+      "candidate_id": "gen-78-i0-w5-a0-0b61562d11e29391",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 221,
+      "generation": 4,
+      "candidate_id": "gen-4-i0-w6-a0-ab762d8ff2459ca5",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 222,
+      "generation": 5,
+      "candidate_id": "gen-5-i0-w5-a0-2f5ad03889d8a8d2",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 223,
+      "generation": 5,
+      "candidate_id": "gen-5-i0-w6-a0-d99c68234180edfa",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 224,
+      "generation": 5,
+      "candidate_id": "gen-5-i0-w7-a0-8118b51581b7875f",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 225,
+      "generation": 7,
+      "candidate_id": "gen-7-i0-w7-a0-45f30af3b8953b08",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 226,
+      "generation": 9,
+      "candidate_id": "gen-9-i0-w0-a0-cc3f9ef64a4710ce",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 227,
+      "generation": 9,
+      "candidate_id": "gen-9-i0-w2-a0-5582f1a3444bac7b",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 228,
+      "generation": 9,
+      "candidate_id": "gen-9-i0-w3-a0-19a7a1180263c2cc",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 229,
+      "generation": 9,
+      "candidate_id": "gen-9-i0-w4-a0-89e2820447041966",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 230,
+      "generation": 9,
+      "candidate_id": "gen-9-i0-w6-a0-6e93b334c0d9d6d0",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 231,
+      "generation": 9,
+      "candidate_id": "gen-9-i0-w7-a0-017f5c08e95b508e",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 232,
+      "generation": 10,
+      "candidate_id": "gen-10-i0-w5-a0-dedc4798b5b8661b",
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004
+    },
+    {
+      "index": 233,
+      "generation": 62,
+      "candidate_id": "gen-62-i0-w3-a0-8185f10d0dff4245",
+      "score": -11506.200000000026,
+      "weighted_cnot_delta": 11506.200000000026
+    }
+  ],
+  "best_by_generation": [
+    {
+      "generation": 0,
+      "score": -8938.800000000047,
+      "weighted_cnot_delta": 8938.800000000047,
+      "candidate_id": "initial-public-baseline"
+    },
+    {
+      "generation": 1,
+      "score": -9541.199999999997,
+      "weighted_cnot_delta": 9541.199999999997,
+      "candidate_id": "gen-1-i0-w0-a0-b261d6caca74d84b"
+    },
+    {
+      "generation": 1,
+      "score": -9700.199999999983,
+      "weighted_cnot_delta": 9700.199999999983,
+      "candidate_id": "gen-1-i0-w2-a0-8e6f514539092371"
+    },
+    {
+      "generation": 1,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-1-i0-w3-a0-3db34e9ba786bce1"
+    },
+    {
+      "generation": 4,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-4-i0-w1-a0-4d2374d13a528144"
+    },
+    {
+      "generation": 4,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-4-i0-w2-a0-405a3d87aa719c26"
+    },
+    {
+      "generation": 4,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-4-i0-w3-a0-195d87cf0d2df9cb"
+    },
+    {
+      "generation": 5,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-5-i0-w0-a0-a32e3977da2e419f"
+    },
+    {
+      "generation": 5,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-5-i0-w1-a0-1c9cf9235b0eb5df"
+    },
+    {
+      "generation": 5,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-5-i0-w3-a0-b080745fecb25b76"
+    },
+    {
+      "generation": 6,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-6-i0-w0-a0-67c1acaa979d5af6"
+    },
+    {
+      "generation": 6,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-6-i0-w1-a0-3e1adc05bd602a99"
+    },
+    {
+      "generation": 6,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-6-i0-w2-a0-1f13b0367bb2bdd3"
+    },
+    {
+      "generation": 6,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-6-i0-w3-a0-de3b7bab1eb47c18"
+    },
+    {
+      "generation": 7,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-7-i0-w0-a0-042b2dbb69b5edb4"
+    },
+    {
+      "generation": 7,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-7-i0-w1-a0-04b3e001dae544e3"
+    },
+    {
+      "generation": 7,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-7-i0-w2-a0-83a650c459d713c2"
+    },
+    {
+      "generation": 7,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-7-i0-w3-a0-9861634612ada0c1"
+    },
+    {
+      "generation": 8,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-8-i0-w0-a0-a99e7d34d4a0379b"
+    },
+    {
+      "generation": 8,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-8-i0-w1-a0-0113c40bb1bdc5de"
+    },
+    {
+      "generation": 10,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-10-i0-w0-a0-7b1b2245d3bcad9c"
+    },
+    {
+      "generation": 10,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-10-i0-w1-a0-d515faf704c64f96"
+    },
+    {
+      "generation": 10,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-10-i0-w2-a0-1cdfb1f9b5df07de"
+    },
+    {
+      "generation": 10,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-10-i0-w3-a0-e16a31081958ca2a"
+    },
+    {
+      "generation": 11,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-11-i0-w0-a0-3c2bd4399f7ea557"
+    },
+    {
+      "generation": 11,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-11-i0-w2-a0-e436e98182f9b8b7"
+    },
+    {
+      "generation": 11,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-11-i0-w3-a0-5d16ca4c58d2bf51"
+    },
+    {
+      "generation": 13,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-13-i0-w0-a0-2c56458db470e086"
+    },
+    {
+      "generation": 13,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-13-i0-w2-a0-b03acc350f0fd228"
+    },
+    {
+      "generation": 13,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-13-i0-w3-a0-37287bb737d9b9c4"
+    },
+    {
+      "generation": 14,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-14-i0-w0-a0-c1320c85381af5c9"
+    },
+    {
+      "generation": 14,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-14-i0-w1-a0-9686c1bc7a88d694"
+    },
+    {
+      "generation": 14,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-14-i0-w3-a0-b3915dd1df30b946"
+    },
+    {
+      "generation": 17,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-17-i0-w1-a0-2a0030d2a85c7cb4"
+    },
+    {
+      "generation": 17,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-17-i0-w5-a0-349ef9d0ad0e9885"
+    },
+    {
+      "generation": 17,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-17-i0-w6-a0-da77bcbdc1695dfa"
+    },
+    {
+      "generation": 22,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-22-i0-w0-a0-ee51ba5a13b468bc"
+    },
+    {
+      "generation": 22,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-22-i0-w1-a0-7163a16fcb1b181f"
+    },
+    {
+      "generation": 22,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-22-i0-w2-a0-51aca01618a5312e"
+    },
+    {
+      "generation": 22,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-22-i0-w3-a0-755189c2ee1efefe"
+    },
+    {
+      "generation": 22,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-22-i0-w4-a0-30fab4cdd10db0c3"
+    },
+    {
+      "generation": 22,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-22-i0-w5-a0-a9bb1af60e637d8a"
+    },
+    {
+      "generation": 22,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-22-i0-w6-a0-4397eb7ba696e0f9"
+    },
+    {
+      "generation": 22,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-22-i0-w7-a0-da3230bb8bdaf6f1"
+    },
+    {
+      "generation": 23,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-23-i0-w0-a0-066f2006ceebd13f"
+    },
+    {
+      "generation": 23,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-23-i0-w5-a0-e30749cbfcd3fff4"
+    },
+    {
+      "generation": 23,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-23-i0-w6-a0-4255cf9563894bc6"
+    },
+    {
+      "generation": 25,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-25-i0-w0-a0-adcf01eaeac5ef1e"
+    },
+    {
+      "generation": 25,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-25-i0-w1-a0-8c4ae1bdaa40b2a0"
+    },
+    {
+      "generation": 25,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-25-i0-w2-a0-0948771ba5d2d2e9"
+    },
+    {
+      "generation": 25,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-25-i0-w3-a0-5cd3c246691ea008"
+    },
+    {
+      "generation": 25,
+      "score": -9856.200000000026,
+      "weighted_cnot_delta": 9856.200000000026,
+      "candidate_id": "gen-25-i0-w7-a0-90563291264c5985"
+    },
+    {
+      "generation": 31,
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998,
+      "candidate_id": "gen-31-i0-w1-a0-6e65edf58bcbed8f"
+    },
+    {
+      "generation": 31,
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998,
+      "candidate_id": "gen-31-i0-w2-a0-95d5080d2b0974c0"
+    },
+    {
+      "generation": 31,
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998,
+      "candidate_id": "gen-31-i0-w3-a0-a2f987acf928e076"
+    },
+    {
+      "generation": 31,
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998,
+      "candidate_id": "gen-31-i0-w4-a0-3e95f6eed0adbf1e"
+    },
+    {
+      "generation": 31,
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998,
+      "candidate_id": "gen-31-i0-w5-a0-de9516aa4967ce71"
+    },
+    {
+      "generation": 31,
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998,
+      "candidate_id": "gen-31-i0-w6-a0-3ff6215cea35a5e0"
+    },
+    {
+      "generation": 32,
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998,
+      "candidate_id": "gen-32-i0-w2-a0-2f0f337ea60f3352"
+    },
+    {
+      "generation": 32,
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998,
+      "candidate_id": "gen-32-i0-w3-a0-9d4102221bcf5549"
+    },
+    {
+      "generation": 32,
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998,
+      "candidate_id": "gen-32-i0-w4-a0-bb5601fdc2b73087"
+    },
+    {
+      "generation": 32,
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998,
+      "candidate_id": "gen-32-i0-w6-a0-6b9f6416e20aafb1"
+    },
+    {
+      "generation": 1,
+      "score": -9971.39999999998,
+      "weighted_cnot_delta": 9971.39999999998,
+      "candidate_id": "gen-1-i0-w5-a0-82ad2e46fe9406d0"
+    },
+    {
+      "generation": 3,
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017,
+      "candidate_id": "gen-3-i0-w0-a0-d5724c3680c1e56b"
+    },
+    {
+      "generation": 3,
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017,
+      "candidate_id": "gen-3-i0-w1-a0-bb62743038752f0d"
+    },
+    {
+      "generation": 3,
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017,
+      "candidate_id": "gen-3-i0-w2-a0-534c19aa34829255"
+    },
+    {
+      "generation": 3,
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017,
+      "candidate_id": "gen-3-i0-w3-a0-761318b072f1987f"
+    },
+    {
+      "generation": 3,
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017,
+      "candidate_id": "gen-3-i0-w4-a0-5b3b4841b9fb850c"
+    },
+    {
+      "generation": 3,
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017,
+      "candidate_id": "gen-3-i0-w5-a0-a27ad72541decdae"
+    },
+    {
+      "generation": 8,
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017,
+      "candidate_id": "gen-8-i0-w3-a0-0a77930b7a50859f"
+    },
+    {
+      "generation": 8,
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017,
+      "candidate_id": "gen-8-i0-w7-a0-8de22f1b9fc93762"
+    },
+    {
+      "generation": 13,
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017,
+      "candidate_id": "gen-13-i0-w1-a0-a16a93365788f282"
+    },
+    {
+      "generation": 13,
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017,
+      "candidate_id": "gen-13-i0-w4-a0-c132fb331430cde1"
+    },
+    {
+      "generation": 13,
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017,
+      "candidate_id": "gen-13-i0-w5-a0-d6bcb673838d435f"
+    },
+    {
+      "generation": 13,
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017,
+      "candidate_id": "gen-13-i0-w6-a0-27caedd4294f1dff"
+    },
+    {
+      "generation": 13,
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017,
+      "candidate_id": "gen-13-i0-w7-a0-bfc180bd82c5a857"
+    },
+    {
+      "generation": 16,
+      "score": -10801.800000000017,
+      "weighted_cnot_delta": 10801.800000000017,
+      "candidate_id": "gen-16-i0-w1-a0-a23803ea4fb21f25"
+    },
+    {
+      "generation": 16,
+      "score": -10920.600000000064,
+      "weighted_cnot_delta": 10920.600000000064,
+      "candidate_id": "gen-16-i0-w2-a0-dc306c5c292681c0"
+    },
+    {
+      "generation": 16,
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991,
+      "candidate_id": "gen-16-i0-w5-a0-db881cbdc96e1c1c"
+    },
+    {
+      "generation": 16,
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991,
+      "candidate_id": "gen-16-i0-w6-a0-f6d4a30c00a18a89"
+    },
+    {
+      "generation": 24,
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991,
+      "candidate_id": "gen-24-i0-w0-a0-47d320019d183110"
+    },
+    {
+      "generation": 24,
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991,
+      "candidate_id": "gen-24-i0-w1-a0-4109fcb58f27b753"
+    },
+    {
+      "generation": 24,
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991,
+      "candidate_id": "gen-24-i0-w2-a0-765ee0efe5d28ee7"
+    },
+    {
+      "generation": 24,
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991,
+      "candidate_id": "gen-24-i0-w4-a0-c6e16b1f83556fec"
+    },
+    {
+      "generation": 24,
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991,
+      "candidate_id": "gen-24-i0-w5-a0-049a2a3f004cd382"
+    },
+    {
+      "generation": 24,
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991,
+      "candidate_id": "gen-24-i0-w6-a0-3e9ffdec7f34c5bf"
+    },
+    {
+      "generation": 24,
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991,
+      "candidate_id": "gen-24-i0-w7-a0-8783869e1b51ef2d"
+    },
+    {
+      "generation": 28,
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991,
+      "candidate_id": "gen-28-i0-w4-a0-7791fb4237a3dd07"
+    },
+    {
+      "generation": 28,
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991,
+      "candidate_id": "gen-28-i0-w6-a0-2f1644e13333bbda"
+    },
+    {
+      "generation": 28,
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991,
+      "candidate_id": "gen-28-i0-w7-a0-c0db155f58af0183"
+    },
+    {
+      "generation": 30,
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991,
+      "candidate_id": "gen-30-i0-w1-a0-d563fdc8152db413"
+    },
+    {
+      "generation": 30,
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991,
+      "candidate_id": "gen-30-i0-w2-a0-2ee2ccd5c87f36ee"
+    },
+    {
+      "generation": 30,
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991,
+      "candidate_id": "gen-30-i0-w3-a0-5323d89276416479"
+    },
+    {
+      "generation": 30,
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991,
+      "candidate_id": "gen-30-i0-w4-a0-437abccf96827285"
+    },
+    {
+      "generation": 30,
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991,
+      "candidate_id": "gen-30-i0-w5-a0-8a52f5a2ee7fb275"
+    },
+    {
+      "generation": 30,
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991,
+      "candidate_id": "gen-30-i0-w7-a0-cb44adbb56a97afa"
+    },
+    {
+      "generation": 32,
+      "score": -11049.599999999991,
+      "weighted_cnot_delta": 11049.599999999991,
+      "candidate_id": "gen-32-i0-w5-a0-30b27743876b8c1f"
+    },
+    {
+      "generation": 32,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-32-i0-w7-a0-038b9bcf469e6c45"
+    },
+    {
+      "generation": 33,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-33-i0-w0-a0-04529a4a451daaa3"
+    },
+    {
+      "generation": 33,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-33-i0-w1-a0-54540a2da3ec0312"
+    },
+    {
+      "generation": 33,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-33-i0-w2-a0-400b04c81c9c3e43"
+    },
+    {
+      "generation": 33,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-33-i0-w4-a0-607ffff339a1402d"
+    },
+    {
+      "generation": 33,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-33-i0-w6-a0-0d14c2d3e9070f56"
+    },
+    {
+      "generation": 33,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-33-i0-w7-a0-ed0c4cf8bdaf9441"
+    },
+    {
+      "generation": 36,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-36-i0-w1-a0-451c2a629b72cc0f"
+    },
+    {
+      "generation": 36,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-36-i0-w3-a0-5d4691e55c9a8dd5"
+    },
+    {
+      "generation": 36,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-36-i0-w4-a0-07457e8637067b2a"
+    },
+    {
+      "generation": 36,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-36-i0-w5-a0-b07b3a931131c374"
+    },
+    {
+      "generation": 37,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-37-i0-w0-a0-776a6614722f402f"
+    },
+    {
+      "generation": 37,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-37-i0-w2-a0-a735cda8326e3145"
+    },
+    {
+      "generation": 37,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-37-i0-w3-a0-e7a6c2c08c35b673"
+    },
+    {
+      "generation": 37,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-37-i0-w5-a0-cebaa5eb80116453"
+    },
+    {
+      "generation": 37,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-37-i0-w6-a0-c634415e6baefe61"
+    },
+    {
+      "generation": 37,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-37-i0-w7-a0-1de258f75b1223c4"
+    },
+    {
+      "generation": 38,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-38-i0-w0-a0-6c5fcc9520b4c58b"
+    },
+    {
+      "generation": 38,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-38-i0-w1-a0-a7d5b64750341246"
+    },
+    {
+      "generation": 38,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-38-i0-w2-a0-7c82be81cc6d97e8"
+    },
+    {
+      "generation": 38,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-38-i0-w5-a0-10eb002d4f63fd20"
+    },
+    {
+      "generation": 38,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-38-i0-w6-a0-016359d0f2098695"
+    },
+    {
+      "generation": 38,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-38-i0-w7-a0-f29b00d5984d4cc2"
+    },
+    {
+      "generation": 39,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-39-i0-w0-a0-9952c8384e594af0"
+    },
+    {
+      "generation": 39,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-39-i0-w2-a0-10e424fa79611579"
+    },
+    {
+      "generation": 39,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-39-i0-w3-a0-bf9a1bf5fbc9e515"
+    },
+    {
+      "generation": 39,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-39-i0-w4-a0-7a8ee35d62475184"
+    },
+    {
+      "generation": 39,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-39-i0-w5-a0-f3e39b7cefe02522"
+    },
+    {
+      "generation": 39,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-39-i0-w6-a0-aedf920020a3a48d"
+    },
+    {
+      "generation": 39,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-39-i0-w7-a0-3ec95b3b118c3501"
+    },
+    {
+      "generation": 40,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-40-i0-w0-a0-d51ec12a026310e6"
+    },
+    {
+      "generation": 40,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-40-i0-w1-a0-dfe82bb47c123050"
+    },
+    {
+      "generation": 40,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-40-i0-w2-a0-d544ea5fc2b28490"
+    },
+    {
+      "generation": 40,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-40-i0-w3-a0-4562ffd84b40a2c4"
+    },
+    {
+      "generation": 40,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-40-i0-w4-a0-aacebdfc66c53c45"
+    },
+    {
+      "generation": 40,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-40-i0-w6-a0-17d2df855c3f000d"
+    },
+    {
+      "generation": 40,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-40-i0-w7-a0-ccc66016a977ac19"
+    },
+    {
+      "generation": 41,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-41-i0-w0-a0-7b9d63610af6fdd0"
+    },
+    {
+      "generation": 41,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-41-i0-w1-a0-e08c85cd54de4b49"
+    },
+    {
+      "generation": 41,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-41-i0-w2-a0-5dffea9e5e11ef4c"
+    },
+    {
+      "generation": 41,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-41-i0-w4-a0-901756ecd23434da"
+    },
+    {
+      "generation": 41,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-41-i0-w5-a0-1090603ebf62767e"
+    },
+    {
+      "generation": 43,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-43-i0-w0-a0-cd94d2606e572404"
+    },
+    {
+      "generation": 43,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-43-i0-w1-a0-125e0038dfb3a5b9"
+    },
+    {
+      "generation": 43,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-43-i0-w2-a0-b48ebbe04544858c"
+    },
+    {
+      "generation": 43,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-43-i0-w3-a0-0e43ef13e6e922da"
+    },
+    {
+      "generation": 43,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-43-i0-w5-a0-8858d68ba7e63898"
+    },
+    {
+      "generation": 43,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-43-i0-w6-a0-f93b8633927ee763"
+    },
+    {
+      "generation": 43,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-43-i0-w7-a0-d6afa4b2f1a2c3f4"
+    },
+    {
+      "generation": 49,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-49-i0-w0-a0-9d413c2dfd9b6259"
+    },
+    {
+      "generation": 49,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-49-i0-w1-a0-6318d05d354e6566"
+    },
+    {
+      "generation": 49,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-49-i0-w2-a0-99d70f2b82ddbe58"
+    },
+    {
+      "generation": 49,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-49-i0-w3-a0-539bc977a0d8ec87"
+    },
+    {
+      "generation": 49,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-49-i0-w5-a0-6abea94c04c1334d"
+    },
+    {
+      "generation": 49,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-49-i0-w7-a0-5b738304a469d6a6"
+    },
+    {
+      "generation": 60,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-60-i0-w0-a0-98aedfc0458a5266"
+    },
+    {
+      "generation": 60,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-60-i0-w1-a0-3ec10ea09c5b51cb"
+    },
+    {
+      "generation": 60,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-60-i0-w2-a0-de475d651be79240"
+    },
+    {
+      "generation": 60,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-60-i0-w3-a0-08727548d0fbe3f8"
+    },
+    {
+      "generation": 60,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-60-i0-w5-a0-c782771033139533"
+    },
+    {
+      "generation": 60,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-60-i0-w6-a0-14d118bbc3a21176"
+    },
+    {
+      "generation": 60,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-60-i0-w7-a0-8b6ae41561c879d5"
+    },
+    {
+      "generation": 63,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-63-i0-w0-a0-3ab601816c60e3ef"
+    },
+    {
+      "generation": 63,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-63-i0-w3-a0-2e3f5384295e3db1"
+    },
+    {
+      "generation": 63,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-63-i0-w4-a0-ed82d4ece09e1f55"
+    },
+    {
+      "generation": 63,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-63-i0-w5-a0-8aab4f8f20fb2fb2"
+    },
+    {
+      "generation": 63,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-63-i0-w6-a0-d6eaeb76a849fcbb"
+    },
+    {
+      "generation": 63,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-63-i0-w7-a0-1debbeb625d7791e"
+    },
+    {
+      "generation": 68,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-68-i0-w0-a0-a8e5e7575789334d"
+    },
+    {
+      "generation": 68,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-68-i0-w1-a0-7225ea2bc5bebe1b"
+    },
+    {
+      "generation": 68,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-68-i0-w2-a0-89473041ce518a6b"
+    },
+    {
+      "generation": 68,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-68-i0-w3-a0-4091419f9d1b0828"
+    },
+    {
+      "generation": 68,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-68-i0-w4-a0-c1ea011ecd5c1c51"
+    },
+    {
+      "generation": 68,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-68-i0-w5-a0-4ca60b3cdfdf112a"
+    },
+    {
+      "generation": 68,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-68-i0-w6-a0-1692202252619f19"
+    },
+    {
+      "generation": 69,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-69-i0-w1-a0-4dd2161070984239"
+    },
+    {
+      "generation": 69,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-69-i0-w2-a0-36fd94a39e4a0640"
+    },
+    {
+      "generation": 69,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-69-i0-w3-a0-1056eb94f8ab30fa"
+    },
+    {
+      "generation": 69,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-69-i0-w7-a0-3b0c0867291ee89d"
+    },
+    {
+      "generation": 70,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-70-i0-w0-a0-108952ab359d32b5"
+    },
+    {
+      "generation": 70,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-70-i0-w1-a0-e256ce5689eb28e7"
+    },
+    {
+      "generation": 70,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-70-i0-w2-a0-24894c98944ab0bf"
+    },
+    {
+      "generation": 70,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-70-i0-w3-a0-383c14fdd61ce9c2"
+    },
+    {
+      "generation": 70,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-70-i0-w4-a0-d226a419478ea351"
+    },
+    {
+      "generation": 70,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-70-i0-w5-a0-3e6d3a9cc72e3e3b"
+    },
+    {
+      "generation": 70,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-70-i0-w7-a0-c5bf17254002bd27"
+    },
+    {
+      "generation": 72,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-72-i0-w1-a0-13af45ad2151ac01"
+    },
+    {
+      "generation": 72,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-72-i0-w2-a0-a4106f17b92be598"
+    },
+    {
+      "generation": 72,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-72-i0-w3-a0-3dec0b99c3bd15b5"
+    },
+    {
+      "generation": 72,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-72-i0-w4-a0-126801c07ea189c0"
+    },
+    {
+      "generation": 72,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-72-i0-w5-a0-52256a4a130b7487"
+    },
+    {
+      "generation": 72,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-72-i0-w6-a0-e45ce29985323375"
+    },
+    {
+      "generation": 72,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-72-i0-w7-a0-5ccee89fae610cc0"
+    },
+    {
+      "generation": 73,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-73-i0-w0-a0-c2bd512ff428b07c"
+    },
+    {
+      "generation": 73,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-73-i0-w2-a0-c81851cdfcf0f910"
+    },
+    {
+      "generation": 73,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-73-i0-w4-a0-c98c4fd492e64994"
+    },
+    {
+      "generation": 73,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-73-i0-w7-a0-3bae1c0790c21736"
+    },
+    {
+      "generation": 75,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-75-i0-w0-a0-a21b8debd084e964"
+    },
+    {
+      "generation": 75,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-75-i0-w1-a0-52f36831b4ef35b1"
+    },
+    {
+      "generation": 75,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-75-i0-w2-a0-f4bfbb217ee821da"
+    },
+    {
+      "generation": 75,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-75-i0-w3-a0-605cb9f600c45ea0"
+    },
+    {
+      "generation": 75,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-75-i0-w4-a0-90dca4416d2e6410"
+    },
+    {
+      "generation": 75,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-75-i0-w5-a0-2b31fe60172b1313"
+    },
+    {
+      "generation": 75,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-75-i0-w6-a0-4a0d14faae22324c"
+    },
+    {
+      "generation": 75,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-75-i0-w7-a0-9f0f6bce43491eb9"
+    },
+    {
+      "generation": 76,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-76-i0-w0-a0-f0ca910f69224a3e"
+    },
+    {
+      "generation": 76,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-76-i0-w1-a0-49468d3e5aeb957c"
+    },
+    {
+      "generation": 76,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-76-i0-w2-a0-44b8207fbcc49132"
+    },
+    {
+      "generation": 76,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-76-i0-w3-a0-f38b7a4c7c380955"
+    },
+    {
+      "generation": 76,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-76-i0-w4-a0-731a9d2c6d987359"
+    },
+    {
+      "generation": 76,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-76-i0-w5-a0-1a4ebf5d1f3d21d5"
+    },
+    {
+      "generation": 76,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-76-i0-w6-a0-860afc4b5f5e5cc4"
+    },
+    {
+      "generation": 76,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-76-i0-w7-a0-f53e9ab6620e10c9"
+    },
+    {
+      "generation": 77,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-77-i0-w0-a0-54f9c41fd399783e"
+    },
+    {
+      "generation": 77,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-77-i0-w1-a0-3a54f016a2c1eb79"
+    },
+    {
+      "generation": 77,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-77-i0-w2-a0-7a53d3fb29af5af0"
+    },
+    {
+      "generation": 77,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-77-i0-w3-a0-1b393de720a57091"
+    },
+    {
+      "generation": 77,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-77-i0-w4-a0-2df75c54cc509faa"
+    },
+    {
+      "generation": 77,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-77-i0-w5-a0-8dece9d18391033b"
+    },
+    {
+      "generation": 77,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-77-i0-w6-a0-c874a815f8401eaf"
+    },
+    {
+      "generation": 77,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-77-i0-w7-a0-f7fa6ab0ba1512b3"
+    },
+    {
+      "generation": 78,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-78-i0-w1-a0-7c08f25765eb5d4a"
+    },
+    {
+      "generation": 78,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-78-i0-w3-a0-e9d89192de612dd7"
+    },
+    {
+      "generation": 78,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-78-i0-w5-a0-0b61562d11e29391"
+    },
+    {
+      "generation": 4,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-4-i0-w6-a0-ab762d8ff2459ca5"
+    },
+    {
+      "generation": 5,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-5-i0-w5-a0-2f5ad03889d8a8d2"
+    },
+    {
+      "generation": 5,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-5-i0-w6-a0-d99c68234180edfa"
+    },
+    {
+      "generation": 5,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-5-i0-w7-a0-8118b51581b7875f"
+    },
+    {
+      "generation": 7,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-7-i0-w7-a0-45f30af3b8953b08"
+    },
+    {
+      "generation": 9,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-9-i0-w0-a0-cc3f9ef64a4710ce"
+    },
+    {
+      "generation": 9,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-9-i0-w2-a0-5582f1a3444bac7b"
+    },
+    {
+      "generation": 9,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-9-i0-w3-a0-19a7a1180263c2cc"
+    },
+    {
+      "generation": 9,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-9-i0-w4-a0-89e2820447041966"
+    },
+    {
+      "generation": 9,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-9-i0-w6-a0-6e93b334c0d9d6d0"
+    },
+    {
+      "generation": 9,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-9-i0-w7-a0-017f5c08e95b508e"
+    },
+    {
+      "generation": 10,
+      "score": -11419.20000000004,
+      "weighted_cnot_delta": 11419.20000000004,
+      "candidate_id": "gen-10-i0-w5-a0-dedc4798b5b8661b"
+    },
+    {
+      "generation": 62,
+      "score": -11506.200000000026,
+      "weighted_cnot_delta": 11506.200000000026,
+      "candidate_id": "gen-62-i0-w3-a0-8185f10d0dff4245"
+    }
+  ],
+  "candidate_count": 234,
+  "generation_end": 78
+}

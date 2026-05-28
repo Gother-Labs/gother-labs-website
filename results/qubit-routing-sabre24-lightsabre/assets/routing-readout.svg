@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 250" role="img">
+  <style>
+    text{font-family:Inter,Arial,sans-serif;fill:#17201b} .muted{fill:#6f7a74}.axis,.grid{fill:none;stroke:#cbd5cf;stroke-width:1}.grid{opacity:.65}.accent{fill:#2f6f62}.soft{fill:#dce8e2}.warn{fill:#a2604a}.line{fill:none;stroke:#2f6f62;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.dot{fill:#2f6f62}.base{fill:#9aa7a1}.small{font-size:13px}.label{font-size:15px;font-weight:600}.title{font-size:22px;font-weight:650}.value{font-size:28px;font-weight:700}
+  </style>
+  <text class="title" x="48" y="34">Replay surface</text>
+  <text class="value" x="56" y="94">72 / 72</text><text class="small muted" x="56" y="118">valid routing cases</text>
+  <text class="value" x="292" y="94">31 / 6 / 35</text><text class="small muted" x="292" y="118">wins / ties / losses vs LightSABRE</text>
+  <text class="value" x="56" y="184">12,294</text><text class="small muted" x="56" y="208">fewer added CNOTs vs LightSABRE</text>
+  <text class="value" x="292" y="184">37,974</text><text class="small muted" x="292" y="208">fewer added CNOTs vs SABRE</text>
+  <path class="axis" d="M48 138H704"/>
+</svg>

@@ -636,8 +636,8 @@
       requestAnimationFrame(renderFrame);
       return;
     }
-    const stepDuration = 5.2;
-    const hold = 2.2;
+    const stepDuration = 5.0;
+    const hold = 3.0;
     const total = steps.length * stepDuration + hold;
     const t = (now / 1000) % total;
     const effectiveT = Math.min(t, steps.length * stepDuration - 1e-6);

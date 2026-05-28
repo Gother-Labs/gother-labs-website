@@ -1,0 +1,469 @@
+:root {
+  --qubit-run-panel: var(--bg);
+  --qubit-run-panel-soft: color-mix(in srgb, var(--text) 3%, transparent);
+  --qubit-run-line: color-mix(in srgb, var(--text) 18%, transparent);
+  --qubit-run-muted-line: color-mix(in srgb, var(--text) 34%, transparent);
+  --qubit-run-mono: "SFMono-Regular", Menlo, Consolas, monospace;
+  --qubit-run-serif: Georgia, "Times New Roman", serif;
+}
+
+.qubit-run-page {
+  background: var(--bg);
+}
+
+.qubit-run-page .site-main {
+  width: min(1680px, calc(100vw - (var(--content-gutter) * 2)));
+  max-width: none;
+  margin-inline: auto;
+}
+
+.qubit-run-page .site-main > .page-hero {
+  padding-inline: 0;
+}
+
+.qubit-run-hero .page-title {
+  max-width: none;
+}
+
+.qubit-run-surface {
+  display: grid;
+  gap: 1.35rem;
+}
+
+.qubit-run-summary {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(500px, 1fr);
+  gap: clamp(1.8rem, 3vw, 3.4rem);
+  align-items: start;
+  padding-bottom: 1.35rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.qubit-run-summary-copy,
+.qubit-run-summary-panel {
+  display: grid;
+  gap: 0.8rem;
+  align-content: start;
+}
+
+.qubit-run-summary-text {
+  max-width: 64ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.qubit-run-link,
+.qubit-run-small-link {
+  width: fit-content;
+  color: var(--text);
+  font-size: 0.92rem;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--accent) 62%, transparent);
+  text-underline-offset: 0.24em;
+}
+
+.qubit-run-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.qubit-run-metric {
+  min-height: 82px;
+  padding: 0.9rem 0.95rem 0.75rem;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.qubit-run-metric-label {
+  display: block;
+  margin-bottom: 0.42rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.qubit-run-metric-value {
+  display: block;
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.qubit-run-stage {
+  display: grid;
+  grid-template-columns: minmax(560px, 1.1fr) minmax(420px, 0.9fr);
+  gap: clamp(2rem, 3vw, 4.2rem);
+  align-items: start;
+  min-width: 0;
+}
+
+.qubit-run-code,
+.qubit-run-visual {
+  min-width: 0;
+}
+
+.qubit-run-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.qubit-run-section-title {
+  margin: 0;
+  font-size: 1.08rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.qubit-run-stage-label {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.qubit-run-editor {
+  margin-top: 0.85rem;
+  border: 1px solid var(--line);
+  background: var(--qubit-run-panel);
+  overflow: hidden;
+}
+
+.qubit-run-editor-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.95rem 1rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--qubit-run-mono);
+  font-size: 0.84rem;
+}
+
+.qubit-run-editor-head span:first-child {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.qubit-run-editor-head span:last-child {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.qubit-run-editor-body {
+  position: relative;
+  height: 490px;
+  margin: 0;
+  overflow: hidden;
+  background: var(--bg);
+  color: color-mix(in srgb, var(--text) 82%, transparent);
+  font-family: var(--qubit-run-mono);
+  --editor-font-size: 11.8px;
+  --editor-line-height: 20px;
+  --editor-ln-col: 34px;
+  --editor-pm-col: 14px;
+  --editor-gap-col: 0.45rem;
+  --editor-pad-x: 0.55rem;
+}
+
+.qubit-run-editor-focus {
+  display: none;
+}
+
+.qubit-run-code-line {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  display: grid;
+  grid-template-columns: var(--editor-ln-col) var(--editor-pm-col) minmax(0, 1fr);
+  gap: var(--editor-gap-col);
+  align-items: center;
+  height: var(--editor-line-height);
+  padding: 0 var(--editor-pad-x);
+  color: color-mix(in srgb, var(--text) 86%, transparent);
+  font-size: var(--editor-font-size);
+  line-height: 1;
+  white-space: pre;
+  pointer-events: none;
+  transform-origin: left center;
+  will-change: transform, opacity;
+  transition: background-color 220ms ease, color 220ms ease;
+}
+
+.qubit-run-code-line.equal {
+  background: transparent;
+}
+
+.qubit-run-code-line.insert {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 7%, transparent);
+}
+
+.qubit-run-code-line.delete {
+  color: color-mix(in srgb, var(--muted) 88%, var(--text) 12%);
+  background: color-mix(in srgb, var(--text) 4%, transparent);
+}
+
+.qubit-run-code-line.delete .code {
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+}
+
+.qubit-run-code-line .ln {
+  color: var(--muted);
+  text-align: right;
+  user-select: none;
+}
+
+.qubit-run-code-line .pm {
+  font-weight: 600;
+  opacity: 0.92;
+}
+
+.qubit-run-code-line .code {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.qubit-run-code-line .kw {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.qubit-run-code-line .fn {
+  color: color-mix(in srgb, var(--accent) 72%, var(--text));
+}
+
+.qubit-run-code-line .cm {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.qubit-run-code-line .num {
+  color: color-mix(in srgb, var(--text) 78%, transparent);
+}
+
+.qubit-run-visual {
+  display: grid;
+  gap: 1rem;
+}
+
+.qubit-run-card {
+  border: 1px solid var(--line);
+  background: var(--qubit-run-panel);
+  padding: 1rem;
+}
+
+.qubit-run-card--circuit {
+  padding: 1.25rem 1.35rem;
+}
+
+.qubit-run-score-svg,
+.qubit-run-circuit-svg,
+.qubit-run-topology-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.qubit-run-title {
+  fill: var(--text);
+  font-family: var(--qubit-run-serif);
+  font-size: 15px;
+  font-style: italic;
+}
+
+.qubit-run-label {
+  fill: var(--muted);
+  font-family: var(--qubit-run-serif);
+  font-size: 11px;
+}
+
+.qubit-run-value {
+  fill: var(--text);
+  font-family: var(--qubit-run-mono);
+  font-size: 11px;
+}
+
+.qubit-run-axis,
+.qubit-run-grid,
+.qubit-run-wire {
+  fill: none;
+  stroke: var(--qubit-run-muted-line);
+  stroke-linecap: round;
+}
+
+.qubit-run-grid {
+  stroke: var(--qubit-run-line);
+  stroke-width: 0.8;
+}
+
+.qubit-run-axis {
+  stroke-width: 1;
+}
+
+.qubit-run-candidate {
+  fill: color-mix(in srgb, var(--text) 20%, transparent);
+  opacity: 0.28;
+}
+
+.qubit-run-candidate.is-visible {
+  fill: color-mix(in srgb, var(--text) 34%, transparent);
+  opacity: 0.68;
+}
+
+.qubit-run-best {
+  fill: none;
+  stroke: var(--text);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+}
+
+.qubit-run-best--full {
+  stroke: color-mix(in srgb, var(--text) 34%, transparent);
+  stroke-width: 1.4;
+}
+
+.qubit-run-accepted-ring {
+  fill: var(--bg);
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.qubit-run-baseline-ring {
+  fill: var(--bg);
+  stroke: color-mix(in srgb, var(--text) 55%, transparent);
+  stroke-width: 1.7;
+}
+
+.qubit-run-current-ring {
+  fill: var(--bg);
+  stroke: var(--text);
+  stroke-width: 1.8;
+}
+
+.qubit-run-step-marker {
+  fill: var(--bg);
+  opacity: 0.4;
+  stroke: color-mix(in srgb, var(--text) 48%, transparent);
+  stroke-width: 1.4;
+}
+
+.qubit-run-step-marker.is-visible {
+  opacity: 1;
+  stroke: var(--text);
+  stroke-width: 1.8;
+}
+
+.qubit-run-step-marker.is-accepted {
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.qubit-run-code-milestone-line {
+  stroke: color-mix(in srgb, var(--text) 46%, transparent);
+  stroke-dasharray: 3 5;
+  stroke-linecap: round;
+  stroke-width: 1;
+}
+
+.qubit-run-code-milestone {
+  fill: color-mix(in srgb, var(--text) 86%, transparent);
+  stroke: none;
+}
+
+.qubit-run-gate {
+  fill: var(--bg);
+  stroke: var(--accent);
+  stroke-width: 1.7;
+}
+
+.qubit-run-swap {
+  stroke: var(--accent);
+  stroke-linecap: round;
+  stroke-width: 1.8;
+}
+
+.qubit-run-cnot {
+  stroke: color-mix(in srgb, var(--text) 62%, transparent);
+  stroke-width: 1.4;
+}
+
+.qubit-run-bar-baseline {
+  fill: color-mix(in srgb, var(--text) 18%, transparent);
+}
+
+.qubit-run-bar-accepted {
+  fill: color-mix(in srgb, var(--accent) 72%, transparent);
+}
+
+.qubit-run-marker {
+  stroke: color-mix(in srgb, var(--text) 58%, transparent);
+  stroke-width: 1.5;
+}
+
+.qubit-run-compressed-reference {
+  stroke: color-mix(in srgb, var(--text) 52%, transparent);
+  stroke-linecap: round;
+  stroke-width: 1.25;
+}
+
+.qubit-run-compressed-active {
+  stroke: color-mix(in srgb, var(--accent) 92%, transparent);
+  stroke-linecap: round;
+  stroke-width: 1.55;
+}
+
+
+@media (max-width: 980px) {
+  .qubit-run-summary,
+  .qubit-run-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .qubit-run-visual {
+    order: -1;
+  }
+
+  .qubit-run-summary {
+    gap: 1.4rem;
+  }
+
+  .qubit-run-metrics {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .qubit-run-editor-body {
+    height: 380px;
+    --editor-font-size: 9.2px;
+    --editor-line-height: 17px;
+    --editor-ln-col: 24px;
+    --editor-pm-col: 10px;
+  }
+
+  .qubit-run-code-line {
+    left: 8px;
+    right: 8px;
+    gap: 0.35rem;
+  }
+
+  .qubit-run-card {
+    padding: 0.85rem;
+  }
+}

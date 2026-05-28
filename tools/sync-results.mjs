@@ -353,6 +353,39 @@ ${circles.map(([cx, cy, r]) => `                  <circle cx="${cx}" cy="${cy}" 
               </svg>`;
   }
 
+  if (result.website?.card_visual === "qubit-routing") {
+    return `<svg class="result-card-visual result-card-visual--qubit-routing" viewBox="0 0 560 360" aria-hidden="true" focusable="false">
+                <g class="result-card-qubit-circuit">
+                  <path class="qc-wire" d="M78 88H492M78 126H492M78 164H492M78 202H492M78 240H492M78 278H492" />
+                  <g class="qc-muted">
+                    <path class="qc-link" d="M124 88V164" />
+                    <circle class="qc-control" cx="124" cy="88" r="5" />
+                    <circle class="qc-target" cx="124" cy="164" r="14" />
+                    <path class="qc-plus" d="M112 164H136M124 152V176" />
+                    <path class="qc-link" d="M206 126V240" />
+                    <circle class="qc-control" cx="206" cy="126" r="5" />
+                    <circle class="qc-target" cx="206" cy="240" r="14" />
+                    <path class="qc-plus" d="M194 240H218M206 228V252" />
+                    <path class="qc-link" d="M392 88V202" />
+                    <circle class="qc-control" cx="392" cy="88" r="5" />
+                    <circle class="qc-target" cx="392" cy="202" r="14" />
+                    <path class="qc-plus" d="M380 202H404M392 190V214" />
+                  </g>
+                  <g class="qc-active">
+                    <path class="qc-link" d="M278 164V202" />
+                    <path class="qc-swap" d="M266 152L290 176M290 152L266 176M266 190L290 214M290 190L266 214" />
+                    <path class="qc-link" d="M326 202V240" />
+                    <path class="qc-swap" d="M314 190L338 214M338 190L314 214M314 228L338 252M338 228L314 252" />
+                  </g>
+                  <g class="qc-readout">
+                    <path class="qc-axis" d="M98 320H462" />
+                    <rect class="qc-reference" x="98" y="298" width="304" height="14" />
+                    <rect class="qc-accepted" x="98" y="274" width="268" height="14" />
+                  </g>
+                </g>
+              </svg>`;
+  }
+
   if (result.website?.card_visual !== "quadrature") return "";
 
   return `<svg class="result-card-visual" viewBox="0 0 560 360" aria-hidden="true" focusable="false">
@@ -454,11 +487,11 @@ async function copyDirectoryIfExists(source, target) {
 }
 
 function extractCandidateCode(code) {
-  const match = code.match(/# EVOLVE_START:[^\n]*\n?([\s\S]*?)\n?# EVOLVE_END/);
+  const match = code.match(/(?:#|\/\/)\s*EVOLVE_START:[^\n]*\n?([\s\S]*?)\n?(?:#|\/\/)\s*EVOLVE_END/);
   const candidateCode = match ? match[1] : code;
   return candidateCode
     .split("\n")
-    .filter((line) => !/^# EVOLVE_(START|END)/.test(line.trim()))
+    .filter((line) => !/^(#|\/\/)\s*EVOLVE_(START|END)/.test(line.trim()))
     .join("\n")
     .trim();
 }
@@ -1055,10 +1088,10 @@ function objectiveCurveFigure(evolution) {
   const scored = steps.filter((step) => typeof step.score === "number");
   if (!scored.length) return "";
 
-  const left = 82;
-  const right = 512;
-  const top = 74;
-  const bottom = 260;
+  const left = 112;
+  const right = 542;
+  const top = 96;
+  const bottom = 270;
   const width = right - left;
   const height = bottom - top;
   const maxScore = Math.ceil(Math.max(...scored.map((step) => step.score)) / 100) * 100;
@@ -1142,7 +1175,7 @@ function objectiveCurveFigure(evolution) {
 function paperAssetFigure({ src, caption, number }) {
   return `<figure class="result-paper-asset" id="fig-${number}">
           <img src="./${escapeHtml(src)}" alt="">
-          <figcaption>Figure ${number}. ${escapeHtml(caption)}</figcaption>
+          <figcaption>Figure ${number}. ${formatPaperCaption(caption)}</figcaption>
         </figure>`;
 }
 
@@ -1150,8 +1183,12 @@ function paperInlineFigure({ number, caption, svg, className = "" }) {
   const classes = ["result-primer-card", "result-paper-figure", className].filter(Boolean).join(" ");
   return `<figure class="${classes}" id="fig-${number}">
 ${svg}
-          <figcaption>Figure ${number}. ${escapeHtml(caption)}</figcaption>
+          <figcaption>Figure ${number}. ${formatPaperCaption(caption)}</figcaption>
         </figure>`;
+}
+
+function formatPaperCaption(caption) {
+  return escapeHtml(caption).replace(/\|([01]{2})⟩/g, '<span class="math-ket">|$1⟩</span>');
 }
 
 function implementationCodeFigure(candidateCode) {
@@ -1739,6 +1776,481 @@ function rcpspWhitepaperInserts(full, evolution, candidateCode, scheduleExample,
   };
 }
 
+function highlightRustLine(line) {
+  const escaped = escapeHtml(line);
+  const commentIndex = escaped.indexOf("//");
+  const code = commentIndex >= 0 ? escaped.slice(0, commentIndex) : escaped;
+  const comment = commentIndex >= 0 ? escaped.slice(commentIndex) : "";
+  let html = code.replace(/(&quot;.*?&quot;)/g, '<span class="rs-string">$1</span>');
+  html = html.replace(/\b(pub|struct|impl|for|fn|let|mut|if|else|return|match|Some|None|Ok|Err|true|false|self|Self|where|as)\b/g, '<span class="rs-keyword">$1</span>');
+  html = html.replace(/\b(Result|Option|Vec|Array2|CandidatePolicy|Policy|RoutingContext|RouterError|TopologyView|FrontLayerScores|ExtendedSetScores|usize|f64|bool)\b/g, '<span class="rs-type">$1</span>');
+  html = html.replace(/\b(enumerate_candidate_swaps|compute_dynamic_lookahead|build_extended_set|select_swap|score_delta|total_score|distance|topology|front_layer|extended_set)\b/g, '<span class="rs-function">$1</span>');
+  html = html.replace(/\b(\d+(?:\.\d+)?)\b/g, '<span class="rs-number">$1</span>');
+  if (comment) {
+    html += `<span class="rs-comment">${comment}</span>`;
+  }
+  return html || " ";
+}
+
+function rustImplementationCodeFigure(candidateCode) {
+  const source = extractCandidateCode(candidateCode);
+  const lines = source.trim().split("\n");
+  const start = Math.max(0, lines.findIndex((line) => line.includes("pub struct CandidatePolicy")));
+  const end = lines.findIndex((line, index) => index > start && line.trim() === "}");
+  const defaultStart = lines.findIndex((line) => line.includes("impl Default for CandidatePolicy"));
+  const policyStart = lines.findIndex((line) => line.includes("impl Policy for CandidatePolicy"));
+  const excerpt = [
+    ...lines.slice(start, Math.max(start + 11, end + 1)),
+    "",
+    ...lines.slice(defaultStart, defaultStart + 18),
+    "",
+    ...lines.slice(policyStart, Math.min(lines.length, policyStart + 80)),
+  ].filter((line, index, list) => !(line === "" && list[index - 1] === ""));
+  const markup = excerpt
+    .map((line, index) => `<span class="code-line"><span class="line-no">${index + 1}</span><span class="line-src">${highlightRustLine(line)}</span></span>`)
+    .join("");
+  return `<figure class="result-paper-code result-code-figure qubit-routing-code-figure" id="listing-1">
+          <div class="result-code-titlebar" aria-hidden="true">
+            <span class="result-code-file">accepted_candidate.rs</span>
+            <span class="result-code-language">Rust routing policy</span>
+          </div>
+          <pre><code>${markup}</code></pre>
+          <figcaption>Listing 1. Accepted Rust routing-policy excerpt. The full public implementation is published as <a href="./artifacts/accepted_candidate.rs">accepted_candidate.rs</a>.</figcaption>
+        </figure>`;
+}
+
+function qubitRoutingGatePrimerFigure() {
+  const rows = [
+    ["00", "00"],
+    ["01", "01"],
+    ["10", "11"],
+    ["11", "10"],
+  ];
+  const ket = (x, y, bits) => `<text class="quantum-ket-cell" x="${x}" y="${y}" text-anchor="middle">|${bits}&#x27E9;</text>`;
+  const tableRows = rows.map((row, index) => {
+    const y = 122 + index * 27;
+    return `<g>
+              ${ket(104, y, row[0])}
+              ${ket(184, y, row[1])}
+            </g>`;
+  }).join("\n");
+  const matrixRows = [
+    ["1", "0", "0", "0"],
+    ["0", "1", "0", "0"],
+    ["0", "0", "0", "1"],
+    ["0", "0", "1", "0"],
+  ].map((row, rowIndex) => row.map((value, colIndex) => (
+    `<text class="quantum-matrix-cell" x="${330 + colIndex * 34}" y="${123 + rowIndex * 27}" text-anchor="middle">${value}</text>`
+  )).join("\n")).join("\n");
+  const wire = (x1, x2, y, label) => `<g>
+              <text class="quantum-wire-label" x="${x1 - 18}" y="${y + 4}" text-anchor="end">${label}</text>
+              <path class="quantum-wire" d="M${x1} ${y}H${x2}" />
+            </g>`;
+  const cnot = (x, y1, y2) => `<g class="quantum-cnot is-reference">
+              <path class="quantum-gate-link" d="M${x} ${Math.min(y1, y2)}V${Math.max(y1, y2)}" />
+              <circle class="quantum-control" cx="${x}" cy="${y1}" r="3.8" />
+              <circle class="quantum-target" cx="${x}" cy="${y2}" r="10" />
+              <path class="quantum-target-plus" d="M${x - 7} ${y2}H${x + 7}M${x} ${y2 - 7}V${y2 + 7}" />
+            </g>`;
+  const swap = (x, y1, y2) => `<g class="quantum-swap is-inserted">
+              <path class="quantum-gate-link" d="M${x} ${y1}V${y2}" />
+              <path class="quantum-swap-cross" d="M${x - 7} ${y1 - 7}L${x + 7} ${y1 + 7}M${x + 7} ${y1 - 7}L${x - 7} ${y1 + 7}" />
+              <path class="quantum-swap-cross" d="M${x - 7} ${y2 - 7}L${x + 7} ${y2 + 7}M${x + 7} ${y2 - 7}L${x - 7} ${y2 + 7}" />
+            </g>`;
+
+  return paperInlineFigure({
+    number: 1,
+    caption: "CNOT and SWAP cost model. The matrix is shown in computational-basis order |00⟩, |01⟩, |10⟩, |11⟩; a nearest-neighbor SWAP decomposes into three CNOTs.",
+    className: "qubit-routing-inline-figure qubit-gate-primer-figure",
+    svg: `          <svg class="result-primer-svg qubit-routing-paper-svg quantum-circuit-svg quantum-gate-primer-svg" viewBox="0 0 780 238" role="img" aria-label="CNOT truth table, matrix, and SWAP decomposition into three CNOT gates.">
+            <text class="result-axis-label result-figure-title" x="60" y="36">Why SWAP count is measured through CNOTs</text>
+            <g transform="translate(0 0)">
+              <text class="quantum-panel-title" x="60" y="74">CNOT action</text>
+              <text class="quantum-table-heading" x="104" y="94" text-anchor="middle">in</text>
+              <text class="quantum-table-heading" x="184" y="94" text-anchor="middle">out</text>
+              ${tableRows}
+              <path class="quantum-table-rule" d="M64 104H224M144 84V207" />
+            </g>
+            <g transform="translate(0 0)">
+              <text class="quantum-panel-title" x="292" y="74">CNOT matrix</text>
+              <path class="quantum-matrix-bracket" d="M300 104H292V214H300M462 104H470V214H462" />
+              ${matrixRows}
+            </g>
+            <g transform="translate(0 0)">
+              <text class="quantum-panel-title" x="542" y="74">SWAP decomposition</text>
+              ${wire(542, 744, 129, "q0")}
+              ${wire(542, 744, 189, "q1")}
+              ${swap(586, 129, 189)}
+              <text class="quantum-route-label" x="628" y="164" text-anchor="middle">=</text>
+              ${cnot(662, 129, 189)}
+              ${cnot(700, 189, 129)}
+              ${cnot(738, 129, 189)}
+            </g>
+          </svg>`,
+  });
+}
+
+function qubitRoutingPrimerFigure() {
+  const physicalWires = [88, 128, 168, 208, 248];
+  const wire = (x1, x2, y, label) => `<g class="quantum-wire-row">
+              <text class="quantum-wire-label" x="${x1 - 18}" y="${y + 4}" text-anchor="end">${label}</text>
+              <path class="quantum-wire" d="M${x1} ${y}H${x2}" />
+            </g>`;
+  const cnot = (x, y1, y2, className = "") => {
+    const top = Math.min(y1, y2);
+    const bottom = Math.max(y1, y2);
+    return `<g class="quantum-cnot ${className}">
+              <path class="quantum-gate-link" d="M${x} ${top}V${bottom}" />
+              <circle class="quantum-control" cx="${x}" cy="${y1}" r="3.8" />
+              <circle class="quantum-target" cx="${x}" cy="${y2}" r="10" />
+              <path class="quantum-target-plus" d="M${x - 7} ${y2}H${x + 7}M${x} ${y2 - 7}V${y2 + 7}" />
+            </g>`;
+  };
+  const swap = (x, y1, y2, className = "") => {
+    const top = Math.min(y1, y2);
+    const bottom = Math.max(y1, y2);
+    return `<g class="quantum-swap ${className}">
+              <path class="quantum-gate-link" d="M${x} ${top}V${bottom}" />
+              <path class="quantum-swap-cross" d="M${x - 7} ${y1 - 7}L${x + 7} ${y1 + 7}M${x + 7} ${y1 - 7}L${x - 7} ${y1 + 7}" />
+              <path class="quantum-swap-cross" d="M${x - 7} ${y2 - 7}L${x + 7} ${y2 + 7}M${x + 7} ${y2 - 7}L${x - 7} ${y2 + 7}" />
+            </g>`;
+  };
+  const routedLayer = [
+    cnot(150, physicalWires[0], physicalWires[1], "is-reference"),
+    swap(214, physicalWires[1], physicalWires[2], "is-inserted"),
+    cnot(278, physicalWires[2], physicalWires[3], "is-reference"),
+    swap(342, physicalWires[3], physicalWires[4], "is-inserted"),
+    cnot(406, physicalWires[3], physicalWires[4], "is-reference"),
+    swap(470, physicalWires[2], physicalWires[3], "is-inserted"),
+    cnot(534, physicalWires[1], physicalWires[2], "is-reference"),
+  ].join("\n");
+
+  return paperInlineFigure({
+    number: 2,
+    caption: "Qubit-routing setup. Logical two-qubit interactions are emitted on the physical path as adjacent CNOTs, with SWAPs inserted when the target topology requires them.",
+    className: "qubit-routing-inline-figure qubit-circuit-figure",
+    svg: `          <svg class="result-primer-svg qubit-routing-paper-svg quantum-circuit-svg" viewBox="0 0 660 300" role="img" aria-label="Nearest-neighbor physical path circuit with inserted SWAP gates.">
+            <text class="result-axis-label result-figure-title" x="52" y="36">Nearest-neighbor routed circuit on the physical path</text>
+            <g class="quantum-panel" transform="translate(0 0)">
+              <text class="quantum-panel-title" x="96" y="64">physical path</text>
+${physicalWires.map((y, index) => wire(96, 606, y, `q${index}`)).join("\n")}
+${routedLayer}
+            </g>
+          </svg>`,
+  });
+}
+
+function qubitRoutingSwapSavingFigure() {
+  const rowsTop = [96, 136, 176, 216];
+  const rowsBottom = [306, 346, 386, 426];
+  const wire = (x1, x2, y, label) => `<g class="quantum-wire-row">
+              <text class="quantum-wire-label" x="${x1 - 18}" y="${y + 4}" text-anchor="end">${label}</text>
+              <path class="quantum-wire" d="M${x1} ${y}H${x2}" />
+            </g>`;
+  const swap = (x, y1, y2, className = "") => `<g class="quantum-swap ${className}">
+              <path class="quantum-gate-link" d="M${x} ${y1}V${y2}" />
+              <path class="quantum-swap-cross" d="M${x - 7} ${y1 - 7}L${x + 7} ${y1 + 7}M${x + 7} ${y1 - 7}L${x - 7} ${y1 + 7}" />
+              <path class="quantum-swap-cross" d="M${x - 7} ${y2 - 7}L${x + 7} ${y2 + 7}M${x + 7} ${y2 - 7}L${x - 7} ${y2 + 7}" />
+            </g>`;
+  const cnot = (x, y1, y2, className = "") => `<g class="quantum-cnot ${className}">
+              <path class="quantum-gate-link" d="M${x} ${Math.min(y1, y2)}V${Math.max(y1, y2)}" />
+              <circle class="quantum-control" cx="${x}" cy="${y1}" r="3.8" />
+              <circle class="quantum-target" cx="${x}" cy="${y2}" r="10" />
+              <path class="quantum-target-plus" d="M${x - 7} ${y2}H${x + 7}M${x} ${y2 - 7}V${y2 + 7}" />
+            </g>`;
+
+  return paperInlineFigure({
+    number: 3,
+    caption: "Swap-saving mechanism. In the restore path, two identical same-line SWAPs compose to the identity; the accepted path skips that identity pair while preserving the same next routed CNOT.",
+    className: "qubit-routing-inline-figure qubit-swap-saving-figure",
+    svg: `          <svg class="result-primer-svg qubit-routing-paper-svg quantum-circuit-svg quantum-swap-saving-svg" viewBox="0 0 760 446" role="img" aria-label="Two routed quantum circuits comparing a canceling restore swap pair versus keeping the remapping for the next gate.">
+            <text class="result-axis-label result-figure-title" x="52" y="36">Avoiding an unnecessary restore SWAP</text>
+            <g class="quantum-decision-row">
+              <text class="quantum-panel-title" x="76" y="68">Restore path</text>
+${rowsTop.map((y, index) => wire(76, 706, y, `q${index}`)).join("\n")}
+              ${swap(178, rowsTop[1], rowsTop[2], "is-inserted")}
+              ${cnot(266, rowsTop[1], rowsTop[2], "is-reference")}
+              ${swap(356, rowsTop[1], rowsTop[2], "is-inserted")}
+              ${swap(430, rowsTop[1], rowsTop[2], "is-inserted")}
+              ${cnot(560, rowsTop[2], rowsTop[3], "is-reference")}
+            </g>
+            <path class="quantum-decision-divider" d="M76 238H706" />
+            <g class="quantum-decision-row">
+              <text class="quantum-panel-title" x="76" y="260">Accepted path</text>
+${rowsBottom.map((y, index) => wire(76, 706, y, `q${index}`)).join("\n")}
+              ${swap(178, rowsBottom[1], rowsBottom[2], "is-inserted")}
+              ${cnot(266, rowsBottom[1], rowsBottom[2], "is-reference")}
+              ${cnot(560, rowsBottom[2], rowsBottom[3], "is-next")}
+            </g>
+          </svg>`,
+  });
+}
+
+function qubitRoutingContractTable(evolution) {
+  const domain = evolution?.domain ?? {};
+  return paperTable({
+    className: "result-contract-table qubit-routing-contract-table",
+    caption: "Table 1. Frozen SABRE24 LightSABRE routing surface.",
+    headers: ["Field", "Public contract"],
+    rows: [
+      ["Portfolio", `${formatMetric(domain.circuits ?? 24, { maximumFractionDigits: 0 })} circuits x ${formatMetric(domain.topologies ?? 3, { maximumFractionDigits: 0 })} topology targets`],
+      ["Cases", `${formatMetric(domain.cases ?? 72, { maximumFractionDigits: 0 })} deterministic routing evaluations`],
+      ["Targets", "Q20, Willow, Heron-FEZ"],
+      ["Objective", "reduce added CNOT count versus LightSABRE"],
+      ["Score", "<code>-weighted_cnot_delta</code>; lower is better"],
+      ["Replay", "valid routing on every case and score tolerance 1e-6"],
+    ],
+  });
+}
+
+function topologyTargetLabel(topology) {
+  const labels = {
+    heron_fez: "Heron-FEZ",
+    q20: "Q20",
+    willow: "Willow",
+  };
+  return labels[topology] ?? topology;
+}
+
+function qubitRoutingTopologyTargetTable(replay) {
+  const rows = Array.isArray(replay?.trace?.topology_summary) ? replay.trace.topology_summary : [];
+  const ordered = [...rows].sort((a, b) => {
+    const order = { q20: 0, willow: 1, heron_fez: 2 };
+    return (order[a.topology] ?? 99) - (order[b.topology] ?? 99);
+  });
+  const typeByTarget = {
+    q20: "Small 20-qubit coupling graph.",
+    willow: "Large sparse device-style coupling graph.",
+    heron_fez: "Large sparse device-style coupling graph in a different family.",
+  };
+  const roleByTarget = {
+    q20: "Checks routing pressure when physical room is limited.",
+    willow: "Checks layout and lookahead on a wider target.",
+    heron_fez: "Checks transfer across a separate adjacency family.",
+  };
+
+  return paperTable({
+    className: "result-contract-table qubit-routing-target-table",
+    caption: "Table 1. Topology targets used by the frozen routing contract. These labels are benchmark coupling graphs, not hardware-performance claims.",
+    headers: ["Target", "Topology type", "Circuits", "Role in this report"],
+    rows: ordered.map((row) => [
+      `<span class="result-nowrap">${escapeHtml(topologyTargetLabel(row.topology))}</span>`,
+      escapeHtml(typeByTarget[row.topology] ?? "Frozen coupling graph in the routing portfolio."),
+      formatMetric(row.cases ?? 24, { maximumFractionDigits: 0 }),
+      escapeHtml(roleByTarget[row.topology] ?? "Frozen topology target in the routing portfolio."),
+    ]),
+  });
+}
+
+function qubitRoutingObjectiveCurveFigure(scoreTrace) {
+  const candidates = Array.isArray(scoreTrace?.candidates) ? scoreTrace.candidates : [];
+  const best = Array.isArray(scoreTrace?.best_by_index)
+    ? scoreTrace.best_by_index
+    : Array.isArray(scoreTrace?.best_by_generation)
+      ? scoreTrace.best_by_generation
+      : [];
+  const scored = candidates.filter((step) => typeof step.weighted_cnot_delta === "number");
+  if (!scored.length) return "";
+
+  const left = 112;
+  const right = 542;
+  const top = 96;
+  const bottom = 270;
+  const width = right - left;
+  const height = bottom - top;
+  const indexEnd = Math.max(1, ...scored.map((step, index) => step.index ?? index));
+  const values = scored.map((step) => step.weighted_cnot_delta);
+  const displayFloor = Number.isFinite(scoreTrace?.display?.y_floor)
+    ? scoreTrace.display.y_floor
+    : Math.floor((scored[0]?.weighted_cnot_delta ?? Math.min(...values)) / 500) * 500;
+  const minValue = displayFloor;
+  const maxValue = Math.ceil(Math.max(...values) / 500) * 500;
+  const span = Math.max(1, maxValue - minValue);
+  const mapX = (index) => left + (Math.max(0, Math.min(indexEnd, index)) / indexEnd) * width;
+  const mapY = (value) => bottom - ((Math.max(minValue, value) - minValue) / span) * height;
+  const bestPoints = (best.length ? best : scored).map((step) => [
+    mapX(step.index ?? 0),
+    mapY(step.weighted_cnot_delta),
+  ]);
+  const baseline = scored[0];
+  const accepted = scored[scored.length - 1];
+  const baselineX = mapX(baseline.index ?? 0);
+  const baselineY = mapY(baseline.weighted_cnot_delta);
+  const acceptedX = mapX(accepted.index ?? indexEnd);
+  const acceptedY = mapY(accepted.weighted_cnot_delta);
+  const dots = scored.map((step) => {
+    const clipped = step.weighted_cnot_delta < minValue;
+    return `<circle class="result-objective-proposal${clipped ? " is-clipped" : ""}" cx="${mapX(step.index ?? 0).toFixed(1)}" cy="${mapY(step.weighted_cnot_delta).toFixed(1)}" r="${clipped ? "1.35" : "1.6"}" />`;
+  }).join("\n");
+  const yTicks = [minValue, Math.round((minValue + maxValue) / 2), maxValue].map((value) => {
+    const y = mapY(value);
+    return `<g>
+              <path class="result-objective-grid" d="M${left} ${y.toFixed(1)} H${right}" />
+              <text class="result-axis-tick result-objective-y-label" x="${left - 22}" y="${(y + 4).toFixed(1)}">${formatMetric(value, { maximumFractionDigits: 0 })}</text>
+            </g>`;
+  }).join("\n");
+  const xTickValues = [0, Math.round(indexEnd / 3), Math.round((2 * indexEnd) / 3), indexEnd];
+  const xTicks = xTickValues.map((index, tickIndex, all) => {
+    const x = mapX(index);
+    const anchor = tickIndex === 0 ? "" : tickIndex === all.length - 1 ? ' text-anchor="end"' : ' text-anchor="middle"';
+    return `<g>
+              <path class="result-objective-x-tick" d="M${x.toFixed(1)} ${bottom} V${(bottom + 5).toFixed(1)}" />
+              <text class="result-axis-tick" x="${x.toFixed(1)}" y="${bottom + 22}"${anchor}>${formatMetric(index, { maximumFractionDigits: 0 })}</text>
+            </g>`;
+  }).join("\n");
+  const clippedCount = scored.filter((step) => step.weighted_cnot_delta < minValue).length;
+  const clippingNote = clippedCount > 0
+    ? ` ${formatMetric(clippedCount, { maximumFractionDigits: 0 })} lower outlier candidates are clipped at the bottom of the plot.`
+    : "";
+
+  return paperInlineFigure({
+    number: 4,
+    caption: `Objective trace for the curated public chain. Faint points are scored candidates from the sanitized telemetry trace, the solid line is retained best-so-far weighted CNOT reduction, and rings mark baseline and accepted.${clippingNote}`,
+    className: "qubit-routing-inline-figure result-objective-figure",
+    svg: `          <svg class="result-primer-svg result-objective-svg" viewBox="0 0 560 328" role="img" aria-label="Best so far weighted CNOT reduction against LightSABRE.">
+            <text class="result-axis-label result-figure-title" x="${left}" y="34">Best-so-far CNOT reduction (higher is better)</text>
+            <g class="result-objective-legend" transform="translate(${left} 48)">
+              <g><circle class="result-objective-legend-proposal" cx="0" cy="0" r="2.4" /><text x="12" y="4">scored candidate</text></g>
+              <g transform="translate(124 0)"><line class="result-objective-legend-best" x1="0" y1="0" x2="16" y2="0" /><text x="24" y="4">best-so-far reduction</text></g>
+              <g transform="translate(294 0)"><circle class="result-legend-baseline-dot" cx="0" cy="0" r="3.4" /><text x="16" y="4">baseline</text></g>
+              <g transform="translate(382 0)"><circle class="result-legend-accepted-dot" cx="0" cy="0" r="3.8" /><text x="16" y="4">accepted</text></g>
+            </g>
+            ${yTicks}
+            <path class="result-rule-paper-axis" d="M${left} ${top}V${bottom}H${right}" />
+            ${xTicks}
+            <text class="result-axis-label result-x-axis-title" x="${(left + width / 2).toFixed(1)}" y="306">scored candidate index</text>
+            <text class="result-axis-label result-objective-y-title" x="34" y="${(top + height / 2).toFixed(1)}" transform="rotate(-90 34 ${(top + height / 2).toFixed(1)})">weighted ΔCNOT reduction</text>
+            <g>${dots}</g>
+            <path class="result-objective-best" d="${svgPolyline(bestPoints)}" />
+            <g class="result-objective-baseline">
+              <circle cx="${baselineX.toFixed(1)}" cy="${baselineY.toFixed(1)}" r="4.2" />
+            </g>
+            <g class="result-objective-accepted">
+              <circle cx="${acceptedX.toFixed(1)}" cy="${acceptedY.toFixed(1)}" r="4.8" />
+            </g>
+          </svg>`,
+  });
+}
+
+function qubitRoutingSummaryTable(full) {
+  return paperTable({
+    caption: "Table 2. Reported comparison for the curated public qubit-routing chain.",
+    headers: ["Metric", "Baseline", "Accepted", "Change"],
+    rows: [
+      [
+        "Weighted CNOT reduction",
+        formatMetric(full.metrics.baseline_weighted_cnot_delta, { maximumFractionDigits: 1, minimumFractionDigits: 1 }),
+        formatMetric(full.metrics.accepted_weighted_cnot_delta, { maximumFractionDigits: 1, minimumFractionDigits: 1 }),
+        `+${formatMetric(full.metrics.weighted_cnot_delta_gain, { maximumFractionDigits: 1, minimumFractionDigits: 1 })}`,
+      ],
+      [
+        "Aggregate added CNOTs",
+        formatMetric(full.metrics.lightsabre_added_cnot, { maximumFractionDigits: 0 }),
+        formatMetric(full.metrics.candidate_added_cnot, { maximumFractionDigits: 0 }),
+        `${formatMetric(full.metrics.added_cnot_reduction_vs_lightsabre, { maximumFractionDigits: 0 })} fewer`,
+      ],
+    ],
+  });
+}
+
+function qubitRoutingTopologyFigure(replay) {
+  const rows = Array.isArray(replay?.trace?.topology_summary) ? replay.trace.topology_summary : [];
+  const order = ["q20", "willow", "heron_fez"];
+  const orderedRows = [...rows].sort((a, b) => {
+    const ai = order.indexOf(a.topology);
+    const bi = order.indexOf(b.topology);
+    return (ai === -1 ? order.length : ai) - (bi === -1 ? order.length : bi);
+  });
+  const maxCnot = Math.max(1, ...rows.flatMap((row) => [row.candidate_added_cnot ?? 0, row.lightsabre_added_cnot ?? 0]));
+  const left = 174;
+  const right = 416;
+  const width = right - left;
+  const axisMax = Math.ceil(maxCnot / 25000) * 25000;
+  const xAt = (value) => left + (Math.max(0, Math.min(axisMax, value)) / axisMax) * width;
+  const ticks = [0, Math.round(axisMax / 2), axisMax].map((value, index, all) => {
+    const x = xAt(value);
+    const anchor = index === 0 ? "" : index === all.length - 1 ? ' text-anchor="end"' : ' text-anchor="middle"';
+    return `<g>
+              <path class="qubit-routing-topology-tick" d="M${x.toFixed(1)} 224 V229" />
+              <text class="result-axis-tick" x="${x.toFixed(1)}" y="246"${anchor}>${formatMetric(value, { maximumFractionDigits: 0 })}</text>
+            </g>`;
+  }).join("\n");
+  const body = orderedRows.map((row, index) => {
+    const y = 92 + index * 48;
+    const lightX = xAt(row.lightsabre_added_cnot ?? 0);
+    const candidateX = xAt(row.candidate_added_cnot ?? 0);
+    const lightWidth = lightX - left;
+    const candidateWidth = candidateX - left;
+    const relative = formatPercent(row.relative_improvement_pct ?? 0);
+    const delta = (row.candidate_added_cnot ?? 0) - (row.lightsabre_added_cnot ?? 0);
+    const deltaText = `${delta > 0 ? "+" : ""}${formatMetric(delta, { maximumFractionDigits: 0 })}`;
+    return `<g>
+              <text class="qubit-routing-section-label" x="72" y="${y + 4}">${escapeHtml(topologyTargetLabel(row.topology))}</text>
+              <path class="qubit-routing-topology-grid" d="M${left} ${y} H${right}" />
+              <rect class="qubit-routing-comparison-baseline" x="${left}" y="${y - 8}" width="${lightWidth.toFixed(1)}" height="16" />
+              <rect class="qubit-routing-comparison-accepted" x="${left}" y="${y - 8}" width="${candidateWidth.toFixed(1)}" height="16" />
+              <line class="qubit-routing-baseline-end" x1="${lightX.toFixed(1)}" y1="${y - 11}" x2="${lightX.toFixed(1)}" y2="${y + 11}" />
+              <text class="qubit-routing-value" x="438" y="${y - 6}">Δ ${deltaText}</text>
+              <text class="qubit-routing-note" x="438" y="${y + 12}">${relative}</text>
+            </g>`;
+  }).join("\n");
+  return paperInlineFigure({
+    number: 5,
+    caption: "Per-topology added-CNOT comparison. Grey bars are LightSABRE, blue overlays are the accepted replay, and shorter bars mean fewer added CNOTs. Q20 improves strongly, Willow improves modestly, and Heron-FEZ is slightly worse on aggregate.",
+    className: "qubit-routing-inline-figure qubit-routing-topology-figure",
+    svg: `          <svg class="result-primer-svg qubit-routing-paper-svg" viewBox="0 0 560 276" role="img" aria-label="Per topology added CNOT comparison.">
+            <text class="result-axis-label result-figure-title" x="72" y="34">Added CNOTs by topology (lower is better)</text>
+            <g class="result-objective-legend" transform="translate(72 52)">
+              <g><rect class="qubit-routing-comparison-baseline" x="0" y="-7" width="18" height="14" /><text x="28" y="4">LightSABRE</text></g>
+              <g transform="translate(138 0)"><rect class="qubit-routing-comparison-accepted" x="0" y="-7" width="18" height="14" /><text x="28" y="4">accepted</text></g>
+            </g>
+${body}
+            <path class="result-rule-paper-axis" d="M${left} 224 H${right}" />
+            ${ticks}
+            <text class="result-axis-label result-x-axis-title" x="${(left + width / 2).toFixed(1)}" y="264">added CNOTs</text>
+          </svg>`,
+  });
+}
+
+function qubitRoutingReadoutFigure(full, replay) {
+  const preview = Array.isArray(replay?.trace?.case_preview) ? replay.trace.case_preview.slice(0, 5) : [];
+  const cases = preview.map((item, index) => {
+    const y = 100 + index * 24;
+    return `<g>
+              <text class="qubit-routing-note" x="72" y="${y}">${escapeHtml(item.id)}</text>
+              <text class="qubit-routing-value" x="354" y="${y}" text-anchor="end">${formatMetric(item.candidate_added_cnot, { maximumFractionDigits: 0 })}</text>
+              <text class="qubit-routing-value" x="488" y="${y}" text-anchor="end">-${formatMetric(item.delta_vs_lightsabre, { maximumFractionDigits: 0 })}</text>
+            </g>`;
+  }).join("\n");
+  return paperInlineFigure({
+    number: 6,
+    caption: "Accepted replay sample. These rows are a case-level diagnostic, not a second aggregate readout.",
+    className: "qubit-routing-inline-figure qubit-routing-readout-figure",
+    svg: `          <svg class="result-primer-svg qubit-routing-paper-svg" viewBox="0 0 560 232" role="img" aria-label="Case-level replay sample for accepted qubit routing candidate.">
+            <text class="result-axis-label result-figure-title" x="72" y="34">Case-level replay sample</text>
+            <path class="qubit-routing-divider" d="M72 72H488" />
+            <text class="qubit-routing-note" x="72" y="84">sample case</text>
+            <text class="qubit-routing-note" x="354" y="84" text-anchor="end">accepted</text>
+            <text class="qubit-routing-note" x="488" y="84" text-anchor="end">vs LightSABRE</text>
+${cases}
+          </svg>`,
+  });
+}
+
+function qubitRoutingWhitepaperInserts(full, evolution, candidateCode, replay, scoreTrace) {
+  return {
+    "gate-primer": qubitRoutingGatePrimerFigure(),
+    "routing-primer": qubitRoutingPrimerFigure(),
+    "swap-saving": qubitRoutingSwapSavingFigure(),
+    "topology-targets": qubitRoutingTopologyTargetTable(replay),
+    "implementation-code": rustImplementationCodeFigure(candidateCode),
+    "objective-curve": qubitRoutingObjectiveCurveFigure(scoreTrace),
+    "objective-summary-table": qubitRoutingSummaryTable(full),
+    "topology-comparison": qubitRoutingTopologyFigure(replay),
+    "routing-readout": qubitRoutingReadoutFigure(full, replay),
+  };
+}
+
 function circlePackingScoreLabel(score) {
   return formatMetric(score, { maximumFractionDigits: 6, minimumFractionDigits: 6 });
 }
@@ -2273,6 +2785,7 @@ async function writeDetail(result) {
 
   const isQuadratureWhitepaper = full.slug === "quadrature-rule-optimization";
   const isRcpspWhitepaper = full.slug === "rcpsp-psplib-j30";
+  const isQubitRoutingWhitepaper = full.slug === "qubit-routing-sabre24-lightsabre";
   const isCirclePackingWhitepaper = full.slug === "circle-packing-26-unit-square";
   const body = isQuadratureWhitepaper
     ? `        <section class="hero compact-hero page-hero result-detail-hero">
@@ -2294,6 +2807,17 @@ ${markdownToHtml(articleWithoutTitle(article), quadratureWhitepaperInserts(full,
         <section class="result-detail result-whitepaper-shell rcpsp-whitepaper-shell">
           <article class="result-article result-whitepaper rcpsp-whitepaper">
 ${markdownToHtml(articleWithoutTitle(article), rcpspWhitepaperInserts(full, evolution, candidateCode, scheduleExample, scoreTrace))}
+          </article>
+        </section>`
+      : isQubitRoutingWhitepaper
+        ? `        <section class="hero compact-hero page-hero result-detail-hero qubit-routing-detail-hero">
+          <h1 class="page-title">${escapeHtml(full.title)}</h1>
+          <p class="intro results-hero-intro">${escapeHtml(full.summary)}</p>
+        </section>
+
+        <section class="result-detail result-whitepaper-shell qubit-routing-whitepaper-shell">
+          <article class="result-article result-whitepaper qubit-routing-whitepaper">
+${markdownToHtml(articleWithoutTitle(article), qubitRoutingWhitepaperInserts(full, evolution, candidateCode, replay, scoreTrace))}
           </article>
         </section>`
       : isCirclePackingWhitepaper
@@ -2350,9 +2874,11 @@ ${figures}
         ? "result-quadrature-page"
         : isRcpspWhitepaper
           ? "result-rcpsp-page"
-          : isCirclePackingWhitepaper
-            ? "result-circle-packing-page"
-          : "",
+          : isQubitRoutingWhitepaper
+            ? "result-qubit-routing-page"
+            : isCirclePackingWhitepaper
+              ? "result-circle-packing-page"
+              : "",
     }),
     "utf8",
   );

@@ -1,0 +1,208 @@
+{
+  "schema_version": "qubit-routing-replay/v1",
+  "candidate_id": "gen-62-i0-w3-a0-8185f10d0dff4245",
+  "comparison": {
+    "abs_diff": 0,
+    "allowed_abs_diff": 0.000001,
+    "mode": "score_tolerance",
+    "pass": true,
+    "policy": {
+      "abs_tol": 0.000001,
+      "domain_name": "qubit_routing_sabre24_lightsabre",
+      "rel_tol": 0
+    },
+    "policy_source": "global_default",
+    "recorded_score": -11506.200000000026,
+    "replay_score": -11506.200000000026,
+    "replay_valid": true,
+    "score_pass": true,
+    "valid_pass": true
+  },
+  "noise_summary": {
+    "all_pass": true,
+    "completed_count": 1,
+    "max_score": -11506.200000000026,
+    "mean_score": -11506.200000000026,
+    "min_score": -11506.200000000026,
+    "pass_count": 1,
+    "repeat_count": 1,
+    "score_count": 1,
+    "score_range": 0,
+    "score_stdev": 0,
+    "score_variance": 0,
+    "valid_count": 1
+  },
+  "metrics": {
+    "build_time": 1.9402260780334473,
+    "candidate_added_cnot": 295782,
+    "combined_score": 11506.200000000026,
+    "eval_time": 156.96027612686157,
+    "failed_cases": 0,
+    "heron_fez_candidate_added_cnot": 137991,
+    "lightsabre_added_cnot": 308076,
+    "lightsabre_relative_improvement_pct": 3.9905737545281035,
+    "losses_vs_lightsabre": 35,
+    "ok_cases": 72,
+    "q20_candidate_added_cnot": 49725,
+    "router_time": 154.94721698760986,
+    "score": -11506.200000000026,
+    "ties_vs_lightsabre": 6,
+    "total_cases": 72,
+    "total_depth": 368811,
+    "total_swaps": 98594,
+    "validity": 1,
+    "willow_candidate_added_cnot": 108066,
+    "wins_vs_lightsabre": 31
+  },
+  "trace": {
+    "trial_mode": "full",
+    "wtl_vs_lightsabre": "31/6/35",
+    "topology_summary": [
+      {
+        "candidate_added_cnot": 137991,
+        "cases": 24,
+        "lightsabre_added_cnot": 137481,
+        "losses": 16,
+        "ok_cases": 24,
+        "relative_improvement_pct": -0.3709603508848495,
+        "ties": 1,
+        "topology": "heron_fez",
+        "wins": 7,
+        "wtl": "7/1/16"
+      },
+      {
+        "candidate_added_cnot": 49725,
+        "cases": 24,
+        "lightsabre_added_cnot": 60189,
+        "losses": 9,
+        "ok_cases": 24,
+        "relative_improvement_pct": 17.38523650500922,
+        "ties": 3,
+        "topology": "q20",
+        "wins": 12,
+        "wtl": "12/3/9"
+      },
+      {
+        "candidate_added_cnot": 108066,
+        "cases": 24,
+        "lightsabre_added_cnot": 110406,
+        "losses": 10,
+        "ok_cases": 24,
+        "relative_improvement_pct": 2.11945002988968,
+        "ties": 2,
+        "topology": "willow",
+        "wins": 12,
+        "wtl": "12/2/10"
+      }
+    ],
+    "case_preview": [
+      {
+        "candidate_added_cnot": 12057,
+        "delta_vs_lightsabre": 3792,
+        "error": null,
+        "id": "9symml_195_q20",
+        "lightsabre_added_cnot": 15849,
+        "ok": true,
+        "time_ms": 10203,
+        "topology": "q20"
+      },
+      {
+        "candidate_added_cnot": 12057,
+        "delta_vs_lightsabre": 3792,
+        "error": null,
+        "id": "sym9_193_q20",
+        "lightsabre_added_cnot": 15849,
+        "ok": true,
+        "time_ms": 10244,
+        "topology": "q20"
+      },
+      {
+        "candidate_added_cnot": 25155,
+        "delta_vs_lightsabre": 903,
+        "error": null,
+        "id": "9symml_195_willow",
+        "lightsabre_added_cnot": 26058,
+        "ok": true,
+        "time_ms": 15511,
+        "topology": "willow"
+      },
+      {
+        "candidate_added_cnot": 25155,
+        "delta_vs_lightsabre": 903,
+        "error": null,
+        "id": "sym9_193_willow",
+        "lightsabre_added_cnot": 26058,
+        "ok": true,
+        "time_ms": 15542,
+        "topology": "willow"
+      },
+      {
+        "candidate_added_cnot": 4884,
+        "delta_vs_lightsabre": 615,
+        "error": null,
+        "id": "rd84_253_q20",
+        "lightsabre_added_cnot": 5499,
+        "ok": true,
+        "time_ms": 2786,
+        "topology": "q20"
+      }
+    ],
+    "asset_validation": {
+      "counts": {
+        "cases": 72,
+        "circuits": 24,
+        "topologies": 3
+      },
+      "lightsabre_20x20_added_cnot_totals": {
+        "all": 308076,
+        "heron_fez": 137481,
+        "q20": 60189,
+        "willow": 110406
+      },
+      "sabre_added_cnot_totals": {
+        "all": 333756,
+        "heron_fez": 150558,
+        "q20": 68142,
+        "willow": 115056
+      }
+    },
+    "raw_summary": {
+      "build_time": 1.9402260780334473,
+      "combined_score": 11506.200000000026,
+      "eval_time": 156.96027612686157,
+      "failed_cases": 0,
+      "layout_trials": 20,
+      "ok_cases": 72,
+      "router_time": 154.94721698760986,
+      "routing_trials": 20,
+      "total_added_cnot_by_candidate": 295782,
+      "total_cases": 72,
+      "total_cnot_delta": 37974,
+      "total_depth": 368811,
+      "total_original_cnot_added": 333756,
+      "total_runtime_ms": 154430,
+      "total_swaps": 98594,
+      "total_weight": 24,
+      "trial_mode": "full",
+      "validity": 1,
+      "weighted_total_added_cnot_by_candidate": 108367.79999999999,
+      "weighted_total_cnot_delta": 11506.200000000026,
+      "weighted_total_original_cnot_added": 119874.00000000001
+    }
+  },
+  "provenance": {
+    "artifact_matches_recorded_best": true,
+    "export_status": "exact_export",
+    "exported_candidate_id": "gen-62-i0-w3-a0-8185f10d0dff4245",
+    "recorded_best_candidate_id": "gen-62-i0-w3-a0-8185f10d0dff4245",
+    "replayed_candidate_id": "replay-best-candidate",
+    "selection_reason": "recorded_best_exportable"
+  },
+  "recorded": {
+    "best_candidate_id": "gen-62-i0-w3-a0-8185f10d0dff4245",
+    "best_score": -11506.200000000026,
+    "failure_category": "none",
+    "stop_reason": "deadline_reached"
+  },
+  "timestamp": "2026-05-24T07:07:02.607768+00:00"
+}
