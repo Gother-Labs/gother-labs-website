@@ -1990,7 +1990,7 @@ function qubitRoutingContractTable(evolution) {
   const domain = evolution?.domain ?? {};
   return paperTable({
     className: "result-contract-table qubit-routing-contract-table",
-    caption: "Table 1. Frozen SABRE24 LightSABRE routing surface.",
+    caption: "Table 1. Frozen 24-circuit LightSABRE routing surface.",
     headers: ["Field", "Public contract"],
     rows: [
       ["Portfolio", `${formatMetric(domain.circuits ?? 24, { maximumFractionDigits: 0 })} circuits x ${formatMetric(domain.topologies ?? 3, { maximumFractionDigits: 0 })} topology targets`],
@@ -2785,7 +2785,7 @@ async function writeDetail(result) {
 
   const isQuadratureWhitepaper = full.slug === "quadrature-rule-optimization";
   const isRcpspWhitepaper = full.slug === "rcpsp-psplib-j30";
-  const isQubitRoutingWhitepaper = full.slug === "qubit-routing-sabre24-lightsabre";
+  const isQubitRoutingWhitepaper = full.slug === "qubit-routing-lightsabre";
   const isCirclePackingWhitepaper = full.slug === "circle-packing-26-unit-square";
   const body = isQuadratureWhitepaper
     ? `        <section class="hero compact-hero page-hero result-detail-hero">

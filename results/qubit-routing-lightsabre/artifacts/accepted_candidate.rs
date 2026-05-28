@@ -376,7 +376,7 @@ pub struct CandidatePolicy {
 
 impl Default for CandidatePolicy {
     fn default() -> Self {
-        // Conservative tuning for SABRE24 shapes: decay enabled to smooth noise.
+        // Conservative tuning for routing-portfolio shapes: decay enabled to smooth noise.
         Self {
             basic_weight: 1.0,
             lookahead_weight: 1.4, // Slightly higher lookahead for better pathfinding

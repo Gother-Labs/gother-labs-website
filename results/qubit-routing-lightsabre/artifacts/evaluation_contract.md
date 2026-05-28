@@ -1,6 +1,6 @@
 # Evaluation contract
 
-The public qubit-routing result uses the frozen SABRE24 LightSABRE swap-reduction surface.
+The public qubit-routing result uses the frozen 24-circuit LightSABRE swap-reduction surface.
 
 ## Portfolio
 

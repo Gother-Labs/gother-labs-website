@@ -8,7 +8,7 @@
     "pass": true,
     "policy": {
       "abs_tol": 0.000001,
-      "domain_name": "qubit_routing_sabre24_lightsabre",
+      "domain_name": "qubit_routing_lightsabre",
       "rel_tol": 0
     },
     "policy_source": "global_default",

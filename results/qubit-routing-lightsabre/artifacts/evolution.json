@@ -1,8 +1,8 @@
 {
   "schema_version": "evolution/v1",
   "domain": {
-    "name": "qubit_routing_sabre24_lightsabre",
-    "benchmark": "SABRE24 swap-reduction portfolio",
+    "name": "qubit_routing_lightsabre",
+    "benchmark": "24-circuit swap-reduction portfolio",
     "circuits": 24,
     "topologies": 3,
     "cases": 72,
