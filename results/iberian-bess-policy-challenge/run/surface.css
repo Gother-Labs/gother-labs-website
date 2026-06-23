@@ -1,0 +1,126 @@
+.storage-run-page .site-main {
+  width: min(1500px, calc(100vw - (var(--content-gutter) * 2)));
+  max-width: none;
+  margin-inline: auto;
+}
+
+.storage-run-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.35fr) minmax(0, 1fr);
+  gap: 1.1rem;
+  align-items: start;
+}
+
+.storage-run-panel {
+  border: 1px solid var(--line);
+  background: var(--bg);
+  padding: 1rem;
+}
+
+.storage-run-panel--chart,
+.storage-run-panel--code {
+  grid-column: 2;
+}
+
+.storage-run-panel--score {
+  grid-column: 1;
+}
+
+.storage-run-panel-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+
+.storage-run-panel-head h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.storage-run-panel-head a {
+  color: var(--text);
+  font-size: 0.86rem;
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+}
+
+.storage-run-metrics {
+  display: grid;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.storage-run-metric {
+  padding: 0.85rem;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.storage-run-metric span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.storage-run-metric strong {
+  display: block;
+  margin-top: 0.28rem;
+  font-size: 1.18rem;
+}
+
+.storage-run-selector {
+  display: grid;
+  gap: 0.45rem;
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.storage-run-selector select {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--text);
+  padding: 0.55rem 0.65rem;
+  font: inherit;
+}
+
+#dispatch-chart,
+#score-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.storage-run-panel--code pre {
+  max-height: 520px;
+  margin: 0;
+  overflow: auto;
+  border: 1px solid var(--line);
+  padding: 1rem;
+  background: color-mix(in srgb, var(--text) 3%, transparent);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 920px) {
+  .storage-run-grid,
+  .storage-run-panel--chart,
+  .storage-run-panel--score,
+  .storage-run-panel--code {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-column: 1;
+  }
+
+  .storage-run-panel-head {
+    align-items: start;
+    flex-direction: column;
+  }
+}

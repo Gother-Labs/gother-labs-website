@@ -1,0 +1,25 @@
+{
+  "schema_version": "storage_arbitrage_es_public_provenance/v0.1",
+  "exported_at": "2026-06-23T15:09:31.860235+00:00",
+  "exporter": "scripts/results/export_storage_arbitrage_result.py",
+  "evolther_git_commit": "987f1fb0fbd552db8ed413280d8c9633505bb103",
+  "source_policy": "domains/storage_arbitrage_es/accepted_policy_fixture.py",
+  "source_contract": "domains/storage_arbitrage_es/benchmark_contract.json",
+  "sanitization_policy": {
+    "included": [
+      "accepted candidate",
+      "contract",
+      "metrics",
+      "comparison rows",
+      "dispatch trace",
+      "forecast smoke",
+      "minimal provenance"
+    ],
+    "excluded": [
+      "private prompt context",
+      "provider logs",
+      "credentials",
+      "uncurated scratch outputs"
+    ]
+  }
+}

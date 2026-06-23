@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 330" role="img" aria-label="Storage dispatch readout">
+  <rect width="560" height="330" fill="#fbfaf8"/>
+  <path d="M52 260H508M52 62V260" fill="none" stroke="#1f2933" stroke-width="1.2"/>
+  <path d="M52.0 179.1 L71.8 208.4 L91.7 213.9 L111.5 222.0 L131.3 221.8 L151.1 213.6 L171.0 202.6 L190.8 154.4 L210.6 119.4 L230.4 117.2 L250.3 132.0 L270.1 144.6 L289.9 157.2 L309.7 166.2 L329.6 159.2 L349.4 145.2 L369.2 129.5 L389.0 118.1 L408.9 82.9 L428.7 80.0 L448.5 97.3 L468.3 118.1 L488.2 125.7 L508.0 142.7" fill="none" stroke="#0f766e" stroke-width="3"/>
+  <path d="M52.0 165.0 L71.8 165.0 L91.7 165.0 L111.5 124.6 L131.3 84.2 L151.1 84.2 L171.0 84.2 L190.8 84.2 L210.6 84.2 L230.4 84.2 L250.3 84.2 L270.1 84.2 L289.9 84.2 L309.7 84.2 L329.6 84.2 L349.4 84.2 L369.2 84.2 L389.0 84.2 L408.9 129.0 L428.7 173.7 L448.5 173.7 L468.3 173.7 L488.2 173.7 L508.0 165.0" fill="none" stroke="#2563eb" stroke-width="3"/>
+  <text x="52" y="36" font-family="Inter, Arial" font-size="18" font-weight="700" fill="#1f2933">omie_20240115 dispatch</text>
+  <text x="52" y="296" font-family="Inter, Arial" font-size="13" fill="#0f766e">price</text>
+  <text x="112" y="296" font-family="Inter, Arial" font-size="13" fill="#2563eb">state of charge</text>
+</svg>

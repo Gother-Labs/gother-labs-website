@@ -1,0 +1,26 @@
+{
+  "schema_version": "storage_arbitrage_es_score_trace/v0.1",
+  "steps": [
+    {
+      "index": 0,
+      "candidate_id": "seed_quantile_dispatch_baseline",
+      "label": "seed quantile baseline",
+      "score": 72.544043,
+      "valid": true
+    },
+    {
+      "index": 1,
+      "candidate_id": "checked_in_policy",
+      "label": "checked-in v2 policy",
+      "score": 82.031771,
+      "valid": true
+    },
+    {
+      "index": 2,
+      "candidate_id": "accepted_policy_portfolio",
+      "label": "accepted policy portfolio",
+      "score": 48.086813,
+      "valid": true
+    }
+  ]
+}

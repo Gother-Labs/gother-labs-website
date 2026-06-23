@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Iberian BESS Policy Challenge | Results | Göther Labs</title>
+    <meta name="description" content="A deterministic BESS dispatch policy is challenged against frozen Iberian day-ahead scenarios, commercial baselines, and a perfect-foresight upper bound with explicit risk and constraint readouts.">
+    <link rel="canonical" href="https://www.gotherlabs.com/results/iberian-bess-policy-challenge/">
+    <meta property="og:title" content="Iberian BESS Policy Challenge | Results | Göther Labs">
+    <meta property="og:description" content="A deterministic BESS dispatch policy is challenged against frozen Iberian day-ahead scenarios, commercial baselines, and a perfect-foresight upper bound with explicit risk and constraint readouts.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.gotherlabs.com/results/iberian-bess-policy-challenge/">
+    <meta property="og:image" content="https://www.gotherlabs.com/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.gotherlabs.com/assets/og-image.png">
+    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" href="../../assets/gother-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../styles.css?v=home-proof-inline-v2">
+
+  </head>
+  <body>
+    <a class="skip-link" href="#site-main">Skip to content</a>
+    <div class="page-shell site-shell">
+      <header class="site-header">
+        <nav class="site-nav" aria-label="Primary">
+          <a class="brand nav-brand nav-home-wordmark animated-symbol-scope" href="../../" aria-label="Göther Labs home">
+            <span aria-hidden="true" class="wordmark-mark-wrap">
+              <svg class="animated-reference-geometry live-symbol-svg" viewBox="0 0 64 64" focusable="false">
+                <g class="source-geometry" aria-hidden="true">
+                  <circle class="source-geometry-dot" cx="34.5" cy="34.5" r="3.6" />
+                  <circle class="source-geometry-dot" cx="21" cy="58" r="3.6" />
+                  <circle class="source-geometry-dot" cx="48" cy="58" r="3.6" />
+                </g>
+                <path class="live-trail" d="" />
+                <path class="live-trail" d="" />
+                <path class="live-trail" d="" />
+                <circle class="geometry-dot live-geometry-dot" cx="34.2" cy="28.4" r="3.34" />
+                <circle class="geometry-dot live-geometry-dot" cx="20.9" cy="50.6" r="3.34" />
+                <circle class="geometry-dot live-geometry-dot" cx="47.5" cy="50.6" r="3.34" />
+              </svg>
+            </span>
+            <span class="nav-wordmark-text">Göther Labs</span>
+          </a>
+          <div class="nav-links">
+            <a href="../../results/">Results</a>
+            <a href="../../company/">Company</a>
+            <a href="../../contact/">Contact</a>
+          </div>
+        </nav>
+      </header>
+
+      <main class="site-main" id="site-main">
+        <section class="hero compact-hero page-hero result-detail-hero">
+          <p class="eyebrow">Energy Optimization</p>
+          <h1 class="page-title">Iberian BESS Policy Challenge</h1>
+          <p class="intro results-hero-intro">A deterministic BESS dispatch policy is challenged against frozen Iberian day-ahead scenarios, commercial baselines, and a perfect-foresight upper bound with explicit risk and constraint readouts.</p>
+        </section>
+
+        <section class="result-detail">
+          <article class="result-article">
+<h3>Problem</h3>
+<p>This result evaluates a single 1 MW / 4 MWh battery trading frozen OMIE day-ahead price scenarios. The policy decides hourly charge and discharge while respecting power, state-of-charge, efficiency, and terminal SOC constraints.</p>
+<h3>Evaluation Contract</h3>
+<p>The public benchmark is the Iberian BESS Policy Challenge v0.1. It compares the accepted policy against commercial baselines and a perfect-foresight LP upper bound. The oracle is not a sales baseline; it is the remaining headroom under the same simplified physical model.</p>
+<h3>Result</h3>
+<p>The seed quantile baseline scored 72.544043. The accepted policy portfolio scored 48.086813, a reduction of 24.45723 score units (33.71363%).</p>
+<p>The accepted policy produced 20.197299 EUR/day average uplift against the quantile comparison baseline, with 0.0 constraint breaches and a downside rate of 0.0.</p>
+<h3>What Changed</h3>
+<p>The accepted policy is a small deterministic portfolio. It evaluates several valid dispatch heuristics on the same daily price horizon and selects the highest-margin valid plan. This is intentionally simple: the pre-sell point is not to replace a client optimizer, but to show that an offline policy challenger can find auditable improvement candidates under a fixed contract.</p>
+<h3>Tail Behavior</h3>
+<p>The comparison bundle keeps every scenario visible, including stress-tail days and weaker cases. The public claim uses aggregate uplift together with p5/p95 uplift, regret, cycle-adjusted margin, and constraint health.</p>
+<h3>Limitations</h3>
+<p>This is an offline day-ahead benchmark over frozen scenarios. It is not production trading, not a live bidding system, not an official market benchmark, and does not model intraday, reserves, imbalance settlement, taxes, grid constraints, or portfolio effects.</p>
+<h3>Reproducibility</h3>
+<p>The bundle includes the accepted candidate, evaluation contract, comparison rows, dispatch trace, replay data, forecast-error smoke output, metrics, score trace, and provenance. Public-claim guardrails validate that required artifacts exist, constraints are clean, limitations are stated, and replay evidence is present.</p>
+          </article>
+        </section>
+
+        
+
+        <section class="result-snapshot" aria-label="Result summary">
+            <div class="result-snapshot-primary">
+              <span>Oracle capture ratio</span>
+              <strong>87.470%</strong>
+              <p>Share of oracle value captured under the frozen dispatch scenarios.</p>
+            </div>
+            <div class="result-snapshot-cards">
+              <div>
+                <span>Objective reduction</span>
+                <strong>33.714%</strong>
+              </div>
+              <div>
+                <span>Mean regret</span>
+                <strong>€27.57</strong>
+              </div>
+              <div>
+                <span>Acceptance objective</span>
+                <strong>48.087</strong>
+              </div>
+            </div>
+          </section>
+
+        <section class="result-assets" aria-label="Public result figures">
+<figure class="result-figure">
+            <img src="./assets/objective-curve.svg" alt="">
+            <figcaption>Seed, checked-in, and accepted policy scores under the v0.1 contract. Lower is better.</figcaption>
+          </figure>
+<figure class="result-figure">
+            <img src="./assets/baseline-comparison.svg" alt="">
+            <figcaption>Accepted policy readout across uplift, regret, cycle-adjusted margin, downside, and constraint breaches.</figcaption>
+          </figure>
+<figure class="result-figure">
+            <img src="./assets/dispatch-readout.svg" alt="">
+            <figcaption>Scenario-level dispatch trace: price, charge/discharge action, and state of charge.</figcaption>
+          </figure>
+        </section>
+
+        <section class="result-evidence" aria-label="Result evidence">
+          <div class="result-evidence-heading">
+            <p class="eyebrow">Evidence</p>
+            <h2>Acceptance score and observable behavior.</h2>
+            <p>The score is a weighted euro-like benchmark objective over regret, baseline shortfall, degradation proxy, downside rate, and constraint penalties. Public sales claims should use it with the comparison and dispatch artifacts.</p>
+          </div>
+          <div class="result-metric-grid">
+            <div class="result-metric-card">
+              <span>Oracle capture ratio</span>
+              <strong>87.470%</strong>
+            </div>
+            <div class="result-metric-card">
+              <span>Mean regret</span>
+              <strong>€27.57</strong>
+            </div>
+            <div class="result-metric-card">
+              <span>Score reduction</span>
+              <strong>24.457</strong>
+            </div>
+            <div class="result-metric-card">
+              <span>Objective reduction</span>
+              <strong>33.714%</strong>
+            </div>
+          </div>
+          <div class="result-data-grid result-data-grid-1">
+<div>
+              <h3>Dispatch readout</h3>
+              <div class="result-table-wrap">
+          <table class="result-table">
+            <tbody>
+              <tr>
+                <th>Oracle capture ratio</th>
+                <td>87.470%</td>
+              </tr>
+              <tr>
+                <th>Mean regret</th>
+                <td>€27.57</td>
+              </tr>
+              <tr>
+                <th>Dispatch trace</th>
+                <td><a href="./artifacts/dispatch_trace.json">Open JSON artifact</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="result-code" aria-label="Accepted candidate code">
+          <div class="result-code-heading">
+            <p class="eyebrow">Accepted implementation</p>
+            <h2>Replayable candidate code.</h2>
+          </div>
+          <pre><code>&quot;&quot;&quot;Accepted storage_arbitrage_es policy used for the public pre-sell proof.&quot;&quot;&quot;
+
+from __future__ import annotations
+
+from domains.storage_arbitrage_es.evaluator import (
+    build_conservative_cycle_baseline,
+    build_quantile_baseline,
+    build_spread_tb4_baseline,
+    simulate_dispatch,
+)
+from domains.storage_arbitrage_es.program import DispatchContext, DispatchPlan
+from domains.storage_arbitrage_es.program import dispatch_policy as checked_in_policy
+
+
+def dispatch_policy(ctx: DispatchContext) -&gt; DispatchPlan:
+    &quot;&quot;&quot;Choose the highest-margin valid plan from a small deterministic policy portfolio.&quot;&quot;&quot;
+    candidates: list[tuple[float, str, DispatchPlan]] = []
+    for label, builder in (
+        (&quot;quantile&quot;, build_quantile_baseline),
+        (&quot;spread_tb4&quot;, build_spread_tb4_baseline),
+        (&quot;conservative&quot;, build_conservative_cycle_baseline),
+    ):
+        plan = builder(ctx.prices_eur_per_mwh, ctx.spec)
+        simulation = simulate_dispatch(ctx.prices_eur_per_mwh, plan, ctx.spec)
+        if simulation.valid:
+            candidates.append((float(simulation.profit_eur), label, plan))
+
+    checked_plan = checked_in_policy(ctx)
+    checked_simulation = simulate_dispatch(ctx.prices_eur_per_mwh, checked_plan, ctx.spec)
+    if checked_simulation.valid:
+        candidates.append((float(checked_simulation.profit_eur), &quot;checked_in&quot;, checked_plan))
+
+    if not candidates:
+        return build_quantile_baseline(ctx.prices_eur_per_mwh, ctx.spec)
+
+    candidates.sort(key=lambda item: (item[0], item[1]), reverse=True)
+    return candidates[0][2]</code></pre>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© <span id="year">2026</span> Göther Labs</p>
+      </footer>
+    </div>
+
+    <script src="../../scripts.js?v=home-proof-inline-v2"></script>
+  </body>
+</html>
