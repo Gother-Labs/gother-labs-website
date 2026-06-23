@@ -1,0 +1,43 @@
+{
+  "schema_version": "storage_arbitrage_es_forecast_error_smoke/v0.1",
+  "intended_use": "Deterministic robustness smoke, separate from the public perfect-foresight claim.",
+  "scenario_count": 3,
+  "relative_error_amplitude": 0.08,
+  "forecast_error_cost_mean_eur": -1.0542196445060295,
+  "valid": true,
+  "scenarios": [
+    {
+      "scenario_id": "omie_20241015",
+      "market_date": "2024-10-15",
+      "split": "public_test",
+      "relative_error_amplitude": 0.08,
+      "realized_profit_eur": 163.9360443213298,
+      "perfect_information_policy_profit_eur": 148.1060443213297,
+      "forecast_error_cost_eur": -15.830000000000098,
+      "cycles_used": 1.7918282548476454,
+      "valid": true
+    },
+    {
+      "scenario_id": "omie_20250115",
+      "market_date": "2025-01-15",
+      "split": "stress_tail",
+      "relative_error_amplitude": 0.08,
+      "realized_profit_eur": 245.07252077562347,
+      "perfect_information_policy_profit_eur": 257.7398618421055,
+      "forecast_error_cost_eur": 12.66734106648201,
+      "cycles_used": 1.5810249307479223,
+      "valid": true
+    },
+    {
+      "scenario_id": "omie_20250915",
+      "market_date": "2025-09-15",
+      "split": "stress_tail",
+      "relative_error_amplitude": 0.08,
+      "realized_profit_eur": 410.2852908587257,
+      "perfect_information_policy_profit_eur": 410.2852908587257,
+      "forecast_error_cost_eur": 0.0,
+      "cycles_used": 1.0276662049861496,
+      "valid": true
+    }
+  ]
+}

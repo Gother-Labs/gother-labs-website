@@ -988,6 +988,15 @@ a {
   max-width: 35ch;
 }
 
+.result-card--storage-arbitrage h2 {
+  max-width: 13ch;
+  font-size: clamp(2.55rem, 5vw, 4.9rem);
+}
+
+.result-card--storage-arbitrage p {
+  max-width: 36ch;
+}
+
 .result-card-visual {
   position: absolute;
   right: clamp(-8rem, -5.5vw, -2.5rem);
@@ -1116,6 +1125,58 @@ a {
   right: clamp(-8rem, -5.5vw, -2.6rem);
   bottom: clamp(1.4rem, 2.4vw, 2.8rem);
   width: min(70%, 42rem);
+}
+
+.result-card--storage-arbitrage .result-card-visual {
+  right: clamp(-7rem, -4.8vw, -2.2rem);
+  bottom: clamp(1.2rem, 2.1vw, 2.6rem);
+  width: min(68%, 41rem);
+}
+
+.result-card-storage path,
+.result-card-storage rect,
+.result-card-storage text {
+  vector-effect: non-scaling-stroke;
+}
+
+.result-card-storage .axis {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 38%, transparent);
+  stroke-width: 1.3;
+}
+
+.result-card-storage .grid {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 13%, transparent);
+  stroke-width: 1;
+}
+
+.result-card-storage .price {
+  fill: none;
+  stroke: color-mix(in srgb, var(--accent) 86%, transparent);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.result-card-storage .soc {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 64%, transparent);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.result-card-storage .bars rect {
+  fill: color-mix(in srgb, #b45309 72%, transparent);
+}
+
+.result-card-storage .bars .discharge {
+  fill: color-mix(in srgb, var(--accent) 78%, transparent);
+}
+
+.result-card-storage text {
+  fill: color-mix(in srgb, var(--text) 72%, transparent);
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .result-card-qubit-routing path,

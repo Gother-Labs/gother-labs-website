@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 320" role="img" aria-label="Storage policy score trace">
+  <rect width="520" height="320" fill="#fbfaf8"/>
+  <path d="M52 260H480M52 64V260" fill="none" stroke="#1f2933" stroke-width="1.2"/>
+  <path d="M70.0 141.9 L230.0 100.0 L390.0 250.0" fill="none" stroke="#0f766e" stroke-width="4"/>
+  <circle cx="70.0" cy="141.9" r="7" fill="#0f766e"/><text x="70.0" y="286" text-anchor="middle" font-family="Inter, Arial" font-size="13" fill="#1f2933">seed quantile baseline</text><text x="70.0" y="127.9" text-anchor="middle" font-family="Inter, Arial" font-size="13" fill="#1f2933">72.5</text><circle cx="230.0" cy="100.0" r="7" fill="#0f766e"/><text x="230.0" y="286" text-anchor="middle" font-family="Inter, Arial" font-size="13" fill="#1f2933">checked-in v2 policy</text><text x="230.0" y="86.0" text-anchor="middle" font-family="Inter, Arial" font-size="13" fill="#1f2933">82.0</text><circle cx="390.0" cy="250.0" r="7" fill="#0f766e"/><text x="390.0" y="286" text-anchor="middle" font-family="Inter, Arial" font-size="13" fill="#1f2933">accepted policy portfolio</text><text x="390.0" y="236.0" text-anchor="middle" font-family="Inter, Arial" font-size="13" fill="#1f2933">48.1</text>
+  <text x="52" y="34" font-family="Inter, Arial" font-size="18" font-weight="700" fill="#1f2933">Weighted score trace</text>
+</svg>

@@ -1,0 +1,172 @@
+{
+  "schema_version": "storage_arbitrage_es_benchmark_contract/v0.1",
+  "benchmark_id": "iberian_bess_policy_challenge_v0_1",
+  "title": "Iberian BESS Policy Challenge v0.1",
+  "claim_status": "offline_public_benchmark",
+  "market_scope": {
+    "market": "OMIE day-ahead",
+    "region": "Iberia",
+    "horizon_hours": 24,
+    "asset_scope": "single 1 MW / 4 MWh battery",
+    "limitations": [
+      "offline known-price dispatch",
+      "frozen checked-in scenarios",
+      "single battery only",
+      "no intraday, reserves, portfolio, network, tax, imbalance, or bidding constraints",
+      "not an official market benchmark"
+    ]
+  },
+  "cases": {
+    "source": "domains/storage_arbitrage_es/data/omie_daily_sample.json",
+    "splits": {
+      "development": [
+        "omie_20240115",
+        "omie_20240415",
+        "omie_20240715"
+      ],
+      "public_test": [
+        "omie_20241015",
+        "omie_20250415",
+        "omie_20250715"
+      ],
+      "stress_tail": [
+        "omie_20250115",
+        "omie_20250915"
+      ]
+    },
+    "required_hours_per_case": 24
+  },
+  "baselines": [
+    {
+      "id": "no_operation_baseline",
+      "kind": "commercial",
+      "source": "domains/storage_arbitrage_es/evaluator.py::build_no_operation_baseline"
+    },
+    {
+      "id": "quantile_dispatch_baseline",
+      "kind": "primary_commercial_comparison",
+      "source": "domains/storage_arbitrage_es/evaluator.py::build_quantile_baseline"
+    },
+    {
+      "id": "spread_tb4_baseline",
+      "kind": "commercial",
+      "source": "domains/storage_arbitrage_es/evaluator.py::build_spread_tb4_baseline"
+    },
+    {
+      "id": "conservative_cycle_baseline",
+      "kind": "commercial",
+      "source": "domains/storage_arbitrage_es/evaluator.py::build_conservative_cycle_baseline"
+    },
+    {
+      "id": "customer_current_policy",
+      "kind": "external_customer_policy_fixture",
+      "source": "domains/storage_arbitrage_es/evaluator.py::load_external_policy_baseline",
+      "fixture": "domains/storage_arbitrage_es/customer_policy_fixture.py",
+      "optional": true
+    },
+    {
+      "id": "perfect_foresight_lp_upper_bound",
+      "kind": "oracle_upper_bound",
+      "source": "domains/storage_arbitrage_es/evaluator.py::solve_oracle_dispatch"
+    }
+  ],
+  "primary_metrics": [
+    "score",
+    "regret_mean_eur",
+    "baseline_shortfall_eur",
+    "cycle_adjusted_margin_mean_eur",
+    "downside_rate",
+    "constraint_breach_count"
+  ],
+  "secondary_metrics": [
+    "regret_p95_eur",
+    "oracle_capture_ratio",
+    "gross_margin_mean_eur",
+    "cycle_degradation_cost_mean_eur",
+    "uplift_p5_eur",
+    "uplift_p95_eur",
+    "cycles_used"
+  ],
+  "guardrails": [
+    {
+      "id": "terminal_soc_error",
+      "must_equal": 0.0
+    },
+    {
+      "id": "feasibility_penalty",
+      "must_equal": 0.0
+    },
+    {
+      "id": "simultaneous_power_penalty",
+      "must_equal": 0.0
+    },
+    {
+      "id": "constraint_breach_count",
+      "must_equal": 0.0
+    },
+    {
+      "id": "scenario_split_coverage",
+      "required_splits": [
+        "development",
+        "public_test",
+        "stress_tail"
+      ]
+    }
+  ],
+  "score_terms": [
+    "regret_mean_eur",
+    "regret_p95_eur",
+    "baseline_shortfall_eur",
+    "cycle_degradation_cost_mean_eur",
+    "downside_rate",
+    "constraint_breach_count",
+    "terminal_soc_error",
+    "feasibility_penalty",
+    "simultaneous_power_penalty"
+  ],
+  "forecast_error_smoke": {
+    "suite_id": "storage_arbitrage_es_forecast_error_smoke_v0_1",
+    "intended_use": "Reduced deterministic realism check only; separate from the public perfect-foresight day-ahead claim.",
+    "case_ids": [
+      "omie_20241015",
+      "omie_20250115",
+      "omie_20250915"
+    ],
+    "relative_error_amplitude": 0.08,
+    "limitations": [
+      "synthetic deterministic perturbation",
+      "not a forecast model",
+      "not intraday re-optimization"
+    ]
+  },
+  "publication_guardrails": {
+    "required_artifacts": [
+      "result.json",
+      "article.md",
+      "artifacts/accepted_candidate.py",
+      "artifacts/metrics.json",
+      "artifacts/evaluation_contract.json",
+      "artifacts/evaluation_contract.md",
+      "artifacts/provenance.json",
+      "artifacts/comparison.json",
+      "artifacts/dispatch_trace.json",
+      "artifacts/replay.json",
+      "artifacts/score-trace.json",
+      "artifacts/forecast_smoke.json"
+    ],
+    "forbidden_public_artifact_name_parts": [
+      "prompt",
+      "reason",
+      "rationale",
+      "thought",
+      "telemetry",
+      "log",
+      "dump",
+      "private",
+      "secret"
+    ],
+    "must_state_limitations": true,
+    "must_pass_replay": true,
+    "must_have_zero_constraint_breaches": true
+  }
+}

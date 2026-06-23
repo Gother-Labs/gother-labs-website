@@ -397,6 +397,27 @@ ${circles.map(([cx, cy, r]) => `                  <circle cx="${cx}" cy="${cy}" 
               </svg>`;
   }
 
+  if (result.website?.card_visual === "storage-arbitrage") {
+    return `<svg class="result-card-visual result-card-visual--storage-arbitrage" viewBox="0 0 560 330" aria-hidden="true" focusable="false">
+                <g class="result-card-storage">
+                  <path class="axis" d="M52 260H508M52 58V260" />
+                  <path class="grid" d="M52 112H508M52 186H508" />
+                  <path class="price" d="M52 214 C92 178 126 204 162 146 C204 76 252 112 292 166 C332 218 376 184 416 116 C452 58 482 96 508 82" />
+                  <path class="soc" d="M52 182 C92 206 124 218 158 198 C194 176 224 106 260 92 C302 76 340 116 374 154 C410 194 454 160 508 126" />
+                  <g class="bars">
+                    <rect x="86" y="220" width="14" height="40" />
+                    <rect x="118" y="226" width="14" height="34" />
+                    <rect x="214" y="88" width="14" height="172" class="discharge" />
+                    <rect x="246" y="78" width="14" height="182" class="discharge" />
+                    <rect x="374" y="216" width="14" height="44" />
+                    <rect x="438" y="96" width="14" height="164" class="discharge" />
+                  </g>
+                  <text x="52" y="38">price / dispatch / SoC</text>
+                  <text x="52" y="296">Iberian day-ahead BESS challenge</text>
+                </g>
+              </svg>`;
+  }
+
   if (result.website?.card_visual !== "quadrature") return "";
 
   return `<svg class="result-card-visual" viewBox="0 0 560 360" aria-hidden="true" focusable="false">
@@ -2784,6 +2805,10 @@ async function writeDetail(result) {
     full.artifacts?.metrics,
     full.artifacts?.provenance,
     full.artifacts?.reference_comparison,
+    full.artifacts?.comparison,
+    full.artifacts?.dispatch_trace,
+    full.artifacts?.evaluation_contract_json,
+    full.artifacts?.forecast_smoke,
     full.artifacts?.replay,
     full.artifacts?.schedule_example,
     full.artifacts?.score_trace,

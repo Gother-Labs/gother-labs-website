@@ -1,0 +1,23 @@
+{
+  "seed": 72.544043,
+  "best": 48.086813,
+  "improvement": 24.45723,
+  "improvement_pct": 33.71363,
+  "units": "weighted_eur_like_score",
+  "direction": "lower_is_better",
+  "validation_status": "exact-replay-v0.1-contract",
+  "regret_mean_eur": 27.572071,
+  "regret_p95_eur": 55.951567,
+  "baseline_shortfall_eur": 0.0,
+  "oracle_capture_ratio": 0.874697,
+  "gross_margin_mean_eur": 215.799231,
+  "cycle_adjusted_margin_mean_eur": 206.482301,
+  "cycle_degradation_cost_mean_eur": 9.316931,
+  "downside_days": 0.0,
+  "downside_rate": 0.0,
+  "uplift_p5_eur": 0.0,
+  "uplift_p95_eur": 40.25954,
+  "constraint_breach_count": 0.0,
+  "cycles_used": 1.242257,
+  "uplift_vs_quantile_dispatch_baseline_mean_eur": 20.197299
+}
