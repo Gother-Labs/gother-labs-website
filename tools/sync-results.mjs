@@ -2786,8 +2786,8 @@ function bessBenchmarkReadoutFigure(full, dispatchTrace, comparison) {
     })
     .join("\n");
   const cards = [
-    ["Score reduction", formatPercent(metrics.improvement_pct ?? 0), `${formatMetric(metrics.seed ?? 0, { maximumFractionDigits: 3 })} → ${formatMetric(metrics.best ?? 0, { maximumFractionDigits: 3 })}`],
-    ["Mean uplift", `${euro(metrics.uplift_vs_quantile_dispatch_baseline_mean_eur)}/day`, "vs quantile baseline"],
+    ["Relative score reduction", formatPercent(metrics.improvement_pct ?? 0), `${formatMetric(metrics.seed ?? 0, { maximumFractionDigits: 3 })} → ${formatMetric(metrics.best ?? 0, { maximumFractionDigits: 3 })}`],
+    ["Mean gross uplift", `${euro(metrics.uplift_vs_quantile_dispatch_baseline_mean_eur)}/day`, "vs quantile · before degradation proxy"],
     ["Scenario uplift", euro(comparisonRow.uplift_vs_comparison_baseline_eur), escapeHtml(scenario.scenario_id ?? "public test")],
     ["Guardrails", `${formatMetric(metrics.constraint_breach_count ?? 0, { maximumFractionDigits: 0 })} breaches`, `${formatMetric(metrics.downside_days ?? 0, { maximumFractionDigits: 0 })} downside days`],
   ];
@@ -2870,7 +2870,7 @@ function bessCustomerReadoutTable(full, comparison) {
     rows: [
       [
         "Can it improve a named commercial baseline?",
-        `${formatMetric(metrics.seed, { maximumFractionDigits: 3 })} → ${formatMetric(metrics.best, { maximumFractionDigits: 3 })} score, ${formatPercent(metrics.improvement_pct)} reduction, ${euro(metrics.uplift_vs_quantile_dispatch_baseline_mean_eur)}/day mean uplift`,
+        `${formatMetric(metrics.seed, { maximumFractionDigits: 3 })} → ${formatMetric(metrics.best, { maximumFractionDigits: 3 })} score, ${formatPercent(metrics.improvement_pct)} relative reduction, ${euro(metrics.uplift_vs_quantile_dispatch_baseline_mean_eur)}/day mean gross uplift`,
         "The claim is anchored to the quantile dispatch baseline, not to the perfect-foresight oracle.",
       ],
       [
@@ -2896,8 +2896,8 @@ function bessHeroProof(full, comparison) {
   const metrics = full.metrics ?? {};
   const rows = Array.isArray(comparison?.rows) ? comparison.rows : [];
   const items = [
-    ["Score reduction", formatPercent(metrics.improvement_pct), `${formatMetric(metrics.seed, { maximumFractionDigits: 3 })} → ${formatMetric(metrics.best, { maximumFractionDigits: 3 })}`],
-    ["Mean uplift", `${euro(metrics.uplift_vs_quantile_dispatch_baseline_mean_eur)}/day`, "vs quantile baseline"],
+    ["Relative score reduction", formatPercent(metrics.improvement_pct), `${formatMetric(metrics.seed, { maximumFractionDigits: 3 })} → ${formatMetric(metrics.best, { maximumFractionDigits: 3 })}`],
+    ["Mean gross uplift", `${euro(metrics.uplift_vs_quantile_dispatch_baseline_mean_eur)}/day`, "vs quantile · before degradation proxy"],
     ["Constraint breaches", formatMetric(metrics.constraint_breach_count ?? 0, { maximumFractionDigits: 0 }), "exact replay guardrail"],
     ["Public scenarios", formatMetric(rows.length, { maximumFractionDigits: 0 }), "development, public-test, stress-tail"],
   ];
@@ -2922,7 +2922,7 @@ ${cards}
 function bessCommercialReadoutFigure(full) {
   const metrics = full.metrics ?? {};
   const rows = [
-    ["Mean uplift vs baseline", euro(metrics.uplift_vs_quantile_dispatch_baseline_mean_eur), "primary commercial readout"],
+    ["Mean gross uplift vs quantile", euro(metrics.uplift_vs_quantile_dispatch_baseline_mean_eur), "before degradation proxy"],
     ["Cycle-adjusted margin", euro(metrics.cycle_adjusted_margin_mean_eur), "after degradation cost"],
     ["Mean regret to oracle", euro(metrics.regret_mean_eur), "remaining headroom"],
     ["p95 regret", euro(metrics.regret_p95_eur), "tail diagnostic"],
@@ -3004,9 +3004,9 @@ function bessImplementationCodeFigure(candidateCode) {
 function bessPrivateChallengeCta(full) {
   const metrics = full.metrics ?? {};
   const cards = [
-    ["Public proof", `${formatPercent(metrics.improvement_pct ?? 0)} score reduction`, "against the frozen public baseline"],
+    ["Public proof", `${formatPercent(metrics.improvement_pct ?? 0)} relative score reduction`, "quantile baseline → accepted"],
     ["Guardrail", `${formatMetric(metrics.constraint_breach_count ?? 0, { maximumFractionDigits: 0 })} breaches`, "exact replay constraint check"],
-    ["Commercial readout", `${euro(metrics.uplift_vs_quantile_dispatch_baseline_mean_eur ?? 0)}/day`, "mean uplift vs quantile baseline"],
+    ["Commercial readout", `${euro(metrics.uplift_vs_quantile_dispatch_baseline_mean_eur ?? 0)}/day`, "mean gross uplift vs quantile · before degradation"],
   ]
     .map(([label, value, note]) => `<div>
               <span>${escapeHtml(label)}</span>
