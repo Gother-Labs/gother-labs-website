@@ -53,13 +53,15 @@
       step,
     ]);
     scoreChart.innerHTML = `
-      <path d="M54 218H580M54 54V218" fill="none" stroke="currentColor" stroke-width="1"/>
-      <path d="${path(points)}" fill="none" stroke="#0f766e" stroke-width="4"/>
-      ${points.map(([x, y, step]) => `
-        <circle cx="${x}" cy="${y}" r="7" fill="#0f766e"></circle>
-        <text x="${x}" y="${y - 14}" text-anchor="middle" font-size="13">${fmt(step.score, 1)}</text>
-        <text x="${x}" y="242" text-anchor="middle" font-size="12">${escapeHtml(step.label)}</text>
+      <path class="storage-grid" d="M54 88H580M54 153H580M54 218H580"/>
+      <path class="storage-axis" d="M54 54V218H580"/>
+      <path class="storage-score-line" d="${path(points)}"/>
+      ${points.map(([x, y, step], index) => `
+        <circle class="storage-score-dot${index === points.length - 1 ? " storage-score-dot--accepted" : ""}" cx="${x}" cy="${y}" r="${index === points.length - 1 ? "7.5" : "6.5"}"></circle>
+        <text class="storage-score-value" x="${x}" y="${y - 14}" text-anchor="middle">${fmt(step.score, 1)}</text>
+        <text class="storage-chart-tick" x="${x}" y="242" text-anchor="middle">${escapeHtml(step.label)}</text>
       `).join("")}
+      <text class="storage-chart-label" x="54" y="30">Score trace</text>
     `;
   }
 
@@ -67,7 +69,7 @@
     const scenario = data.dispatch.scenarios.find((item) => item.scenario_id === scenarioId) || data.dispatch.scenarios[0];
     const comparison = data.comparison.rows.find((item) => item.scenario_id === scenario.scenario_id);
     scenarioTitle.textContent = `${scenario.scenario_id} · €${fmt(comparison.candidate_profit_eur)} candidate profit`;
-    scenarioSplit.textContent = `${scenario.split} · uplift €${fmt(comparison.uplift_vs_comparison_baseline_eur)}`;
+    scenarioSplit.textContent = `${scenario.split} · uplift €${fmt(comparison.uplift_vs_comparison_baseline_eur)} · baseline €${fmt(comparison.baseline_profit_eur)} · regret €${fmt(comparison.regret_eur)}`;
 
     const hours = scenario.hours;
     const prices = hours.map((hour) => Number(hour.price_eur_per_mwh));
@@ -83,21 +85,28 @@
       const x = mapX(index) - 6;
       const height = Math.abs(value) * 54;
       const y = value >= 0 ? 330 - height : 330;
-      const fill = value >= 0 ? "#0f766e" : "#b45309";
-      return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="10" height="${height.toFixed(1)}" fill="${fill}" opacity="0.68"></rect>`;
+      const cls = value >= 0 ? "storage-discharge-bar" : "storage-charge-bar";
+      return `<rect class="${cls}" x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="10" height="${height.toFixed(1)}"></rect>`;
     }).join("");
 
     dispatchChart.innerHTML = `
-      <path d="M58 330H838M58 54V330" fill="none" stroke="currentColor" stroke-width="1"/>
+      <path class="storage-grid" d="M58 88H838M58 148H838M58 208H838M58 270H838"/>
+      <path class="storage-axis" d="M58 330H838M58 54V330"/>
       ${bars}
-      <path d="${path(pricePoints)}" fill="none" stroke="#0f766e" stroke-width="3"/>
-      <path d="${path(socPoints)}" fill="none" stroke="#2563eb" stroke-width="3"/>
-      <text x="58" y="30" font-size="14" fill="#0f766e">Price EUR/MWh</text>
-      <text x="192" y="30" font-size="14" fill="#2563eb">State of charge MWh</text>
-      <text x="372" y="30" font-size="14" fill="#b45309">Charge</text>
-      <text x="442" y="30" font-size="14" fill="#0f766e">Discharge</text>
+      <path class="storage-price-line" d="${path(pricePoints)}"/>
+      <path class="storage-soc-line" d="${path(socPoints)}"/>
+      <text class="storage-chart-legend" x="58" y="30">price</text>
+      <line class="storage-price-line" x1="98" y1="26" x2="128" y2="26"/>
+      <text class="storage-chart-legend" x="154" y="30">SOC</text>
+      <line class="storage-soc-line" x1="190" y1="26" x2="220" y2="26"/>
+      <rect class="storage-charge-bar" x="250" y="18" width="12" height="14"></rect>
+      <text class="storage-chart-legend" x="270" y="30">charge</text>
+      <rect class="storage-discharge-bar" x="330" y="18" width="12" height="14"></rect>
+      <text class="storage-chart-legend" x="350" y="30">discharge</text>
+      <text class="storage-chart-label" x="58" y="390">Hour of day</text>
+      <text class="storage-chart-label" x="20" y="202" transform="rotate(-90 20 202)">Dispatch / price / SOC</text>
       ${hours.filter((_, index) => index % 4 === 0).map((hour) => `
-        <text x="${mapX(hour.hour)}" y="360" text-anchor="middle" font-size="12">${hour.hour}</text>
+        <text class="storage-chart-tick" x="${mapX(hour.hour)}" y="360" text-anchor="middle">${hour.hour}</text>
       `).join("")}
     `;
   }
