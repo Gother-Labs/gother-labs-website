@@ -1,7 +1,7 @@
 {
   "schema_version": "provenance/v1",
-  "source_bundle": "qubit_routing_sabre24_lightsabre_full_output_20260525",
-  "source_run": "sabre24_lightsabre_macstudio_9am_20260523_093900",
+  "source_bundle": "curated-qubit-routing-lightsabre-public-export-20260525",
+  "source_run": "accepted-candidate checkpoint in the curated linked run chain",
   "linked_run_chain_reviewed_at": "2026-05-25",
   "exported_candidate_id": "gen-62-i0-w3-a0-8185f10d0dff4245",
   "recorded_best_candidate_id": "gen-62-i0-w3-a0-8185f10d0dff4245",

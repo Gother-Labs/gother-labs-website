@@ -81,6 +81,36 @@ html,
   text-wrap: pretty;
 }
 
+.evolther-2-proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.15rem;
+  align-items: baseline;
+  max-width: 72ch;
+  padding-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.evolther-2-proof span {
+  color: var(--muted-soft);
+}
+
+.evolther-2-proof a {
+  color: var(--accent);
+  font-weight: 590;
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 48%, transparent);
+  padding-bottom: 0.12rem;
+}
+
+.evolther-2-proof a:hover,
+.evolther-2-proof a:focus-visible {
+  color: var(--text);
+  border-bottom-color: color-mix(in srgb, var(--text) 50%, transparent);
+}
+
 .evolther-2-main > .divider {
   margin: clamp(1.45rem, 2.2vw, 2.2rem) 0 clamp(0.6rem, 1.1vw, 1.05rem);
 }
