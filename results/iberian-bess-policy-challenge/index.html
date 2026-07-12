@@ -59,7 +59,7 @@
           <article class="result-article result-whitepaper bess-whitepaper">
 <h3>Abstract</h3>
 <p>This result presents a replayable offline challenger for Iberian BESS dispatch. A deterministic policy portfolio is evaluated against frozen OMIE day-ahead scenarios, a commercial quantile baseline, and a perfect-foresight upper bound under one explicit battery contract.</p>
-<p>The accepted policy reduces the published score from 72.544043 to 48.086813 while preserving zero constraint breaches. The claim is intentionally bounded: this is evidence that Göther Labs can produce auditable improvement candidates and stress-case readouts for optimizer teams, not evidence of live trading readiness.</p>
+<p>The accepted policy reduces the published weighted euro-like score from a 72.544043 quantile-dispatch baseline to 48.086813 while preserving zero constraint breaches. That is an absolute delta of 24.457230 score units and a 33.71363% relative reduction. The claim is intentionally bounded: this is evidence that Göther Labs can produce auditable improvement candidates and stress-case readouts for optimizer teams, not evidence of live trading readiness.</p>
 <h3>1. Problem formulation</h3>
 <p>This result evaluates a single 1 MW / 4 MWh battery trading frozen OMIE day-ahead price scenarios. The policy decides hourly charge and discharge while respecting power, state-of-charge, efficiency, and terminal SOC constraints.</p>
 <p>The pre-sell question is deliberately narrow: can a replayable challenger discover an auditable improvement candidate against a commercial dispatch baseline, while keeping every constraint and weak case visible? The result should be read as a professional offline benchmark, not as a claim about live bidding or a replacement for a client optimizer.</p>
@@ -257,7 +257,7 @@
         </figure>
 <h3>4. Commercial baseline result</h3>
 <p>The seed quantile baseline scored 72.544043. The accepted policy portfolio scored 48.086813, a reduction of 24.45723 score units (33.71363%).</p>
-<p>The accepted policy produced 20.197299 EUR/day average uplift against the quantile comparison baseline, with 0.0 constraint breaches and a downside rate of 0.0.</p>
+<p>Across the eight frozen scenarios for the single 1 MW / 4 MWh battery, the accepted policy produced 20.197299 EUR/day mean gross simulated dispatch-profit uplift against the quantile comparison baseline, with 0.0 constraint breaches and a downside rate of 0.0. This uplift is before the degradation-cost proxy; the cycle-adjusted margin reports that proxy separately. The benchmark excludes intraday and reserve revenues, imbalance settlement, taxes, grid and portfolio effects, and production bidding costs.</p>
 <figure class="result-primer-card result-paper-figure bess-inline-figure bess-commercial-figure" id="fig-2">
 <div class="bess-figure-scroll">
           <svg class="result-primer-svg bess-paper-svg" viewBox="0 0 560 250" role="img" aria-label="Commercial and risk metrics for the accepted BESS policy.">

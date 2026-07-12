@@ -28,9 +28,12 @@
   function renderMetrics() {
     const metrics = data.metrics;
     const cards = [
-      ["Score reduction", fmt(metrics.improvement)],
-      ["Avg uplift", `€${fmt(metrics.uplift_vs_quantile_dispatch_baseline_mean_eur)}/day`],
-      ["Cycle-adjusted margin", `€${fmt(metrics.cycle_adjusted_margin_mean_eur)}`],
+      ["Quantile baseline score", `${fmt(metrics.seed)} score units`],
+      ["Accepted score", `${fmt(metrics.best)} score units`],
+      ["Absolute score delta", `${fmt(metrics.improvement)} score units`],
+      ["Relative score reduction", `${fmt(metrics.improvement_pct)}%`],
+      ["Mean gross uplift vs quantile", `€${fmt(metrics.uplift_vs_quantile_dispatch_baseline_mean_eur)}/day`],
+      ["Cycle-adjusted margin", `€${fmt(metrics.cycle_adjusted_margin_mean_eur)}/day`],
       ["Breaches", String(Math.round(metrics.constraint_breach_count))],
     ];
     metricCards.innerHTML = cards.map(([label, value]) => `

@@ -77,10 +77,285 @@
 <p>The claim is deliberately bounded: it is not a universal quantum compiler result, not a runtime benchmark, and not a hardware-performance claim.</p>
 <h3>1. Problem formulation</h3>
 <p>The two-qubit gate that matters in this benchmark is the CNOT. A CNOT flips the target qubit only when the control qubit is 1; together with arbitrary one-qubit gates, CNOT is a standard building block for universal quantum circuits. Hardware routing matters because a SWAP between adjacent physical qubits is normally decomposed into three CNOTs, so every extra SWAP directly inflates the added-CNOT readout.</p>
+<figure class="result-primer-card result-paper-figure qubit-routing-inline-figure qubit-gate-primer-figure" id="fig-1">
+          <svg class="result-primer-svg qubit-routing-paper-svg quantum-circuit-svg quantum-gate-primer-svg" viewBox="0 0 780 238" role="img" aria-label="CNOT truth table, matrix, and SWAP decomposition into three CNOT gates.">
+            <text class="result-axis-label result-figure-title" x="60" y="36">Why SWAP count is measured through CNOTs</text>
+            <g transform="translate(0 0)">
+              <text class="quantum-panel-title" x="60" y="74">CNOT action</text>
+              <text class="quantum-table-heading" x="104" y="94" text-anchor="middle">in</text>
+              <text class="quantum-table-heading" x="184" y="94" text-anchor="middle">out</text>
+              <g>
+              <text class="quantum-ket-cell" x="104" y="122" text-anchor="middle">|00&#x27E9;</text>
+              <text class="quantum-ket-cell" x="184" y="122" text-anchor="middle">|00&#x27E9;</text>
+            </g>
+<g>
+              <text class="quantum-ket-cell" x="104" y="149" text-anchor="middle">|01&#x27E9;</text>
+              <text class="quantum-ket-cell" x="184" y="149" text-anchor="middle">|01&#x27E9;</text>
+            </g>
+<g>
+              <text class="quantum-ket-cell" x="104" y="176" text-anchor="middle">|10&#x27E9;</text>
+              <text class="quantum-ket-cell" x="184" y="176" text-anchor="middle">|11&#x27E9;</text>
+            </g>
+<g>
+              <text class="quantum-ket-cell" x="104" y="203" text-anchor="middle">|11&#x27E9;</text>
+              <text class="quantum-ket-cell" x="184" y="203" text-anchor="middle">|10&#x27E9;</text>
+            </g>
+              <path class="quantum-table-rule" d="M64 104H224M144 84V207" />
+            </g>
+            <g transform="translate(0 0)">
+              <text class="quantum-panel-title" x="292" y="74">CNOT matrix</text>
+              <path class="quantum-matrix-bracket" d="M300 104H292V214H300M462 104H470V214H462" />
+              <text class="quantum-matrix-cell" x="330" y="123" text-anchor="middle">1</text>
+<text class="quantum-matrix-cell" x="364" y="123" text-anchor="middle">0</text>
+<text class="quantum-matrix-cell" x="398" y="123" text-anchor="middle">0</text>
+<text class="quantum-matrix-cell" x="432" y="123" text-anchor="middle">0</text>
+<text class="quantum-matrix-cell" x="330" y="150" text-anchor="middle">0</text>
+<text class="quantum-matrix-cell" x="364" y="150" text-anchor="middle">1</text>
+<text class="quantum-matrix-cell" x="398" y="150" text-anchor="middle">0</text>
+<text class="quantum-matrix-cell" x="432" y="150" text-anchor="middle">0</text>
+<text class="quantum-matrix-cell" x="330" y="177" text-anchor="middle">0</text>
+<text class="quantum-matrix-cell" x="364" y="177" text-anchor="middle">0</text>
+<text class="quantum-matrix-cell" x="398" y="177" text-anchor="middle">0</text>
+<text class="quantum-matrix-cell" x="432" y="177" text-anchor="middle">1</text>
+<text class="quantum-matrix-cell" x="330" y="204" text-anchor="middle">0</text>
+<text class="quantum-matrix-cell" x="364" y="204" text-anchor="middle">0</text>
+<text class="quantum-matrix-cell" x="398" y="204" text-anchor="middle">1</text>
+<text class="quantum-matrix-cell" x="432" y="204" text-anchor="middle">0</text>
+            </g>
+            <g transform="translate(0 0)">
+              <text class="quantum-panel-title" x="542" y="74">SWAP decomposition</text>
+              <g>
+              <text class="quantum-wire-label" x="524" y="133" text-anchor="end">q0</text>
+              <path class="quantum-wire" d="M542 129H744" />
+            </g>
+              <g>
+              <text class="quantum-wire-label" x="524" y="193" text-anchor="end">q1</text>
+              <path class="quantum-wire" d="M542 189H744" />
+            </g>
+              <g class="quantum-swap is-inserted">
+              <path class="quantum-gate-link" d="M586 129V189" />
+              <path class="quantum-swap-cross" d="M579 122L593 136M593 122L579 136" />
+              <path class="quantum-swap-cross" d="M579 182L593 196M593 182L579 196" />
+            </g>
+              <text class="quantum-route-label" x="628" y="164" text-anchor="middle">=</text>
+              <g class="quantum-cnot is-reference">
+              <path class="quantum-gate-link" d="M662 129V189" />
+              <circle class="quantum-control" cx="662" cy="129" r="3.8" />
+              <circle class="quantum-target" cx="662" cy="189" r="10" />
+              <path class="quantum-target-plus" d="M655 189H669M662 182V196" />
+            </g>
+              <g class="quantum-cnot is-reference">
+              <path class="quantum-gate-link" d="M700 129V189" />
+              <circle class="quantum-control" cx="700" cy="189" r="3.8" />
+              <circle class="quantum-target" cx="700" cy="129" r="10" />
+              <path class="quantum-target-plus" d="M693 129H707M700 122V136" />
+            </g>
+              <g class="quantum-cnot is-reference">
+              <path class="quantum-gate-link" d="M738 129V189" />
+              <circle class="quantum-control" cx="738" cy="129" r="3.8" />
+              <circle class="quantum-target" cx="738" cy="189" r="10" />
+              <path class="quantum-target-plus" d="M731 189H745M738 182V196" />
+            </g>
+            </g>
+          </svg>
+          <figcaption>Figure 1. CNOT and SWAP cost model. The matrix is shown in computational-basis order <span class="math-ket">|00⟩</span>, <span class="math-ket">|01⟩</span>, <span class="math-ket">|10⟩</span>, <span class="math-ket">|11⟩</span>; a nearest-neighbor SWAP decomposes into three CNOTs.</figcaption>
+        </figure>
 <p>Qubit routing maps a logical circuit onto a physical device topology. When two logical qubits that need a two-qubit gate are not adjacent on the target topology, the router inserts SWAPs. Those SWAPs increase the compiled circuit cost; in this public benchmark the observable readout is added CNOT count.</p>
+<figure class="result-primer-card result-paper-figure qubit-routing-inline-figure qubit-circuit-figure" id="fig-2">
+          <svg class="result-primer-svg qubit-routing-paper-svg quantum-circuit-svg" viewBox="0 0 660 300" role="img" aria-label="Nearest-neighbor physical path circuit with inserted SWAP gates.">
+            <text class="result-axis-label result-figure-title" x="52" y="36">Nearest-neighbor routed circuit on the physical path</text>
+            <g class="quantum-panel" transform="translate(0 0)">
+              <text class="quantum-panel-title" x="96" y="64">physical path</text>
+<g class="quantum-wire-row">
+              <text class="quantum-wire-label" x="78" y="92" text-anchor="end">q0</text>
+              <path class="quantum-wire" d="M96 88H606" />
+            </g>
+<g class="quantum-wire-row">
+              <text class="quantum-wire-label" x="78" y="132" text-anchor="end">q1</text>
+              <path class="quantum-wire" d="M96 128H606" />
+            </g>
+<g class="quantum-wire-row">
+              <text class="quantum-wire-label" x="78" y="172" text-anchor="end">q2</text>
+              <path class="quantum-wire" d="M96 168H606" />
+            </g>
+<g class="quantum-wire-row">
+              <text class="quantum-wire-label" x="78" y="212" text-anchor="end">q3</text>
+              <path class="quantum-wire" d="M96 208H606" />
+            </g>
+<g class="quantum-wire-row">
+              <text class="quantum-wire-label" x="78" y="252" text-anchor="end">q4</text>
+              <path class="quantum-wire" d="M96 248H606" />
+            </g>
+<g class="quantum-cnot is-reference">
+              <path class="quantum-gate-link" d="M150 88V128" />
+              <circle class="quantum-control" cx="150" cy="88" r="3.8" />
+              <circle class="quantum-target" cx="150" cy="128" r="10" />
+              <path class="quantum-target-plus" d="M143 128H157M150 121V135" />
+            </g>
+<g class="quantum-swap is-inserted">
+              <path class="quantum-gate-link" d="M214 128V168" />
+              <path class="quantum-swap-cross" d="M207 121L221 135M221 121L207 135" />
+              <path class="quantum-swap-cross" d="M207 161L221 175M221 161L207 175" />
+            </g>
+<g class="quantum-cnot is-reference">
+              <path class="quantum-gate-link" d="M278 168V208" />
+              <circle class="quantum-control" cx="278" cy="168" r="3.8" />
+              <circle class="quantum-target" cx="278" cy="208" r="10" />
+              <path class="quantum-target-plus" d="M271 208H285M278 201V215" />
+            </g>
+<g class="quantum-swap is-inserted">
+              <path class="quantum-gate-link" d="M342 208V248" />
+              <path class="quantum-swap-cross" d="M335 201L349 215M349 201L335 215" />
+              <path class="quantum-swap-cross" d="M335 241L349 255M349 241L335 255" />
+            </g>
+<g class="quantum-cnot is-reference">
+              <path class="quantum-gate-link" d="M406 208V248" />
+              <circle class="quantum-control" cx="406" cy="208" r="3.8" />
+              <circle class="quantum-target" cx="406" cy="248" r="10" />
+              <path class="quantum-target-plus" d="M399 248H413M406 241V255" />
+            </g>
+<g class="quantum-swap is-inserted">
+              <path class="quantum-gate-link" d="M470 168V208" />
+              <path class="quantum-swap-cross" d="M463 161L477 175M477 161L463 175" />
+              <path class="quantum-swap-cross" d="M463 201L477 215M477 201L463 215" />
+            </g>
+<g class="quantum-cnot is-reference">
+              <path class="quantum-gate-link" d="M534 128V168" />
+              <circle class="quantum-control" cx="534" cy="128" r="3.8" />
+              <circle class="quantum-target" cx="534" cy="168" r="10" />
+              <path class="quantum-target-plus" d="M527 168H541M534 161V175" />
+            </g>
+            </g>
+          </svg>
+          <figcaption>Figure 2. Qubit-routing setup. Logical two-qubit interactions are emitted on the physical path as adjacent CNOTs, with SWAPs inserted when the target topology requires them.</figcaption>
+        </figure>
 <p>The optimization lever is intentionally narrow: the policy still inserts swaps to satisfy adjacency, but it can avoid paying a restore swap when the resulting logical-to-physical permutation is useful for the next routed interaction.</p>
+<figure class="result-primer-card result-paper-figure qubit-routing-inline-figure qubit-swap-saving-figure" id="fig-3">
+          <svg class="result-primer-svg qubit-routing-paper-svg quantum-circuit-svg quantum-swap-saving-svg" viewBox="0 0 760 446" role="img" aria-label="Two routed quantum circuits comparing a canceling restore swap pair versus keeping the remapping for the next gate.">
+            <text class="result-axis-label result-figure-title" x="52" y="36">Avoiding an unnecessary restore SWAP</text>
+            <g class="quantum-decision-row">
+              <text class="quantum-panel-title" x="76" y="68">Restore path</text>
+<g class="quantum-wire-row">
+              <text class="quantum-wire-label" x="58" y="100" text-anchor="end">q0</text>
+              <path class="quantum-wire" d="M76 96H706" />
+            </g>
+<g class="quantum-wire-row">
+              <text class="quantum-wire-label" x="58" y="140" text-anchor="end">q1</text>
+              <path class="quantum-wire" d="M76 136H706" />
+            </g>
+<g class="quantum-wire-row">
+              <text class="quantum-wire-label" x="58" y="180" text-anchor="end">q2</text>
+              <path class="quantum-wire" d="M76 176H706" />
+            </g>
+<g class="quantum-wire-row">
+              <text class="quantum-wire-label" x="58" y="220" text-anchor="end">q3</text>
+              <path class="quantum-wire" d="M76 216H706" />
+            </g>
+              <g class="quantum-swap is-inserted">
+              <path class="quantum-gate-link" d="M178 136V176" />
+              <path class="quantum-swap-cross" d="M171 129L185 143M185 129L171 143" />
+              <path class="quantum-swap-cross" d="M171 169L185 183M185 169L171 183" />
+            </g>
+              <g class="quantum-cnot is-reference">
+              <path class="quantum-gate-link" d="M266 136V176" />
+              <circle class="quantum-control" cx="266" cy="136" r="3.8" />
+              <circle class="quantum-target" cx="266" cy="176" r="10" />
+              <path class="quantum-target-plus" d="M259 176H273M266 169V183" />
+            </g>
+              <g class="quantum-swap is-inserted">
+              <path class="quantum-gate-link" d="M356 136V176" />
+              <path class="quantum-swap-cross" d="M349 129L363 143M363 129L349 143" />
+              <path class="quantum-swap-cross" d="M349 169L363 183M363 169L349 183" />
+            </g>
+              <g class="quantum-swap is-inserted">
+              <path class="quantum-gate-link" d="M430 136V176" />
+              <path class="quantum-swap-cross" d="M423 129L437 143M437 129L423 143" />
+              <path class="quantum-swap-cross" d="M423 169L437 183M437 169L423 183" />
+            </g>
+              <g class="quantum-cnot is-reference">
+              <path class="quantum-gate-link" d="M560 176V216" />
+              <circle class="quantum-control" cx="560" cy="176" r="3.8" />
+              <circle class="quantum-target" cx="560" cy="216" r="10" />
+              <path class="quantum-target-plus" d="M553 216H567M560 209V223" />
+            </g>
+            </g>
+            <path class="quantum-decision-divider" d="M76 238H706" />
+            <g class="quantum-decision-row">
+              <text class="quantum-panel-title" x="76" y="260">Accepted path</text>
+<g class="quantum-wire-row">
+              <text class="quantum-wire-label" x="58" y="310" text-anchor="end">q0</text>
+              <path class="quantum-wire" d="M76 306H706" />
+            </g>
+<g class="quantum-wire-row">
+              <text class="quantum-wire-label" x="58" y="350" text-anchor="end">q1</text>
+              <path class="quantum-wire" d="M76 346H706" />
+            </g>
+<g class="quantum-wire-row">
+              <text class="quantum-wire-label" x="58" y="390" text-anchor="end">q2</text>
+              <path class="quantum-wire" d="M76 386H706" />
+            </g>
+<g class="quantum-wire-row">
+              <text class="quantum-wire-label" x="58" y="430" text-anchor="end">q3</text>
+              <path class="quantum-wire" d="M76 426H706" />
+            </g>
+              <g class="quantum-swap is-inserted">
+              <path class="quantum-gate-link" d="M178 346V386" />
+              <path class="quantum-swap-cross" d="M171 339L185 353M185 339L171 353" />
+              <path class="quantum-swap-cross" d="M171 379L185 393M185 379L171 393" />
+            </g>
+              <g class="quantum-cnot is-reference">
+              <path class="quantum-gate-link" d="M266 346V386" />
+              <circle class="quantum-control" cx="266" cy="346" r="3.8" />
+              <circle class="quantum-target" cx="266" cy="386" r="10" />
+              <path class="quantum-target-plus" d="M259 386H273M266 379V393" />
+            </g>
+              <g class="quantum-cnot is-next">
+              <path class="quantum-gate-link" d="M560 386V426" />
+              <circle class="quantum-control" cx="560" cy="386" r="3.8" />
+              <circle class="quantum-target" cx="560" cy="426" r="10" />
+              <path class="quantum-target-plus" d="M553 426H567M560 419V433" />
+            </g>
+            </g>
+          </svg>
+          <figcaption>Figure 3. Swap-saving mechanism. In the restore path, two identical same-line SWAPs compose to the identity; the accepted path skips that identity pair while preserving the same next routed CNOT.</figcaption>
+        </figure>
 <h3>2. Evaluation contract</h3>
 <p>The evaluator compares the candidate against LightSABRE on 24 circuits crossed with three topology targets: Q20, Willow, and Heron-FEZ. In this report those names identify frozen coupling graphs: the physical adjacency constraint on which each logical two-qubit interaction must be routed.</p>
+<figure class="result-paper-table result-contract-table qubit-routing-target-table" id="table-1">
+          <div class="result-table-wrap">
+            <table class="result-table">
+              <thead>
+                <tr>
+                  <th>Target</th>
+                  <th>Topology type</th>
+                  <th>Circuits</th>
+                  <th>Role in this report</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="result-nowrap">Q20</span></td>
+                  <td>Small 20-qubit coupling graph.</td>
+                  <td>24</td>
+                  <td>Checks routing pressure when physical room is limited.</td>
+                </tr>
+                <tr>
+                  <td><span class="result-nowrap">Willow</span></td>
+                  <td>Large sparse device-style coupling graph.</td>
+                  <td>24</td>
+                  <td>Checks layout and lookahead on a wider target.</td>
+                </tr>
+                <tr>
+                  <td><span class="result-nowrap">Heron-FEZ</span></td>
+                  <td>Large sparse device-style coupling graph in a different family.</td>
+                  <td>24</td>
+                  <td>Checks transfer across a separate adjacency family.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <figcaption>Table 1. Topology targets used by the frozen routing contract. These labels are benchmark coupling graphs, not hardware-performance claims.</figcaption>
+        </figure>
 <p>For candidate policy \(p\), the governed score is:</p>
 <div class="formula-block" id="eq-1">
   <div class="formula-math">\[
@@ -97,9 +372,52 @@ J(p) = -\Delta_{\mathrm{wCNOT}}(p),
 <h3>3. Accepted candidate</h3>
 <p>The accepted candidate is a Rust routing-policy implementation. It combines a topology-aware initial layout with a SABRE-style swap scorer, while keeping front-layer distance, extended-set lookahead, and decay behavior visible in one deterministic policy surface.</p>
 <p>See <a href="artifacts/accepted_candidate.rs">accepted_candidate.rs</a>.</p>
+<figure class="result-paper-code result-code-figure qubit-routing-code-figure" id="listing-1">
+          <div class="result-code-titlebar" aria-hidden="true">
+            <span class="result-code-file">accepted_candidate.rs</span>
+            <span class="result-code-language">Rust routing policy</span>
+          </div>
+          <pre><code><span class="code-line"><span class="line-no">1</span><span class="line-src"><span class="rs-keyword">pub</span> <span class="rs-keyword">struct</span> <span class="rs-type">CandidatePolicy</span> {</span></span><span class="code-line"><span class="line-no">2</span><span class="line-src">    <span class="rs-keyword">pub</span> basic_weight: <span class="rs-type">f64</span>,</span></span><span class="code-line"><span class="line-no">3</span><span class="line-src">    <span class="rs-keyword">pub</span> lookahead_weight: <span class="rs-type">f64</span>,</span></span><span class="code-line"><span class="line-no">4</span><span class="line-src">    <span class="rs-keyword">pub</span> lookahead_size: <span class="rs-type">usize</span>,</span></span><span class="code-line"><span class="line-no">5</span><span class="line-src">    <span class="rs-keyword">pub</span> set_scaling: SetScaling,</span></span><span class="code-line"><span class="line-no">6</span><span class="line-src">    <span class="rs-keyword">pub</span> use_decay: <span class="rs-type">bool</span>,</span></span><span class="code-line"><span class="line-no">7</span><span class="line-src">    <span class="rs-keyword">pub</span> decay_increment: <span class="rs-type">f64</span>,</span></span><span class="code-line"><span class="line-no">8</span><span class="line-src">    <span class="rs-keyword">pub</span> decay_reset: <span class="rs-type">usize</span>,</span></span><span class="code-line"><span class="line-no">9</span><span class="line-src">    <span class="rs-keyword">pub</span> tie_break_weight: <span class="rs-type">f64</span>,</span></span><span class="code-line"><span class="line-no">10</span><span class="line-src">    <span class="rs-keyword">pub</span> lookahead_scaling: <span class="rs-type">f64</span>,</span></span><span class="code-line"><span class="line-no">11</span><span class="line-src">    <span class="rs-keyword">pub</span> current_iteration: <span class="rs-type">usize</span>,</span></span><span class="code-line"><span class="line-no">12</span><span class="line-src">}</span></span><span class="code-line"><span class="line-no">13</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">14</span><span class="line-src"><span class="rs-keyword">impl</span> Default <span class="rs-keyword">for</span> <span class="rs-type">CandidatePolicy</span> {</span></span><span class="code-line"><span class="line-no">15</span><span class="line-src">    <span class="rs-keyword">fn</span> default() -&gt; <span class="rs-keyword">Self</span> {</span></span><span class="code-line"><span class="line-no">16</span><span class="line-src">        <span class="rs-comment">// Conservative tuning for routing-portfolio shapes: decay enabled to smooth noise.</span></span></span><span class="code-line"><span class="line-no">17</span><span class="line-src">        <span class="rs-keyword">Self</span> {</span></span><span class="code-line"><span class="line-no">18</span><span class="line-src">            basic_weight: <span class="rs-number">1.0</span>,</span></span><span class="code-line"><span class="line-no">19</span><span class="line-src">            lookahead_weight: <span class="rs-number">1.4</span>, <span class="rs-comment">// Slightly higher lookahead for better pathfinding</span></span></span><span class="code-line"><span class="line-no">20</span><span class="line-src">            lookahead_size: <span class="rs-number">20</span>,</span></span><span class="code-line"><span class="line-no">21</span><span class="line-src">            set_scaling: SetScaling::Size,</span></span><span class="code-line"><span class="line-no">22</span><span class="line-src">            use_decay: <span class="rs-keyword">true</span>,</span></span><span class="code-line"><span class="line-no">23</span><span class="line-src">            decay_increment: <span class="rs-number">0.04</span>, <span class="rs-comment">// Smoother decay</span></span></span><span class="code-line"><span class="line-no">24</span><span class="line-src">            decay_reset: <span class="rs-number">15</span>,</span></span><span class="code-line"><span class="line-no">25</span><span class="line-src">            tie_break_weight: <span class="rs-number">0.12</span>, <span class="rs-comment">// Explicitly favors distance-reducing swaps</span></span></span><span class="code-line"><span class="line-no">26</span><span class="line-src">            lookahead_scaling: <span class="rs-number">1.2</span>,</span></span><span class="code-line"><span class="line-no">27</span><span class="line-src">            current_iteration: <span class="rs-number">0</span>,</span></span><span class="code-line"><span class="line-no">28</span><span class="line-src">        }</span></span><span class="code-line"><span class="line-no">29</span><span class="line-src">    }</span></span><span class="code-line"><span class="line-no">30</span><span class="line-src">}</span></span><span class="code-line"><span class="line-no">31</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">32</span><span class="line-src"><span class="rs-keyword">impl</span> <span class="rs-type">Policy</span> <span class="rs-keyword">for</span> <span class="rs-type">CandidatePolicy</span> {</span></span><span class="code-line"><span class="line-no">33</span><span class="line-src">    <span class="rs-keyword">fn</span> choose_best_initial_layout(</span></span><span class="code-line"><span class="line-no">34</span><span class="line-src">        &amp;<span class="rs-keyword">mut</span> <span class="rs-keyword">self</span>,</span></span><span class="code-line"><span class="line-no">35</span><span class="line-src">        ctx: &amp;InitialLayoutContext&lt;'_&gt; ,</span></span><span class="code-line"><span class="line-no">36</span><span class="line-src">        _rng: &amp;<span class="rs-keyword">mut</span> RngState,</span></span><span class="code-line"><span class="line-no">37</span><span class="line-src">    ) -&gt; <span class="rs-type">Result</span>&lt;<span class="rs-type">Vec</span>&lt;<span class="rs-type">usize</span>&gt;, <span class="rs-type">RouterError</span>&gt; {</span></span><span class="code-line"><span class="line-no">38</span><span class="line-src">        choose_disjoint_aware_layout(ctx)</span></span><span class="code-line"><span class="line-no">39</span><span class="line-src">    }</span></span><span class="code-line"><span class="line-no">40</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">41</span><span class="line-src">    <span class="rs-keyword">fn</span> choose_best_swap(</span></span><span class="code-line"><span class="line-no">42</span><span class="line-src">        &amp;<span class="rs-keyword">mut</span> <span class="rs-keyword">self</span>,</span></span><span class="code-line"><span class="line-no">43</span><span class="line-src">        ctx: &amp;SwapSelectionContext&lt;'_&gt; ,</span></span><span class="code-line"><span class="line-no">44</span><span class="line-src">        rng: &amp;<span class="rs-keyword">mut</span> RngState,</span></span><span class="code-line"><span class="line-no">45</span><span class="line-src">    ) -&gt; <span class="rs-type">Option</span>&lt;(<span class="rs-type">usize</span>, <span class="rs-type">usize</span>)&gt; {</span></span><span class="code-line"><span class="line-no">46</span><span class="line-src">        <span class="rs-keyword">self</span>.current_iteration += <span class="rs-number">1</span>;</span></span><span class="code-line"><span class="line-no">47</span><span class="line-src">        <span class="rs-keyword">let</span> <span class="rs-function">front_layer</span> = <span class="rs-type">FrontLayerScores</span>::from_ctx(ctx);</span></span><span class="code-line"><span class="line-no">48</span><span class="line-src">        <span class="rs-keyword">let</span> candidates = <span class="rs-function">enumerate_candidate_swaps</span>(ctx.<span class="rs-function">topology</span>(), &amp;<span class="rs-function">front_layer</span>);</span></span><span class="code-line"><span class="line-no">49</span><span class="line-src">        <span class="rs-keyword">if</span> candidates.is_empty() {</span></span><span class="code-line"><span class="line-no">50</span><span class="line-src">            <span class="rs-keyword">return</span> <span class="rs-keyword">None</span>;</span></span><span class="code-line"><span class="line-no">51</span><span class="line-src">        }</span></span><span class="code-line"><span class="line-no">52</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">53</span><span class="line-src">        <span class="rs-keyword">let</span> current_lookahead = <span class="rs-keyword">self</span>.<span class="rs-function">compute_dynamic_lookahead</span>(<span class="rs-function">front_layer</span>.len());</span></span><span class="code-line"><span class="line-no">54</span><span class="line-src">        <span class="rs-keyword">let</span> <span class="rs-function">extended_set</span> = <span class="rs-function">build_extended_set</span>(ctx, current_lookahead);</span></span><span class="code-line"><span class="line-no">55</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">56</span><span class="line-src">        <span class="rs-keyword">let</span> scale = |weight: <span class="rs-type">f64</span>, size: <span class="rs-type">usize</span>, scaling: SetScaling| -&gt; <span class="rs-type">f64</span> {</span></span><span class="code-line"><span class="line-no">57</span><span class="line-src">            <span class="rs-keyword">match</span> scaling {</span></span><span class="code-line"><span class="line-no">58</span><span class="line-src">                SetScaling::Constant =&gt; weight,</span></span><span class="code-line"><span class="line-no">59</span><span class="line-src">                SetScaling::Size =&gt; {</span></span><span class="code-line"><span class="line-no">60</span><span class="line-src">                    <span class="rs-keyword">if</span> size == <span class="rs-number">0</span> {</span></span><span class="code-line"><span class="line-no">61</span><span class="line-src">                        <span class="rs-number">0.0</span></span></span><span class="code-line"><span class="line-no">62</span><span class="line-src">                    } <span class="rs-keyword">else</span> {</span></span><span class="code-line"><span class="line-no">63</span><span class="line-src">                        weight / (size <span class="rs-keyword">as</span> <span class="rs-type">f64</span>)</span></span><span class="code-line"><span class="line-no">64</span><span class="line-src">                    }</span></span><span class="code-line"><span class="line-no">65</span><span class="line-src">                }</span></span><span class="code-line"><span class="line-no">66</span><span class="line-src">            }</span></span><span class="code-line"><span class="line-no">67</span><span class="line-src">        };</span></span><span class="code-line"><span class="line-no">68</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">69</span><span class="line-src">        <span class="rs-keyword">let</span> basic_weight = scale(<span class="rs-keyword">self</span>.basic_weight, <span class="rs-function">front_layer</span>.len(), <span class="rs-keyword">self</span>.set_scaling);</span></span><span class="code-line"><span class="line-no">70</span><span class="line-src">        <span class="rs-keyword">let</span> lookahead_weight = scale(</span></span><span class="code-line"><span class="line-no">71</span><span class="line-src">            <span class="rs-keyword">self</span>.lookahead_weight * <span class="rs-keyword">self</span>.lookahead_scaling,</span></span><span class="code-line"><span class="line-no">72</span><span class="line-src">            <span class="rs-function">extended_set</span>.len(),</span></span><span class="code-line"><span class="line-no">73</span><span class="line-src">            <span class="rs-keyword">self</span>.set_scaling,</span></span><span class="code-line"><span class="line-no">74</span><span class="line-src">        );</span></span><span class="code-line"><span class="line-no">75</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">76</span><span class="line-src">        <span class="rs-comment">// Pre-filter swaps that have zero delta on the front layer.</span></span></span><span class="code-line"><span class="line-no">77</span><span class="line-src">        <span class="rs-comment">// These swaps will not improve the front layer score and should</span></span></span><span class="code-line"><span class="line-no">78</span><span class="line-src">        <span class="rs-comment">// be evaluated purely on the extended set (lookahead).</span></span></span><span class="code-line"><span class="line-no">79</span><span class="line-src">        <span class="rs-keyword">let</span> candidates: <span class="rs-type">Vec</span>&lt;(<span class="rs-type">usize</span>, <span class="rs-type">usize</span>)&gt; = candidates</span></span><span class="code-line"><span class="line-no">80</span><span class="line-src">            .into_iter()</span></span><span class="code-line"><span class="line-no">81</span><span class="line-src">            .filter(|swap| {</span></span><span class="code-line"><span class="line-no">82</span><span class="line-src">                <span class="rs-keyword">let</span> d = <span class="rs-function">front_layer</span>.<span class="rs-function">score_delta</span>(*swap, ctx.<span class="rs-function">topology</span>());</span></span><span class="code-line"><span class="line-no">83</span><span class="line-src">                <span class="rs-comment">// Keep swaps that have ANY effect on the front layer</span></span></span><span class="code-line"><span class="line-no">84</span><span class="line-src">                d.abs() &gt; 1e-<span class="rs-number">9</span></span></span><span class="code-line"><span class="line-no">85</span><span class="line-src">            })</span></span><span class="code-line"><span class="line-no">86</span><span class="line-src">            .collect();</span></span><span class="code-line"><span class="line-no">87</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">88</span><span class="line-src">        <span class="rs-keyword">let</span> <span class="rs-keyword">mut</span> swap_scores = candidates</span></span><span class="code-line"><span class="line-no">89</span><span class="line-src">            .iter()</span></span><span class="code-line"><span class="line-no">90</span><span class="line-src">            .copied()</span></span><span class="code-line"><span class="line-no">91</span><span class="line-src">            .map(|swap| (swap, <span class="rs-number">0.0</span>))</span></span><span class="code-line"><span class="line-no">92</span><span class="line-src">            .collect::&lt;<span class="rs-type">Vec</span>&lt;_&gt;&gt;();</span></span><span class="code-line"><span class="line-no">93</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">94</span><span class="line-src">        <span class="rs-comment">// Absolute score is constant regardless of the swap chosen,</span></span></span><span class="code-line"><span class="line-no">95</span><span class="line-src">        <span class="rs-comment">// so it can be computed once.</span></span></span><span class="code-line"><span class="line-no">96</span><span class="line-src">        <span class="rs-keyword">let</span> <span class="rs-keyword">mut</span> absolute_score = basic_weight * <span class="rs-function">front_layer</span>.<span class="rs-function">total_score</span>(ctx.<span class="rs-function">topology</span>());</span></span><span class="code-line"><span class="line-no">97</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">98</span><span class="line-src">        <span class="rs-keyword">for</span> (swap, score) in &amp;<span class="rs-keyword">mut</span> swap_scores {</span></span><span class="code-line"><span class="line-no">99</span><span class="line-src">            *score += basic_weight * <span class="rs-function">front_layer</span>.<span class="rs-function">score_delta</span>(*swap, ctx.<span class="rs-function">topology</span>());</span></span><span class="code-line"><span class="line-no">100</span><span class="line-src">        }</span></span><span class="code-line"><span class="line-no">101</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">102</span><span class="line-src">        <span class="rs-keyword">if</span> !<span class="rs-function">extended_set</span>.is_empty() &amp;&amp; <span class="rs-keyword">self</span>.lookahead_weight != <span class="rs-number">0.0</span> {</span></span><span class="code-line"><span class="line-no">103</span><span class="line-src">            absolute_score += lookahead_weight * <span class="rs-function">extended_set</span>.<span class="rs-function">total_score</span>(ctx.<span class="rs-function">topology</span>());</span></span><span class="code-line"><span class="line-no">104</span><span class="line-src">            <span class="rs-keyword">for</span> (swap, score) in &amp;<span class="rs-keyword">mut</span> swap_scores {</span></span><span class="code-line"><span class="line-no">105</span><span class="line-src">                *score += lookahead_weight * <span class="rs-function">extended_set</span>.<span class="rs-function">score_delta</span>(*swap, ctx.<span class="rs-function">topology</span>());</span></span><span class="code-line"><span class="line-no">106</span><span class="line-src">            }</span></span><span class="code-line"><span class="line-no">107</span><span class="line-src">        }</span></span><span class="code-line"><span class="line-no">108</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">109</span><span class="line-src">        <span class="rs-comment">// Apply decay to the absolute score (constant across candidates) to prioritize</span></span></span><span class="code-line"><span class="line-no">110</span><span class="line-src">        <span class="rs-comment">// early iterations or reset after decay_reset iterations.</span></span></span><span class="code-line"><span class="line-no">111</span><span class="line-src">        <span class="rs-keyword">let</span> decay = <span class="rs-keyword">self</span>.apply_decay();</span></span></code></pre>
+          <figcaption>Listing 1. Accepted Rust routing-policy excerpt. The full public implementation is published as <a href="./artifacts/accepted_candidate.rs">accepted_candidate.rs</a>.</figcaption>
+        </figure>
 <p>The accepted candidate changes routing-policy logic inside the fixed benchmark scaffold. The portfolio assets, topology targets, reference LightSABRE comparison, and replay validator remain unchanged.</p>
 <h3>4. Results</h3>
 <p>The accepted replay reduced aggregate added CNOT count from LightSABRE's 308,076 to 295,782 across the 72-case portfolio. The aggregate reduction is 12,294 added CNOTs, and the case split is 31 wins, 6 ties, and 35 losses versus LightSABRE.</p>
+<figure class="result-paper-table" id="table-2">
+          <div class="result-table-wrap">
+            <table class="result-table">
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>Baseline</th>
+                  <th>Accepted</th>
+                  <th>Change</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Weighted CNOT reduction</td>
+                  <td>8,938.8</td>
+                  <td>11,506.2</td>
+                  <td>+2,567.4</td>
+                </tr>
+                <tr>
+                  <td>Aggregate added CNOTs</td>
+                  <td>308,076</td>
+                  <td>295,782</td>
+                  <td>12,294 fewer</td>
+                </tr>
+                <tr>
+                  <td>Case outcome</td>
+                  <td>reference</td>
+                  <td>31 / 6 / 35</td>
+                  <td>wins / ties / losses</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <figcaption>Table 2. Reported comparison for the curated public qubit-routing chain.</figcaption>
+        </figure>
 <figure class="result-paper-asset result-markdown-image">
   <img src="assets/objective-curve.svg" alt="Objective trace">
   <figcaption>Objective trace</figcaption>
