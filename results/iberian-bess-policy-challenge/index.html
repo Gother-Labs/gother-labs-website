@@ -150,15 +150,15 @@
             <text class="bess-paper-note" x="60" y="428">Replay checks terminal SOC, feasibility, simultaneous power, and downside.</text>
 <g>
               <rect class="bess-kpi-card" x="560" y="50" width="172" height="70" />
-              <text class="bess-kpi-label" x="576" y="75">Score reduction</text>
+              <text class="bess-kpi-label" x="576" y="75">Relative score reduction</text>
               <text class="bess-kpi-value" x="576" y="97">33.714%</text>
               <text class="bess-kpi-note" x="576" y="117">72.544 → 48.087</text>
             </g>
 <g>
               <rect class="bess-kpi-card" x="560" y="128" width="172" height="70" />
-              <text class="bess-kpi-label" x="576" y="153">Mean uplift</text>
+              <text class="bess-kpi-label" x="576" y="153">Mean gross uplift</text>
               <text class="bess-kpi-value" x="576" y="175">€20.20/day</text>
-              <text class="bess-kpi-note" x="576" y="195">vs quantile baseline</text>
+              <text class="bess-kpi-note" x="576" y="195">vs quantile · before degradation proxy</text>
             </g>
 <g>
               <rect class="bess-kpi-card" x="560" y="206" width="172" height="70" />
@@ -191,7 +191,7 @@
               <tbody>
                 <tr>
                   <td>Can it improve a named commercial baseline?</td>
-                  <td>72.544 → 48.087 score, 33.714% reduction, €20.20/day mean uplift</td>
+                  <td>72.544 → 48.087 score, 33.714% relative reduction, €20.20/day mean gross uplift</td>
                   <td>The claim is anchored to the quantile dispatch baseline, not to the perfect-foresight oracle.</td>
                 </tr>
                 <tr>
@@ -264,9 +264,9 @@
             <text class="result-axis-label result-figure-title" x="62" y="36">Accepted policy readout</text>
 <g>
               <rect class="bess-metric-cell" x="62" y="52" width="136" height="72" />
-              <text class="bess-paper-label" x="76" y="76">Mean uplift vs baseline</text>
+              <text class="bess-paper-label" x="76" y="76">Mean gross uplift vs quantile</text>
               <text class="bess-paper-value" x="76" y="101">€20.20</text>
-              <text class="bess-paper-note" x="76" y="122">primary commercial readout</text>
+              <text class="bess-paper-note" x="76" y="122">before degradation proxy</text>
             </g>
 <g>
               <rect class="bess-metric-cell" x="226" y="52" width="136" height="72" />
@@ -601,8 +601,8 @@
           <div class="bess-private-challenge-proof" aria-label="Public proof carried into the private challenge">
 <div>
               <span>Public proof</span>
-              <strong>33.714% score reduction</strong>
-              <small>against the frozen public baseline</small>
+              <strong>33.714% relative score reduction</strong>
+              <small>quantile baseline → accepted</small>
             </div>
 <div>
               <span>Guardrail</span>
@@ -612,7 +612,7 @@
 <div>
               <span>Commercial readout</span>
               <strong>€20.20/day</strong>
-              <small>mean uplift vs quantile baseline</small>
+              <small>mean gross uplift vs quantile · before degradation</small>
             </div>
           </div>
         </section>
