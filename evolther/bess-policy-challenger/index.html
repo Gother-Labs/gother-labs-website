@@ -69,11 +69,11 @@
           <div class="result-snapshot-primary">
             <span>Public evidence</span>
             <strong>33.714%</strong>
-            <p>Score reduction in the Iberian BESS Policy Challenge v0.1, with €20.20/day mean uplift against the quantile commercial baseline.</p>
+            <p>Relative weighted-score reduction from a 72.544 quantile-dispatch baseline to 48.087 accepted for one 1 MW / 4 MWh battery across 8 frozen OMIE scenarios. The €20.20/day readout is mean gross simulated uplift against that baseline, before the degradation-cost proxy.</p>
           </div>
           <div class="result-snapshot-cards">
             <div><span>Constraint breaches</span><strong>0</strong></div>
-            <div><span>Mean uplift</span><strong>€20.20/day</strong></div>
+            <div><span>Gross uplift vs quantile</span><strong>€20.20/day</strong></div>
             <div><span>Artifacts</span><strong>Replayable</strong></div>
             <div><span>Scope</span><strong>Offline replay</strong></div>
           </div>
@@ -150,11 +150,13 @@
           <p>
             The public Iberian BESS case is the reference version of the engagement: aggregate KPIs,
             scenario table, dispatch trace, constraints, run surface, and limitations before any
-            production-trading discussion.
+            production-trading discussion. Its cycle-adjusted margin includes the degradation-cost
+            proxy; the gross uplift does not. Intraday and reserve revenues, imbalance settlement,
+            taxes, grid and portfolio effects, and production bidding costs are excluded.
           </p>
           <div class="result-metric-grid">
-            <div class="result-metric-card"><span>Score reduction</span><strong>33.714%</strong></div>
-            <div class="result-metric-card"><span>Mean uplift</span><strong>€20.20/day</strong></div>
+            <div class="result-metric-card"><span>Relative score reduction</span><strong>33.714%</strong></div>
+            <div class="result-metric-card"><span>Gross uplift vs quantile</span><strong>€20.20/day</strong></div>
             <div class="result-metric-card"><span>Constraint breaches</span><strong>0</strong></div>
             <div class="result-metric-card"><span>Replay</span><strong>8 scenarios</strong></div>
           </div>
