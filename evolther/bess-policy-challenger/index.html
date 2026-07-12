@@ -17,7 +17,7 @@
     <link rel="icon" href="../../assets/gother-mark.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../../styles.css?v=home-sales-v1">
   </head>
-  <body>
+  <body class="bess-policy-page">
     <a class="skip-link" href="#site-main">Skip to content</a>
     <div class="page-shell site-shell">
       <header class="site-header">
@@ -53,86 +53,145 @@
           <p class="eyebrow">Energy optimizers</p>
           <h1 class="page-title">BESS policy challenger.</h1>
           <p class="intro">
-            We do not replace your optimizer. We challenge your dispatch policy offline and return auditable
-            improvement candidates under your constraints, KPIs, and replay rules.
+            We challenge your current storage-dispatch policy offline and return auditable improvement
+            candidates under your constraints, KPIs, and replay rules.
           </p>
+          <div class="bess-policy-actions" aria-label="BESS policy challenger links">
+            <a href="../../contact/">Start a private challenge</a>
+            <a href="../../results/iberian-bess-policy-challenge/run/">Open replay surface</a>
+            <a href="../../results/iberian-bess-policy-challenge/">Review public benchmark</a>
+          </div>
         </section>
 
         <div class="divider" aria-hidden="true"></div>
 
-        <section class="result-snapshot" aria-label="Policy challenge offer">
+        <section class="result-snapshot bess-policy-proof" aria-label="Policy challenge offer">
           <div class="result-snapshot-primary">
             <span>Public evidence</span>
-            <strong>€20.20/day</strong>
-            <p>Average uplift against the quantile commercial baseline in the Iberian BESS Policy Challenge v0.1.</p>
+            <strong>33.714%</strong>
+            <p>Score reduction in the Iberian BESS Policy Challenge v0.1, with €20.20/day mean uplift against the quantile commercial baseline.</p>
           </div>
           <div class="result-snapshot-cards">
             <div><span>Constraint breaches</span><strong>0</strong></div>
-            <div><span>Downside rate</span><strong>0%</strong></div>
+            <div><span>Mean uplift</span><strong>€20.20/day</strong></div>
             <div><span>Artifacts</span><strong>Replayable</strong></div>
-            <div><span>Scope</span><strong>Offline</strong></div>
+            <div><span>Scope</span><strong>Offline replay</strong></div>
+          </div>
+        </section>
+
+        <section class="result-copy-section bess-sales-intro">
+          <h2>Where optimizer teams can test us.</h2>
+          <div class="result-data-grid result-data-grid-3">
+            <div class="result-data-panel">
+              <h3>Battery dispatch</h3>
+              <p>Replay charge, discharge, state-of-charge, efficiency, degradation proxy, and terminal-SOC rules on frozen market days.</p>
+            </div>
+            <div class="result-data-panel">
+              <h3>Day-ahead bidding</h3>
+              <p>Compare your accepted baseline against challenger policies without touching live bidding, portfolio operations, or market access.</p>
+            </div>
+            <div class="result-data-panel">
+              <h3>Forecast-error robustness</h3>
+              <p>Smoke-test the candidate against deterministic perturbations so the public uplift is not hiding a fragile perfect-forecast artifact.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="result-copy-section bess-private-format" id="private-challenge">
+          <h2>Private challenge format.</h2>
+          <p>
+            The first engagement is deliberately small. We freeze the contract before searching,
+            then return only candidates that replay cleanly under the agreed rules.
+          </p>
+          <div class="bess-format-grid">
+            <div>
+              <span>01</span>
+              <h3>What you send</h3>
+              <p>Battery spec, approved scenarios, current policy fixture, constraint rules, target metrics, and known limitations.</p>
+            </div>
+            <div>
+              <span>02</span>
+              <h3>What we freeze</h3>
+              <p>Evaluation contract, baseline replay, scenario splits, scoring function, guardrails, and accepted-artifact requirements.</p>
+            </div>
+            <div>
+              <span>03</span>
+              <h3>What we return</h3>
+              <p>Improvement candidates, comparison rows, dispatch traces, replay checks, downside readout, and a decision memo.</p>
+            </div>
+            <div>
+              <span>04</span>
+              <h3>What we do not claim</h3>
+              <p>No live bidding claim, no market-access claim, no replacement of your optimizer, and no hidden production integration.</p>
+            </div>
           </div>
         </section>
 
         <section class="result-copy-section">
-          <h2>Input, process, output.</h2>
+          <h2>Evidence pack.</h2>
           <div class="result-data-grid result-data-grid-3">
             <div class="result-data-panel">
-              <h3>1. Send</h3>
-              <p>Battery spec, approved scenarios, constraints, current policy fixture, and target KPIs.</p>
+              <h3>Benchmark table</h3>
+              <p>Aggregate score, uplift, downside, regret, oracle capture, cycle-adjusted margin, and constraint health.</p>
             </div>
             <div class="result-data-panel">
-              <h3>2. Challenge</h3>
-              <p>We evaluate your current policy, commercial baselines, and generated candidates under one frozen contract.</p>
+              <h3>Scenario readouts</h3>
+              <p>Every evaluated day remains visible, including weak cases, stress-tail days, and cases where the challenger does not improve.</p>
             </div>
             <div class="result-data-panel">
-              <h3>3. Receive</h3>
-              <p>Candidate code, comparison bundle, dispatch traces, risk readout, limitations, and replay evidence.</p>
+              <h3>Replay surface</h3>
+              <p>A browsable run page over the exact artifacts, so technical buyers can inspect dispatch, score trace, code, and provenance.</p>
             </div>
           </div>
         </section>
 
         <section class="result-copy-section" id="sample-report">
-          <h2>Sample client report.</h2>
+          <h2>Public benchmark proof.</h2>
           <p>
-            A first paid evaluation should look like this: aggregate KPIs, scenario table, dispatch trace, constraints,
-            and a clear next step before any production-trading discussion.
+            The public Iberian BESS case is the reference version of the engagement: aggregate KPIs,
+            scenario table, dispatch trace, constraints, run surface, and limitations before any
+            production-trading discussion.
           </p>
           <div class="result-metric-grid">
-            <div class="result-metric-card"><span>Avg uplift</span><strong>€20.20/day</strong></div>
-            <div class="result-metric-card"><span>Cycle-adjusted margin</span><strong>€206.48/day</strong></div>
-            <div class="result-metric-card"><span>P5 uplift</span><strong>€0.00/day</strong></div>
+            <div class="result-metric-card"><span>Score reduction</span><strong>33.714%</strong></div>
+            <div class="result-metric-card"><span>Mean uplift</span><strong>€20.20/day</strong></div>
+            <div class="result-metric-card"><span>Constraint breaches</span><strong>0</strong></div>
             <div class="result-metric-card"><span>Replay</span><strong>8 scenarios</strong></div>
           </div>
         </section>
 
-        <section class="result-copy-section">
-          <h2>Call script by segment.</h2>
-          <div class="result-data-grid result-data-grid-3">
-            <div class="result-data-panel">
-              <h3>Specialists</h3>
-              <p>Start at the replay. Discuss tail days, degradation proxy, and how their current policy becomes the comparison baseline.</p>
-            </div>
-            <div class="result-data-panel">
-              <h3>Corporates</h3>
-              <p>Start at the contract. Emphasize auditability, limitations, replay, and why oracle is only an upper bound.</p>
-            </div>
-            <div class="result-data-panel">
-              <h3>Retailers and aggregators</h3>
-              <p>Start at the report. Focus on a small first fixture, downside flags, and commercial baseline uplift.</p>
+        <section class="result-copy-section bess-policy-close">
+          <div class="bess-policy-close-copy">
+            <p class="eyebrow">Engagement path</p>
+            <h2>Start from a small, replayable challenge.</h2>
+            <p>
+              The first step is not integration. It is a private replay pack over approved scenarios,
+              your current policy baseline, and explicit guardrails. If the signal survives that fixture,
+              the next conversation becomes concrete.
+            </p>
+            <div class="bess-policy-close-actions">
+              <a href="../../contact/">Start a challenge brief</a>
+              <a href="../../results/iberian-bess-policy-challenge/">Review the public result</a>
             </div>
           </div>
-        </section>
-
-        <section class="result-copy-section">
-          <h2>Evidence links.</h2>
-          <p>
-            <a href="../../results/iberian-bess-policy-challenge/">Public result article</a> ·
-            <a href="../../results/iberian-bess-policy-challenge/run/">Run replay</a> ·
-            <a href="../../results/iberian-bess-policy-challenge/artifacts/comparison.json">Comparison bundle</a> ·
-            <a href="../../results/iberian-bess-policy-challenge/artifacts/dispatch_trace.json">Dispatch trace</a> ·
-            <a href="../../contact/">Book a 15-minute policy-challenge call</a>
-          </p>
+          <div class="bess-policy-evidence-grid" aria-label="BESS policy challenge evidence links">
+            <a href="../../results/iberian-bess-policy-challenge/">
+              <span>Result article</span>
+              <strong>Benchmark contract, limitations, and commercial readout</strong>
+            </a>
+            <a href="../../results/iberian-bess-policy-challenge/run/">
+              <span>Replay surface</span>
+              <strong>Scenario dispatch, score trace, and accepted policy</strong>
+            </a>
+            <a href="../../results/iberian-bess-policy-challenge/artifacts/comparison.json">
+              <span>Comparison bundle</span>
+              <strong>Scenario rows, uplift, regret, oracle capture, and health</strong>
+            </a>
+            <a href="../../results/iberian-bess-policy-challenge/artifacts/dispatch_trace.json">
+              <span>Dispatch trace</span>
+              <strong>Hourly price, action, SOC, and replay evidence</strong>
+            </a>
+          </div>
         </section>
       </main>
 
