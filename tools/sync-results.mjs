@@ -11,10 +11,13 @@ import {
   sharedScriptTag,
   sharedStylesheetTag,
 } from "./site-shell.mjs";
+import { articleWithoutTitle, markdownToHtml } from "./result-markdown.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SITE_ROOT = path.resolve(__dirname, "..");
-const RESULTS_ROOT = path.resolve(SITE_ROOT, "..", "gother-labs-results");
+const RESULTS_ROOT = process.env.RESULTS_ROOT
+  ? path.resolve(process.env.RESULTS_ROOT)
+  : path.resolve(SITE_ROOT, "..", "gother-labs-results");
 const CATALOG_PATH = path.join(RESULTS_ROOT, "catalog.json");
 const OUT_ROOT = path.join(SITE_ROOT, "results");
 
@@ -46,120 +49,6 @@ function formatMetric(value, { maximumFractionDigits = 3, minimumFractionDigits 
 
 function formatPercent(value) {
   return `${formatMetric(value, { maximumFractionDigits: 3, minimumFractionDigits: 3 })}%`;
-}
-
-function inlineMarkdown(value) {
-  return escapeHtml(value)
-    .replace(/\[([^\]]+)\]\(((?:https?:\/\/|#|\.{1,2}\/|\/)[^)\s]+)\)/g, (_match, label, href) => {
-      const safeLabel = label;
-      return href.startsWith("#") || href.startsWith("/") || href.startsWith("./") || href.startsWith("../")
-        ? `<a href="${href}">${safeLabel}</a>`
-        : `<a href="${href}" target="_blank" rel="noreferrer">${safeLabel}</a>`;
-    })
-    .replace(/`([^`]+)`/g, "<code>$1</code>")
-    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
-}
-
-function markdownToHtml(markdown, inserts = {}) {
-  const lines = markdown.replace(/\r\n/g, "\n").split("\n");
-  const chunks = [];
-  let paragraph = [];
-  let code = [];
-  let formula = [];
-  let inCode = false;
-  let inFormula = false;
-  let equationIndex = 0;
-
-  const flushParagraph = () => {
-    if (!paragraph.length) return;
-    chunks.push(`<p>${inlineMarkdown(paragraph.join(" "))}</p>`);
-    paragraph = [];
-  };
-
-  const flushCode = () => {
-    if (!code.length) return;
-    chunks.push(`<pre><code>${escapeHtml(code.join("\n"))}</code></pre>`);
-    code = [];
-  };
-
-  const flushFormula = () => {
-    if (!formula.length) return;
-    equationIndex += 1;
-    chunks.push(`<div class="formula-block" id="eq-${equationIndex}">
-  <div class="formula-math">\\[
-${escapeHtml(formula.join("\n"))}
-\\]</div>
-  <span class="equation-number">(${equationIndex})</span>
-</div>`);
-    formula = [];
-  };
-
-  for (const line of lines) {
-    if (line.startsWith("```")) {
-      if (inCode) {
-        flushCode();
-        inCode = false;
-      } else {
-        flushParagraph();
-        inCode = true;
-      }
-      continue;
-    }
-
-    if (line.trim() === "$$") {
-      if (inFormula) {
-        flushFormula();
-        inFormula = false;
-      } else {
-        flushParagraph();
-        inFormula = true;
-      }
-      continue;
-    }
-
-    if (inCode) {
-      code.push(line);
-      continue;
-    }
-
-    if (inFormula) {
-      formula.push(line);
-      continue;
-    }
-
-    if (!line.trim()) {
-      flushParagraph();
-      continue;
-    }
-
-    const visual = line.trim().match(/^\{\{visual:([a-z0-9-]+)\}\}$/);
-    if (visual) {
-      flushParagraph();
-      if (inserts[visual[1]]) {
-        chunks.push(inserts[visual[1]]);
-      }
-      continue;
-    }
-
-    const heading = line.match(/^(#{1,3})\s+(.+)$/);
-    if (heading) {
-      flushParagraph();
-      const level = Math.min(heading[1].length + 1, 4);
-      chunks.push(`<h${level}>${escapeHtml(heading[2])}</h${level}>`);
-      continue;
-    }
-
-    paragraph.push(line.trim());
-  }
-
-  flushParagraph();
-  flushCode();
-  flushFormula();
-  return chunks.join("\n");
-}
-
-function articleWithoutTitle(markdown) {
-  return markdown.replace(/\r\n/g, "\n").replace(/^#\s+.+\n+/, "");
 }
 
 async function alignCopiedRunShell(outputRoot) {
@@ -455,9 +344,33 @@ ${circles.map(([cx, cy, r]) => `                  <circle cx="${cx}" cy="${cy}" 
 function resultCard(result) {
   const measures = resultCardMeasureItems(result);
   const visualClass = result.website?.card_visual ? ` result-card--${escapeHtml(result.website.card_visual)}` : "";
+  const featuredClass = result.website?.featured ? " result-card--featured" : "";
   const visual = resultCardVisual(result);
   const visualMarkup = visual ? `              ${visual}\n` : "";
-  return `<article class="result-card${visualClass}">
+  if (result.website?.featured) {
+    const surfacePath = result.website?.surface_path ? `./${result.slug}/run/` : null;
+    const offerPath = result.website?.offer_path ? `../${escapeHtml(result.website.offer_path)}` : null;
+    return `<article class="result-card${visualClass}${featuredClass}">
+            <div class="result-link result-featured-body">
+${visualMarkup}              <div class="result-meta">
+                <p class="eyebrow">${escapeHtml(result.website.card_label)}</p>
+              </div>
+              <h2>${escapeHtml(result.title)}</h2>
+              <p>${escapeHtml(result.website.card_summary || result.summary)}</p>
+              <div class="result-measure">
+                ${measures.map(([label, value]) => `<span>${escapeHtml(label)}</span>
+                <strong>${escapeHtml(value)}</strong>`).join("\n                ")}
+              </div>
+              <div class="result-card-actions" aria-label="${escapeHtml(result.title)} links">
+                <a href="./${result.slug}/">Read result</a>
+                ${surfacePath ? `<a href="${surfacePath}">Open run</a>` : ""}
+                ${offerPath ? `<a href="${offerPath}">Challenge offer</a>` : ""}
+              </div>
+            </div>
+          </article>`;
+  }
+
+  return `<article class="result-card${visualClass}${featuredClass}">
             <a class="result-link" href="./${result.slug}/" aria-label="Read ${escapeHtml(result.title)}">
 ${visualMarkup}              <div class="result-meta">
                 <p class="eyebrow">${escapeHtml(result.website.card_label)}</p>
@@ -474,7 +387,7 @@ ${visualMarkup}              <div class="result-meta">
 
 async function writeIndex(results) {
   const cards = results.map(resultCard).join("\n\n");
-  const body = `        <section class="hero compact-hero page-hero">
+  const body = `        <section class="hero compact-hero page-hero results-index-hero">
           <h1 class="page-title">Results for evaluated technical improvement.</h1>
           <p class="intro results-hero-intro">
             Public technical results where the problem, evaluation contract, and accepted improvement can be inspected together.
@@ -1213,8 +1126,13 @@ function paperAssetFigure({ src, caption, number }) {
 
 function paperInlineFigure({ number, caption, svg, className = "" }) {
   const classes = ["result-primer-card", "result-paper-figure", className].filter(Boolean).join(" ");
-  return `<figure class="${classes}" id="fig-${number}">
+  const body = className.includes("bess-inline-figure")
+    ? `<div class="bess-figure-scroll">
 ${svg}
+          </div>`
+    : svg;
+  return `<figure class="${classes}" id="fig-${number}">
+${body}
           <figcaption>Figure ${number}. ${formatPaperCaption(caption)}</figcaption>
         </figure>`;
 }
@@ -2585,6 +2503,548 @@ function circlePackingWhitepaperInserts(full, evolution, candidateCode, replay, 
   };
 }
 
+function euro(value, options = {}) {
+  if (typeof value !== "number") return escapeHtml(value);
+  const { maximumFractionDigits = 2, minimumFractionDigits = 2 } = options;
+  return `€${formatMetric(value, { maximumFractionDigits, minimumFractionDigits })}`;
+}
+
+function bessObjectiveTraceFigure(scoreTrace) {
+  const steps = Array.isArray(scoreTrace?.steps) ? scoreTrace.steps : [];
+  const scored = steps.filter((step) => typeof step.score === "number");
+  if (!scored.length) return "";
+
+  const left = 82;
+  const right = 512;
+  const top = 82;
+  const bottom = 244;
+  const width = right - left;
+  const height = bottom - top;
+  const values = scored.map((step) => step.score);
+  const minScore = Math.floor(Math.min(...values) / 10) * 10;
+  const maxScore = Math.ceil(Math.max(...values) / 10) * 10;
+  const span = Math.max(1, maxScore - minScore);
+  const xAt = (index) => left + (index / Math.max(1, scored.length - 1)) * width;
+  const yAt = (score) => bottom - ((score - minScore) / span) * height;
+  const points = scored.map((step, index) => [xAt(index), yAt(step.score)]);
+  const yTicks = [minScore, Math.round((minScore + maxScore) / 2), maxScore]
+    .map((score) => {
+      const y = yAt(score);
+      return `<g>
+              <path class="result-objective-grid" d="M${left} ${y.toFixed(1)}H${right}" />
+              <text class="result-axis-tick result-objective-y-label" x="${left - 18}" y="${(y + 4).toFixed(1)}" text-anchor="end">${formatMetric(score, { maximumFractionDigits: 0 })}</text>
+            </g>`;
+    })
+    .join("\n");
+  const labelByIndex = ["seed baseline", "checked-in policy", "accepted portfolio"];
+  const xTicks = scored
+    .map((step, index) => {
+      const x = xAt(index);
+      const anchor = index === 0 ? "start" : index === scored.length - 1 ? "end" : "middle";
+      return `<g>
+              <path class="result-objective-x-tick" d="M${x.toFixed(1)} ${bottom}V${(bottom + 5).toFixed(1)}" />
+              <text class="result-axis-tick" x="${x.toFixed(1)}" y="${bottom + 24}" text-anchor="${anchor}">${escapeHtml(labelByIndex[index] ?? step.label ?? step.candidate_id ?? `step ${index}`)}</text>
+            </g>`;
+    })
+    .join("\n");
+  const markers = scored
+    .map((step, index) => {
+      const cls = index === 0
+        ? "bess-score-baseline"
+        : index === scored.length - 1
+          ? "bess-score-accepted"
+          : "bess-score-neutral";
+      const x = xAt(index);
+      const y = yAt(step.score);
+      return `<g class="${cls}">
+              <circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${index === scored.length - 1 ? "5.2" : "4.5"}" />
+              <text class="bess-paper-value bess-score-label" x="${x.toFixed(1)}" y="${(y - 13).toFixed(1)}" text-anchor="middle">${formatMetric(step.score, { maximumFractionDigits: 1, minimumFractionDigits: 1 })}</text>
+            </g>`;
+    })
+    .join("\n");
+
+  return paperInlineFigure({
+    number: 3,
+    caption: "Score trace for the frozen public chain. The accepted policy portfolio is selected by the replayed lower-is-better objective.",
+    className: "bess-inline-figure bess-score-figure result-objective-figure",
+    svg: `          <svg class="result-primer-svg result-objective-svg bess-paper-svg" viewBox="0 0 560 328" role="img" aria-label="BESS score trace for the frozen public chain.">
+            <text class="result-axis-label result-figure-title" x="${left}" y="34">Frozen public score trace (lower is better)</text>
+            <g class="result-objective-legend" transform="translate(${left} 52)">
+              <g><circle class="result-legend-baseline-dot" cx="0" cy="0" r="3.5" /><text x="14" y="4">seed baseline</text></g>
+              <g transform="translate(132 0)"><line class="result-objective-legend-best" x1="0" y1="0" x2="18" y2="0" /><text x="26" y="4">replayed objective</text></g>
+              <g transform="translate(306 0)"><circle class="result-legend-accepted-dot" cx="0" cy="0" r="4" /><text x="16" y="4">accepted portfolio</text></g>
+            </g>
+            ${yTicks}
+            <path class="result-rule-paper-axis" d="M${left} ${top}V${bottom}H${right}" />
+            ${xTicks}
+            <text class="result-axis-label result-objective-y-title" x="36" y="${(top + height / 2).toFixed(1)}" transform="rotate(-90 36 ${(top + height / 2).toFixed(1)})">acceptance score</text>
+            <path class="result-objective-best bess-score-line" d="${svgPolyline(points)}" />
+            ${markers}
+          </svg>`,
+  });
+}
+
+function bessTailDispatchFigure(dispatchTrace, comparison) {
+  const scenarios = Array.isArray(dispatchTrace?.scenarios) ? dispatchTrace.scenarios : [];
+  const comparisonRows = Array.isArray(comparison?.rows) ? comparison.rows : [];
+  const stressScenarios = scenarios.filter((scenario) => scenario.split === "stress_tail");
+  const scenario = stressScenarios
+    .map((item) => ({
+      item,
+      row: comparisonRows.find((row) => row.scenario_id === item.scenario_id) ?? {},
+    }))
+    .sort((a, b) => (a.row.uplift_vs_comparison_baseline_eur ?? Infinity) - (b.row.uplift_vs_comparison_baseline_eur ?? Infinity))[0]
+    ?? { item: scenarios[0] ?? {}, row: {} };
+  const hours = Array.isArray(scenario.item.hours) ? scenario.item.hours : [];
+  if (!hours.length) return "";
+
+  const prices = hours.map((hour) => hour.price_eur_per_mwh).filter((value) => typeof value === "number");
+  const minPrice = Math.min(...prices, 0);
+  const maxPrice = Math.max(...prices, 1);
+  const priceRange = Math.max(maxPrice - minPrice, 1);
+  const spec = dispatchTrace?.battery_spec ?? {};
+  const capacity = typeof spec.capacity_mwh === "number" ? spec.capacity_mwh : 4;
+  const left = 76;
+  const right = 666;
+  const priceTop = 108;
+  const priceBottom = 194;
+  const dispatchTop = 244;
+  const dispatchZero = 308;
+  const dispatchBottom = 366;
+  const width = right - left;
+  const mapX = (hour) => left + (hour / 23) * width;
+  const mapPrice = (price) => priceBottom - ((price - minPrice) / priceRange) * (priceBottom - priceTop);
+  const mapSoc = (soc) => dispatchBottom - (Math.max(0, Math.min(capacity, soc)) / capacity) * (dispatchBottom - dispatchTop);
+  const pricePath = hours
+    .map((hour, index) => `${index === 0 ? "M" : "L"}${mapX(hour.hour ?? index).toFixed(1)} ${mapPrice(hour.price_eur_per_mwh ?? minPrice).toFixed(1)}`)
+    .join(" ");
+  const socPath = hours
+    .map((hour, index) => `${index === 0 ? "M" : "L"}${mapX(hour.hour ?? index).toFixed(1)} ${mapSoc(hour.candidate_soc_mwh ?? capacity / 2).toFixed(1)}`)
+    .join(" ");
+  const barWidth = Math.max(5, width / Math.max(hours.length, 1) - 5);
+  const dispatchBars = hours
+    .map((hour, index) => {
+      const x = mapX(hour.hour ?? index) - barWidth / 2;
+      const charge = Math.max(0, hour.candidate_charge_mw ?? 0);
+      const discharge = Math.max(0, hour.candidate_discharge_mw ?? 0);
+      const chargeHeight = charge * 34;
+      const dischargeHeight = discharge * 34;
+      return [
+        chargeHeight > 0
+          ? `<rect class="bess-charge-bar" x="${x.toFixed(1)}" y="${dispatchZero.toFixed(1)}" width="${barWidth.toFixed(1)}" height="${chargeHeight.toFixed(1)}" />`
+          : "",
+        dischargeHeight > 0
+          ? `<rect class="bess-discharge-bar" x="${x.toFixed(1)}" y="${(dispatchZero - dischargeHeight).toFixed(1)}" width="${barWidth.toFixed(1)}" height="${dischargeHeight.toFixed(1)}" />`
+          : "",
+      ].filter(Boolean).join("");
+    })
+    .filter(Boolean)
+    .join("\n");
+  const priceTicks = [minPrice, (minPrice + maxPrice) / 2, maxPrice]
+    .map((price) => {
+      const y = mapPrice(price);
+      return `<g>
+              <path class="bess-chart-grid" d="M${left} ${y.toFixed(1)}H${right}" />
+              <text class="bess-axis-label" x="${left - 14}" y="${(y + 4).toFixed(1)}" text-anchor="end">${formatMetric(price, { maximumFractionDigits: 0 })}</text>
+            </g>`;
+    })
+    .join("\n");
+  const xTicks = [0, 6, 12, 18, 23]
+    .map((hour) => {
+      const x = mapX(hour);
+      return `<g>
+              <path class="bess-axis-tick" d="M${x.toFixed(1)} ${dispatchBottom}V${dispatchBottom + 5}" />
+              <text class="bess-axis-label" x="${x.toFixed(1)}" y="${dispatchBottom + 22}" text-anchor="middle">${hour}</text>
+            </g>`;
+    })
+    .join("\n");
+  const socTicks = [0, capacity / 2, capacity]
+    .map((soc) => {
+      const y = mapSoc(soc);
+      return `<g>
+              <path class="bess-soc-tick" d="M${right} ${y.toFixed(1)}H${right + 5}" />
+              <text class="bess-axis-label bess-soc-label" x="${right + 12}" y="${(y + 4).toFixed(1)}">${formatMetric(soc, { maximumFractionDigits: 0 })}</text>
+            </g>`;
+    })
+    .join("\n");
+  const readout = [
+    `uplift ${euro(scenario.row.uplift_vs_comparison_baseline_eur ?? 0)}`,
+    `regret ${euro(scenario.row.regret_eur ?? 0)}`,
+    scenario.row.constraint_breached ? "constraint breach" : "clean constraints",
+  ].join(" · ");
+
+  return paperInlineFigure({
+    number: 4,
+    caption: `Stress-tail dispatch trace readout for the ${escapeHtml(spec.power_mw ?? 1)} MW / ${escapeHtml(capacity)} MWh battery. The visualization is backed by the public dispatch_trace.json artifact and keeps the weak-case row visible.`,
+    className: "bess-inline-figure bess-tail-dispatch-figure",
+    svg: `          <svg class="result-primer-svg bess-paper-svg bess-dispatch-svg" viewBox="0 0 760 430" role="img" aria-label="Stress-tail BESS dispatch trace readout.">
+            <text class="result-axis-label result-figure-title" x="${left}" y="34">${escapeHtml(scenario.item.scenario_id ?? "stress-tail dispatch")}</text>
+            <text class="bess-paper-note" x="${right}" y="34" text-anchor="end">${escapeHtml(scenario.item.market_date ?? "")} · ${escapeHtml(scenario.item.split ?? "stress_tail")}</text>
+            <text class="bess-paper-note" x="${left}" y="56">${readout}</text>
+            <g class="bess-dispatch-legend" transform="translate(${left} 66)">
+              <g><line class="bess-price-line" x1="0" y1="0" x2="18" y2="0" /><text x="26" y="4">price</text></g>
+              <g transform="translate(84 0)"><line class="bess-soc-line" x1="0" y1="0" x2="18" y2="0" /><text x="26" y="4">SOC</text></g>
+              <g transform="translate(156 0)"><rect class="bess-charge-bar" x="0" y="-8" width="10" height="12" /><text x="18" y="4">charge</text></g>
+              <g transform="translate(244 0)"><rect class="bess-discharge-bar" x="0" y="-8" width="10" height="12" /><text x="18" y="4">discharge</text></g>
+            </g>
+            <text class="bess-panel-title" x="${left}" y="${priceTop - 10}">OMIE day-ahead price</text>
+            ${priceTicks}
+            <path class="bess-axis" d="M${left} ${priceTop}V${priceBottom}H${right}" />
+            <path class="bess-price-line" d="${pricePath}" />
+            <text class="bess-axis-title" x="30" y="${priceTop + (priceBottom - priceTop) / 2}" transform="rotate(-90 30 ${priceTop + (priceBottom - priceTop) / 2})">EUR/MWh</text>
+            <text class="bess-panel-title" x="${left}" y="${dispatchTop - 14}">Accepted battery action</text>
+            <path class="bess-axis" d="M${left} ${dispatchTop}V${dispatchBottom}H${right}" />
+            <path class="bess-dispatch-zero" d="M${left} ${dispatchZero}H${right}" />
+            ${dispatchBars}
+            ${xTicks}
+            ${socTicks}
+            <path class="bess-soc-line" d="${socPath}" />
+            <text class="bess-axis-title" x="${left + width / 2}" y="${dispatchBottom + 44}" text-anchor="middle">hour of day</text>
+            <text class="bess-axis-title" x="30" y="${dispatchTop + (dispatchBottom - dispatchTop) / 2}" transform="rotate(-90 30 ${dispatchTop + (dispatchBottom - dispatchTop) / 2})">MW action</text>
+            <text class="bess-axis-title bess-soc-label" x="${right}" y="${dispatchTop - 10}" text-anchor="end">SOC MWh</text>
+          </svg>`,
+  });
+}
+
+function bessBenchmarkReadoutFigure(full, dispatchTrace, comparison) {
+  const metrics = full.metrics ?? {};
+  const scenarios = Array.isArray(dispatchTrace?.scenarios) ? dispatchTrace.scenarios : [];
+  const scenario = scenarios.find((item) => item.scenario_id === "omie_20241015")
+    ?? scenarios.find((item) => item.split === "public_test")
+    ?? scenarios[0]
+    ?? {};
+  const hours = Array.isArray(scenario.hours) ? scenario.hours : [];
+  const comparisonRows = Array.isArray(comparison?.rows) ? comparison.rows : [];
+  const comparisonRow = comparisonRows.find((row) => row.scenario_id === scenario.scenario_id) ?? {};
+  const prices = hours.map((hour) => hour.price_eur_per_mwh).filter((value) => typeof value === "number");
+  const minPrice = Math.min(...prices, 0);
+  const maxPrice = Math.max(...prices, 1);
+  const priceRange = Math.max(maxPrice - minPrice, 1);
+  const spec = dispatchTrace?.battery_spec ?? {};
+  const capacity = typeof spec.capacity_mwh === "number" ? spec.capacity_mwh : 4;
+  const left = 60;
+  const right = 510;
+  const priceTop = 88;
+  const priceBottom = 186;
+  const dispatchTop = 236;
+  const dispatchZero = 304;
+  const dispatchBottom = 356;
+  const width = right - left;
+  const mapX = (hour) => left + (hour / 23) * width;
+  const mapPrice = (price) => priceBottom - ((price - minPrice) / priceRange) * (priceBottom - priceTop);
+  const mapSoc = (soc) => dispatchBottom - (Math.max(0, Math.min(capacity, soc)) / capacity) * (dispatchBottom - dispatchTop);
+  const pricePath = hours
+    .map((hour, index) => `${index === 0 ? "M" : "L"}${mapX(hour.hour ?? index).toFixed(1)} ${mapPrice(hour.price_eur_per_mwh ?? minPrice).toFixed(1)}`)
+    .join(" ");
+  const socPath = hours
+    .map((hour, index) => `${index === 0 ? "M" : "L"}${mapX(hour.hour ?? index).toFixed(1)} ${mapSoc(hour.candidate_soc_mwh ?? capacity / 2).toFixed(1)}`)
+    .join(" ");
+  const barWidth = Math.max(5, width / Math.max(hours.length, 1) - 4);
+  const dispatchBars = hours
+    .map((hour, index) => {
+      const x = mapX(hour.hour ?? index) - barWidth / 2;
+      const charge = Math.max(0, hour.candidate_charge_mw ?? 0);
+      const discharge = Math.max(0, hour.candidate_discharge_mw ?? 0);
+      const chargeHeight = charge * 38;
+      const dischargeHeight = discharge * 38;
+      const bars = [];
+      if (chargeHeight > 0) {
+        bars.push(`<rect class="bess-charge-bar" x="${x.toFixed(1)}" y="${dispatchZero.toFixed(1)}" width="${barWidth.toFixed(1)}" height="${chargeHeight.toFixed(1)}" />`);
+      }
+      if (dischargeHeight > 0) {
+        bars.push(`<rect class="bess-discharge-bar" x="${x.toFixed(1)}" y="${(dispatchZero - dischargeHeight).toFixed(1)}" width="${barWidth.toFixed(1)}" height="${dischargeHeight.toFixed(1)}" />`);
+      }
+      return bars.length ? `<g>${bars.join("")}</g>` : "";
+    })
+    .filter(Boolean)
+    .join("\n");
+  const xTicks = [0, 6, 12, 18, 23]
+    .map((hour) => {
+      const x = mapX(hour);
+      return `<g>
+              <path class="bess-axis-tick" d="M${x.toFixed(1)} ${dispatchBottom}V${dispatchBottom + 5}" />
+              <text class="bess-axis-label" x="${x.toFixed(1)}" y="${dispatchBottom + 22}" text-anchor="middle">${hour}</text>
+            </g>`;
+    })
+    .join("\n");
+  const priceTicks = [minPrice, (minPrice + maxPrice) / 2, maxPrice]
+    .map((price) => {
+      const y = mapPrice(price);
+      return `<g>
+              <path class="bess-chart-grid" d="M${left} ${y.toFixed(1)}H${right}" />
+              <text class="bess-axis-label" x="${left - 12}" y="${(y + 4).toFixed(1)}" text-anchor="end">${formatMetric(price, { maximumFractionDigits: 0 })}</text>
+            </g>`;
+    })
+    .join("\n");
+  const socTicks = [0, capacity / 2, capacity]
+    .map((soc) => {
+      const y = mapSoc(soc);
+      return `<g>
+              <path class="bess-soc-tick" d="M${right} ${y.toFixed(1)}H${right + 5}" />
+              <text class="bess-axis-label bess-soc-label" x="${right + 12}" y="${(y + 4).toFixed(1)}">${formatMetric(soc, { maximumFractionDigits: 0 })}</text>
+            </g>`;
+    })
+    .join("\n");
+  const cards = [
+    ["Score reduction", formatPercent(metrics.improvement_pct ?? 0), `${formatMetric(metrics.seed ?? 0, { maximumFractionDigits: 3 })} → ${formatMetric(metrics.best ?? 0, { maximumFractionDigits: 3 })}`],
+    ["Mean uplift", `${euro(metrics.uplift_vs_quantile_dispatch_baseline_mean_eur)}/day`, "vs quantile baseline"],
+    ["Scenario uplift", euro(comparisonRow.uplift_vs_comparison_baseline_eur), escapeHtml(scenario.scenario_id ?? "public test")],
+    ["Guardrails", `${formatMetric(metrics.constraint_breach_count ?? 0, { maximumFractionDigits: 0 })} breaches`, `${formatMetric(metrics.downside_days ?? 0, { maximumFractionDigits: 0 })} downside days`],
+  ];
+  const cardMarkup = cards
+    .map(([label, value, note], index) => {
+      const y = 88 + index * 78;
+      return `<g>
+              <rect class="bess-kpi-card" x="560" y="${y - 38}" width="172" height="70" />
+              <text class="bess-kpi-label" x="576" y="${y - 13}">${escapeHtml(label)}</text>
+              <text class="bess-kpi-value" x="576" y="${y + 9}">${value}</text>
+              <text class="bess-kpi-note" x="576" y="${y + 29}">${note}</text>
+            </g>`;
+    })
+    .join("\n");
+
+  return paperInlineFigure({
+    number: 1,
+    caption: "Customer-facing BESS dispatch readout. Price, battery action, SOC, and commercial guardrails are separated into one auditable day-ahead benchmark view.",
+    className: "bess-inline-figure bess-benchmark-figure",
+    svg: `          <svg class="result-primer-svg bess-paper-svg bess-dispatch-svg" viewBox="0 0 760 454" role="img" aria-label="Iberian BESS accepted dispatch and commercial benchmark readout.">
+            <text class="result-axis-label result-figure-title" x="${left}" y="34">Day-ahead BESS dispatch challenger</text>
+            <text class="bess-paper-note" x="${right}" y="34" text-anchor="end">${escapeHtml(scenario.market_date ?? "")} · ${escapeHtml(scenario.split ?? "public_test")}</text>
+            <g class="bess-dispatch-legend" transform="translate(${left} 52)">
+              <g><line class="bess-price-line" x1="0" y1="0" x2="18" y2="0" /><text x="26" y="4">price</text></g>
+              <g transform="translate(84 0)"><line class="bess-soc-line" x1="0" y1="0" x2="18" y2="0" /><text x="26" y="4">SOC</text></g>
+              <g transform="translate(158 0)"><rect class="bess-charge-bar" x="0" y="-8" width="10" height="12" /><text x="18" y="4">charge</text></g>
+              <g transform="translate(246 0)"><rect class="bess-discharge-bar" x="0" y="-8" width="10" height="12" /><text x="18" y="4">discharge</text></g>
+            </g>
+            <text class="bess-panel-title" x="${left}" y="${priceTop - 12}">OMIE day-ahead price</text>
+            ${priceTicks}
+            <path class="bess-axis" d="M${left} ${priceTop}V${priceBottom}H${right}" />
+            <path class="bess-price-line" d="${pricePath}" />
+            <text class="bess-axis-title" x="24" y="${priceTop + (priceBottom - priceTop) / 2}" transform="rotate(-90 24 ${priceTop + (priceBottom - priceTop) / 2})">EUR/MWh</text>
+            <text class="bess-panel-title" x="${left}" y="${dispatchTop - 16}">Accepted battery action</text>
+            <path class="bess-axis" d="M${left} ${dispatchTop}V${dispatchBottom}H${right}" />
+            ${xTicks}
+            <text class="bess-axis-title" x="${left + width / 2}" y="${dispatchBottom + 44}" text-anchor="middle">hour of day</text>
+            <text class="bess-axis-title" x="24" y="${dispatchTop + (dispatchBottom - dispatchTop) / 2}" transform="rotate(-90 24 ${dispatchTop + (dispatchBottom - dispatchTop) / 2})">MW action</text>
+            <text class="bess-axis-title bess-soc-label" x="${right}" y="${dispatchTop - 12}" text-anchor="end">SOC MWh</text>
+            <path class="bess-dispatch-zero" d="M${left} ${dispatchZero}H${right}" />
+            ${dispatchBars}
+            ${socTicks}
+            <path class="bess-soc-line" d="${socPath}" />
+            <text class="bess-paper-note" x="${left}" y="410">Charge is below zero; discharge is above. SOC uses the right-hand MWh scale.</text>
+            <text class="bess-paper-note" x="${left}" y="428">Replay checks terminal SOC, feasibility, simultaneous power, and downside.</text>
+${cardMarkup}
+          </svg>`,
+  });
+}
+
+function bessContractTable(contract) {
+  const market = contract?.market_scope ?? {};
+  const splits = contract?.cases?.splits ?? {};
+  const splitCount = Object.values(splits).reduce((sum, items) => sum + (Array.isArray(items) ? items.length : 0), 0);
+  const baselines = Array.isArray(contract?.baselines) ? contract.baselines : [];
+  const primary = baselines.find((baseline) => baseline.kind === "primary_commercial_comparison")?.id ?? "quantile_dispatch_baseline";
+  return paperTable({
+    caption: "Table 2. Frozen public contract used for the Iberian BESS result.",
+    className: "result-contract-table bess-contract-table",
+    headers: ["Field", "Public contract"],
+    rows: [
+      ["Market scope", `${escapeHtml(market.market ?? "OMIE day-ahead")} · ${escapeHtml(market.region ?? "Iberia")} · ${escapeHtml(market.horizon_hours ?? 24)} hourly decisions`],
+      ["Asset", escapeHtml(market.asset_scope ?? "single 1 MW / 4 MWh battery")],
+      ["Scenario coverage", `${formatMetric(splitCount, { maximumFractionDigits: 0 })} frozen scenarios across development, public-test, and stress-tail splits`],
+      ["Primary comparison", `<code>${escapeHtml(primary)}</code>`],
+      ["Oracle role", "<code>perfect_foresight_lp_upper_bound</code> is an upper-bound diagnostic, not the commercial baseline"],
+      ["Guardrails", "terminal SOC, feasibility, simultaneous power, split coverage, and zero constraint breaches"],
+    ],
+  });
+}
+
+function bessCustomerReadoutTable(full, comparison) {
+  const metrics = full.metrics ?? {};
+  const rows = Array.isArray(comparison?.rows) ? comparison.rows : [];
+  const splitCount = new Set(rows.map((row) => row.split).filter(Boolean)).size;
+  return paperTable({
+    caption: "Table 1. Buyer-facing readout for optimizer teams reviewing the Iberian BESS challenger.",
+    className: "result-contract-table bess-customer-readout-table",
+    headers: ["Buyer question", "Published evidence", "Why it matters"],
+    rows: [
+      [
+        "Can it improve a named commercial baseline?",
+        `${formatMetric(metrics.seed, { maximumFractionDigits: 3 })} → ${formatMetric(metrics.best, { maximumFractionDigits: 3 })} score, ${formatPercent(metrics.improvement_pct)} reduction, ${euro(metrics.uplift_vs_quantile_dispatch_baseline_mean_eur)}/day mean uplift`,
+        "The claim is anchored to the quantile dispatch baseline, not to the perfect-foresight oracle.",
+      ],
+      [
+        "Does the candidate stay feasible?",
+        `${formatMetric(metrics.constraint_breach_count ?? 0, { maximumFractionDigits: 0 })} constraint breaches, exact replay status, terminal SOC and simultaneous-power checks`,
+        "A challenger is only useful if it cannot win by breaking dispatch or battery constraints.",
+      ],
+      [
+        "Are weak cases still visible?",
+        `${formatMetric(rows.length, { maximumFractionDigits: 0 })} frozen scenarios across ${formatMetric(splitCount, { maximumFractionDigits: 0 })} splits, including stress-tail rows and zero-uplift cases`,
+        "The aggregate result does not hide flat or weaker days that an optimizer team will want to inspect.",
+      ],
+      [
+        "Can the result be replayed from artifacts?",
+        "accepted_candidate.py, comparison rows, dispatch trace, score trace, replay checks, and the curated run page",
+        "The pre-sell asset is an auditable benchmark surface, not a slide-only performance claim.",
+      ],
+    ],
+  });
+}
+
+function bessHeroProof(full, comparison) {
+  const metrics = full.metrics ?? {};
+  const rows = Array.isArray(comparison?.rows) ? comparison.rows : [];
+  const items = [
+    ["Score reduction", formatPercent(metrics.improvement_pct), `${formatMetric(metrics.seed, { maximumFractionDigits: 3 })} → ${formatMetric(metrics.best, { maximumFractionDigits: 3 })}`],
+    ["Mean uplift", `${euro(metrics.uplift_vs_quantile_dispatch_baseline_mean_eur)}/day`, "vs quantile baseline"],
+    ["Constraint breaches", formatMetric(metrics.constraint_breach_count ?? 0, { maximumFractionDigits: 0 }), "exact replay guardrail"],
+    ["Public scenarios", formatMetric(rows.length, { maximumFractionDigits: 0 }), "development, public-test, stress-tail"],
+  ];
+  const cards = items
+    .map(([label, value, note]) => `            <div>
+              <span>${escapeHtml(label)}</span>
+              <strong>${escapeHtml(value)}</strong>
+              <small>${escapeHtml(note)}</small>
+            </div>`)
+    .join("\n");
+  return `<div class="bess-hero-proof" aria-label="Iberian BESS result proof points">
+          <div class="bess-hero-proof-grid">
+${cards}
+          </div>
+          <div class="bess-hero-actions" aria-label="Iberian BESS result links">
+            <a href="./run/">Open replay run</a>
+            <a href="https://github.com/Gother-Labs/gother-labs-results/tree/main/results/iberian-bess-policy-challenge" target="_blank" rel="noreferrer">Source bundle</a>
+          </div>
+        </div>`;
+}
+
+function bessCommercialReadoutFigure(full) {
+  const metrics = full.metrics ?? {};
+  const rows = [
+    ["Mean uplift vs baseline", euro(metrics.uplift_vs_quantile_dispatch_baseline_mean_eur), "primary commercial readout"],
+    ["Cycle-adjusted margin", euro(metrics.cycle_adjusted_margin_mean_eur), "after degradation cost"],
+    ["Mean regret to oracle", euro(metrics.regret_mean_eur), "remaining headroom"],
+    ["p95 regret", euro(metrics.regret_p95_eur), "tail diagnostic"],
+    ["Downside rate", formatPercent((metrics.downside_rate ?? 0) * 100), "vs primary baseline"],
+    ["Constraint breaches", formatMetric(metrics.constraint_breach_count ?? 0, { maximumFractionDigits: 0 }), "hard guardrail"],
+  ];
+  const cells = rows
+    .map(([label, value, note], index) => {
+      const col = index % 3;
+      const row = Math.floor(index / 3);
+      const x = 62 + col * 164;
+      const y = 86 + row * 96;
+      return `<g>
+              <rect class="bess-metric-cell" x="${x}" y="${y - 34}" width="136" height="72" />
+              <text class="bess-paper-label" x="${x + 14}" y="${y - 10}">${escapeHtml(label)}</text>
+              <text class="bess-paper-value" x="${x + 14}" y="${y + 15}">${value}</text>
+              <text class="bess-paper-note" x="${x + 14}" y="${y + 36}">${escapeHtml(note)}</text>
+            </g>`;
+    })
+    .join("\n");
+  return paperInlineFigure({
+    number: 2,
+    caption: "Commercial and risk readout for the accepted policy. The page leads with the primary baseline uplift and keeps oracle regret and constraints in the same evidence block.",
+    className: "bess-inline-figure bess-commercial-figure",
+    svg: `          <svg class="result-primer-svg bess-paper-svg" viewBox="0 0 560 250" role="img" aria-label="Commercial and risk metrics for the accepted BESS policy.">
+            <text class="result-axis-label result-figure-title" x="62" y="36">Accepted policy readout</text>
+${cells}
+          </svg>`,
+  });
+}
+
+function bessScenarioTable(comparison) {
+  const rows = Array.isArray(comparison?.rows) ? comparison.rows : [];
+  return paperTable({
+    caption: "Table 3. Scenario-level evidence. Zero uplift cases are retained because they are part of the public benchmark contract.",
+    className: "bess-scenario-table",
+    headers: ["Scenario", "Split", "Shape", "Uplift", "Regret", "Oracle capture", "Health"],
+    rows: rows.map((row) => [
+      `<code>${escapeHtml(row.scenario_id)}</code>`,
+      escapeHtml(row.split),
+      escapeHtml((row.price_shape_tags ?? []).join(", ")),
+      euro(row.uplift_vs_comparison_baseline_eur),
+      euro(row.regret_eur),
+      formatPercent((row.oracle_capture_ratio ?? 0) * 100),
+      row.constraint_breached ? "breach" : "clean",
+    ]),
+  });
+}
+
+function bessRobustnessTable(full, replay, forecastSmoke) {
+  const metrics = full.metrics ?? {};
+  const forecastRows = Array.isArray(forecastSmoke?.scenarios) ? forecastSmoke.scenarios : [];
+  const worstForecastCost = forecastRows.reduce((worst, row) => {
+    if (typeof row.forecast_error_cost_eur !== "number") return worst;
+    return worst === null ? row.forecast_error_cost_eur : Math.max(worst, row.forecast_error_cost_eur);
+  }, null);
+  return paperTable({
+    caption: "Table 4. Replay and robustness checks published with the result bundle.",
+    className: "bess-robustness-table",
+    headers: ["Check", "Result", "Why it matters"],
+    rows: [
+      ["Exact replay", replay?.result?.valid ? "pass" : "not available", "The accepted candidate reproduces the published score from the checked-in artifact."],
+      ["Constraint breaches", formatMetric(metrics.constraint_breach_count ?? 0, { maximumFractionDigits: 0 }), "No scenario is allowed to win by violating battery or dispatch constraints."],
+      ["Baseline shortfall", euro(metrics.baseline_shortfall_eur ?? 0), "The public aggregate does not hide a penalty against the primary comparison baseline."],
+      ["Forecast-error smoke", forecastSmoke?.valid ? "valid" : "not available", "A deterministic 8% perturbation suite is included as a realism smoke, separate from the perfect-foresight claim."],
+      ["Worst smoke cost", worstForecastCost === null ? "n/a" : euro(worstForecastCost), "Largest positive cost observed in the small forecast-error smoke subset."],
+    ],
+  });
+}
+
+function bessImplementationCodeFigure(candidateCode) {
+  return pythonImplementationCodeFigure({
+    source: extractCandidateCode(candidateCode),
+    caption: "Accepted deterministic policy portfolio. The candidate evaluates checked-in dispatch builders under the same simulator and returns the highest-margin valid plan.",
+    className: "bess-code-figure",
+  });
+}
+
+function bessPrivateChallengeCta(full) {
+  const metrics = full.metrics ?? {};
+  const cards = [
+    ["Public proof", `${formatPercent(metrics.improvement_pct ?? 0)} score reduction`, "against the frozen public baseline"],
+    ["Guardrail", `${formatMetric(metrics.constraint_breach_count ?? 0, { maximumFractionDigits: 0 })} breaches`, "exact replay constraint check"],
+    ["Commercial readout", `${euro(metrics.uplift_vs_quantile_dispatch_baseline_mean_eur ?? 0)}/day`, "mean uplift vs quantile baseline"],
+  ]
+    .map(([label, value, note]) => `<div>
+              <span>${escapeHtml(label)}</span>
+              <strong>${value}</strong>
+              <small>${escapeHtml(note)}</small>
+            </div>`)
+    .join("\n");
+  return `<section class="bess-private-challenge" aria-label="Private BESS policy challenge next step">
+          <div class="bess-private-challenge-copy">
+            <p class="eyebrow">Next commercial step</p>
+            <h4>Turn this public replay into a private baseline challenge.</h4>
+            <p>Bring the battery spec, current dispatch policy or comparison baseline, approved scenarios, and hard constraints. We return a replayable decision pack: aggregate uplift, weak-case rows, dispatch traces, replay checks, limitations, and a recommendation on whether there is enough signal to continue.</p>
+            <div class="bess-private-challenge-actions">
+              <a href="../../evolther/bess-policy-challenger/">Review the offer</a>
+              <a href="../../contact/">Start a private challenge</a>
+            </div>
+          </div>
+          <div class="bess-private-challenge-proof" aria-label="Public proof carried into the private challenge">
+${cards}
+          </div>
+        </section>`;
+}
+
+function bessWhitepaperInserts(full, candidateCode, scoreTrace, replay, comparison, dispatchTrace, forecastSmoke, evaluationContract) {
+  return {
+    "benchmark-readout": bessBenchmarkReadoutFigure(full, dispatchTrace, comparison),
+    "customer-readout": bessCustomerReadoutTable(full, comparison),
+    "contract-table": bessContractTable(evaluationContract),
+    "commercial-readout": bessCommercialReadoutFigure(full),
+    "scenario-table": bessScenarioTable(comparison),
+    "implementation-code": bessImplementationCodeFigure(candidateCode),
+    "objective-curve": bessObjectiveTraceFigure(scoreTrace),
+    "dispatch-readout": bessTailDispatchFigure(dispatchTrace, comparison),
+    "robustness-table": bessRobustnessTable(full, replay, forecastSmoke),
+    "private-challenge-cta": bessPrivateChallengeCta(full),
+  };
+}
+
 function acceptedRuleVisual(full, evolution) {
   const bestStep = bestEvolutionStep(evolution);
   const rule = bestStep?.rule;
@@ -2785,6 +3245,9 @@ async function writeDetail(result) {
 
   const full = JSON.parse(await fs.readFile(path.join(resultRoot, "result.json"), "utf8"));
   const article = await fs.readFile(path.join(resultRoot, "article.md"), "utf8");
+  const renderArticle = (inserts) => markdownToHtml(articleWithoutTitle(article), inserts, {
+    sourceName: path.relative(RESULTS_ROOT, path.join(resultRoot, "article.md")),
+  });
   const evolution = JSON.parse(
     await fs.readFile(path.join(resultRoot, full.artifacts.evolution_trace), "utf8"),
   );
@@ -2797,6 +3260,18 @@ async function writeDetail(result) {
     : null;
   const replay = full.artifacts?.replay
     ? JSON.parse(await fs.readFile(path.join(resultRoot, full.artifacts.replay), "utf8"))
+    : null;
+  const comparison = full.artifacts?.comparison
+    ? JSON.parse(await fs.readFile(path.join(resultRoot, full.artifacts.comparison), "utf8"))
+    : null;
+  const dispatchTrace = full.artifacts?.dispatch_trace
+    ? JSON.parse(await fs.readFile(path.join(resultRoot, full.artifacts.dispatch_trace), "utf8"))
+    : null;
+  const forecastSmoke = full.artifacts?.forecast_smoke
+    ? JSON.parse(await fs.readFile(path.join(resultRoot, full.artifacts.forecast_smoke), "utf8"))
+    : null;
+  const evaluationContract = full.artifacts?.evaluation_contract_json
+    ? JSON.parse(await fs.readFile(path.join(resultRoot, full.artifacts.evaluation_contract_json), "utf8"))
     : null;
   const plots = full.artifacts?.plots ?? [];
   for (const file of [
@@ -2837,6 +3312,7 @@ async function writeDetail(result) {
   const isRcpspWhitepaper = full.slug === "rcpsp-psplib-j30";
   const isQubitRoutingWhitepaper = full.slug === "qubit-routing-lightsabre";
   const isCirclePackingWhitepaper = full.slug === "circle-packing-26-unit-square";
+  const isBessWhitepaper = full.slug === "iberian-bess-policy-challenge";
   const body = isQuadratureWhitepaper
     ? `        <section class="hero compact-hero page-hero result-detail-hero">
           <h1 class="page-title">${escapeHtml(full.title)}</h1>
@@ -2845,7 +3321,7 @@ async function writeDetail(result) {
 
         <section class="result-detail result-whitepaper-shell">
           <article class="result-article result-whitepaper">
-${markdownToHtml(articleWithoutTitle(article), quadratureWhitepaperInserts(full, evolution, candidateCode))}
+${renderArticle(quadratureWhitepaperInserts(full, evolution, candidateCode))}
           </article>
         </section>`
     : isRcpspWhitepaper
@@ -2856,7 +3332,7 @@ ${markdownToHtml(articleWithoutTitle(article), quadratureWhitepaperInserts(full,
 
         <section class="result-detail result-whitepaper-shell rcpsp-whitepaper-shell">
           <article class="result-article result-whitepaper rcpsp-whitepaper">
-${markdownToHtml(articleWithoutTitle(article), rcpspWhitepaperInserts(full, evolution, candidateCode, scheduleExample, scoreTrace))}
+${renderArticle(rcpspWhitepaperInserts(full, evolution, candidateCode, scheduleExample, scoreTrace))}
           </article>
         </section>`
       : isQubitRoutingWhitepaper
@@ -2867,7 +3343,7 @@ ${markdownToHtml(articleWithoutTitle(article), rcpspWhitepaperInserts(full, evol
 
         <section class="result-detail result-whitepaper-shell qubit-routing-whitepaper-shell">
           <article class="result-article result-whitepaper qubit-routing-whitepaper">
-${markdownToHtml(articleWithoutTitle(article), qubitRoutingWhitepaperInserts(full, evolution, candidateCode, replay, scoreTrace))}
+${renderArticle(qubitRoutingWhitepaperInserts(full, evolution, candidateCode, replay, scoreTrace))}
           </article>
         </section>`
       : isCirclePackingWhitepaper
@@ -2878,7 +3354,18 @@ ${markdownToHtml(articleWithoutTitle(article), qubitRoutingWhitepaperInserts(ful
 
         <section class="result-detail result-whitepaper-shell circle-packing-whitepaper-shell">
           <article class="result-article result-whitepaper circle-packing-whitepaper">
-${markdownToHtml(articleWithoutTitle(article), circlePackingWhitepaperInserts(full, evolution, candidateCode, replay, scoreTrace))}
+${renderArticle(circlePackingWhitepaperInserts(full, evolution, candidateCode, replay, scoreTrace))}
+          </article>
+        </section>`
+        : isBessWhitepaper
+          ? `        <section class="hero compact-hero page-hero result-detail-hero bess-detail-hero">
+          <h1 class="page-title">${escapeHtml(full.title)}</h1>
+          <p class="intro results-hero-intro">${escapeHtml(full.summary)}</p>
+        </section>
+
+        <section class="result-detail result-whitepaper-shell bess-whitepaper-shell">
+          <article class="result-article result-whitepaper bess-whitepaper">
+${renderArticle(bessWhitepaperInserts(full, candidateCode, scoreTrace, replay, comparison, dispatchTrace, forecastSmoke, evaluationContract))}
           </article>
         </section>`
     : `        <section class="hero compact-hero page-hero result-detail-hero">
@@ -2889,7 +3376,7 @@ ${markdownToHtml(articleWithoutTitle(article), circlePackingWhitepaperInserts(fu
 
         <section class="result-detail">
           <article class="result-article">
-${markdownToHtml(articleWithoutTitle(article), quadratureProblemVisuals(full, evolution))}
+${renderArticle(quadratureProblemVisuals(full, evolution))}
           </article>
         </section>
 
@@ -2928,7 +3415,9 @@ ${figures}
             ? "result-qubit-routing-page"
             : isCirclePackingWhitepaper
               ? "result-circle-packing-page"
-              : "",
+              : isBessWhitepaper
+                ? "result-bess-page"
+                : "",
     }),
     "utf8",
   );
@@ -2961,7 +3450,12 @@ async function main() {
           return JSON.parse(await fs.readFile(path.join(RESULTS_ROOT, result.path), "utf8"));
         }),
     )
-  ).sort((a, b) => (a.website?.order ?? 999) - (b.website?.order ?? 999));
+  ).sort((a, b) => {
+    if (Boolean(a.website?.featured) !== Boolean(b.website?.featured)) {
+      return a.website?.featured ? -1 : 1;
+    }
+    return (a.website?.order ?? 999) - (b.website?.order ?? 999);
+  });
 
   await fs.mkdir(OUT_ROOT, { recursive: true });
   await writeIndex(results);
