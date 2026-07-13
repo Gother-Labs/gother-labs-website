@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Göther Labs | AI Challengers for Optimization Teams</title>
+    <title>Göther Labs | Challenge Your Optimizer Offline</title>
     <meta
       name="description"
-      content="Göther Labs builds replayable AI challengers for optimization teams: offline policy challenges, public proof, constraint evidence, and private benchmark packs."
+      content="Göther Labs challenges optimization policies offline under frozen constraints, then returns replayable evidence, weak cases, and explicit limitations."
     >
     <link rel="canonical" href="https://www.gotherlabs.com/">
-    <meta property="og:title" content="Göther Labs | AI Challengers for Optimization Teams">
+    <meta property="og:title" content="Göther Labs | Challenge Your Optimizer Offline">
     <meta
       property="og:description"
-      content="Replayable AI challengers for optimization teams: public proof, private challenge packs, and governed improvement evidence."
+      content="Test whether your optimizer can do better without touching production. Start with the public Iberian BESS challenge."
     >
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.gotherlabs.com/">
@@ -23,151 +23,316 @@
     <link rel="icon" href="./assets/gother-mark.svg" type="image/svg+xml">
     <link rel="stylesheet" href="./styles.css?v=home-sales-v1">
   </head>
-  <body class="home-page">
+  <body class="home-page home-challenger-page">
     <a class="skip-link" href="#site-main">Skip to content</a>
-    <div class="page-shell site-shell">
-      <header class="site-header">
-        <nav class="site-nav" aria-label="Primary">
-          <a href="./results/">Results</a>
-          <a href="./company/">Company</a>
-          <a href="./contact/">Contact</a>
+
+    <div class="page-shell site-shell home-shell">
+      <header class="site-header" data-home-header>
+        <nav class="site-nav" data-home-nav aria-label="Primary">
+          <a class="brand home-nav-brand animated-symbol-scope" href="./" aria-label="Göther Labs home">
+            <span aria-hidden="true" class="wordmark-mark-wrap">
+              <svg class="animated-reference-geometry live-symbol-svg" viewBox="0 0 64 64" focusable="false">
+                <g class="source-geometry" aria-hidden="true">
+                  <circle class="source-geometry-dot" cx="34.5" cy="34.5" r="3.6" />
+                  <circle class="source-geometry-dot" cx="21" cy="58" r="3.6" />
+                  <circle class="source-geometry-dot" cx="48" cy="58" r="3.6" />
+                </g>
+                <path class="live-trail" d="" />
+                <path class="live-trail" d="" />
+                <path class="live-trail" d="" />
+                <circle class="geometry-dot live-geometry-dot" cx="34.2" cy="28.4" r="3.34" />
+                <circle class="geometry-dot live-geometry-dot" cx="20.9" cy="50.6" r="3.34" />
+                <circle class="geometry-dot live-geometry-dot" cx="47.5" cy="50.6" r="3.34" />
+              </svg>
+            </span>
+            <span>Göther Labs</span>
+          </a>
+
+          <div class="home-nav-links">
+            <a href="./evolther/bess-policy-challenger/">BESS Challenge</a>
+            <a href="./results/">Results</a>
+            <a href="./company/">Company</a>
+            <a href="./contact/">Contact</a>
+          </div>
+
+          <a class="home-nav-cta" href="./contact/">Start a brief <span aria-hidden="true">↗</span></a>
         </nav>
       </header>
 
-      <main class="site-main home-main" id="site-main">
-        <section class="home-hero home-sales-hero">
-          <div class="home-sales-copy">
-            <div class="home-brand-lockup animated-symbol-scope" aria-label="Göther Labs">
-              <span aria-hidden="true" class="wordmark-mark-wrap">
-                <svg
-                  class="animated-reference-geometry live-symbol-svg"
-                  viewBox="0 0 64 64"
-                  focusable="false"
-                >
-                  <g class="source-geometry" aria-hidden="true">
-                    <circle class="source-geometry-dot" cx="34.5" cy="34.5" r="3.6" />
-                    <circle class="source-geometry-dot" cx="21" cy="58" r="3.6" />
-                    <circle class="source-geometry-dot" cx="48" cy="58" r="3.6" />
-                  </g>
-                  <path class="live-trail" d="" />
-                  <path class="live-trail" d="" />
-                  <path class="live-trail" d="" />
-                  <circle class="geometry-dot live-geometry-dot" cx="34.2" cy="28.4" r="3.34" />
-                  <circle class="geometry-dot live-geometry-dot" cx="20.9" cy="50.6" r="3.34" />
-                  <circle class="geometry-dot live-geometry-dot" cx="47.5" cy="50.6" r="3.34" />
-                </svg>
-              </span>
-              <span>Göther Labs</span>
-            </div>
-            <h1>AI challengers for optimization teams.</h1>
-            <p>
-              We challenge your current policy offline, search for auditable improvement candidates,
-              and return the evidence a technical buyer needs: replay, constraints, weak cases, and artifacts.
+      <main class="site-main home-main home-challenger-main" id="site-main">
+        <section class="challenger-hero" aria-labelledby="challenger-hero-title">
+          <div class="challenger-hero-copy">
+            <p class="challenger-kicker"><span aria-hidden="true"></span> AI challenger for optimization teams</p>
+            <h1 id="challenger-hero-title">Test whether your optimizer can do better—without touching production.</h1>
+            <p class="challenger-hero-intro">
+              Bring one baseline and an approved evaluation fixture. We search offline under frozen
+              constraints and scoring, then return replayable evidence—candidate improvements, weak
+              cases, and explicit limitations.
             </p>
-            <div class="home-sales-actions" aria-label="Primary actions">
-              <a href="./contact/">Start a private challenge</a>
-              <a href="./results/iberian-bess-policy-challenge/">Review public proof</a>
+            <div class="challenger-actions" aria-label="Primary actions">
+              <a class="challenger-action-primary" href="./results/iberian-bess-policy-challenge/">
+                Review the public BESS challenge <span aria-hidden="true">→</span>
+              </a>
+              <a class="challenger-action-secondary" href="./contact/">Start a challenge brief</a>
             </div>
+            <ul class="challenger-trust-line" aria-label="Initial engagement boundaries">
+              <li>Metadata-only first contact</li>
+              <li>No production access</li>
+              <li>No confidential files</li>
+            </ul>
           </div>
 
-          <aside class="home-proof-panel" aria-label="Current public proof">
-            <span>Current proof</span>
-            <strong>33.714%</strong>
-            <p>Relative weighted-score reduction from a 72.544 quantile-dispatch baseline to 48.087 accepted, for one 1 MW / 4 MWh battery across 8 frozen OMIE scenarios.</p>
-            <div class="home-proof-metrics">
-              <div><span>Gross uplift vs quantile</span><strong>€20.20/day</strong></div>
-              <div><span>Scenarios</span><strong>8</strong></div>
-              <div><span>Replay</span><strong>Valid</strong></div>
+          <aside class="challenge-instrument" aria-labelledby="challenge-instrument-title">
+            <div class="challenge-instrument-header">
+              <div>
+                <span class="challenge-micro-label">Public challenge · v0.1</span>
+                <h2 id="challenge-instrument-title">Iberian BESS policy</h2>
+              </div>
+              <span class="challenge-status"><i aria-hidden="true"></i> Replay valid</span>
             </div>
-            <a href="./evolther/bess-policy-challenger/">Open BESS policy challenger</a>
+
+            <div class="challenge-score-field">
+              <div class="challenge-score-legend">
+                <span>Weighted score</span>
+                <span>Lower is better</span>
+              </div>
+              <svg class="challenge-score-plot" viewBox="0 0 720 190" role="img" aria-labelledby="score-plot-title score-plot-desc">
+                <title id="score-plot-title">Baseline and accepted policy score comparison</title>
+                <desc id="score-plot-desc">The quantile-dispatch baseline scored 72.544. The accepted challenger policy scored 48.087, a 33.71 percent relative reduction.</desc>
+                <g class="score-plot-grid" aria-hidden="true">
+                  <path d="M22 32H698M22 92H698M22 152H698" />
+                  <path d="M112 20V166M246 20V166M380 20V166M514 20V166M648 20V166" />
+                </g>
+                <path class="score-plot-baseline" d="M56 73H617" aria-hidden="true" />
+                <path class="score-plot-candidate" d="M56 127H389" aria-hidden="true" />
+                <path class="score-plot-delta" d="M389 127C456 127 522 112 617 73" aria-hidden="true" />
+                <circle class="score-node score-node-baseline" cx="617" cy="73" r="9" aria-hidden="true" />
+                <circle class="score-node score-node-candidate" cx="389" cy="127" r="9" aria-hidden="true" />
+                <circle class="score-node score-node-probe" cx="617" cy="73" r="5" aria-hidden="true" />
+                <text x="56" y="62">BASELINE</text>
+                <text class="score-plot-value" x="617" y="51" text-anchor="end">72.544</text>
+                <text x="56" y="118">ACCEPTED</text>
+                <text class="score-plot-value" x="389" y="157" text-anchor="end">48.087</text>
+              </svg>
+
+              <div class="challenge-outcome">
+                <div>
+                  <strong>33.71%</strong>
+                  <span>Relative weighted-score reduction</span>
+                </div>
+                <p>Quantile-dispatch baseline → accepted policy</p>
+              </div>
+            </div>
+
+            <dl class="challenge-instrument-facts">
+              <div><dt>Asset</dt><dd>1 MW / 4 MWh</dd></div>
+              <div><dt>Fixture</dt><dd>8 frozen scenarios</dd></div>
+              <div><dt>Guardrail</dt><dd>0 constraint breaches</dd></div>
+            </dl>
+            <p class="challenge-instrument-note">Offline public benchmark evidence. Not production or live-trading performance.</p>
           </aside>
         </section>
 
-        <section class="home-section home-proof-section" aria-labelledby="home-proof-title">
-          <div class="home-section-copy">
-            <p class="eyebrow">Public proof</p>
-            <h2 id="home-proof-title">Evidence first, sales second.</h2>
+        <section class="challenge-proof-strip" aria-label="Public BESS challenge summary">
+          <p><span>Current commercial wedge</span> Battery energy storage systems</p>
+          <p><span>Comparison</span> Frozen policy contract</p>
+          <p><span>Decision output</span> Replayable evidence pack</p>
+          <a href="./evolther/bess-policy-challenger/">Explore the BESS offer <span aria-hidden="true">↗</span></a>
+        </section>
+
+        <section class="challenger-section challenger-fit" aria-labelledby="challenger-fit-title">
+          <div class="challenger-section-intro">
+            <p class="challenger-section-index">01 / Fit</p>
+            <div>
+              <p class="challenger-kicker">When a challenge is useful</p>
+              <h2 id="challenger-fit-title">You already have an optimizer. The open question is whether it leaves value on the table.</h2>
+            </div>
+          </div>
+
+          <div class="challenger-fit-grid">
+            <article>
+              <span>01</span>
+              <h3>A baseline exists</h3>
+              <p>There is a policy, heuristic, solver, or dispatch rule with behavior your team can replay.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3>The rules can be frozen</h3>
+              <p>Constraints, scenarios, scoring, and acceptance checks can be agreed before the search begins.</p>
+            </article>
+            <article>
+              <span>03</span>
+              <h3>The decision matters</h3>
+              <p>An improvement candidate is valuable only if engineers can inspect it, replay it, and challenge it.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="challenger-section challenger-method" aria-labelledby="challenger-method-title">
+          <div class="challenger-section-intro">
+            <p class="challenger-section-index">02 / Method</p>
+            <div>
+              <p class="challenger-kicker">A governed offline loop</p>
+              <h2 id="challenger-method-title">Freeze the test before searching for the answer.</h2>
+              <p class="challenger-section-lede">
+                The evaluation contract is the boundary. Candidates can change; the scoring rules,
+                constraints, and required evidence do not.
+              </p>
+            </div>
+          </div>
+
+          <div class="challenger-method-layout">
+            <ol class="challenger-method-steps">
+              <li>
+                <span>01</span>
+                <div><h3>Brief</h3><p>Start with business context and non-confidential metadata. No fixture upload is requested at first contact.</p></div>
+              </li>
+              <li>
+                <span>02</span>
+                <div><h3>Freeze</h3><p>Agree the baseline, evaluation fixture, constraints, score, replay checks, and publication boundary.</p></div>
+              </li>
+              <li>
+                <span>03</span>
+                <div><h3>Challenge</h3><p>Search offline for candidates and reject anything that fails the frozen contract.</p></div>
+              </li>
+              <li>
+                <span>04</span>
+                <div><h3>Evidence</h3><p>Return the accepted candidate with score traces, weak cases, replay artifacts, and limitations.</p></div>
+              </li>
+            </ol>
+
+            <figure class="challenger-contract-diagram">
+              <figcaption>
+                <span>Evaluation contract</span>
+                <strong>Frozen before search</strong>
+              </figcaption>
+              <div class="contract-boundary">
+                <div class="contract-input"><span>BASELINE</span><strong>Known behavior</strong></div>
+                <div class="contract-gate">
+                  <span>CONSTRAINTS</span>
+                  <i aria-hidden="true"></i>
+                  <span>SCORING</span>
+                  <i aria-hidden="true"></i>
+                  <span>REPLAY</span>
+                </div>
+                <div class="contract-output"><span>ACCEPTED</span><strong>Evidence, not a claim</strong></div>
+              </div>
+              <p>Every accepted candidate must pass through the same guardrails as the baseline.</p>
+            </figure>
+          </div>
+        </section>
+
+        <section class="challenger-section challenger-evidence" aria-labelledby="challenger-evidence-title">
+          <div class="challenger-section-intro">
+            <p class="challenger-section-index">03 / Output</p>
+            <div>
+              <p class="challenger-kicker">Inspect before you integrate</p>
+              <h2 id="challenger-evidence-title">A decision pack your technical team can interrogate.</h2>
+            </div>
+          </div>
+
+          <div class="challenger-evidence-grid">
+            <article class="evidence-manifest">
+              <div class="evidence-manifest-header">
+                <span>Evidence manifest</span>
+                <span>Replayable</span>
+              </div>
+              <ol>
+                <li><span>01</span><div><strong>Comparison rows</strong><small>Baseline, candidate, and scenario-level outcomes</small></div><em>JSON</em></li>
+                <li><span>02</span><div><strong>Score trace</strong><small>Search history and accepted improvement</small></div><em>JSON</em></li>
+                <li><span>03</span><div><strong>Replay surface</strong><small>Dispatch, state, and guardrail inspection</small></div><em>HTML</em></li>
+                <li><span>04</span><div><strong>Candidate artifact</strong><small>Inspect the policy that produced the result</small></div><em>CODE</em></li>
+                <li><span>05</span><div><strong>Limitations</strong><small>Scope, exclusions, and what the evidence cannot prove</small></div><em>MD</em></li>
+              </ol>
+              <a href="./results/iberian-bess-policy-challenge/run/">Open the public replay surface <span aria-hidden="true">→</span></a>
+            </article>
+
+            <aside class="evidence-boundaries" aria-label="Engagement claim boundaries">
+              <p class="challenger-kicker">What this is—and is not</p>
+              <div>
+                <span>It is</span>
+                <p>An offline comparison against an agreed baseline, under a frozen evaluation contract.</p>
+              </div>
+              <div>
+                <span>It returns</span>
+                <p>Candidate improvements and the evidence required to reproduce, inspect, or reject them.</p>
+              </div>
+              <div>
+                <span>It is not</span>
+                <p>A production deployment, live-trading result, hidden integration, or automatic replacement for your optimizer.</p>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="challenger-section challenger-domain" aria-labelledby="challenger-domain-title">
+          <div class="challenger-section-intro">
+            <p class="challenger-section-index">04 / Scope</p>
+            <div>
+              <p class="challenger-kicker">BESS now. A broader method underneath.</p>
+              <h2 id="challenger-domain-title">Start where the proof is strongest.</h2>
+              <p class="challenger-section-lede">
+                Battery dispatch is the current commercial entry point. Results in scheduling,
+                routing, packing, and quadrature show the governed challenger method across different optimization surfaces.
+              </p>
+            </div>
+          </div>
+
+          <div class="challenger-domain-grid">
+            <a class="challenger-domain-primary" href="./evolther/bess-policy-challenger/">
+              <div>
+                <span>Commercial entry point</span>
+                <h3>BESS policy challenger</h3>
+                <p>Challenge a battery dispatch policy offline against frozen market scenarios, commercial baselines, oracle headroom, downside risk, degradation proxy, and hard constraints.</p>
+              </div>
+              <strong>Explore BESS <span aria-hidden="true">↗</span></strong>
+            </a>
+
+            <div class="challenger-domain-evidence">
+              <p>Method evidence</p>
+              <a href="./results/qubit-routing-lightsabre/"><span>Quantum compilation</span><strong>Qubit routing</strong><em>72 cases</em></a>
+              <a href="./results/rcpsp-psplib-j30/"><span>Operational planning</span><strong>PSPLIB scheduling</strong><em>Feasible</em></a>
+              <a href="./results/circle-packing-26-unit-square/"><span>Geometry</span><strong>Circle packing</strong><em>Validated</em></a>
+              <a href="./results/quadrature-rule-optimization/"><span>Numerical methods</span><strong>Quadrature</strong><em>Replayable</em></a>
+            </div>
+          </div>
+        </section>
+
+        <section class="challenger-final" aria-labelledby="challenger-final-title">
+          <div class="challenger-final-copy">
+            <p class="challenger-kicker">Start without exposing the system</p>
+            <h2 id="challenger-final-title">Tell us what the optimizer decides—not how it is built.</h2>
             <p>
-              The public result is deliberately replayable: benchmark contract, comparison rows,
-              dispatch traces, score trace, run surface, and stated limitations.
+              The first brief is metadata only: your role, the decision surface, the current baseline
+              category, and why a better answer would matter. No policies, scenarios, credentials, or confidential files.
             </p>
-          </div>
-          <div class="home-proof-grid">
-            <a href="./results/iberian-bess-policy-challenge/">
-              <span>Result article</span>
-              <strong>Comparable benchmark evidence</strong>
-            </a>
-            <a href="./results/iberian-bess-policy-challenge/run/">
-              <span>Run surface</span>
-              <strong>Replay, dispatch trace, score evidence</strong>
-            </a>
-            <a href="./results/iberian-bess-policy-challenge/artifacts/comparison.json">
-              <span>Comparison bundle</span>
-              <strong>Scenario rows, uplift, regret, health</strong>
-            </a>
-          </div>
-        </section>
-
-        <section class="home-section home-fit-section" aria-labelledby="home-fit-title">
-          <div class="home-section-copy">
-            <p class="eyebrow">Where we fit</p>
-            <h2 id="home-fit-title">Useful when a team already has a baseline.</h2>
-          </div>
-          <div class="home-fit-grid">
-            <div>
-              <h3>Battery dispatch</h3>
-              <p>Challenge charge, discharge, state-of-charge, efficiency, and terminal-SOC policies on frozen market scenarios.</p>
-            </div>
-            <div>
-              <h3>Day-ahead bidding</h3>
-              <p>Compare against accepted commercial baselines without touching live bidding, market access, or production operations.</p>
-            </div>
-            <div>
-              <h3>Optimization benchmarks</h3>
-              <p>Use the same governed loop for routing, scheduling, packing, quadrature, and other constrained optimization surfaces.</p>
+            <div class="challenger-actions">
+              <a class="challenger-action-primary" href="./contact/">Start a challenge brief <span aria-hidden="true">→</span></a>
+              <a class="challenger-action-secondary" href="./results/">Inspect all public evidence</a>
             </div>
           </div>
-        </section>
-
-        <section class="home-section home-challenge-section" aria-labelledby="home-challenge-title">
-          <div class="home-section-copy">
-            <p class="eyebrow">Private challenge</p>
-            <h2 id="home-challenge-title">Small fixture. Frozen rules. Replayable decision pack.</h2>
-          </div>
-          <div class="home-challenge-grid">
-            <div><span>01</span><h3>What you send</h3><p>Policy fixture, scenarios, constraints, metrics, and known operational limitations.</p></div>
-            <div><span>02</span><h3>What we freeze</h3><p>Evaluation contract, baselines, scoring, replay checks, and artifact requirements.</p></div>
-            <div><span>03</span><h3>What we return</h3><p>Improvement candidates, weak-case rows, run page, limitations, and a next-step memo.</p></div>
-            <div><span>04</span><h3>What we do not claim</h3><p>No live trading claim, no hidden integration, and no replacement of the client optimizer.</p></div>
-          </div>
-        </section>
-
-        <section class="home-section home-evidence-section" aria-labelledby="home-evidence-title">
-          <div class="home-section-copy">
-            <p class="eyebrow">Evidence, not demos</p>
-            <h2 id="home-evidence-title">The website should let buyers self-serve before a call.</h2>
-          </div>
-          <div class="home-evidence-list">
-            <div><span>01</span><p>Public results prove the benchmark discipline.</p></div>
-            <div><span>02</span><p>Run pages prove the result can be inspected, not just claimed.</p></div>
-            <div><span>03</span><p>Artifacts prove the comparison survives replay and constraints.</p></div>
-            <div><span>04</span><p>The private challenge converts that proof into a buyer-specific fixture.</p></div>
-          </div>
-        </section>
-
-        <section class="home-final-cta" aria-labelledby="home-final-title">
-          <h2 id="home-final-title">Start with one private optimization challenge.</h2>
-          <p>
-            Bring one baseline, one frozen fixture, and the constraints that matter.
-            We will return a replayable evidence pack before any integration conversation.
-          </p>
-          <div class="home-sales-actions">
-            <a href="./contact/">Start a challenge brief</a>
-            <a href="./evolther/bess-policy-challenger/">See the BESS offer</a>
+          <div class="challenger-final-boundary" aria-label="Challenge brief boundary">
+            <span>FIRST CONTACT / METADATA ONLY</span>
+            <ul>
+              <li><span aria-hidden="true">✓</span> Decision surface</li>
+              <li><span aria-hidden="true">✓</span> Baseline category</li>
+              <li><span aria-hidden="true">✓</span> Success context</li>
+              <li><span aria-hidden="true">—</span> No confidential artifacts</li>
+            </ul>
           </div>
         </section>
       </main>
 
+      <footer class="site-footer home-footer">
+        <a class="brand home-footer-brand" href="./">Göther Labs</a>
+        <p>Offline challenges. Frozen rules. Replayable evidence.</p>
+        <nav aria-label="Footer">
+          <a href="./results/">Results</a>
+          <a href="./company/">Company</a>
+          <a href="./contact/">Contact</a>
+        </nav>
+        <p>© <span id="year">2026</span> Göther Labs</p>
+      </footer>
     </div>
 
     <script src="./scripts.js?v=home-sales-v1"></script>
