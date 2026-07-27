@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="../../styles.css?v=home-proof-inline-v2">
 
   </head>
-  <body>
+  <body class="result-bess-page">
     <a class="skip-link" href="#site-main">Skip to content</a>
     <div class="page-shell site-shell">
       <header class="site-header">
@@ -50,162 +50,573 @@
       </header>
 
       <main class="site-main" id="site-main">
-        <section class="hero compact-hero page-hero result-detail-hero">
-          <p class="eyebrow">Energy Optimization</p>
+        <section class="hero compact-hero page-hero result-detail-hero bess-detail-hero">
           <h1 class="page-title">Iberian BESS Policy Challenge</h1>
           <p class="intro results-hero-intro">A deterministic BESS dispatch policy is challenged against frozen Iberian day-ahead scenarios, commercial baselines, and a perfect-foresight upper bound with explicit risk and constraint readouts.</p>
         </section>
 
-        <section class="result-detail">
-          <article class="result-article">
-<h3>Problem</h3>
+        <section class="result-detail result-whitepaper-shell bess-whitepaper-shell">
+          <article class="result-article result-whitepaper bess-whitepaper">
+<h3>Abstract</h3>
+<p>This result presents a replayable offline challenger for Iberian BESS dispatch. A deterministic policy portfolio is evaluated against frozen OMIE day-ahead scenarios, a commercial quantile baseline, and a perfect-foresight upper bound under one explicit battery contract.</p>
+<p>The accepted policy reduces the published weighted euro-like score from a 72.544043 quantile-dispatch baseline to 48.086813 while preserving zero constraint breaches. That is an absolute delta of 24.457230 score units and a 33.71363% relative reduction. The claim is intentionally bounded: this is evidence that Göther Labs can produce auditable improvement candidates and stress-case readouts for optimizer teams, not evidence of live trading readiness.</p>
+<h3>1. Problem formulation</h3>
 <p>This result evaluates a single 1 MW / 4 MWh battery trading frozen OMIE day-ahead price scenarios. The policy decides hourly charge and discharge while respecting power, state-of-charge, efficiency, and terminal SOC constraints.</p>
-<h3>Evaluation Contract</h3>
+<p>The pre-sell question is deliberately narrow: can a replayable challenger discover an auditable improvement candidate against a commercial dispatch baseline, while keeping every constraint and weak case visible? The result should be read as a professional offline benchmark, not as a claim about live bidding or a replacement for a client optimizer.</p>
+<figure class="result-primer-card result-paper-figure bess-inline-figure bess-benchmark-figure" id="fig-1">
+<div class="bess-figure-scroll">
+          <svg class="result-primer-svg bess-paper-svg bess-dispatch-svg" viewBox="0 0 760 454" role="img" aria-label="Iberian BESS accepted dispatch and commercial benchmark readout.">
+            <text class="result-axis-label result-figure-title" x="60" y="34">Day-ahead BESS dispatch challenger</text>
+            <text class="bess-paper-note" x="510" y="34" text-anchor="end">2024-10-15 · public_test</text>
+            <g class="bess-dispatch-legend" transform="translate(60 52)">
+              <g><line class="bess-price-line" x1="0" y1="0" x2="18" y2="0" /><text x="26" y="4">price</text></g>
+              <g transform="translate(84 0)"><line class="bess-soc-line" x1="0" y1="0" x2="18" y2="0" /><text x="26" y="4">SOC</text></g>
+              <g transform="translate(158 0)"><rect class="bess-charge-bar" x="0" y="-8" width="10" height="12" /><text x="18" y="4">charge</text></g>
+              <g transform="translate(246 0)"><rect class="bess-discharge-bar" x="0" y="-8" width="10" height="12" /><text x="18" y="4">discharge</text></g>
+            </g>
+            <text class="bess-panel-title" x="60" y="76">OMIE day-ahead price</text>
+            <g>
+              <path class="bess-chart-grid" d="M60 186.0H510" />
+              <text class="bess-axis-label" x="48" y="190.0" text-anchor="end">0</text>
+            </g>
+<g>
+              <path class="bess-chart-grid" d="M60 137.0H510" />
+              <text class="bess-axis-label" x="48" y="141.0" text-anchor="end">63</text>
+            </g>
+<g>
+              <path class="bess-chart-grid" d="M60 88.0H510" />
+              <text class="bess-axis-label" x="48" y="92.0" text-anchor="end">126</text>
+            </g>
+            <path class="bess-axis" d="M60 88V186H510" />
+            <path class="bess-price-line" d="M60.0 122.0 L79.6 123.7 L99.1 123.7 L118.7 126.0 L138.3 131.7 L157.8 130.0 L177.4 130.0 L197.0 114.9 L216.5 90.8 L236.1 100.0 L255.7 113.8 L275.2 121.3 L294.8 123.7 L314.3 123.8 L333.9 131.4 L353.5 130.0 L373.0 122.0 L392.6 122.9 L412.2 115.9 L431.7 104.3 L451.3 88.0 L470.9 104.3 L490.4 115.9 L510.0 124.3" />
+            <text class="bess-axis-title" x="24" y="137" transform="rotate(-90 24 137)">EUR/MWh</text>
+            <text class="bess-panel-title" x="60" y="220">Accepted battery action</text>
+            <path class="bess-axis" d="M60 236V356H510" />
+            <g>
+              <path class="bess-axis-tick" d="M60.0 356V361" />
+              <text class="bess-axis-label" x="60.0" y="378" text-anchor="middle">0</text>
+            </g>
+<g>
+              <path class="bess-axis-tick" d="M177.4 356V361" />
+              <text class="bess-axis-label" x="177.4" y="378" text-anchor="middle">6</text>
+            </g>
+<g>
+              <path class="bess-axis-tick" d="M294.8 356V361" />
+              <text class="bess-axis-label" x="294.8" y="378" text-anchor="middle">12</text>
+            </g>
+<g>
+              <path class="bess-axis-tick" d="M412.2 356V361" />
+              <text class="bess-axis-label" x="412.2" y="378" text-anchor="middle">18</text>
+            </g>
+<g>
+              <path class="bess-axis-tick" d="M510.0 356V361" />
+              <text class="bess-axis-label" x="510.0" y="378" text-anchor="middle">23</text>
+            </g>
+            <text class="bess-axis-title" x="285" y="400" text-anchor="middle">hour of day</text>
+            <text class="bess-axis-title" x="24" y="296" transform="rotate(-90 24 296)">MW action</text>
+            <text class="bess-axis-title bess-soc-label" x="510" y="224" text-anchor="end">SOC MWh</text>
+            <path class="bess-dispatch-zero" d="M60 304H510" />
+            <g><rect class="bess-charge-bar" x="72.2" y="304.0" width="14.8" height="38.0" /></g>
+<g><rect class="bess-charge-bar" x="91.8" y="304.0" width="14.8" height="38.0" /></g>
+<g><rect class="bess-charge-bar" x="111.3" y="304.0" width="14.8" height="4.0" /></g>
+<g><rect class="bess-discharge-bar" x="189.6" y="266.0" width="14.8" height="38.0" /></g>
+<g><rect class="bess-discharge-bar" x="209.1" y="266.0" width="14.8" height="38.0" /></g>
+<g><rect class="bess-discharge-bar" x="228.7" y="266.0" width="14.8" height="38.0" /></g>
+<g><rect class="bess-discharge-bar" x="248.3" y="273.6" width="14.8" height="30.4" /></g>
+<g><rect class="bess-charge-bar" x="287.4" y="304.0" width="14.8" height="38.0" /></g>
+<g><rect class="bess-charge-bar" x="307.0" y="304.0" width="14.8" height="38.0" /></g>
+<g><rect class="bess-charge-bar" x="326.5" y="304.0" width="14.8" height="38.0" /></g>
+<g><rect class="bess-charge-bar" x="346.1" y="304.0" width="14.8" height="38.0" /></g>
+<g><rect class="bess-charge-bar" x="385.2" y="304.0" width="14.8" height="8.0" /></g>
+<g><rect class="bess-discharge-bar" x="424.4" y="266.0" width="14.8" height="38.0" /></g>
+<g><rect class="bess-discharge-bar" x="443.9" y="266.0" width="14.8" height="38.0" /></g>
+<g><rect class="bess-discharge-bar" x="463.5" y="266.0" width="14.8" height="38.0" /></g>
+<g><rect class="bess-charge-bar" x="483.1" y="304.0" width="14.8" height="8.3" /></g>
+<g><rect class="bess-charge-bar" x="502.6" y="304.0" width="14.8" height="38.0" /></g>
+            <g>
+              <path class="bess-soc-tick" d="M510 356.0H515" />
+              <text class="bess-axis-label bess-soc-label" x="522" y="360.0">0</text>
+            </g>
+<g>
+              <path class="bess-soc-tick" d="M510 296.0H515" />
+              <text class="bess-axis-label bess-soc-label" x="522" y="300.0">2</text>
+            </g>
+<g>
+              <path class="bess-soc-tick" d="M510 236.0H515" />
+              <text class="bess-axis-label bess-soc-label" x="522" y="240.0">4</text>
+            </g>
+            <path class="bess-soc-line" d="M60.0 296.0 L79.6 267.5 L99.1 239.0 L118.7 236.0 L138.3 236.0 L157.8 236.0 L177.4 236.0 L197.0 267.6 L216.5 299.2 L236.1 330.7 L255.7 356.0 L275.2 356.0 L294.8 327.5 L314.3 299.0 L333.9 270.5 L353.5 242.0 L373.0 242.0 L392.6 236.0 L412.2 236.0 L431.7 267.6 L451.3 299.2 L470.9 330.7 L490.4 324.5 L510.0 296.0" />
+            <text class="bess-paper-note" x="60" y="410">Charge is below zero; discharge is above. SOC uses the right-hand MWh scale.</text>
+            <text class="bess-paper-note" x="60" y="428">Replay checks terminal SOC, feasibility, simultaneous power, and downside.</text>
+<g>
+              <rect class="bess-kpi-card" x="560" y="50" width="172" height="70" />
+              <text class="bess-kpi-label" x="576" y="75">Relative score reduction</text>
+              <text class="bess-kpi-value" x="576" y="97">33.714%</text>
+              <text class="bess-kpi-note" x="576" y="117">72.544 → 48.087</text>
+            </g>
+<g>
+              <rect class="bess-kpi-card" x="560" y="128" width="172" height="70" />
+              <text class="bess-kpi-label" x="576" y="153">Mean gross uplift</text>
+              <text class="bess-kpi-value" x="576" y="175">€20.20/day</text>
+              <text class="bess-kpi-note" x="576" y="195">vs quantile · before degradation proxy</text>
+            </g>
+<g>
+              <rect class="bess-kpi-card" x="560" y="206" width="172" height="70" />
+              <text class="bess-kpi-label" x="576" y="231">Scenario uplift</text>
+              <text class="bess-kpi-value" x="576" y="253">€20.32</text>
+              <text class="bess-kpi-note" x="576" y="273">omie_20241015</text>
+            </g>
+<g>
+              <rect class="bess-kpi-card" x="560" y="284" width="172" height="70" />
+              <text class="bess-kpi-label" x="576" y="309">Guardrails</text>
+              <text class="bess-kpi-value" x="576" y="331">0 breaches</text>
+              <text class="bess-kpi-note" x="576" y="351">0 downside days</text>
+            </g>
+          </svg>
+          </div>
+          <figcaption>Figure 1. Customer-facing BESS dispatch readout. Price, battery action, SOC, and commercial guardrails are separated into one auditable day-ahead benchmark view.</figcaption>
+        </figure>
+<h3>2. Optimizer team readout</h3>
+<p>This result is designed to answer the questions a battery optimizer team will ask before trusting a challenger: whether the baseline is explicit, whether the improvement survives replay, whether weak cases remain visible, and whether the evidence is tied to public artifacts.</p>
+<figure class="result-paper-table result-contract-table bess-customer-readout-table" id="table-1">
+          <div class="result-table-wrap">
+            <table class="result-table">
+              <thead>
+                <tr>
+                  <th>Buyer question</th>
+                  <th>Published evidence</th>
+                  <th>Why it matters</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Can it improve a named commercial baseline?</td>
+                  <td>72.544 → 48.087 score, 33.714% relative reduction, €20.20/day mean gross uplift</td>
+                  <td>The claim is anchored to the quantile dispatch baseline, not to the perfect-foresight oracle.</td>
+                </tr>
+                <tr>
+                  <td>Does the candidate stay feasible?</td>
+                  <td>0 constraint breaches, exact replay status, terminal SOC and simultaneous-power checks</td>
+                  <td>A challenger is only useful if it cannot win by breaking dispatch or battery constraints.</td>
+                </tr>
+                <tr>
+                  <td>Are weak cases still visible?</td>
+                  <td>8 frozen scenarios across 3 splits, including stress-tail rows and zero-uplift cases</td>
+                  <td>The aggregate result does not hide flat or weaker days that an optimizer team will want to inspect.</td>
+                </tr>
+                <tr>
+                  <td>Can the result be replayed from artifacts?</td>
+                  <td>accepted_candidate.py, comparison rows, dispatch trace, score trace, and replay checks</td>
+                  <td>The pre-sell asset is an auditable benchmark surface, not a slide-only performance claim.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <figcaption>Table 1. Buyer-facing readout for optimizer teams reviewing the Iberian BESS challenger.</figcaption>
+        </figure>
+<h3>3. Evaluation contract</h3>
 <p>The public benchmark is the Iberian BESS Policy Challenge v0.1. It compares the accepted policy against commercial baselines and a perfect-foresight LP upper bound. The oracle is not a sales baseline; it is the remaining headroom under the same simplified physical model.</p>
-<h3>Result</h3>
+<figure class="result-paper-table result-contract-table bess-contract-table" id="table-2">
+          <div class="result-table-wrap">
+            <table class="result-table">
+              <thead>
+                <tr>
+                  <th>Field</th>
+                  <th>Public contract</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Market scope</td>
+                  <td>OMIE day-ahead · Iberia · 24 hourly decisions</td>
+                </tr>
+                <tr>
+                  <td>Asset</td>
+                  <td>single 1 MW / 4 MWh battery</td>
+                </tr>
+                <tr>
+                  <td>Scenario coverage</td>
+                  <td>8 frozen scenarios across development, public-test, and stress-tail splits</td>
+                </tr>
+                <tr>
+                  <td>Primary comparison</td>
+                  <td><code>quantile_dispatch_baseline</code></td>
+                </tr>
+                <tr>
+                  <td>Oracle role</td>
+                  <td><code>perfect_foresight_lp_upper_bound</code> is an upper-bound diagnostic, not the commercial baseline</td>
+                </tr>
+                <tr>
+                  <td>Guardrails</td>
+                  <td>terminal SOC, feasibility, simultaneous power, split coverage, and zero constraint breaches</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <figcaption>Table 2. Frozen public contract used for the Iberian BESS result.</figcaption>
+        </figure>
+<h3>4. Commercial baseline result</h3>
 <p>The seed quantile baseline scored 72.544043. The accepted policy portfolio scored 48.086813, a reduction of 24.45723 score units (33.71363%).</p>
-<p>The accepted policy produced 20.197299 EUR/day average uplift against the quantile comparison baseline, with 0.0 constraint breaches and a downside rate of 0.0.</p>
-<h3>What Changed</h3>
+<p>Across the eight frozen scenarios for the single 1 MW / 4 MWh battery, the accepted policy produced 20.197299 EUR/day mean gross simulated dispatch-profit uplift against the quantile comparison baseline, with 0.0 constraint breaches and a downside rate of 0.0. This uplift is before the degradation-cost proxy; the cycle-adjusted margin reports that proxy separately. The benchmark excludes intraday and reserve revenues, imbalance settlement, taxes, grid and portfolio effects, and production bidding constraints.</p>
+<figure class="result-primer-card result-paper-figure bess-inline-figure bess-commercial-figure" id="fig-2">
+<div class="bess-figure-scroll">
+          <svg class="result-primer-svg bess-paper-svg" viewBox="0 0 560 250" role="img" aria-label="Commercial and risk metrics for the accepted BESS policy.">
+            <text class="result-axis-label result-figure-title" x="62" y="36">Accepted policy readout</text>
+<g>
+              <rect class="bess-metric-cell" x="62" y="52" width="136" height="72" />
+              <text class="bess-paper-label" x="76" y="76">Mean gross uplift vs quantile</text>
+              <text class="bess-paper-value" x="76" y="101">€20.20</text>
+              <text class="bess-paper-note" x="76" y="122">before degradation proxy</text>
+            </g>
+<g>
+              <rect class="bess-metric-cell" x="226" y="52" width="136" height="72" />
+              <text class="bess-paper-label" x="240" y="76">Cycle-adjusted margin</text>
+              <text class="bess-paper-value" x="240" y="101">€206.48</text>
+              <text class="bess-paper-note" x="240" y="122">after degradation cost</text>
+            </g>
+<g>
+              <rect class="bess-metric-cell" x="390" y="52" width="136" height="72" />
+              <text class="bess-paper-label" x="404" y="76">Mean regret to oracle</text>
+              <text class="bess-paper-value" x="404" y="101">€27.57</text>
+              <text class="bess-paper-note" x="404" y="122">remaining headroom</text>
+            </g>
+<g>
+              <rect class="bess-metric-cell" x="62" y="148" width="136" height="72" />
+              <text class="bess-paper-label" x="76" y="172">p95 regret</text>
+              <text class="bess-paper-value" x="76" y="197">€55.95</text>
+              <text class="bess-paper-note" x="76" y="218">tail diagnostic</text>
+            </g>
+<g>
+              <rect class="bess-metric-cell" x="226" y="148" width="136" height="72" />
+              <text class="bess-paper-label" x="240" y="172">Downside rate</text>
+              <text class="bess-paper-value" x="240" y="197">0.000%</text>
+              <text class="bess-paper-note" x="240" y="218">vs primary baseline</text>
+            </g>
+<g>
+              <rect class="bess-metric-cell" x="390" y="148" width="136" height="72" />
+              <text class="bess-paper-label" x="404" y="172">Constraint breaches</text>
+              <text class="bess-paper-value" x="404" y="197">0</text>
+              <text class="bess-paper-note" x="404" y="218">hard guardrail</text>
+            </g>
+          </svg>
+          </div>
+          <figcaption>Figure 2. Commercial and risk readout for the accepted policy. The page leads with the primary baseline uplift and keeps oracle regret and constraints in the same evidence block.</figcaption>
+        </figure>
+<figure class="result-paper-table bess-scenario-table" id="table-3">
+          <div class="result-table-wrap">
+            <table class="result-table">
+              <thead>
+                <tr>
+                  <th>Scenario</th>
+                  <th>Split</th>
+                  <th>Shape</th>
+                  <th>Uplift</th>
+                  <th>Regret</th>
+                  <th>Oracle capture</th>
+                  <th>Health</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>omie_20240115</code></td>
+                  <td>development</td>
+                  <td>winter, medium_spread</td>
+                  <td>€43.10</td>
+                  <td>€27.75</td>
+                  <td>74.930%</td>
+                  <td>clean</td>
+                </tr>
+                <tr>
+                  <td><code>omie_20240415</code></td>
+                  <td>development</td>
+                  <td>spring, near_zero_or_negative_prices, low_spread</td>
+                  <td>€17.72</td>
+                  <td>€6.33</td>
+                  <td>90.708%</td>
+                  <td>clean</td>
+                </tr>
+                <tr>
+                  <td><code>omie_20240715</code></td>
+                  <td>development</td>
+                  <td>summer, high_spread</td>
+                  <td>€0.00</td>
+                  <td>€61.55</td>
+                  <td>83.919%</td>
+                  <td>clean</td>
+                </tr>
+                <tr>
+                  <td><code>omie_20241015</code></td>
+                  <td>public_test</td>
+                  <td>autumn, medium_spread</td>
+                  <td>€20.32</td>
+                  <td>€20.96</td>
+                  <td>87.600%</td>
+                  <td>clean</td>
+                </tr>
+                <tr>
+                  <td><code>omie_20250115</code></td>
+                  <td>stress_tail</td>
+                  <td>winter, extreme_price_spike, high_spread</td>
+                  <td>€0.00</td>
+                  <td>€11.18</td>
+                  <td>95.843%</td>
+                  <td>clean</td>
+                </tr>
+                <tr>
+                  <td><code>omie_20250415</code></td>
+                  <td>public_test</td>
+                  <td>spring, near_zero_or_negative_prices, low_spread</td>
+                  <td>€28.27</td>
+                  <td>€25.47</td>
+                  <td>84.965%</td>
+                  <td>clean</td>
+                </tr>
+                <tr>
+                  <td><code>omie_20250715</code></td>
+                  <td>public_test</td>
+                  <td>summer, high_spread</td>
+                  <td>€17.19</td>
+                  <td>€45.55</td>
+                  <td>86.833%</td>
+                  <td>clean</td>
+                </tr>
+                <tr>
+                  <td><code>omie_20250915</code></td>
+                  <td>stress_tail</td>
+                  <td>late_summer, high_spread</td>
+                  <td>€34.99</td>
+                  <td>€21.78</td>
+                  <td>94.959%</td>
+                  <td>clean</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <figcaption>Table 3. Scenario-level evidence. Zero uplift cases are retained because they are part of the public benchmark contract.</figcaption>
+        </figure>
+<h3>5. Accepted policy</h3>
 <p>The accepted policy is a small deterministic portfolio. It evaluates several valid dispatch heuristics on the same daily price horizon and selects the highest-margin valid plan. This is intentionally simple: the pre-sell point is not to replace a client optimizer, but to show that an offline policy challenger can find auditable improvement candidates under a fixed contract.</p>
-<h3>Tail Behavior</h3>
+<figure class="result-paper-code result-code-figure bess-code-figure" id="listing-1">
+          <pre><code><span class="code-line"><span class="line-no">1</span><span class="line-src"><span class="py-string">&quot;&quot;&quot;Accepted storage_arbitrage_es policy used <span class="py-keyword">for</span> the public pre-sell proof.&quot;&quot;&quot;</span></span></span><span class="code-line"><span class="line-no">2</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">3</span><span class="line-src">from __future__ import annotations</span></span><span class="code-line"><span class="line-no">4</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">5</span><span class="line-src">from domains.storage_arbitrage_es.evaluator import (</span></span><span class="code-line"><span class="line-no">6</span><span class="line-src">    build_conservative_cycle_baseline,</span></span><span class="code-line"><span class="line-no">7</span><span class="line-src">    build_quantile_baseline,</span></span><span class="code-line"><span class="line-no">8</span><span class="line-src">    build_spread_tb4_baseline,</span></span><span class="code-line"><span class="line-no">9</span><span class="line-src">    simulate_dispatch,</span></span><span class="code-line"><span class="line-no">10</span><span class="line-src">)</span></span><span class="code-line"><span class="line-no">11</span><span class="line-src">from domains.storage_arbitrage_es.program import DispatchContext, DispatchPlan</span></span><span class="code-line"><span class="line-no">12</span><span class="line-src">from domains.storage_arbitrage_es.program import dispatch_policy as checked_in_policy</span></span><span class="code-line"><span class="line-no">13</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">14</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">15</span><span class="line-src"><span class="py-keyword">def</span> dispatch_policy(ctx: DispatchContext) -&gt; DispatchPlan:</span></span><span class="code-line"><span class="line-no">16</span><span class="line-src">    <span class="py-string">&quot;&quot;&quot;Choose the highest-margin valid plan from a small deterministic policy portfolio.&quot;&quot;&quot;</span></span></span><span class="code-line"><span class="line-no">17</span><span class="line-src">    candidates: <span class="py-builtin">list</span>[tuple[<span class="py-builtin">float</span>, str, DispatchPlan]] = []</span></span><span class="code-line"><span class="line-no">18</span><span class="line-src">    <span class="py-keyword">for</span> label, builder <span class="py-keyword">in</span> (</span></span><span class="code-line"><span class="line-no">19</span><span class="line-src">        (&quot;quantile&quot;, build_quantile_baseline),</span></span><span class="code-line"><span class="line-no">20</span><span class="line-src">        (&quot;spread_tb4&quot;, build_spread_tb4_baseline),</span></span><span class="code-line"><span class="line-no">21</span><span class="line-src">        (&quot;conservative&quot;, build_conservative_cycle_baseline),</span></span><span class="code-line"><span class="line-no">22</span><span class="line-src">    ):</span></span><span class="code-line"><span class="line-no">23</span><span class="line-src">        plan = builder(ctx.prices_eur_per_mwh, ctx.spec)</span></span><span class="code-line"><span class="line-no">24</span><span class="line-src">        simulation = simulate_dispatch(ctx.prices_eur_per_mwh, plan, ctx.spec)</span></span><span class="code-line"><span class="line-no">25</span><span class="line-src">        <span class="py-keyword">if</span> simulation.valid:</span></span><span class="code-line"><span class="line-no">26</span><span class="line-src">            candidates.append((<span class="py-builtin">float</span>(simulation.profit_eur), label, plan))</span></span><span class="code-line"><span class="line-no">27</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">28</span><span class="line-src">    checked_plan = checked_in_policy(ctx)</span></span><span class="code-line"><span class="line-no">29</span><span class="line-src">    checked_simulation = simulate_dispatch(ctx.prices_eur_per_mwh, checked_plan, ctx.spec)</span></span><span class="code-line"><span class="line-no">30</span><span class="line-src">    <span class="py-keyword">if</span> checked_simulation.valid:</span></span><span class="code-line"><span class="line-no">31</span><span class="line-src">        candidates.append((<span class="py-builtin">float</span>(checked_simulation.profit_eur), &quot;checked_in&quot;, checked_plan))</span></span><span class="code-line"><span class="line-no">32</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">33</span><span class="line-src">    <span class="py-keyword">if</span> not candidates:</span></span><span class="code-line"><span class="line-no">34</span><span class="line-src">        <span class="py-keyword">return</span> build_quantile_baseline(ctx.prices_eur_per_mwh, ctx.spec)</span></span><span class="code-line"><span class="line-no">35</span><span class="line-src"> </span></span><span class="code-line"><span class="line-no">36</span><span class="line-src">    candidates.sort(key=<span class="py-keyword">lambda</span> item: (item[0], item[1]), reverse=<span class="py-constant">True</span>)</span></span><span class="code-line"><span class="line-no">37</span><span class="line-src">    <span class="py-keyword">return</span> candidates[0][2]</span></span></code></pre>
+          <figcaption>Listing 1. Accepted deterministic policy portfolio. The candidate evaluates checked-in dispatch builders under the same simulator and returns the highest-margin valid plan. <a href="./artifacts/accepted_candidate.py">Full executable artifact</a>.</figcaption>
+        </figure>
+<figure class="result-primer-card result-paper-figure bess-inline-figure bess-score-figure result-objective-figure" id="fig-3">
+<div class="bess-figure-scroll">
+          <svg class="result-primer-svg result-objective-svg bess-paper-svg" viewBox="0 0 560 328" role="img" aria-label="BESS score trace for the frozen public chain.">
+            <text class="result-axis-label result-figure-title" x="82" y="34">Frozen public score trace (lower is better)</text>
+            <g class="result-objective-legend" transform="translate(82 52)">
+              <g><circle class="result-legend-baseline-dot" cx="0" cy="0" r="3.5" /><text x="14" y="4">seed baseline</text></g>
+              <g transform="translate(132 0)"><line class="result-objective-legend-best" x1="0" y1="0" x2="18" y2="0" /><text x="26" y="4">replayed objective</text></g>
+              <g transform="translate(306 0)"><circle class="result-legend-accepted-dot" cx="0" cy="0" r="4" /><text x="16" y="4">accepted portfolio</text></g>
+            </g>
+            <g>
+              <path class="result-objective-grid" d="M82 244.0H512" />
+              <text class="result-axis-tick result-objective-y-label" x="64" y="248.0" text-anchor="end">40</text>
+            </g>
+<g>
+              <path class="result-objective-grid" d="M82 163.0H512" />
+              <text class="result-axis-tick result-objective-y-label" x="64" y="167.0" text-anchor="end">65</text>
+            </g>
+<g>
+              <path class="result-objective-grid" d="M82 82.0H512" />
+              <text class="result-axis-tick result-objective-y-label" x="64" y="86.0" text-anchor="end">90</text>
+            </g>
+            <path class="result-rule-paper-axis" d="M82 82V244H512" />
+            <g>
+              <path class="result-objective-x-tick" d="M82.0 244V249.0" />
+              <text class="result-axis-tick" x="82.0" y="268" text-anchor="start">seed baseline</text>
+            </g>
+<g>
+              <path class="result-objective-x-tick" d="M297.0 244V249.0" />
+              <text class="result-axis-tick" x="297.0" y="268" text-anchor="middle">checked-in policy</text>
+            </g>
+<g>
+              <path class="result-objective-x-tick" d="M512.0 244V249.0" />
+              <text class="result-axis-tick" x="512.0" y="268" text-anchor="end">accepted portfolio</text>
+            </g>
+            <text class="result-axis-label result-objective-y-title" x="36" y="163.0" transform="rotate(-90 36 163.0)">acceptance score</text>
+            <path class="result-objective-best bess-score-line" d="M82.0 138.6 L297.0 107.8 L512.0 217.8" />
+            <g class="bess-score-baseline">
+              <circle cx="82.0" cy="138.6" r="4.5" />
+              <text class="bess-paper-value bess-score-label" x="82.0" y="125.6" text-anchor="middle">72.5</text>
+            </g>
+<g class="bess-score-neutral">
+              <circle cx="297.0" cy="107.8" r="4.5" />
+              <text class="bess-paper-value bess-score-label" x="297.0" y="94.8" text-anchor="middle">82.0</text>
+            </g>
+<g class="bess-score-accepted">
+              <circle cx="512.0" cy="217.8" r="5.2" />
+              <text class="bess-paper-value bess-score-label" x="512.0" y="204.8" text-anchor="middle">48.1</text>
+            </g>
+          </svg>
+          </div>
+          <figcaption>Figure 3. Score trace for the frozen public chain. The accepted policy portfolio is selected by the replayed lower-is-better objective.</figcaption>
+        </figure>
+<h3>6. Tail behavior</h3>
 <p>The comparison bundle keeps every scenario visible, including stress-tail days and weaker cases. The public claim uses aggregate uplift together with p5/p95 uplift, regret, cycle-adjusted margin, and constraint health.</p>
-<h3>Limitations</h3>
+<figure class="result-primer-card result-paper-figure bess-inline-figure bess-tail-dispatch-figure" id="fig-4">
+<div class="bess-figure-scroll">
+          <svg class="result-primer-svg bess-paper-svg bess-dispatch-svg" viewBox="0 0 760 430" role="img" aria-label="Stress-tail BESS dispatch trace readout.">
+            <text class="result-axis-label result-figure-title" x="76" y="34">omie_20250115</text>
+            <text class="bess-paper-note" x="666" y="34" text-anchor="end">2025-01-15 · stress_tail</text>
+            <text class="bess-paper-note" x="76" y="56">uplift €0.00 · regret €11.18 · clean constraints</text>
+            <g class="bess-dispatch-legend" transform="translate(76 66)">
+              <g><line class="bess-price-line" x1="0" y1="0" x2="18" y2="0" /><text x="26" y="4">price</text></g>
+              <g transform="translate(84 0)"><line class="bess-soc-line" x1="0" y1="0" x2="18" y2="0" /><text x="26" y="4">SOC</text></g>
+              <g transform="translate(156 0)"><rect class="bess-charge-bar" x="0" y="-8" width="10" height="12" /><text x="18" y="4">charge</text></g>
+              <g transform="translate(244 0)"><rect class="bess-discharge-bar" x="0" y="-8" width="10" height="12" /><text x="18" y="4">discharge</text></g>
+            </g>
+            <text class="bess-panel-title" x="76" y="98">OMIE day-ahead price</text>
+            <g>
+              <path class="bess-chart-grid" d="M76 194.0H666" />
+              <text class="bess-axis-label" x="62" y="198.0" text-anchor="end">0</text>
+            </g>
+<g>
+              <path class="bess-chart-grid" d="M76 151.0H666" />
+              <text class="bess-axis-label" x="62" y="155.0" text-anchor="end">113</text>
+            </g>
+<g>
+              <path class="bess-chart-grid" d="M76 108.0H666" />
+              <text class="bess-axis-label" x="62" y="112.0" text-anchor="end">225</text>
+            </g>
+            <path class="bess-axis" d="M76 108V194H666" />
+            <path class="bess-price-line" d="M76.0 143.4 L101.7 147.2 L127.3 148.7 L153.0 148.7 L178.6 148.8 L204.3 148.8 L229.9 142.2 L255.6 130.0 L281.2 108.0 L306.9 132.8 L332.5 140.9 L358.2 143.3 L383.8 145.8 L409.5 147.2 L435.1 149.8 L460.8 149.0 L486.4 142.4 L512.1 139.3 L537.7 130.0 L563.4 125.6 L589.0 129.5 L614.7 136.3 L640.3 141.0 L666.0 146.6" />
+            <text class="bess-axis-title" x="30" y="151" transform="rotate(-90 30 151)">EUR/MWh</text>
+            <text class="bess-panel-title" x="76" y="230">Accepted battery action</text>
+            <path class="bess-axis" d="M76 244V366H666" />
+            <path class="bess-dispatch-zero" d="M76 308H666" />
+            <rect class="bess-charge-bar" x="91.9" y="308.0" width="19.6" height="34.0" />
+<rect class="bess-charge-bar" x="117.5" y="308.0" width="19.6" height="34.0" />
+<rect class="bess-charge-bar" x="143.2" y="308.0" width="19.6" height="3.6" />
+<rect class="bess-discharge-bar" x="245.8" y="274.0" width="19.6" height="34.0" />
+<rect class="bess-discharge-bar" x="271.4" y="274.0" width="19.6" height="34.0" />
+<rect class="bess-discharge-bar" x="297.1" y="274.0" width="19.6" height="34.0" />
+<rect class="bess-charge-bar" x="399.7" y="308.0" width="19.6" height="34.0" />
+<rect class="bess-charge-bar" x="425.3" y="308.0" width="19.6" height="34.0" />
+<rect class="bess-charge-bar" x="451.0" y="308.0" width="19.6" height="34.0" />
+<rect class="bess-discharge-bar" x="527.9" y="274.0" width="19.6" height="34.0" />
+<rect class="bess-discharge-bar" x="553.6" y="274.0" width="19.6" height="34.0" />
+<rect class="bess-discharge-bar" x="579.3" y="274.0" width="19.6" height="34.0" />
+<rect class="bess-discharge-bar" x="604.9" y="294.0" width="19.6" height="14.0" />
+<rect class="bess-charge-bar" x="630.6" y="308.0" width="19.6" height="34.0" />
+<rect class="bess-charge-bar" x="656.2" y="308.0" width="19.6" height="34.0" />
+            <g>
+              <path class="bess-axis-tick" d="M76.0 366V371" />
+              <text class="bess-axis-label" x="76.0" y="388" text-anchor="middle">0</text>
+            </g>
+<g>
+              <path class="bess-axis-tick" d="M229.9 366V371" />
+              <text class="bess-axis-label" x="229.9" y="388" text-anchor="middle">6</text>
+            </g>
+<g>
+              <path class="bess-axis-tick" d="M383.8 366V371" />
+              <text class="bess-axis-label" x="383.8" y="388" text-anchor="middle">12</text>
+            </g>
+<g>
+              <path class="bess-axis-tick" d="M537.7 366V371" />
+              <text class="bess-axis-label" x="537.7" y="388" text-anchor="middle">18</text>
+            </g>
+<g>
+              <path class="bess-axis-tick" d="M666.0 366V371" />
+              <text class="bess-axis-label" x="666.0" y="388" text-anchor="middle">23</text>
+            </g>
+            <g>
+              <path class="bess-soc-tick" d="M666 366.0H671" />
+              <text class="bess-axis-label bess-soc-label" x="678" y="370.0">0</text>
+            </g>
+<g>
+              <path class="bess-soc-tick" d="M666 305.0H671" />
+              <text class="bess-axis-label bess-soc-label" x="678" y="309.0">2</text>
+            </g>
+<g>
+              <path class="bess-soc-tick" d="M666 244.0H671" />
+              <text class="bess-axis-label bess-soc-label" x="678" y="248.0">4</text>
+            </g>
+            <path class="bess-soc-line" d="M76.0 305.0 L101.7 276.0 L127.3 247.1 L153.0 244.0 L178.6 244.0 L204.3 244.0 L229.9 244.0 L255.6 276.1 L281.2 308.2 L306.9 340.3 L332.5 340.3 L358.2 340.3 L383.8 340.3 L409.5 311.3 L435.1 282.4 L460.8 253.4 L486.4 253.4 L512.1 253.4 L537.7 285.5 L563.4 317.6 L589.0 349.7 L614.7 362.9 L640.3 334.0 L666.0 305.0" />
+            <text class="bess-axis-title" x="371" y="410" text-anchor="middle">hour of day</text>
+            <text class="bess-axis-title" x="30" y="305" transform="rotate(-90 30 305)">MW action</text>
+            <text class="bess-axis-title bess-soc-label" x="666" y="234" text-anchor="end">SOC MWh</text>
+          </svg>
+          </div>
+          <figcaption>Figure 4. Stress-tail dispatch trace readout for the 1 MW / 4 MWh battery. The visualization is backed by the public dispatch_trace.json artifact and keeps the weak-case row visible.</figcaption>
+        </figure>
+<figure class="result-paper-table bess-robustness-table" id="table-4">
+          <div class="result-table-wrap">
+            <table class="result-table">
+              <thead>
+                <tr>
+                  <th>Check</th>
+                  <th>Result</th>
+                  <th>Why it matters</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Exact replay</td>
+                  <td>pass</td>
+                  <td>The accepted candidate reproduces the published score from the checked-in artifact.</td>
+                </tr>
+                <tr>
+                  <td>Constraint breaches</td>
+                  <td>0</td>
+                  <td>No scenario is allowed to win by violating battery or dispatch constraints.</td>
+                </tr>
+                <tr>
+                  <td>Baseline shortfall</td>
+                  <td>€0.00</td>
+                  <td>The public aggregate does not hide a penalty against the primary comparison baseline.</td>
+                </tr>
+                <tr>
+                  <td>Forecast-error smoke</td>
+                  <td>valid</td>
+                  <td>A deterministic 8% perturbation suite is included as a realism smoke, separate from the perfect-foresight claim.</td>
+                </tr>
+                <tr>
+                  <td>Worst smoke cost</td>
+                  <td>€12.67</td>
+                  <td>Largest positive cost observed in the small forecast-error smoke subset.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <figcaption>Table 4. Replay and robustness checks published with the result bundle.</figcaption>
+        </figure>
+<h3>7. Limitations</h3>
 <p>This is an offline day-ahead benchmark over frozen scenarios. It is not production trading, not a live bidding system, not an official market benchmark, and does not model intraday, reserves, imbalance settlement, taxes, grid constraints, or portfolio effects.</p>
-<h3>Reproducibility</h3>
-<p>The bundle includes the accepted candidate, evaluation contract, comparison rows, dispatch trace, replay data, forecast-error smoke output, metrics, score trace, and provenance. Public-claim guardrails validate that required artifacts exist, constraints are clean, limitations are stated, and replay evidence is present.</p>
-          </article>
-        </section>
-
-        
-
-        <section class="result-snapshot" aria-label="Result summary">
-            <div class="result-snapshot-primary">
-              <span>Oracle capture ratio</span>
-              <strong>87.470%</strong>
-              <p>Share of oracle value captured under the frozen dispatch scenarios.</p>
-            </div>
-            <div class="result-snapshot-cards">
-              <div>
-                <span>Objective reduction</span>
-                <strong>33.714%</strong>
-              </div>
-              <div>
-                <span>Mean regret</span>
-                <strong>€27.57</strong>
-              </div>
-              <div>
-                <span>Acceptance objective</span>
-                <strong>48.087</strong>
-              </div>
-            </div>
-          </section>
-
-        <section class="result-assets" aria-label="Public result figures">
-<figure class="result-figure">
-            <img src="./assets/objective-curve.svg" alt="">
-            <figcaption>Seed, checked-in, and accepted policy scores under the v0.1 contract. Lower is better.</figcaption>
-          </figure>
-<figure class="result-figure">
-            <img src="./assets/baseline-comparison.svg" alt="">
-            <figcaption>Accepted policy readout across uplift, regret, cycle-adjusted margin, downside, and constraint breaches.</figcaption>
-          </figure>
-<figure class="result-figure">
-            <img src="./assets/dispatch-readout.svg" alt="">
-            <figcaption>Scenario-level dispatch trace: price, charge/discharge action, and state of charge.</figcaption>
-          </figure>
-        </section>
-
-        <section class="result-evidence" aria-label="Result evidence">
-          <div class="result-evidence-heading">
-            <p class="eyebrow">Evidence</p>
-            <h2>Acceptance score and observable behavior.</h2>
-            <p>The score is a weighted euro-like benchmark objective over regret, baseline shortfall, degradation proxy, downside rate, and constraint penalties. Public sales claims should use it with the comparison and dispatch artifacts.</p>
-          </div>
-          <div class="result-metric-grid">
-            <div class="result-metric-card">
-              <span>Oracle capture ratio</span>
-              <strong>87.470%</strong>
-            </div>
-            <div class="result-metric-card">
-              <span>Mean regret</span>
-              <strong>€27.57</strong>
-            </div>
-            <div class="result-metric-card">
-              <span>Score reduction</span>
-              <strong>24.457</strong>
-            </div>
-            <div class="result-metric-card">
-              <span>Objective reduction</span>
-              <strong>33.714%</strong>
+<h3>8. Reproducibility</h3>
+<p>The bundle includes the accepted candidate, evaluation contract, comparison rows, dispatch trace, replay data, forecast-error smoke output, metrics, score trace, and provenance. These checked-in artifacts provide the public reproducibility surface while excluding non-public operational material.</p>
+<p>The source bundle is available in the <a href="https://github.com/Gother-Labs/gother-labs-results/tree/main/results/iberian-bess-policy-challenge" target="_blank" rel="noreferrer">Göther Labs results repository</a>.</p>
+<h3>9. Private challenge</h3>
+<p>The natural next step is not a generic demo. It is a small private policy challenge using the client's current baseline, approved scenarios, battery contract, and operational guardrails.</p>
+<section class="bess-private-challenge" aria-label="Private BESS policy challenge next step">
+          <div class="bess-private-challenge-copy">
+            <p class="eyebrow">Next commercial step</p>
+            <h4>Turn this public replay into a private baseline challenge.</h4>
+            <p>Bring the battery spec, current dispatch policy or comparison baseline, approved scenarios, and hard constraints. We return a replayable decision pack: aggregate uplift, weak-case rows, dispatch traces, replay checks, limitations, and a recommendation on whether there is enough signal to continue.</p>
+            <div class="bess-private-challenge-actions">
+              <a href="../../evolther/bess-policy-challenger/">Review the offer</a>
+              <a href="../../contact/">Start a private challenge</a>
             </div>
           </div>
-          <div class="result-data-grid result-data-grid-1">
+          <div class="bess-private-challenge-proof" aria-label="Public proof carried into the private challenge">
 <div>
-              <h3>Dispatch readout</h3>
-              <div class="result-table-wrap">
-          <table class="result-table">
-            <tbody>
-              <tr>
-                <th>Oracle capture ratio</th>
-                <td>87.470%</td>
-              </tr>
-              <tr>
-                <th>Mean regret</th>
-                <td>€27.57</td>
-              </tr>
-              <tr>
-                <th>Dispatch trace</th>
-                <td><a href="./artifacts/dispatch_trace.json">Open JSON artifact</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+              <span>Public proof</span>
+              <strong>33.714% relative score reduction</strong>
+              <small>quantile baseline → accepted</small>
+            </div>
+<div>
+              <span>Guardrail</span>
+              <strong>0 breaches</strong>
+              <small>exact replay constraint check</small>
+            </div>
+<div>
+              <span>Commercial readout</span>
+              <strong>€20.20/day</strong>
+              <small>mean gross uplift vs quantile · before degradation</small>
             </div>
           </div>
         </section>
-
-        <section class="result-code" aria-label="Accepted candidate code">
-          <div class="result-code-heading">
-            <p class="eyebrow">Accepted implementation</p>
-            <h2>Replayable candidate code.</h2>
-          </div>
-          <pre><code>&quot;&quot;&quot;Accepted storage_arbitrage_es policy used for the public pre-sell proof.&quot;&quot;&quot;
-
-from __future__ import annotations
-
-from domains.storage_arbitrage_es.evaluator import (
-    build_conservative_cycle_baseline,
-    build_quantile_baseline,
-    build_spread_tb4_baseline,
-    simulate_dispatch,
-)
-from domains.storage_arbitrage_es.program import DispatchContext, DispatchPlan
-from domains.storage_arbitrage_es.program import dispatch_policy as checked_in_policy
-
-
-def dispatch_policy(ctx: DispatchContext) -&gt; DispatchPlan:
-    &quot;&quot;&quot;Choose the highest-margin valid plan from a small deterministic policy portfolio.&quot;&quot;&quot;
-    candidates: list[tuple[float, str, DispatchPlan]] = []
-    for label, builder in (
-        (&quot;quantile&quot;, build_quantile_baseline),
-        (&quot;spread_tb4&quot;, build_spread_tb4_baseline),
-        (&quot;conservative&quot;, build_conservative_cycle_baseline),
-    ):
-        plan = builder(ctx.prices_eur_per_mwh, ctx.spec)
-        simulation = simulate_dispatch(ctx.prices_eur_per_mwh, plan, ctx.spec)
-        if simulation.valid:
-            candidates.append((float(simulation.profit_eur), label, plan))
-
-    checked_plan = checked_in_policy(ctx)
-    checked_simulation = simulate_dispatch(ctx.prices_eur_per_mwh, checked_plan, ctx.spec)
-    if checked_simulation.valid:
-        candidates.append((float(checked_simulation.profit_eur), &quot;checked_in&quot;, checked_plan))
-
-    if not candidates:
-        return build_quantile_baseline(ctx.prices_eur_per_mwh, ctx.spec)
-
-    candidates.sort(key=lambda item: (item[0], item[1]), reverse=True)
-    return candidates[0][2]</code></pre>
+          </article>
         </section>
       </main>
 
