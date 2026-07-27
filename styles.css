@@ -4178,3 +4178,565 @@ a {
     max-width: 100%;
   }
 }
+
+/* Approved Iberian BESS whitepaper presentation. */
+.bess-whitepaper-shell {
+  padding-top: clamp(3rem, 5.2vw, 4.8rem);
+}
+.bess-whitepaper .result-paper-table,
+.bess-whitepaper .result-contract-table {
+  width: min(100%, 56rem);
+}
+
+.bess-whitepaper .bess-customer-readout-table {
+  width: min(100%, 62rem);
+}
+
+.bess-whitepaper .bess-customer-readout-table .result-table th,
+.bess-whitepaper .bess-customer-readout-table .result-table td {
+  text-align: left;
+  vertical-align: top;
+}
+
+.bess-whitepaper .bess-customer-readout-table .result-table th:first-child,
+.bess-whitepaper .bess-customer-readout-table .result-table td:first-child {
+  width: 12.5rem;
+}
+
+.bess-whitepaper .bess-customer-readout-table .result-table th:nth-child(2),
+.bess-whitepaper .bess-customer-readout-table .result-table td:nth-child(2) {
+  width: 21rem;
+}
+
+.bess-whitepaper .result-paper-asset,
+.bess-whitepaper .bess-inline-figure {
+  width: min(100%, 62rem);
+}
+
+.bess-whitepaper .result-paper-code {
+  width: min(100%, 58rem);
+}
+
+.bess-whitepaper .result-table td code {
+  color: var(--text);
+  font-size: 0.92em;
+}
+
+.bess-private-challenge {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(18rem, 0.85fr);
+  gap: clamp(1.2rem, 3vw, 2.2rem);
+  margin: clamp(2.2rem, 4vw, 3.6rem) 0 0;
+  border: 1px solid color-mix(in srgb, var(--accent) 26%, var(--line));
+  border-radius: 8px;
+  padding: clamp(1.1rem, 2.4vw, 1.65rem);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--accent) 11%, transparent), transparent 48%),
+    color-mix(in srgb, var(--panel) 46%, var(--bg));
+}
+
+.bess-private-challenge-copy h4 {
+  max-width: 16ch;
+  margin: 0.36rem 0 0;
+  font-size: clamp(1.4rem, 2.35vw, 2rem);
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+}
+
+.bess-private-challenge-copy p:not(.eyebrow) {
+  max-width: 62ch;
+  margin: 1rem 0 0;
+  color: var(--muted-soft);
+  font-size: clamp(0.98rem, 1.25vw, 1.08rem);
+}
+
+.bess-private-challenge-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 1.25rem;
+}
+
+.bess-private-challenge-actions a {
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 54%, transparent);
+  color: var(--accent);
+  padding-bottom: 0.18rem;
+  font-weight: 620;
+  text-decoration: none;
+}
+
+.bess-private-challenge-proof {
+  display: grid;
+  align-self: stretch;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.bess-private-challenge-proof div {
+  padding: 0.8rem;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.bess-private-challenge-proof span,
+.bess-private-challenge-proof small {
+  display: block;
+  color: var(--muted);
+}
+
+.bess-private-challenge-proof span {
+  font-size: 0.68rem;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bess-private-challenge-proof strong {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--text);
+  font-size: clamp(1.05rem, 1.65vw, 1.28rem);
+  letter-spacing: -0.02em;
+}
+
+.bess-private-challenge-proof small {
+  margin-top: 0.24rem;
+  font-size: 0.82rem;
+  line-height: 1.32;
+}
+
+.bess-paper-svg {
+  color: var(--text);
+  --bess-price: color-mix(in srgb, var(--accent) 86%, transparent);
+  --bess-soc: color-mix(in srgb, var(--text) 64%, transparent);
+  --bess-charge: color-mix(in srgb, var(--text) 34%, transparent);
+  --bess-discharge: color-mix(in srgb, var(--accent) 78%, transparent);
+  --bess-neutral: color-mix(in srgb, var(--muted-soft) 76%, transparent);
+  --bess-axis: color-mix(in srgb, var(--text) 52%, transparent);
+  --bess-grid: color-mix(in srgb, var(--text) 13%, transparent);
+  --bess-zero: color-mix(in srgb, var(--text) 26%, transparent);
+}
+
+.bess-dispatch-svg {
+  overflow: visible;
+}
+
+.bess-axis,
+.bess-dispatch-zero {
+  fill: none;
+  stroke: var(--bess-axis);
+  stroke-linecap: round;
+  stroke-width: 1.15;
+}
+
+.bess-dispatch-zero {
+  stroke: var(--bess-zero);
+  stroke-dasharray: 5 8;
+}
+
+.bess-chart-grid {
+  fill: none;
+  stroke: var(--bess-grid);
+  stroke-width: 1;
+}
+
+.bess-axis-label,
+.bess-axis-title,
+.bess-panel-title,
+.bess-dispatch-legend text {
+  fill: var(--muted-soft);
+  font-family: Inter, Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0;
+}
+
+.bess-panel-title {
+  fill: var(--text);
+  font-size: 11px;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bess-axis-title {
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.bess-axis-tick {
+  stroke: var(--bess-axis);
+  stroke-width: 1;
+}
+
+.bess-soc-tick {
+  stroke: var(--bess-soc);
+  stroke-width: 1;
+}
+
+.bess-soc-label {
+  fill: var(--bess-soc);
+}
+
+.bess-price-line,
+.bess-soc-line {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.bess-price-line {
+  stroke: var(--bess-price);
+  stroke-width: 2.5;
+}
+
+.bess-soc-line {
+  stroke: var(--bess-soc);
+  stroke-dasharray: 6 7;
+  stroke-width: 2.1;
+}
+
+.bess-charge-bar {
+  fill: var(--bess-charge);
+}
+
+.bess-discharge-bar {
+  fill: var(--bess-discharge);
+}
+
+.bess-kpi-card {
+  fill: color-mix(in srgb, var(--line) 30%, transparent);
+  stroke: color-mix(in srgb, var(--text) 16%, transparent);
+  stroke-width: 1;
+}
+
+.bess-kpi-label {
+  fill: var(--muted);
+  font-family: Inter, Arial, sans-serif;
+  font-size: 9.5px;
+  font-weight: 760;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bess-kpi-value {
+  fill: var(--text);
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 15px;
+  font-weight: 760;
+  letter-spacing: 0;
+}
+
+.bess-kpi-note {
+  fill: var(--muted-soft);
+  font-family: Inter, Arial, sans-serif;
+  font-size: 9.5px;
+  letter-spacing: 0;
+}
+
+.bess-score-track,
+.bess-metric-cell {
+  fill: color-mix(in srgb, var(--line) 48%, transparent);
+  stroke: var(--line);
+  stroke-width: 1;
+}
+
+.bess-score-baseline {
+  fill: var(--bess-neutral);
+}
+
+.bess-score-accepted {
+  fill: var(--bess-discharge);
+}
+
+.bess-score-neutral {
+  fill: var(--bess-neutral);
+}
+
+.bess-score-line {
+  stroke: var(--bess-discharge);
+}
+
+.bess-score-label {
+  fill: var(--text);
+  font-size: 12px;
+}
+
+.bess-tail-dispatch-figure {
+  width: min(100%, 62rem);
+}
+
+.bess-paper-label {
+  fill: var(--muted);
+  font-family: Inter, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bess-paper-value {
+  fill: var(--text);
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 17px;
+  font-weight: 750;
+  letter-spacing: 0;
+}
+
+.bess-paper-callout {
+  fill: var(--bess-discharge);
+  font-family: Inter, Arial, sans-serif;
+  font-size: 30px;
+  font-weight: 820;
+  letter-spacing: 0;
+}
+
+.bess-paper-callout.secondary {
+  fill: var(--bess-neutral);
+}
+
+.bess-paper-note {
+  fill: var(--muted-soft);
+  font-family: Inter, Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0;
+}
+
+@media (max-width: 700px) {
+  .bess-whitepaper .result-paper-table,
+  .bess-whitepaper .result-contract-table,
+  .bess-whitepaper .bess-customer-readout-table {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .bess-private-challenge {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding: 1rem;
+  }
+
+  .bess-private-challenge-copy h4 {
+    max-width: 14ch;
+  }
+
+  .bess-private-challenge-actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .bess-private-challenge-proof {
+    grid-template-columns: 1fr;
+  }
+
+  .bess-whitepaper .result-paper-table .result-table,
+  .bess-whitepaper .result-contract-table .result-table {
+    width: 100%;
+    min-width: 0;
+    table-layout: fixed;
+  }
+
+  .bess-whitepaper .result-paper-table .result-table th,
+  .bess-whitepaper .result-paper-table .result-table td,
+  .bess-whitepaper .result-contract-table .result-table th,
+  .bess-whitepaper .result-contract-table .result-table td {
+    overflow-wrap: anywhere;
+    padding-right: 0.55rem;
+  }
+
+  .bess-whitepaper .result-contract-table .result-table th:first-child,
+  .bess-whitepaper .result-contract-table .result-table td:first-child {
+    width: 4.2rem;
+  }
+
+  .bess-whitepaper .bess-contract-table .result-table,
+  .bess-whitepaper .bess-contract-table .result-table thead,
+  .bess-whitepaper .bess-contract-table .result-table tbody,
+  .bess-whitepaper .bess-contract-table .result-table tr,
+  .bess-whitepaper .bess-contract-table .result-table td,
+  .bess-whitepaper .bess-scenario-table .result-table,
+  .bess-whitepaper .bess-scenario-table .result-table thead,
+  .bess-whitepaper .bess-scenario-table .result-table tbody,
+  .bess-whitepaper .bess-scenario-table .result-table tr,
+  .bess-whitepaper .bess-scenario-table .result-table td,
+  .bess-whitepaper .bess-robustness-table .result-table,
+  .bess-whitepaper .bess-robustness-table .result-table thead,
+  .bess-whitepaper .bess-robustness-table .result-table tbody,
+  .bess-whitepaper .bess-robustness-table .result-table tr,
+  .bess-whitepaper .bess-robustness-table .result-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .bess-whitepaper .bess-contract-table .result-table thead,
+  .bess-whitepaper .bess-scenario-table .result-table thead,
+  .bess-whitepaper .bess-robustness-table .result-table thead {
+    display: none;
+  }
+
+  .bess-whitepaper .bess-contract-table .result-table tr,
+  .bess-whitepaper .bess-scenario-table .result-table tr,
+  .bess-whitepaper .bess-robustness-table .result-table tr {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .bess-whitepaper .bess-contract-table .result-table td,
+  .bess-whitepaper .bess-scenario-table .result-table td,
+  .bess-whitepaper .bess-robustness-table .result-table td {
+    padding: 0.24rem 0;
+    border-bottom: 0;
+    font-size: 0.92rem;
+    line-height: 1.34;
+    text-align: left;
+  }
+
+  .bess-whitepaper .bess-contract-table .result-table td:first-child {
+    width: 100%;
+    margin-bottom: 0.18rem;
+    color: var(--muted);
+    font-family: Inter, Arial, sans-serif;
+    font-size: 0.67rem;
+    font-weight: 760;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .bess-whitepaper .bess-robustness-table .result-table td {
+    font-family: Inter, Arial, sans-serif;
+  }
+
+  .bess-whitepaper .bess-scenario-table .result-table td::before,
+  .bess-whitepaper .bess-robustness-table .result-table td::before {
+    display: block;
+    margin-bottom: 0.12rem;
+    color: var(--muted);
+    font-family: Inter, Arial, sans-serif;
+    font-size: 0.64rem;
+    font-weight: 740;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .bess-whitepaper .bess-scenario-table .result-table td:nth-child(1)::before {
+    content: "Scenario";
+  }
+
+  .bess-whitepaper .bess-scenario-table .result-table td:nth-child(2)::before {
+    content: "Split";
+  }
+
+  .bess-whitepaper .bess-scenario-table .result-table td:nth-child(3)::before {
+    content: "Shape";
+  }
+
+  .bess-whitepaper .bess-scenario-table .result-table td:nth-child(4)::before {
+    content: "Uplift";
+  }
+
+  .bess-whitepaper .bess-scenario-table .result-table td:nth-child(5)::before {
+    content: "Regret";
+  }
+
+  .bess-whitepaper .bess-scenario-table .result-table td:nth-child(6)::before {
+    content: "Oracle capture";
+  }
+
+  .bess-whitepaper .bess-scenario-table .result-table td:nth-child(7)::before {
+    content: "Health";
+  }
+
+  .bess-whitepaper .bess-robustness-table .result-table td:nth-child(1)::before {
+    content: "Check";
+  }
+
+  .bess-whitepaper .bess-robustness-table .result-table td:nth-child(2)::before {
+    content: "Result";
+  }
+
+  .bess-whitepaper .bess-robustness-table .result-table td:nth-child(3)::before {
+    content: "Why it matters";
+  }
+
+  .bess-whitepaper .bess-customer-readout-table .result-table,
+  .bess-whitepaper .bess-customer-readout-table .result-table thead,
+  .bess-whitepaper .bess-customer-readout-table .result-table tbody,
+  .bess-whitepaper .bess-customer-readout-table .result-table tr,
+  .bess-whitepaper .bess-customer-readout-table .result-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .bess-whitepaper .bess-customer-readout-table .result-table thead {
+    display: none;
+  }
+
+  .bess-whitepaper .bess-customer-readout-table .result-table tr {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .bess-whitepaper .bess-customer-readout-table .result-table td {
+    padding: 0.26rem 0;
+    border-bottom: 0;
+  }
+
+  .bess-whitepaper .bess-customer-readout-table .result-table td::before {
+    display: block;
+    margin-bottom: 0.14rem;
+    color: var(--muted);
+    font-family: Inter, Arial, sans-serif;
+    font-size: 0.67rem;
+    font-weight: 720;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .bess-whitepaper .bess-customer-readout-table .result-table td:nth-child(1)::before {
+    content: "Buyer question";
+  }
+
+  .bess-whitepaper .bess-customer-readout-table .result-table td:nth-child(2)::before {
+    content: "Published evidence";
+  }
+
+  .bess-whitepaper .bess-customer-readout-table .result-table td:nth-child(3)::before {
+    content: "Why it matters";
+  }
+}
+
+@media (max-width: 700px) {
+    .bess-whitepaper .bess-inline-figure {
+      overflow: hidden;
+    }
+
+    .bess-whitepaper .bess-figure-scroll {
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: thin;
+    }
+
+    .bess-whitepaper .bess-paper-svg {
+      width: 42rem;
+      max-width: none;
+      min-width: 42rem;
+    }
+
+    .bess-whitepaper .bess-score-figure .bess-paper-svg {
+      width: 34rem;
+      min-width: 34rem;
+    }
+
+    .bess-whitepaper .bess-inline-figure figcaption {
+      position: static;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+}
