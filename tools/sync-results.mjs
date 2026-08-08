@@ -2922,24 +2922,30 @@ ${cards}
 function bessCommercialReadoutFigure(full) {
   const metrics = full.metrics ?? {};
   const rows = [
-    ["Mean gross uplift vs quantile", euro(metrics.uplift_vs_quantile_dispatch_baseline_mean_eur), "before degradation proxy"],
-    ["Cycle-adjusted margin", euro(metrics.cycle_adjusted_margin_mean_eur), "after degradation cost"],
-    ["Mean regret to oracle", euro(metrics.regret_mean_eur), "remaining headroom"],
-    ["p95 regret", euro(metrics.regret_p95_eur), "tail diagnostic"],
-    ["Downside rate", formatPercent((metrics.downside_rate ?? 0) * 100), "vs primary baseline"],
-    ["Constraint breaches", formatMetric(metrics.constraint_breach_count ?? 0, { maximumFractionDigits: 0 }), "hard guardrail"],
+    [["Mean gross uplift", "vs quantile"], euro(metrics.uplift_vs_quantile_dispatch_baseline_mean_eur), ["before degradation", "proxy"]],
+    [["Cycle-adjusted", "margin"], euro(metrics.cycle_adjusted_margin_mean_eur), ["after degradation cost"]],
+    [["Mean regret", "to oracle"], euro(metrics.regret_mean_eur), ["remaining headroom"]],
+    [["p95 regret"], euro(metrics.regret_p95_eur), ["tail diagnostic"]],
+    [["Downside rate"], formatPercent((metrics.downside_rate ?? 0) * 100), ["vs primary baseline"]],
+    [["Constraint", "breaches"], formatMetric(metrics.constraint_breach_count ?? 0, { maximumFractionDigits: 0 }), ["hard guardrail"]],
   ];
   const cells = rows
-    .map(([label, value, note], index) => {
+    .map(([labelLines, value, noteLines], index) => {
       const col = index % 3;
       const row = Math.floor(index / 3);
-      const x = 62 + col * 164;
-      const y = 86 + row * 96;
+      const x = 34 + col * 168;
+      const y = 50 + row * 102;
+      const label = labelLines
+        .map((line, lineIndex) => `<tspan x="${x + 14}" y="${y + 21 + lineIndex * 11}">${escapeHtml(line)}</tspan>`)
+        .join("");
+      const note = noteLines
+        .map((line, lineIndex) => `<tspan x="${x + 14}" y="${y + 77 + lineIndex * 10}">${escapeHtml(line)}</tspan>`)
+        .join("");
       return `<g>
-              <rect class="bess-metric-cell" x="${x}" y="${y - 34}" width="136" height="72" />
-              <text class="bess-paper-label" x="${x + 14}" y="${y - 10}">${escapeHtml(label)}</text>
-              <text class="bess-paper-value" x="${x + 14}" y="${y + 15}">${value}</text>
-              <text class="bess-paper-note" x="${x + 14}" y="${y + 36}">${escapeHtml(note)}</text>
+              <rect class="bess-metric-cell" x="${x}" y="${y}" width="154" height="92" />
+              <text class="bess-paper-label">${label}</text>
+              <text class="bess-paper-value" x="${x + 14}" y="${y + 56}">${escapeHtml(value)}</text>
+              <text class="bess-paper-note">${note}</text>
             </g>`;
     })
     .join("\n");
@@ -2947,8 +2953,8 @@ function bessCommercialReadoutFigure(full) {
     number: 2,
     caption: "Commercial and risk readout for the accepted policy. The page leads with the primary baseline uplift and keeps oracle regret and constraints in the same evidence block.",
     className: "bess-inline-figure bess-commercial-figure",
-    svg: `          <svg class="result-primer-svg bess-paper-svg" viewBox="0 0 560 250" role="img" aria-label="Commercial and risk metrics for the accepted BESS policy.">
-            <text class="result-axis-label result-figure-title" x="62" y="36">Accepted policy readout</text>
+    svg: `          <svg class="result-primer-svg bess-paper-svg" viewBox="0 0 560 266" role="img" aria-label="Commercial and risk metrics for the accepted BESS policy.">
+            <text class="result-axis-label result-figure-title" x="34" y="30">Accepted policy readout</text>
 ${cells}
           </svg>`,
   });
