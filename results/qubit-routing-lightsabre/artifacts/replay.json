@@ -33,10 +33,8 @@
     "valid_count": 1
   },
   "metrics": {
-    "build_time": 1.9402260780334473,
     "candidate_added_cnot": 295782,
     "combined_score": 11506.200000000026,
-    "eval_time": 156.96027612686157,
     "failed_cases": 0,
     "heron_fez_candidate_added_cnot": 137991,
     "lightsabre_added_cnot": 308076,
@@ -44,7 +42,6 @@
     "losses_vs_lightsabre": 35,
     "ok_cases": 72,
     "q20_candidate_added_cnot": 49725,
-    "router_time": 154.94721698760986,
     "score": -11506.200000000026,
     "ties_vs_lightsabre": 6,
     "total_cases": 72,
@@ -99,51 +96,41 @@
       {
         "candidate_added_cnot": 12057,
         "delta_vs_lightsabre": 3792,
-        "error": null,
         "id": "9symml_195_q20",
         "lightsabre_added_cnot": 15849,
         "ok": true,
-        "time_ms": 10203,
         "topology": "q20"
       },
       {
         "candidate_added_cnot": 12057,
         "delta_vs_lightsabre": 3792,
-        "error": null,
         "id": "sym9_193_q20",
         "lightsabre_added_cnot": 15849,
         "ok": true,
-        "time_ms": 10244,
         "topology": "q20"
       },
       {
         "candidate_added_cnot": 25155,
         "delta_vs_lightsabre": 903,
-        "error": null,
         "id": "9symml_195_willow",
         "lightsabre_added_cnot": 26058,
         "ok": true,
-        "time_ms": 15511,
         "topology": "willow"
       },
       {
         "candidate_added_cnot": 25155,
         "delta_vs_lightsabre": 903,
-        "error": null,
         "id": "sym9_193_willow",
         "lightsabre_added_cnot": 26058,
         "ok": true,
-        "time_ms": 15542,
         "topology": "willow"
       },
       {
         "candidate_added_cnot": 4884,
         "delta_vs_lightsabre": 615,
-        "error": null,
         "id": "rd84_253_q20",
         "lightsabre_added_cnot": 5499,
         "ok": true,
-        "time_ms": 2786,
         "topology": "q20"
       }
     ],
@@ -165,29 +152,6 @@
         "q20": 68142,
         "willow": 115056
       }
-    },
-    "raw_summary": {
-      "build_time": 1.9402260780334473,
-      "combined_score": 11506.200000000026,
-      "eval_time": 156.96027612686157,
-      "failed_cases": 0,
-      "layout_trials": 20,
-      "ok_cases": 72,
-      "router_time": 154.94721698760986,
-      "routing_trials": 20,
-      "total_added_cnot_by_candidate": 295782,
-      "total_cases": 72,
-      "total_cnot_delta": 37974,
-      "total_depth": 368811,
-      "total_original_cnot_added": 333756,
-      "total_runtime_ms": 154430,
-      "total_swaps": 98594,
-      "total_weight": 24,
-      "trial_mode": "full",
-      "validity": 1,
-      "weighted_total_added_cnot_by_candidate": 108367.79999999999,
-      "weighted_total_cnot_delta": 11506.200000000026,
-      "weighted_total_original_cnot_added": 119874.00000000001
     }
   },
   "provenance": {
@@ -200,9 +164,7 @@
   },
   "recorded": {
     "best_candidate_id": "gen-62-i0-w3-a0-8185f10d0dff4245",
-    "best_score": -11506.200000000026,
-    "failure_category": "none",
-    "stop_reason": "deadline_reached"
+    "best_score": -11506.200000000026
   },
   "timestamp": "2026-05-24T07:07:02.607768+00:00"
 }
