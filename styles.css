@@ -3628,24 +3628,24 @@ a {
   width: min(100%, 62rem);
 }
 
-.bess-paper-label {
+.result-primer-svg .bess-paper-label {
   fill: var(--muted);
   font-family: Inter, Arial, sans-serif;
-  font-size: 11px;
+  font-size: 9px;
   font-weight: 750;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
-.bess-paper-value {
+.result-primer-svg .bess-paper-value {
   fill: var(--text);
   font-family: "SFMono-Regular", Menlo, Consolas, monospace;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 750;
   letter-spacing: 0;
 }
 
-.bess-paper-callout {
+.result-primer-svg .bess-paper-callout {
   fill: var(--bess-discharge);
   font-family: Inter, Arial, sans-serif;
   font-size: 30px;
@@ -3657,10 +3657,10 @@ a {
   fill: var(--bess-neutral);
 }
 
-.bess-paper-note {
+.result-primer-svg .bess-paper-note {
   fill: var(--muted-soft);
   font-family: Inter, Arial, sans-serif;
-  font-size: 11px;
+  font-size: 9px;
   letter-spacing: 0;
 }
 
