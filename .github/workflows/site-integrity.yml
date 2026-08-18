@@ -12,17 +12,21 @@ jobs:
     steps:
       - name: Checkout website
         uses: actions/checkout@v4
+        with:
+          path: website
 
       - name: Checkout published results
         uses: actions/checkout@v4
         with:
           repository: Gother-Labs/gother-labs-results
-          path: ../gother-labs-results
+          path: gother-labs-results
 
       - name: Verify generated site is current
+        working-directory: website
         run: |
           node tools/sync-results.mjs
           git diff --exit-code
 
       - name: Check site shell
+        working-directory: website
         run: node tools/check-site-shell.mjs
