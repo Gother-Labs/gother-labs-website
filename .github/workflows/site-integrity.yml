@@ -1,0 +1,28 @@
+name: Site integrity
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  site-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout website
+        uses: actions/checkout@v4
+
+      - name: Checkout published results
+        uses: actions/checkout@v4
+        with:
+          repository: Gother-Labs/gother-labs-results
+          path: ../gother-labs-results
+
+      - name: Verify generated site is current
+        run: |
+          node tools/sync-results.mjs
+          git diff --exit-code
+
+      - name: Check site shell
+        run: node tools/check-site-shell.mjs
