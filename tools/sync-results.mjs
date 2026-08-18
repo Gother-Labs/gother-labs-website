@@ -2934,12 +2934,34 @@ ${figures}
   );
 }
 
+async function syncFeaturedResult(results) {
+  const featured = results.find((result) => result.slug === "circle-packing-26-unit-square");
+  const value = featured?.metrics?.accepted_sum_radii;
+  if (typeof value !== "number") {
+    throw new Error("Missing circle-packing accepted_sum_radii for homepage publication.");
+  }
+
+  const homePath = path.join(SITE_ROOT, "index.html");
+  const html = await fs.readFile(homePath, "utf8");
+  const marker = /(<span data-result-metric="accepted_sum_radii">)[\s\S]*?(<\/span>)/;
+  if (!marker.test(html)) {
+    throw new Error("Missing homepage accepted_sum_radii publication marker.");
+  }
+
+  const updated = html.replace(
+    marker,
+    (_match, open, close) => `${open}26-circle packing reaches ${value.toFixed(6)} total radius${close}`,
+  );
+  await fs.writeFile(homePath, updated, "utf8");
+}
+
 async function writeSitemap(results) {
   const urls = [
     "/",
     "/company/",
     "/results/",
     ...results.map((result) => `/results/${result.slug}/`),
+    "/evolther/bess-policy-challenger/",
     "/contact/",
   ];
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -2968,6 +2990,7 @@ async function main() {
   for (const result of results) {
     await writeDetail(result);
   }
+  await syncFeaturedResult(results);
   await writeSitemap(results);
   console.log(`Synced ${results.length} result(s) from ${path.relative(SITE_ROOT, RESULTS_ROOT)}`);
 }
