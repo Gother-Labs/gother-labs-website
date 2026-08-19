@@ -1,0 +1,44 @@
+name: Site integrity
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  site-integrity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout website
+        uses: actions/checkout@v4
+
+      - name: Check site shell
+        run: node tools/check-site-shell.mjs
+
+      - name: Check publication consistency
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from "node:fs";
+
+          const home = fs.readFileSync("index.html", "utf8");
+          const sitemap = fs.readFileSync("sitemap.xml", "utf8");
+          const metrics = JSON.parse(
+            fs.readFileSync("results/circle-packing-26-unit-square/artifacts/metrics.json", "utf8"),
+          );
+
+          const expected = metrics.accepted_sum_radii.toFixed(6);
+          const featured = home.match(
+            /<span data-result-metric="accepted_sum_radii">([^<]+)<\/span>/,
+          )?.[1];
+
+          if (!featured?.includes(expected)) {
+            throw new Error(`Homepage circle-packing value must be ${expected}.`);
+          }
+          if (home.includes("Last proof")) {
+            throw new Error("Homepage must not describe the featured result as a proof.");
+          }
+          if (!sitemap.includes("https://www.gotherlabs.com/evolther/bess-policy-challenger/")) {
+            throw new Error("BESS Policy Challenger is missing from sitemap.xml.");
+          }
+          NODE
