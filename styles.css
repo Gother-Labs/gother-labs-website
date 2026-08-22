@@ -288,6 +288,34 @@
   line-height: 1.55;
 }
 
+.result-instance-readout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.55rem 1.25rem;
+  margin: 2rem 0 0;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.9rem !important;
+}
+
+.result-instance-readout strong {
+  color: var(--text);
+}
+
+.result-instance-readout span {
+  color: var(--muted);
+}
+
+.result-instance-readout em {
+  color: var(--accent);
+  font-family: Inter, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 650;
+}
+
 .result-ledger-actions {
   display: flex;
   flex-wrap: wrap;

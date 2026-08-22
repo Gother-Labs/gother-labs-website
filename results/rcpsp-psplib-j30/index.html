@@ -199,6 +199,8 @@
 
               <p>Against the baseline, Evölther 2.0 wins on 35 portfolio instances, ties on 27, and loses on 18. The accepted claim is therefore portfolio-level improvement rather than universal instance dominance. The clearest compression example is <code>j3025_9</code>, where the new ordering shortens makespan from 112 to 92 against a proven optimum of 84.</p>
 
+              <p class="result-instance-readout"><strong>j3025_9</strong><span>Baseline 112</span><span>Evölther 2.0 92</span><span>Optimum 84</span><em>71.4% of the baseline gap removed</em></p>
+
               <figure class="result-ledger-figure rcpsp-task-comparison" id="fig-5">
                 <img src="./assets/instance-comparison.svg?v=baseline-v3" alt="Overlaid task-level schedule comparison from baseline to Evölther 2.0 for PSPLIB instance j3025_9">
                 <figcaption>Figure 5. Overlaid baseline-to-Evölther 2.0 comparison for j3025_9. Grey and blue bars share the same task row and time axis, exposing the compression from makespan 112 to 92 against optimum 84.</figcaption>
@@ -207,14 +209,21 @@
               <p>Because both schedules are superimposed, movement is visible directly: blue to the left of grey means Evölther 2.0 places that activity earlier. The new policy starts J4 before J3, brings much of the middle dependency chain forward, and moves the terminal J29–J31 sequence substantially earlier. The evaluator applies exactly the same precedence and resource-capacity checks to both schedules.</p>
 
               <figure class="result-ledger-figure" id="fig-6">
-                <img src="./assets/gap-readout.svg" alt="Current Evölther 2.0 RCPSP gap diagnostics">
-                <figcaption>Figure 6. Aggregate and tail diagnostics for the current accepted candidate.</figcaption>
+                <img src="./assets/portfolio-instance-deltas.svg?v=baseline-v1" alt="Ordered makespan change for all 80 instances comparing Evölther 2.0 with baseline">
+                <figcaption>Figure 6. Instance-by-instance makespan change against baseline. The ordered marks retain all 35 improvements, 27 ties, and 18 regressions rather than presenting only an aggregate score.</figcaption>
               </figure>
 
-              <p>Figure 6 separates the acceptance score from its underlying diagnostics. The current mean makespan is 5.01% above proven optimum, while the worst single residual gap is 17.11%. Figure 7 then keeps the eight largest residual gaps visible, including their current makespan and proven optimum.</p>
+              <p>The distribution makes the boundary of the result visible. Evölther 2.0 does not dominate every schedule: most regressions are one or two time units, while the improvement side contains several reductions of eight to ten units and the 20-unit reduction on <code>j3025_9</code>. Those asymmetric changes produce the lower portfolio mean and tail score.</p>
+
               <figure class="result-ledger-figure" id="fig-7">
+                <img src="./assets/gap-readout.svg" alt="Current Evölther 2.0 RCPSP gap diagnostics">
+                <figcaption>Figure 7. Aggregate and tail diagnostics for the current accepted candidate.</figcaption>
+              </figure>
+
+              <p>Figure 7 separates the acceptance score from its underlying diagnostics. The current mean makespan is 5.01% above proven optimum, while the worst single residual gap is 17.11%. Figure 8 then keeps the eight largest residual gaps visible, including their current makespan and proven optimum.</p>
+              <figure class="result-ledger-figure" id="fig-8">
                 <img src="./assets/tail-gap-ladder.svg" alt="Eight largest residual RCPSP gaps for the current candidate">
-                <figcaption>Figure 7. Worst-instance tail behavior for Evölther 2.0 on the frozen portfolio.</figcaption>
+                <figcaption>Figure 8. Worst-instance tail behavior for Evölther 2.0 on the frozen portfolio.</figcaption>
               </figure>
 
               <h3>5. Limitations</h3>

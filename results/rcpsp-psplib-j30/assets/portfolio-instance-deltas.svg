@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-label="Ordered makespan change for all 80 PSPLIB J30 instances comparing Evölther 2.0 with baseline">
+  <style>
+    .bg{fill:#050608}.guide{stroke:#202735;stroke-width:1}.zero{stroke:#687386;stroke-width:2}.win{fill:none;stroke:#168cff;stroke-width:8;stroke-linecap:round}.tie{fill:none;stroke:#687386;stroke-width:8;stroke-linecap:round}.loss{fill:none;stroke:#d58b7f;stroke-width:8;stroke-linecap:round}.title{fill:#f8fafc;font:600 25px Inter,Arial,sans-serif}.meta{fill:#8f98aa;font:14px Inter,Arial,sans-serif}.axis{fill:#8f98aa;font:12px Inter,Arial,sans-serif}.summary{fill:#cbd5e1;font:600 15px Inter,Arial,sans-serif}.accent{fill:#168cff;font:700 16px Inter,Arial,sans-serif}.callout{stroke:#f8fafc;stroke-width:2;fill:none}.calloutText{fill:#f8fafc;font:600 14px Inter,Arial,sans-serif}
+  </style>
+  <rect class="bg" width="1200" height="420"/>
+  <text class="title" x="84" y="48">Every frozen instance against baseline</text>
+  <text class="meta" x="1112" y="48" text-anchor="end">80 instances · ordered by makespan change · lower is better</text>
+
+  <g transform="translate(84 76)">
+    <circle cx="5" cy="0" r="5" fill="#168cff"/><text class="summary" x="18" y="5">35 improved</text>
+    <circle cx="157" cy="0" r="5" fill="#687386"/><text class="summary" x="170" y="5">27 unchanged</text>
+    <circle cx="342" cy="0" r="5" fill="#d58b7f"/><text class="summary" x="355" y="5">18 worse</text>
+  </g>
+
+  <path class="guide" d="M84 100H1112M84 180H1112M84 300H1112"/>
+  <path class="zero" d="M84 260H1112"/>
+  <text class="axis" x="68" y="104" text-anchor="end">−20</text>
+  <text class="axis" x="68" y="184" text-anchor="end">−10</text>
+  <text class="axis" x="68" y="264" text-anchor="end">0</text>
+  <text class="axis" x="68" y="304" text-anchor="end">+5</text>
+  <text class="axis" transform="translate(25 200) rotate(-90)" text-anchor="middle">Evölther 2.0 makespan change</text>
+
+  <path class="win" d="M84 260V100M97 260V180M110 260V188M123 260V188M136 260V196M149 260V196M162 260V196M175 260V196M188 260V204M201 260V220M214 260V220M227 260V228M240 260V228M253 260V228M266 260V236M279 260V236M292 260V236M305 260V236M318 260V236M331 260V244M344 260V244M357 260V244M370 260V244M383 260V244M396 260V244M409 260V252M422 260V252M435 260V252M448 260V252M461 260V252M474 260V252M487 260V252M500 260V252M513 260V252M526 260V252"/>
+  <path class="tie" d="M539 256v8M552 256v8M565 256v8M578 256v8M591 256v8M604 256v8M617 256v8M630 256v8M643 256v8M656 256v8M669 256v8M682 256v8M695 256v8M708 256v8M721 256v8M734 256v8M747 256v8M760 256v8M773 256v8M786 256v8M799 256v8M812 256v8M825 256v8M838 256v8M851 256v8M864 256v8M877 256v8"/>
+  <path class="loss" d="M890 260V268M903 260V268M916 260V268M929 260V268M942 260V268M955 260V268M968 260V268M981 260V276M994 260V276M1007 260V276M1020 260V276M1033 260V276M1046 260V276M1059 260V276M1072 260V276M1085 260V276M1098 260V300M1111 260V300"/>
+
+  <path class="callout" d="M84 100V112H205"/>
+  <text class="calloutText" x="215" y="117">j3025_9 · 112 → 92 · −20</text>
+  <text class="axis" x="84" y="344">largest improvement</text>
+  <text class="axis" x="598" y="344" text-anchor="middle">instances ordered by outcome</text>
+  <text class="axis" x="1112" y="344" text-anchor="end">largest regression</text>
+  <text class="meta" x="84" y="384">Each mark is one instance. Blue is shorter than baseline; grey is unchanged; muted red is longer.</text>
+</svg>
