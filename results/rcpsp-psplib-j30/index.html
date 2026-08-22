@@ -68,7 +68,7 @@
                 <span class="result-ledger-kicker">Accepted history</span>
                 <h2 id="accepted-history-title">One contract. Multiple routes to improvement.</h2>
               </div>
-              <p>This ledger records only validated checkpoints. Campaigns may use generations, agent sessions, numerical search, or another method; the shared evaluation contract determines whether a result becomes the new incumbent.</p>
+              <p>This ledger records only validated checkpoints. Evölther and Evölther 2.0 use the same evaluation contract, so their accepted results remain directly comparable.</p>
             </div>
 
             <div class="result-ledger">
@@ -84,8 +84,8 @@
               <article class="result-ledger-entry">
                 <time class="result-ledger-date" datetime="2026-05-12">12 May 2026</time>
                 <div>
-                  <h3>Original evolutionary campaign</h3>
-                  <p>A multi-island search produced the first published incumbent. This remains a historical result, not a hidden extension of the later campaign.</p>
+                  <h3>Evölther</h3>
+                  <p>The original system produced the first published incumbent under the frozen benchmark contract.</p>
                 </div>
                 <div class="result-ledger-score"><strong>12.087</strong><span>−15.55%</span></div>
               </article>
@@ -93,8 +93,8 @@
               <article class="result-ledger-entry result-ledger-entry--current">
                 <time class="result-ledger-date" datetime="2026-08-22">22 Aug 2026</time>
                 <div>
-                  <h3>Agentic follow-up campaign <span class="result-status-pill">current incumbent</span></h3>
-                  <p>Three parallel candidate sessions explored the same bounded policy surface. The winning session evaluated 207 internal variants before submitting one deterministic rule.</p>
+                  <h3>Evölther 2.0 <span class="result-status-pill">current incumbent</span></h3>
+                  <p>The updated system reached a stronger accepted policy with a substantially shorter outer optimization cycle.</p>
                 </div>
                 <div class="result-ledger-score"><strong>10.108</strong><span>−29.37%</span></div>
               </article>
@@ -104,27 +104,27 @@
           <section class="result-ledger-section" aria-labelledby="campaigns-title">
             <div class="result-ledger-heading">
               <div>
-                <span class="result-ledger-kicker">How it was found</span>
-                <h2 id="campaigns-title">Campaigns, not a manufactured generation count.</h2>
+                <span class="result-ledger-kicker">System progression</span>
+                <h2 id="campaigns-title">Evölther, then Evölther 2.0.</h2>
               </div>
-              <p>The latest improvement occurred in one outer generation, but it was not one attempt. Its three sessions made 228 evaluator probes in total. Generations remain available as provenance; evaluated work is the more useful public unit.</p>
+              <p>The comparison is anchored in accepted benchmark results. Generation counts remain useful provenance, while the primary claim is the quality of the validated incumbent produced by each system.</p>
             </div>
 
             <div class="result-campaign-grid">
               <article class="result-campaign-card">
-                <span class="result-evidence-label">Campaign 01 · evolutionary</span>
-                <h3>Broad population search</h3>
-                <p>The first campaign explored a long sequence of generated policies and established the previous public incumbent.</p>
+                <span class="result-evidence-label">System 01</span>
+                <h3>Evölther</h3>
+                <p>The original optimization system established the first public improvement over the deterministic baseline.</p>
                 <div class="result-campaign-stats">
-                  <span>120 generations</span><span>4 islands</span><span>12.087 incumbent</span>
+                  <span>120 generations</span><span>80/80 valid</span><span>12.087 incumbent</span>
                 </div>
               </article>
               <article class="result-campaign-card result-campaign-card--current">
-                <span class="result-evidence-label">Campaign 02 · agentic</span>
-                <h3>Deep candidate sessions</h3>
-                <p>The follow-up concentrated search inside three parallel sessions. The longest-running session accounted for 207 probes and found the current rule.</p>
+                <span class="result-evidence-label">System 02 · current</span>
+                <h3>Evölther 2.0</h3>
+                <p>The updated optimization system found a stronger policy with fewer outer generations while preserving the same deterministic validation boundary.</p>
                 <div class="result-campaign-stats">
-                  <span>3 sessions</span><span>228 probes</span><span>10.108 incumbent</span>
+                  <span>shorter outer cycle</span><span>80/80 valid</span><span>10.108 incumbent</span>
                 </div>
               </article>
             </div>
@@ -148,8 +148,97 @@
 
             <figure class="result-ledger-figure">
               <img src="./assets/benchmark-comparison.svg" alt="Historical RCPSP baseline and previous accepted benchmark comparison">
-              <figcaption>The existing figure remains historical campaign evidence in this prototype. Publication would regenerate it from the new accepted metrics rather than relabel old geometry.</figcaption>
+              <figcaption>Figure 4. Updated comparison across the baseline, Evölther, and Evölther 2.0 accepted checkpoints.</figcaption>
             </figure>
+          </section>
+
+          <section class="result-detail result-whitepaper-shell rcpsp-whitepaper-shell" aria-labelledby="technical-report-title">
+            <article class="result-article result-whitepaper rcpsp-whitepaper">
+              <h2 id="technical-report-title">Technical report</h2>
+
+              <h3>Abstract</h3>
+              <p>This note reports a deterministic dispatch rule for the Resource-Constrained Project Scheduling Problem (RCPSP). On a frozen public subset of PSPLIB J30, the accepted score progressed from 14.312 at baseline to 12.087 with Evölther and 10.108 with Evölther 2.0. The current result is a 29.37% reduction from baseline and preserves feasibility on all 80 evaluated instances.</p>
+              <p>The benchmark is deliberately external and bounded. Every portfolio instance has a proven optimal makespan, so the score measures schedule quality against a reference optimum rather than machine speed. This is a benchmark result on the fixed portfolio, not a claim that every RCPSP instance or production-planning workflow is solved.</p>
+
+              <h3>1. Problem formulation</h3>
+              <p>RCPSP schedules activities subject to precedence constraints and renewable-resource limits. An activity may start only after all predecessors finish, and the total demand of concurrently active activities must stay within available capacity. The objective is to minimize the project makespan, the finish time of the terminal activity.</p>
+              <div class="formula-block"><div class="formula-math"><em>C</em><sub>max</sub>(S) = max<sub>i</sub> F<sub>i</sub></div><span class="equation-number">(1)</span></div>
+
+              <figure class="result-ledger-figure" id="fig-1">
+                <img src="./assets/schedule-network.svg" alt="RCPSP precedence network and Gantt schedule readout">
+                <figcaption>Figure 1. The candidate ranks eligible activities; the fixed evaluator places each selected activity at its earliest feasible start.</figcaption>
+              </figure>
+
+              <figure class="result-ledger-figure" id="fig-2">
+                <img src="./assets/resource-load.svg" alt="Renewable resource load profile and capacity line">
+                <figcaption>Figure 2. A schedule is accepted only when every renewable-resource load remains at or below capacity.</figcaption>
+              </figure>
+
+              <p>The evaluator uses serial schedule generation. At each step it identifies eligible activities, scores them with the candidate policy, selects one, and places it at the earliest resource-feasible start. The optimization surface is therefore narrow: Evölther changes the priority policy, not the feasibility validator.</p>
+
+              <h3>2. Benchmark and evaluation contract</h3>
+              <p>The public portfolio contains 80 frozen PSPLIB J30 single-mode instances: parameters 1, 7, 13, 19, 25, 31, 37, and 43 crossed with instances 1 through 10. Each instance contains 32 jobs including dummy source and sink activities, renewable-resource capacities, precedence arcs, and a proven optimal makespan.</p>
+              <figure class="result-paper-table" id="table-1">
+                <div class="result-table-wrap"><table class="result-table"><thead><tr><th>Field</th><th>Public contract</th></tr></thead><tbody>
+                  <tr><td>Dataset</td><td>PSPLIB J30 single-mode RCPSP</td></tr>
+                  <tr><td>Portfolio</td><td>80 frozen instances</td></tr>
+                  <tr><td>Reference</td><td>Proven optimal makespan for every instance</td></tr>
+                  <tr><td>Objective</td><td><code>mean_gap_pct + 0.35 × p95_gap_pct + feasibility_penalty</code></td></tr>
+                  <tr><td>Direction</td><td>Lower is better; feasibility penalty must remain zero</td></tr>
+                </tbody></table></div>
+                <figcaption>Table 1. Frozen benchmark surface shared by the baseline, Evölther, and Evölther 2.0.</figcaption>
+              </figure>
+              <p>For instance <em>k</em>, the gap is the candidate makespan minus the proven optimum, divided by that optimum. The accepted objective combines mean portfolio quality with a 35% weighting on the 95th-percentile gap. A candidate must also return finite priorities, choose only eligible activities, schedule every activity exactly once, respect all precedences, and remain within every resource capacity.</p>
+
+              <h3>3. Accepted candidate</h3>
+              <p>The current Evölther 2.0 candidate keeps the serial schedule generator unchanged and replaces only the deterministic activity-ranking policy. The rule combines precedence depth, duration, successor structure, feasible-start information, bottleneck pressure, aggregate resource pressure, and remaining downstream work. This remains an inspectable dispatch heuristic rather than a replacement solver.</p>
+              <p><a href="./artifacts/accepted_candidate.py">Open the full executable accepted candidate</a> or inspect the <a href="./artifacts/evaluation_contract.md">evaluation contract</a>.</p>
+
+              <h3>4. Results</h3>
+              <p>The accepted history contains three directly comparable checkpoints. Figure 3 shows the score progression without forcing the two Evölther systems onto one synthetic generation axis.</p>
+              <figure class="result-ledger-figure" id="fig-3">
+                <img src="./assets/objective-curve.svg" alt="Accepted RCPSP score progression from baseline through Evölther and Evölther 2.0">
+                <figcaption>Figure 3. Accepted-checkpoint progression under one unchanged, lower-is-better objective.</figcaption>
+              </figure>
+
+              <figure class="result-ledger-figure" id="fig-4-detail">
+                <img src="./assets/benchmark-comparison.svg" alt="RCPSP benchmark comparison for baseline, Evölther, and Evölther 2.0">
+                <figcaption>Figure 4. The current score is 29.37% below baseline and 16.37% below the previous public incumbent.</figcaption>
+              </figure>
+
+              <figure class="result-paper-table" id="table-2">
+                <div class="result-table-wrap"><table class="result-table"><thead><tr><th>Metric</th><th>Baseline</th><th>Evölther</th><th>Evölther 2.0</th></tr></thead><tbody>
+                  <tr><td>Acceptance score</td><td>14.312</td><td>12.087</td><td>10.108</td></tr>
+                  <tr><td>Mean gap</td><td>7.13%</td><td>6.04%</td><td>5.01%</td></tr>
+                  <tr><td>P95 gap</td><td>20.52%</td><td>17.28%</td><td>14.57%</td></tr>
+                  <tr><td>Exact optima</td><td>—</td><td>19 / 80</td><td>27 / 80</td></tr>
+                  <tr><td>Validated schedules</td><td>80 / 80</td><td>80 / 80</td><td>80 / 80</td></tr>
+                </tbody></table></div>
+                <figcaption>Table 2. Current portfolio metrics. Lower score and gap values are better.</figcaption>
+              </figure>
+
+              <figure class="result-ledger-figure" id="fig-5">
+                <img src="./assets/instance-comparison.svg" alt="Makespan comparison on PSPLIB instance j3025_9">
+                <figcaption>Figure 5. Concrete readout for j3025_9: the baseline makespan is 112, the current candidate is 92, and the proven optimum is 84. This example illustrates schedule compression from baseline; the portfolio score remains the acceptance criterion.</figcaption>
+              </figure>
+
+              <figure class="result-ledger-figure" id="fig-6">
+                <img src="./assets/gap-readout.svg" alt="Current Evölther 2.0 RCPSP gap diagnostics">
+                <figcaption>Figure 6. Aggregate and tail diagnostics for the current accepted candidate.</figcaption>
+              </figure>
+
+              <p>The aggregate does not conceal the difficult cases. Figure 7 keeps the eight largest residual gaps visible, including their current makespan and proven optimum.</p>
+              <figure class="result-ledger-figure" id="fig-7">
+                <img src="./assets/tail-gap-ladder.svg" alt="Eight largest residual RCPSP gaps for the current candidate">
+                <figcaption>Figure 7. Worst-instance tail behavior for Evölther 2.0 on the frozen portfolio.</figcaption>
+              </figure>
+
+              <h3>5. Limitations</h3>
+              <p>This result is limited to the frozen 80-instance PSPLIB J30 subset. It does not claim evaluation over all 480 J30 instances, measure production integration behavior, or establish robustness under different project distributions. The accepted rule remains a dispatch heuristic; other project classes, resource models, or operational priority policies require a new evaluation contract.</p>
+
+              <h3>6. Reproducibility</h3>
+              <p>The public bundle includes the accepted candidate, evaluation contract, retained metrics, provenance, replay confirmation, and figures. Replaying the result requires the same portfolio, proven optima, score formula, and lower-is-better direction. Changing the instance set or objective creates a new evaluation.</p>
+            </article>
           </section>
 
           <section class="result-ledger-section" aria-labelledby="limits-title">

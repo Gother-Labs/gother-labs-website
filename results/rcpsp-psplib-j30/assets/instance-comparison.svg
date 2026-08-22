@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 420" role="img" aria-label="j3025_9 makespan comparison">
+  <style>.bg{fill:#050608}.track{fill:#151b26}.seed{fill:#667085}.accent{fill:#168cff}.opt{stroke:#f8fafc;stroke-width:3}.title{fill:#f8fafc;font:600 23px Inter,Arial,sans-serif}.label{fill:#cbd5e1;font:15px Inter,Arial,sans-serif}.muted{fill:#8f98aa;font:13px Inter,Arial,sans-serif}.value{fill:#f8fafc;font:700 21px Inter,Arial,sans-serif}</style>
+  <rect class="bg" width="1040" height="420"/><text x="64" y="50" class="title">Concrete schedule readout · j3025_9</text><text x="976" y="50" class="muted" text-anchor="end">makespan · lower is better</text>
+  <text x="64" y="133" class="label">Baseline</text><rect class="track" x="230" y="104" width="690" height="46" rx="4"/><rect class="seed" x="230" y="104" width="644" height="46" rx="4"/><text x="890" y="134" class="value">112</text>
+  <text x="64" y="221" class="label">Evölther 2.0</text><rect class="track" x="230" y="192" width="690" height="46" rx="4"/><rect class="accent" x="230" y="192" width="529" height="46" rx="4"/><text x="775" y="222" class="value">92</text>
+  <line class="opt" x1="713" y1="88" x2="713" y2="260"/><text x="713" y="282" class="label" text-anchor="middle">proven optimum 84</text>
+  <text x="64" y="338" class="value">20 time units shorter than baseline</text><text x="64" y="368" class="muted">This instance is an explanatory example; acceptance is determined by the complete 80-instance portfolio.</text>
+</svg>
