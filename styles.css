@@ -6,6 +6,303 @@
   src: url("/assets/fonts/inter-latin.woff2") format("woff2");
 }
 
+/* Result ledger narrative prototype */
+.result-ledger-page .result-detail-hero {
+  padding-bottom: clamp(2.5rem, 6vw, 5rem);
+}
+
+.result-ledger-page .result-detail-hero .eyebrow {
+  margin-bottom: 1rem;
+}
+
+.result-ledger-page .results-hero-intro {
+  max-width: 56rem;
+}
+
+.result-ledger-shell {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 0 0 clamp(5rem, 10vw, 9rem);
+}
+
+.result-outcome {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: end;
+  padding: clamp(1.5rem, 4vw, 3.5rem) 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.result-outcome-label,
+.result-ledger-kicker,
+.result-evidence-label {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.result-outcome-value {
+  display: flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  margin: 0.65rem 0 0;
+  font-size: clamp(3.25rem, 8vw, 7.5rem);
+  font-weight: 560;
+  letter-spacing: -0.065em;
+  line-height: 0.9;
+}
+
+.result-outcome-value span {
+  color: var(--accent);
+  font-size: 0.32em;
+  letter-spacing: -0.03em;
+}
+
+.result-outcome-copy {
+  max-width: 32rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  line-height: 1.65;
+}
+
+.result-ledger-section {
+  padding: clamp(4rem, 8vw, 7rem) 0 0;
+}
+
+.result-ledger-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+  gap: clamp(1.5rem, 5vw, 5rem);
+  align-items: start;
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+.result-ledger-heading h2 {
+  margin: 0.6rem 0 0;
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.result-ledger-heading p {
+  max-width: 42rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  line-height: 1.7;
+}
+
+.result-ledger {
+  position: relative;
+  display: grid;
+  gap: 0;
+  padding-left: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.result-ledger::before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 1px;
+  background: var(--line);
+  content: "";
+}
+
+.result-ledger-entry {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.32fr) minmax(0, 1fr) auto;
+  gap: clamp(1rem, 3vw, 3rem);
+  align-items: start;
+  padding: 0 0 clamp(2.25rem, 5vw, 4rem);
+}
+
+.result-ledger-entry::before {
+  position: absolute;
+  top: 0.35rem;
+  left: calc(clamp(1.25rem, 3vw, 2.5rem) * -1 - 4px);
+  width: 9px;
+  height: 9px;
+  border: 1px solid var(--muted);
+  border-radius: 50%;
+  background: var(--bg);
+  content: "";
+}
+
+.result-ledger-entry--current::before {
+  border-color: var(--accent);
+  background: var(--accent);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+.result-ledger-date {
+  color: var(--muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.result-ledger-entry h3 {
+  margin: 0;
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  letter-spacing: -0.02em;
+}
+
+.result-ledger-entry p {
+  max-width: 44rem;
+  margin: 0.65rem 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.result-ledger-score {
+  min-width: 8rem;
+  text-align: right;
+}
+
+.result-ledger-score strong {
+  display: block;
+  font-size: clamp(1.35rem, 2.6vw, 2.25rem);
+  font-weight: 560;
+  letter-spacing: -0.035em;
+}
+
+.result-ledger-score span {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.result-campaign-grid,
+.result-evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: var(--line);
+}
+
+.result-campaign-card,
+.result-evidence-card {
+  min-height: 15rem;
+  padding: clamp(1.5rem, 3.5vw, 3rem);
+  background: var(--bg);
+}
+
+.result-campaign-card--current {
+  background: color-mix(in srgb, var(--accent) 5%, var(--bg));
+}
+
+.result-campaign-card h3,
+.result-evidence-card strong {
+  display: block;
+  margin: 0.75rem 0 0;
+  font-size: clamp(1.3rem, 2vw, 1.75rem);
+  letter-spacing: -0.03em;
+}
+
+.result-campaign-card p,
+.result-evidence-card p {
+  margin: 0.85rem 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.result-campaign-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.result-campaign-stats span,
+.result-status-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.result-status-pill {
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--line));
+  color: var(--text);
+}
+
+.result-ledger-figure {
+  margin: clamp(2.5rem, 6vw, 5rem) 0 0;
+  padding: clamp(1rem, 3vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: var(--surface, transparent);
+}
+
+.result-ledger-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.result-ledger-figure figcaption {
+  margin-top: 1rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.55;
+}
+
+.result-ledger-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.result-ledger-action {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.65rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.result-ledger-action:hover {
+  border-color: var(--accent);
+}
+
+@media (max-width: 760px) {
+  .result-outcome,
+  .result-ledger-heading,
+  .result-campaign-grid,
+  .result-evidence-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .result-ledger-entry {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .result-ledger-score {
+    text-align: left;
+  }
+
+  .result-campaign-card,
+  .result-evidence-card {
+    min-height: 0;
+  }
+}
+
 :root {
   --bg: #ffffff;
   --text: #0a0a0a;

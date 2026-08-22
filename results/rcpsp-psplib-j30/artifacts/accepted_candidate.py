@@ -1,4 +1,4 @@
-"""Evolvable priority rule for PSPLIB J30 RCPSP scheduling."""
+"""Accepted deterministic priority rule for the public PSPLIB J30 result."""
 
 from __future__ import annotations
 
@@ -7,8 +7,6 @@ from dataclasses import dataclass
 
 @dataclass(frozen=True, slots=True)
 class ActivityView:
-    """Immutable activity facts exposed to the priority rule."""
-
     id: int
     duration: int
     demands: tuple[int, ...]
@@ -25,8 +23,6 @@ class ActivityView:
 
 @dataclass(frozen=True, slots=True)
 class ScheduleStateView:
-    """Immutable partial-schedule facts exposed to the priority rule."""
-
     scheduled: frozenset[int]
     unscheduled: frozenset[int]
     eligible: tuple[int, ...]
@@ -43,8 +39,6 @@ class ScheduleStateView:
 
 @dataclass(frozen=True, slots=True)
 class EligibleActivityView:
-    """One eligible activity plus its local state and priority score."""
-
     activity: ActivityView
     state: ScheduleStateView
     priority: float
@@ -52,8 +46,6 @@ class EligibleActivityView:
 
 @dataclass(frozen=True, slots=True)
 class InstanceView:
-    """Immutable benchmark instance facts exposed to the priority rule."""
-
     instance_id: str
     horizon: int
     resource_capacities: tuple[int, ...]
@@ -62,41 +54,56 @@ class InstanceView:
 
 
 class RcpspPriorityProgram:
-    """Program wrapper exposing the evolvable priority score."""
-
     def score_activity(self, activity: ActivityView, state: ScheduleStateView, instance: InstanceView) -> float:
-        """Return the score used by the evaluator to choose the next activity."""
         return priority_score(activity, state, instance)
 
     def select_activity(self, eligible_activities: tuple[EligibleActivityView, ...], instance: InstanceView) -> int:
-        """Return the selected activity id from the eligible set."""
         return select_activity(eligible_activities, instance)
 
 
 # EVOLVE_START: priority_score
 def priority_score(activity: ActivityView, state: ScheduleStateView, instance: InstanceView) -> float:
-    """Return a deterministic priority score for one eligible RCPSP activity."""
-    # Critical path urgency: prioritize jobs that are on the critical path
-    cp_score = activity.critical_path_tail * 3.0
-    # Downstream impact: prioritize jobs that unlock more work
-    unlock_score = activity.successor_work * 0.15 + activity.transitive_successor_count * 1.5
-    # Resource contention: prioritize jobs that are bottleneck-heavy
-    resource_score = activity.bottleneck_ratio * 100.0 + activity.resource_pressure * 10.0
-    # Urgency: penalize jobs that have been waiting past their earliest possible start
-    wait_time = max(0, state.current_makespan - state.earliest_precedence_start)
-    wait_score = wait_time * 1.5
-    # Remaining work pressure: scale priority based on total remaining work to maintain throughput
-    remaining_score = state.remaining_work * 0.05
-    # Final score with tie-breaker based on job ID
-    return cp_score + unlock_score + resource_score + wait_score + remaining_score - (0.01 * activity.id)
+    """Return a deterministic structural score combining urgency and pressure."""
+    _ = instance
+    demand_ratio = activity.demand_capacity_ratios[0] if activity.demand_capacity_ratios else 0.0
+    weighted_demand = float(activity.demands[0]) * float(demand_ratio)
+    features = (
+        float(activity.downstream_critical_path),
+        float(activity.duration),
+        weighted_demand,
+        float(len(activity.successors)),
+        float(activity.transitive_successor_count),
+        float(state.earliest_resource_feasible_start),
+        float(max(0, state.earliest_resource_feasible_start - state.earliest_precedence_start)),
+        float(max(0, state.current_makespan - state.earliest_precedence_start)),
+        float(state.projected_finish),
+        float(activity.bottleneck_ratio),
+        float(activity.resource_pressure),
+        float(activity.successor_work),
+    )
+    weights = (
+        3.3361354926476796,
+        0.18699002132011017,
+        2.4505973763972735,
+        -0.09293668648981424,
+        3.3371341011147093,
+        -13.251521592471839,
+        1.0566568726367724,
+        -0.30825674063037856,
+        -0.01765515517782279,
+        3.3477197898098976,
+        -0.7005088135706682,
+        -0.20886456423277294,
+    )
+    return float(sum(weight * value for weight, value in zip(weights, features)))
 # EVOLVE_END
 
 
 # EVOLVE_START: select_activity
 def select_activity(eligible_activities: tuple[EligibleActivityView, ...], instance: InstanceView) -> int:
-    """Choose one eligible activity after all local priority scores are available."""
-    # Prioritize earlier start times to keep resources busy, then use the refined priority score.
-    selected = min(eligible_activities, key=lambda item: (item.state.earliest_resource_feasible_start, -item.priority))
+    """Select the highest deterministic priority and break ties by activity id."""
+    _ = instance
+    selected = max(eligible_activities, key=lambda item: (item.priority, -item.activity.id))
     return int(selected.activity.id)
 # EVOLVE_END
 
