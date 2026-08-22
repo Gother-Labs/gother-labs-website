@@ -75,10 +75,7 @@
 }
 
 .result-ledger-heading {
-  display: grid;
-  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
-  gap: clamp(1.5rem, 5vw, 5rem);
-  align-items: start;
+  display: block;
   margin-bottom: clamp(2rem, 5vw, 4rem);
 }
 
@@ -90,8 +87,8 @@
 }
 
 .result-ledger-heading p {
-  max-width: 42rem;
-  margin: 0;
+  max-width: 52rem;
+  margin: clamp(1rem, 2vw, 1.5rem) 0 0;
   color: var(--muted);
   font-size: clamp(1rem, 1.5vw, 1.15rem);
   line-height: 1.7;
@@ -282,7 +279,6 @@
 
 @media (max-width: 760px) {
   .result-outcome,
-  .result-ledger-heading,
   .result-campaign-grid,
   .result-evidence-grid {
     grid-template-columns: 1fr;
