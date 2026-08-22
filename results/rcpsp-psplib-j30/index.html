@@ -15,7 +15,7 @@
     <meta name="twitter:image" content="https://www.gotherlabs.com/assets/og-image.png">
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="../../assets/gother-mark.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../../styles.css?v=result-ledger-clean-v3">
+    <link rel="stylesheet" href="../../styles.css?v=result-ledger-diff-v5">
   </head>
   <body class="result-ledger-page result-rcpsp-page">
     <a class="skip-link" href="#site-main">Skip to content</a>
@@ -132,34 +132,43 @@
 
               <h3>3. Accepted candidate</h3>
               <p>The current Evölther 2.0 candidate keeps the serial schedule generator unchanged and replaces only the deterministic activity-ranking policy. The rule combines precedence depth, duration, successor structure, feasible-start information, bottleneck pressure, aggregate resource pressure, and remaining downstream work. This remains an inspectable dispatch heuristic rather than a replacement solver.</p>
-              <p>The final implementation is a linear structural score followed by a deterministic maximum-priority selection. The feature vector is computed entirely from the immutable activity and partial-schedule views exposed by the evaluator:</p>
-              <figure class="result-paper-code result-code-figure rcpsp-code-figure" id="listing-1">
-                <pre><code>features = (
-    downstream_critical_path,
-    duration,
-    weighted_demand,
-    direct_successors,
-    transitive_successors,
-    earliest_feasible_start,
-    resource_wait,
-    precedence_wait,
-    projected_finish,
-    bottleneck_ratio,
-    resource_pressure,
-    successor_work,
-)
-
-weights = (
-     3.336135,  0.186990,  2.450597, -0.092937,
-     3.337134, -13.251522,  1.056657, -0.308257,
-    -0.017655,  3.347720, -0.700509, -0.208865,
-)
-
-priority = sum(weight * value for weight, value in zip(weights, features))
-selected = max(eligible, key=lambda item: (item.priority, -item.activity.id))</code></pre>
-                <figcaption>Listing 1. Core of the accepted Evölther 2.0 policy. <a href="./artifacts/accepted_candidate.py">Open the full executable artifact</a>.</figcaption>
+              <p>The most informative view is the complete file diff. It shows that the public data contract, program wrapper, and final selector remain unchanged. Evölther 2.0 replaces one bounded function: the activity-priority score.</p>
+              <div class="rcpsp-diff-summary" aria-label="Full file change summary">
+                <span><strong>Full file</strong> compared</span>
+                <span><strong>1 function</strong> replaced</span>
+                <span><strong>Selector</strong> unchanged</span>
+                <span><strong>Contract</strong> unchanged</span>
+              </div>
+              <figure class="result-paper-code result-code-figure rcpsp-code-figure rcpsp-full-diff" id="listing-1" data-diff-source="./artifacts/baseline-to-evolther-2.diff">
+                <div class="result-code-titlebar"><span>program.py</span><span>baseline → Evölther 2.0</span></div>
+                <pre aria-label="Complete unified diff from baseline to Evölther 2.0"><code id="rcpsp-full-diff-code">Loading complete file diff…</code></pre>
+                <figcaption>Listing 1. Complete unified diff. Unchanged lines are retained so the modification boundary can be audited. <a href="./artifacts/baseline-to-evolther-2.diff">Open the raw diff</a> or <a href="./artifacts/accepted_candidate.py">the executable candidate</a>.</figcaption>
               </figure>
-              <p>The negative coefficient on earliest feasible start strongly favors activities that can be placed earlier, while precedence depth, transitive successor count, and bottleneck pressure preserve awareness of downstream structure. The remaining terms refine ties and resource-contention trade-offs. No benchmark instance identifier or instance-specific exception appears in the policy.</p>
+
+              <h4>Why these weights?</h4>
+              <p>The coefficients were selected by measured portfolio performance rather than assigned a theoretical meaning. To test their contribution, each feature was removed in turn by setting its coefficient to zero and replaying all 80 instances. Every single-feature ablation worsened the accepted score.</p>
+              <div class="rcpsp-ablation-leads" aria-label="Largest single-feature ablation effects">
+                <div><span>Remove earliest feasible start</span><strong>15.417</strong><small>+5.309 score</small></div>
+                <div><span>Remove downstream critical path</span><strong>15.132</strong><small>+5.023 score</small></div>
+              </div>
+              <figure class="result-paper-table rcpsp-ablation-table" id="table-ablation">
+                <div class="result-table-wrap"><table class="result-table"><thead><tr><th>Signal removed</th><th>Weight</th><th>Score without it</th><th>Δ score</th></tr></thead><tbody>
+                  <tr><td>Earliest feasible start</td><td>−13.252</td><td>15.417</td><td>+5.309</td></tr>
+                  <tr><td>Downstream critical path</td><td>+3.336</td><td>15.132</td><td>+5.023</td></tr>
+                  <tr><td>Transitive successors</td><td>+3.337</td><td>12.159</td><td>+2.050</td></tr>
+                  <tr><td>Weighted demand</td><td>+2.451</td><td>12.139</td><td>+2.031</td></tr>
+                  <tr><td>Resource wait</td><td>+1.057</td><td>11.664</td><td>+1.555</td></tr>
+                  <tr><td>Precedence wait</td><td>−0.308</td><td>11.267</td><td>+1.159</td></tr>
+                  <tr><td>Bottleneck ratio</td><td>+3.348</td><td>10.870</td><td>+0.762</td></tr>
+                  <tr><td>Successor work</td><td>−0.209</td><td>10.860</td><td>+0.752</td></tr>
+                  <tr><td>Duration</td><td>+0.187</td><td>10.731</td><td>+0.623</td></tr>
+                  <tr><td>Resource pressure</td><td>−0.701</td><td>10.651</td><td>+0.543</td></tr>
+                  <tr><td>Direct successors</td><td>−0.093</td><td>10.521</td><td>+0.412</td></tr>
+                  <tr><td>Projected finish</td><td>−0.018</td><td>10.174</td><td>+0.066</td></tr>
+                </tbody></table></div>
+                <figcaption>Table 2. Leave-one-feature-out replay. Positive Δ means the score worsens when that signal is removed; lower is better. Full policy score: 10.108.</figcaption>
+              </figure>
+              <p>The ablation identifies contribution, not isolated causality: several signals are correlated and their numeric scales differ. It nevertheless shows that feasible-start timing and downstream critical-path structure are the two load-bearing components. The remaining features refine resource contention, successor unlocking, and tie behavior around that core.</p>
 
               <h3>4. Results</h3>
               <p>The accepted history contains three directly comparable checkpoints. Figure 3 shows the score progression without forcing the two Evölther systems onto one synthetic generation axis.</p>
@@ -177,7 +186,7 @@ selected = max(eligible, key=lambda item: (item.priority, -item.activity.id))</c
 
               <p>The gain is not produced by sacrificing the difficult tail. Mean gap falls from 6.04% to 5.01%, while the 95th-percentile gap falls from 17.28% to 14.57%. The exact-optimum count rises from 19 to 27 schedules, and feasibility remains 80 out of 80.</p>
 
-              <figure class="result-paper-table" id="table-2">
+              <figure class="result-paper-table" id="table-3">
                 <div class="result-table-wrap"><table class="result-table"><thead><tr><th>Metric</th><th>Baseline</th><th>Evölther</th><th>Evölther 2.0</th></tr></thead><tbody>
                   <tr><td>Acceptance score</td><td>14.312</td><td>12.087</td><td>10.108</td></tr>
                   <tr><td>Mean gap</td><td>7.13%</td><td>6.04%</td><td>5.01%</td></tr>
@@ -185,7 +194,7 @@ selected = max(eligible, key=lambda item: (item.priority, -item.activity.id))</c
                   <tr><td>Exact optima</td><td>—</td><td>19 / 80</td><td>27 / 80</td></tr>
                   <tr><td>Validated schedules</td><td>80 / 80</td><td>80 / 80</td><td>80 / 80</td></tr>
                 </tbody></table></div>
-                <figcaption>Table 2. Current portfolio metrics. Lower score and gap values are better.</figcaption>
+                <figcaption>Table 3. Current portfolio metrics. Lower score and gap values are better.</figcaption>
               </figure>
 
               <p>Instance-level behavior is mixed, which is expected for a single deterministic dispatch policy: Evölther 2.0 wins on 30 portfolio instances, ties on 30, and loses on 20. The accepted claim is therefore portfolio-level improvement. The clearest positive example is <code>j3037_6</code>, where the new ordering brings several downstream activities forward and shortens makespan from 85 to 76, only three time units above the proven optimum.</p>
@@ -225,6 +234,7 @@ selected = max(eligible, key=lambda item: (item.priority, -item.activity.id))</c
 
       <footer class="site-footer"><p>© <span id="year">2026</span> Göther Labs</p></footer>
     </div>
-    <script src="../../scripts.js?v=result-ledger-clean-v3"></script>
+    <script src="./diff-viewer.js?v=result-ledger-diff-v5"></script>
+    <script src="../../scripts.js?v=result-ledger-diff-v5"></script>
   </body>
 </html>

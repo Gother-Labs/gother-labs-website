@@ -1,0 +1,181 @@
+--- a/domains/rcpsp_psplib_j30/program.py
++++ b/domains/rcpsp_psplib_j30/program.py
+@@ -1,142 +1,145 @@
+ """Evolvable priority rule for PSPLIB J30 RCPSP scheduling."""
+ 
+ from __future__ import annotations
+ 
+ from dataclasses import dataclass
+ 
+ 
+ @dataclass(frozen=True, slots=True)
+ class ActivityView:
+     """Immutable activity facts exposed to the priority rule."""
+ 
+     id: int
+     duration: int
+     demands: tuple[int, ...]
+     demand_capacity_ratios: tuple[float, ...]
+     successors: tuple[int, ...]
+     predecessors: tuple[int, ...]
+     critical_path_tail: int
+     downstream_critical_path: int
+     resource_pressure: float
+     bottleneck_ratio: float
+     transitive_successor_count: int
+     successor_work: int
+ 
+ 
+ @dataclass(frozen=True, slots=True)
+ class ScheduleStateView:
+     """Immutable partial-schedule facts exposed to the priority rule."""
+ 
+     scheduled: frozenset[int]
+     unscheduled: frozenset[int]
+     eligible: tuple[int, ...]
+     earliest_precedence_start: int
+     earliest_resource_feasible_start: int
+     resource_wait: int
+     projected_finish: int
+     current_makespan: int
+     remaining_count: int
+     scheduled_count: int
+     eligible_count: int
+     remaining_work: int
+ 
+ 
+ @dataclass(frozen=True, slots=True)
+ class EligibleActivityView:
+     """One eligible activity plus its local state and priority score."""
+ 
+     activity: ActivityView
+     state: ScheduleStateView
+     priority: float
+ 
+ 
+ @dataclass(frozen=True, slots=True)
+ class InstanceView:
+     """Immutable benchmark instance facts exposed to the priority rule."""
+ 
+     instance_id: str
+     horizon: int
+     resource_capacities: tuple[int, ...]
+     optimal_makespan: int
+     job_count: int
+ 
+ 
+ class RcpspPriorityProgram:
+     """Program wrapper exposing the evolvable priority score."""
+ 
+     def score_activity(self, activity: ActivityView, state: ScheduleStateView, instance: InstanceView) -> float:
+         """Return the score used by the evaluator to choose the next activity."""
+         return priority_score(activity, state, instance)
+ 
+     def select_activity(self, eligible_activities: tuple[EligibleActivityView, ...], instance: InstanceView) -> int:
+         """Return the selected activity id from the eligible set."""
+         return select_activity(eligible_activities, instance)
+ 
+ 
+-# EVOLVE_START: priority_score
+-def priority_score(activity: ActivityView, state: ScheduleStateView, instance: InstanceView) -> float:
+-    """Return a deterministic priority score for one eligible RCPSP activity.
+-
+-    Contract:
+-        * Preserve this signature.
+-        * Return a finite float; higher scores are scheduled first.
+-        * Use only the provided immutable views.
+-        * Do not use randomness, time, filesystem access, network access, or global mutable state.
+-
+-    Baseline heuristic:
+-        Prioritize activities that sit on a long downstream critical path, consume scarce
+-        resources, and unlock many successors. This is intentionally simple so evolution
+-        has room to discover better dispatch rules.
+-    """
+-    _ = instance
+-    successor_pressure = float(len(activity.successors))
+-    duration_pressure = float(activity.duration)
+-    resource_pressure = float(activity.resource_pressure)
+-    tail_pressure = float(activity.critical_path_tail)
+-    waiting_pressure = float(max(0, state.current_makespan - state.earliest_precedence_start))
+-
+-    return (
+-        3.0 * tail_pressure
+-        + 1.5 * resource_pressure
+-        + 0.7 * successor_pressure
+-        + 0.2 * duration_pressure
+-        + 0.05 * waiting_pressure
+-        - 0.001 * float(activity.id)
+-    )
+-
+-
+-# EVOLVE_END
++# EVOLVE_START: priority_score
++def priority_score(activity: ActivityView, state: ScheduleStateView, instance: InstanceView) -> float:
++    """Return a deterministic structural score combining urgency and pressure."""
++    _ = instance
++    demand_ratio = activity.demand_capacity_ratios[0] if activity.demand_capacity_ratios else 0.0
++    weighted_demand = float(activity.demands[0]) * float(demand_ratio)
++    features = (
++        float(activity.downstream_critical_path),
++        float(activity.duration),
++        weighted_demand,
++        float(len(activity.successors)),
++        float(activity.transitive_successor_count),
++        float(state.earliest_resource_feasible_start),
++        float(max(0, state.earliest_resource_feasible_start - state.earliest_precedence_start)),
++        float(max(0, state.current_makespan - state.earliest_precedence_start)),
++        float(state.projected_finish),
++        float(activity.bottleneck_ratio),
++        float(activity.resource_pressure),
++        float(activity.successor_work),
++    )
++    weights = (
++        3.3361354926476796,
++        0.18699002132011017,
++        2.4505973763972735,
++        -0.09293668648981424,
++        3.3371341011147093,
++        -13.251521592471839,
++        1.0566568726367724,
++        -0.30825674063037856,
++        -0.01765515517782279,
++        3.3477197898098976,
++        -0.7005088135706682,
++        -0.20886456423277294,
++    )
++    return float(sum(weight * value for weight, value in zip(weights, features)))
++# EVOLVE_END
+ 
+ 
+ # EVOLVE_START: select_activity
+ def select_activity(eligible_activities: tuple[EligibleActivityView, ...], instance: InstanceView) -> int:
+     """Choose one eligible activity after all local priority scores are available.
+ 
+     Contract:
+         * Preserve this signature.
+         * Return the id of exactly one activity from `eligible_activities`.
+         * Keep the choice deterministic and use only immutable views.
+         * Do not use randomness, time, filesystem access, network access, or global mutable state.
+ 
+     Baseline selector:
+         Select the highest local priority and tie-break by smaller activity id.
+         Evolution can replace this with lexicographic, conditional, or phase-aware
+         logic that compares the whole eligible set.
+     """
+     _ = instance
+     selected = max(eligible_activities, key=lambda item: (item.priority, -item.activity.id))
+     return int(selected.activity.id)
+ 
+ 
+ # EVOLVE_END
+ 
+ 
+ __all__ = [
+     "ActivityView",
+     "EligibleActivityView",
+     "InstanceView",
+     "RcpspPriorityProgram",
+     "ScheduleStateView",
+     "priority_score",
+     "select_activity",
+ ]

@@ -310,6 +310,112 @@
   border-color: var(--accent);
 }
 
+.rcpsp-diff-summary,
+.rcpsp-ablation-leads {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 2rem 0 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.rcpsp-diff-summary span {
+  padding: 1rem 0;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.rcpsp-diff-summary strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.rcpsp-full-diff {
+  width: 100%;
+}
+
+.rcpsp-whitepaper .rcpsp-full-diff pre {
+  max-height: 44rem !important;
+  overflow: auto;
+  background: var(--code-bg);
+  scrollbar-width: thin;
+}
+
+.rcpsp-full-diff code {
+  min-width: max-content;
+  padding: 0.85rem 0;
+  counter-reset: diff-line;
+}
+
+.rcpsp-diff-line {
+  display: block;
+  min-height: 1.45em;
+  padding: 0 1rem;
+  color: var(--code-text);
+  font: 0.76rem/1.45 "SFMono-Regular", Menlo, Consolas, monospace;
+  white-space: pre;
+}
+
+.rcpsp-diff-context {
+  color: color-mix(in srgb, var(--code-text) 68%, transparent);
+}
+
+.rcpsp-diff-add {
+  background: color-mix(in srgb, #168cff 13%, transparent);
+  color: color-mix(in srgb, var(--code-text) 88%, #168cff);
+}
+
+.rcpsp-diff-remove {
+  background: color-mix(in srgb, #d45555 11%, transparent);
+  color: color-mix(in srgb, var(--code-text) 84%, #d45555);
+}
+
+.rcpsp-diff-file,
+.rcpsp-diff-hunk {
+  color: var(--code-keyword);
+  font-weight: 650;
+}
+
+.rcpsp-whitepaper h4 {
+  max-width: 48rem;
+  margin: clamp(3rem, 7vw, 5rem) auto 1rem;
+  color: var(--text);
+  font-size: clamp(1.25rem, 2.2vw, 1.65rem);
+}
+
+.rcpsp-ablation-leads {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 48rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.rcpsp-ablation-leads > div {
+  padding: 1.25rem 0;
+}
+
+.rcpsp-ablation-leads span,
+.rcpsp-ablation-leads small {
+  display: block;
+  color: var(--muted);
+}
+
+.rcpsp-ablation-leads strong {
+  display: block;
+  margin: 0.35rem 0 0.15rem;
+  color: var(--text);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  letter-spacing: -0.04em;
+}
+
+.rcpsp-ablation-table td:last-child {
+  color: var(--accent);
+  font-weight: 650;
+}
+
 @media (max-width: 760px) {
   .result-outcome,
   .result-campaign-grid,
@@ -340,6 +446,16 @@
   .result-history-strip .result-ledger-entry::before {
     top: 0.35rem;
     left: calc(-1.25rem - 4px);
+  }
+
+  .rcpsp-diff-summary,
+  .rcpsp-ablation-leads {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .rcpsp-diff-summary span,
+  .rcpsp-ablation-leads > div {
+    padding-right: 0.75rem;
   }
 
   .rcpsp-task-comparison {
