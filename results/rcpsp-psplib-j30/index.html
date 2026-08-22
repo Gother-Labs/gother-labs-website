@@ -110,11 +110,11 @@
               </figure>
 
               <figure class="result-ledger-figure" id="fig-2">
-                <img src="./assets/resource-load.svg" alt="Renewable resource load profile and capacity line">
-                <figcaption>Figure 2. A schedule is accepted only when every renewable-resource load remains at or below capacity.</figcaption>
+                <img src="./assets/resource-load.svg?v=baseline-v2" alt="Overlaid renewable-resource loads for baseline and Evölther 2.0 on j3025_9">
+                <figcaption>Figure 2. Actual resource-load comparison for j3025_9. Baseline appears in grey and Evölther 2.0 in blue on the same time axis; all four renewable resources remain within their unchanged capacities.</figcaption>
               </figure>
 
-              <p>The evaluator uses serial schedule generation. At each step it identifies eligible activities, scores them with the candidate policy, selects one, and places it at the earliest resource-feasible start. The optimization surface is therefore narrow: Evölther changes the priority policy, not the feasibility validator.</p>
+              <p>The resource profiles come from the same schedules visualized later in Figure 5. Evölther 2.0 redistributes demand earlier without crossing any capacity line, then releases every resource twenty time units sooner. The evaluator still uses serial schedule generation: it identifies eligible activities, scores them, and places the selected activity at its earliest resource-feasible start. Evölther changes the priority policy, not the feasibility validator.</p>
 
               <h3>2. Benchmark and evaluation contract</h3>
               <p>The public portfolio contains 80 frozen PSPLIB J30 single-mode instances: parameters 1, 7, 13, 19, 25, 31, 37, and 43 crossed with instances 1 through 10. Each instance contains 32 jobs including dummy source and sink activities, renewable-resource capacities, precedence arcs, and a proven optimal makespan.</p>
