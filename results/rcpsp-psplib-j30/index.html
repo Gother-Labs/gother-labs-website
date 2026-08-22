@@ -200,11 +200,11 @@
               <p>Against the baseline, Evölther 2.0 wins on 35 portfolio instances, ties on 27, and loses on 18. The accepted claim is therefore portfolio-level improvement rather than universal instance dominance. The clearest compression example is <code>j3025_9</code>, where the new ordering shortens makespan from 112 to 92 against a proven optimum of 84.</p>
 
               <figure class="result-ledger-figure rcpsp-task-comparison" id="fig-5">
-                <img src="./assets/instance-comparison.svg?v=baseline-v2" alt="Task-level schedule comparison from baseline to Evölther 2.0 for PSPLIB instance j3025_9">
-                <figcaption>Figure 5. Baseline-to-Evölther 2.0 task comparison for j3025_9. Every row is the same activity before and after; the terminal makespan contracts from 112 to 92 against optimum 84.</figcaption>
+                <img src="./assets/instance-comparison.svg?v=baseline-v3" alt="Overlaid task-level schedule comparison from baseline to Evölther 2.0 for PSPLIB instance j3025_9">
+                <figcaption>Figure 5. Overlaid baseline-to-Evölther 2.0 comparison for j3025_9. Grey and blue bars share the same task row and time axis, exposing the compression from makespan 112 to 92 against optimum 84.</figcaption>
               </figure>
 
-              <p>The diagram exposes where that compression comes from rather than showing only two endpoint bars. Evölther 2.0 starts J4 before J3, brings much of the middle dependency chain forward, and moves the terminal J29–J31 sequence substantially earlier. The evaluator applies exactly the same precedence and resource-capacity checks to both schedules.</p>
+              <p>Because both schedules are superimposed, movement is visible directly: blue to the left of grey means Evölther 2.0 places that activity earlier. The new policy starts J4 before J3, brings much of the middle dependency chain forward, and moves the terminal J29–J31 sequence substantially earlier. The evaluator applies exactly the same precedence and resource-capacity checks to both schedules.</p>
 
               <figure class="result-ledger-figure" id="fig-6">
                 <img src="./assets/gap-readout.svg" alt="Current Evölther 2.0 RCPSP gap diagnostics">
