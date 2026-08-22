@@ -197,14 +197,14 @@
                 <figcaption>Table 3. Current portfolio metrics. Lower score and gap values are better.</figcaption>
               </figure>
 
-              <p>Instance-level behavior is mixed, which is expected for a single deterministic dispatch policy: Evölther 2.0 wins on 30 portfolio instances, ties on 30, and loses on 20. The accepted claim is therefore portfolio-level improvement. The clearest positive example is <code>j3037_6</code>, where the new ordering brings several downstream activities forward and shortens makespan from 85 to 76, only three time units above the proven optimum.</p>
+              <p>Against the baseline, Evölther 2.0 wins on 35 portfolio instances, ties on 27, and loses on 18. The accepted claim is therefore portfolio-level improvement rather than universal instance dominance. The clearest compression example is <code>j3025_9</code>, where the new ordering shortens makespan from 112 to 92 against a proven optimum of 84.</p>
 
               <figure class="result-ledger-figure rcpsp-task-comparison" id="fig-5">
-                <img src="./assets/instance-comparison.svg" alt="Task-level makespan comparison for PSPLIB instance j3037_6">
-                <figcaption>Figure 5. Task-by-task comparison for j3037_6. Every row is the same activity before and after; Evölther 2.0 compresses the terminal makespan from 85 to 76 against optimum 73.</figcaption>
+                <img src="./assets/instance-comparison.svg?v=baseline-v2" alt="Task-level schedule comparison from baseline to Evölther 2.0 for PSPLIB instance j3025_9">
+                <figcaption>Figure 5. Baseline-to-Evölther 2.0 task comparison for j3025_9. Every row is the same activity before and after; the terminal makespan contracts from 112 to 92 against optimum 84.</figcaption>
               </figure>
 
-              <p>The diagram exposes where that compression comes from rather than showing only two endpoint bars. Activities J9–J14 and their descendants enter the schedule earlier, reducing idle gaps in the middle of the project and allowing the final chain to finish nine units sooner. The evaluator still applies the same precedence and resource-capacity checks to both schedules.</p>
+              <p>The diagram exposes where that compression comes from rather than showing only two endpoint bars. Evölther 2.0 starts J4 before J3, brings much of the middle dependency chain forward, and moves the terminal J29–J31 sequence substantially earlier. The evaluator applies exactly the same precedence and resource-capacity checks to both schedules.</p>
 
               <figure class="result-ledger-figure" id="fig-6">
                 <img src="./assets/gap-readout.svg" alt="Current Evölther 2.0 RCPSP gap diagnostics">
