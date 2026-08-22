@@ -15,7 +15,7 @@
     <meta name="twitter:image" content="https://www.gotherlabs.com/assets/og-image.png">
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="../../assets/gother-mark.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../../styles.css?v=result-ledger-stack-v1">
+    <link rel="stylesheet" href="../../styles.css?v=result-ledger-clean-v3">
   </head>
   <body class="result-ledger-page result-rcpsp-page">
     <a class="skip-link" href="#site-main">Skip to content</a>
@@ -59,24 +59,17 @@
               <span class="result-outcome-label" id="rcpsp-outcome-title">Current accepted score · lower is better</span>
               <p class="result-outcome-value">10.108<span>−29.37%</span></p>
             </div>
-            <p class="result-outcome-copy">The current incumbent improves the original 14.312 baseline by 29.37% and the previous public incumbent by a further 16.37%, with all 80 schedules remaining feasible.</p>
+            <p class="result-outcome-copy">The current deterministic policy passes the complete frozen portfolio with 80 out of 80 schedules feasible. The detailed comparison follows in Results.</p>
           </section>
 
-          <section class="result-ledger-section" aria-labelledby="accepted-history-title">
-            <div class="result-ledger-heading">
-              <div>
-                <span class="result-ledger-kicker">Accepted history</span>
-                <h2 id="accepted-history-title">One contract. Multiple routes to improvement.</h2>
-              </div>
-              <p>This ledger records only validated checkpoints. Evölther and Evölther 2.0 use the same evaluation contract, so their accepted results remain directly comparable.</p>
-            </div>
+          <section class="result-ledger-section result-history-strip" aria-labelledby="accepted-history-title">
+            <span class="result-ledger-kicker" id="accepted-history-title">Accepted history · one unchanged evaluation contract</span>
 
             <div class="result-ledger">
               <article class="result-ledger-entry">
                 <time class="result-ledger-date" datetime="2026-05-11">11 May 2026</time>
                 <div>
                   <h3>Frozen baseline</h3>
-                  <p>The original deterministic priority rule establishes the common reference on 80 PSPLIB J30 instances.</p>
                 </div>
                 <div class="result-ledger-score"><strong>14.312</strong><span>reference</span></div>
               </article>
@@ -85,7 +78,6 @@
                 <time class="result-ledger-date" datetime="2026-05-12">12 May 2026</time>
                 <div>
                   <h3>Evölther</h3>
-                  <p>The original system produced the first published incumbent under the frozen benchmark contract.</p>
                 </div>
                 <div class="result-ledger-score"><strong>12.087</strong><span>−15.55%</span></div>
               </article>
@@ -94,62 +86,10 @@
                 <time class="result-ledger-date" datetime="2026-08-22">22 Aug 2026</time>
                 <div>
                   <h3>Evölther 2.0 <span class="result-status-pill">current incumbent</span></h3>
-                  <p>The updated system reached a stronger accepted policy with a substantially shorter outer optimization cycle.</p>
                 </div>
                 <div class="result-ledger-score"><strong>10.108</strong><span>−29.37%</span></div>
               </article>
             </div>
-          </section>
-
-          <section class="result-ledger-section" aria-labelledby="campaigns-title">
-            <div class="result-ledger-heading">
-              <div>
-                <span class="result-ledger-kicker">System progression</span>
-                <h2 id="campaigns-title">Evölther, then Evölther 2.0.</h2>
-              </div>
-              <p>The comparison is anchored in accepted benchmark results. Generation counts remain useful provenance, while the primary claim is the quality of the validated incumbent produced by each system.</p>
-            </div>
-
-            <div class="result-campaign-grid">
-              <article class="result-campaign-card">
-                <span class="result-evidence-label">System 01</span>
-                <h3>Evölther</h3>
-                <p>The original optimization system established the first public improvement over the deterministic baseline.</p>
-                <div class="result-campaign-stats">
-                  <span>120 generations</span><span>80/80 valid</span><span>12.087 incumbent</span>
-                </div>
-              </article>
-              <article class="result-campaign-card result-campaign-card--current">
-                <span class="result-evidence-label">System 02 · current</span>
-                <h3>Evölther 2.0</h3>
-                <p>The updated optimization system found a stronger policy with fewer outer generations while preserving the same deterministic validation boundary.</p>
-                <div class="result-campaign-stats">
-                  <span>shorter outer cycle</span><span>80/80 valid</span><span>10.108 incumbent</span>
-                </div>
-              </article>
-            </div>
-          </section>
-
-          <section class="result-ledger-section" aria-labelledby="evidence-title">
-            <div class="result-ledger-heading">
-              <div>
-                <span class="result-ledger-kicker">Evidence</span>
-                <h2 id="evidence-title">The result improved where the contract measures it.</h2>
-              </div>
-              <p>The new rule improves the aggregate and the difficult tail. It wins against the previous incumbent on 30 instances, ties on 30, and loses on 20; the claim is portfolio-level, not universal dominance.</p>
-            </div>
-
-            <div class="result-evidence-grid">
-              <article class="result-evidence-card"><span class="result-evidence-label">Mean gap to optimum</span><strong>5.01%</strong><p>Down from 7.13% at the baseline and 6.04% at the previous incumbent.</p></article>
-              <article class="result-evidence-card"><span class="result-evidence-label">P95 gap</span><strong>14.57%</strong><p>Tail quality improves from 20.52% at baseline and 17.28% previously.</p></article>
-              <article class="result-evidence-card"><span class="result-evidence-label">Validated schedules</span><strong>80 / 80</strong><p>No feasibility penalty and no invalid priority values.</p></article>
-              <article class="result-evidence-card"><span class="result-evidence-label">Proven optima reached</span><strong>27 / 80</strong><p>Exact-optimum hit rate increases to 33.75%.</p></article>
-            </div>
-
-            <figure class="result-ledger-figure">
-              <img src="./assets/benchmark-comparison.svg" alt="Historical RCPSP baseline and previous accepted benchmark comparison">
-              <figcaption>Figure 4. Updated comparison across the baseline, Evölther, and Evölther 2.0 accepted checkpoints.</figcaption>
-            </figure>
           </section>
 
           <section class="result-detail result-whitepaper-shell rcpsp-whitepaper-shell" aria-labelledby="technical-report-title">
@@ -192,7 +132,34 @@
 
               <h3>3. Accepted candidate</h3>
               <p>The current Evölther 2.0 candidate keeps the serial schedule generator unchanged and replaces only the deterministic activity-ranking policy. The rule combines precedence depth, duration, successor structure, feasible-start information, bottleneck pressure, aggregate resource pressure, and remaining downstream work. This remains an inspectable dispatch heuristic rather than a replacement solver.</p>
-              <p><a href="./artifacts/accepted_candidate.py">Open the full executable accepted candidate</a> or inspect the <a href="./artifacts/evaluation_contract.md">evaluation contract</a>.</p>
+              <p>The final implementation is a linear structural score followed by a deterministic maximum-priority selection. The feature vector is computed entirely from the immutable activity and partial-schedule views exposed by the evaluator:</p>
+              <figure class="result-paper-code result-code-figure rcpsp-code-figure" id="listing-1">
+                <pre><code>features = (
+    downstream_critical_path,
+    duration,
+    weighted_demand,
+    direct_successors,
+    transitive_successors,
+    earliest_feasible_start,
+    resource_wait,
+    precedence_wait,
+    projected_finish,
+    bottleneck_ratio,
+    resource_pressure,
+    successor_work,
+)
+
+weights = (
+     3.336135,  0.186990,  2.450597, -0.092937,
+     3.337134, -13.251522,  1.056657, -0.308257,
+    -0.017655,  3.347720, -0.700509, -0.208865,
+)
+
+priority = sum(weight * value for weight, value in zip(weights, features))
+selected = max(eligible, key=lambda item: (item.priority, -item.activity.id))</code></pre>
+                <figcaption>Listing 1. Core of the accepted Evölther 2.0 policy. <a href="./artifacts/accepted_candidate.py">Open the full executable artifact</a>.</figcaption>
+              </figure>
+              <p>The negative coefficient on earliest feasible start strongly favors activities that can be placed earlier, while precedence depth, transitive successor count, and bottleneck pressure preserve awareness of downstream structure. The remaining terms refine ties and resource-contention trade-offs. No benchmark instance identifier or instance-specific exception appears in the policy.</p>
 
               <h3>4. Results</h3>
               <p>The accepted history contains three directly comparable checkpoints. Figure 3 shows the score progression without forcing the two Evölther systems onto one synthetic generation axis.</p>
@@ -201,10 +168,14 @@
                 <figcaption>Figure 3. Accepted-checkpoint progression under one unchanged, lower-is-better objective.</figcaption>
               </figure>
 
+              <p>Evölther first reduced the objective by 15.55%. Evölther 2.0 then removed another 2.0 score points from that incumbent, producing a further 16.37% reduction. Because the evaluation contract did not change, the three checkpoints can be compared directly.</p>
+
               <figure class="result-ledger-figure" id="fig-4-detail">
                 <img src="./assets/benchmark-comparison.svg" alt="RCPSP benchmark comparison for baseline, Evölther, and Evölther 2.0">
                 <figcaption>Figure 4. The current score is 29.37% below baseline and 16.37% below the previous public incumbent.</figcaption>
               </figure>
+
+              <p>The gain is not produced by sacrificing the difficult tail. Mean gap falls from 6.04% to 5.01%, while the 95th-percentile gap falls from 17.28% to 14.57%. The exact-optimum count rises from 19 to 27 schedules, and feasibility remains 80 out of 80.</p>
 
               <figure class="result-paper-table" id="table-2">
                 <div class="result-table-wrap"><table class="result-table"><thead><tr><th>Metric</th><th>Baseline</th><th>Evölther</th><th>Evölther 2.0</th></tr></thead><tbody>
@@ -217,17 +188,21 @@
                 <figcaption>Table 2. Current portfolio metrics. Lower score and gap values are better.</figcaption>
               </figure>
 
-              <figure class="result-ledger-figure" id="fig-5">
-                <img src="./assets/instance-comparison.svg" alt="Makespan comparison on PSPLIB instance j3025_9">
-                <figcaption>Figure 5. Concrete readout for j3025_9: the baseline makespan is 112, the current candidate is 92, and the proven optimum is 84. This example illustrates schedule compression from baseline; the portfolio score remains the acceptance criterion.</figcaption>
+              <p>Instance-level behavior is mixed, which is expected for a single deterministic dispatch policy: Evölther 2.0 wins on 30 portfolio instances, ties on 30, and loses on 20. The accepted claim is therefore portfolio-level improvement. The clearest positive example is <code>j3037_6</code>, where the new ordering brings several downstream activities forward and shortens makespan from 85 to 76, only three time units above the proven optimum.</p>
+
+              <figure class="result-ledger-figure rcpsp-task-comparison" id="fig-5">
+                <img src="./assets/instance-comparison.svg" alt="Task-level makespan comparison for PSPLIB instance j3037_6">
+                <figcaption>Figure 5. Task-by-task comparison for j3037_6. Every row is the same activity before and after; Evölther 2.0 compresses the terminal makespan from 85 to 76 against optimum 73.</figcaption>
               </figure>
+
+              <p>The diagram exposes where that compression comes from rather than showing only two endpoint bars. Activities J9–J14 and their descendants enter the schedule earlier, reducing idle gaps in the middle of the project and allowing the final chain to finish nine units sooner. The evaluator still applies the same precedence and resource-capacity checks to both schedules.</p>
 
               <figure class="result-ledger-figure" id="fig-6">
                 <img src="./assets/gap-readout.svg" alt="Current Evölther 2.0 RCPSP gap diagnostics">
                 <figcaption>Figure 6. Aggregate and tail diagnostics for the current accepted candidate.</figcaption>
               </figure>
 
-              <p>The aggregate does not conceal the difficult cases. Figure 7 keeps the eight largest residual gaps visible, including their current makespan and proven optimum.</p>
+              <p>Figure 6 separates the acceptance score from its underlying diagnostics. The current mean makespan is 5.01% above proven optimum, while the worst single residual gap is 17.11%. Figure 7 then keeps the eight largest residual gaps visible, including their current makespan and proven optimum.</p>
               <figure class="result-ledger-figure" id="fig-7">
                 <img src="./assets/tail-gap-ladder.svg" alt="Eight largest residual RCPSP gaps for the current candidate">
                 <figcaption>Figure 7. Worst-instance tail behavior for Evölther 2.0 on the frozen portfolio.</figcaption>
@@ -238,28 +213,18 @@
 
               <h3>6. Reproducibility</h3>
               <p>The public bundle includes the accepted candidate, evaluation contract, retained metrics, provenance, replay confirmation, and figures. Replaying the result requires the same portfolio, proven optima, score formula, and lower-is-better direction. Changing the instance set or objective creates a new evaluation.</p>
-            </article>
-          </section>
-
-          <section class="result-ledger-section" aria-labelledby="limits-title">
-            <div class="result-ledger-heading">
-              <div>
-                <span class="result-ledger-kicker">Interpretation</span>
-                <h2 id="limits-title">A stronger bounded result, not a universal scheduling claim.</h2>
+              <div class="result-ledger-actions">
+                <a class="result-ledger-action" href="./artifacts/accepted_candidate.py">Inspect accepted policy</a>
+                <a class="result-ledger-action" href="./artifacts/evaluation_contract.md">Read evaluation contract</a>
+                <a class="result-ledger-action" href="https://github.com/Gother-Labs/gother-labs-results/tree/main/results/rcpsp-psplib-j30" target="_blank" rel="noreferrer">Open evidence repository</a>
               </div>
-              <p>The policy was repeatedly evaluated on this frozen 80-instance portfolio. It must be tested on reserved J30 instances and broader J60/J120 distributions before making a generalization claim. The public result is the deterministic improvement under this contract.</p>
-            </div>
-            <div class="result-ledger-actions">
-              <a class="result-ledger-action" href="./run/">Open historical campaign replay</a>
-              <a class="result-ledger-action" href="./artifacts/accepted_candidate.py">Inspect accepted policy</a>
-              <a class="result-ledger-action" href="https://github.com/Gother-Labs/gother-labs-results/tree/main/results/rcpsp-psplib-j30" target="_blank" rel="noreferrer">Open evidence repository</a>
-            </div>
+            </article>
           </section>
         </div>
       </main>
 
       <footer class="site-footer"><p>© <span id="year">2026</span> Göther Labs</p></footer>
     </div>
-    <script src="../../scripts.js?v=result-ledger-stack-v1"></script>
+    <script src="../../scripts.js?v=result-ledger-clean-v3"></script>
   </body>
 </html>

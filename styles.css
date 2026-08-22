@@ -173,26 +173,59 @@
   font-size: 0.78rem;
 }
 
+.result-history-strip {
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.result-history-strip .result-ledger {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 3vw, 3rem);
+  margin-top: 1.5rem;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.result-history-strip .result-ledger::before {
+  display: none;
+}
+
+.result-history-strip .result-ledger-entry {
+  display: block;
+  padding: 1.5rem 0 0;
+}
+
+.result-history-strip .result-ledger-entry::before {
+  top: -5px;
+  left: 0;
+}
+
+.result-history-strip .result-ledger-entry h3 {
+  margin-top: 0.7rem;
+}
+
+.result-history-strip .result-ledger-score {
+  min-width: 0;
+  margin-top: 0.85rem;
+  text-align: left;
+}
+
 .result-campaign-grid,
 .result-evidence-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 1rem;
-  background: var(--line);
+  gap: clamp(1.5rem, 4vw, 4rem);
 }
 
 .result-campaign-card,
 .result-evidence-card {
-  min-height: 15rem;
-  padding: clamp(1.5rem, 3.5vw, 3rem);
-  background: var(--bg);
+  min-height: 0;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid var(--line);
+  background: transparent;
 }
 
 .result-campaign-card--current {
-  background: color-mix(in srgb, var(--accent) 5%, var(--bg));
+  background: transparent;
 }
 
 .result-campaign-card h3,
@@ -236,10 +269,10 @@
 
 .result-ledger-figure {
   margin: clamp(2.5rem, 6vw, 5rem) 0 0;
-  padding: clamp(1rem, 3vw, 2rem);
-  border: 1px solid var(--line);
-  border-radius: 1rem;
-  background: var(--surface, transparent);
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
 }
 
 .result-ledger-figure img {
@@ -287,6 +320,35 @@
   .result-ledger-entry {
     grid-template-columns: 1fr;
     gap: 0.5rem;
+  }
+
+  .result-history-strip .result-ledger {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-left: 1.25rem;
+    border-top: 0;
+  }
+
+  .result-history-strip .result-ledger::before {
+    display: block;
+  }
+
+  .result-history-strip .result-ledger-entry {
+    padding: 0 0 2rem;
+  }
+
+  .result-history-strip .result-ledger-entry::before {
+    top: 0.35rem;
+    left: calc(-1.25rem - 4px);
+  }
+
+  .rcpsp-task-comparison {
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .rcpsp-task-comparison img {
+    min-width: 46rem;
   }
 
   .result-ledger-score {
