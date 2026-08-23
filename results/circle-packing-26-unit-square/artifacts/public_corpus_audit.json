@@ -1,0 +1,1386 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-08-08",
+  "problem": "26 variable-radius circles in the unit square",
+  "status": "PASS",
+  "uniform_decision_arithmetic": "exact rational",
+  "contracts": [
+    "0",
+    "1e-10",
+    "1e-6"
+  ],
+  "third_party_code_executed": false,
+  "corpus_scope": "Hash-authenticated complete public witnesses listed in data/public_sources.json; not an exhaustive literature leaderboard.",
+  "ranking_scope": "Each ranking contains one matching author certificate and only acquired public witnesses valid under that same rational tolerance.",
+  "source_acquisitions": [
+    {
+      "source_id": "alphaevolve_v2",
+      "project": "AlphaEvolve",
+      "kind": "witness",
+      "url": "https://raw.githubusercontent.com/google-deepmind/alphaevolve_repository_of_problems/8f447457957deac61e28bf1676746f0753b3b2f8/experiments/packing_circles_max_sum_of_radii/packing_circles_max_sum_of_radii.ipynb",
+      "commit": "8f447457957deac61e28bf1676746f0753b3b2f8",
+      "expected_sha256": "e7a304378a5ca80c74f94f5060a9f5db953767af850834513fd797e3306a935e",
+      "actual_sha256": "e7a304378a5ca80c74f94f5060a9f5db953767af850834513fd797e3306a935e",
+      "hash_matches": true,
+      "immutable": true,
+      "license": "Apache-2.0",
+      "bytes": 77546,
+      "acquisition": "authenticated_download_or_cache"
+    },
+    {
+      "source_id": "thetaevolve",
+      "project": "ThetaEvolve",
+      "kind": "witness",
+      "url": "https://raw.githubusercontent.com/ypwang61/ThetaEvolve/7c12898f5d7627af403e3aca643af76199fb5c20/Results/CirclePacking/data.json",
+      "commit": "7c12898f5d7627af403e3aca643af76199fb5c20",
+      "expected_sha256": "c20023f5a4d3e1408a7ec29ee043dea3c2b8d9711dd21c806008b5a48646e7b8",
+      "actual_sha256": "c20023f5a4d3e1408a7ec29ee043dea3c2b8d9711dd21c806008b5a48646e7b8",
+      "hash_matches": true,
+      "immutable": true,
+      "license": "Apache-2.0",
+      "bytes": 14296,
+      "acquisition": "authenticated_download_or_cache"
+    },
+    {
+      "source_id": "eurekagent",
+      "project": "EurekAgent",
+      "kind": "witness",
+      "url": "https://raw.githubusercontent.com/THU-Team-Eureka/EurekAgent/38585790ff56e7993aec322e0179ded8b101d82c/results/circle_packing/result.jsonl",
+      "commit": "38585790ff56e7993aec322e0179ded8b101d82c",
+      "expected_sha256": "21304b7864de0cc4c5847a0d68c4823505472218f652c8abf8740f1508afca00",
+      "actual_sha256": "21304b7864de0cc4c5847a0d68c4823505472218f652c8abf8740f1508afca00",
+      "hash_matches": true,
+      "immutable": true,
+      "license": "AGPL-3.0-only",
+      "bytes": 1858,
+      "acquisition": "authenticated_download_or_cache"
+    },
+    {
+      "source_id": "eurekagent_evaluator",
+      "project": "EurekAgent evaluator",
+      "kind": "support",
+      "url": "https://raw.githubusercontent.com/THU-Team-Eureka/EurekAgent/38585790ff56e7993aec322e0179ded8b101d82c/examples/circle_packing/hidden_eval_dir/evaluate.py",
+      "commit": "38585790ff56e7993aec322e0179ded8b101d82c",
+      "expected_sha256": "f417007dd60c9781bb48a40468baa3552e3127ac0f447601f645a34da8d48fcd",
+      "actual_sha256": "f417007dd60c9781bb48a40468baa3552e3127ac0f447601f645a34da8d48fcd",
+      "hash_matches": true,
+      "immutable": true,
+      "license": "AGPL-3.0-only",
+      "bytes": 15152,
+      "acquisition": "authenticated_download_or_cache"
+    },
+    {
+      "source_id": "hyra",
+      "project": "Hyra",
+      "kind": "witness",
+      "url": "https://raw.githubusercontent.com/Tencent-Hunyuan/Hyra-results/26ebfbe7d491e6521d8bb5fc21fe88bb31460825/AI4Science/packing_records/records/cirRsqu_n26.json",
+      "commit": "26ebfbe7d491e6521d8bb5fc21fe88bb31460825",
+      "expected_sha256": "c16d2472e9516005195cef7f1f0ed4e7c2e709544bcba5dfcbe52bc3d26ff50e",
+      "actual_sha256": "c16d2472e9516005195cef7f1f0ed4e7c2e709544bcba5dfcbe52bc3d26ff50e",
+      "hash_matches": true,
+      "immutable": true,
+      "license": "Apache-2.0",
+      "bytes": 2930,
+      "acquisition": "authenticated_download_or_cache"
+    },
+    {
+      "source_id": "station",
+      "project": "Station",
+      "kind": "witness",
+      "url": "https://raw.githubusercontent.com/dualverse-ai/station/88f052eb1f4a16eb100315a6173852bb1226bcdb/example/research_circle_n26/station_sota.py",
+      "commit": "88f052eb1f4a16eb100315a6173852bb1226bcdb",
+      "expected_sha256": "6a118ae8a27249042b405c19386bd8a5cb4a3a924274187f01ee01c311e1bc1c",
+      "actual_sha256": "6a118ae8a27249042b405c19386bd8a5cb4a3a924274187f01ee01c311e1bc1c",
+      "hash_matches": true,
+      "immutable": true,
+      "license": "Apache-2.0",
+      "bytes": 7855,
+      "acquisition": "authenticated_download_or_cache"
+    },
+    {
+      "source_id": "packomania",
+      "project": "Packomania",
+      "kind": "witness",
+      "url": "https://www.packomania.com/csqv/txt/csqv26.txt",
+      "commit": null,
+      "expected_sha256": "d8dcaac26602229340fd95eda93858b7556ac745ef2a7834864cebd33d0116a4",
+      "actual_sha256": "d8dcaac26602229340fd95eda93858b7556ac745ef2a7834864cebd33d0116a4",
+      "hash_matches": true,
+      "immutable": false,
+      "license": "NOASSERTION",
+      "bytes": 1702,
+      "acquisition": "authenticated_download_or_cache"
+    },
+    {
+      "source_id": "jason_liang",
+      "project": "Jason Liang public SOTA corpus",
+      "kind": "witness",
+      "url": "https://raw.githubusercontent.com/jasonzliang/circle-packing-sota/c36af71dbe0b64aecfc29602b4f090f84903f205/sota/ours/pck/csqv26.pck",
+      "commit": "c36af71dbe0b64aecfc29602b4f090f84903f205",
+      "expected_sha256": "b28701f7bcf4ea0521e9c76b15d31081e775109e6eb00338670dfaa296dca135",
+      "actual_sha256": "b28701f7bcf4ea0521e9c76b15d31081e775109e6eb00338670dfaa296dca135",
+      "hash_matches": true,
+      "immutable": true,
+      "license": "NOASSERTION",
+      "bytes": 1224,
+      "acquisition": "authenticated_download_or_cache"
+    },
+    {
+      "source_id": "alphaz_coral",
+      "project": "AlphaZ-CORAL",
+      "kind": "incomplete_program",
+      "url": "https://raw.githubusercontent.com/Kurorz2004/alphaz-coral/3cd38221847e442d4b11822d2cf31646db2daa47/task1/result/best_program.py",
+      "commit": "3cd38221847e442d4b11822d2cf31646db2daa47",
+      "expected_sha256": "405c6bf6b30d64d9c8f531d6d9d171ff7d713635b3f27252d7fa057f1e9ffee4",
+      "actual_sha256": "405c6bf6b30d64d9c8f531d6d9d171ff7d713635b3f27252d7fa057f1e9ffee4",
+      "hash_matches": true,
+      "immutable": true,
+      "license": "NOASSERTION",
+      "bytes": 3579,
+      "acquisition": "authenticated_download_or_cache"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "alphaevolve_v2",
+      "name": "AlphaEvolve v2",
+      "source_id": "alphaevolve_v2",
+      "reported_score": null,
+      "recomputed_score": "2.6359830849176068",
+      "checks": {
+        "0": {
+          "valid": false,
+          "score": "2.6359830849176068",
+          "tolerance": "0",
+          "min_wall_gap_zero": "-5e-17",
+          "min_wall_where": [
+            11,
+            "right"
+          ],
+          "min_pair_squared_gap_zero": "-2.00445817272093029e-17",
+          "min_pair_squared_gap_where": [
+            19,
+            22
+          ],
+          "min_wall_margin_at_tolerance": "-5e-17",
+          "min_pair_margin_at_tolerance": "-5.223716708399533773537183747814514033238294525584396919086356644909924836574288347106764234826345315e-17",
+          "min_pair_margin_where": [
+            19,
+            22
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        },
+        "1e-10": {
+          "valid": true,
+          "score": "2.6359830849176068",
+          "tolerance": "1e-10",
+          "min_wall_gap_zero": "-5e-17",
+          "min_wall_where": [
+            11,
+            "right"
+          ],
+          "min_pair_squared_gap_zero": "-2.00445817272093029e-17",
+          "min_pair_squared_gap_where": [
+            19,
+            22
+          ],
+          "min_wall_margin_at_tolerance": "9.999995e-11",
+          "min_pair_margin_at_tolerance": "9.999994776283291600466226462816252185485966761705474415603080913643355090075163425711652893235765174e-11",
+          "min_pair_margin_where": [
+            19,
+            22
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        },
+        "1e-6": {
+          "valid": true,
+          "score": "2.6359830849176068",
+          "tolerance": "0.000001",
+          "min_wall_gap_zero": "-5e-17",
+          "min_wall_where": [
+            11,
+            "right"
+          ],
+          "min_pair_squared_gap_zero": "-2.00445817272093029e-17",
+          "min_pair_squared_gap_where": [
+            19,
+            22
+          ],
+          "min_wall_margin_at_tolerance": "9.9999999995e-7",
+          "min_pair_margin_at_tolerance": "9.999999999477628329160046622646281625218548596676170547441560308091364335509007516342571165289323577e-7",
+          "min_pair_margin_where": [
+            19,
+            22
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        }
+      },
+      "source_native_compatibility": {
+        "evaluator": "alphaevolve_binary64_zero",
+        "valid": true,
+        "binary64_score": "2.6359830849176076",
+        "interpretation": "independent binary64 reimplementation of the notebook's zero-tolerance check",
+        "third_party_code_executed": false
+      }
+    },
+    {
+      "id": "theta_alphaevolve",
+      "name": "Theta corpus: AlphaEvolve",
+      "source_id": "thetaevolve",
+      "reported_score": null,
+      "recomputed_score": "2.63586275641369812",
+      "checks": {
+        "0": {
+          "valid": true,
+          "score": "2.63586275641369812",
+          "tolerance": "0",
+          "min_wall_gap_zero": "7.85235099e-9",
+          "min_wall_where": [
+            6,
+            "left"
+          ],
+          "min_pair_squared_gap_zero": "2.3749043316223566571343199e-9",
+          "min_pair_squared_gap_where": [
+            16,
+            22
+          ],
+          "min_wall_margin_at_tolerance": "7.85235099e-9",
+          "min_pair_margin_at_tolerance": "7.166487294361127232056503749832821998199793506076911788397841261927596995855621065415354249656521000e-9",
+          "min_pair_margin_where": [
+            16,
+            22
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        },
+        "1e-10": {
+          "valid": true,
+          "score": "2.63586275641369812",
+          "tolerance": "1e-10",
+          "min_wall_gap_zero": "7.85235099e-9",
+          "min_wall_where": [
+            6,
+            "left"
+          ],
+          "min_pair_squared_gap_zero": "2.3749043316223566571343199e-9",
+          "min_pair_squared_gap_where": [
+            16,
+            22
+          ],
+          "min_wall_margin_at_tolerance": "7.95235099e-9",
+          "min_pair_margin_at_tolerance": "7.266487294361127232056503749832821998199793506076911788397841261927596995855621065415354249656521000e-9",
+          "min_pair_margin_where": [
+            16,
+            22
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        },
+        "1e-6": {
+          "valid": true,
+          "score": "2.63586275641369812",
+          "tolerance": "0.000001",
+          "min_wall_gap_zero": "7.85235099e-9",
+          "min_wall_where": [
+            6,
+            "left"
+          ],
+          "min_pair_squared_gap_zero": "2.3749043316223566571343199e-9",
+          "min_pair_squared_gap_where": [
+            16,
+            22
+          ],
+          "min_wall_margin_at_tolerance": "0.00000100785235099",
+          "min_pair_margin_at_tolerance": "0.000001007166487294361127232056503749832821998199793506076911788397841261927596995855621065415354249656521",
+          "min_pair_margin_where": [
+            16,
+            22
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        }
+      }
+    },
+    {
+      "id": "theta_8b_w_rl_65",
+      "name": "Theta corpus: 8B-w_RL@65",
+      "source_id": "thetaevolve",
+      "reported_score": null,
+      "recomputed_score": "2.63598566124089912",
+      "checks": {
+        "0": {
+          "valid": false,
+          "score": "2.63598566124089912",
+          "tolerance": "0",
+          "min_wall_gap_zero": "-1.2936e-12",
+          "min_wall_where": [
+            22,
+            "top"
+          ],
+          "min_pair_squared_gap_zero": "-1.004316977542382409302310681e-7",
+          "min_pair_squared_gap_where": [
+            18,
+            19
+          ],
+          "min_wall_margin_at_tolerance": "-1.2936e-12",
+          "min_pair_margin_at_tolerance": "-3.094551437130762693039881231119852628080762932638012108454219272353227678681524659633750940183563802e-7",
+          "min_pair_margin_where": [
+            4,
+            9
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        },
+        "1e-10": {
+          "valid": false,
+          "score": "2.63598566124089912",
+          "tolerance": "1e-10",
+          "min_wall_gap_zero": "-1.2936e-12",
+          "min_wall_where": [
+            22,
+            "top"
+          ],
+          "min_pair_squared_gap_zero": "-1.004316977542382409302310681e-7",
+          "min_pair_squared_gap_where": [
+            18,
+            19
+          ],
+          "min_wall_margin_at_tolerance": "9.87064e-11",
+          "min_pair_margin_at_tolerance": "-3.093551437130762693039881231119852628080762932638012108454219272353227678681524659633750940183563802e-7",
+          "min_pair_margin_where": [
+            4,
+            9
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        },
+        "1e-6": {
+          "valid": true,
+          "score": "2.63598566124089912",
+          "tolerance": "0.000001",
+          "min_wall_gap_zero": "-1.2936e-12",
+          "min_wall_where": [
+            22,
+            "top"
+          ],
+          "min_pair_squared_gap_zero": "-1.004316977542382409302310681e-7",
+          "min_pair_squared_gap_where": [
+            18,
+            19
+          ],
+          "min_wall_margin_at_tolerance": "9.999987064e-7",
+          "min_pair_margin_at_tolerance": "6.905448562869237306960118768880147371919237067361987891545780727646772321318475340366249059816436198e-7",
+          "min_pair_margin_where": [
+            4,
+            9
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        }
+      }
+    },
+    {
+      "id": "theta_8b_w_rl_65_formal",
+      "name": "Theta corpus: 8B-w_RL@65-Formal",
+      "source_id": "thetaevolve",
+      "reported_score": null,
+      "recomputed_score": "2.63598307738811934",
+      "checks": {
+        "0": {
+          "valid": true,
+          "score": "2.63598307738811934",
+          "tolerance": "0",
+          "min_wall_gap_zero": "3.1012261e-10",
+          "min_wall_where": [
+            8,
+            "bottom"
+          ],
+          "min_pair_squared_gap_zero": "4.956914031410987398916e-13",
+          "min_pair_squared_gap_where": [
+            18,
+            24
+          ],
+          "min_wall_margin_at_tolerance": "3.1012261e-10",
+          "min_pair_margin_at_tolerance": "9.999794737778921648939346432337245562573866425850503011255956867765527793319915406988583783559149636e-13",
+          "min_pair_margin_where": [
+            18,
+            24
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        },
+        "1e-10": {
+          "valid": true,
+          "score": "2.63598307738811934",
+          "tolerance": "1e-10",
+          "min_wall_gap_zero": "3.1012261e-10",
+          "min_wall_where": [
+            8,
+            "bottom"
+          ],
+          "min_pair_squared_gap_zero": "4.956914031410987398916e-13",
+          "min_pair_squared_gap_where": [
+            18,
+            24
+          ],
+          "min_wall_margin_at_tolerance": "4.1012261e-10",
+          "min_pair_margin_at_tolerance": "1.009999794737778921648939346432337245562573866425850503011255956867765527793319915406988583783559150e-10",
+          "min_pair_margin_where": [
+            18,
+            24
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        },
+        "1e-6": {
+          "valid": true,
+          "score": "2.63598307738811934",
+          "tolerance": "0.000001",
+          "min_wall_gap_zero": "3.1012261e-10",
+          "min_wall_where": [
+            8,
+            "bottom"
+          ],
+          "min_pair_squared_gap_zero": "4.956914031410987398916e-13",
+          "min_pair_squared_gap_where": [
+            18,
+            24
+          ],
+          "min_wall_margin_at_tolerance": "0.00000100031012261",
+          "min_pair_margin_at_tolerance": "0.000001000000999979473777892164893934643233724556257386642585050301125595686776552779331991540698858378356",
+          "min_pair_margin_where": [
+            18,
+            24
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        }
+      }
+    },
+    {
+      "id": "theta_shinkaevolve",
+      "name": "Theta corpus: ShinkaEvolve",
+      "source_id": "thetaevolve",
+      "reported_score": null,
+      "recomputed_score": "2.63598282664580639",
+      "checks": {
+        "0": {
+          "valid": true,
+          "score": "2.63598282664580639",
+          "tolerance": "0",
+          "min_wall_gap_zero": "9.99788106e-9",
+          "min_wall_where": [
+            16,
+            "top"
+          ],
+          "min_pair_squared_gap_zero": "6.462459061414869042269184e-9",
+          "min_pair_squared_gap_where": [
+            20,
+            25
+          ],
+          "min_wall_margin_at_tolerance": "9.99788106e-9",
+          "min_pair_margin_at_tolerance": "1.891033402558392884305506775322883496722764958009260925951961966184785961157275602804774453895899728e-8",
+          "min_pair_margin_where": [
+            10,
+            12
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        },
+        "1e-10": {
+          "valid": true,
+          "score": "2.63598282664580639",
+          "tolerance": "1e-10",
+          "min_wall_gap_zero": "9.99788106e-9",
+          "min_wall_where": [
+            16,
+            "top"
+          ],
+          "min_pair_squared_gap_zero": "6.462459061414869042269184e-9",
+          "min_pair_squared_gap_where": [
+            20,
+            25
+          ],
+          "min_wall_margin_at_tolerance": "1.009788106e-8",
+          "min_pair_margin_at_tolerance": "1.901033402558392884305506775322883496722764958009260925951961966184785961157275602804774453895899728e-8",
+          "min_pair_margin_where": [
+            10,
+            12
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        },
+        "1e-6": {
+          "valid": true,
+          "score": "2.63598282664580639",
+          "tolerance": "0.000001",
+          "min_wall_gap_zero": "9.99788106e-9",
+          "min_wall_where": [
+            16,
+            "top"
+          ],
+          "min_pair_squared_gap_zero": "6.462459061414869042269184e-9",
+          "min_pair_squared_gap_where": [
+            20,
+            25
+          ],
+          "min_wall_margin_at_tolerance": "0.00000100999788106",
+          "min_pair_margin_at_tolerance": "0.000001018910334025583928843055067753228834967227649580092609259519619661847859611572756028047744538958997",
+          "min_pair_margin_where": [
+            10,
+            12
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        }
+      }
+    },
+    {
+      "id": "eurekagent",
+      "name": "EurekAgent",
+      "source_id": "eurekagent",
+      "reported_score": "2.635998720859883",
+      "recomputed_score": "2.63599872085988286",
+      "checks": {
+        "0": {
+          "valid": false,
+          "score": "2.63599872085988286",
+          "tolerance": "0",
+          "min_wall_gap_zero": "-9.9999766408e-7",
+          "min_wall_where": [
+            17,
+            "bottom"
+          ],
+          "min_pair_squared_gap_zero": "-5.092809690747546372427159475e-7",
+          "min_pair_squared_gap_where": [
+            10,
+            16
+          ],
+          "min_wall_margin_at_tolerance": "-9.9999766408e-7",
+          "min_pair_margin_at_tolerance": "-0.000001000000000061804746891285208527126624517937747391947983664332701682269281913543130240773660884564565",
+          "min_pair_margin_where": [
+            20,
+            22
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        },
+        "1e-10": {
+          "valid": false,
+          "score": "2.63599872085988286",
+          "tolerance": "1e-10",
+          "min_wall_gap_zero": "-9.9999766408e-7",
+          "min_wall_where": [
+            17,
+            "bottom"
+          ],
+          "min_pair_squared_gap_zero": "-5.092809690747546372427159475e-7",
+          "min_pair_squared_gap_where": [
+            10,
+            16
+          ],
+          "min_wall_margin_at_tolerance": "-9.9989766408e-7",
+          "min_pair_margin_at_tolerance": "-9.999000000618047468912852085271266245179377473919479836643327016822692819135431302407736608845645652e-7",
+          "min_pair_margin_where": [
+            20,
+            22
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        },
+        "1e-6": {
+          "valid": false,
+          "score": "2.63599872085988286",
+          "tolerance": "0.000001",
+          "min_wall_gap_zero": "-9.9999766408e-7",
+          "min_wall_where": [
+            17,
+            "bottom"
+          ],
+          "min_pair_squared_gap_zero": "-5.092809690747546372427159475e-7",
+          "min_pair_squared_gap_where": [
+            10,
+            16
+          ],
+          "min_wall_margin_at_tolerance": "2.33592e-12",
+          "min_pair_margin_at_tolerance": "-6.180474689128520852712662451793774739194798366433270168226928191354313024077366088456456516351499958e-17",
+          "min_pair_margin_where": [
+            20,
+            22
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        }
+      },
+      "source_native_compatibility": {
+        "evaluator": "eurekagent_binary64_1e-6",
+        "valid": true,
+        "binary64_score": "2.6359987208598832",
+        "interpretation": "independent binary64 reimplementation of adapted_validate_packing(atol=1e-6)",
+        "third_party_code_executed": false
+      }
+    },
+    {
+      "id": "hyra",
+      "name": "Hyra",
+      "source_id": "hyra",
+      "reported_score": "2.6359830951068446",
+      "recomputed_score": "2.63598309510684482",
+      "checks": {
+        "0": {
+          "valid": false,
+          "score": "2.63598309510684482",
+          "tolerance": "0",
+          "min_wall_gap_zero": "-7.3801922e-10",
+          "min_wall_where": [
+            24,
+            "right"
+          ],
+          "min_pair_squared_gap_zero": "-4.8779925480773374377991675751e-10",
+          "min_pair_squared_gap_where": [
+            13,
+            16
+          ],
+          "min_wall_margin_at_tolerance": "-7.3801922e-10",
+          "min_pair_margin_at_tolerance": "-9.800000125284137381937033248007533771547852430220372082930185736664935852866437098018612933455595709e-10",
+          "min_pair_margin_where": [
+            6,
+            8
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        },
+        "1e-10": {
+          "valid": false,
+          "score": "2.63598309510684482",
+          "tolerance": "1e-10",
+          "min_wall_gap_zero": "-7.3801922e-10",
+          "min_wall_where": [
+            24,
+            "right"
+          ],
+          "min_pair_squared_gap_zero": "-4.8779925480773374377991675751e-10",
+          "min_pair_squared_gap_where": [
+            13,
+            16
+          ],
+          "min_wall_margin_at_tolerance": "-6.3801922e-10",
+          "min_pair_margin_at_tolerance": "-8.800000125284137381937033248007533771547852430220372082930185736664935852866437098018612933455595709e-10",
+          "min_pair_margin_where": [
+            6,
+            8
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        },
+        "1e-6": {
+          "valid": true,
+          "score": "2.63598309510684482",
+          "tolerance": "0.000001",
+          "min_wall_gap_zero": "-7.3801922e-10",
+          "min_wall_where": [
+            24,
+            "right"
+          ],
+          "min_pair_squared_gap_zero": "-4.8779925480773374377991675751e-10",
+          "min_pair_squared_gap_where": [
+            13,
+            16
+          ],
+          "min_wall_margin_at_tolerance": "9.9926198078e-7",
+          "min_pair_margin_at_tolerance": "9.990199999874715862618062966751992466228452147569779627917069814263335064147133562901981387066544404e-7",
+          "min_pair_margin_where": [
+            6,
+            8
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        }
+      }
+    },
+    {
+      "id": "station",
+      "name": "Station",
+      "source_id": "station",
+      "reported_score": null,
+      "recomputed_score": "2.63598308491754725",
+      "checks": {
+        "0": {
+          "valid": false,
+          "score": "2.63598308491754725",
+          "tolerance": "0",
+          "min_wall_gap_zero": "-3e-17",
+          "min_wall_where": [
+            14,
+            "top"
+          ],
+          "min_pair_squared_gap_zero": "2.991997242106779633e-16",
+          "min_pair_squared_gap_where": [
+            11,
+            16
+          ],
+          "min_wall_margin_at_tolerance": "-3e-17",
+          "min_pair_margin_at_tolerance": "8.847925423038518733335366055027372236681766311390721965204912215597048485927715188040202672997292538e-16",
+          "min_pair_margin_where": [
+            11,
+            16
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        },
+        "1e-10": {
+          "valid": true,
+          "score": "2.63598308491754725",
+          "tolerance": "1e-10",
+          "min_wall_gap_zero": "-3e-17",
+          "min_wall_where": [
+            14,
+            "top"
+          ],
+          "min_pair_squared_gap_zero": "2.991997242106779633e-16",
+          "min_pair_squared_gap_where": [
+            11,
+            16
+          ],
+          "min_wall_margin_at_tolerance": "9.999997e-11",
+          "min_pair_margin_at_tolerance": "1.000008847925423038518733335366055027372236681766311390721965204912215597048485927715188040202672997e-10",
+          "min_pair_margin_where": [
+            11,
+            16
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        },
+        "1e-6": {
+          "valid": true,
+          "score": "2.63598308491754725",
+          "tolerance": "0.000001",
+          "min_wall_gap_zero": "-3e-17",
+          "min_wall_where": [
+            14,
+            "top"
+          ],
+          "min_pair_squared_gap_zero": "2.991997242106779633e-16",
+          "min_pair_squared_gap_where": [
+            11,
+            16
+          ],
+          "min_wall_margin_at_tolerance": "9.9999999997e-7",
+          "min_pair_margin_at_tolerance": "0.000001000000000884792542303851873333536605502737223668176631139072196520491221559704848592771518804020267",
+          "min_pair_margin_where": [
+            11,
+            16
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        }
+      }
+    },
+    {
+      "id": "packomania",
+      "name": "Packomania csqv26",
+      "source_id": "packomania",
+      "reported_score": "2.635983084918",
+      "recomputed_score": "2.635983084919",
+      "checks": {
+        "0": {
+          "valid": false,
+          "score": "2.635983084919",
+          "tolerance": "0",
+          "min_wall_gap_zero": "0",
+          "min_wall_where": [
+            2,
+            "left"
+          ],
+          "min_pair_squared_gap_zero": "-4.2512798462e-13",
+          "min_pair_squared_gap_where": [
+            13,
+            15
+          ],
+          "min_wall_margin_at_tolerance": "0",
+          "min_pair_margin_at_tolerance": "-1.041635179149153986544979716998403176632633461334500347029275066404391585787202467243801264420563503e-12",
+          "min_pair_margin_where": [
+            13,
+            15
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        },
+        "1e-10": {
+          "valid": true,
+          "score": "2.635983084919",
+          "tolerance": "1e-10",
+          "min_wall_gap_zero": "0",
+          "min_wall_where": [
+            2,
+            "left"
+          ],
+          "min_pair_squared_gap_zero": "-4.2512798462e-13",
+          "min_pair_squared_gap_where": [
+            13,
+            15
+          ],
+          "min_wall_margin_at_tolerance": "1e-10",
+          "min_pair_margin_at_tolerance": "9.895836482085084601345502028300159682336736653866549965297072493359560841421279753275619873557943650e-11",
+          "min_pair_margin_where": [
+            13,
+            15
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        },
+        "1e-6": {
+          "valid": true,
+          "score": "2.635983084919",
+          "tolerance": "0.000001",
+          "min_wall_gap_zero": "0",
+          "min_wall_where": [
+            2,
+            "left"
+          ],
+          "min_pair_squared_gap_zero": "-4.2512798462e-13",
+          "min_pair_squared_gap_where": [
+            13,
+            15
+          ],
+          "min_wall_margin_at_tolerance": "0.000001",
+          "min_pair_margin_at_tolerance": "9.999989583648208508460134550202830015968233673665386654996529707249335956084142127975327561987355794e-7",
+          "min_pair_margin_where": [
+            13,
+            15
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        }
+      }
+    },
+    {
+      "id": "jason_liang",
+      "name": "Jason Liang csqv26",
+      "source_id": "jason_liang",
+      "reported_score": null,
+      "recomputed_score": "2.635983084893",
+      "checks": {
+        "0": {
+          "valid": true,
+          "score": "2.635983084893",
+          "tolerance": "0",
+          "min_wall_gap_zero": "1e-12",
+          "min_wall_where": [
+            2,
+            "left"
+          ],
+          "min_pair_squared_gap_zero": "3.91142420084e-13",
+          "min_pair_squared_gap_where": [
+            13,
+            15
+          ],
+          "min_wall_margin_at_tolerance": "1e-12",
+          "min_pair_margin_at_tolerance": "9.583648208508460134550202830015968233673665386654996529707249335956084142127975327561987355794364967e-13",
+          "min_pair_margin_where": [
+            13,
+            15
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        },
+        "1e-10": {
+          "valid": true,
+          "score": "2.635983084893",
+          "tolerance": "1e-10",
+          "min_wall_gap_zero": "1e-12",
+          "min_wall_where": [
+            2,
+            "left"
+          ],
+          "min_pair_squared_gap_zero": "3.91142420084e-13",
+          "min_pair_squared_gap_where": [
+            13,
+            15
+          ],
+          "min_wall_margin_at_tolerance": "1.01e-10",
+          "min_pair_margin_at_tolerance": "1.009583648208508460134550202830015968233673665386654996529707249335956084142127975327561987355794365e-10",
+          "min_pair_margin_where": [
+            13,
+            15
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        },
+        "1e-6": {
+          "valid": true,
+          "score": "2.635983084893",
+          "tolerance": "0.000001",
+          "min_wall_gap_zero": "1e-12",
+          "min_wall_where": [
+            2,
+            "left"
+          ],
+          "min_pair_squared_gap_zero": "3.91142420084e-13",
+          "min_pair_squared_gap_where": [
+            13,
+            15
+          ],
+          "min_wall_margin_at_tolerance": "0.000001000001",
+          "min_pair_margin_at_tolerance": "0.000001000000958364820850846013455020283001596823367366538665499652970724933595608414212797532756198735579",
+          "min_pair_margin_where": [
+            13,
+            15
+          ],
+          "geometric_constraints_checked": 429,
+          "positivity_conditions_checked": 26,
+          "total_conditions_checked": 455,
+          "constraints_checked": 429,
+          "decision_arithmetic": "exact rational"
+        }
+      }
+    }
+  ],
+  "rankings": {
+    "0": [
+      {
+        "position": 1,
+        "id": "author_exact",
+        "name": "Author exact certificate",
+        "source_id": "this_repository",
+        "score": "2.6359830849176077831865694854434817303966767982744748577457711298607038493344723396767997365079",
+        "valid": true
+      },
+      {
+        "position": 2,
+        "id": "jason_liang",
+        "name": "Jason Liang csqv26",
+        "source_id": "jason_liang",
+        "score": "2.635983084893",
+        "valid": true
+      },
+      {
+        "position": 3,
+        "id": "theta_8b_w_rl_65_formal",
+        "name": "Theta corpus: 8B-w_RL@65-Formal",
+        "source_id": "thetaevolve",
+        "score": "2.63598307738811934",
+        "valid": true
+      },
+      {
+        "position": 4,
+        "id": "theta_shinkaevolve",
+        "name": "Theta corpus: ShinkaEvolve",
+        "source_id": "thetaevolve",
+        "score": "2.63598282664580639",
+        "valid": true
+      },
+      {
+        "position": 5,
+        "id": "theta_alphaevolve",
+        "name": "Theta corpus: AlphaEvolve",
+        "source_id": "thetaevolve",
+        "score": "2.63586275641369812",
+        "valid": true
+      }
+    ],
+    "1e-10": [
+      {
+        "position": 1,
+        "id": "author_1e-10",
+        "name": "Author 1e-10 certificate",
+        "source_id": "this_repository",
+        "score": "2.63598308647338795",
+        "valid": true
+      },
+      {
+        "position": 2,
+        "id": "packomania",
+        "name": "Packomania csqv26",
+        "source_id": "packomania",
+        "score": "2.635983084919",
+        "valid": true
+      },
+      {
+        "position": 3,
+        "id": "alphaevolve_v2",
+        "name": "AlphaEvolve v2",
+        "source_id": "alphaevolve_v2",
+        "score": "2.6359830849176068",
+        "valid": true
+      },
+      {
+        "position": 4,
+        "id": "station",
+        "name": "Station",
+        "source_id": "station",
+        "score": "2.63598308491754725",
+        "valid": true
+      },
+      {
+        "position": 5,
+        "id": "jason_liang",
+        "name": "Jason Liang csqv26",
+        "source_id": "jason_liang",
+        "score": "2.635983084893",
+        "valid": true
+      },
+      {
+        "position": 6,
+        "id": "theta_8b_w_rl_65_formal",
+        "name": "Theta corpus: 8B-w_RL@65-Formal",
+        "source_id": "thetaevolve",
+        "score": "2.63598307738811934",
+        "valid": true
+      },
+      {
+        "position": 7,
+        "id": "theta_shinkaevolve",
+        "name": "Theta corpus: ShinkaEvolve",
+        "source_id": "thetaevolve",
+        "score": "2.63598282664580639",
+        "valid": true
+      },
+      {
+        "position": 8,
+        "id": "theta_alphaevolve",
+        "name": "Theta corpus: AlphaEvolve",
+        "source_id": "thetaevolve",
+        "score": "2.63586275641369812",
+        "valid": true
+      }
+    ],
+    "1e-6": [
+      {
+        "position": 1,
+        "id": "author_1e-6",
+        "name": "Author 1e-6 certificate",
+        "source_id": "this_repository",
+        "score": "2.63599872089287514",
+        "valid": true
+      },
+      {
+        "position": 2,
+        "id": "theta_8b_w_rl_65",
+        "name": "Theta corpus: 8B-w_RL@65",
+        "source_id": "thetaevolve",
+        "score": "2.63598566124089912",
+        "valid": true
+      },
+      {
+        "position": 3,
+        "id": "hyra",
+        "name": "Hyra",
+        "source_id": "hyra",
+        "score": "2.63598309510684482",
+        "valid": true
+      },
+      {
+        "position": 4,
+        "id": "packomania",
+        "name": "Packomania csqv26",
+        "source_id": "packomania",
+        "score": "2.635983084919",
+        "valid": true
+      },
+      {
+        "position": 5,
+        "id": "alphaevolve_v2",
+        "name": "AlphaEvolve v2",
+        "source_id": "alphaevolve_v2",
+        "score": "2.6359830849176068",
+        "valid": true
+      },
+      {
+        "position": 6,
+        "id": "station",
+        "name": "Station",
+        "source_id": "station",
+        "score": "2.63598308491754725",
+        "valid": true
+      },
+      {
+        "position": 7,
+        "id": "jason_liang",
+        "name": "Jason Liang csqv26",
+        "source_id": "jason_liang",
+        "score": "2.635983084893",
+        "valid": true
+      },
+      {
+        "position": 8,
+        "id": "theta_8b_w_rl_65_formal",
+        "name": "Theta corpus: 8B-w_RL@65-Formal",
+        "source_id": "thetaevolve",
+        "score": "2.63598307738811934",
+        "valid": true
+      },
+      {
+        "position": 9,
+        "id": "theta_shinkaevolve",
+        "name": "Theta corpus: ShinkaEvolve",
+        "source_id": "thetaevolve",
+        "score": "2.63598282664580639",
+        "valid": true
+      },
+      {
+        "position": 10,
+        "id": "theta_alphaevolve",
+        "name": "Theta corpus: AlphaEvolve",
+        "source_id": "thetaevolve",
+        "score": "2.63586275641369812",
+        "valid": true
+      }
+    ]
+  },
+  "source_native_rankings": {
+    "alphaevolve_binary64_zero": [
+      {
+        "position": 1,
+        "id": "alphaevolve_v2",
+        "name": "AlphaEvolve v2",
+        "source_id": "alphaevolve_v2",
+        "binary64_score": "2.6359830849176076",
+        "valid": true
+      },
+      {
+        "position": 2,
+        "id": "station",
+        "name": "Station",
+        "source_id": "station",
+        "binary64_score": "2.6359830849175476",
+        "valid": true
+      },
+      {
+        "position": 3,
+        "id": "jason_liang",
+        "name": "Jason Liang csqv26",
+        "source_id": "jason_liang",
+        "binary64_score": "2.6359830848930002",
+        "valid": true
+      },
+      {
+        "position": 4,
+        "id": "theta_8b_w_rl_65_formal",
+        "name": "Theta corpus: 8B-w_RL@65-Formal",
+        "source_id": "thetaevolve",
+        "binary64_score": "2.635983077388119",
+        "valid": true
+      },
+      {
+        "position": 5,
+        "id": "theta_shinkaevolve",
+        "name": "Theta corpus: ShinkaEvolve",
+        "source_id": "thetaevolve",
+        "binary64_score": "2.6359828266458067",
+        "valid": true
+      },
+      {
+        "position": 6,
+        "id": "theta_alphaevolve",
+        "name": "Theta corpus: AlphaEvolve",
+        "source_id": "thetaevolve",
+        "binary64_score": "2.6358627564136983",
+        "valid": true
+      }
+    ],
+    "eurekagent_binary64_1e-6": [
+      {
+        "position": 1,
+        "id": "author_1e-6",
+        "name": "Author 1e-6 certificate",
+        "source_id": "this_repository",
+        "binary64_score": "2.635998720892875",
+        "valid": true
+      },
+      {
+        "position": 2,
+        "id": "eurekagent",
+        "name": "EurekAgent",
+        "source_id": "eurekagent",
+        "binary64_score": "2.6359987208598832",
+        "valid": true
+      },
+      {
+        "position": 3,
+        "id": "theta_8b_w_rl_65",
+        "name": "Theta corpus: 8B-w_RL@65",
+        "source_id": "thetaevolve",
+        "binary64_score": "2.6359856612408987",
+        "valid": true
+      },
+      {
+        "position": 4,
+        "id": "hyra",
+        "name": "Hyra",
+        "source_id": "hyra",
+        "binary64_score": "2.6359830951068446",
+        "valid": true
+      },
+      {
+        "position": 5,
+        "id": "packomania",
+        "name": "Packomania csqv26",
+        "source_id": "packomania",
+        "binary64_score": "2.6359830849189998",
+        "valid": true
+      },
+      {
+        "position": 6,
+        "id": "alphaevolve_v2",
+        "name": "AlphaEvolve v2",
+        "source_id": "alphaevolve_v2",
+        "binary64_score": "2.6359830849176076",
+        "valid": true
+      },
+      {
+        "position": 7,
+        "id": "station",
+        "name": "Station",
+        "source_id": "station",
+        "binary64_score": "2.6359830849175476",
+        "valid": true
+      },
+      {
+        "position": 8,
+        "id": "jason_liang",
+        "name": "Jason Liang csqv26",
+        "source_id": "jason_liang",
+        "binary64_score": "2.6359830848930002",
+        "valid": true
+      },
+      {
+        "position": 9,
+        "id": "theta_8b_w_rl_65_formal",
+        "name": "Theta corpus: 8B-w_RL@65-Formal",
+        "source_id": "thetaevolve",
+        "binary64_score": "2.635983077388119",
+        "valid": true
+      },
+      {
+        "position": 10,
+        "id": "theta_shinkaevolve",
+        "name": "Theta corpus: ShinkaEvolve",
+        "source_id": "thetaevolve",
+        "binary64_score": "2.6359828266458067",
+        "valid": true
+      },
+      {
+        "position": 11,
+        "id": "theta_alphaevolve",
+        "name": "Theta corpus: AlphaEvolve",
+        "source_id": "thetaevolve",
+        "binary64_score": "2.6358627564136983",
+        "valid": true
+      }
+    ]
+  },
+  "excluded_incomplete_or_unavailable": [
+    {
+      "project": "AlphaZ-CORAL",
+      "source_id": "alphaz_coral",
+      "url": "https://raw.githubusercontent.com/Kurorz2004/alphaz-coral/3cd38221847e442d4b11822d2cf31646db2daa47/task1/result/best_program.py",
+      "sha256": "405c6bf6b30d64d9c8f531d6d9d171ff7d713635b3f27252d7fa057f1e9ffee4",
+      "reason": "Publishes 26 centers but derives radii by solving a linear program at runtime; it is not a serialized complete witness and is excluded from witness rankings."
+    },
+    {
+      "project": "Numaro",
+      "url": "https://numaro.tech/research/circle-packing-unit-square-2026/",
+      "reported_score": "2.6359830853",
+      "reason": "No downloadable complete n=26 coordinate-and-radius witness was located in the public report."
+    },
+    {
+      "project": "HELIX",
+      "url": "https://arxiv.org/abs/2603.07642",
+      "reported_score": "2.6359830849",
+      "reason": "No downloadable complete n=26 coordinate-and-radius witness was located with the paper."
+    }
+  ],
+  "mutable_source_drift": [],
+  "source_manifest": "data/public_sources.json"
+}

@@ -38,6 +38,7 @@
 .result-outcome-label,
 .result-ledger-kicker,
 .result-evidence-label {
+  margin: 0;
   color: var(--muted);
   font-size: 0.72rem;
   font-weight: 650;
@@ -183,6 +184,72 @@
   margin-top: 1.5rem;
   padding: 0;
   border-top: 1px solid var(--line);
+}
+
+.circle-packing-history .result-ledger {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.circle-packing-history .result-ledger-score strong {
+  overflow-wrap: anywhere;
+  font-size: clamp(1rem, 1.7vw, 1.5rem);
+}
+
+.circle-packing-outcome {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(24rem, 0.85fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: end;
+  padding: clamp(2rem, 5vw, 4.5rem) 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.circle-packing-outcome-primary strong {
+  display: block;
+  margin-top: 0.8rem;
+  overflow-wrap: anywhere;
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: clamp(1.45rem, 3.1vw, 3.1rem);
+  font-weight: 520;
+  letter-spacing: -0.045em;
+  line-height: 1.08;
+}
+
+.circle-packing-outcome-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.circle-packing-outcome-facts strong,
+.circle-packing-outcome-facts span {
+  display: block;
+}
+
+.circle-packing-outcome-facts strong {
+  font-size: clamp(1rem, 1.6vw, 1.35rem);
+  line-height: 1.15;
+}
+
+.circle-packing-outcome-facts span {
+  margin-top: 0.45rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.circle-packing-mobile-rankings {
+  display: none;
+}
+
+.result-circle-packing-page .static-math,
+.result-circle-packing-page .formula-math {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.result-circle-packing-page .static-math {
+  white-space: nowrap;
 }
 
 .result-history-strip .result-ledger::before {
@@ -461,6 +528,61 @@
     gap: 0;
     padding-left: 1.25rem;
     border-top: 0;
+  }
+
+  .circle-packing-history .result-ledger {
+    grid-template-columns: 1fr;
+  }
+
+  .circle-packing-outcome {
+    grid-template-columns: 1fr;
+  }
+
+  .circle-packing-outcome-facts {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .circle-packing-rankings-figure > .circle-packing-native-svg {
+    display: none;
+  }
+
+  .circle-packing-mobile-rankings {
+    display: grid;
+    gap: 2.5rem;
+  }
+
+  .circle-packing-mobile-rankings section,
+  .circle-packing-mobile-rankings table {
+    width: 100%;
+  }
+
+  .circle-packing-mobile-rankings h3 {
+    margin: 0 0 0.85rem;
+    font-size: 1.25rem;
+  }
+
+  .circle-packing-mobile-rankings table {
+    border-collapse: collapse;
+    font-size: 0.76rem;
+  }
+
+  .circle-packing-mobile-rankings th,
+  .circle-packing-mobile-rankings td {
+    padding: 0.55rem 0.25rem;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+  }
+
+  .circle-packing-mobile-rankings th:last-child,
+  .circle-packing-mobile-rankings td:last-child {
+    text-align: right;
+    font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: 0.7rem;
+  }
+
+  .circle-packing-mobile-rankings .is-author {
+    color: var(--text);
+    font-weight: 680;
   }
 
   .result-history-strip .result-ledger::before {
@@ -2662,14 +2784,14 @@ a {
 }
 
 .circle-packing-paper-svg .circle-packing-disk {
-  fill: color-mix(in srgb, var(--accent) 13%, transparent);
-  stroke: color-mix(in srgb, var(--accent) 70%, transparent);
+  fill: color-mix(in srgb, var(--text) 10%, transparent);
+  stroke: color-mix(in srgb, var(--text) 68%, transparent);
   stroke-width: 1.2;
 }
 
 .circle-packing-paper-svg .circle-packing-disk-strong {
-  fill: color-mix(in srgb, var(--accent) 24%, transparent);
-  stroke: var(--accent);
+  fill: color-mix(in srgb, var(--text) 20%, transparent);
+  stroke: var(--text);
   stroke-width: 1.6;
 }
 
@@ -2701,7 +2823,57 @@ a {
 }
 
 .circle-packing-paper-svg .circle-packing-contact-value {
-  fill: var(--accent);
+  fill: var(--text);
+}
+
+.circle-packing-paper-svg .circle-packing-invalid-value {
+  fill: var(--muted);
+}
+
+.circle-packing-paper-svg .circle-packing-divider {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 18%, transparent);
+  stroke-width: 1;
+}
+
+.circle-packing-paper-svg .circle-packing-hash {
+  fill: var(--muted-soft);
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 10px;
+}
+
+.circle-packing-whitepaper .circle-packing-inline-figure {
+  width: min(100%, 58rem);
+}
+
+.circle-packing-whitepaper .circle-packing-inline-figure > svg {
+  background: transparent;
+}
+
+.circle-packing-canonical-figure {
+  color: var(--text);
+}
+
+.circle-packing-native-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  color: inherit;
+}
+
+.circle-packing-native-svg #pair-contacts {
+  opacity: 0.62;
+}
+
+.circle-packing-native-svg #wall-contacts {
+  opacity: 0.34;
+}
+
+.circle-packing-native-svg #circles {
+  fill: currentColor;
+  fill-opacity: 0.09;
+  stroke: currentColor;
 }
 
 .circle-packing-paper-svg .circle-packing-track {

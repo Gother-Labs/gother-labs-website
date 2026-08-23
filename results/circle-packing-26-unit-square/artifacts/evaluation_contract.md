@@ -1,17 +1,30 @@
-# Evaluation contract: 26-circle unit-square packing
+# Evaluation contract: 26 variable-radius circles
 
-The candidate exposes `run_packing()` and returns `(centers, radii, reported_sum)`.
+Each certificate contains exactly 26 rows with finite decimal strings for `x`, `y`, and `radius`. The verifier parses every decimal through `Decimal` into `fractions.Fraction`; binary floating-point never determines acceptance.
 
-Required behavior:
+For a rational tolerance `tau >= 0`, every radius must be positive, every wall gap must be at least `-tau`, and every pair must satisfy:
 
-- return exactly 26 centers and 26 radii
-- each center is a finite pair `(x, y)`
-- every radius is finite and greater than `1e-6`
-- `reported_sum` is finite and matches `sum(radii)` within `1e-9`
-- every circle remains inside the unit square within tolerance `1e-10`
-- no pair of circles overlaps within tolerance `1e-10`
-- two consecutive calls to `run_packing()` return the same centers, radii, and sum within `1e-12`
+```text
+(xi - xj)^2 + (yi - yj)^2 >= (ri + rj - tau)^2
+```
 
-The score is `-reported_sum`. Lower score is better because minimizing the score maximizes total radius.
+whenever `ri + rj - tau > 0`.
 
-The published accepted candidate reconstructs the validated geometry from the evolved contact graph and a coarse deterministic seed. The replayed centers and radii are retained as audit evidence, but the public candidate implementation solves the contact equations before returning geometry to the evaluator.
+The score is the exact rational sum of the 26 radii. Higher is better within one fixed tolerance contract. Scores from different tolerances are not interchangeable.
+
+Every primary verification performs:
+
+- 104 wall decisions;
+- 325 pairwise decisions;
+- 26 radius-positivity decisions;
+- 455 total exact decisions.
+
+The three governed certificates are:
+
+- `tolerance_1e-6.csv` under `tau = 1e-6`;
+- `tolerance_1e-10.csv` under `tau = 1e-10`;
+- `exact.csv` under `tau = 0`.
+
+The two relaxed certificates are also rechecked at zero and must fail. Square roots may be computed for human-readable margins, but never for pass/fail.
+
+The strict local-optimum theorem is a second contract. `prove_local_optimum.py` checks a rational Krawczyk inclusion for one 78-contact root, strict feasibility of the remaining 351 geometric constraints, and a rational enclosure of 78 positive KKT multipliers. It proves strict local optimality only; it does not prove global optimality.
