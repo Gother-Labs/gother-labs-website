@@ -62,7 +62,41 @@ function inlineMarkdown(value) {
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
 }
 
-function markdownToHtml(markdown, inserts = {}) {
+function staticMathHtml(value) {
+  return escapeHtml(value)
+    .replace(/\\mathbb\{R\}/g, "ℝ")
+    .replace(/\\sum/g, "∑")
+    .replace(/\\tau/g, "τ")
+    .replace(/\\geq/g, "≥")
+    .replace(/\\times/g, "×")
+    .replace(/\\to/g, "→")
+    .replace(/\\in/g, "∈")
+    .replace(/\\ldots/g, "…")
+    .replace(/\^\{([^}]+)\}/g, "<sup>$1</sup>")
+    .replace(/_\{([^}]+)\}/g, "<sub>$1</sub>")
+    .replace(/\^([0-9*])/g, "<sup>$1</sup>")
+    .replace(/_([a-zA-Z0-9*])/g, "<sub>$1</sub>")
+    .replace(/[{}]/g, "");
+}
+
+function inlineMarkdownWithStaticMath(value) {
+  const formulas = [];
+  const marked = value.replace(/\\\((.+?)\\\)/g, (_match, formula) => {
+    const token = `MATHPLACEHOLDER${formulas.length}END`;
+    formulas.push(formula);
+    return token;
+  });
+  let html = inlineMarkdown(marked);
+  formulas.forEach((formula, index) => {
+    html = html.replace(
+      `MATHPLACEHOLDER${index}END`,
+      `<span class="static-math" role="math">${staticMathHtml(formula)}</span>`,
+    );
+  });
+  return html;
+}
+
+function markdownToHtml(markdown, inserts = {}, options = {}) {
   const lines = markdown.replace(/\r\n/g, "\n").split("\n");
   const chunks = [];
   let paragraph = [];
@@ -74,7 +108,8 @@ function markdownToHtml(markdown, inserts = {}) {
 
   const flushParagraph = () => {
     if (!paragraph.length) return;
-    chunks.push(`<p>${inlineMarkdown(paragraph.join(" "))}</p>`);
+    const renderInline = options.staticMath ? inlineMarkdownWithStaticMath : inlineMarkdown;
+    chunks.push(`<p>${renderInline(paragraph.join(" "))}</p>`);
     paragraph = [];
   };
 
@@ -87,10 +122,11 @@ function markdownToHtml(markdown, inserts = {}) {
   const flushFormula = () => {
     if (!formula.length) return;
     equationIndex += 1;
+    const renderedFormula = options.staticMath
+      ? staticMathHtml(formula.join("\n"))
+      : `\\[\n${escapeHtml(formula.join("\n"))}\n\\]`;
     chunks.push(`<div class="formula-block" id="eq-${equationIndex}">
-  <div class="formula-math">\\[
-${escapeHtml(formula.join("\n"))}
-\\]</div>
+  <div class="formula-math" role="math">${renderedFormula}</div>
   <span class="equation-number">(${equationIndex})</span>
 </div>`);
     formula = [];
@@ -202,9 +238,26 @@ function mathHead() {
 `;
 }
 
-function htmlShell({ title, description, canonicalPath, cssPrefix, body, enableMath = false, bodyClass = "" }) {
+function htmlShell({
+  title,
+  description,
+  canonicalPath,
+  cssPrefix,
+  body,
+  enableMath = false,
+  bodyClass = "",
+  ogImage = "/assets/og-image.png",
+  ogImageAlt = "",
+  ogType = "website",
+  structuredData = null,
+  extraHead = "",
+}) {
   const canonical = `${SITE_URL}${canonicalPath}`;
+  const absoluteOgImage = `${SITE_URL}${ogImage}`;
   const bodyClassAttribute = bodyClass ? ` class="${escapeHtml(bodyClass)}"` : "";
+  const structuredDataTag = structuredData
+    ? `<script type="application/ld+json">${JSON.stringify(structuredData).replaceAll("<", "\\u003c")}</script>`
+    : "";
   return `<!doctype html>
 <html lang="en">
   <head>
@@ -215,11 +268,15 @@ function htmlShell({ title, description, canonicalPath, cssPrefix, body, enableM
     <link rel="canonical" href="${canonical}">
     <meta property="og:title" content="${escapeHtml(title)}">
     <meta property="og:description" content="${escapeHtml(description)}">
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="${escapeHtml(ogType)}">
     <meta property="og:url" content="${canonical}">
-    <meta property="og:image" content="${SITE_URL}/assets/og-image.png">
+    <meta property="og:image" content="${absoluteOgImage}">
+    ${ogImageAlt ? `<meta property="og:image:alt" content="${escapeHtml(ogImageAlt)}">` : ""}
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="${SITE_URL}/assets/og-image.png">
+    <meta name="twitter:image" content="${absoluteOgImage}">
+    ${ogImageAlt ? `<meta name="twitter:image:alt" content="${escapeHtml(ogImageAlt)}">` : ""}
+    ${extraHead}
+    ${structuredDataTag}
     ${sharedFontPreloadTag()}
     ${sharedFaviconTag(cssPrefix)}
     ${sharedStylesheetTag(cssPrefix)}
@@ -2379,7 +2436,7 @@ function circlePackingPrimerFigure() {
 
 function circlePackingHistoryLedger() {
   return `          <section class="result-ledger-section result-history-strip circle-packing-history" aria-labelledby="circle-packing-history-title">
-            <span class="result-ledger-kicker" id="circle-packing-history-title">Accepted history · claims become narrower as evidence becomes stronger</span>
+            <h2 class="result-ledger-kicker" id="circle-packing-history-title">Evidence history · claims become narrower as evidence becomes stronger</h2>
             <div class="result-ledger">
               <article class="result-ledger-entry">
                 <time class="result-ledger-date" datetime="2026-05-16">16 May 2026</time>
@@ -2394,17 +2451,31 @@ function circlePackingHistoryLedger() {
                 <div class="result-ledger-score"><strong>2.6359830849768984</strong><span>negative slack</span></div>
               </article>
               <article class="result-ledger-entry">
-                <time class="result-ledger-date" datetime="2026-07-30">30 Jul 2026</time>
-                <h3>Evölther 2.0 certificates</h3>
-                <p>Three named tolerance contracts replaced one ambiguous floating-point claim.</p>
-                <div class="result-ledger-score"><strong>3 contracts</strong><span>exact replay</span></div>
+                <time class="result-ledger-date" datetime="2026-08-09">9 Aug 2026</time>
+                <h3>Mathematical artifact v1.2.0</h3>
+                <p>Three named contracts and the rational interval proof established the result.</p>
+                <div class="result-ledger-score"><strong>3 contracts</strong><span>strict local theorem</span></div>
               </article>
               <article class="result-ledger-entry result-ledger-entry--current">
                 <time class="result-ledger-date" datetime="2026-08-22">22 Aug 2026</time>
-                <h3>Public theorem artifact v1.2.1</h3>
-                <p>The reproducibility release adds a rational interval proof for the 78-contact root.</p>
-                <div class="result-ledger-score"><strong>strict local max</strong><span>39 / 39 tests</span></div>
+                <h3>Current release v1.2.1</h3>
+                <p>The editorial and citation release preserves the certified mathematics unchanged.</p>
+                <div class="result-ledger-score"><strong>citation release</strong><span>39 / 39 tests</span></div>
               </article>
+            </div>
+          </section>`;
+}
+
+function circlePackingOutcomeStrip() {
+  return `          <section class="circle-packing-outcome" aria-label="Circle Packing result summary">
+            <div class="circle-packing-outcome-primary">
+              <span class="result-ledger-kicker">Strict finite-decimal witness · τ = 0</span>
+              <strong>2.635983084917607783…</strong>
+            </div>
+            <div class="circle-packing-outcome-facts">
+              <div><strong>#1</strong><span>manifested strict corpus</span></div>
+              <div><strong>455 / 455</strong><span>exact decisions pass</span></div>
+              <div><strong>strict local max</strong><span>nearby 78-contact root</span></div>
             </div>
           </section>`;
 }
@@ -2422,13 +2493,16 @@ function circlePackingToleranceContracts() {
   });
 }
 
-function circlePackingNativeSvg(source, alt) {
+function circlePackingNativeSvg(source, alt, idPrefix) {
   return source
     .replace(/<\?xml[^>]*>\s*/i, "")
     .replace(/<rect width="100%" height="100%" fill="#[0-9a-f]{6}"\/>/i, "")
     .replace(/<rect x="10"[^>]*\/>/g, "")
     .replace(/<rect x="11"[^>]*\/>/g, "")
-    .replace("<svg ", `<svg class="circle-packing-native-svg" aria-label="${escapeHtml(alt)}" `)
+    .replace(/aria-labelledby="title desc"/i, `aria-labelledby="${idPrefix}-title ${idPrefix}-desc"`)
+    .replace(/<title id="title">.*?<\/title>/is, `<title id="${idPrefix}-title">${escapeHtml(alt)}</title>`)
+    .replace(/<desc id="desc">.*?<\/desc>/is, `<desc id="${idPrefix}-desc">${escapeHtml(alt)}</desc>`)
+    .replace("<svg ", `<svg class="circle-packing-native-svg" `)
     .replace(/\swidth="[^"]*"/i, "")
     .replace(/\sheight="[^"]*"/i, "")
     .replace(/font-family="STIX Two Text, serif"/g, 'font-family="Inter, sans-serif"')
@@ -2439,11 +2513,46 @@ function circlePackingNativeSvg(source, alt) {
     .replace(/stroke="#(?:334155|475569|94a3b8|e2e8f0)"/gi, 'stroke="var(--line)"');
 }
 
-function circlePackingCanonicalFigure({ svg, number, caption, alt, className = "" }) {
+function circlePackingCanonicalFigure({ svg, number, caption, alt, className = "", mobileContent = "" }) {
   return `          <figure class="result-ledger-figure circle-packing-canonical-figure ${escapeHtml(className)}" id="fig-${number}">
-${circlePackingNativeSvg(svg, alt)}
+${circlePackingNativeSvg(svg, alt, `circle-fig-${number}`)}
+${mobileContent}
             <figcaption>Figure ${number}. ${escapeHtml(caption)}</figcaption>
           </figure>`;
+}
+
+function circlePackingMobileRankings() {
+  const panels = [
+    ["τ = 0", [
+      ["Göther Labs", "2.63598308491760778…"],
+      ["Jason Liang", "2.635983084893"],
+      ["Theta 8B-RL Formal", "2.63598307738811934"],
+      ["ShinkaEvolve", "2.63598282664580639"],
+      ["Theta AlphaEvolve", "2.63586275641369812"],
+    ]],
+    ["τ = 10⁻¹⁰", [
+      ["Göther Labs", "2.63598308647338795"],
+      ["Packomania", "2.635983084919"],
+      ["AlphaEvolve v2", "2.6359830849176068"],
+      ["Station", "2.63598308491754725"],
+      ["Jason Liang", "2.635983084893"],
+    ]],
+    ["τ = 10⁻⁶", [
+      ["Göther Labs", "2.63599872089287514"],
+      ["Theta 8B-RL", "2.63598566124089912"],
+      ["Hyra", "2.63598309510684482"],
+      ["Packomania", "2.635983084919"],
+      ["AlphaEvolve v2", "2.6359830849176068"],
+    ]],
+  ];
+  return `<div class="circle-packing-mobile-rankings" aria-label="Tolerance-separated public corpus rankings">
+${panels.map(([label, rows]) => `            <section>
+              <h3>${label}</h3>
+              <table><thead><tr><th>Pos.</th><th>Witness</th><th>Score</th></tr></thead><tbody>
+${rows.map(([name, score], index) => `                <tr${index === 0 ? ' class="is-author"' : ""}><td>${index + 1}</td><td>${name}</td><td>${score}</td></tr>`).join("\n")}
+              </tbody></table>
+            </section>`).join("\n")}
+          </div>`;
 }
 
 function circlePackingContractTable() {
@@ -2658,6 +2767,7 @@ function circlePackingReferenceTable() {
 
 function circlePackingWhitepaperInserts(full, evolution, candidateCode, replay, scoreTrace, nativeFigures) {
   return {
+    "outcome-strip": circlePackingOutcomeStrip(),
     "history-ledger": circlePackingHistoryLedger(),
     "packing-primer": circlePackingPrimerFigure(),
     "tolerance-contracts": circlePackingToleranceContracts(),
@@ -2672,6 +2782,8 @@ function circlePackingWhitepaperInserts(full, evolution, candidateCode, replay, 
       number: 3,
       alt: "Public corpus rankings separated into three tolerance panels.",
       caption: "Leading complete witnesses after exact-rational reevaluation under each matching contract. Panels are intentionally not merged.",
+      className: "circle-packing-rankings-figure",
+      mobileContent: circlePackingMobileRankings(),
     }),
     "precision-comparison": circlePackingPrecisionComparisonFigure(full),
     "contract-table": circlePackingContractTable(),
@@ -2892,10 +3004,12 @@ async function writeDetail(result, { preserveRun = false } = {}) {
 
   const full = JSON.parse(await fs.readFile(path.join(resultRoot, "result.json"), "utf8"));
   const article = await fs.readFile(path.join(resultRoot, "article.md"), "utf8");
-  const evolution = JSON.parse(
-    await fs.readFile(path.join(resultRoot, full.artifacts.evolution_trace), "utf8"),
-  );
-  const candidateCode = await fs.readFile(path.join(resultRoot, full.artifacts.candidate_code), "utf8");
+  const evolution = full.artifacts?.evolution_trace
+    ? JSON.parse(await fs.readFile(path.join(resultRoot, full.artifacts.evolution_trace), "utf8"))
+    : { steps: [] };
+  const candidateCode = full.artifacts?.candidate_code
+    ? await fs.readFile(path.join(resultRoot, full.artifacts.candidate_code), "utf8")
+    : "";
   const scheduleExample = full.artifacts?.schedule_example
     ? JSON.parse(await fs.readFile(path.join(resultRoot, full.artifacts.schedule_example), "utf8"))
     : null;
@@ -2915,11 +3029,14 @@ async function writeDetail(result, { preserveRun = false } = {}) {
   const plots = full.artifacts?.plots ?? [];
   for (const file of [
     full.artifacts?.candidate_code,
+    full.artifacts?.publication_manifest,
     full.artifacts?.verifier,
     full.artifacts?.verification_entrypoint,
     full.artifacts?.certificate,
     full.artifacts?.verification_report,
     full.artifacts?.local_optimum_interval,
+    full.artifacts?.local_optimum_certificate,
+    full.artifacts?.local_optimum_verifier,
     full.artifacts?.public_corpus_audit,
     full.artifacts?.evolution_trace,
     full.artifacts?.metrics,
@@ -3001,7 +3118,7 @@ ${markdownToHtml(articleWithoutTitle(article), qubitRoutingWhitepaperInserts(ful
 
         <section class="result-detail result-whitepaper-shell circle-packing-whitepaper-shell">
           <article class="result-article result-whitepaper circle-packing-whitepaper">
-${markdownToHtml(articleWithoutTitle(article), circlePackingWhitepaperInserts(full, evolution, candidateCode, replay, scoreTrace, circlePackingNativeFigures))}
+${markdownToHtml(articleWithoutTitle(article).replace(/^## /gm, "# "), circlePackingWhitepaperInserts(full, evolution, candidateCode, replay, scoreTrace, circlePackingNativeFigures), { staticMath: true })}
           </article>
         </section>`
     : `        <section class="hero compact-hero page-hero result-detail-hero">
@@ -3042,7 +3159,37 @@ ${figures}
       canonicalPath: `/results/${full.slug}/`,
       cssPrefix: "../../",
       body,
-      enableMath: /\$\$|\\\(|\\\[/.test(article),
+      enableMath: !isCirclePackingWhitepaper && /\$\$|\\\(|\\\[/.test(article),
+      ogImage: isCirclePackingWhitepaper ? "/assets/circle-packing-og.png" : "/assets/og-image.png",
+      ogImageAlt: isCirclePackingWhitepaper
+        ? "Evölther 2.0: certified 26-circle packing in the unit square"
+        : "",
+      ogType: isCirclePackingWhitepaper ? "article" : "website",
+      structuredData: isCirclePackingWhitepaper
+        ? {
+            "@context": "https://schema.org",
+            "@type": "ScholarlyArticle",
+            headline: full.title,
+            description: full.summary,
+            datePublished: "2026-08-22",
+            dateModified: full.published_at,
+            author: { "@type": "Person", name: "Juan José Fernández Morales" },
+            publisher: { "@type": "Organization", name: "Göther Labs", url: SITE_URL },
+            url: `${SITE_URL}/results/${full.slug}/`,
+            image: `${SITE_URL}/assets/circle-packing-og.png`,
+            identifier: "https://doi.org/10.5281/zenodo.22060172",
+            sameAs: [
+              "https://doi.org/10.5281/zenodo.22060172",
+              "https://github.com/juan-fernandez-gotherlabs/circle-packing-tolerance-audit",
+            ],
+          }
+        : null,
+      extraHead: isCirclePackingWhitepaper
+        ? `<meta name="citation_title" content="${escapeHtml(full.title)}">
+    <meta name="citation_author" content="Juan José Fernández Morales">
+    <meta name="citation_publication_date" content="2026/08/22">
+    <meta name="citation_doi" content="10.5281/zenodo.22060172">`
+        : "",
       bodyClass: isQuadratureWhitepaper
         ? "result-quadrature-page"
         : isRcpspWhitepaper
@@ -3123,7 +3270,7 @@ async function main() {
   await fs.mkdir(OUT_ROOT, { recursive: true });
   await writeIndex(results);
   for (const result of results) {
-    await writeDetail(result);
+    await writeDetail(result, { preserveRun: result.slug === "circle-packing-26-unit-square" });
   }
   await syncFeaturedResult(results);
   await writeSitemap(results);

@@ -1,0 +1,29 @@
+{
+  "schema_version": "circle-packing-publication/v1",
+  "technical_release": {
+    "version": "v1.2.1",
+    "commit": "86ea392",
+    "doi": "10.5281/zenodo.22060172",
+    "corpus_snapshot": "2026-08-08"
+  },
+  "strict_finite_decimal_witness": {
+    "artifact": "exact.csv",
+    "tolerance": "0",
+    "exact_sum_radii": "2.6359830849176077831865694854434817303966767982744748577457711298607038493344723396767997365079",
+    "status": "exact-rational feasible lower bound"
+  },
+  "enclosed_real_contact_root": {
+    "certificate": "local_optimum_certificate.json",
+    "report": "local_optimum_interval.json",
+    "score_lower": "2.6359830849176077831865694854434817303966767982744",
+    "score_upper": "2.6359830849176077831865694854434817303966767982745",
+    "status": "strict local maximum"
+  },
+  "historical_floating_run": {
+    "surface": "../run/",
+    "printed_sum_radii": "2.6359830849768984",
+    "minimum_numerical_slack": "-3.786615465628529e-11",
+    "status": "search history; not an accepted feasibility certificate"
+  },
+  "claim_boundary": "Best exact-rationally reevaluated matching certificate in the manifested public corpus; no global optimum or new Packomania record is claimed."
+}

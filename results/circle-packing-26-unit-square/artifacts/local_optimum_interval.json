@@ -5,7 +5,7 @@
   "decision_arithmetic": "closed intervals with exact rational endpoints",
   "floating_point_role": "mpmath and NumPy propose approximations only; every acceptance inequality is recomputed with Fraction endpoints",
   "certificate": {
-    "path": "data/local_optimum_certificate.json",
+    "path": "local_optimum_certificate.json",
     "sha256": "debc850e6e73cc7b03a5799513d0ca49f0a55c79fb7a199dd03f05feabe06a89",
     "default_verifier_dependencies": "Python standard library only"
   },
