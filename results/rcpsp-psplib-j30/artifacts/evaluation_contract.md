@@ -23,7 +23,7 @@ The objective is lower-is-better:
 
 `score = mean_gap_pct + 0.35 * p95_gap_pct + feasibility_penalty`
 
-where `gap_pct = 100 * (candidate_makespan - optimal_makespan) / optimal_makespan`. The public chain reports a score reduction from 14.312164873860446 to 12.086633114086395.
+where `gap_pct = 100 * (candidate_makespan - optimal_makespan) / optimal_makespan`. Under this unchanged contract, the accepted checkpoints progress from 14.312164873860446 at baseline to 12.086633114086395 with Evölther and 10.108499479347454 with Evölther 2.0.
 
 ## Scope
 

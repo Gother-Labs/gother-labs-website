@@ -146,7 +146,7 @@
               </figure>
 
               <h4>Why these weights?</h4>
-              <p>The coefficients were selected by measured portfolio performance rather than assigned a theoretical meaning. To test their contribution, each feature was removed in turn by setting its coefficient to zero and replaying all 80 instances. Every single-feature ablation worsened the accepted score.</p>
+              <p>The coefficients were selected by measured portfolio performance rather than assigned a theoretical meaning. To test their contribution, each feature was removed in turn by setting its coefficient to zero and replaying all 80 instances. Every single-feature ablation worsened the accepted score. <a href="./artifacts/ablation.json">Open the complete ablation replay</a>.</p>
               <div class="rcpsp-ablation-leads" aria-label="Largest single-feature ablation effects">
                 <div><span>Remove earliest feasible start</span><strong>15.417</strong><small>+5.309 score</small></div>
                 <div><span>Remove downstream critical path</span><strong>15.132</strong><small>+5.023 score</small></div>
@@ -191,7 +191,7 @@
                   <tr><td>Acceptance score</td><td>14.312</td><td>12.087</td><td>10.108</td></tr>
                   <tr><td>Mean gap</td><td>7.13%</td><td>6.04%</td><td>5.01%</td></tr>
                   <tr><td>P95 gap</td><td>20.52%</td><td>17.28%</td><td>14.57%</td></tr>
-                  <tr><td>Exact optima</td><td>—</td><td>19 / 80</td><td>27 / 80</td></tr>
+                  <tr><td>Exact optima</td><td>23 / 80</td><td>19 / 80</td><td>27 / 80</td></tr>
                   <tr><td>Validated schedules</td><td>80 / 80</td><td>80 / 80</td><td>80 / 80</td></tr>
                 </tbody></table></div>
                 <figcaption>Table 3. Current portfolio metrics. Lower score and gap values are better.</figcaption>
@@ -213,7 +213,7 @@
                 <figcaption>Figure 6. Instance-by-instance makespan change against baseline. The ordered marks retain all 35 improvements, 27 ties, and 18 regressions rather than presenting only an aggregate score.</figcaption>
               </figure>
 
-              <p>The distribution makes the boundary of the result visible. Evölther 2.0 does not dominate every schedule: most regressions are one or two time units, while the improvement side contains several reductions of eight to ten units and the 20-unit reduction on <code>j3025_9</code>. Those asymmetric changes produce the lower portfolio mean and tail score.</p>
+              <p>The distribution makes the boundary of the result visible. Evölther 2.0 does not dominate every schedule: most regressions are one or two time units, while the improvement side contains several reductions of eight to ten units and the 20-unit reduction on <code>j3025_9</code>. Those asymmetric changes produce the lower portfolio mean and tail score. <a href="./artifacts/portfolio-comparison.json">Inspect all 80 instance outcomes</a>.</p>
 
               <figure class="result-ledger-figure" id="fig-7">
                 <img src="./assets/gap-readout.svg" alt="Current Evölther 2.0 RCPSP gap diagnostics">

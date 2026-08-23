@@ -1,44 +1,20 @@
 {
-  "schema_version": "result-provenance/v1",
+  "schema_version": "result-provenance/v2",
   "source_domain": "rcpsp_psplib_j30",
-  "source_run": "domains/rcpsp_psplib_j30/outputs/2026-05-12/16-51-54",
-  "accepted_candidate_id": "gen-119-i1-w1-a0-cbdd3ba1835131eb",
-  "run_started_utc": "2026-05-12T15:51:54Z",
-  "run_summary": {
-    "stop_reason": "budget_exhausted",
-    "failure_category": "none",
-    "evaluations_total": 96,
-    "evaluations_valid": 96,
-    "proposals_accepted": 56,
-    "selections_best_improved": 1,
-    "total_generations": 120,
-    "config": {
-      "generations": 24,
-      "num_islands": 4,
-      "population_size": 4,
-      "workers": 4
-    }
-  },
-  "replay": {
-    "pass": true,
-    "recorded_score": 12.086633114086395,
-    "replay_score": 12.086633114086395,
-    "replay_valid": true,
-    "abs_diff": 0,
-    "noise_summary": {
-      "all_pass": true,
-      "completed_count": 1,
-      "max_score": 12.086633114086395,
-      "mean_score": 12.086633114086395,
-      "min_score": 12.086633114086395,
-      "pass_count": 1,
-      "repeat_count": 1,
-      "score_count": 1,
-      "score_range": 0,
-      "score_stdev": 0,
-      "score_variance": 0,
-      "valid_count": 1
-    }
+  "result_lineage": [
+    "Frozen baseline",
+    "Evölther",
+    "Evölther 2.0"
+  ],
+  "accepted_checkpoint_date": "2026-08-22",
+  "accepted_candidate_id": "sha256:992cb820c85040743ef81d607ce07d4608129fedb51c8528f75d4336aa008ec6",
+  "evaluation_contract_changed": false,
+  "evaluation": {
+    "replay_status": "pass",
+    "recorded_score": 10.108499479347454,
+    "replay_score": 10.108499479347454,
+    "instances": 80,
+    "feasible_schedules": 80
   },
   "portfolio": {
     "dataset": "PSPLIB J30 single-mode RCPSP",
@@ -51,21 +27,24 @@
     "source": "Project Scheduling Problem Library (PSPLIB)",
     "total_psplib_j30_instances": 480
   },
-  "sanitation": {
+  "publication": {
+    "axis": "accepted_checkpoints",
+    "generation_axis": null,
     "excluded": [
       "prompts",
       "raw logs",
       "telemetry",
-      "proposal rationale",
-      "private provider metadata"
+      "private provider metadata",
+      "non-retained candidates"
     ],
     "included": [
       "accepted candidate",
       "evaluation contract",
-      "curated evolution chain",
+      "checkpoint ledger",
       "metrics",
-      "provenance",
-      "replay confirmation"
+      "replay confirmation",
+      "instance comparison",
+      "feature ablations"
     ]
   }
 }

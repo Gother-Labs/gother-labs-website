@@ -1,0 +1,814 @@
+{
+  "schema_version": "rcpsp-portfolio-comparison/v1",
+  "benchmark": "PSPLIB J30 single-mode RCPSP",
+  "portfolio_size": 80,
+  "direction": "lower_is_better",
+  "comparison": "Evölther 2.0 minus baseline makespan",
+  "counts": {
+    "improved": 35,
+    "unchanged": 27,
+    "worse": 18
+  },
+  "instances": [
+    {
+      "instance_id": "j301_1",
+      "optimal_makespan": 43,
+      "baseline_makespan": 46,
+      "evolther_2_makespan": 43,
+      "makespan_delta": -3,
+      "outcome": "improved",
+      "baseline_gap_pct": 6.976744186046512,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j301_2",
+      "optimal_makespan": 47,
+      "baseline_makespan": 48,
+      "evolther_2_makespan": 48,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 2.127659574468085,
+      "evolther_2_gap_pct": 2.127659574468085
+    },
+    {
+      "instance_id": "j301_3",
+      "optimal_makespan": 47,
+      "baseline_makespan": 51,
+      "evolther_2_makespan": 51,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 8.51063829787234,
+      "evolther_2_gap_pct": 8.51063829787234
+    },
+    {
+      "instance_id": "j301_4",
+      "optimal_makespan": 62,
+      "baseline_makespan": 63,
+      "evolther_2_makespan": 62,
+      "makespan_delta": -1,
+      "outcome": "improved",
+      "baseline_gap_pct": 1.6129032258064515,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j301_5",
+      "optimal_makespan": 39,
+      "baseline_makespan": 47,
+      "evolther_2_makespan": 43,
+      "makespan_delta": -4,
+      "outcome": "improved",
+      "baseline_gap_pct": 20.512820512820515,
+      "evolther_2_gap_pct": 10.256410256410257
+    },
+    {
+      "instance_id": "j301_6",
+      "optimal_makespan": 48,
+      "baseline_makespan": 49,
+      "evolther_2_makespan": 49,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 2.0833333333333335,
+      "evolther_2_gap_pct": 2.0833333333333335
+    },
+    {
+      "instance_id": "j301_7",
+      "optimal_makespan": 60,
+      "baseline_makespan": 60,
+      "evolther_2_makespan": 60,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 0.0,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j301_8",
+      "optimal_makespan": 53,
+      "baseline_makespan": 53,
+      "evolther_2_makespan": 58,
+      "makespan_delta": 5,
+      "outcome": "worse",
+      "baseline_gap_pct": 0.0,
+      "evolther_2_gap_pct": 9.433962264150944
+    },
+    {
+      "instance_id": "j301_9",
+      "optimal_makespan": 49,
+      "baseline_makespan": 58,
+      "evolther_2_makespan": 54,
+      "makespan_delta": -4,
+      "outcome": "improved",
+      "baseline_gap_pct": 18.367346938775512,
+      "evolther_2_gap_pct": 10.204081632653061
+    },
+    {
+      "instance_id": "j301_10",
+      "optimal_makespan": 45,
+      "baseline_makespan": 46,
+      "evolther_2_makespan": 45,
+      "makespan_delta": -1,
+      "outcome": "improved",
+      "baseline_gap_pct": 2.2222222222222223,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j307_1",
+      "optimal_makespan": 55,
+      "baseline_makespan": 55,
+      "evolther_2_makespan": 55,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 0.0,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j307_2",
+      "optimal_makespan": 42,
+      "baseline_makespan": 42,
+      "evolther_2_makespan": 42,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 0.0,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j307_3",
+      "optimal_makespan": 42,
+      "baseline_makespan": 42,
+      "evolther_2_makespan": 44,
+      "makespan_delta": 2,
+      "outcome": "worse",
+      "baseline_gap_pct": 0.0,
+      "evolther_2_gap_pct": 4.761904761904762
+    },
+    {
+      "instance_id": "j307_4",
+      "optimal_makespan": 44,
+      "baseline_makespan": 45,
+      "evolther_2_makespan": 45,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 2.272727272727273,
+      "evolther_2_gap_pct": 2.272727272727273
+    },
+    {
+      "instance_id": "j307_5",
+      "optimal_makespan": 44,
+      "baseline_makespan": 50,
+      "evolther_2_makespan": 45,
+      "makespan_delta": -5,
+      "outcome": "improved",
+      "baseline_gap_pct": 13.636363636363637,
+      "evolther_2_gap_pct": 2.272727272727273
+    },
+    {
+      "instance_id": "j307_6",
+      "optimal_makespan": 35,
+      "baseline_makespan": 35,
+      "evolther_2_makespan": 35,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 0.0,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j307_7",
+      "optimal_makespan": 50,
+      "baseline_makespan": 53,
+      "evolther_2_makespan": 51,
+      "makespan_delta": -2,
+      "outcome": "improved",
+      "baseline_gap_pct": 6.0,
+      "evolther_2_gap_pct": 2.0
+    },
+    {
+      "instance_id": "j307_8",
+      "optimal_makespan": 44,
+      "baseline_makespan": 51,
+      "evolther_2_makespan": 44,
+      "makespan_delta": -7,
+      "outcome": "improved",
+      "baseline_gap_pct": 15.909090909090908,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j307_9",
+      "optimal_makespan": 60,
+      "baseline_makespan": 61,
+      "evolther_2_makespan": 60,
+      "makespan_delta": -1,
+      "outcome": "improved",
+      "baseline_gap_pct": 1.6666666666666667,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j307_10",
+      "optimal_makespan": 49,
+      "baseline_makespan": 53,
+      "evolther_2_makespan": 53,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 8.16326530612245,
+      "evolther_2_gap_pct": 8.16326530612245
+    },
+    {
+      "instance_id": "j3013_1",
+      "optimal_makespan": 58,
+      "baseline_makespan": 65,
+      "evolther_2_makespan": 64,
+      "makespan_delta": -1,
+      "outcome": "improved",
+      "baseline_gap_pct": 12.068965517241379,
+      "evolther_2_gap_pct": 10.344827586206897
+    },
+    {
+      "instance_id": "j3013_2",
+      "optimal_makespan": 62,
+      "baseline_makespan": 76,
+      "evolther_2_makespan": 71,
+      "makespan_delta": -5,
+      "outcome": "improved",
+      "baseline_gap_pct": 22.580645161290324,
+      "evolther_2_gap_pct": 14.516129032258064
+    },
+    {
+      "instance_id": "j3013_3",
+      "optimal_makespan": 76,
+      "baseline_makespan": 90,
+      "evolther_2_makespan": 88,
+      "makespan_delta": -2,
+      "outcome": "improved",
+      "baseline_gap_pct": 18.42105263157895,
+      "evolther_2_gap_pct": 15.789473684210526
+    },
+    {
+      "instance_id": "j3013_4",
+      "optimal_makespan": 72,
+      "baseline_makespan": 78,
+      "evolther_2_makespan": 76,
+      "makespan_delta": -2,
+      "outcome": "improved",
+      "baseline_gap_pct": 8.333333333333334,
+      "evolther_2_gap_pct": 5.555555555555555
+    },
+    {
+      "instance_id": "j3013_5",
+      "optimal_makespan": 67,
+      "baseline_makespan": 82,
+      "evolther_2_makespan": 74,
+      "makespan_delta": -8,
+      "outcome": "improved",
+      "baseline_gap_pct": 22.388059701492537,
+      "evolther_2_gap_pct": 10.447761194029852
+    },
+    {
+      "instance_id": "j3013_6",
+      "optimal_makespan": 64,
+      "baseline_makespan": 70,
+      "evolther_2_makespan": 71,
+      "makespan_delta": 1,
+      "outcome": "worse",
+      "baseline_gap_pct": 9.375,
+      "evolther_2_gap_pct": 10.9375
+    },
+    {
+      "instance_id": "j3013_7",
+      "optimal_makespan": 77,
+      "baseline_makespan": 86,
+      "evolther_2_makespan": 88,
+      "makespan_delta": 2,
+      "outcome": "worse",
+      "baseline_gap_pct": 11.688311688311689,
+      "evolther_2_gap_pct": 14.285714285714286
+    },
+    {
+      "instance_id": "j3013_8",
+      "optimal_makespan": 106,
+      "baseline_makespan": 115,
+      "evolther_2_makespan": 115,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 8.49056603773585,
+      "evolther_2_gap_pct": 8.49056603773585
+    },
+    {
+      "instance_id": "j3013_9",
+      "optimal_makespan": 71,
+      "baseline_makespan": 81,
+      "evolther_2_makespan": 72,
+      "makespan_delta": -9,
+      "outcome": "improved",
+      "baseline_gap_pct": 14.084507042253522,
+      "evolther_2_gap_pct": 1.408450704225352
+    },
+    {
+      "instance_id": "j3013_10",
+      "optimal_makespan": 64,
+      "baseline_makespan": 71,
+      "evolther_2_makespan": 72,
+      "makespan_delta": 1,
+      "outcome": "worse",
+      "baseline_gap_pct": 10.9375,
+      "evolther_2_gap_pct": 12.5
+    },
+    {
+      "instance_id": "j3019_1",
+      "optimal_makespan": 40,
+      "baseline_makespan": 43,
+      "evolther_2_makespan": 40,
+      "makespan_delta": -3,
+      "outcome": "improved",
+      "baseline_gap_pct": 7.5,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j3019_2",
+      "optimal_makespan": 58,
+      "baseline_makespan": 58,
+      "evolther_2_makespan": 58,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 0.0,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j3019_3",
+      "optimal_makespan": 83,
+      "baseline_makespan": 83,
+      "evolther_2_makespan": 83,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 0.0,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j3019_4",
+      "optimal_makespan": 39,
+      "baseline_makespan": 39,
+      "evolther_2_makespan": 39,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 0.0,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j3019_5",
+      "optimal_makespan": 48,
+      "baseline_makespan": 48,
+      "evolther_2_makespan": 48,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 0.0,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j3019_6",
+      "optimal_makespan": 49,
+      "baseline_makespan": 49,
+      "evolther_2_makespan": 51,
+      "makespan_delta": 2,
+      "outcome": "worse",
+      "baseline_gap_pct": 0.0,
+      "evolther_2_gap_pct": 4.081632653061225
+    },
+    {
+      "instance_id": "j3019_7",
+      "optimal_makespan": 57,
+      "baseline_makespan": 58,
+      "evolther_2_makespan": 57,
+      "makespan_delta": -1,
+      "outcome": "improved",
+      "baseline_gap_pct": 1.7543859649122806,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j3019_8",
+      "optimal_makespan": 55,
+      "baseline_makespan": 55,
+      "evolther_2_makespan": 55,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 0.0,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j3019_9",
+      "optimal_makespan": 38,
+      "baseline_makespan": 38,
+      "evolther_2_makespan": 39,
+      "makespan_delta": 1,
+      "outcome": "worse",
+      "baseline_gap_pct": 0.0,
+      "evolther_2_gap_pct": 2.6315789473684212
+    },
+    {
+      "instance_id": "j3019_10",
+      "optimal_makespan": 47,
+      "baseline_makespan": 48,
+      "evolther_2_makespan": 47,
+      "makespan_delta": -1,
+      "outcome": "improved",
+      "baseline_gap_pct": 2.127659574468085,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j3025_1",
+      "optimal_makespan": 93,
+      "baseline_makespan": 112,
+      "evolther_2_makespan": 102,
+      "makespan_delta": -10,
+      "outcome": "improved",
+      "baseline_gap_pct": 20.43010752688172,
+      "evolther_2_gap_pct": 9.67741935483871
+    },
+    {
+      "instance_id": "j3025_2",
+      "optimal_makespan": 75,
+      "baseline_makespan": 87,
+      "evolther_2_makespan": 87,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 16.0,
+      "evolther_2_gap_pct": 16.0
+    },
+    {
+      "instance_id": "j3025_3",
+      "optimal_makespan": 76,
+      "baseline_makespan": 91,
+      "evolther_2_makespan": 89,
+      "makespan_delta": -2,
+      "outcome": "improved",
+      "baseline_gap_pct": 19.736842105263158,
+      "evolther_2_gap_pct": 17.105263157894736
+    },
+    {
+      "instance_id": "j3025_4",
+      "optimal_makespan": 81,
+      "baseline_makespan": 91,
+      "evolther_2_makespan": 90,
+      "makespan_delta": -1,
+      "outcome": "improved",
+      "baseline_gap_pct": 12.345679012345679,
+      "evolther_2_gap_pct": 11.11111111111111
+    },
+    {
+      "instance_id": "j3025_5",
+      "optimal_makespan": 72,
+      "baseline_makespan": 77,
+      "evolther_2_makespan": 77,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 6.944444444444445,
+      "evolther_2_gap_pct": 6.944444444444445
+    },
+    {
+      "instance_id": "j3025_6",
+      "optimal_makespan": 58,
+      "baseline_makespan": 67,
+      "evolther_2_makespan": 67,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 15.517241379310345,
+      "evolther_2_gap_pct": 15.517241379310345
+    },
+    {
+      "instance_id": "j3025_7",
+      "optimal_makespan": 95,
+      "baseline_makespan": 106,
+      "evolther_2_makespan": 108,
+      "makespan_delta": 2,
+      "outcome": "worse",
+      "baseline_gap_pct": 11.578947368421053,
+      "evolther_2_gap_pct": 13.68421052631579
+    },
+    {
+      "instance_id": "j3025_8",
+      "optimal_makespan": 69,
+      "baseline_makespan": 82,
+      "evolther_2_makespan": 74,
+      "makespan_delta": -8,
+      "outcome": "improved",
+      "baseline_gap_pct": 18.840579710144926,
+      "evolther_2_gap_pct": 7.246376811594203
+    },
+    {
+      "instance_id": "j3025_9",
+      "optimal_makespan": 84,
+      "baseline_makespan": 112,
+      "evolther_2_makespan": 92,
+      "makespan_delta": -20,
+      "outcome": "improved",
+      "baseline_gap_pct": 33.333333333333336,
+      "evolther_2_gap_pct": 9.523809523809524
+    },
+    {
+      "instance_id": "j3025_10",
+      "optimal_makespan": 58,
+      "baseline_makespan": 70,
+      "evolther_2_makespan": 62,
+      "makespan_delta": -8,
+      "outcome": "improved",
+      "baseline_gap_pct": 20.689655172413794,
+      "evolther_2_gap_pct": 6.896551724137931
+    },
+    {
+      "instance_id": "j3031_1",
+      "optimal_makespan": 43,
+      "baseline_makespan": 43,
+      "evolther_2_makespan": 43,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 0.0,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j3031_2",
+      "optimal_makespan": 63,
+      "baseline_makespan": 63,
+      "evolther_2_makespan": 63,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 0.0,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j3031_3",
+      "optimal_makespan": 58,
+      "baseline_makespan": 58,
+      "evolther_2_makespan": 58,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 0.0,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j3031_4",
+      "optimal_makespan": 50,
+      "baseline_makespan": 50,
+      "evolther_2_makespan": 50,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 0.0,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j3031_5",
+      "optimal_makespan": 52,
+      "baseline_makespan": 59,
+      "evolther_2_makespan": 57,
+      "makespan_delta": -2,
+      "outcome": "improved",
+      "baseline_gap_pct": 13.461538461538462,
+      "evolther_2_gap_pct": 9.615384615384615
+    },
+    {
+      "instance_id": "j3031_6",
+      "optimal_makespan": 53,
+      "baseline_makespan": 53,
+      "evolther_2_makespan": 53,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 0.0,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j3031_7",
+      "optimal_makespan": 61,
+      "baseline_makespan": 61,
+      "evolther_2_makespan": 61,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 0.0,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j3031_8",
+      "optimal_makespan": 58,
+      "baseline_makespan": 58,
+      "evolther_2_makespan": 59,
+      "makespan_delta": 1,
+      "outcome": "worse",
+      "baseline_gap_pct": 0.0,
+      "evolther_2_gap_pct": 1.7241379310344827
+    },
+    {
+      "instance_id": "j3031_9",
+      "optimal_makespan": 50,
+      "baseline_makespan": 53,
+      "evolther_2_makespan": 55,
+      "makespan_delta": 2,
+      "outcome": "worse",
+      "baseline_gap_pct": 6.0,
+      "evolther_2_gap_pct": 10.0
+    },
+    {
+      "instance_id": "j3031_10",
+      "optimal_makespan": 55,
+      "baseline_makespan": 57,
+      "evolther_2_makespan": 59,
+      "makespan_delta": 2,
+      "outcome": "worse",
+      "baseline_gap_pct": 3.6363636363636362,
+      "evolther_2_gap_pct": 7.2727272727272725
+    },
+    {
+      "instance_id": "j3037_1",
+      "optimal_makespan": 79,
+      "baseline_makespan": 81,
+      "evolther_2_makespan": 83,
+      "makespan_delta": 2,
+      "outcome": "worse",
+      "baseline_gap_pct": 2.5316455696202533,
+      "evolther_2_gap_pct": 5.063291139240507
+    },
+    {
+      "instance_id": "j3037_2",
+      "optimal_makespan": 69,
+      "baseline_makespan": 72,
+      "evolther_2_makespan": 71,
+      "makespan_delta": -1,
+      "outcome": "improved",
+      "baseline_gap_pct": 4.3478260869565215,
+      "evolther_2_gap_pct": 2.898550724637681
+    },
+    {
+      "instance_id": "j3037_3",
+      "optimal_makespan": 81,
+      "baseline_makespan": 91,
+      "evolther_2_makespan": 88,
+      "makespan_delta": -3,
+      "outcome": "improved",
+      "baseline_gap_pct": 12.345679012345679,
+      "evolther_2_gap_pct": 8.641975308641975
+    },
+    {
+      "instance_id": "j3037_4",
+      "optimal_makespan": 83,
+      "baseline_makespan": 89,
+      "evolther_2_makespan": 86,
+      "makespan_delta": -3,
+      "outcome": "improved",
+      "baseline_gap_pct": 7.228915662650603,
+      "evolther_2_gap_pct": 3.6144578313253013
+    },
+    {
+      "instance_id": "j3037_5",
+      "optimal_makespan": 80,
+      "baseline_makespan": 82,
+      "evolther_2_makespan": 87,
+      "makespan_delta": 5,
+      "outcome": "worse",
+      "baseline_gap_pct": 2.5,
+      "evolther_2_gap_pct": 8.75
+    },
+    {
+      "instance_id": "j3037_6",
+      "optimal_makespan": 73,
+      "baseline_makespan": 84,
+      "evolther_2_makespan": 76,
+      "makespan_delta": -8,
+      "outcome": "improved",
+      "baseline_gap_pct": 15.068493150684931,
+      "evolther_2_gap_pct": 4.109589041095891
+    },
+    {
+      "instance_id": "j3037_7",
+      "optimal_makespan": 92,
+      "baseline_makespan": 100,
+      "evolther_2_makespan": 100,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 8.695652173913043,
+      "evolther_2_gap_pct": 8.695652173913043
+    },
+    {
+      "instance_id": "j3037_8",
+      "optimal_makespan": 72,
+      "baseline_makespan": 84,
+      "evolther_2_makespan": 82,
+      "makespan_delta": -2,
+      "outcome": "improved",
+      "baseline_gap_pct": 16.666666666666668,
+      "evolther_2_gap_pct": 13.88888888888889
+    },
+    {
+      "instance_id": "j3037_9",
+      "optimal_makespan": 57,
+      "baseline_makespan": 59,
+      "evolther_2_makespan": 60,
+      "makespan_delta": 1,
+      "outcome": "worse",
+      "baseline_gap_pct": 3.508771929824561,
+      "evolther_2_gap_pct": 5.2631578947368425
+    },
+    {
+      "instance_id": "j3037_10",
+      "optimal_makespan": 81,
+      "baseline_makespan": 91,
+      "evolther_2_makespan": 82,
+      "makespan_delta": -9,
+      "outcome": "improved",
+      "baseline_gap_pct": 12.345679012345679,
+      "evolther_2_gap_pct": 1.2345679012345678
+    },
+    {
+      "instance_id": "j3043_1",
+      "optimal_makespan": 55,
+      "baseline_makespan": 56,
+      "evolther_2_makespan": 58,
+      "makespan_delta": 2,
+      "outcome": "worse",
+      "baseline_gap_pct": 1.8181818181818181,
+      "evolther_2_gap_pct": 5.454545454545454
+    },
+    {
+      "instance_id": "j3043_2",
+      "optimal_makespan": 43,
+      "baseline_makespan": 43,
+      "evolther_2_makespan": 45,
+      "makespan_delta": 2,
+      "outcome": "worse",
+      "baseline_gap_pct": 0.0,
+      "evolther_2_gap_pct": 4.651162790697675
+    },
+    {
+      "instance_id": "j3043_3",
+      "optimal_makespan": 57,
+      "baseline_makespan": 61,
+      "evolther_2_makespan": 57,
+      "makespan_delta": -4,
+      "outcome": "improved",
+      "baseline_gap_pct": 7.017543859649122,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j3043_4",
+      "optimal_makespan": 67,
+      "baseline_makespan": 67,
+      "evolther_2_makespan": 67,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 0.0,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j3043_5",
+      "optimal_makespan": 64,
+      "baseline_makespan": 69,
+      "evolther_2_makespan": 66,
+      "makespan_delta": -3,
+      "outcome": "improved",
+      "baseline_gap_pct": 7.8125,
+      "evolther_2_gap_pct": 3.125
+    },
+    {
+      "instance_id": "j3043_6",
+      "optimal_makespan": 58,
+      "baseline_makespan": 59,
+      "evolther_2_makespan": 60,
+      "makespan_delta": 1,
+      "outcome": "worse",
+      "baseline_gap_pct": 1.7241379310344827,
+      "evolther_2_gap_pct": 3.4482758620689653
+    },
+    {
+      "instance_id": "j3043_7",
+      "optimal_makespan": 52,
+      "baseline_makespan": 53,
+      "evolther_2_makespan": 52,
+      "makespan_delta": -1,
+      "outcome": "improved",
+      "baseline_gap_pct": 1.9230769230769231,
+      "evolther_2_gap_pct": 0.0
+    },
+    {
+      "instance_id": "j3043_8",
+      "optimal_makespan": 62,
+      "baseline_makespan": 65,
+      "evolther_2_makespan": 65,
+      "makespan_delta": 0,
+      "outcome": "unchanged",
+      "baseline_gap_pct": 4.838709677419355,
+      "evolther_2_gap_pct": 4.838709677419355
+    },
+    {
+      "instance_id": "j3043_9",
+      "optimal_makespan": 57,
+      "baseline_makespan": 57,
+      "evolther_2_makespan": 58,
+      "makespan_delta": 1,
+      "outcome": "worse",
+      "baseline_gap_pct": 0.0,
+      "evolther_2_gap_pct": 1.7543859649122806
+    },
+    {
+      "instance_id": "j3043_10",
+      "optimal_makespan": 60,
+      "baseline_makespan": 61,
+      "evolther_2_makespan": 60,
+      "makespan_delta": -1,
+      "outcome": "improved",
+      "baseline_gap_pct": 1.6666666666666667,
+      "evolther_2_gap_pct": 0.0
+    }
+  ]
+}

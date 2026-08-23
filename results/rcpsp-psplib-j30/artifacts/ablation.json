@@ -1,0 +1,81 @@
+{
+  "schema_version": "rcpsp-leave-one-feature-out/v1",
+  "evaluation": "Each coefficient is set to zero independently and all 80 instances are replayed.",
+  "direction": "lower_is_better",
+  "full_policy_score": 10.108499479347454,
+  "all_ablations_worse": true,
+  "ablations": [
+    {
+      "signal_removed": "earliest_resource_feasible_start",
+      "weight": -13.251521592471839,
+      "score_without_signal": 15.417479895614044,
+      "delta_score": 5.308980416266589
+    },
+    {
+      "signal_removed": "downstream_critical_path",
+      "weight": 3.3361354926476796,
+      "score_without_signal": 15.131679246405358,
+      "delta_score": 5.023179767057904
+    },
+    {
+      "signal_removed": "transitive_successors",
+      "weight": 3.3371341011147093,
+      "score_without_signal": 12.158530393245048,
+      "delta_score": 2.0500309138975936
+    },
+    {
+      "signal_removed": "weighted_demand",
+      "weight": 2.4505973763972735,
+      "score_without_signal": 12.139089834009596,
+      "delta_score": 2.0305903546621416
+    },
+    {
+      "signal_removed": "resource_wait",
+      "weight": 1.0566568726367724,
+      "score_without_signal": 11.66379606636252,
+      "delta_score": 1.5552965870150661
+    },
+    {
+      "signal_removed": "precedence_wait",
+      "weight": -0.30825674063037856,
+      "score_without_signal": 11.267268322325034,
+      "delta_score": 1.1587688429775795
+    },
+    {
+      "signal_removed": "bottleneck_ratio",
+      "weight": 3.3477197898098976,
+      "score_without_signal": 10.870252559763268,
+      "delta_score": 0.7617530804158132
+    },
+    {
+      "signal_removed": "successor_work",
+      "weight": -0.20886456423277294,
+      "score_without_signal": 10.86021245012277,
+      "delta_score": 0.7517129707753156
+    },
+    {
+      "signal_removed": "duration",
+      "weight": 0.18699002132011017,
+      "score_without_signal": 10.731243485585878,
+      "delta_score": 0.622744006238424
+    },
+    {
+      "signal_removed": "resource_pressure",
+      "weight": -0.7005088135706682,
+      "score_without_signal": 10.650555106743372,
+      "delta_score": 0.5420556273959178
+    },
+    {
+      "signal_removed": "direct_successors",
+      "weight": -0.09293668648981424,
+      "score_without_signal": 10.520760265749733,
+      "delta_score": 0.41226078640227826
+    },
+    {
+      "signal_removed": "projected_finish",
+      "weight": -0.01765515517782279,
+      "score_without_signal": 10.174288953031665,
+      "delta_score": 0.06578947368421062
+    }
+  ]
+}
