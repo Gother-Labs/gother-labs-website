@@ -1,0 +1,144 @@
+{
+  "problem": "26 variable-radius circles in the unit square",
+  "objective": "maximize the sum of radii",
+  "cases": {
+    "1e-6": {
+      "valid": true,
+      "score": "2.63599872089287514",
+      "tolerance": "0.000001",
+      "min_wall_gap_zero": "-9.9999950015e-7",
+      "min_wall_where": [
+        14,
+        "right"
+      ],
+      "min_pair_squared_gap_zero": "-5.092814909898685878034399877e-7",
+      "min_pair_squared_gap_where": [
+        12,
+        13
+      ],
+      "min_wall_margin_at_tolerance": "4.9985e-13",
+      "min_pair_margin_at_tolerance": "4.998462574398773262074560757137435171768609135679806289974922491096952113785890865006898321841561376e-13",
+      "min_pair_margin_where": [
+        17,
+        18
+      ],
+      "geometric_constraints_checked": 429,
+      "positivity_conditions_checked": 26,
+      "total_conditions_checked": 455,
+      "constraints_checked": 429,
+      "decision_arithmetic": "exact rational",
+      "certificate": "tolerance_1e-6.csv"
+    },
+    "1e-10": {
+      "valid": true,
+      "score": "2.63598308647338795",
+      "tolerance": "1e-10",
+      "min_wall_gap_zero": "-9.950014e-11",
+      "min_wall_where": [
+        19,
+        "right"
+      ],
+      "min_pair_squared_gap_zero": "-5.06733519051356491665224e-11",
+      "min_pair_squared_gap_where": [
+        12,
+        13
+      ],
+      "min_wall_margin_at_tolerance": "4.9986e-13",
+      "min_pair_margin_at_tolerance": "4.998437118589895194201833724408776652676561848271358084917207755711384876128200121188765599991068299e-13",
+      "min_pair_margin_where": [
+        17,
+        21
+      ],
+      "geometric_constraints_checked": 429,
+      "positivity_conditions_checked": 26,
+      "total_conditions_checked": 455,
+      "constraints_checked": 429,
+      "decision_arithmetic": "exact rational",
+      "certificate": "tolerance_1e-10.csv"
+    },
+    "exact": {
+      "valid": true,
+      "score": "2.6359830849176077831865694854434817303966767982744748577457711298607038493344723396767997365079",
+      "tolerance": "0",
+      "min_wall_gap_zero": "1.0000000000000015957e-75",
+      "min_wall_where": [
+        1,
+        "bottom"
+      ],
+      "min_pair_squared_gap_zero": "6.462889117127747543948689364593329656152501312641715080908715265113483426245412515828719437575261918e-76",
+      "min_pair_squared_gap_where": [
+        5,
+        25
+      ],
+      "min_wall_margin_at_tolerance": "1.0000000000000015957e-75",
+      "min_pair_margin_at_tolerance": "2.000000000000001595655693329767596666801149743e-75",
+      "min_pair_margin_where": [
+        10,
+        11
+      ],
+      "geometric_constraints_checked": 429,
+      "positivity_conditions_checked": 26,
+      "total_conditions_checked": 455,
+      "constraints_checked": 429,
+      "decision_arithmetic": "exact rational",
+      "certificate": "exact.csv"
+    }
+  },
+  "relaxed_certificates_rechecked_at_zero": {
+    "1e-6": {
+      "valid": false,
+      "score": "2.63599872089287514",
+      "tolerance": "0",
+      "min_wall_gap_zero": "-9.9999950015e-7",
+      "min_wall_where": [
+        14,
+        "right"
+      ],
+      "min_pair_squared_gap_zero": "-5.092814909898685878034399877e-7",
+      "min_pair_squared_gap_where": [
+        12,
+        13
+      ],
+      "min_wall_margin_at_tolerance": "-9.9999950015e-7",
+      "min_pair_margin_at_tolerance": "-9.999995001537425601226737925439242862564828231390864320193710025077508903047886214109134993101678158e-7",
+      "min_pair_margin_where": [
+        17,
+        18
+      ],
+      "geometric_constraints_checked": 429,
+      "positivity_conditions_checked": 26,
+      "total_conditions_checked": 455,
+      "constraints_checked": 429,
+      "decision_arithmetic": "exact rational",
+      "certificate": "tolerance_1e-6.csv"
+    },
+    "1e-10": {
+      "valid": false,
+      "score": "2.63598308647338795",
+      "tolerance": "0",
+      "min_wall_gap_zero": "-9.950014e-11",
+      "min_wall_where": [
+        19,
+        "right"
+      ],
+      "min_pair_squared_gap_zero": "-5.06733519051356491665224e-11",
+      "min_pair_squared_gap_where": [
+        12,
+        13
+      ],
+      "min_wall_margin_at_tolerance": "-9.950014e-11",
+      "min_pair_margin_at_tolerance": "-9.950015628814101048057981662755912233473234381517286419150827922442886151238717998788112344000089317e-11",
+      "min_pair_margin_where": [
+        17,
+        21
+      ],
+      "geometric_constraints_checked": 429,
+      "positivity_conditions_checked": 26,
+      "total_conditions_checked": 455,
+      "constraints_checked": 429,
+      "decision_arithmetic": "exact rational",
+      "certificate": "tolerance_1e-10.csv"
+    }
+  },
+  "status": "PASS"
+}

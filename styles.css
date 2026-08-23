@@ -185,6 +185,15 @@
   border-top: 1px solid var(--line);
 }
 
+.circle-packing-history .result-ledger {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.circle-packing-history .result-ledger-score strong {
+  overflow-wrap: anywhere;
+  font-size: clamp(1rem, 1.7vw, 1.5rem);
+}
+
 .result-history-strip .result-ledger::before {
   display: none;
 }
@@ -461,6 +470,10 @@
     gap: 0;
     padding-left: 1.25rem;
     border-top: 0;
+  }
+
+  .circle-packing-history .result-ledger {
+    grid-template-columns: 1fr;
   }
 
   .result-history-strip .result-ledger::before {
@@ -2662,14 +2675,14 @@ a {
 }
 
 .circle-packing-paper-svg .circle-packing-disk {
-  fill: color-mix(in srgb, var(--accent) 13%, transparent);
-  stroke: color-mix(in srgb, var(--accent) 70%, transparent);
+  fill: color-mix(in srgb, var(--text) 10%, transparent);
+  stroke: color-mix(in srgb, var(--text) 68%, transparent);
   stroke-width: 1.2;
 }
 
 .circle-packing-paper-svg .circle-packing-disk-strong {
-  fill: color-mix(in srgb, var(--accent) 24%, transparent);
-  stroke: var(--accent);
+  fill: color-mix(in srgb, var(--text) 20%, transparent);
+  stroke: var(--text);
   stroke-width: 1.6;
 }
 
@@ -2701,7 +2714,57 @@ a {
 }
 
 .circle-packing-paper-svg .circle-packing-contact-value {
-  fill: var(--accent);
+  fill: var(--text);
+}
+
+.circle-packing-paper-svg .circle-packing-invalid-value {
+  fill: var(--muted);
+}
+
+.circle-packing-paper-svg .circle-packing-divider {
+  fill: none;
+  stroke: color-mix(in srgb, var(--text) 18%, transparent);
+  stroke-width: 1;
+}
+
+.circle-packing-paper-svg .circle-packing-hash {
+  fill: var(--muted-soft);
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 10px;
+}
+
+.circle-packing-whitepaper .circle-packing-inline-figure {
+  width: min(100%, 58rem);
+}
+
+.circle-packing-whitepaper .circle-packing-inline-figure > svg {
+  background: transparent;
+}
+
+.circle-packing-canonical-figure {
+  color: var(--text);
+}
+
+.circle-packing-native-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  color: inherit;
+}
+
+.circle-packing-native-svg #pair-contacts {
+  opacity: 0.62;
+}
+
+.circle-packing-native-svg #wall-contacts {
+  opacity: 0.34;
+}
+
+.circle-packing-native-svg #circles {
+  fill: currentColor;
+  fill-opacity: 0.09;
+  stroke: currentColor;
 }
 
 .circle-packing-paper-svg .circle-packing-track {

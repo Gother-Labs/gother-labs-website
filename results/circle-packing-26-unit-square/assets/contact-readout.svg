@@ -1,7 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 200" role="img">
-<style>text{font-family:Inter,Arial,sans-serif;fill:#0a0a0a}.muted{fill:#667085;font-size:12px}.axis{stroke:#98a2b3;stroke-width:1;fill:none}.grid{stroke:#e4e7ec;stroke-width:1}.accent{fill:#0b84fe;stroke:#006bd6}.soft{fill:#e8f3ff;stroke:#84bfff}.line{stroke:#0a0a0a;stroke-width:2;fill:none}.value{fill:#0b84fe;font-family:Menlo,Consolas,monospace;font-weight:600}</style>
-<text x="72" y="34" font-size="16" font-weight="600">Accepted contact readout</text>
-<text x="72" y="82" font-size="14">Boundary contacts</text><text class="value" x="488" y="82" font-size="14" text-anchor="end">20</text>
-<text x="72" y="124" font-size="14">Pairwise contacts</text><text class="value" x="488" y="124" font-size="14" text-anchor="end">58</text>
-<text x="72" y="166" font-size="14">Interior circles</text><text class="value" x="488" y="166" font-size="14" text-anchor="end">10</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 540" role="img" aria-labelledby="title desc">
+<title id="title">Exact rational certificate readout</title>
+<desc id="desc">Eight checks pass with positive boundary and pairwise margins.</desc>
+<style>svg{background:#05070b;font-family:Inter,Arial,sans-serif}text{fill:#dce5f1}.title{font-size:27px;font-weight:700}.label{fill:#9ba8ba;font-size:15px;letter-spacing:1px;text-transform:uppercase}.value{font-size:25px;font-weight:700}.blue{fill:#279dff}.rule{stroke:#273140}.hash{font-family:ui-monospace,SFMono-Regular,monospace;font-size:16px}</style>
+<text class="title" x="86" y="58">Exact rational certificate</text>
+<text class="label" x="86" y="122">Contract checks</text><text class="value blue" x="86" y="158">8 / 8 pass</text>
+<text class="label" x="420" y="122">Arithmetic</text><text class="value" x="420" y="158">Fractions · no tolerance</text>
+<text class="label" x="880" y="122">Precision</text><text class="value" x="880" y="158">256-bit</text>
+<path class="rule" d="M86 202H1114"/>
+<text class="label" x="86" y="254">Minimum boundary margin</text><text class="value blue" x="86" y="292">1.0000E-140</text>
+<text class="label" x="650" y="254">Minimum pair² margin</text><text class="value blue" x="650" y="292">6.4629E-141</text>
+<path class="rule" d="M86 338H1114"/>
+<text class="label" x="86" y="390">Payload</text><text class="hash" x="86" y="422">b4cb8e3778d5ee51…a064213812388d81</text>
+<text class="label" x="650" y="390">Certificate</text><text class="hash" x="650" y="422">a447773e2269cdd4…edb3aee71bd8e9</text>
 </svg>

@@ -14,7 +14,9 @@ import {
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const SITE_ROOT = path.resolve(__dirname, "..");
-const RESULTS_ROOT = path.resolve(SITE_ROOT, "..", "gother-labs-results");
+const RESULTS_ROOT = process.env.GOTHER_RESULTS_ROOT
+  ? path.resolve(process.env.GOTHER_RESULTS_ROOT)
+  : path.resolve(SITE_ROOT, "..", "gother-labs-results");
 const CATALOG_PATH = path.join(RESULTS_ROOT, "catalog.json");
 const OUT_ROOT = path.join(SITE_ROOT, "results");
 
@@ -1611,8 +1613,8 @@ function rcpspBenchmarkComparisonFigure(full) {
 }
 
 function rcpspScheduleCompressionFigure(scheduleExample) {
-  const example = scheduleExample && Array.isArray(scheduleExample.jobs) ? scheduleExample : null;
-  if (!example) {
+  const rawExample = scheduleExample && Array.isArray(scheduleExample.jobs) ? scheduleExample : null;
+  if (!rawExample) {
     return paperInlineFigure({
       number: 5,
       caption: "Real schedule-compression readout unavailable.",
@@ -1622,6 +1624,34 @@ function rcpspScheduleCompressionFigure(scheduleExample) {
           </svg>`,
     });
   }
+
+  const primaryResource = Array.isArray(rawExample.resource_profiles)
+    ? rawExample.resource_profiles[0]
+    : null;
+  const example = rawExample.schema_version === "rcpsp-schedule-example/v3"
+    ? {
+        ...rawExample,
+        seed_makespan: rawExample.baseline_makespan,
+        accepted_makespan: rawExample.evolther_2_makespan,
+        resource_capacity: primaryResource?.capacity ?? rawExample.capacities?.[0] ?? 1,
+        resource_load_buckets: Array.from(
+          { length: Math.max(primaryResource?.baseline_load?.length ?? 0, primaryResource?.evolther_2_load?.length ?? 0) },
+          (_unused, index) => ({
+            start: index,
+            end: index + 1,
+            seed: primaryResource?.baseline_load?.[index] ?? 0,
+            accepted: primaryResource?.evolther_2_load?.[index] ?? 0,
+          }),
+        ),
+        jobs: rawExample.jobs.map((job) => ({
+          ...job,
+          seed_start: job.baseline_start,
+          seed_finish: job.baseline_finish,
+          accepted_start: job.evolther_2_start,
+          accepted_finish: job.evolther_2_finish,
+        })),
+      }
+    : rawExample;
 
   const executableJobs = example.jobs.filter((job) => !job.is_dummy && job.duration > 0);
   const axisStart = example.time_axis?.start ?? 0;
@@ -2347,147 +2377,143 @@ function circlePackingPrimerFigure() {
   });
 }
 
-function circlePackingContractTable(evolution) {
-  const domain = evolution?.domain ?? {};
+function circlePackingHistoryLedger() {
+  return `          <section class="result-ledger-section result-history-strip circle-packing-history" aria-labelledby="circle-packing-history-title">
+            <span class="result-ledger-kicker" id="circle-packing-history-title">Accepted history · claims become narrower as evidence becomes stronger</span>
+            <div class="result-ledger">
+              <article class="result-ledger-entry">
+                <time class="result-ledger-date" datetime="2026-05-16">16 May 2026</time>
+                <h3>Evölther search baseline</h3>
+                <p>The first governed campaign established the geometry search and replay path.</p>
+                <div class="result-ledger-score"><strong>0.959778</strong><span>initial score</span></div>
+              </article>
+              <article class="result-ledger-entry">
+                <time class="result-ledger-date" datetime="2026-05-26">26 May 2026</time>
+                <h3>High-quality floating reconstruction</h3>
+                <p>A contact-rich layout reached the final score neighborhood, but not strict feasibility.</p>
+                <div class="result-ledger-score"><strong>2.6359830849768984</strong><span>negative slack</span></div>
+              </article>
+              <article class="result-ledger-entry">
+                <time class="result-ledger-date" datetime="2026-07-30">30 Jul 2026</time>
+                <h3>Evölther 2.0 certificates</h3>
+                <p>Three named tolerance contracts replaced one ambiguous floating-point claim.</p>
+                <div class="result-ledger-score"><strong>3 contracts</strong><span>exact replay</span></div>
+              </article>
+              <article class="result-ledger-entry result-ledger-entry--current">
+                <time class="result-ledger-date" datetime="2026-08-22">22 Aug 2026</time>
+                <h3>Public theorem artifact v1.2.1</h3>
+                <p>The reproducibility release adds a rational interval proof for the 78-contact root.</p>
+                <div class="result-ledger-score"><strong>strict local max</strong><span>39 / 39 tests</span></div>
+              </article>
+            </div>
+          </section>`;
+}
+
+function circlePackingToleranceContracts() {
+  return paperTable({
+    className: "circle-packing-tolerance-table",
+    caption: "Table 1. Three separate optimization contracts. Scores are comparable only within a row's tolerance.",
+    headers: ["Contract", "Evölther 2.0 score", "Zero-tolerance recheck", "Manifested-corpus rank"],
+    rows: [
+      ["τ = 10⁻⁶", "2.63599872089287514", "fails", "#1 among valid complete witnesses"],
+      ["τ = 10⁻¹⁰", "2.63598308647338795", "fails", "#1 among valid complete witnesses"],
+      ["τ = 0", "2.635983084917607783…", "passes", "#1 among strict complete witnesses"],
+    ],
+  });
+}
+
+function circlePackingNativeSvg(source, alt) {
+  return source
+    .replace(/<\?xml[^>]*>\s*/i, "")
+    .replace(/<rect width="100%" height="100%" fill="#[0-9a-f]{6}"\/>/i, "")
+    .replace(/<rect x="10"[^>]*\/>/g, "")
+    .replace(/<rect x="11"[^>]*\/>/g, "")
+    .replace("<svg ", `<svg class="circle-packing-native-svg" aria-label="${escapeHtml(alt)}" `)
+    .replace(/\swidth="[^"]*"/i, "")
+    .replace(/\sheight="[^"]*"/i, "")
+    .replace(/font-family="STIX Two Text, serif"/g, 'font-family="Inter, sans-serif"')
+    .replace(/fill="#(?:111827|0f172a|b91c1c|2563eb|7c3aed|db2777|1d4ed8|60a5fa)"/gi, 'fill="currentColor"')
+    .replace(/fill="#(?:ffffff|fbfdff|fbfcfe|fff1f2|f8fafc|f1f5f9|fecdd3)"/gi, 'fill="none"')
+    .replace(/fill="#(?:334155|475569|94a3b8)"/gi, 'fill="var(--muted)"')
+    .replace(/stroke="#(?:111827|0f172a|b91c1c|2563eb|7c3aed|db2777|dc2626|f59e0b|1d4ed8|60a5fa)"/gi, 'stroke="currentColor"')
+    .replace(/stroke="#(?:334155|475569|94a3b8|e2e8f0)"/gi, 'stroke="var(--line)"');
+}
+
+function circlePackingCanonicalFigure({ svg, number, caption, alt, className = "" }) {
+  return `          <figure class="result-ledger-figure circle-packing-canonical-figure ${escapeHtml(className)}" id="fig-${number}">
+${circlePackingNativeSvg(svg, alt)}
+            <figcaption>Figure ${number}. ${escapeHtml(caption)}</figcaption>
+          </figure>`;
+}
+
+function circlePackingContractTable() {
   return paperTable({
     className: "result-contract-table circle-packing-contract-table",
-    caption: "Table 1. Public geometry contract for the accepted packing.",
+    caption: "Table 1. Exact-v2 geometry contract for the accepted packing.",
     headers: ["Field", "Public contract"],
     rows: [
-      ["Container", escapeHtml(domain.container ?? "unit square [0,1]^2")],
-      ["Circles", `${formatMetric(domain.circle_count ?? 26, { maximumFractionDigits: 0 })} circles`],
-      ["Objective", "maximize <code>sum(radii)</code>"],
-      ["Score", "<code>-sum(radii)</code>; lower is better"],
-      ["Validation", "boundary containment, pairwise non-overlap, sum consistency, deterministic replay"],
+      ["Representation", "canonical decimal strings parsed as exact rationals"],
+      ["Geometry", "26 circles inside the unit square"],
+      ["Objective", "maximize exact <code>sum(radii)</code>"],
+      ["Constraints", "104 boundary and 325 pairwise inequalities"],
+      ["Identity", "canonical payload hash + certificate hash"],
     ],
   });
 }
 
 function circlePackingObjectiveCurveFigure(evolution, scoreTrace) {
-  const retainedSteps = Array.isArray(evolution?.steps) ? evolution.steps : [];
-  const tracedCandidates = Array.isArray(scoreTrace?.candidates) ? scoreTrace.candidates : [];
-  const scored = (tracedCandidates.length ? tracedCandidates : retainedSteps)
-    .filter((step) => typeof step.sum_radii === "number" && Number.isFinite(step.sum_radii));
-  const retained = retainedSteps.filter((step) => typeof step.sum_radii === "number" && Number.isFinite(step.sum_radii));
-  if (!scored.length) return "";
-
-  const left = 82;
-  const right = 512;
-  const top = 74;
-  const bottom = 260;
-  const width = right - left;
-  const height = bottom - top;
-  const baseline = retained[0] ?? scored[0];
-  const accepted = retained[retained.length - 1] ?? scored[scored.length - 1];
-  const minRadius = baseline.sum_radii;
-  const maxRadius = Math.ceil(accepted.sum_radii * 1000) / 1000;
-  const generationEnd = Math.max(
-    1,
-    scoreTrace?.generation_end ?? 0,
-    ...scored.map((step) => Number(step.generation) || 0),
-    ...retained.map((step) => Number(step.generation) || 0),
-  );
-  const mapX = (generation) => left + (Math.max(0, Math.min(generationEnd, generation)) / generationEnd) * width;
-  const radiusSpan = Math.max(0.0001, maxRadius - minRadius);
-  const scaleStrength = 18;
-  const mapY = (sumRadii) => {
-    const gapRatio = Math.max(0, Math.min(1, (maxRadius - sumRadii) / radiusSpan));
-    const normalized = 1 - (Math.log1p(scaleStrength * gapRatio) / Math.log1p(scaleStrength));
-    return bottom - normalized * height;
-  };
-  const traceBest = Array.isArray(scoreTrace?.best_by_generation) ? scoreTrace.best_by_generation : [];
-  let best = -Infinity;
-  const bestPoints = (traceBest.length ? traceBest : scored).map((step) => {
-    best = Math.max(best, step.sum_radii);
-    return [mapX(Number(step.generation) || 0), mapY(traceBest.length ? step.sum_radii : best)];
-  });
-  const proposalDots = scored.map((step) => {
-    const x = mapX(Number(step.generation) || 0);
-    const y = mapY(step.sum_radii);
-    return `<circle class="result-objective-proposal" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="1.35" />`;
-  }).join("\n");
-  const firstRetained = retained.find((step) => step.sum_radii > 2.3) ?? scored.find((step) => step.sum_radii > 2.3);
-  const yTicks = circlePackingSpacedTickValues([
-    { value: minRadius, priority: 0 },
-    { value: maxRadius, priority: 0 },
-    { value: firstRetained?.sum_radii, priority: 1 },
-    { value: retained[2]?.sum_radii ?? scored[2]?.sum_radii, priority: 2 },
-    { value: retained[1]?.sum_radii ?? scored[1]?.sum_radii, priority: 3 },
-  ], mapY)
-    .map((value) => {
-      const y = mapY(value);
-      return `<g>
-                <path class="result-objective-grid" d="M${left} ${y.toFixed(1)} H${right}" />
-                <text class="result-axis-tick result-objective-y-label" x="${left - 14}" y="${(y + 4).toFixed(1)}">${formatMetric(value, { maximumFractionDigits: value < 2 ? 2 : 3, minimumFractionDigits: value < 2 ? 2 : 3 })}</text>
-              </g>`;
-    }).join("\n");
-  const tickGenerations = circlePackingUniqueSorted([
-    0,
-    Number(firstRetained?.generation) || null,
-    60,
-    151,
-    Number(accepted?.generation) || null,
-    generationEnd,
-  ].filter((generation) => Number.isFinite(generation) && generation >= 0));
-  const xTicks = tickGenerations.map((generation) => {
-    const x = mapX(generation);
-    const anchor = generation === 0 ? "" : generation === generationEnd ? ' text-anchor="end"' : ' text-anchor="middle"';
-    return `<text class="result-axis-tick" x="${x.toFixed(1)}" y="282"${anchor}>${formatMetric(generation, { maximumFractionDigits: 0 })}</text>`;
-  }).join("\n");
-  const xGuides = tickGenerations.slice(1, -1).map((generation) => {
-    const x = mapX(generation);
-    return `<path class="result-objective-grid result-objective-guide" d="M${x.toFixed(1)} ${top}V${bottom}" />`;
-  }).join("\n");
+  const checkpoints = Array.isArray(scoreTrace?.checkpoints) ? scoreTrace.checkpoints : [];
+  if (checkpoints.length < 2) return "";
+  const seed = Number(checkpoints[0].sum_radii);
+  const gains = checkpoints.map((step) => (Number(step.sum_radii) - seed) * 1e15);
+  const left = 92;
+  const right = 508;
+  const top = 72;
+  const bottom = 236;
+  const maxGain = 150;
+  const mapX = (index) => left + (index / (checkpoints.length - 1)) * (right - left);
+  const mapY = (gain) => bottom - (Math.max(0, Math.min(maxGain, gain)) / maxGain) * (bottom - top);
+  const points = checkpoints.map((_, index) => [mapX(index), mapY(gains[index])]);
+  const labels = checkpoints.map((step, index) => `<g>
+              <circle class="result-objective-accepted" cx="${mapX(index).toFixed(1)}" cy="${mapY(gains[index]).toFixed(1)}" r="4.8" />
+              <text class="result-axis-tick" x="${mapX(index).toFixed(1)}" y="270" text-anchor="middle">${escapeHtml(step.label)}</text>
+              <text class="circle-packing-value" x="${mapX(index).toFixed(1)}" y="${(mapY(gains[index]) - 14).toFixed(1)}" text-anchor="middle">+${gains[index].toFixed(3)}</text>
+            </g>`).join("\n");
 
   return paperInlineFigure({
     number: 3,
-    caption: "Public scoring trace for total radius. Faint points are valid candidate evaluations, values below the baseline are clipped to the bottom edge, and the solid frontier shows the best-so-far geometry that survived the evaluator.",
+    caption: "Accepted evidence checkpoints. The vertical axis shows gain from the exact-v2 seed in quadrillionths of total radius; it is not a generation axis.",
     className: "circle-packing-inline-figure result-objective-figure",
-    svg: `          <svg class="result-primer-svg result-objective-svg circle-packing-paper-svg" viewBox="0 0 560 328" role="img" aria-label="Best so far total radius across public circle-packing candidates.">
-            <text class="result-axis-label result-figure-title" x="${left}" y="34">Best-so-far total radius</text>
-            <text class="circle-packing-note" x="${right}" y="34" text-anchor="end">scored candidates, gap-scaled</text>
-            <g class="result-objective-legend" transform="translate(${left} 48)">
-              <g><circle class="result-objective-legend-proposal" cx="0" cy="0" r="2.0" /><text x="12" y="4">scored candidate</text></g>
-              <g transform="translate(142 0)"><line class="result-objective-legend-best" x1="0" y1="0" x2="16" y2="0" /><text x="24" y="4">best-so-far radius</text></g>
-              <g transform="translate(304 0)"><circle class="result-legend-baseline-dot" cx="0" cy="0" r="3.4" /><text x="16" y="4">baseline</text></g>
-              <g transform="translate(388 0)"><circle class="result-legend-accepted-dot" cx="0" cy="0" r="3.8" /><text x="16" y="4">accepted</text></g>
-            </g>
-            ${yTicks}
-            ${xGuides}
+    svg: `          <svg class="result-primer-svg result-objective-svg circle-packing-paper-svg" viewBox="0 0 560 304" role="img" aria-label="Accepted exact circle-packing checkpoints.">
+            <text class="result-axis-label result-figure-title" x="${left}" y="34">Exact refinement</text>
+            <text class="circle-packing-note" x="${right}" y="34" text-anchor="end">gain from seed · ×10⁻¹⁵</text>
+            <path class="result-objective-grid" d="M${left} ${mapY(50).toFixed(1)}H${right}M${left} ${mapY(100).toFixed(1)}H${right}M${left} ${mapY(150).toFixed(1)}H${right}" />
             <path class="result-rule-paper-axis" d="M${left} ${top}V${bottom}H${right}" />
-            <g>${proposalDots}</g>
-            <path class="result-objective-best" d="${svgPolyline(bestPoints)}" />
-            <g class="result-objective-baseline"><circle cx="${mapX(Number(baseline.generation) || 0).toFixed(1)}" cy="${mapY(baseline.sum_radii).toFixed(1)}" r="4.2" /></g>
-            <g class="result-objective-accepted"><circle cx="${mapX(Number(accepted.generation) || generationEnd).toFixed(1)}" cy="${mapY(accepted.sum_radii).toFixed(1)}" r="4.8" /></g>
-            ${xTicks}
-            <text class="result-axis-label result-x-axis-title" x="${(left + width / 2).toFixed(1)}" y="306">global generation</text>
-            <text class="result-axis-label result-objective-y-title" x="34" y="${(top + height / 2).toFixed(1)}" transform="rotate(-90 34 ${(top + height / 2).toFixed(1)})">Σr<tspan baseline-shift="sub" font-size="8">i</tspan></text>
+            <path class="result-objective-best" d="${svgPolyline(points)}" />
+            ${labels}
           </svg>`,
   });
 }
 
 function circlePackingSummaryTable(full) {
   return paperTable({
-    caption: "Table 2. Reported comparison for the curated public circle-packing chain.",
-    headers: ["Metric", "Baseline", "Accepted", "Change"],
+    caption: "Table 2. Exact seed and accepted Evölther 2.0 result under the same rational contract.",
+    headers: ["Evidence", "Exact seed", "Evölther 2.0"],
     rows: [
       [
-        "Total radius \\(R(P)\\)",
-        formatMetric(full.metrics.seed_sum_radii, { maximumFractionDigits: 6, minimumFractionDigits: 6 }),
-        formatMetric(full.metrics.accepted_sum_radii, { maximumFractionDigits: 6, minimumFractionDigits: 6 }),
-        `+${formatMetric(full.metrics.sum_radii_gain, { maximumFractionDigits: 6, minimumFractionDigits: 6 })}`,
+        "Total radius",
+        "2.635983084917470548216",
+        "2.635983084917607783…",
       ],
       [
-        "Evaluator score \\(J(P)\\)",
-        circlePackingScoreLabel(full.metrics.seed),
-        circlePackingScoreLabel(full.metrics.best),
-        `-${formatMetric(full.metrics.improvement, { maximumFractionDigits: 6, minimumFractionDigits: 6 })}`,
+        "Feasibility",
+        "exact rational",
+        "exact rational",
       ],
       [
-        "Relative radius gain",
-        "reference",
-        `${formatMetric(full.metrics.improvement_pct, { maximumFractionDigits: 2, minimumFractionDigits: 2 })}%`,
-        `${formatMetric(full.metrics.improvement_pct, { maximumFractionDigits: 2, minimumFractionDigits: 2 })}% gain`,
+        "Publication identity",
+        "seed checkpoint",
+        "payload + certificate hashes",
       ],
     ],
   });
@@ -2509,10 +2535,10 @@ function circlePackingLayoutFigure(replay) {
 
   return paperInlineFigure({
     number: 4,
-    caption: `Accepted packing geometry produced by the deterministic reconstruction candidate and validated by the evaluator. The 26 returned radii sum to ${formatMetric(replay?.metrics?.sum_radii ?? trace.reported_sum, { maximumFractionDigits: 6, minimumFractionDigits: 6 })}.`,
+    caption: "Accepted Evölther 2.0 geometry. The drawing is a binary64 projection; the canonical decimal payload linked below is authoritative.",
     className: "circle-packing-inline-figure circle-packing-layout-figure",
     svg: `          <svg class="result-primer-svg circle-packing-paper-svg" viewBox="0 0 560 490" role="img" aria-label="Accepted 26-circle packing in the unit square.">
-            <text class="result-axis-label result-figure-title" x="${left}" y="34">Accepted 26-circle packing</text>
+            <text class="result-axis-label result-figure-title" x="${left}" y="34">Evölther 2.0 · exact payload</text>
             <rect class="circle-packing-square" x="${left}" y="${top}" width="${size}" height="${size}" />
             <path class="circle-packing-grid" d="M${left} ${top + size / 2}H${left + size}M${left + size / 2} ${top}V${top + size}" />
 ${disks}
@@ -2520,68 +2546,149 @@ ${disks}
   });
 }
 
-function circlePackingContactFigure(full) {
+function circlePackingPrecisionComparisonFigure(full) {
   const metrics = full.metrics ?? {};
-  const rows = [
-    ["Boundary contacts", metrics.boundary_contact_count ?? 0],
-    ["Pairwise contacts", metrics.pairwise_contact_count ?? 0],
-    ["Interior circles", metrics.interior_circle_count ?? 0],
-  ].map(([label, value], index) => {
-    const y = 82 + index * 44;
-    return `<g>
-              <text class="circle-packing-section-label" x="72" y="${y}">${escapeHtml(label)}</text>
-              <text class="circle-packing-value circle-packing-contact-value" x="488" y="${y}" text-anchor="end">${formatMetric(value, { maximumFractionDigits: 0 })}</text>
-            </g>`;
-  }).join("\n");
-
   return paperInlineFigure({
-    number: 5,
-    caption: "Accepted contact diagnostics. Boundary and pairwise contacts are a structural tightness readout under the public tolerance, not a separate optimality proof.",
-    className: "circle-packing-inline-figure circle-packing-contact-figure",
-    svg: `          <svg class="result-primer-svg circle-packing-paper-svg" viewBox="0 0 560 190" role="img" aria-label="Contact diagnostics for the accepted circle packing.">
-            <text class="result-axis-label result-figure-title" x="72" y="34">Accepted contact readout</text>
-${rows}
+    number: 6,
+    caption: "The earlier floating candidate prints a larger objective but crosses the feasibility boundary. Publication authority therefore moves to the exact candidate.",
+    className: "circle-packing-inline-figure circle-packing-precision-figure",
+    svg: `          <svg class="result-primer-svg circle-packing-paper-svg" viewBox="0 0 560 250" role="img" aria-label="Floating and exact circle packing comparison.">
+            <text class="result-axis-label result-figure-title" x="62" y="34">A larger number is not a stronger result</text>
+            <text class="circle-packing-section-label" x="62" y="88">Previous floating reconstruction</text>
+            <text class="circle-packing-value" x="498" y="88" text-anchor="end">${formatMetric(metrics.prior_float_sum_radii, { maximumFractionDigits: 16 })}</text>
+            <text class="circle-packing-note" x="62" y="116">minimum slack</text>
+            <text class="circle-packing-value circle-packing-invalid-value" x="498" y="116" text-anchor="end">−3.7866 × 10⁻¹¹</text>
+            <path class="circle-packing-divider" d="M62 146H498" />
+            <text class="circle-packing-section-label" x="62" y="184">Evölther 2.0 exact payload</text>
+            <text class="circle-packing-value circle-packing-contact-value" x="498" y="184" text-anchor="end">2.635983084917607783…</text>
+            <text class="circle-packing-note" x="62" y="212">boundary and pair² margins</text>
+            <text class="circle-packing-value circle-packing-contact-value" x="498" y="212" text-anchor="end">strictly positive</text>
           </svg>`,
   });
 }
 
 function circlePackingImplementationCodeFigure(candidateCode) {
-  const source = `"""Accepted constructive candidate for 26-circle unit-square packing."""
-from __future__ import annotations
+  const source = `def rational(value: str) -> Fraction:
+    return Fraction(Decimal(value))
 
-import math
+def verify_circles(circles, tolerance=Fraction(0)):
+    wall_gaps = []
+    for x, y, radius in circles:
+        wall_gaps += [x-radius, 1-x-radius, y-radius, 1-y-radius]
 
-N_CIRCLES = 26
-MIN_RADIUS = 1e-6
-Point = tuple[float, float]
+    pair_pass = True
+    for i, (xi, yi, ri) in enumerate(circles):
+        for xj, yj, rj in circles[i + 1:]:
+            dist2 = (xi-xj)**2 + (yi-yj)**2
+            required = ri + rj - tolerance
+            if required > 0 and dist2 < required**2:
+                pair_pass = False
 
-# Retained continuation topology and accepted trace.
-BOUNDARY_CONTACTS = (... 20 boundary contacts ...)
-CONTACT_EDGES = (... 58 pairwise tangencies ...)
-ACCEPTED_TRACE = (... 26 validated centers and radii ...)
-
-def _coarse_seed_layout() -> list[float]:
-    """Return a low-precision seed near the accepted continuation pattern."""
-    ...
-
-${extractCandidateCode(candidateCode)}`;
+    valid = min(wall_gaps) >= -tolerance and pair_pass
+    score = sum((radius for _, _, radius in circles), Fraction())
+    return {"valid": valid, "score": decimal_string(score)}`;
 
   return pythonImplementationCodeFigure({
     source,
-    caption: "Excerpt of the accepted deterministic reconstruction candidate. The full public file includes the retained contact graph and accepted trace, then rebuilds the validated packing before returning centers and radii.",
+    caption: "The decision kernel of the public verifier. Finite decimals become exact rational numbers before any score or feasibility comparison is made.",
     className: "circle-packing-code-figure",
+    artifactHref: "./artifacts/verifier.py",
   });
 }
 
-function circlePackingWhitepaperInserts(full, evolution, candidateCode, replay, scoreTrace) {
+function circlePackingExactReadout() {
+  return paperTable({
+    caption: "Table 2. Strict finite-decimal witness under the zero-tolerance contract.",
+    headers: ["Quantity", "Certified value"],
+    rows: [
+      ["Exact total radius", "2.635983084917607783186569485443481730396676798274…"],
+      ["Wall / pair / positivity decisions", "104 / 325 / 26 — all pass"],
+      ["Minimum wall gap", "+1.0000000000000015957 × 10⁻⁷⁵"],
+      ["Minimum squared pair gap", "+6.4628891171277475 × 10⁻⁷⁶"],
+      ["Decision arithmetic", "exact rationals"],
+    ],
+  });
+}
+
+function circlePackingLocalProof() {
+  return paperTable({
+    caption: "Table 3. Rational interval proof obligations for the nearby real 78-contact root.",
+    headers: ["Certificate stage", "Verified bound", "Consequence"],
+    rows: [
+      ["Primal Krawczyk", "inclusion ratio < 8.552 × 10⁻¹⁵", "one unique regular root"],
+      ["Inactive constraints", "minimum gap > 0.0071877548", "all 351 remain strict"],
+      ["Dual Krawczyk", "minimum multiplier > 0.0208256021", "all 78 multipliers positive"],
+      ["Local coordinate argument", "full-rank active gradients", "strict local maximum"],
+    ],
+  });
+}
+
+function circlePackingCertificateFigure(full) {
+  const metrics = full.metrics ?? {};
+  return paperInlineFigure({
+    number: 5,
+    caption: "Exact certificate readout. Both identifiers are reproduced by the public standard-library verifier.",
+    className: "circle-packing-inline-figure circle-packing-certificate-figure",
+    svg: `          <svg class="result-primer-svg circle-packing-paper-svg" viewBox="0 0 560 260" role="img" aria-label="Exact rational certificate readout.">
+            <text class="result-axis-label result-figure-title" x="62" y="34">Exact rational certificate</text>
+            <text class="circle-packing-note" x="62" y="76">contract checks</text><text class="circle-packing-value circle-packing-contact-value" x="236" y="76">${formatMetric(metrics.constraint_checks_passed, { maximumFractionDigits: 0 })} / 8 pass</text>
+            <text class="circle-packing-note" x="320" y="76">precision</text><text class="circle-packing-value" x="498" y="76" text-anchor="end">256-bit</text>
+            <path class="circle-packing-divider" d="M62 104H498" />
+            <text class="circle-packing-note" x="62" y="142">minimum boundary margin</text><text class="circle-packing-value circle-packing-contact-value" x="498" y="142" text-anchor="end">+1.0000 × 10⁻¹⁴⁰</text>
+            <text class="circle-packing-note" x="62" y="176">minimum pair² margin</text><text class="circle-packing-value circle-packing-contact-value" x="498" y="176" text-anchor="end">+6.4629 × 10⁻¹⁴¹</text>
+            <path class="circle-packing-divider" d="M62 202H498" />
+            <text class="circle-packing-hash" x="62" y="230">payload b4cb8e3778d5ee51…a064213812388d81</text>
+            <text class="circle-packing-hash" x="62" y="252">certificate a447773e2269cdd4…edb3aee71bd8e9</text>
+          </svg>`,
+  });
+}
+
+function circlePackingReferenceTable() {
+  return paperTable({
+    caption: "Table 3. Public comparison at the precision each primary source exposes. Rounded values do not determine strict rank.",
+    headers: ["Method", "Published value", "Status versus Evölther 2.0"],
+    rows: [
+      ["AlphaEvolve V2", "2.635983", "same at 6 decimals"],
+      ["ThetaEvolve", "2.63598308", "same at 8 decimals"],
+      ["TTT-Discover", "2.635983", "same at 6 decimals"],
+      ["Evölther 2.0", "2.635983084917607783…", "exact payload published"],
+    ],
+  });
+}
+
+function circlePackingWhitepaperInserts(full, evolution, candidateCode, replay, scoreTrace, nativeFigures) {
   return {
+    "history-ledger": circlePackingHistoryLedger(),
     "packing-primer": circlePackingPrimerFigure(),
-    "contract-table": circlePackingContractTable(evolution),
+    "tolerance-contracts": circlePackingToleranceContracts(),
+    "tolerance-layouts": circlePackingCanonicalFigure({
+      svg: nativeFigures.toleranceCertificates,
+      number: 2,
+      alt: "Three circle-packing certificates under tolerances 1e-6, 1e-10, and zero.",
+      caption: "Three visually similar layouts with different feasibility contracts. The relaxed witnesses fail when rechecked at zero tolerance.",
+    }),
+    "tolerance-rankings": circlePackingCanonicalFigure({
+      svg: nativeFigures.toleranceRankings,
+      number: 3,
+      alt: "Public corpus rankings separated into three tolerance panels.",
+      caption: "Leading complete witnesses after exact-rational reevaluation under each matching contract. Panels are intentionally not merged.",
+    }),
+    "precision-comparison": circlePackingPrecisionComparisonFigure(full),
+    "contract-table": circlePackingContractTable(),
     "implementation-code": circlePackingImplementationCodeFigure(candidateCode),
+    "exact-readout": circlePackingExactReadout(),
+    "contact-graph": circlePackingCanonicalFigure({
+      svg: nativeFigures.contactGraph,
+      number: 5,
+      alt: "The strict packing and its graph of 58 circle contacts and 20 wall contacts.",
+      caption: "The certified contact topology: 58 pair contacts and 20 wall contacts define a square system of 78 active gaps in 78 variables.",
+    }),
+    "local-proof": circlePackingLocalProof(),
+    "certificate-readout": circlePackingCertificateFigure(full),
     "objective-curve": circlePackingObjectiveCurveFigure(evolution, scoreTrace),
     "objective-summary-table": circlePackingSummaryTable(full),
     "packing-layout": circlePackingLayoutFigure(replay),
-    "contact-readout": circlePackingContactFigure(full),
+    "reference-table": circlePackingReferenceTable(),
   };
 }
 
@@ -2778,7 +2885,7 @@ ${panels.join("\n")}
         </section>`;
 }
 
-async function writeDetail(result) {
+async function writeDetail(result, { preserveRun = false } = {}) {
   const resultRoot = path.join(RESULTS_ROOT, "results", result.slug);
   const outputRoot = path.join(OUT_ROOT, result.slug);
   await fs.mkdir(outputRoot, { recursive: true });
@@ -2798,9 +2905,22 @@ async function writeDetail(result) {
   const replay = full.artifacts?.replay
     ? JSON.parse(await fs.readFile(path.join(resultRoot, full.artifacts.replay), "utf8"))
     : null;
+  const circlePackingNativeFigures = full.slug === "circle-packing-26-unit-square"
+    ? {
+        toleranceCertificates: await fs.readFile(path.join(resultRoot, "assets/tolerance-certificates.svg"), "utf8"),
+        toleranceRankings: await fs.readFile(path.join(resultRoot, "assets/tolerance-rankings.svg"), "utf8"),
+        contactGraph: await fs.readFile(path.join(resultRoot, "assets/exact-packing-contact-graph.svg"), "utf8"),
+      }
+    : {};
   const plots = full.artifacts?.plots ?? [];
   for (const file of [
     full.artifacts?.candidate_code,
+    full.artifacts?.verifier,
+    full.artifacts?.verification_entrypoint,
+    full.artifacts?.certificate,
+    full.artifacts?.verification_report,
+    full.artifacts?.local_optimum_interval,
+    full.artifacts?.public_corpus_audit,
     full.artifacts?.evolution_trace,
     full.artifacts?.metrics,
     full.artifacts?.provenance,
@@ -2814,11 +2934,14 @@ async function writeDetail(result) {
     full.artifacts?.score_trace,
     full.evaluation_contract?.artifact,
     ...plots,
+    ...(full.artifacts?.tolerance_certificates ?? []),
   ].filter(Boolean)) {
     await copyIfExists(resultRoot, outputRoot, file);
   }
-  await copyDirectoryIfExists(path.join(resultRoot, "run"), path.join(outputRoot, "run"));
-  await alignCopiedRunShell(outputRoot);
+  if (!preserveRun) {
+    await copyDirectoryIfExists(path.join(resultRoot, "run"), path.join(outputRoot, "run"));
+    await alignCopiedRunShell(outputRoot);
+  }
 
   const figures = plots
     .map(
@@ -2878,7 +3001,7 @@ ${markdownToHtml(articleWithoutTitle(article), qubitRoutingWhitepaperInserts(ful
 
         <section class="result-detail result-whitepaper-shell circle-packing-whitepaper-shell">
           <article class="result-article result-whitepaper circle-packing-whitepaper">
-${markdownToHtml(articleWithoutTitle(article), circlePackingWhitepaperInserts(full, evolution, candidateCode, replay, scoreTrace))}
+${markdownToHtml(articleWithoutTitle(article), circlePackingWhitepaperInserts(full, evolution, candidateCode, replay, scoreTrace, circlePackingNativeFigures))}
           </article>
         </section>`
     : `        <section class="hero compact-hero page-hero result-detail-hero">
@@ -2984,6 +3107,18 @@ async function main() {
         }),
     )
   ).sort((a, b) => (a.website?.order ?? 999) - (b.website?.order ?? 999));
+
+  const scopedSlug = process.env.GOTHER_RESULT_SLUG;
+  if (scopedSlug) {
+    const scopedResult = results.find((result) => result.slug === scopedSlug);
+    if (!scopedResult) {
+      throw new Error(`Unknown published result slug: ${scopedSlug}`);
+    }
+    await fs.mkdir(OUT_ROOT, { recursive: true });
+    await writeDetail(scopedResult, { preserveRun: true });
+    console.log(`Synced ${scopedSlug} from ${path.relative(SITE_ROOT, RESULTS_ROOT)}`);
+    return;
+  }
 
   await fs.mkdir(OUT_ROOT, { recursive: true });
   await writeIndex(results);

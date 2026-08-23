@@ -1,17 +1,15 @@
-# Evaluation contract: 26-circle unit-square packing
+# Exact evaluation contract: 26-circle unit-square packing
 
-The candidate exposes `run_packing()` and returns `(centers, radii, reported_sum)`.
+The authoritative candidate exposes `run_packing_exact()` and returns an object with exactly these fields:
 
-Required behavior:
+- `format`: `circle-packing-exact-v2`
+- `precision_bits`: an integer from 200 through 512
+- `centers`: exactly 26 pairs of canonical nonnegative decimal strings
+- `radii`: exactly 26 canonical nonnegative decimal strings, each greater than `0.000001`
+- `sum_radii`: the canonical exact decimal sum of all radii
 
-- return exactly 26 centers and 26 radii
-- each center is a finite pair `(x, y)`
-- every radius is finite and greater than `1e-6`
-- `reported_sum` is finite and matches `sum(radii)` within `1e-9`
-- every circle remains inside the unit square within tolerance `1e-10`
-- no pair of circles overlaps within tolerance `1e-10`
-- two consecutive calls to `run_packing()` return the same centers, radii, and sum within `1e-12`
+The verifier parses every decimal as `fractions.Fraction`. It rejects non-canonical strings, inconsistent sums, a circle outside `[0,1]^2`, or any negative pairwise squared margin. No geometric tolerance is used.
 
-The score is `-reported_sum`. Lower score is better because minimizing the score maximizes total radius.
+The score is the negative exact sum of radii. A canonical JSON serialization is bound to a SHA-256 payload digest; the score, margins, precision, and payload digest are bound to a second certificate digest.
 
-The published accepted candidate reconstructs the validated geometry from the evolved contact graph and a coarse deterministic seed. The replayed centers and radii are retained as audit evidence, but the public candidate implementation solves the contact equations before returning geometry to the evaluator.
+`run_packing()` is a non-authoritative binary64 projection supplied only for visualization and generic tooling.

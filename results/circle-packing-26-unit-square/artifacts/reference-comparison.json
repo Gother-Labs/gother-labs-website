@@ -3,74 +3,69 @@
   "benchmark": "26-circle unit-square packing",
   "objective": "maximize sum of radii",
   "direction": "higher_is_better",
+  "accessed_on": "2026-08-23",
   "our_result": {
-    "label": "Gother Labs accepted continuation candidate",
-    "sum_radii": 2.6359830849768984,
-    "source_artifact": "artifacts/replay.json"
+    "label": "Evölther 2.0 exact certificate",
+    "display_value": 2.6359830849176076,
+    "exact_value": "2.63598308491760778318656948544348173039667679827447485774577112986070384936047233967679977696814140651626255328163347303631976410259785760429310341594103",
+    "verification": "exact rational payload and public verifier",
+    "source_artifact": "artifacts/certificate.json"
   },
-  "external_source": {
-    "title": "Learning to Discover at Test Time",
-    "url": "https://test-time-training.github.io/discover.pdf",
-    "table": "Table 3. Results for circle packing",
-    "accessed_on": "2026-05-20"
-  },
-  "leaderboard_check": {
-    "title": "Wizwand SOTA: Circle Packing on AlphaEvolve 26 circles in 1x1 unit square",
-    "url": "https://www.wizwand.com/sota/circle-packing-on-alphaevolve-26-circles-in-1x1-unit-square",
-    "accessed_on": "2026-05-26",
-    "note": "The page lists LoongFlow, SkyDiscover, and ASI-Evolve at 2.636, but only at three-decimal precision. Exact ordering versus 2.6359830849768984 is therefore unresolved without full-precision geometries or replay data."
-  },
+  "sources": [
+    {
+      "title": "Learning to Discover at Test Time",
+      "url": "https://arxiv.org/abs/2601.16175",
+      "source_type": "paper",
+      "note": "Table 3 reports six-decimal values for the n=26 benchmark."
+    },
+    {
+      "title": "ThetaEvolve",
+      "url": "https://github.com/ypwang61/ThetaEvolve",
+      "source_type": "official repository",
+      "note": "The repository reports 2.63598308 for its zero-tolerance circle-packing result."
+    },
+    {
+      "title": "SkyDiscover circle-packing benchmark",
+      "url": "https://github.com/skydiscover-ai/skydiscover/tree/main/benchmarks/math/circle_packing",
+      "source_type": "official repository",
+      "note": "The evaluator normalizes against a 2.635 AlphaEvolve target."
+    },
+    {
+      "title": "AlphaEvolve",
+      "url": "https://deepmind.google/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/",
+      "source_type": "official project overview",
+      "note": "Primary overview of the algorithm-discovery system; it does not provide enough full-precision geometry here for strict replay ordering."
+    }
+  ],
   "references": [
     {
       "name": "AlphaEvolve V2",
-      "value": 2.635983,
-      "source_note": "Table 3 reports AlphaEvolve V2 [14], Gemini-2.0 Pro + Flash, n = 26.",
-      "metric": "sum_radii",
-      "delta_vs_ours": 8.497689840680778e-08,
-      "percent_delta_vs_reference": 3.2237271032024022e-06,
-      "ours_as_percent_of_reference": 100.0000032237271
+      "public_value": "2.635983",
+      "precision": "six decimals",
+      "source": "Learning to Discover at Test Time, Table 3",
+      "rank_status": "same_at_public_precision"
     },
     {
       "name": "ThetaEvolve",
-      "value": 2.635983,
-      "source_note": "Table 3 reports ThetaEvolve [78], R1-Qwen3-8B, n = 26.",
-      "metric": "sum_radii",
-      "delta_vs_ours": 8.497689840680778e-08,
-      "percent_delta_vs_reference": 3.2237271032024022e-06,
-      "ours_as_percent_of_reference": 100.0000032237271
+      "public_value": "2.63598308",
+      "precision": "eight decimals",
+      "source": "ThetaEvolve official repository",
+      "rank_status": "same_at_public_precision"
     },
     {
       "name": "TTT-Discover",
-      "value": 2.635983,
-      "source_note": "Table 3 reports TTT-Discover, Qwen3-8B, n = 26.",
-      "metric": "sum_radii",
-      "delta_vs_ours": 8.497689840680778e-08,
-      "percent_delta_vs_reference": 3.2237271032024022e-06,
-      "ours_as_percent_of_reference": 100.0000032237271
+      "public_value": "2.635983",
+      "precision": "six decimals",
+      "source": "Learning to Discover at Test Time, Table 3",
+      "rank_status": "same_at_public_precision"
     },
     {
-      "name": "LoongFlow",
-      "value": 2.636,
-      "precision": "three-decimal rounded public benchmark entry",
-      "source_note": "Wizwand lists LoongFlow at 2.636 for this benchmark.",
-      "metric": "sum_radii",
-      "rank_status": "unresolved_without_full_precision_replay"
-    },
-    {
-      "name": "SkyDiscover",
-      "value": 2.636,
-      "precision": "three-decimal rounded public benchmark entry",
-      "source_note": "Wizwand lists SkyDiscover at 2.636 for this benchmark.",
-      "metric": "sum_radii",
-      "rank_status": "unresolved_without_full_precision_replay"
-    },
-    {
-      "name": "ASI-Evolve",
-      "value": 2.636,
-      "precision": "three-decimal rounded public benchmark entry",
-      "source_note": "Wizwand lists ASI-Evolve at 2.636 for this benchmark.",
-      "metric": "sum_radii",
-      "rank_status": "unresolved_without_full_precision_replay"
+      "name": "Evölther 2.0",
+      "public_value": "2.635983084917607783…",
+      "precision": "full exact decimal payload",
+      "source": "this bundle",
+      "rank_status": "exactly_verified_no_absolute_rank_claim"
     }
-  ]
+  ],
+  "claim_boundary": "Rounded values are insufficient for strict ranking. No world-record or global-optimum claim is made without equivalent full-precision payloads and verification contracts."
 }
