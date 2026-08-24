@@ -50,6 +50,7 @@ Inspect this route set for shell-sensitive PRs:
 | `/` | Home exception: hero wordmark may replace header brand. |
 | `/company/` | Standard hand-authored shell page. |
 | `/contact/` | Standard hand-authored shell page and footer behavior. |
+| `/rtl-optimization/` | Hand-authored RTL/PPA pilot page with route-specific styles, evidence links, and responsive proof cards. |
 | `/results/` | Generated results index shell. |
 | `/results/quadrature-rule-optimization/` | Generated result detail page with MathJax exception. |
 | `/results/quadrature-rule-optimization/run/` | Copied run page shell normalization. |

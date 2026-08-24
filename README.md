@@ -14,7 +14,7 @@ This repository contains the production static site served through GitHub Pages 
 
 - Root: publishable site files and deployment metadata such as `CNAME`, `robots.txt`, and `sitemap.xml`
 - `assets/`: shared static assets used by the site
-- `company/`, `contact/`, `results/`, `evolther/`: section routes
+- `company/`, `contact/`, `rtl-optimization/`, `results/`, `evolther/`: section routes
 - `careers/`: legacy redirect to `contact/`
 - `tools/`: internal support helpers that should not live in the repository root
 
@@ -28,6 +28,12 @@ Shared site shell maintenance is documented in `docs/site-shell.md`. Preview and
 
 ```bash
 node tools/check-site-shell.mjs
+```
+
+For changes to the public RTL/PPA pilot page or its source evidence, also run:
+
+```bash
+node tools/check-rtl-page.mjs
 ```
 
 ## Local preview

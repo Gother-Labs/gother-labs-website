@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Verified RTL/PPA Optimization | Göther Labs</title>
+    <meta
+      name="description"
+      content="Bounded RTL optimization pilots with frozen correctness gates, paired PPA evidence, and customer-flow validation. Inspect three public cases."
+    >
+    <link rel="canonical" href="https://www.gotherlabs.com/rtl-optimization/">
+    <meta property="og:title" content="Verified RTL/PPA Optimization | Göther Labs">
+    <meta
+      property="og:description"
+      content="Improve one existing RTL block through a bounded, correctness-gated pilot and an inspectable before/after evidence package."
+    >
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.gotherlabs.com/rtl-optimization/">
+    <meta property="og:image" content="https://www.gotherlabs.com/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://www.gotherlabs.com/assets/og-image.png">
+    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" href="../assets/gother-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../styles.css?v=result-ledger-diff-v5">
+    <link rel="stylesheet" href="./page.css?v=rtl-pilot-v1">
+  </head>
+  <body class="rtl-page">
+    <a class="skip-link" href="#site-main">Skip to content</a>
+    <div class="page-shell site-shell">
+      <header class="site-header">
+        <nav class="site-nav" aria-label="Primary">
+          <a class="brand nav-brand nav-home-wordmark animated-symbol-scope" href="../" aria-label="Göther Labs home">
+            <span aria-hidden="true" class="wordmark-mark-wrap">
+              <svg class="animated-reference-geometry live-symbol-svg" viewBox="0 0 64 64" focusable="false">
+                <g class="source-geometry" aria-hidden="true">
+                  <circle class="source-geometry-dot" cx="34.5" cy="34.5" r="3.6" />
+                  <circle class="source-geometry-dot" cx="21" cy="58" r="3.6" />
+                  <circle class="source-geometry-dot" cx="48" cy="58" r="3.6" />
+                </g>
+                <path class="live-trail" d="" />
+                <path class="live-trail" d="" />
+                <path class="live-trail" d="" />
+                <circle class="geometry-dot live-geometry-dot" cx="34.2" cy="28.4" r="3.34" />
+                <circle class="geometry-dot live-geometry-dot" cx="20.9" cy="50.6" r="3.34" />
+                <circle class="geometry-dot live-geometry-dot" cx="47.5" cy="50.6" r="3.34" />
+              </svg>
+            </span>
+            <span class="nav-wordmark-text">Göther Labs</span>
+          </a>
+          <div class="nav-links">
+            <a href="../results/">Results</a>
+            <a href="../company/">Company</a>
+            <a href="../contact/">Contact</a>
+          </div>
+        </nav>
+      </header>
+
+      <main class="site-main rtl-main" id="site-main">
+        <section class="rtl-hero" aria-labelledby="rtl-title">
+          <div class="rtl-hero-copy">
+            <p class="rtl-kicker">Verified RTL/PPA optimization</p>
+            <h1 id="rtl-title">Improve one RTL block without weakening its contract.</h1>
+            <p class="rtl-hero-intro">
+              Göther Labs runs bounded before/after optimization pilots for existing RTL.
+              We freeze the interface, correctness requirements, implementation target,
+              constraints, and objective before searching for an improvement.
+            </p>
+            <div class="rtl-actions" role="group" aria-label="RTL pilot actions">
+              <a class="rtl-action rtl-action--primary" href="#start">Discuss one RTL block</a>
+              <a
+                class="rtl-action"
+                href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study"
+                target="_blank"
+                rel="noreferrer"
+              >Inspect public evidence</a>
+            </div>
+            <p class="rtl-hero-note">One owned block. Customer-approved evaluation flow. No guaranteed improvement.</p>
+          </div>
+
+          <aside class="rtl-scope-card" aria-label="Pilot boundary">
+            <div class="rtl-scope-heading">
+              <span>Pilot boundary</span>
+              <strong>01 block</strong>
+            </div>
+            <dl class="rtl-scope-list">
+              <div>
+                <dt>Freeze</dt>
+                <dd>Interface, tests, assumptions, tools, constraints, score</dd>
+              </div>
+              <div>
+                <dt>Gate</dt>
+                <dd>Functional and formal validity before PPA acceptance</dd>
+              </div>
+              <div>
+                <dt>Measure</dt>
+                <dd>Paired baseline and candidate runs under the agreed flow</dd>
+              </div>
+              <div>
+                <dt>Return</dt>
+                <dd>RTL, exact patch, evidence, limitations, decision memo</dd>
+              </div>
+            </dl>
+          </aside>
+        </section>
+
+        <section class="rtl-section rtl-process-section" aria-labelledby="process-title">
+          <div class="rtl-section-heading">
+            <p class="rtl-kicker">Evaluation contract</p>
+            <h2 id="process-title">Correctness is a gate, not a trade-off.</h2>
+            <p>
+              The evaluation rules are fixed before candidate search. A result is accepted only
+              inside that declared boundary; a timeout, failed check, missing metric, or broken
+              implementation run is a rejection.
+            </p>
+          </div>
+
+          <ol class="rtl-process" aria-label="RTL optimization pilot stages">
+            <li>
+              <span class="rtl-process-index">01</span>
+              <div>
+                <h3>Freeze the scope</h3>
+                <p>One block, stable interface, target, objective, validity limits, and evidence requirements.</p>
+              </div>
+            </li>
+            <li>
+              <span class="rtl-process-index">02</span>
+              <div>
+                <h3>Reproduce the baseline</h3>
+                <p>The starting RTL must pass the agreed checks and produce a defensible measurement.</p>
+              </div>
+            </li>
+            <li>
+              <span class="rtl-process-index">03</span>
+              <div>
+                <h3>Search within the contract</h3>
+                <p>Candidate RTL may change; the test, formal, implementation, and scoring contract may not.</p>
+              </div>
+            </li>
+            <li>
+              <span class="rtl-process-index">04</span>
+              <div>
+                <h3>Fail closed</h3>
+                <p>Functional, formal, synthesis, route, and evidence-integrity gates reject invalid candidates.</p>
+              </div>
+            </li>
+            <li>
+              <span class="rtl-process-index">05</span>
+              <div>
+                <h3>Return a decision package</h3>
+                <p>Accepted RTL when earned—or a documented no-improvement finding when it is not.</p>
+              </div>
+            </li>
+          </ol>
+        </section>
+
+        <section class="rtl-section rtl-fit-section" aria-labelledby="fit-title">
+          <div class="rtl-section-heading">
+            <p class="rtl-kicker">Where it fits</p>
+            <h2 id="fit-title">Useful when a team already has a baseline.</h2>
+            <p>
+              The best starting point is a block important enough to improve and bounded enough
+              for the responsible engineers to evaluate rigorously.
+            </p>
+          </div>
+
+          <div class="rtl-fit-grid">
+            <article>
+              <h3 class="rtl-fit-status rtl-fit-status--positive">Good fit</h3>
+              <ul>
+                <li>Existing synthesizable RTL and clear ownership</li>
+                <li>Stable interface and expected behavior</li>
+                <li>Reproducible functional or formal checks</li>
+                <li>Defined FPGA or ASIC implementation flow</li>
+                <li>Clear area, timing, power, or composite objective</li>
+                <li>Engineering owner able to review the final change</li>
+              </ul>
+            </article>
+            <article>
+              <h3 class="rtl-fit-status">Not yet a fit</h3>
+              <ul>
+                <li>Architecture or public interface still moving</li>
+                <li>No reproducible baseline or correctness contract</li>
+                <li>Unclear RTL ownership or licensing</li>
+                <li>No authoritative target flow or constraints</li>
+                <li>Requirement for guaranteed improvement</li>
+                <li>Expectation that Göther replaces signoff authority</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="rtl-section rtl-proof-section" aria-labelledby="proof-title">
+          <div class="rtl-section-heading rtl-section-heading--wide">
+            <p class="rtl-kicker">Public method qualification</p>
+            <h2 id="proof-title">Three transformations. One inspectable evidence standard.</h2>
+            <p>
+              Each public package includes baseline and optimized RTL, the exact patch,
+              correctness evidence, paired implementation measurements, checksums, and a
+              fail-closed verifier.
+            </p>
+          </div>
+
+          <div class="rtl-proof-grid">
+            <a
+              class="rtl-proof-card"
+              href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/tree/v2.2.2/cases/sha1"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span class="rtl-proof-domain">Legacy sequential core</span>
+              <h3>SHA-1 RTL</h3>
+              <p>Shared Boolean logic and simplified state readout under a frozen command interface.</p>
+              <div class="rtl-proof-metric">
+                <strong>2.27%</strong>
+                <span>lower composite PPA estimate</span>
+              </div>
+              <span class="rtl-proof-link">Inspect SHA-1 evidence <span aria-hidden="true">↗</span></span>
+            </a>
+
+            <a
+              class="rtl-proof-card"
+              href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/tree/v2.2.2/cases/int8-matvec"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span class="rtl-proof-domain">Quantized AI kernel</span>
+              <h3>INT8 MatVec RTL</h3>
+              <p>Range-correct arithmetic widths and a balanced exact-addition tree.</p>
+              <div class="rtl-proof-metric">
+                <strong>8.3230%</strong>
+                <span>lower composite PPA estimate</span>
+              </div>
+              <span class="rtl-proof-link">Inspect MatVec evidence <span aria-hidden="true">↗</span></span>
+            </a>
+
+            <a
+              class="rtl-proof-card"
+              href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/tree/v2.2.2/cases/mlkem-cbd"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <span class="rtl-proof-domain">Post-quantum cryptographic IP</span>
+              <h3>ML-KEM CBD RTL</h3>
+              <p>A different sequential state representation connected by a proved refinement relation.</p>
+              <div class="rtl-proof-metric">
+                <strong>9.7338%</strong>
+                <span>lower composite PPA estimate</span>
+              </div>
+              <span class="rtl-proof-link">Inspect ML-KEM evidence <span aria-hidden="true">↗</span></span>
+            </a>
+          </div>
+
+          <div class="rtl-claim-boundary" role="note" aria-label="Public evidence claim boundary">
+            <span>Claim boundary</span>
+            <p>
+              These are academic VTR/PTM 45 nm post-route estimates on a homogeneous LUT6 target.
+              They are not ASIC signoff, commercial-FPGA characterization, physical-board
+              measurements, measured energy, or manufactured-silicon evidence. Percentages apply
+              only to each case's frozen contract and are not a cross-circuit performance ranking.
+            </p>
+          </div>
+        </section>
+
+        <section class="rtl-section rtl-transfer-section" aria-labelledby="transfer-title">
+          <div class="rtl-section-heading">
+            <p class="rtl-kicker">Customer transfer</p>
+            <h2 id="transfer-title">Your implementation flow is the final authority.</h2>
+            <p>
+              The public portfolio qualifies the method under a pinned academic proxy. A customer
+              pilot replaces that proxy with customer-owned RTL, assumptions, libraries,
+              constraints, activity, tools, and acceptance policy.
+            </p>
+          </div>
+
+          <div class="rtl-transfer-grid">
+            <article>
+              <h3>Design team provides</h3>
+              <ul>
+                <li>Authorized RTL and dependencies</li>
+                <li>Interface and correctness contract</li>
+                <li>Target technology or device</li>
+                <li>EDA flow, versions, and constraints</li>
+                <li>Activity model when power is in scope</li>
+                <li>Primary metric and validity limits</li>
+              </ul>
+            </article>
+            <article>
+              <h3>Göther returns</h3>
+              <ul>
+                <li>Reproduced baseline record</li>
+                <li>Accepted RTL candidate, if one qualifies</li>
+                <li>Exact before/after patch</li>
+                <li>Functional and formal results</li>
+                <li>Paired implementation evidence</li>
+                <li>Limitations and adoption recommendation</li>
+              </ul>
+            </article>
+          </div>
+
+          <p class="rtl-authority-line">
+            A result means only what the agreed evaluation contract supports.
+          </p>
+        </section>
+
+        <section class="rtl-start" id="start" aria-labelledby="start-title">
+          <div>
+            <p class="rtl-kicker">Start with the boundary</p>
+            <h2 id="start-title">Bring one block, not a platform migration.</h2>
+            <p>
+              The first conversation should establish the function, target, current flow,
+              correctness stack, primary objective, confidentiality boundary, and evaluation window.
+            </p>
+          </div>
+          <div class="rtl-start-action">
+            <a
+              class="rtl-action rtl-action--primary"
+              href="mailto:contact@gotherlabs.com?subject=RTL%2FPPA%20pilot%20inquiry&amp;body=Block%20function%3A%0ATarget%3A%20ASIC%20%2F%20FPGA%20%2F%20exploratory%0ACurrent%20implementation%20flow%3A%0APrimary%20objective%3A%0AAvailable%20functional%2Fformal%20checks%3A%0AConfidentiality%20constraints%3A%0ADesired%20evaluation%20window%3A%0A%0APlease%20do%20not%20attach%20confidential%20RTL%20to%20this%20first%20message."
+            >Discuss one RTL block</a>
+            <p>Do not attach confidential RTL to the first message.</p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© <span id="year">2026</span> Göther Labs</p>
+      </footer>
+    </div>
+
+    <script src="../scripts.js?v=result-ledger-diff-v5"></script>
+  </body>
+</html>

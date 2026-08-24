@@ -20,6 +20,7 @@ The hand-authored shell currently appears in:
 - `index.html`
 - `company/index.html`
 - `contact/index.html`
+- `rtl-optimization/index.html`
 - `404.html`
 - `evolther/index.html`
 
@@ -52,6 +53,7 @@ The operational source of truth is:
 - Hand-authored pages remain manually edited, but they must follow this document and `node tools/check-site-shell.mjs`.
 - `SITE_SHELL_VERSION` in `tools/site-shell.mjs` and hand-authored `styles.css` / `scripts.js` query strings must stay aligned.
 - Per-page metadata stays local when it is intentionally page-specific, such as home copy, canonical paths, `robots` directives for experimental/noindex pages, and MathJax on result detail pages.
+- Route-specific presentation may use an additional local stylesheet, as `rtl-optimization/page.css` does, while preserving the versioned shared stylesheet and script.
 
 ## Metadata Policy
 
@@ -114,6 +116,7 @@ Then follow the preview and visual QA checklist in `docs/preview-qa.md`. At mini
 - `/`
 - `/company/`
 - `/contact/`
+- `/rtl-optimization/`
 - `/results/`
 - one generated result page
 - one copied run page
