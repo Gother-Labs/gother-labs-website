@@ -3206,9 +3206,9 @@ ${figures}
 
 async function syncFeaturedResult(results) {
   const featured = results.find((result) => result.slug === "circle-packing-26-unit-square");
-  const value = featured?.metrics?.accepted_sum_radii;
-  if (typeof value !== "number") {
-    throw new Error("Missing circle-packing accepted_sum_radii for homepage publication.");
+  const exactValue = featured?.metrics?.exact_accepted_sum_radii;
+  if (typeof exactValue !== "string") {
+    throw new Error("Missing circle-packing exact_accepted_sum_radii for homepage publication.");
   }
 
   const homePath = path.join(SITE_ROOT, "index.html");
@@ -3220,7 +3220,7 @@ async function syncFeaturedResult(results) {
 
   const updated = html.replace(
     marker,
-    (_match, open, close) => `${open}26-circle packing reaches ${value.toFixed(6)} total radius${close}`,
+    (_match, open, close) => `${open}Exact 26-circle packing · strict certificate ${exactValue.slice(0, 20)}…${close}`,
   );
   await fs.writeFile(homePath, updated, "utf8");
 }

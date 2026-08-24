@@ -58,5 +58,6 @@ node tools/preview.mjs 4174
 
 - Keep tracked assets only when they are used by the site or by a documented helper workflow.
 - Remove deprecated public routes instead of leaving ambiguous stubs behind.
+- Treat retained `run/` routes as unlinked, `noindex` historical archives; public entry points must use the canonical result page.
 - Keep internal or experimental helpers under `tools/`, not in the repository root.
 - Keep hand-authored shell changes aligned with `tools/sync-results.mjs` and `docs/site-shell.md`.
