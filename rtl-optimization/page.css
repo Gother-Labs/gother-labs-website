@@ -107,17 +107,20 @@
 }
 
 .rtl-proof-strip {
+  display: grid;
+  grid-template-columns: minmax(14rem, 0.65fr) minmax(0, 1.35fr);
+  column-gap: clamp(2.5rem, 7vw, 7rem);
+  align-items: end;
   padding: clamp(1.5rem, 3vw, 2.5rem) var(--content-gutter);
   border-top: 1px solid var(--line-strong);
   border-bottom: 1px solid var(--line-strong);
-  background: var(--rtl-panel);
 }
 
 .rtl-proof-strip-heading {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.7rem;
 }
 
 .rtl-proof-strip-heading span,
@@ -131,6 +134,7 @@
 
 .rtl-proof-strip-heading a {
   color: var(--accent);
+  letter-spacing: 0.08em;
   text-decoration: none;
 }
 
@@ -140,23 +144,12 @@
 
 .rtl-proof-strip-metrics {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin-top: 1.4rem;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.25rem, 3vw, 3rem);
 }
 
 .rtl-proof-strip-metrics > div {
-  padding: 1rem clamp(0.75rem, 2vw, 1.5rem) 1rem 0;
-  border-right: 1px solid var(--line);
-}
-
-.rtl-proof-strip-metrics > div:not(:first-child) {
-  padding-left: clamp(0.75rem, 2vw, 1.5rem);
-}
-
-.rtl-proof-strip-metrics > div:last-child {
-  border-right: 0;
+  min-width: 0;
 }
 
 .rtl-proof-strip-metrics strong,
@@ -179,7 +172,10 @@
 }
 
 .rtl-proof-strip > p {
-  margin: 0.85rem 0 0;
+  grid-column: 1 / -1;
+  margin: 1.25rem 0 0;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 0.72rem;
   line-height: 1.5;
@@ -706,33 +702,18 @@
     grid-template-columns: 4.5rem minmax(0, 1fr);
   }
 
+  .rtl-proof-strip {
+    display: block;
+  }
+
   .rtl-proof-strip-heading {
-    align-items: flex-start;
-    flex-direction: column;
+    gap: 0.6rem;
   }
 
   .rtl-proof-strip-metrics {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .rtl-proof-strip-metrics > div,
-  .rtl-proof-strip-metrics > div:not(:first-child) {
-    padding: 1rem 0;
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .rtl-proof-strip-metrics > div:nth-child(odd) {
-    padding-right: 0.75rem;
-    border-right: 1px solid var(--line);
-  }
-
-  .rtl-proof-strip-metrics > div:nth-child(even) {
-    padding-left: 0.75rem;
-  }
-
-  .rtl-proof-strip-metrics > div:nth-last-child(-n + 2) {
-    border-bottom: 0;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-top: 1.5rem;
   }
 
   .rtl-section-heading h2,
