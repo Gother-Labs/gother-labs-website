@@ -9,6 +9,7 @@ This repository contains the production static site served through GitHub Pages 
 - No build step or framework is used in this repository.
 - The custom domain is configured through `CNAME`.
 - `.nojekyll` keeps GitHub Pages serving the site as a plain static tree.
+- `.github/workflows/pages.yml` publishes the validated static tree through the GitHub Pages Actions deployment API.
 
 ## Repository shape
 
