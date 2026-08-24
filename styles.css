@@ -2,7 +2,7 @@
   font-family: "Inter";
   font-style: normal;
   font-weight: 300 700;
-  font-display: block;
+  font-display: swap;
   src: url("/assets/fonts/inter-latin.woff2") format("woff2");
 }
 
@@ -631,11 +631,11 @@
   --bg: #ffffff;
   --text: #0a0a0a;
   --muted: #6a6a6a;
-  --muted-soft: #7a7a7a;
+  --muted-soft: #6a6a6a;
   --focus-ring: #0a84ff;
   --line: rgba(10, 10, 10, 0.1);
   --line-strong: rgba(10, 10, 10, 0.16);
-  --accent: #0a84ff;
+  --accent: #006edc;
   --accent-soft: rgba(10, 132, 255, 0.08);
   --panel: #f8fbff;
   --panel-dark: #081018;
@@ -835,6 +835,11 @@ a {
 .home-link:focus-visible,
 .home-links a:focus-visible,
 .contact-block a:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 4px;
+}
+
+.contact-route-actions a:focus-visible {
   outline: 2px solid var(--focus-ring);
   outline-offset: 4px;
 }
@@ -1381,6 +1386,43 @@ a {
 .content-block p {
   margin-top: 0.8rem;
   max-width: 86ch;
+}
+
+.contact-route-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.15rem;
+}
+
+.contact-route-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.65rem 0.95rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  color: var(--text);
+  font-size: 0.88rem;
+  font-weight: 520;
+  text-decoration: none;
+}
+
+.contact-route-actions a:last-child {
+  border-color: var(--text);
+  background: var(--text);
+  color: var(--bg);
+}
+
+.contact-route-actions a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.contact-route-actions a:last-child:hover {
+  background: var(--accent);
+  color: #ffffff;
 }
 
 .signal-strip {
@@ -4514,6 +4556,15 @@ a {
 
   .signal-strip {
     justify-content: flex-start;
+  }
+
+  .contact-route-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .contact-route-actions a {
+    width: 100%;
   }
 
   .home-main {

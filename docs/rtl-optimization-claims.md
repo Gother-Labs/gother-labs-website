@@ -9,7 +9,7 @@ authority for the underlying evidence.
 - Canonical public repository:
   `https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study`
 - Reviewed release: `v2.2.2`
-- Reviewed commit: `8cd8b47`
+- Reviewed commit: `8cd8b479488f0693d76c2fab39eabf4bd6f9279c`
 - Website reconciliation date: `2026-08-24`
 - Public evidence scope: three independent RTL cases under academic VTR/PTM
   45 nm homogeneous LUT6 evaluation contracts.

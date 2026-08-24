@@ -1,6 +1,6 @@
 // Shared primitives for generated shell output and shell validation.
 // Hand-authored HTML remains committed directly; keep this boundary small.
-export const SITE_SHELL_VERSION = "result-ledger-diff-v5";
+export const SITE_SHELL_VERSION = "rtl-audit-v2";
 
 export const SHARED_SITE_SHELL = Object.freeze({
   version: SITE_SHELL_VERSION,

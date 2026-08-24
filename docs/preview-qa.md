@@ -82,7 +82,7 @@ For each viewport, verify:
 
 When `tools/sync-results.mjs` or generated result files change:
 
-- Confirm generated pages keep `styles.css?v=home-proof-inline-v2` and `scripts.js?v=home-proof-inline-v2`.
+- Confirm generated pages keep `styles.css?v=rtl-audit-v2` and `scripts.js?v=rtl-audit-v2`.
 - Confirm generated pages use the current wordmark shell and `.nav-links` wrapper.
 - Confirm copied run pages keep their expected noindex behavior.
 - Confirm generated result diffs are limited to intended shell, metadata, or result-content changes.

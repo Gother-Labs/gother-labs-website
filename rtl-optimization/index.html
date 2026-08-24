@@ -21,8 +21,8 @@
     <meta name="twitter:image" content="https://www.gotherlabs.com/assets/og-image.png">
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="../assets/gother-mark.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../styles.css?v=result-ledger-diff-v5">
-    <link rel="stylesheet" href="./page.css?v=rtl-pilot-v1">
+    <link rel="stylesheet" href="../styles.css?v=rtl-audit-v2">
+    <link rel="stylesheet" href="./page.css?v=rtl-pilot-v2">
   </head>
   <body class="rtl-page">
     <a class="skip-link" href="#site-main">Skip to content</a>
@@ -66,13 +66,16 @@
               constraints, and objective before searching for an improvement.
             </p>
             <div class="rtl-actions" role="group" aria-label="RTL pilot actions">
-              <a class="rtl-action rtl-action--primary" href="#start">Discuss one RTL block</a>
+              <a
+                class="rtl-action rtl-action--primary"
+                href="mailto:contact@gotherlabs.com?subject=RTL%2FPPA%20pilot%20inquiry&amp;body=Block%20function%3A%0ATarget%3A%20ASIC%20%2F%20FPGA%20%2F%20exploratory%0ACurrent%20implementation%20flow%3A%0APrimary%20objective%3A%0AAvailable%20functional%20and%20formal%20checks%3A%0AConfidentiality%20constraints%3A%0ADesired%20evaluation%20window%3A%0A%0APlease%20do%20not%20attach%20confidential%20RTL%20to%20this%20first%20message."
+              >Discuss one RTL block</a>
               <a
                 class="rtl-action"
-                href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study"
+                href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/tree/v2.2.2#results-at-a-glance"
                 target="_blank"
                 rel="noreferrer"
-              >Inspect public evidence</a>
+              >Inspect v2.2.2 evidence</a>
             </div>
             <p class="rtl-hero-note">One owned block. Customer-approved evaluation flow. No guaranteed improvement.</p>
           </div>
@@ -101,6 +104,20 @@
               </div>
             </dl>
           </aside>
+        </section>
+
+        <section class="rtl-proof-strip" aria-label="Pinned public RTL evidence">
+          <div class="rtl-proof-strip-heading">
+            <span>Public evidence · v2.2.2</span>
+            <a href="#public-evidence">Scope and limitations</a>
+          </div>
+          <div class="rtl-proof-strip-metrics">
+            <div><strong>3</strong><span>independent RTL cases</span></div>
+            <div><strong>2.27%</strong><span>SHA-1 composite estimate</span></div>
+            <div><strong>8.3230%</strong><span>INT8 MatVec composite estimate</span></div>
+            <div><strong>9.7338%</strong><span>ML-KEM CBD composite estimate</span></div>
+          </div>
+          <p>Correctness-gated results under pinned academic VTR/PTM 45 nm contracts.</p>
         </section>
 
         <section class="rtl-section rtl-process-section" aria-labelledby="process-title">
@@ -169,7 +186,7 @@
               <ul>
                 <li>Existing synthesizable RTL and clear ownership</li>
                 <li>Stable interface and expected behavior</li>
-                <li>Reproducible functional or formal checks</li>
+                <li>Reproducible functional checks and an agreed formal-equivalence scope</li>
                 <li>Defined FPGA or ASIC implementation flow</li>
                 <li>Clear area, timing, power, or composite objective</li>
                 <li>Engineering owner able to review the final change</li>
@@ -189,7 +206,7 @@
           </div>
         </section>
 
-        <section class="rtl-section rtl-proof-section" aria-labelledby="proof-title">
+        <section class="rtl-section rtl-proof-section" id="public-evidence" aria-labelledby="proof-title">
           <div class="rtl-section-heading rtl-section-heading--wide">
             <p class="rtl-kicker">Public method qualification</p>
             <h2 id="proof-title">Three transformations. One inspectable evidence standard.</h2>
@@ -257,6 +274,8 @@
               They are not ASIC signoff, commercial-FPGA characterization, physical-board
               measurements, measured energy, or manufactured-silicon evidence. Percentages apply
               only to each case's frozen contract and are not a cross-circuit performance ranking.
+              The ML-KEM CBD case is not side-channel analysis or certification of a complete
+              cryptographic implementation.
             </p>
           </div>
         </section>
@@ -314,7 +333,7 @@
           <div class="rtl-start-action">
             <a
               class="rtl-action rtl-action--primary"
-              href="mailto:contact@gotherlabs.com?subject=RTL%2FPPA%20pilot%20inquiry&amp;body=Block%20function%3A%0ATarget%3A%20ASIC%20%2F%20FPGA%20%2F%20exploratory%0ACurrent%20implementation%20flow%3A%0APrimary%20objective%3A%0AAvailable%20functional%2Fformal%20checks%3A%0AConfidentiality%20constraints%3A%0ADesired%20evaluation%20window%3A%0A%0APlease%20do%20not%20attach%20confidential%20RTL%20to%20this%20first%20message."
+              href="mailto:contact@gotherlabs.com?subject=RTL%2FPPA%20pilot%20inquiry&amp;body=Block%20function%3A%0ATarget%3A%20ASIC%20%2F%20FPGA%20%2F%20exploratory%0ACurrent%20implementation%20flow%3A%0APrimary%20objective%3A%0AAvailable%20functional%20and%20formal%20checks%3A%0AConfidentiality%20constraints%3A%0ADesired%20evaluation%20window%3A%0A%0APlease%20do%20not%20attach%20confidential%20RTL%20to%20this%20first%20message."
             >Discuss one RTL block</a>
             <p>Do not attach confidential RTL to the first message.</p>
           </div>
@@ -326,6 +345,6 @@
       </footer>
     </div>
 
-    <script src="../scripts.js?v=result-ledger-diff-v5"></script>
+    <script src="../scripts.js?v=rtl-audit-v2"></script>
   </body>
 </html>

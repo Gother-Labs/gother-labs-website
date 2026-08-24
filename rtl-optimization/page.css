@@ -106,6 +106,85 @@
   line-height: 1.5;
 }
 
+.rtl-proof-strip {
+  padding: clamp(1.5rem, 3vw, 2.5rem) var(--content-gutter);
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  background: var(--rtl-panel);
+}
+
+.rtl-proof-strip-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.rtl-proof-strip-heading span,
+.rtl-proof-strip-heading a {
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 680;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.rtl-proof-strip-heading a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.rtl-proof-strip-heading a:hover {
+  color: var(--text);
+}
+
+.rtl-proof-strip-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 1.4rem;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.rtl-proof-strip-metrics > div {
+  padding: 1rem clamp(0.75rem, 2vw, 1.5rem) 1rem 0;
+  border-right: 1px solid var(--line);
+}
+
+.rtl-proof-strip-metrics > div:not(:first-child) {
+  padding-left: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.rtl-proof-strip-metrics > div:last-child {
+  border-right: 0;
+}
+
+.rtl-proof-strip-metrics strong,
+.rtl-proof-strip-metrics span {
+  display: block;
+}
+
+.rtl-proof-strip-metrics strong {
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: clamp(1.25rem, 2.5vw, 2.1rem);
+  font-weight: 540;
+  letter-spacing: -0.045em;
+}
+
+.rtl-proof-strip-metrics span {
+  margin-top: 0.35rem;
+  color: var(--muted);
+  font-size: 0.7rem;
+  line-height: 1.4;
+}
+
+.rtl-proof-strip > p {
+  margin: 0.85rem 0 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
 .rtl-scope-card {
   border-top: 1px solid var(--line-strong);
   border-bottom: 1px solid var(--line-strong);
@@ -346,6 +425,10 @@
   border-bottom: 1px solid var(--line-strong);
 }
 
+.rtl-proof-section {
+  scroll-margin-top: 6rem;
+}
+
 .rtl-proof-card {
   display: flex;
   min-height: 31rem;
@@ -578,6 +661,27 @@
   }
 }
 
+@media (max-height: 780px) and (min-width: 721px) {
+  .rtl-hero {
+    min-height: 0;
+    padding-top: clamp(2rem, 5vh, 3rem);
+    padding-bottom: clamp(2.5rem, 7vh, 3.5rem);
+  }
+
+  .rtl-hero h1 {
+    font-size: clamp(3.8rem, 6vw, 5.4rem);
+  }
+
+  .rtl-hero-intro {
+    margin-top: 1.25rem;
+    font-size: 1rem;
+  }
+
+  .rtl-actions {
+    margin-top: 1.5rem;
+  }
+}
+
 @media (max-width: 720px) {
   .rtl-hero {
     gap: 3.5rem;
@@ -602,6 +706,35 @@
     grid-template-columns: 4.5rem minmax(0, 1fr);
   }
 
+  .rtl-proof-strip-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .rtl-proof-strip-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .rtl-proof-strip-metrics > div,
+  .rtl-proof-strip-metrics > div:not(:first-child) {
+    padding: 1rem 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .rtl-proof-strip-metrics > div:nth-child(odd) {
+    padding-right: 0.75rem;
+    border-right: 1px solid var(--line);
+  }
+
+  .rtl-proof-strip-metrics > div:nth-child(even) {
+    padding-left: 0.75rem;
+  }
+
+  .rtl-proof-strip-metrics > div:nth-last-child(-n + 2) {
+    border-bottom: 0;
+  }
+
   .rtl-section-heading h2,
   .rtl-start h2 {
     font-size: clamp(2.4rem, 12vw, 3.8rem);
@@ -619,6 +752,27 @@
 
   .rtl-proof-card {
     min-height: 25rem;
+  }
+}
+
+@media (max-width: 420px) and (max-height: 700px) {
+  .rtl-hero {
+    padding-top: 1.75rem;
+    padding-bottom: 3.25rem;
+  }
+
+  .rtl-hero h1 {
+    font-size: 2.65rem;
+  }
+
+  .rtl-hero-intro {
+    margin-top: 1.35rem;
+    font-size: 0.96rem;
+    line-height: 1.55;
+  }
+
+  .rtl-actions {
+    margin-top: 1.5rem;
   }
 }
 
