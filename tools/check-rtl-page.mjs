@@ -35,20 +35,20 @@ async function main() {
 
   requireText(page, "Verified RTL/PPA Optimization | Göther Labs", failures, "page metadata");
   requireText(page, "https://www.gotherlabs.com/rtl-optimization/", failures, "canonical URL");
-  requireText(page, "page.css?v=rtl-pilot-v4", failures, "page stylesheet");
-  requireText(page, "page.js?v=rtl-evidence-v1", failures, "evidence animation script");
-  requireText(page, "Better PPA. Same contract.", failures, "hero proposition");
-  requireText(page, "Explore public evidence", failures, "client-facing evidence action");
-  requireText(page, "data-rtl-evidence-stage", failures, "evidence transformation stage");
-  requireText(page, "Formal equivalence", failures, "evidence correctness gate");
-  requireText(page, "0.9027", failures, "ML-KEM candidate score");
-  requireText(page, "No guaranteed improvement", failures, "commercial boundary");
+  requireText(page, "page.css?v=rtl-pilot-v5", failures, "page stylesheet");
+  requireText(page, "page.js?v=rtl-chip-evolution-v1", failures, "chip evolution script");
+  requireText(page, "Push your RTL further.", failures, "hero proposition");
+  requireText(page, "See public results", failures, "client-facing evidence action");
+  requireText(page, "data-rtl-chip-evolution", failures, "chip evolution stage");
+  requireText(page, "data-rtl-chip-canvas", failures, "chip evolution canvas");
+  requireText(page, "Functional boundary held constant", failures, "animation contract");
+  requireText(page, "Conceptual visualization", failures, "animation disclosure");
   requireText(page, "not ASIC signoff", failures, "evidence boundary");
   requireText(page, "not a cross-circuit performance ranking", failures, "comparison boundary");
   requireText(page, "not side-channel analysis", failures, "ML-KEM boundary");
   requireText(page, "certification of a complete", failures, "ML-KEM certification boundary");
   requireText(page, "functional checks and an agreed formal-equivalence scope", failures, "formal policy");
-  requireText(page, "Your implementation flow is the final authority", failures, "customer authority");
+  requireText(page, "Run the pilot in your implementation flow", failures, "customer authority");
   requireText(page, "Do not attach confidential RTL", failures, "confidentiality prompt");
   requireText(page, "/tree/v2.2.2#results-at-a-glance", failures, "versioned evidence entry point");
 
