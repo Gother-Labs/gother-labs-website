@@ -35,7 +35,13 @@ async function main() {
 
   requireText(page, "Verified RTL/PPA Optimization | Göther Labs", failures, "page metadata");
   requireText(page, "https://www.gotherlabs.com/rtl-optimization/", failures, "canonical URL");
-  requireText(page, "page.css?v=rtl-pilot-v3", failures, "page stylesheet");
+  requireText(page, "page.css?v=rtl-pilot-v4", failures, "page stylesheet");
+  requireText(page, "page.js?v=rtl-evidence-v1", failures, "evidence animation script");
+  requireText(page, "Better PPA. Same contract.", failures, "hero proposition");
+  requireText(page, "Explore public evidence", failures, "client-facing evidence action");
+  requireText(page, "data-rtl-evidence-stage", failures, "evidence transformation stage");
+  requireText(page, "Formal equivalence", failures, "evidence correctness gate");
+  requireText(page, "0.9027", failures, "ML-KEM candidate score");
   requireText(page, "No guaranteed improvement", failures, "commercial boundary");
   requireText(page, "not ASIC signoff", failures, "evidence boundary");
   requireText(page, "not a cross-circuit performance ranking", failures, "comparison boundary");

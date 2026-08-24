@@ -22,7 +22,7 @@
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="../assets/gother-mark.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../styles.css?v=rtl-audit-v2">
-    <link rel="stylesheet" href="./page.css?v=rtl-pilot-v3">
+    <link rel="stylesheet" href="./page.css?v=rtl-pilot-v4">
   </head>
   <body class="rtl-page">
     <a class="skip-link" href="#site-main">Skip to content</a>
@@ -58,12 +58,11 @@
       <main class="site-main rtl-main" id="site-main">
         <section class="rtl-hero" aria-labelledby="rtl-title">
           <div class="rtl-hero-copy">
-            <p class="rtl-kicker">Verified RTL/PPA optimization</p>
-            <h1 id="rtl-title">Improve one RTL block without weakening its contract.</h1>
+            <p class="rtl-kicker">Correctness-gated RTL/PPA optimization</p>
+            <h1 id="rtl-title">Better PPA. Same contract.</h1>
             <p class="rtl-hero-intro">
-              Göther Labs runs bounded before/after optimization pilots for existing RTL.
-              We freeze the interface, correctness requirements, implementation target,
-              constraints, and objective before searching for an improvement.
+              Göther Labs searches for measurable area, timing, and power improvements
+              inside a frozen functional and implementation boundary.
             </p>
             <div class="rtl-actions" role="group" aria-label="RTL pilot actions">
               <a
@@ -75,7 +74,7 @@
                 href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/tree/v2.2.2#results-at-a-glance"
                 target="_blank"
                 rel="noreferrer"
-              >Inspect v2.2.2 evidence</a>
+              >Explore public evidence</a>
             </div>
             <p class="rtl-hero-note">One owned block. Customer-approved evaluation flow. No guaranteed improvement.</p>
           </div>
@@ -108,7 +107,7 @@
 
         <section class="rtl-proof-strip" aria-label="Pinned public RTL evidence">
           <div class="rtl-proof-strip-heading">
-            <span>Published method evidence · v2.2.2</span>
+            <span>Published method evidence</span>
             <a href="#public-evidence">Scope and limitations</a>
           </div>
           <div class="rtl-proof-strip-metrics">
@@ -211,12 +210,57 @@
         <section class="rtl-section rtl-proof-section" id="public-evidence" aria-labelledby="proof-title">
           <div class="rtl-section-heading rtl-section-heading--wide">
             <p class="rtl-kicker">Public method qualification</p>
-            <h2 id="proof-title">Three transformations. One inspectable evidence standard.</h2>
+            <h2 id="proof-title">Three transformations, one auditable standard.</h2>
             <p>
               Each public package includes baseline and optimized RTL, the exact patch,
               correctness evidence, paired implementation measurements, checksums, and a
               fail-closed verifier.
             </p>
+          </div>
+
+          <div class="rtl-evidence-stage" data-rtl-evidence-stage>
+            <div class="rtl-evidence-stage-heading">
+              <span>Flagship public transformation</span>
+              <strong>ML-KEM CBD RTL</strong>
+            </div>
+
+            <div class="rtl-evidence-flow" role="group" aria-label="ML-KEM CBD baseline and candidate comparison">
+              <div class="rtl-evidence-node rtl-evidence-node--baseline">
+                <span>Baseline score</span>
+                <strong>1.0000</strong>
+              </div>
+              <div class="rtl-evidence-gate">
+                <span>Formal equivalence</span>
+                <strong>PASS</strong>
+              </div>
+              <div class="rtl-evidence-node rtl-evidence-node--candidate">
+                <span>Candidate score</span>
+                <strong>0.9027</strong>
+              </div>
+              <div class="rtl-evidence-delta">
+                <strong>−9.7338%</strong>
+                <span>composite PPA estimate</span>
+              </div>
+            </div>
+
+            <div class="rtl-evidence-bars" aria-hidden="true">
+              <div class="rtl-evidence-bar-row">
+                <span>Baseline</span>
+                <div class="rtl-evidence-bar-track"><i style="--evidence-scale: 1"></i></div>
+                <strong>1.0000</strong>
+              </div>
+              <div class="rtl-evidence-bar-row rtl-evidence-bar-row--candidate">
+                <span>Candidate</span>
+                <div class="rtl-evidence-bar-track"><i style="--evidence-scale: 0.902662"></i></div>
+                <strong>0.9027</strong>
+              </div>
+            </div>
+
+            <div class="rtl-evidence-stage-foot">
+              <span>239 functional cycles</span>
+              <span>64 paired implementations</span>
+              <span>Frozen evaluation contract</span>
+            </div>
           </div>
 
           <div class="rtl-proof-grid">
@@ -348,5 +392,6 @@
     </div>
 
     <script src="../scripts.js?v=rtl-audit-v2"></script>
+    <script src="./page.js?v=rtl-evidence-v1"></script>
   </body>
 </html>
