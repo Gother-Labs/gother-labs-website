@@ -2,6 +2,7 @@ name: Site integrity
 
 on:
   pull_request:
+  workflow_call:
 
 permissions:
   contents: read
@@ -9,36 +10,59 @@ permissions:
 jobs:
   site-integrity:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout website
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          path: website
+          persist-credentials: false
 
-      - name: Check site shell
+      - name: Use the release Node.js runtime
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: 24
+
+      - name: Read pinned results source
+        id: results-source
+        working-directory: website
+        run: >-
+          node -e 'const fs = require("node:fs");
+          const lock = JSON.parse(fs.readFileSync("tools/generated-results.lock.json", "utf8"));
+          if (lock.schema_version !== "generated-results-source/v1" ||
+              lock.repository !== "Gother-Labs/gother-labs-results" ||
+              !/^[0-9a-f]{40}$/.test(lock.commit) ||
+              !["results-catalog/v1", "results-catalog/v2"].includes(lock.catalog_schema)) {
+            throw new Error("Generated-results lock is invalid; refusing to expose it as workflow output.");
+          }
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `commit=${lock.commit}\n`);'
+
+      - name: Checkout pinned results source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          repository: Gother-Labs/gother-labs-results
+          ref: ${{ steps.results-source.outputs.commit }}
+          path: gother-labs-results
+          persist-credentials: false
+
+      - name: Test release-quality checks
+        working-directory: website
+        run: node --test tools/*.test.mjs
+
+      - name: Check shared site shell
+        working-directory: website
         run: node tools/check-site-shell.mjs
 
-      - name: Check publication consistency
-        run: |
-          node --input-type=module <<'NODE'
-          import fs from "node:fs";
+      - name: Check links, metadata, sitemap, and HTML
+        working-directory: website
+        run: node tools/check-site-integrity.mjs
 
-          const home = fs.readFileSync("index.html", "utf8");
-          const sitemap = fs.readFileSync("sitemap.xml", "utf8");
-          const metrics = JSON.parse(
-            fs.readFileSync("results/circle-packing-26-unit-square/artifacts/metrics.json", "utf8"),
-          );
+      - name: Check bounded RTL claims
+        working-directory: website
+        run: node tools/check-rtl-page.mjs
 
-          const expected = metrics.accepted_sum_radii.toFixed(6);
-          const featured = home.match(
-            /<span data-result-metric="accepted_sum_radii">([^<]+)<\/span>/,
-          )?.[1];
-
-          if (!featured?.includes(expected)) {
-            throw new Error(`Homepage circle-packing value must be ${expected}.`);
-          }
-          if (home.includes("Last proof")) {
-            throw new Error("Homepage must not describe the featured result as a proof.");
-          }
-          if (!sitemap.includes("https://www.gotherlabs.com/evolther/bess-policy-challenger/")) {
-            throw new Error("BESS Policy Challenger is missing from sitemap.xml.");
-          }
-          NODE
+      - name: Check generated results and artifacts
+        working-directory: website
+        env:
+          GOTHER_RESULTS_ROOT: ../gother-labs-results
+        run: node tools/sync-results.mjs --check

@@ -203,7 +203,14 @@
 }
 
 .rcpsp-editor-focus {
-  display: none;
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  border-radius: 0;
+  background: var(--surface-focus);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
 }
 
 .rcpsp-editor-line {

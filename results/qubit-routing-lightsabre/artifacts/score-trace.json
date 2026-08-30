@@ -4,8 +4,7 @@
   "direction": "higher_is_better_readout",
   "score_direction": "lower_is_better",
   "source": {
-    "telemetry_manifest": "Desktop/qubit-routing-sabre24-lightsabre-telemetry-20260526/TELEMETRY_COPY_MANIFEST.txt",
-    "telemetry_files": 7,
+    "curated_run_chain_files": 7,
     "public_fields_only": true,
     "note": "Candidate dots are sanitized score-only records extracted from generation telemetry events; prompts, raw logs, and code bodies are not included."
   },

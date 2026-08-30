@@ -29,17 +29,34 @@ Use the same server for the whole QA pass so screenshots and observations are co
 Run these before browser review:
 
 ```bash
+node --test tools/*.test.mjs
 node tools/check-site-shell.mjs
+node tools/check-site-integrity.mjs
+node tools/check-rtl-page.mjs
+GOTHER_RESULTS_ROOT=../gother-labs-results node tools/sync-results.mjs --check
 git diff --check
 ```
 
-For generated-results changes, also run:
+The generated-results check uses the exact source commit in
+`tools/generated-results.lock.json`, creates a clean temporary output tree, and fails on missing,
+stale, or byte-different source-owned generated files and declared artifacts. The same lock lists
+the rich detail pages, historical run surfaces, and support assets that are intentionally curated
+in the website repository; the checker seeds only those explicit paths before generation. It does
+not modify the checkout. A mismatched/dirty source, tracked symlink, or Git submodule fails before
+the catalog or artifacts are consumed.
+
+When intentionally advancing or repairing generated results, first check out the locked commit in
+the sibling repository and run:
 
 ```bash
-node tools/sync-results.mjs
+GOTHER_RESULTS_ROOT=../gother-labs-results node tools/sync-results.mjs
 ```
 
-Then review the generated diff before committing. Shell-sensitive changes should not introduce unrelated editorial changes.
+Then review the generated diff before committing and rerun the complete command set above.
+Shell-sensitive changes should not introduce unrelated editorial changes.
+
+The pull-request workflow runs this same set. The Pages workflow reuses it as a required `verify`
+job, so a push or manual deployment cannot upload the static tree after a failed gate.
 
 ## Route Set
 
@@ -53,7 +70,7 @@ Inspect this route set for shell-sensitive PRs:
 | `/rtl-optimization/` | Hand-authored RTL/PPA pilot page with route-specific styles, evidence links, and responsive proof cards. |
 | `/results/` | Generated results index shell. |
 | `/results/quadrature-rule-optimization/` | Generated result detail page with MathJax exception. |
-| `/results/quadrature-rule-optimization/run/` | Copied run page shell normalization. |
+| `/results/quadrature-rule-optimization/run/` | Website-owned, noindex historical archive retained across generation. |
 | `/404.html` | Hand-authored custom 404 shell. |
 | `/domains` | Missing-route fallback when using `node tools/preview.mjs`. |
 | `/evolther/` | Experimental page with route-specific shell and responsive behavior. |

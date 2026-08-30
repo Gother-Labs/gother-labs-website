@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Iberian BESS Replay | Göther Labs</title>
+    <meta name="description" content="Replay the Iberian BESS Policy Challenge accepted dispatch policy, scenario traces, and score evidence.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" href="../../../assets/gother-mark.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../../../styles.css?v=rtl-audit-v2">
+    <link rel="stylesheet" href="./surface.css?v=storage-bess-v1">
+  </head>
+  <body class="storage-run-page">
+    <div class="page-shell site-shell">
+      <header class="site-header">
+        <nav class="site-nav" aria-label="Primary">
+          <a class="brand nav-brand nav-home-wordmark animated-symbol-scope" href="../../../" aria-label="Göther Labs home">
+            <span aria-hidden="true" class="wordmark-mark-wrap">
+              <svg class="animated-reference-geometry live-symbol-svg" viewBox="0 0 64 64" focusable="false">
+                <g class="source-geometry" aria-hidden="true">
+                  <circle class="source-geometry-dot" cx="34.5" cy="34.5" r="3.6" />
+                  <circle class="source-geometry-dot" cx="21" cy="58" r="3.6" />
+                  <circle class="source-geometry-dot" cx="48" cy="58" r="3.6" />
+                </g>
+                <path class="live-trail" d="" />
+                <path class="live-trail" d="" />
+                <path class="live-trail" d="" />
+                <circle class="geometry-dot live-geometry-dot" cx="34.2" cy="28.4" r="3.34" />
+                <circle class="geometry-dot live-geometry-dot" cx="20.9" cy="50.6" r="3.34" />
+                <circle class="geometry-dot live-geometry-dot" cx="47.5" cy="50.6" r="3.34" />
+              </svg>
+            </span>
+            <span class="nav-wordmark-text">Göther Labs</span>
+          </a>
+          <div class="nav-links">
+            <a href="../../../results/">Results</a>
+            <a href="../../../company/">Company</a>
+            <a href="../../../contact/">Contact</a>
+          </div>
+        </nav>
+      </header>
+
+      <main class="site-main">
+        <section class="hero compact-hero page-hero storage-run-hero">
+          <h1 class="page-title">Iberian BESS policy replay.</h1>
+          <p class="intro">
+            Scenario-level replay for the accepted offline dispatch policy: price, charge/discharge action,
+            state of charge, commercial baseline comparison, and score trace.
+          </p>
+        </section>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <section class="storage-run-grid" aria-label="Storage replay controls and dispatch chart">
+          <div class="storage-run-panel storage-run-panel--summary">
+            <p class="eyebrow">Accepted Result</p>
+            <div class="storage-run-metrics" id="metric-cards"></div>
+            <label class="storage-run-selector">
+              <span>Scenario</span>
+              <select id="scenario-select"></select>
+            </label>
+          </div>
+
+          <div class="storage-run-panel storage-run-panel--chart">
+            <div class="storage-run-panel-head">
+              <div>
+                <p class="eyebrow" id="scenario-split">Scenario</p>
+                <h2 id="scenario-title">Dispatch trace</h2>
+              </div>
+              <a href="../artifacts/dispatch_trace.json">dispatch_trace.json</a>
+            </div>
+            <svg id="dispatch-chart" viewBox="0 0 900 430" role="img" aria-label="Dispatch trace chart"></svg>
+          </div>
+
+          <div class="storage-run-panel storage-run-panel--score">
+            <div class="storage-run-panel-head">
+              <h2>Score trace</h2>
+              <a href="../artifacts/score-trace.json">score-trace.json</a>
+            </div>
+            <svg id="score-chart" viewBox="0 0 620 260" role="img" aria-label="Score trace"></svg>
+          </div>
+
+          <div class="storage-run-panel storage-run-panel--code">
+            <div class="storage-run-panel-head">
+              <h2>Accepted policy</h2>
+              <a href="../artifacts/accepted_candidate.py">accepted_candidate.py</a>
+            </div>
+            <pre><code id="candidate-code"></code></pre>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>© <span id="year">2026</span> Göther Labs</p>
+      </footer>
+    </div>
+
+    <script src="../../../scripts.js?v=rtl-audit-v2"></script>
+    <script src="./surface-data.js?v=storage-bess-v1"></script>
+    <script src="./surface.js?v=storage-bess-v1"></script>
+  </body>
+</html>

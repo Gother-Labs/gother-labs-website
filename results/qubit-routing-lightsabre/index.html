@@ -30,7 +30,7 @@
         }
       };
     </script>
-    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js" integrity="sha384-AHAnt9ZhGeHIrydA1Kp1L7FN+2UosbF7RQg6C+9Is/a7kDpQ1684C2iH2VWil6r4" crossorigin="anonymous"></script>
 
   </head>
   <body class="result-qubit-routing-page">
@@ -72,10 +72,10 @@
 
         <section class="result-detail result-whitepaper-shell qubit-routing-whitepaper-shell">
           <article class="result-article result-whitepaper qubit-routing-whitepaper">
-<h3>Abstract</h3>
+<h2>Abstract</h2>
 <p>This note reports a deterministic qubit-routing policy, a public scoring trace, and an exact replay candidate for a frozen swap-reduction benchmark. The accepted policy reduces added CNOTs by 12,294 versus LightSABRE while keeping the routing-policy surface and topology split visible.</p>
 <p>The claim is deliberately bounded: it is not a universal quantum compiler result, not a runtime benchmark, and not a hardware-performance claim.</p>
-<h3>1. Problem formulation</h3>
+<h2>1. Problem formulation</h2>
 <p>The two-qubit gate that matters in this benchmark is the CNOT. A CNOT flips the target qubit only when the control qubit is 1; together with arbitrary one-qubit gates, CNOT is a standard building block for universal quantum circuits. Hardware routing matters because a SWAP between adjacent physical qubits is normally decomposed into three CNOTs, so every extra SWAP directly inflates the added-CNOT readout.</p>
 <figure class="result-primer-card result-paper-figure qubit-routing-inline-figure qubit-gate-primer-figure" id="fig-1">
           <svg class="result-primer-svg qubit-routing-paper-svg quantum-circuit-svg quantum-gate-primer-svg" viewBox="0 0 780 238" role="img" aria-label="CNOT truth table, matrix, and SWAP decomposition into three CNOT gates.">
@@ -319,7 +319,7 @@
           <figcaption>Figure 3. Swap-saving mechanism. In the restore path, two identical same-line SWAPs compose to the identity; the accepted path skips that identity pair while preserving the same next routed CNOT.</figcaption>
         </figure>
 <p>The optimization surface is intentionally narrow. The candidate changes only the routing-policy logic inside a fixed benchmark harness. The portfolio assets, topology targets, reference LightSABRE comparison, and replay validator remain unchanged.</p>
-<h3>2. Evaluation contract</h3>
+<h2>2. Evaluation contract</h2>
 <p>The contract is deliberately narrow: 24 public circuits are crossed with three frozen topology targets, producing 72 deterministic routing evaluations. A candidate is accepted only if every case routes validly and the replayed score matches within tolerance \(10^{-6}\). The objective is added CNOT count versus LightSABRE, expressed as the lower-is-better score \(-\Delta_{\mathrm{wCNOT}}\).</p>
 <p>The three targets are Q20, Willow, and Heron-FEZ. In this report those names identify frozen coupling graphs: the physical adjacency constraint on which each logical two-qubit interaction must be routed.</p>
 <figure class="result-paper-table result-contract-table qubit-routing-target-table" id="table-1">
@@ -369,7 +369,7 @@ J(p) = -\Delta_{\mathrm{wCNOT}}(p),
   <span class="equation-number">(1)</span>
 </div>
 <p>Here \(A_p(c,\tau)\) is the added-CNOT count for policy \(p\) on circuit \(c\) and topology \(\tau\), \(A_{\mathrm{LS}}\) is the LightSABRE reference, and \(w_{c,\tau}\) is the public case weight. Lower \(J(p)\) is better; the result plots \(-J(p)\) so that positive weighted CNOT reduction reads upward.</p>
-<h3>3. Accepted candidate</h3>
+<h2>3. Accepted candidate</h2>
 <figure class="result-paper-code result-code-figure qubit-routing-code-figure" id="listing-1">
           <div class="result-code-titlebar" aria-hidden="true">
             <span class="result-code-file">accepted_candidate.rs</span>
@@ -379,7 +379,7 @@ J(p) = -\Delta_{\mathrm{wCNOT}}(p),
           <figcaption>Listing 1. Accepted Rust routing-policy excerpt. The full public implementation is published as <a href="./artifacts/accepted_candidate.rs">accepted_candidate.rs</a>.</figcaption>
         </figure>
 <p>The accepted candidate combines a topology-aware initial layout with a SABRE-style swap scorer. It keeps front-layer distance, extended-set lookahead, and decay behavior visible in one deterministic policy surface.</p>
-<h3>4. Results</h3>
+<h2>4. Results</h2>
 <figure class="result-primer-card result-paper-figure qubit-routing-inline-figure result-objective-figure" id="fig-4">
           <svg class="result-primer-svg result-objective-svg" viewBox="0 0 560 328" role="img" aria-label="Best so far weighted CNOT reduction against LightSABRE.">
             <text class="result-axis-label result-figure-title" x="112" y="34">Best-so-far CNOT reduction (higher is better)</text>
@@ -799,10 +799,10 @@ J(p) = -\Delta_{\mathrm{wCNOT}}(p),
           <figcaption>Figure 6. Selected largest case-level savings from the replay export. The rows are sorted by absolute CNOT reduction versus LightSABRE; the final column gives the same reduction as a percentage of the LightSABRE case.</figcaption>
         </figure>
 <p>The result is not uniform across topology families: Q20 carries the largest positive readout, Willow is modestly positive, and Heron-FEZ is slightly worse than LightSABRE on aggregate. Across individual cases the accepted policy records 31 wins, 6 ties, and 35 losses; Figure 6 highlights the largest positive case savings rather than the full case distribution.</p>
-<h3>5. Limitations</h3>
+<h2>5. Limitations</h2>
 <p>This report is limited to the frozen 24-circuit LightSABRE portfolio in the bundle. It does not claim improvement on arbitrary circuits, arbitrary hardware topologies, all related benchmark assets, or production compiler workloads.</p>
 <p>The benchmark measures routing quality through added CNOT count. It does not make a wall-clock speed claim, does not measure hardware execution fidelity, and does not evaluate downstream transpiler passes after routing.</p>
-<h3>6. Reproducibility</h3>
+<h2>6. Reproducibility</h2>
 <p>The public bundle includes the accepted Rust candidate, the evaluation contract, metrics, a curated evolution chain, replay confirmation, public figures, and a curated animated replay at <a href="./run/">the run page</a>. The replay excludes prompts, raw telemetry, local logs, private paths, and operational run state.</p>
 <p>Replaying the result should use the same 24-circuit LightSABRE portfolio, the same Q20, Willow, and Heron-FEZ coupling graphs, the same added-CNOT objective, the same case weights, and the same lower-is-better governed score. Changing the topology set, case set, routing objective, or LightSABRE reference creates a new evaluation, not a replay of this result.</p>
 <p>Under that replay contract, the accepted Rust candidate reproduces 295,782 aggregate added CNOTs, 12,294 fewer than the LightSABRE reference, with a 31 / 6 / 35 win/tie/loss case split.</p>

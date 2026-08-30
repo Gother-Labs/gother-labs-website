@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 import fs from "node:fs/promises";
 import path from "node:path";
+import { execFile as execFileCallback } from "node:child_process";
+import { promisify } from "node:util";
 import { fileURLToPath } from "node:url";
+import { assertNoSpecialGitEntries } from "./results-source-policy.mjs";
 import {
   normalizeCopiedRunShell,
   sharedFaviconTag,
@@ -13,12 +16,21 @@ import {
 } from "./site-shell.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const SITE_ROOT = path.resolve(__dirname, "..");
+const execFile = promisify(execFileCallback);
+const scriptPath = fileURLToPath(import.meta.url);
+const SITE_ROOT = process.env.GOTHER_SITE_ROOT
+  ? path.resolve(process.env.GOTHER_SITE_ROOT)
+  : path.resolve(__dirname, "..");
 const RESULTS_ROOT = process.env.GOTHER_RESULTS_ROOT
   ? path.resolve(process.env.GOTHER_RESULTS_ROOT)
   : path.resolve(SITE_ROOT, "..", "gother-labs-results");
 const CATALOG_PATH = path.join(RESULTS_ROOT, "catalog.json");
 const OUT_ROOT = path.join(SITE_ROOT, "results");
+const GENERATED_RESULTS_LOCK_PATH = path.join(__dirname, "generated-results.lock.json");
+const SUPPORTED_CATALOG_SCHEMAS = new Set([
+  "results-catalog/v1",
+  "results-catalog/v2",
+]);
 
 const SITE_URL = "https://www.gotherlabs.com";
 
@@ -28,6 +40,120 @@ function escapeHtml(value) {
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
+}
+
+function resolveInside(root, candidate, label) {
+  const resolvedRoot = path.resolve(root);
+  const resolved = path.resolve(resolvedRoot, candidate);
+  if (resolved !== resolvedRoot && !resolved.startsWith(`${resolvedRoot}${path.sep}`)) {
+    throw new Error(`${label} escapes the results repository: ${JSON.stringify(candidate)}`);
+  }
+  return resolved;
+}
+
+async function resolveRegularFileInside(root, candidate, label) {
+  const resolved = resolveInside(root, candidate, label);
+  const details = await fs.lstat(resolved);
+  if (!details.isFile() || details.isSymbolicLink()) {
+    throw new Error(`${label} must be a regular file: ${JSON.stringify(candidate)}`);
+  }
+  const [canonicalRoot, canonicalFile] = await Promise.all([
+    fs.realpath(root),
+    fs.realpath(resolved),
+  ]);
+  if (
+    canonicalFile !== canonicalRoot &&
+    !canonicalFile.startsWith(`${canonicalRoot}${path.sep}`)
+  ) {
+    throw new Error(`${label} resolves outside its result root: ${JSON.stringify(candidate)}`);
+  }
+  return resolved;
+}
+
+async function readTextInside(root, candidate, label) {
+  const source = await resolveRegularFileInside(root, candidate, label);
+  return fs.readFile(source, "utf8");
+}
+
+async function verifyPinnedResultsCheckout(releaseConfig) {
+  if (
+    releaseConfig.schema_version !== "generated-results-source/v1" ||
+    releaseConfig.repository !== "Gother-Labs/gother-labs-results" ||
+    !/^[0-9a-f]{40}$/.test(releaseConfig.commit)
+  ) {
+    throw new Error("Generated-results lock is invalid; refusing to synchronize source data.");
+  }
+  const git = async (...arguments_) => {
+    const { stdout } = await execFile("git", ["-C", RESULTS_ROOT, ...arguments_], {
+      maxBuffer: 16 * 1024 * 1024,
+    });
+    return stdout;
+  };
+  const [head, status, index] = await Promise.all([
+    git("rev-parse", "HEAD"),
+    git("status", "--porcelain", "--untracked-files=all"),
+    git("ls-files", "--stage", "-z"),
+  ]);
+  if (head.trim() !== releaseConfig.commit) {
+    throw new Error(
+      `Results checkout is ${head.trim()}; expected locked commit ${releaseConfig.commit}.`,
+    );
+  }
+  if (status.trim()) {
+    throw new Error("Results checkout has local changes; refusing non-reproducible synchronization.");
+  }
+  assertNoSpecialGitEntries(index, "Results checkout");
+}
+
+export async function loadPublishedResults(catalog, resultsRoot = RESULTS_ROOT) {
+  if (!SUPPORTED_CATALOG_SCHEMAS.has(catalog?.schema_version)) {
+    throw new Error(
+      `Unsupported results catalog schema ${JSON.stringify(catalog?.schema_version)}; ` +
+        `supported versions are ${[...SUPPORTED_CATALOG_SCHEMAS].join(", ")}.`,
+    );
+  }
+  if (!Array.isArray(catalog.results)) {
+    throw new Error(`Results catalog ${catalog.schema_version} must contain a results array.`);
+  }
+
+  const published = catalog.results.filter((result) => result.status === "published");
+  const publishedSlugs = published.map((result) => result.slug);
+  if (new Set(publishedSlugs).size !== publishedSlugs.length) {
+    throw new Error(`Results catalog ${catalog.schema_version} contains duplicate published slugs.`);
+  }
+  const loaded = await Promise.all(
+    published.map(async (entry) => {
+      if (!/^[a-z0-9-]+$/.test(entry.slug ?? "")) {
+        throw new Error(`Catalog contains an unsafe result slug: ${JSON.stringify(entry.slug)}`);
+      }
+
+      if (catalog.schema_version === "results-catalog/v2") {
+        if (entry.schema_version !== "result/v1") {
+          throw new Error(`Catalog entry ${entry.slug} must use result/v1.`);
+        }
+        if (Object.hasOwn(entry, "path")) {
+          throw new Error(`Catalog entry ${entry.slug} must not contain the legacy path field in v2.`);
+        }
+        return entry;
+      }
+
+      if (typeof entry.path !== "string" || !entry.path) {
+        throw new Error(`Legacy catalog entry ${entry.slug} is missing its result.json path.`);
+      }
+      const resultPath = await resolveRegularFileInside(
+        resultsRoot,
+        entry.path,
+        `Catalog entry ${entry.slug}`,
+      );
+      const result = JSON.parse(await fs.readFile(resultPath, "utf8"));
+      if (result.schema_version !== "result/v1" || result.slug !== entry.slug) {
+        throw new Error(`Legacy catalog entry ${entry.slug} does not match ${entry.path}.`);
+      }
+      return result;
+    }),
+  );
+
+  return loaded;
 }
 
 function formatNumber(value) {
@@ -182,7 +308,7 @@ function markdownToHtml(markdown, inserts = {}, options = {}) {
     const heading = line.match(/^(#{1,3})\s+(.+)$/);
     if (heading) {
       flushParagraph();
-      const level = Math.min(heading[1].length + 1, 4);
+      const level = Math.min(heading[1].length, 3);
       chunks.push(`<h${level}>${escapeHtml(heading[2])}</h${level}>`);
       continue;
     }
@@ -212,7 +338,19 @@ async function alignCopiedRunShell(outputRoot) {
   }
 
   const runPrefix = "../../../";
-  const aligned = normalizeCopiedRunShell(html, runPrefix);
+  let aligned = normalizeCopiedRunShell(html, runPrefix);
+
+  if (path.basename(outputRoot) === "qubit-routing-lightsabre") {
+    aligned = aligned
+      .replace(
+        'href="../#fig-4">Open Figure 4: objective trace</a>',
+        'href="../artifacts/score-trace.json">Open objective trace artifact</a>',
+      )
+      .replace(
+        'href="../#listing-1">Open Listing 1</a>',
+        'href="../artifacts/accepted_candidate.rs">Open accepted candidate artifact</a>',
+      );
+  }
 
   if (aligned !== html) {
     await fs.writeFile(runIndexPath, aligned, "utf8");
@@ -234,7 +372,7 @@ function mathHead() {
         }
       };
     </script>
-    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js" integrity="sha384-AHAnt9ZhGeHIrydA1Kp1L7FN+2UosbF7RQg6C+9Is/a7kDpQ1684C2iH2VWil6r4" crossorigin="anonymous"></script>
 `;
 }
 
@@ -271,13 +409,9 @@ function htmlShell({
     <meta property="og:type" content="${escapeHtml(ogType)}">
     <meta property="og:url" content="${canonical}">
     <meta property="og:image" content="${absoluteOgImage}">
-    ${ogImageAlt ? `<meta property="og:image:alt" content="${escapeHtml(ogImageAlt)}">` : ""}
-    <meta name="twitter:card" content="summary_large_image">
+${ogImageAlt ? `    <meta property="og:image:alt" content="${escapeHtml(ogImageAlt)}">\n` : ""}    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="${absoluteOgImage}">
-    ${ogImageAlt ? `<meta name="twitter:image:alt" content="${escapeHtml(ogImageAlt)}">` : ""}
-    ${extraHead}
-    ${structuredDataTag}
-    ${sharedFontPreloadTag()}
+${ogImageAlt ? `    <meta name="twitter:image:alt" content="${escapeHtml(ogImageAlt)}">\n` : ""}${extraHead ? `    ${extraHead}\n` : ""}${structuredDataTag ? `    ${structuredDataTag}\n` : ""}    ${sharedFontPreloadTag()}
     ${sharedFaviconTag(cssPrefix)}
     ${sharedStylesheetTag(cssPrefix)}
 ${enableMath ? mathHead() : ""}
@@ -559,19 +693,30 @@ ${cards}
 }
 
 async function copyIfExists(sourceRoot, outputRoot, relativeFile) {
-  const source = path.join(sourceRoot, relativeFile);
-  const target = path.join(outputRoot, relativeFile);
+  const source = await resolveRegularFileInside(
+    sourceRoot,
+    relativeFile,
+    "Declared source artifact",
+  );
+  const target = resolveInside(outputRoot, relativeFile, "Declared published artifact");
   await fs.mkdir(path.dirname(target), { recursive: true });
   await fs.copyFile(source, target);
 }
 
-async function copyDirectoryIfExists(source, target) {
+async function copyDirectoryIfExists(sourceRoot, outputRoot, relativeDirectory) {
+  const source = resolveInside(sourceRoot, relativeDirectory, "Declared source directory");
+  const target = resolveInside(outputRoot, relativeDirectory, "Declared published directory");
+  let details;
   try {
-    const stat = await fs.stat(source);
-    if (!stat.isDirectory()) return;
-  } catch {
-    return;
+    details = await fs.lstat(source);
+  } catch (error) {
+    if (error.code === "ENOENT") return;
+    throw error;
   }
+  if (details.isSymbolicLink()) {
+    throw new Error(`Declared source directory must not be a symlink: ${relativeDirectory}`);
+  }
+  if (!details.isDirectory()) return;
   await fs.mkdir(path.dirname(target), { recursive: true });
   await fs.rm(target, { recursive: true, force: true });
   await fs.cp(source, target, { recursive: true });
@@ -2724,9 +2869,9 @@ function circlePackingLocalProof() {
     caption: "Table 3. Rational interval proof obligations for the nearby real 78-contact root.",
     headers: ["Certificate stage", "Verified bound", "Consequence"],
     rows: [
-      ["Primal Krawczyk", "inclusion ratio < 8.552 × 10⁻¹⁵", "one unique regular root"],
-      ["Inactive constraints", "minimum gap > 0.0071877548", "all 351 remain strict"],
-      ["Dual Krawczyk", "minimum multiplier > 0.0208256021", "all 78 multipliers positive"],
+      ["Primal Krawczyk", "inclusion ratio &lt; 8.552 × 10⁻¹⁵", "one unique regular root"],
+      ["Inactive constraints", "minimum gap &gt; 0.0071877548", "all 351 remain strict"],
+      ["Dual Krawczyk", "minimum multiplier &gt; 0.0208256021", "all 78 multipliers positive"],
       ["Local coordinate argument", "full-rank active gradients", "strict local maximum"],
     ],
   });
@@ -2997,38 +3142,79 @@ ${panels.join("\n")}
         </section>`;
 }
 
-async function writeDetail(result, { preserveRun = false } = {}) {
+async function writeDetail(result, { preserveRun = false, preserveDetail = false } = {}) {
   const resultRoot = path.join(RESULTS_ROOT, "results", result.slug);
   const outputRoot = path.join(OUT_ROOT, result.slug);
   await fs.mkdir(outputRoot, { recursive: true });
 
-  const full = JSON.parse(await fs.readFile(path.join(resultRoot, "result.json"), "utf8"));
-  const article = await fs.readFile(path.join(resultRoot, "article.md"), "utf8");
+  const full = result;
+  const article = await readTextInside(resultRoot, "article.md", `Result ${result.slug} article`);
   const evolution = full.artifacts?.evolution_trace
-    ? JSON.parse(await fs.readFile(path.join(resultRoot, full.artifacts.evolution_trace), "utf8"))
+    ? JSON.parse(
+        await readTextInside(
+          resultRoot,
+          full.artifacts.evolution_trace,
+          `Result ${result.slug} evolution trace`,
+        ),
+      )
     : { steps: [] };
   const candidateCode = full.artifacts?.candidate_code
-    ? await fs.readFile(path.join(resultRoot, full.artifacts.candidate_code), "utf8")
+    ? await readTextInside(
+        resultRoot,
+        full.artifacts.candidate_code,
+        `Result ${result.slug} candidate code`,
+      )
     : "";
   const scheduleExample = full.artifacts?.schedule_example
-    ? JSON.parse(await fs.readFile(path.join(resultRoot, full.artifacts.schedule_example), "utf8"))
+    ? JSON.parse(
+        await readTextInside(
+          resultRoot,
+          full.artifacts.schedule_example,
+          `Result ${result.slug} schedule example`,
+        ),
+      )
     : null;
   const scoreTrace = full.artifacts?.score_trace
-    ? JSON.parse(await fs.readFile(path.join(resultRoot, full.artifacts.score_trace), "utf8"))
+    ? JSON.parse(
+        await readTextInside(
+          resultRoot,
+          full.artifacts.score_trace,
+          `Result ${result.slug} score trace`,
+        ),
+      )
     : null;
   const replay = full.artifacts?.replay
-    ? JSON.parse(await fs.readFile(path.join(resultRoot, full.artifacts.replay), "utf8"))
+    ? JSON.parse(
+        await readTextInside(
+          resultRoot,
+          full.artifacts.replay,
+          `Result ${result.slug} replay`,
+        ),
+      )
     : null;
   const circlePackingNativeFigures = full.slug === "circle-packing-26-unit-square"
     ? {
-        toleranceCertificates: await fs.readFile(path.join(resultRoot, "assets/tolerance-certificates.svg"), "utf8"),
-        toleranceRankings: await fs.readFile(path.join(resultRoot, "assets/tolerance-rankings.svg"), "utf8"),
-        contactGraph: await fs.readFile(path.join(resultRoot, "assets/exact-packing-contact-graph.svg"), "utf8"),
+        toleranceCertificates: await readTextInside(
+          resultRoot,
+          "assets/tolerance-certificates.svg",
+          "Circle Packing tolerance certificate figure",
+        ),
+        toleranceRankings: await readTextInside(
+          resultRoot,
+          "assets/tolerance-rankings.svg",
+          "Circle Packing tolerance ranking figure",
+        ),
+        contactGraph: await readTextInside(
+          resultRoot,
+          "assets/exact-packing-contact-graph.svg",
+          "Circle Packing contact graph figure",
+        ),
       }
     : {};
   const plots = full.artifacts?.plots ?? [];
   for (const file of [
     full.artifacts?.candidate_code,
+    full.artifacts?.baseline_diff,
     full.artifacts?.publication_manifest,
     full.artifacts?.verifier,
     full.artifacts?.verification_entrypoint,
@@ -3041,6 +3227,8 @@ async function writeDetail(result, { preserveRun = false } = {}) {
     full.artifacts?.evolution_trace,
     full.artifacts?.metrics,
     full.artifacts?.provenance,
+    full.artifacts?.portfolio_comparison,
+    full.artifacts?.feature_ablation,
     full.artifacts?.reference_comparison,
     full.artifacts?.comparison,
     full.artifacts?.dispatch_trace,
@@ -3056,9 +3244,11 @@ async function writeDetail(result, { preserveRun = false } = {}) {
     await copyIfExists(resultRoot, outputRoot, file);
   }
   if (!preserveRun) {
-    await copyDirectoryIfExists(path.join(resultRoot, "run"), path.join(outputRoot, "run"));
+    await copyDirectoryIfExists(resultRoot, outputRoot, "run");
     await alignCopiedRunShell(outputRoot);
   }
+
+  if (preserveDetail) return;
 
   const figures = plots
     .map(
@@ -3118,7 +3308,7 @@ ${markdownToHtml(articleWithoutTitle(article), qubitRoutingWhitepaperInserts(ful
 
         <section class="result-detail result-whitepaper-shell circle-packing-whitepaper-shell">
           <article class="result-article result-whitepaper circle-packing-whitepaper">
-${markdownToHtml(articleWithoutTitle(article).replace(/^## /gm, "# "), circlePackingWhitepaperInserts(full, evolution, candidateCode, replay, scoreTrace, circlePackingNativeFigures), { staticMath: true })}
+${markdownToHtml(articleWithoutTitle(article), circlePackingWhitepaperInserts(full, evolution, candidateCode, replay, scoreTrace, circlePackingNativeFigures), { staticMath: true })}
           </article>
         </section>`
     : `        <section class="hero compact-hero page-hero result-detail-hero">
@@ -3229,6 +3419,7 @@ async function writeSitemap(results) {
   const urls = [
     "/",
     "/company/",
+    "/rtl-optimization/",
     "/results/",
     ...results.map((result) => `/results/${result.slug}/`),
     "/evolther/bess-policy-challenger/",
@@ -3243,17 +3434,12 @@ ${urls.map((url) => `  <url>\n    <loc>${SITE_URL}${url}</loc>\n  </url>`).join(
 }
 
 async function main() {
-  const catalog = JSON.parse(await fs.readFile(CATALOG_PATH, "utf8"));
-  const results = (
-    await Promise.all(
-      catalog.results
-        .filter((result) => result.status === "published")
-        .map(async (result) => {
-          if (!result.path) return result;
-          return JSON.parse(await fs.readFile(path.join(RESULTS_ROOT, result.path), "utf8"));
-        }),
-    )
-  ).sort((a, b) => (a.website?.order ?? 999) - (b.website?.order ?? 999));
+  const releaseConfig = await fs.readFile(GENERATED_RESULTS_LOCK_PATH, "utf8").then(JSON.parse);
+  await verifyPinnedResultsCheckout(releaseConfig);
+  const catalog = await fs.readFile(CATALOG_PATH, "utf8").then(JSON.parse);
+  const curatedDetailSlugs = new Set(releaseConfig.curated_detail_slugs ?? []);
+  const preservedRunSlugs = new Set(releaseConfig.preserved_run_slugs ?? []);
+  const results = await loadPublishedResults(catalog, RESULTS_ROOT);
 
   const scopedSlug = process.env.GOTHER_RESULT_SLUG;
   if (scopedSlug) {
@@ -3270,14 +3456,28 @@ async function main() {
   await fs.mkdir(OUT_ROOT, { recursive: true });
   await writeIndex(results);
   for (const result of results) {
-    await writeDetail(result, { preserveRun: result.slug === "circle-packing-26-unit-square" });
+    await writeDetail(result, {
+      preserveDetail: curatedDetailSlugs.has(result.slug),
+      preserveRun: preservedRunSlugs.has(result.slug),
+    });
   }
   await syncFeaturedResult(results);
   await writeSitemap(results);
   console.log(`Synced ${results.length} result(s) from ${path.relative(SITE_ROOT, RESULTS_ROOT)}`);
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exit(1);
-});
+if (process.argv[1] && path.resolve(process.argv[1]) === scriptPath) {
+  if (process.argv.includes("--check")) {
+    import("./check-generated-results.mjs")
+      .then(({ checkGeneratedResults }) => checkGeneratedResults({ siteRoot: SITE_ROOT, resultsRoot: RESULTS_ROOT }))
+      .catch((error) => {
+        console.error(error.message ?? error);
+        process.exitCode = 1;
+      });
+  } else {
+    main().catch((error) => {
+      console.error(error.message ?? error);
+      process.exitCode = 1;
+    });
+  }
+}
