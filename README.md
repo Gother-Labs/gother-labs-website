@@ -58,11 +58,12 @@ GOTHER_RESULTS_ROOT=../gother-labs-results node tools/sync-results.mjs
 GOTHER_RESULTS_ROOT=../gother-labs-results node tools/sync-results.mjs --check
 ```
 
-The lock updater refuses a dirty checkout, a commit other than `origin/main`, or an unknown catalog
-schema. Both the updater and synchronizer reject tracked symlinks and Git submodules, and the
-synchronizer requires the clean checkout at the exact locked SHA before consuming result entries.
-It explicitly accepts `results-catalog/v1` and `results-catalog/v2` and rejects every other
-version.
+The lock updater refuses a dirty checkout, a commit other than the current `origin/main`, or an
+unknown catalog schema. CI separately requires the locked commit to be reachable from a fetched
+`origin/main`, so an older merged release remains reproducible while an unmerged commit fails
+closed. The provenance check and synchronizer require a clean checkout at the exact locked SHA.
+They reject tracked symlinks and Git submodules before consuming result entries. Catalog handling
+explicitly accepts `results-catalog/v1` and `results-catalog/v2` and rejects every other version.
 
 Shared site shell maintenance is documented in `docs/site-shell.md`. Preview and visual QA
 expectations are documented in `docs/preview-qa.md`. Before opening a PR, run the same release
@@ -71,19 +72,24 @@ commands used by CI:
 ```bash
 node --test tools/*.test.mjs
 node tools/check-site-shell.mjs
-node tools/check-site-integrity.mjs
+node tools/build-pages-artifact.mjs --output _site
+node tools/check-site-integrity.mjs --site-root _site
 node tools/check-rtl-page.mjs
+GOTHER_RESULTS_ROOT=../gother-labs-results node tools/check-results-source-provenance.mjs
 GOTHER_RESULTS_ROOT=../gother-labs-results node tools/sync-results.mjs --check
 git diff --check
 ```
 
 The Pages deployment calls the same integrity workflow and cannot upload an artifact unless these
-checks pass. `check-site-integrity.mjs` covers local targets and fragments, canonical and Open Graph
-URLs, robots policy, sitemap/indexability parity, heading hierarchy, basic HTML structure, and
-metric-backed claims on every published result domain. `check-rtl-page.mjs` preserves the
-separately reviewed RTL claim boundaries. Workflow actions are pinned to immutable commit SHAs;
-the sole external runtime script, MathJax 3.2.2, is version-pinned and checked against an approved
-SRI digest.
+checks pass. It uploads only the explicit public allowlist assembled in `_site`; repository tools,
+documentation, and other maintenance files are not deployed. `check-site-integrity.mjs` validates
+every HTML file in that exact artifact, including local targets and fragments, canonical and Open
+Graph URLs, robots policy, sitemap/indexability parity, heading hierarchy, basic HTML structure,
+and node-bound metric claims on every published result domain. `check-rtl-page.mjs` preserves the
+separately reviewed RTL claim boundaries. Workflow actions are pinned to immutable commit SHAs,
+Node is fixed by `.node-version`, and the hosted runner is bounded to the Ubuntu 24.04 image line
+(whose patch image remains managed by GitHub). The sole external runtime script, MathJax 3.2.2, is
+version-pinned and checked against an approved SRI digest.
 
 ## Local preview
 

@@ -9,19 +9,20 @@ permissions:
 
 jobs:
   site-integrity:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - name: Checkout website
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           path: website
+          fetch-depth: 0
           persist-credentials: false
 
       - name: Use the release Node.js runtime
         uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
-          node-version: 24
+          node-version-file: website/.node-version
 
       - name: Read pinned results source
         id: results-source
@@ -43,7 +44,14 @@ jobs:
           repository: Gother-Labs/gother-labs-results
           ref: ${{ steps.results-source.outputs.commit }}
           path: gother-labs-results
+          fetch-depth: 0
           persist-credentials: false
+
+      - name: Verify pinned Results provenance
+        working-directory: website
+        env:
+          GOTHER_RESULTS_ROOT: ../gother-labs-results
+        run: node tools/check-results-source-provenance.mjs
 
       - name: Test release-quality checks
         working-directory: website
@@ -53,9 +61,13 @@ jobs:
         working-directory: website
         run: node tools/check-site-shell.mjs
 
+      - name: Build exact Pages artifact
+        working-directory: website
+        run: node tools/build-pages-artifact.mjs --output _site
+
       - name: Check links, metadata, sitemap, and HTML
         working-directory: website
-        run: node tools/check-site-integrity.mjs
+        run: node tools/check-site-integrity.mjs --site-root _site
 
       - name: Check bounded RTL claims
         working-directory: website
@@ -66,3 +78,15 @@ jobs:
         env:
           GOTHER_RESULTS_ROOT: ../gother-labs-results
         run: node tools/sync-results.mjs --check
+
+      - name: Check patch whitespace
+        working-directory: website
+        env:
+          GOTHER_DIFF_BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          if [ -z "$GOTHER_DIFF_BASE" ] ||
+             [ "$GOTHER_DIFF_BASE" = "0000000000000000000000000000000000000000" ] ||
+             ! git cat-file -e "$GOTHER_DIFF_BASE^{commit}"; then
+            GOTHER_DIFF_BASE="$(git rev-parse HEAD^)"
+          fi
+          git diff --check "$GOTHER_DIFF_BASE...HEAD"

@@ -31,8 +31,10 @@ Run these before browser review:
 ```bash
 node --test tools/*.test.mjs
 node tools/check-site-shell.mjs
-node tools/check-site-integrity.mjs
+node tools/build-pages-artifact.mjs --output _site
+node tools/check-site-integrity.mjs --site-root _site
 node tools/check-rtl-page.mjs
+GOTHER_RESULTS_ROOT=../gother-labs-results node tools/check-results-source-provenance.mjs
 GOTHER_RESULTS_ROOT=../gother-labs-results node tools/sync-results.mjs --check
 git diff --check
 ```
@@ -42,8 +44,10 @@ The generated-results check uses the exact source commit in
 stale, or byte-different source-owned generated files and declared artifacts. The same lock lists
 the rich detail pages, historical run surfaces, and support assets that are intentionally curated
 in the website repository; the checker seeds only those explicit paths before generation. It does
-not modify the checkout. A mismatched/dirty source, tracked symlink, or Git submodule fails before
-the catalog or artifacts are consumed.
+not modify the checkout. A mismatched/dirty source, tracked symlink, Git submodule, or locked commit
+that is not reachable from the fetched Results `origin/main` fails before the catalog or artifacts
+are consumed. The Pages builder copies only the explicit public tree into `_site`; the integrity
+checker then validates every HTML file in that exact deployment artifact.
 
 When intentionally advancing or repairing generated results, first check out the locked commit in
 the sibling repository and run:
@@ -56,7 +60,8 @@ Then review the generated diff before committing and rerun the complete command 
 Shell-sensitive changes should not introduce unrelated editorial changes.
 
 The pull-request workflow runs this same set. The Pages workflow reuses it as a required `verify`
-job, so a push or manual deployment cannot upload the static tree after a failed gate.
+job and only deploys from `main`, so a push or manual deployment cannot upload the static tree after
+a failed gate or from another ref.
 
 ## Route Set
 

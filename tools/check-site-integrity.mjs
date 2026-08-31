@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 const scriptPath = fileURLToPath(import.meta.url);
 const defaultSiteRoot = path.resolve(path.dirname(scriptPath), "..");
 const defaultOrigin = "https://www.gotherlabs.com";
-const ignoredDirectories = new Set([".git", ".github", ".codex", "node_modules", "tools"]);
+const ignoredDirectories = new Set([".git"]);
 const approvedExternalScripts = new Map([
   [
     "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js",
@@ -17,23 +17,78 @@ const metricClaimContracts = [
   {
     route: "/results/quadrature-rule-optimization/",
     metrics: "results/quadrature-rule-optimization/artifacts/metrics.json",
-    claims: [{ key: "improvement_pct", digits: 2, suffix: "%" }],
+    claims: [
+      {
+        key: "improvement_pct",
+        digits: 2,
+        suffix: "%",
+        target: {
+          label: "the lead paragraph after the Abstract heading",
+          selector: { tag: "p" },
+          after: { tag: "h2", text: "Abstract" },
+          first: true,
+        },
+      },
+    ],
   },
   {
     route: "/results/rcpsp-psplib-j30/",
     metrics: "results/rcpsp-psplib-j30/artifacts/metrics.json",
     claims: [
-      { key: "best", digits: 3 },
-      { key: "improvement_pct", digits: 2, suffix: "%" },
-      { key: "instances_evaluated", digits: 0, suffix: " out of 80" },
+      {
+        key: "best",
+        digits: 3,
+        match: "startsWith",
+        target: {
+          label: "the current accepted score field",
+          selector: { tag: "p", className: "result-outcome-value" },
+        },
+      },
+      {
+        key: "improvement_pct",
+        digits: 2,
+        prefix: "−",
+        suffix: "%",
+        match: "exact",
+        target: {
+          label: "the current accepted score delta field",
+          selector: { tag: "span" },
+          within: { tag: "p", className: "result-outcome-value" },
+        },
+      },
+      {
+        key: "instances_evaluated",
+        digits: 0,
+        suffix: " out of 80",
+        target: {
+          label: "the current outcome feasibility copy",
+          selector: { tag: "p", className: "result-outcome-copy" },
+        },
+      },
     ],
   },
   {
     route: "/results/qubit-routing-lightsabre/",
     metrics: "results/qubit-routing-lightsabre/artifacts/metrics.json",
     claims: [
-      { key: "added_cnot_reduction_vs_lightsabre", digits: 0, grouped: true },
-      { key: "total_cases", digits: 0, suffix: " public routing cases" },
+      {
+        key: "added_cnot_reduction_vs_lightsabre",
+        digits: 0,
+        grouped: true,
+        target: {
+          label: "the result hero introduction",
+          selector: { tag: "p", className: "results-hero-intro" },
+        },
+      },
+      {
+        key: "total_cases",
+        digits: 0,
+        suffix: " public routing cases",
+        target: {
+          label: "the result hero introduction",
+          selector: { tag: "p", className: "results-hero-intro" },
+        },
+      },
     ],
   },
   {
@@ -45,8 +100,26 @@ const metricClaimContracts = [
         digits: 2,
         prefix: "€",
         suffix: "/day",
+        match: "exact",
+        target: {
+          label: "the Mean gross uplift KPI value",
+          selector: { tag: "text", className: "bess-kpi-value" },
+          after: { tag: "text", className: "bess-kpi-label", text: "Mean gross uplift" },
+          first: true,
+        },
       },
-      { key: "constraint_breach_count", digits: 0, suffix: " breaches" },
+      {
+        key: "constraint_breach_count",
+        digits: 0,
+        suffix: " breaches",
+        match: "exact",
+        target: {
+          label: "the Guardrails KPI value",
+          selector: { tag: "text", className: "bess-kpi-value" },
+          after: { tag: "text", className: "bess-kpi-label", text: "Guardrails" },
+          first: true,
+        },
+      },
     ],
   },
 ];
@@ -85,7 +158,6 @@ async function collectHtmlFiles(root, directory = root, failures = []) {
   const files = [];
   for (const entry of entries.sort((a, b) => a.name.localeCompare(b.name))) {
     if (entry.isDirectory() && ignoredDirectories.has(entry.name)) continue;
-    if (entry.isDirectory() && entry.name.startsWith(".codex-worktree")) continue;
     const target = path.join(directory, entry.name);
     if (entry.isSymbolicLink()) {
       failures.push(
@@ -93,7 +165,7 @@ async function collectHtmlFiles(root, directory = root, failures = []) {
       );
     } else if (entry.isDirectory()) {
       files.push(...(await collectHtmlFiles(root, target, failures)));
-    } else if (entry.isFile() && (entry.name === "index.html" || entry.name === "404.html")) {
+    } else if (entry.isFile() && entry.name.toLowerCase().endsWith(".html")) {
       files.push(target);
     }
   }
@@ -126,6 +198,90 @@ function attributesForTag(tag) {
     attributes.set(match[1].toLowerCase(), decodeEntities(match[2] ?? match[3] ?? match[4] ?? ""));
   }
   return attributes;
+}
+
+function normalizeNodeText(value) {
+  return decodeEntities(value.replace(/<[^>]+>/g, " ")).replace(/\s+/g, " ").trim();
+}
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function elementsMatching(html, selector, start = 0, end = html.length) {
+  const source = html.slice(start, end);
+  const tagName = escapeRegExp(selector.tag);
+  const pattern = new RegExp(`<${tagName}\\b([^>]*)>([\\s\\S]*?)<\\/${tagName}\\s*>`, "gi");
+  const matches = [];
+  let match;
+  while ((match = pattern.exec(source))) {
+    const rawOpen = `<${selector.tag}${match[1]}>`;
+    const attributes = attributesForTag(rawOpen);
+    const classes = new Set((attributes.get("class") ?? "").split(/\s+/).filter(Boolean));
+    if (selector.className && !classes.has(selector.className)) continue;
+    if (selector.id && attributes.get("id") !== selector.id) continue;
+    const text = normalizeNodeText(match[2]);
+    if (selector.text !== undefined && text !== selector.text) continue;
+    const absoluteStart = start + match.index;
+    const openingLength = match[0].indexOf(">") + 1;
+    matches.push({
+      start: absoluteStart,
+      end: absoluteStart + match[0].length,
+      innerStart: absoluteStart + openingLength,
+      innerEnd: absoluteStart + openingLength + match[2].length,
+      text,
+    });
+  }
+  return matches;
+}
+
+function describeSelector(selector) {
+  const classLabel = selector.className ? `.${selector.className}` : "";
+  const idLabel = selector.id ? `#${selector.id}` : "";
+  const textLabel = selector.text === undefined ? "" : ` with text ${JSON.stringify(selector.text)}`;
+  return `<${selector.tag}${idLabel}${classLabel}>${textLabel}`;
+}
+
+function uniqueElement(html, selector, start, end, context) {
+  const matches = elementsMatching(html, selector, start, end);
+  if (matches.length !== 1) {
+    return {
+      error: `${context}: expected exactly one ${describeSelector(selector)}, found ${matches.length}`,
+    };
+  }
+  return { node: matches[0] };
+}
+
+function locateClaimTarget(html, target) {
+  let start = 0;
+  let end = html.length;
+
+  if (target.within) {
+    const container = uniqueElement(html, target.within, start, end, target.label);
+    if (container.error) return container;
+    start = container.node.innerStart;
+    end = container.node.innerEnd;
+  }
+
+  if (target.after) {
+    const anchor = uniqueElement(html, target.after, start, end, target.label);
+    if (anchor.error) return anchor;
+    start = anchor.node.end;
+  }
+
+  const matches = elementsMatching(html, target.selector, start, end);
+  if (target.first) {
+    if (matches.length === 0) {
+      return { error: `${target.label}: missing ${describeSelector(target.selector)}` };
+    }
+    return { node: matches[0] };
+  }
+  if (matches.length !== 1) {
+    return {
+      error: `${target.label}: expected exactly one ${describeSelector(target.selector)}, found ${matches.length}`,
+    };
+  }
+  return { node: matches[0] };
 }
 
 function scanTags(html, route, failures) {
@@ -286,7 +442,7 @@ function validateHeadings(html, route, redirect, failures) {
   }
 }
 
-function localTargetForUrl(siteRoot, url) {
+async function localTargetForUrl(siteRoot, url) {
   let pathname;
   try {
     pathname = decodeURIComponent(url.pathname);
@@ -294,13 +450,23 @@ function localTargetForUrl(siteRoot, url) {
     return { error: `invalid URL encoding in ${url.pathname}` };
   }
   const relative = pathname.replace(/^\/+/, "");
-  const target = pathname.endsWith("/")
+  let target = pathname.endsWith("/")
     ? path.join(siteRoot, relative, "index.html")
     : path.join(siteRoot, relative);
   const resolvedRoot = path.resolve(siteRoot);
-  const resolved = path.resolve(target);
+  let resolved = path.resolve(target);
   if (resolved !== resolvedRoot && !resolved.startsWith(`${resolvedRoot}${path.sep}`)) {
     return { error: `target escapes the published root: ${url.pathname}` };
+  }
+  if (!pathname.endsWith("/")) {
+    try {
+      if ((await fs.stat(resolved)).isDirectory()) {
+        target = path.join(resolved, "index.html");
+        resolved = path.resolve(target);
+      }
+    } catch {
+      // The caller reports the missing target with the original public URL.
+    }
   }
   return { target: resolved };
 }
@@ -342,7 +508,7 @@ async function validateReferences(siteRoot, origin, page, pageByFile, failures) 
       continue;
     }
 
-    const resolved = localTargetForUrl(siteRoot, url);
+    const resolved = await localTargetForUrl(siteRoot, url);
     if (resolved.error) {
       failures.push(`${page.route}: ${label} ${resolved.error}`);
       continue;
@@ -504,9 +670,20 @@ async function validateMetricClaims(siteRoot, pages, failures) {
         useGrouping: claim.grouped ?? false,
       }).format(value);
       const expected = `${claim.prefix ?? ""}${rendered}${claim.suffix ?? ""}`;
-      if (!page.html.includes(expected)) {
+      const target = locateClaimTarget(page.html, claim.target);
+      if (target.error) {
+        failures.push(`${contract.route}: claim metric ${claim.key} cannot bind to ${target.error}`);
+        continue;
+      }
+      const matches =
+        claim.match === "exact"
+          ? target.node.text === expected
+          : claim.match === "startsWith"
+            ? target.node.text.startsWith(expected)
+            : target.node.text.includes(expected);
+      if (!matches) {
         failures.push(
-          `${contract.route}: published claim for ${claim.key} must include ${JSON.stringify(expected)}`,
+          `${contract.route}: ${claim.target.label} for ${claim.key} must ${claim.match === "exact" ? "equal" : claim.match === "startsWith" ? "start with" : "include"} ${JSON.stringify(expected)}; found ${JSON.stringify(target.node.text)}`,
         );
       }
     }
@@ -546,8 +723,28 @@ export async function validateSite({
   return failures;
 }
 
+export function parseCliArguments(args) {
+  let siteRoot = defaultSiteRoot;
+  let sawSiteRoot = false;
+  for (let index = 0; index < args.length; index += 1) {
+    const argument = args[index];
+    if (argument !== "--site-root") {
+      throw new Error(`unknown argument: ${argument}`);
+    }
+    if (sawSiteRoot) throw new Error("--site-root may only be provided once");
+    const value = args[index + 1];
+    if (!value || value.startsWith("--")) {
+      throw new Error("--site-root requires a path");
+    }
+    siteRoot = path.resolve(value);
+    sawSiteRoot = true;
+    index += 1;
+  }
+  return { siteRoot };
+}
+
 async function main() {
-  const failures = await validateSite();
+  const failures = await validateSite(parseCliArguments(process.argv.slice(2)));
   if (failures.length > 0) {
     console.error("Site integrity check failed:");
     for (const failure of failures) console.error(`- ${failure}`);
