@@ -16,7 +16,7 @@ async function collectHtmlFiles(dir = SITE_ROOT) {
   const files = [];
 
   for (const entry of entries) {
-    if (entry.name === ".git") continue;
+    if (entry.name === ".git" || entry.name === "_site") continue;
 
     const fullPath = path.join(dir, entry.name);
 

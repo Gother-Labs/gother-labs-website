@@ -1,0 +1,19 @@
+{
+  "schema_version": "generated-results-source/v1",
+  "repository": "Gother-Labs/gother-labs-results",
+  "commit": "02659da0b23f8dd455c715e3f389cc4160c71708",
+  "catalog_schema": "results-catalog/v2",
+  "curated_detail_slugs": [
+    "iberian-bess-policy-challenge",
+    "quadrature-rule-optimization",
+    "qubit-routing-lightsabre",
+    "rcpsp-psplib-j30"
+  ],
+  "preserved_run_slugs": [
+    "circle-packing-26-unit-square",
+    "quadrature-rule-optimization"
+  ],
+  "curated_paths": [
+    "results/rcpsp-psplib-j30/diff-viewer.js"
+  ]
+}

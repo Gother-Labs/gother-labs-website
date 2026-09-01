@@ -9,7 +9,7 @@
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="../../../assets/gother-mark.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../../../styles.css?v=rtl-audit-v2">
-    <link rel="stylesheet" href="./surface.css?v=rcpsp-v45">
+    <link rel="stylesheet" href="./surface.css?v=rcpsp-v44">
   </head>
   <body class="rcpsp-surface-page">
     <div class="page-shell site-shell">
@@ -43,7 +43,7 @@
 
       <main class="site-main">
         <section class="hero compact-hero page-hero rcpsp-hero">
-          <h1 class="page-title">Evölther RCPSP replay.</h1>
+          <h1 class="page-title">PSPLIB J30 scheduling replay.</h1>
         </section>
 
         <div class="divider" aria-hidden="true"></div>
@@ -51,21 +51,21 @@
         <section class="rcpsp-surface" aria-label="RCPSP run surface">
           <div class="rcpsp-summary">
             <div class="rcpsp-summary-copy">
-              <p class="eyebrow">Historical Evölther replay</p>
+              <p class="eyebrow">Result Replay</p>
               <p class="rcpsp-summary-text">
-                This replay preserves the original Evölther run over 80 frozen PSPLIB J30
-                instances, which established the 12.087 checkpoint. The result ledger now records
-                a later 10.108 incumbent produced by Evölther 2.0.
+                Curated replay of the public best-so-far evolutionary chain over 80 frozen PSPLIB J30
+                instances. The visual focus is j3025_9: all executable jobs, the same resource-load
+                buckets, and schedule compression from 112 to 90 against optimum 84.
               </p>
-              <a class="rcpsp-summary-link" href="/results/rcpsp-psplib-j30/">
-                Return to the current result ledger
+              <a class="rcpsp-summary-link" href="/results/rcpsp-psplib-j30/#fig-1">
+                Open Figure 1: schedule readout
               </a>
             </div>
             <div class="rcpsp-summary-panel">
-              <p class="eyebrow">Evölther checkpoint</p>
+              <p class="eyebrow">Reported Comparison</p>
               <div class="rcpsp-metrics" role="group" aria-label="Current run step">
                 <div class="rcpsp-metric">
-                  <span class="rcpsp-metric-label">CAMPAIGN CHANGE</span>
+                  <span class="rcpsp-metric-label">SCORE CHANGE</span>
                   <strong class="rcpsp-metric-value" id="signal-gains">15.55%</strong>
                 </div>
                 <div class="rcpsp-metric">
@@ -73,7 +73,7 @@
                   <strong class="rcpsp-metric-value rcpsp-metric-value--numeric" id="signal-seed">14.312</strong>
                 </div>
                 <div class="rcpsp-metric">
-                  <span class="rcpsp-metric-label">MAY INCUMBENT</span>
+                  <span class="rcpsp-metric-label">ACCEPTED</span>
                   <strong class="rcpsp-metric-value rcpsp-metric-value--numeric" id="signal-best">12.087</strong>
                 </div>
               </div>
@@ -142,6 +142,6 @@
 
     <script src="../../../scripts.js?v=rtl-audit-v2"></script>
     <script src="./surface-data.js"></script>
-    <script src="./surface.js?v=rcpsp-v45"></script>
+    <script src="./surface.js?v=rcpsp-v44"></script>
   </body>
 </html>
