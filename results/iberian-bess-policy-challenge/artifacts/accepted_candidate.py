@@ -1,4 +1,4 @@
-"""Accepted storage_arbitrage_es policy used for the public pre-sell proof."""
+"""Accepted storage_arbitrage_es policy used for the public benchmark."""
 
 from __future__ import annotations
 
