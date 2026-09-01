@@ -9,7 +9,7 @@
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="../../../assets/gother-mark.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../../../styles.css?v=rtl-audit-v2">
-    <link rel="stylesheet" href="./surface.css?v=storage-bess-v1">
+    <link rel="stylesheet" href="./surface.css?v=storage-bess-v6">
   </head>
   <body class="storage-run-page">
     <div class="page-shell site-shell">
@@ -48,25 +48,67 @@
             Scenario-level replay for the accepted offline dispatch policy: price, charge/discharge action,
             state of charge, commercial baseline comparison, and score trace.
           </p>
+          <div class="storage-run-hero-links" aria-label="Replay links">
+            <a href="../#fig-1">Open result readout</a>
+            <a href="../#fig-4">Open stress-tail figure</a>
+          </div>
         </section>
 
         <div class="divider" aria-hidden="true"></div>
 
-        <section class="storage-run-grid" aria-label="Storage replay controls and dispatch chart">
+        <section class="storage-run-summary" aria-label="Storage replay summary">
           <div class="storage-run-panel storage-run-panel--summary">
-            <p class="eyebrow">Accepted Result</p>
+            <div>
+              <p class="eyebrow">Result Replay</p>
+              <p class="storage-run-summary-text">
+                Curated surface over the public BESS artifacts. The selected scenario drives the dispatch
+                readout, the score trace keeps the accepted objective visible, and every link points back
+                to replayable evidence.
+              </p>
+              <dl class="storage-run-evidence">
+                <div>
+                  <dt>Artifact set</dt>
+                  <dd>public bundle</dd>
+                </div>
+                <div>
+                  <dt>Replay status</dt>
+                  <dd>valid</dd>
+                </div>
+                <div>
+                  <dt>Constraint breaches</dt>
+                  <dd>0</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+
+          <div class="storage-run-panel storage-run-panel--contract">
+            <p class="eyebrow">Replay Contract</p>
+            <ul class="storage-run-contract-list">
+              <li><span>Frozen input</span><strong>1 MW / 4 MWh battery · 8 OMIE scenarios</strong></li>
+              <li><span>Candidate</span><strong>accepted_candidate.py</strong></li>
+              <li><span>Checks</span><strong>score, dispatch, constraints</strong></li>
+              <li><span>Uplift basis</span><strong>gross vs quantile · before degradation proxy</strong></li>
+              <li><span>Excluded</span><strong>intraday, reserves, imbalance, taxes, grid and portfolio effects</strong></li>
+            </ul>
+          </div>
+
+          <div class="storage-run-panel storage-run-panel--metrics">
+            <p class="eyebrow">Reported Comparison</p>
             <div class="storage-run-metrics" id="metric-cards"></div>
             <label class="storage-run-selector">
               <span>Scenario</span>
               <select id="scenario-select"></select>
             </label>
           </div>
+        </section>
 
+        <section class="storage-run-grid" aria-label="Storage replay controls and dispatch chart">
           <div class="storage-run-panel storage-run-panel--chart">
             <div class="storage-run-panel-head">
               <div>
                 <p class="eyebrow" id="scenario-split">Scenario</p>
-                <h2 id="scenario-title">Dispatch trace</h2>
+                <h2 id="scenario-title">Scenario dispatch</h2>
               </div>
               <a href="../artifacts/dispatch_trace.json">dispatch_trace.json</a>
             </div>
@@ -84,11 +126,15 @@
           <div class="storage-run-panel storage-run-panel--code">
             <div class="storage-run-panel-head">
               <h2>Accepted policy</h2>
-              <a href="../artifacts/accepted_candidate.py">accepted_candidate.py</a>
+              <div class="storage-run-panel-links">
+                <a href="../#listing-1">Listing 1</a>
+                <a href="../artifacts/accepted_candidate.py">accepted_candidate.py</a>
+              </div>
             </div>
             <pre><code id="candidate-code"></code></pre>
           </div>
         </section>
+
       </main>
 
       <footer class="site-footer">
@@ -98,6 +144,6 @@
 
     <script src="../../../scripts.js?v=rtl-audit-v2"></script>
     <script src="./surface-data.js?v=storage-bess-v1"></script>
-    <script src="./surface.js?v=storage-bess-v1"></script>
+    <script src="./surface.js?v=storage-bess-v2"></script>
   </body>
 </html>
