@@ -3274,7 +3274,6 @@ async function writeSitemap(results) {
     "/rtl-optimization/",
     "/results/",
     ...results.map((result) => `/results/${result.slug}/`),
-    "/evolther/bess-policy-challenger/",
     "/contact/",
   ];
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
