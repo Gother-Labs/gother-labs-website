@@ -57,6 +57,12 @@ jobs:
         working-directory: website
         run: node --test tools/*.test.mjs
 
+      - name: Check result Markdown contract
+        working-directory: website
+        env:
+          GOTHER_RESULTS_ROOT: ../gother-labs-results
+        run: node tools/check-result-markdown.mjs
+
       - name: Check shared site shell
         working-directory: website
         run: node tools/check-site-shell.mjs
