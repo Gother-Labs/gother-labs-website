@@ -5,6 +5,7 @@ import { execFile as execFileCallback } from "node:child_process";
 import { promisify } from "node:util";
 import { fileURLToPath } from "node:url";
 import { assertNoSpecialGitEntries } from "./results-source-policy.mjs";
+import { articleWithoutTitle, markdownToHtml } from "./result-markdown.mjs";
 import {
   normalizeCopiedRunShell,
   sharedFaviconTag,
@@ -174,156 +175,6 @@ function formatMetric(value, { maximumFractionDigits = 3, minimumFractionDigits 
 
 function formatPercent(value) {
   return `${formatMetric(value, { maximumFractionDigits: 3, minimumFractionDigits: 3 })}%`;
-}
-
-function inlineMarkdown(value) {
-  return escapeHtml(value)
-    .replace(/\[([^\]]+)\]\(((?:https?:\/\/|#|\.{1,2}\/|\/)[^)\s]+)\)/g, (_match, label, href) => {
-      const safeLabel = label;
-      return href.startsWith("#") || href.startsWith("/") || href.startsWith("./") || href.startsWith("../")
-        ? `<a href="${href}">${safeLabel}</a>`
-        : `<a href="${href}" target="_blank" rel="noreferrer">${safeLabel}</a>`;
-    })
-    .replace(/`([^`]+)`/g, "<code>$1</code>")
-    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
-}
-
-function staticMathHtml(value) {
-  return escapeHtml(value)
-    .replace(/\\mathbb\{R\}/g, "ℝ")
-    .replace(/\\sum/g, "∑")
-    .replace(/\\tau/g, "τ")
-    .replace(/\\geq/g, "≥")
-    .replace(/\\times/g, "×")
-    .replace(/\\to/g, "→")
-    .replace(/\\in/g, "∈")
-    .replace(/\\ldots/g, "…")
-    .replace(/\^\{([^}]+)\}/g, "<sup>$1</sup>")
-    .replace(/_\{([^}]+)\}/g, "<sub>$1</sub>")
-    .replace(/\^([0-9*])/g, "<sup>$1</sup>")
-    .replace(/_([a-zA-Z0-9*])/g, "<sub>$1</sub>")
-    .replace(/[{}]/g, "");
-}
-
-function inlineMarkdownWithStaticMath(value) {
-  const formulas = [];
-  const marked = value.replace(/\\\((.+?)\\\)/g, (_match, formula) => {
-    const token = `MATHPLACEHOLDER${formulas.length}END`;
-    formulas.push(formula);
-    return token;
-  });
-  let html = inlineMarkdown(marked);
-  formulas.forEach((formula, index) => {
-    html = html.replace(
-      `MATHPLACEHOLDER${index}END`,
-      `<span class="static-math" role="math">${staticMathHtml(formula)}</span>`,
-    );
-  });
-  return html;
-}
-
-function markdownToHtml(markdown, inserts = {}, options = {}) {
-  const lines = markdown.replace(/\r\n/g, "\n").split("\n");
-  const chunks = [];
-  let paragraph = [];
-  let code = [];
-  let formula = [];
-  let inCode = false;
-  let inFormula = false;
-  let equationIndex = 0;
-
-  const flushParagraph = () => {
-    if (!paragraph.length) return;
-    const renderInline = options.staticMath ? inlineMarkdownWithStaticMath : inlineMarkdown;
-    chunks.push(`<p>${renderInline(paragraph.join(" "))}</p>`);
-    paragraph = [];
-  };
-
-  const flushCode = () => {
-    if (!code.length) return;
-    chunks.push(`<pre><code>${escapeHtml(code.join("\n"))}</code></pre>`);
-    code = [];
-  };
-
-  const flushFormula = () => {
-    if (!formula.length) return;
-    equationIndex += 1;
-    const renderedFormula = options.staticMath
-      ? staticMathHtml(formula.join("\n"))
-      : `\\[\n${escapeHtml(formula.join("\n"))}\n\\]`;
-    chunks.push(`<div class="formula-block" id="eq-${equationIndex}">
-  <div class="formula-math" role="math">${renderedFormula}</div>
-  <span class="equation-number">(${equationIndex})</span>
-</div>`);
-    formula = [];
-  };
-
-  for (const line of lines) {
-    if (line.startsWith("```")) {
-      if (inCode) {
-        flushCode();
-        inCode = false;
-      } else {
-        flushParagraph();
-        inCode = true;
-      }
-      continue;
-    }
-
-    if (line.trim() === "$$") {
-      if (inFormula) {
-        flushFormula();
-        inFormula = false;
-      } else {
-        flushParagraph();
-        inFormula = true;
-      }
-      continue;
-    }
-
-    if (inCode) {
-      code.push(line);
-      continue;
-    }
-
-    if (inFormula) {
-      formula.push(line);
-      continue;
-    }
-
-    if (!line.trim()) {
-      flushParagraph();
-      continue;
-    }
-
-    const visual = line.trim().match(/^\{\{visual:([a-z0-9-]+)\}\}$/);
-    if (visual) {
-      flushParagraph();
-      if (inserts[visual[1]]) {
-        chunks.push(inserts[visual[1]]);
-      }
-      continue;
-    }
-
-    const heading = line.match(/^(#{1,3})\s+(.+)$/);
-    if (heading) {
-      flushParagraph();
-      const level = Math.min(heading[1].length, 3);
-      chunks.push(`<h${level}>${escapeHtml(heading[2])}</h${level}>`);
-      continue;
-    }
-
-    paragraph.push(line.trim());
-  }
-
-  flushParagraph();
-  flushCode();
-  flushFormula();
-  return chunks.join("\n");
-}
-
-function articleWithoutTitle(markdown) {
-  return markdown.replace(/\r\n/g, "\n").replace(/^#\s+.+\n+/, "");
 }
 
 async function alignCopiedRunShell(outputRoot) {
@@ -3149,6 +3000,7 @@ async function writeDetail(result, { preserveRun = false, preserveDetail = false
 
   const full = result;
   const article = await readTextInside(resultRoot, "article.md", `Result ${result.slug} article`);
+  const markdownOptions = { sourceName: `results/${result.slug}/article.md` };
   const evolution = full.artifacts?.evolution_trace
     ? JSON.parse(
         await readTextInside(
@@ -3275,7 +3127,7 @@ async function writeDetail(result, { preserveRun = false, preserveDetail = false
 
         <section class="result-detail result-whitepaper-shell">
           <article class="result-article result-whitepaper">
-${markdownToHtml(articleWithoutTitle(article), quadratureWhitepaperInserts(full, evolution, candidateCode))}
+${markdownToHtml(articleWithoutTitle(article), quadratureWhitepaperInserts(full, evolution, candidateCode), markdownOptions)}
           </article>
         </section>`
     : isRcpspWhitepaper
@@ -3286,7 +3138,7 @@ ${markdownToHtml(articleWithoutTitle(article), quadratureWhitepaperInserts(full,
 
         <section class="result-detail result-whitepaper-shell rcpsp-whitepaper-shell">
           <article class="result-article result-whitepaper rcpsp-whitepaper">
-${markdownToHtml(articleWithoutTitle(article), rcpspWhitepaperInserts(full, evolution, candidateCode, scheduleExample, scoreTrace))}
+${markdownToHtml(articleWithoutTitle(article), rcpspWhitepaperInserts(full, evolution, candidateCode, scheduleExample, scoreTrace), markdownOptions)}
           </article>
         </section>`
       : isQubitRoutingWhitepaper
@@ -3297,7 +3149,7 @@ ${markdownToHtml(articleWithoutTitle(article), rcpspWhitepaperInserts(full, evol
 
         <section class="result-detail result-whitepaper-shell qubit-routing-whitepaper-shell">
           <article class="result-article result-whitepaper qubit-routing-whitepaper">
-${markdownToHtml(articleWithoutTitle(article), qubitRoutingWhitepaperInserts(full, evolution, candidateCode, replay, scoreTrace))}
+${markdownToHtml(articleWithoutTitle(article), qubitRoutingWhitepaperInserts(full, evolution, candidateCode, replay, scoreTrace), markdownOptions)}
           </article>
         </section>`
       : isCirclePackingWhitepaper
@@ -3308,7 +3160,7 @@ ${markdownToHtml(articleWithoutTitle(article), qubitRoutingWhitepaperInserts(ful
 
         <section class="result-detail result-whitepaper-shell circle-packing-whitepaper-shell">
           <article class="result-article result-whitepaper circle-packing-whitepaper">
-${markdownToHtml(articleWithoutTitle(article), circlePackingWhitepaperInserts(full, evolution, candidateCode, replay, scoreTrace, circlePackingNativeFigures), { staticMath: true })}
+${markdownToHtml(articleWithoutTitle(article), circlePackingWhitepaperInserts(full, evolution, candidateCode, replay, scoreTrace, circlePackingNativeFigures), { ...markdownOptions, staticMath: true })}
           </article>
         </section>`
     : `        <section class="hero compact-hero page-hero result-detail-hero">
@@ -3319,7 +3171,7 @@ ${markdownToHtml(articleWithoutTitle(article), circlePackingWhitepaperInserts(fu
 
         <section class="result-detail">
           <article class="result-article">
-${markdownToHtml(articleWithoutTitle(article), quadratureProblemVisuals(full, evolution))}
+${markdownToHtml(articleWithoutTitle(article), quadratureProblemVisuals(full, evolution), markdownOptions)}
           </article>
         </section>
 
