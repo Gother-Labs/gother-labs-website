@@ -3,17 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Göther Labs | Governed Improvement for Technical Systems</title>
-    <meta
-      name="description"
-      content="Göther Labs challenges optimization systems under frozen evaluation contracts and returns replayable evidence for what improves."
-    >
+    <title>Göther Labs | Better is measurable.</title>
+    <meta name="description" content="Independent algorithmic research and verified RTL/PPA optimization. Explore published results, their evidence and their limits.">
     <link rel="canonical" href="https://www.gotherlabs.com/">
-    <meta property="og:title" content="Göther Labs | Governed Improvement for Technical Systems">
-    <meta
-      property="og:description"
-      content="We challenge optimization systems—and prove what improves through frozen evaluation, offline search, and replayable evidence."
-    >
+    <meta property="og:title" content="Göther Labs | Better is measurable.">
+    <meta property="og:description" content="Independent algorithmic research and verified RTL/PPA optimization. Explore published results, their evidence and their limits.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.gotherlabs.com/">
     <meta property="og:image" content="https://www.gotherlabs.com/assets/og-image.png">
@@ -21,159 +15,197 @@
     <meta name="twitter:image" content="https://www.gotherlabs.com/assets/og-image.png">
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="./assets/gother-mark.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="./styles.css?v=rtl-audit-v2">
+    <link rel="stylesheet" href="./styles.css?v=editorial-v1">
+    <link rel="stylesheet" href="./assets/studio.css?v=editorial-v1">
   </head>
-  <body class="home-page">
+  <body class="studio-page">
     <a class="skip-link" href="#site-main">Skip to content</a>
     <div class="page-shell site-shell">
       <header class="site-header">
         <nav class="site-nav" aria-label="Primary">
-          <a href="./results/">Results</a>
-          <a href="./company/">Company</a>
-          <a href="./contact/">Contact</a>
+          <a class="brand nav-brand nav-home-wordmark" href="./" aria-label="Göther Labs home"><svg class="gother-emblem" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="7" r="3"/><circle cx="6" cy="25" r="3"/><circle cx="26" cy="25" r="3"/></svg><span class="nav-wordmark-text">Göther Labs</span></a>
+          <div class="nav-links"><a href="./results/">Results</a><a href="./company/">Company</a><a href="./contact/">Contact</a></div>
         </nav>
       </header>
-
-      <main class="site-main home-main" id="site-main">
-        <section class="gother-home-hero" aria-labelledby="gother-home-title">
-          <div class="gother-home-wordmark animated-symbol-scope" aria-label="Göther Labs">
-            <span aria-hidden="true" class="wordmark-mark-wrap">
-              <svg class="animated-reference-geometry live-symbol-svg" viewBox="0 0 64 64" focusable="false">
-                <g class="source-geometry" aria-hidden="true">
-                  <circle class="source-geometry-dot" cx="34.5" cy="34.5" r="3.6" />
-                  <circle class="source-geometry-dot" cx="21" cy="58" r="3.6" />
-                  <circle class="source-geometry-dot" cx="48" cy="58" r="3.6" />
-                </g>
-                <path class="live-trail" d="" />
-                <path class="live-trail" d="" />
-                <path class="live-trail" d="" />
-                <circle class="geometry-dot live-geometry-dot" cx="34.2" cy="28.4" r="3.34" />
-                <circle class="geometry-dot live-geometry-dot" cx="20.9" cy="50.6" r="3.34" />
-                <circle class="geometry-dot live-geometry-dot" cx="47.5" cy="50.6" r="3.34" />
-              </svg>
-            </span>
-            <span>Göther Labs</span>
-          </div>
-
-          <div class="gother-home-hero-grid">
-            <div>
-              <p class="eyebrow">Governed improvement</p>
-              <h1 id="gother-home-title">We challenge optimization systems—and prove what improves.</h1>
-            </div>
-            <div class="gother-home-hero-copy">
-              <p>
-                Göther Labs develops governed improvement loops for technical systems. We search for
-                stronger candidates offline, test them against frozen rules, and return evidence that
-                can be inspected before any operational decision.
-              </p>
-              <div class="gother-home-actions" aria-label="Primary actions">
-                <a href="./rtl-optimization/">Explore verified RTL/PPA optimization <span aria-hidden="true">→</span></a>
-                <a href="./results/">Explore results</a>
-              </div>
+      <main class="site-main" id="site-main">
+        <section class="studio-wrap studio-hero" aria-labelledby="home-title">
+          <div class="studio-hero-copy">
+            <p class="studio-label">Independent algorithmic research</p>
+            <h1 id="home-title">Better is<br><em>measurable.</em></h1>
+            <p class="studio-hero-intro">We search for stronger algorithms and implementations. Then we put every improvement to the test.</p>
+            <div class="studio-hero-actions">
+              <a class="studio-link" href="./rtl-optimization/">Explore RTL/PPA optimization <span aria-hidden="true">↗</span></a>
+              <a class="studio-link studio-link--quiet" href="#research">Discover the research <span aria-hidden="true">↓</span></a>
             </div>
           </div>
-
-          <figure class="gother-method-instrument" aria-labelledby="method-instrument-title">
-            <figcaption id="method-instrument-title">
-              <span>Governed challenge / evaluation path</span>
-              <strong>Rules remain fixed while candidates change</strong>
-            </figcaption>
-            <ol>
-              <li><span>01 / Baseline</span><strong>Known behaviour</strong><i aria-hidden="true"></i></li>
-              <li><span>02 / Candidate</span><strong>Offline search</strong><i aria-hidden="true"></i></li>
-              <li class="gother-method-contract"><span>03 / Frozen contract</span><strong>Constraints + score</strong><i aria-hidden="true"></i></li>
-              <li><span>04 / Replay</span><strong>Same fixture</strong><i aria-hidden="true"></i></li>
-              <li class="gother-method-decision"><span>05 / Decision</span><strong>Accept / reject</strong><i aria-hidden="true"></i></li>
-            </ol>
+          <figure class="studio-figure" data-packing-figure data-view="packing">
+            <div class="studio-figure-top"><p class="studio-label">Fig. 01 / A question of space</p><div class="studio-view-switch" data-packing-control hidden aria-label="Figure view"><button type="button" data-packing-view="packing" aria-pressed="true">Packing</button><button type="button" data-packing-view="contacts" aria-pressed="false">Contacts</button></div></div>
+            <!-- studio-packing:start -->
+<svg class="studio-packing" viewBox="0 0 500 500" role="img" aria-labelledby="packing-title packing-description">
+<title id="packing-title">The published 26-circle packing</title><desc id="packing-description">Variable-radius circles inside a unit square, drawn from the exact rational certificate. Use the previous and next circle buttons to inspect radii, or show the contact graph.</desc>
+<rect class="packing-boundary" x="20" y="20" width="460" height="460"/>
+<circle class="packing-circle" data-circle="0" data-radius="0.110779012790715890486477374499745228486125297303881232394825720292904940688057239873305559404" cx="70.958346" cy="429.041654" r="50.958346"><title>Circle 0; radius 0.110779</title></circle>
+<circle class="packing-circle" data-circle="1" data-radius="0.0957323293070215966961054284625625657405642181028606726112816098373339354153967070450476434043" cx="165.701074" cy="435.963129" r="44.036871"><title>Circle 1; radius 0.095732</title></circle>
+<circle class="packing-circle" data-circle="2" data-radius="0.103060520141582476472528404280602004808622873626464488044961836349665944644964743238743459404" cx="257.083631" cy="432.592161" r="47.407839"><title>Circle 2; radius 0.103061</title></circle>
+<circle class="packing-circle" data-circle="3" data-radius="0.106790144628581006596745932301489421552886271632344774416779758637988953145917705811886359404" cx="353.599690" cy="430.876533" r="49.123467"><title>Circle 3; radius 0.106790</title></circle>
+<circle class="packing-circle" data-circle="4" data-radius="0.0846395006957730816459236244619634448124159661795454430506380684650182912209684617406129404043" cx="441.065830" cy="441.065830" r="38.934170"><title>Circle 4; radius 0.084640</title></circle>
+<circle class="packing-circle" data-circle="5" data-radius="0.0923915515709588517343220951164577212403525673712287260473380719235554592489738590265467634043" cx="62.500114" cy="335.966727" r="42.500114"><title>Circle 5; radius 0.092392</title></circle>
+<circle class="packing-circle" data-circle="6" data-radius="0.0958423257455047368675902589438365741619692045200263461065687720409107700439240746919314784043" cx="138.488157" cy="294.454960" r="44.087470"><title>Circle 6; radius 0.095842</title></circle>
+<circle class="packing-circle" data-circle="7" data-radius="0.0998983505927546987758993754698606465580623659716301252397654147238127212628250347320063304043" cx="205.087994" cy="355.050268" r="45.953241"><title>Circle 7; radius 0.099898</title></circle>
+<circle class="packing-circle" data-circle="8" data-radius="0.112077088950256133401763768979145941769846667579402537660764965725445083364045450128746688404" cx="302.015165" cy="344.416813" r="51.555461"><title>Circle 8; radius 0.112077</title></circle>
+<circle class="packing-circle" data-circle="9" data-radius="0.130221101065224376075477454980060708196006047894326624259207957570155517831094701353066233404" cx="420.098294" cy="344.479635" r="59.901706"><title>Circle 9; radius 0.130221</title></circle>
+<circle class="packing-circle" data-circle="10" data-radius="0.0939273372774435018672877322588641810810048406764453374393618638481414653546241963967183984043" cx="63.206575" cy="250.262950" r="43.206575"><title>Circle 10; radius 0.093927</title></circle>
+<circle class="packing-circle" data-circle="11" data-radius="0.0960189757582538363730925952587227926419747426145101833141020642786439035994309166222972064043" cx="138.657256" cy="206.198923" r="44.168729"><title>Circle 11; radius 0.096019</title></circle>
+<circle class="packing-circle is-selected" data-circle="12" data-radius="0.137010430123747583636399778290888405915560895567961195652912550852855263488885469706456934404" cx="236.216827" cy="250.612685" r="63.024798"><title>Circle 12; radius 0.137010</title></circle>
+<circle class="packing-circle" data-circle="13" data-radius="0.117629688046541794712762341654601561943397172841298539423988172923223462625063865968159393404" cx="353.342396" cy="252.055390" r="54.109657"><title>Circle 13; radius 0.117630</title></circle>
+<circle class="packing-circle" data-circle="14" data-radius="0.0788603729159637434414518818077288293712482235447546012876691198648646080616848964152540154043" cx="443.724228" cy="251.249155" r="36.275772"><title>Circle 14; radius 0.078860</title></circle>
+<circle class="packing-circle" data-circle="15" data-radius="0.0925920949514354636324800478069544693054015187132861807931432385292103512703718932927879624043" cx="62.592364" cy="164.466210" r="42.592364"><title>Circle 15; radius 0.092592</title></circle>
+<circle class="packing-circle" data-circle="16" data-radius="0.0694401937112583723419727489379629772761433840726520530794062566607805261436810260841896504043" cx="129.038923" cy="130.697895" r="31.942489"><title>Circle 16; radius 0.069440</title></circle>
+<circle class="packing-circle" data-circle="17" data-radius="0.100600367818711405681433767165946237462328037439200883613002369617238338608327214499735318404" cx="205.820357" cy="145.623371" r="46.276169"><title>Circle 17; radius 0.100600</title></circle>
+<circle class="packing-circle" data-circle="18" data-radius="0.115148880160022989180727894295815238854476569436890251394249137741269607671300744879537569404" cx="304.433712" cy="156.799582" r="52.968485"><title>Circle 18; radius 0.115149</title></circle>
+<circle class="packing-circle" data-circle="19" data-radius="0.133258572770811598365662465429433340016858638125499029494752587364674812779186182663358404404" cx="418.701057" cy="156.937618" r="61.298943"><title>Circle 19; radius 0.133259</title></circle>
+<circle class="packing-circle" data-circle="20" data-radius="0.111156179410444868573889925544221568948084736019740812747861472955464228332160085785391880404" cx="71.131843" cy="71.131843" r="51.131843"><title>Circle 20; radius 0.111156</title></circle>
+<circle class="packing-circle" data-circle="21" data-radius="0.0961513340457649951778832833004350677454069032544986059276228548148538076864677825724940504043" cx="166.243180" cy="64.229614" r="44.229614"><title>Circle 21; radius 0.096151</title></circle>
+<circle class="packing-circle" data-circle="22" data-radius="0.103467233357952196125339901243763909329700430447427208742018518210547067153043461984652097404" cx="258.006032" cy="67.594927" r="47.594927"><title>Circle 22; radius 0.103467</title></circle>
+<circle class="packing-circle" data-circle="23" data-radius="0.105182560268749033341367653311566918581848213762693244838433261817353841616517571161812393404" cx="353.981694" cy="68.383978" r="48.383978"><title>Circle 23; radius 0.105183</title></circle>
+<circle class="packing-circle" data-circle="24" data-radius="0.0849262624548990698845429972405896063286149053340542141101222431881100521039184571334397244043" cx="440.933919" cy="59.066081" r="39.066081"><title>Circle 24; radius 0.084926</title></circle>
+<circle class="packing-circle" data-circle="25" data-radius="0.0691806763572344820974407544002623682677761062418515460549932416266808959736405968686212814043" cx="128.710158" cy="369.733157" r="31.823111"><title>Circle 25; radius 0.069181</title></circle>
+<g class="packing-contacts"><line x1="70.958346" y1="429.041654" x2="165.701074" y2="435.963128"/>
+<line x1="70.958346" y1="429.041654" x2="62.500114" y2="335.966727"/>
+<line x1="70.958346" y1="429.041654" x2="128.710158" y2="369.733157"/>
+<line x1="165.701074" y1="435.963128" x2="257.083631" y2="432.592161"/>
+<line x1="165.701074" y1="435.963128" x2="205.087994" y2="355.050268"/>
+<line x1="165.701074" y1="435.963128" x2="128.710158" y2="369.733157"/>
+<line x1="257.083631" y1="432.592161" x2="353.599690" y2="430.876533"/>
+<line x1="257.083631" y1="432.592161" x2="205.087994" y2="355.050268"/>
+<line x1="257.083631" y1="432.592161" x2="302.015165" y2="344.416813"/>
+<line x1="353.599690" y1="430.876533" x2="441.065829" y2="441.065829"/>
+<line x1="353.599690" y1="430.876533" x2="302.015165" y2="344.416813"/>
+<line x1="353.599690" y1="430.876533" x2="420.098293" y2="344.479635"/>
+<line x1="441.065829" y1="441.065829" x2="420.098293" y2="344.479635"/>
+<line x1="62.500114" y1="335.966727" x2="138.488157" y2="294.454960"/>
+<line x1="62.500114" y1="335.966727" x2="63.206575" y2="250.262950"/>
+<line x1="62.500114" y1="335.966727" x2="128.710158" y2="369.733157"/>
+<line x1="138.488157" y1="294.454960" x2="205.087994" y2="355.050268"/>
+<line x1="138.488157" y1="294.454960" x2="63.206575" y2="250.262950"/>
+<line x1="138.488157" y1="294.454960" x2="138.657256" y2="206.198923"/>
+<line x1="138.488157" y1="294.454960" x2="236.216827" y2="250.612685"/>
+<line x1="138.488157" y1="294.454960" x2="128.710158" y2="369.733157"/>
+<line x1="205.087994" y1="355.050268" x2="302.015165" y2="344.416813"/>
+<line x1="205.087994" y1="355.050268" x2="236.216827" y2="250.612685"/>
+<line x1="205.087994" y1="355.050268" x2="128.710158" y2="369.733157"/>
+<line x1="302.015165" y1="344.416813" x2="236.216827" y2="250.612685"/>
+<line x1="302.015165" y1="344.416813" x2="353.342396" y2="252.055390"/>
+<line x1="420.098293" y1="344.479635" x2="353.342396" y2="252.055390"/>
+<line x1="420.098293" y1="344.479635" x2="443.724228" y2="251.249155"/>
+<line x1="63.206575" y1="250.262950" x2="138.657256" y2="206.198923"/>
+<line x1="63.206575" y1="250.262950" x2="62.592364" y2="164.466210"/>
+<line x1="138.657256" y1="206.198923" x2="236.216827" y2="250.612685"/>
+<line x1="138.657256" y1="206.198923" x2="62.592364" y2="164.466210"/>
+<line x1="138.657256" y1="206.198923" x2="129.038923" y2="130.697895"/>
+<line x1="138.657256" y1="206.198923" x2="205.820357" y2="145.623372"/>
+<line x1="236.216827" y1="250.612685" x2="353.342396" y2="252.055390"/>
+<line x1="236.216827" y1="250.612685" x2="205.820357" y2="145.623372"/>
+<line x1="236.216827" y1="250.612685" x2="304.433711" y2="156.799582"/>
+<line x1="353.342396" y1="252.055390" x2="443.724228" y2="251.249155"/>
+<line x1="353.342396" y1="252.055390" x2="304.433711" y2="156.799582"/>
+<line x1="353.342396" y1="252.055390" x2="418.701056" y2="156.937618"/>
+<line x1="443.724228" y1="251.249155" x2="418.701056" y2="156.937618"/>
+<line x1="62.592364" y1="164.466210" x2="129.038923" y2="130.697895"/>
+<line x1="62.592364" y1="164.466210" x2="71.131843" y2="71.131843"/>
+<line x1="129.038923" y1="130.697895" x2="205.820357" y2="145.623372"/>
+<line x1="129.038923" y1="130.697895" x2="71.131843" y2="71.131843"/>
+<line x1="129.038923" y1="130.697895" x2="166.243181" y2="64.229614"/>
+<line x1="205.820357" y1="145.623372" x2="304.433711" y2="156.799582"/>
+<line x1="205.820357" y1="145.623372" x2="166.243181" y2="64.229614"/>
+<line x1="205.820357" y1="145.623372" x2="258.006032" y2="67.594927"/>
+<line x1="304.433711" y1="156.799582" x2="418.701056" y2="156.937618"/>
+<line x1="304.433711" y1="156.799582" x2="258.006032" y2="67.594927"/>
+<line x1="304.433711" y1="156.799582" x2="353.981694" y2="68.383978"/>
+<line x1="418.701056" y1="156.937618" x2="353.981694" y2="68.383978"/>
+<line x1="418.701056" y1="156.937618" x2="440.933919" y2="59.066081"/>
+<line x1="71.131843" y1="71.131843" x2="166.243181" y2="64.229614"/>
+<line x1="166.243181" y1="64.229614" x2="258.006032" y2="67.594927"/>
+<line x1="258.006032" y1="67.594927" x2="353.981694" y2="68.383978"/>
+<line x1="353.981694" y1="68.383978" x2="440.933919" y2="59.066081"/>
+<line x1="70.958346" y1="429.041654" x2="20.000000" y2="429.041654"/>
+<line x1="70.958346" y1="429.041654" x2="70.958346" y2="480.000000"/>
+<line x1="165.701074" y1="435.963128" x2="165.701074" y2="480.000000"/>
+<line x1="257.083631" y1="432.592161" x2="257.083631" y2="480.000000"/>
+<line x1="353.599690" y1="430.876533" x2="353.599690" y2="480.000000"/>
+<line x1="441.065829" y1="441.065829" x2="480.000000" y2="441.065829"/>
+<line x1="441.065829" y1="441.065829" x2="441.065829" y2="480.000000"/>
+<line x1="62.500114" y1="335.966727" x2="20.000000" y2="335.966727"/>
+<line x1="420.098293" y1="344.479635" x2="480.000000" y2="344.479635"/>
+<line x1="63.206575" y1="250.262950" x2="20.000000" y2="250.262950"/>
+<line x1="443.724228" y1="251.249155" x2="480.000000" y2="251.249155"/>
+<line x1="62.592364" y1="164.466210" x2="20.000000" y2="164.466210"/>
+<line x1="418.701056" y1="156.937618" x2="480.000000" y2="156.937618"/>
+<line x1="71.131843" y1="71.131843" x2="20.000000" y2="71.131843"/>
+<line x1="71.131843" y1="71.131843" x2="71.131843" y2="20.000000"/>
+<line x1="166.243181" y1="64.229614" x2="166.243181" y2="20.000000"/>
+<line x1="258.006032" y1="67.594927" x2="258.006032" y2="20.000000"/>
+<line x1="353.981694" y1="68.383978" x2="353.981694" y2="20.000000"/>
+<line x1="440.933919" y1="59.066081" x2="480.000000" y2="59.066081"/>
+<line x1="440.933919" y1="59.066081" x2="440.933919" y2="20.000000"/></g>
+<circle class="packing-center" data-center="0" cx="70.958346" cy="429.041654" r="1.7"/>
+<circle class="packing-center" data-center="1" cx="165.701074" cy="435.963129" r="1.7"/>
+<circle class="packing-center" data-center="2" cx="257.083631" cy="432.592161" r="1.7"/>
+<circle class="packing-center" data-center="3" cx="353.599690" cy="430.876533" r="1.7"/>
+<circle class="packing-center" data-center="4" cx="441.065830" cy="441.065830" r="1.7"/>
+<circle class="packing-center" data-center="5" cx="62.500114" cy="335.966727" r="1.7"/>
+<circle class="packing-center" data-center="6" cx="138.488157" cy="294.454960" r="1.7"/>
+<circle class="packing-center" data-center="7" cx="205.087994" cy="355.050268" r="1.7"/>
+<circle class="packing-center" data-center="8" cx="302.015165" cy="344.416813" r="1.7"/>
+<circle class="packing-center" data-center="9" cx="420.098294" cy="344.479635" r="1.7"/>
+<circle class="packing-center" data-center="10" cx="63.206575" cy="250.262950" r="1.7"/>
+<circle class="packing-center" data-center="11" cx="138.657256" cy="206.198923" r="1.7"/>
+<circle class="packing-center is-selected" data-center="12" cx="236.216827" cy="250.612685" r="1.7"/>
+<circle class="packing-center" data-center="13" cx="353.342396" cy="252.055390" r="1.7"/>
+<circle class="packing-center" data-center="14" cx="443.724228" cy="251.249155" r="1.7"/>
+<circle class="packing-center" data-center="15" cx="62.592364" cy="164.466210" r="1.7"/>
+<circle class="packing-center" data-center="16" cx="129.038923" cy="130.697895" r="1.7"/>
+<circle class="packing-center" data-center="17" cx="205.820357" cy="145.623371" r="1.7"/>
+<circle class="packing-center" data-center="18" cx="304.433712" cy="156.799582" r="1.7"/>
+<circle class="packing-center" data-center="19" cx="418.701057" cy="156.937618" r="1.7"/>
+<circle class="packing-center" data-center="20" cx="71.131843" cy="71.131843" r="1.7"/>
+<circle class="packing-center" data-center="21" cx="166.243180" cy="64.229614" r="1.7"/>
+<circle class="packing-center" data-center="22" cx="258.006032" cy="67.594927" r="1.7"/>
+<circle class="packing-center" data-center="23" cx="353.981694" cy="68.383978" r="1.7"/>
+<circle class="packing-center" data-center="24" cx="440.933919" cy="59.066081" r="1.7"/>
+<circle class="packing-center" data-center="25" cx="128.710158" cy="369.733157" r="1.7"/></svg>
+            <!-- studio-packing:end -->
+            <div class="studio-figure-readout" data-packing-control hidden><span data-circle-readout aria-live="polite" aria-atomic="true">Circle 12 / r = 0.137010</span><div class="studio-circle-navigation"><button type="button" data-circle-prev aria-label="Previous circle">←</button><button type="button" data-circle-next aria-label="Next circle">→</button></div></div>
+            <figcaption><a href="./results/circle-packing-26-unit-square/">26 circles. One square. <span aria-hidden="true">↗</span></a><p data-packing-description>26 circles inside a unit square. All 455 certificate conditions passed.</p><p>Rounded drawing. The exact certificate determines validity.</p></figcaption>
           </figure>
         </section>
-
-        <section class="gother-home-thesis" aria-labelledby="gother-thesis-title">
-          <p class="gother-home-index">01 / Thesis</p>
-          <div>
-            <h2 id="gother-thesis-title">Better should be measurable. A promising result should survive scrutiny.</h2>
-            <p>
-              Important algorithms should not improve through intuition alone. Göther works on bounded
-              technical surfaces where the baseline is visible, the rules can be frozen, and a candidate
-              has to earn the right to move forward.
-            </p>
+        <div class="studio-wrap"><div class="studio-intro-line"><p>A fixed test. An open search.</p><p><a href="./results/circle-packing-26-unit-square/artifacts/exact.csv"><span data-result-metric="accepted_sum_radii">Exact 26-circle packing · strict certificate 2.635983084917607783…</span> ↗</a></p></div></div>
+        <section class="studio-wrap studio-work" id="research" aria-labelledby="work-title">
+          <div class="studio-section-heading"><p class="studio-label">01 / Selected research</p><h2 class="studio-serif" id="work-title">Small changes.<br>Real consequences.</h2><p>Different problems, one discipline: make the improvement measurable and the evidence inspectable.</p></div>
+          <div class="studio-research-list">
+            <a class="studio-result" href="./results/quadrature-rule-optimization/"><p class="studio-label">Scientific computing</p><h3>A more accurate approximation.</h3><p>Quadrature rule optimization · 83.37% lower evaluated objective</p><span aria-hidden="true">↗</span></a>
+            <a class="studio-result" href="./results/rcpsp-psplib-j30/"><p class="studio-label">Operational planning</p><h3>A better order of operations.</h3><p>PSPLIB J30 scheduling · 5.01% mean gap to optimum</p><span aria-hidden="true">↗</span></a>
+            <a class="studio-result" href="./results/qubit-routing-lightsabre/"><p class="studio-label">Quantum compilation</p><h3>Fewer gates. The same circuit.</h3><p>LightSABRE routing benchmark · 12,294 fewer added CNOTs</p><span aria-hidden="true">↗</span></a>
+            <a class="studio-result" href="./results/iberian-bess-policy-challenge/"><p class="studio-label">Energy optimization</p><h3>Decisions under real constraints.</h3><p>Iberian BESS policy benchmark · 33.714% lower score</p><span aria-hidden="true">↗</span></a>
+            <a class="studio-link" href="./results/">Explore all five studies <span aria-hidden="true">→</span></a>
           </div>
         </section>
-
-        <section class="gother-home-results" aria-labelledby="gother-results-title">
-          <div class="gother-home-section-heading">
-            <p class="gother-home-index">02 / Selected results</p>
-            <div>
-              <h2 id="gother-results-title">One discipline, tested across different optimization surfaces.</h2>
-              <p>Each result exposes its own problem, evaluation contract, accepted improvement, and limitations.</p>
-            </div>
+        <section class="studio-offer" aria-labelledby="offer-title"><div class="studio-wrap studio-offer-inner">
+          <div class="studio-offer-copy"><p class="studio-label">02 / Work with Göther</p><h2 class="studio-serif" id="offer-title">One block.<br>A better<br>implementation.</h2><p>Our current commercial focus is RTL/PPA optimization. We explore one owned RTL block within your interface, correctness requirements and implementation flow.</p><p style="margin-top: 18px">You receive the RTL, the exact patch and the evidence to assess it—or a documented no-improvement finding.</p><a class="studio-link" href="./rtl-optimization/">Explore the pilot <span aria-hidden="true">↗</span></a></div>
+          <div class="studio-rtl-study" data-rtl-study><p class="studio-label">From the public RTL/PPA study</p>
+            <div class="studio-rtl-tabs" data-rtl-controls hidden aria-label="Published RTL case"><button type="button" data-rtl-case="sha1" aria-pressed="false">SHA-1</button><button type="button" data-rtl-case="int8" aria-pressed="false">INT8 MatVec</button><button type="button" data-rtl-case="mlkem" aria-pressed="true">ML-KEM CBD</button></div>
+            <div class="studio-rtl-stat" aria-live="polite" aria-atomic="true"><strong data-rtl-gain>−9.7338%</strong><span>composite estimate<br><span data-rtl-case-name>ML-KEM CBD</span></span></div>
+            <div class="studio-comparison" aria-label="Normalized composite score comparison"><div><div class="studio-bar-label"><span>Baseline</span><span>100.0000</span></div><div class="studio-bar"></div></div><div><div class="studio-bar-label"><span>Accepted candidate</span><span data-rtl-score>90.2662</span></div><div class="studio-bar studio-bar--accepted" data-rtl-bar style="width:90.2662%"></div></div></div>
+            <p class="studio-rtl-note">Composite score normalized to baseline = 100; lower is better.<br>Academic VTR / PTM 45 nm estimates. Not ASIC signoff or a cross-circuit performance ranking. Customer results require evaluation in the agreed flow.</p>
+            <a class="studio-link" data-rtl-source href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/tree/v2.2.2/cases/mlkem-cbd">Read the case and its limits <span aria-hidden="true">↗</span></a>
           </div>
-
-          <div class="gother-results-ledger">
-            <a href="./results/quadrature-rule-optimization/">
-              <span>Scientific computing</span><strong>Quadrature rule optimization</strong>
-              <em>99.54% lower mean residual error</em><b aria-hidden="true">↗</b>
-            </a>
-            <a href="./results/rcpsp-psplib-j30/">
-              <span>Operational planning</span><strong>PSPLIB J30 scheduling benchmark</strong>
-              <em>6.04% mean gap to optimum</em><b aria-hidden="true">↗</b>
-            </a>
-            <a href="./results/circle-packing-26-unit-square/">
-              <span>Geometric optimization</span><strong>26-circle unit-square packing</strong>
-              <em><span data-result-metric="accepted_sum_radii">Exact 26-circle packing · strict certificate 2.635983084917607783…</span></em><b aria-hidden="true">↗</b>
-            </a>
-            <a href="./results/qubit-routing-lightsabre/">
-              <span>Quantum compilation</span><strong>Qubit routing LightSABRE benchmark</strong>
-              <em>12,294 fewer added CNOTs</em><b aria-hidden="true">↗</b>
-            </a>
-            <a href="./results/iberian-bess-policy-challenge/">
-              <span>Energy optimization</span><strong>Iberian BESS policy challenge</strong>
-              <em>33.714% lower score vs quantile · 0 breaches</em><b aria-hidden="true">↗</b>
-            </a>
-          </div>
-          <a class="gother-home-text-link" href="./results/">View the complete results library <span aria-hidden="true">→</span></a>
-        </section>
-
-        <section class="gother-home-discipline" aria-labelledby="gother-discipline-title">
-          <div class="gother-home-section-heading">
-            <p class="gother-home-index">03 / Discipline</p>
-            <div>
-              <h2 id="gother-discipline-title">Freeze the test before searching for the answer.</h2>
-              <p>The evaluation contract is the boundary. Candidates can change; the rules used to judge them do not.</p>
-            </div>
-          </div>
-          <ol class="gother-discipline-sequence">
-            <li><span>01</span><h3>Freeze</h3><p>Agree the baseline, fixture, constraints, score, replay checks, and evidence boundary.</p></li>
-            <li><span>02</span><h3>Challenge</h3><p>Search offline for candidates without changing the test used to compare them.</p></li>
-            <li><span>03</span><h3>Replay</h3><p>Run baseline and candidate through the same fixture and inspect weak cases.</p></li>
-            <li><span>04</span><h3>Decide</h3><p>Accept only what satisfies the frozen contract; document rejection and limitations.</p></li>
-          </ol>
-        </section>
-
-        <section class="gother-home-boundary" aria-labelledby="gother-boundary-title">
-          <div class="gother-home-boundary-copy">
-            <p class="gother-home-index">04 / Start</p>
-            <h2 id="gother-boundary-title">Begin with the decision surface, not the confidential system.</h2>
-            <p>
-              The first conversation is metadata only: your role, the kind of decision the system makes,
-              the baseline category, and why a better answer would matter.
-            </p>
-            <div class="gother-home-actions">
-              <a href="./contact/">Discuss a challenge <span aria-hidden="true">→</span></a>
-              <a href="./company/">Why Göther exists</a>
-            </div>
-          </div>
-          <div class="gother-boundary-list" aria-label="First contact boundary">
-            <div><span>Share</span><strong>Decision surface</strong></div>
-            <div><span>Share</span><strong>Baseline category</strong></div>
-            <div><span>Share</span><strong>Success context</strong></div>
-            <div><span>Do not send</span><strong>Policies, scenarios, credentials, or confidential files</strong></div>
-          </div>
-        </section>
+        </div></section>
+        <section class="studio-wrap studio-method" aria-labelledby="method-title"><div><p class="studio-label">03 / How we work</p><h2 class="studio-serif" id="method-title">The search is open.<br>The standard is fixed.</h2></div><ol><li><h3>Define what better means.</h3><p>Agree on the baseline, the constraints and the measure of success before exploring alternatives.</p></li><li><h3>Give the search room.</h3><p>Explore different implementations while keeping the evaluation contract unchanged.</p></li><li><h3>Let the evidence decide.</h3><p>Report the improvement, the trade-offs and the limits. Keep the result reproducible and open to scrutiny.</p></li></ol></section>
+<section class="studio-wrap"><div class="studio-close"><p class="studio-label">Have a system worth improving?</p><a href="./contact/">Let’s find out.<span aria-hidden="true">↗</span></a></div></section>
       </main>
-
+      <footer class="site-footer"><div class="studio-colophon"><p>© <span id="year">2026</span> Göther Labs</p><div class="studio-colophon-end"><a href="mailto:contact@gotherlabs.com">contact@gotherlabs.com</a><svg class="gother-emblem" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="7" r="3"/><circle cx="6" cy="25" r="3"/><circle cx="26" cy="25" r="3"/></svg></div></div></footer>
     </div>
-
-    <script src="./scripts.js?v=rtl-audit-v2"></script>
+    <script src="./scripts.js?v=editorial-v1"></script>
+    <script src="./assets/studio.js?v=editorial-v1"></script>
   </body>
 </html>

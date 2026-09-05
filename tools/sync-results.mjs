@@ -519,9 +519,9 @@ ${visualMarkup}              <div class="result-meta">
 async function writeIndex(results) {
   const cards = results.map(resultCard).join("\n\n");
   const body = `        <section class="hero compact-hero page-hero">
-          <h1 class="page-title">Results for evaluated technical improvement.</h1>
+          <h1 class="page-title">Research, in the open.</h1>
           <p class="intro results-hero-intro">
-            Public technical results where the problem, evaluation contract, and accepted improvement can be inspected together.
+            Five studies. The problem, the result, and the evidence behind it.
           </p>
         </section>
 
@@ -3260,10 +3260,17 @@ async function syncFeaturedResult(results) {
     throw new Error("Missing homepage accepted_sum_radii publication marker.");
   }
 
-  const updated = html.replace(
+  let updated = html.replace(
     marker,
     (_match, open, close) => `${open}Exact 26-circle packing · strict certificate ${exactValue.slice(0, 20)}…${close}`,
   );
+  if (updated.includes("<!-- studio-packing:start -->")) {
+    const { studioPackingFigure } = await import("./studio-packing.mjs");
+    updated = updated.replace(
+      /<!-- studio-packing:start -->[\s\S]*?<!-- studio-packing:end -->/,
+      `<!-- studio-packing:start -->\n${await studioPackingFigure(SITE_ROOT)}\n            <!-- studio-packing:end -->`,
+    );
+  }
   await fs.writeFile(homePath, updated, "utf8");
 }
 

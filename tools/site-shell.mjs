@@ -1,6 +1,6 @@
 // Shared primitives for generated shell output and shell validation.
 // Hand-authored HTML remains committed directly; keep this boundary small.
-export const SITE_SHELL_VERSION = "rtl-audit-v2";
+export const SITE_SHELL_VERSION = "editorial-v1";
 
 export const SHARED_SITE_SHELL = Object.freeze({
   version: SITE_SHELL_VERSION,
@@ -22,11 +22,11 @@ export function versionedSharedAsset(prefix, assetPath) {
 }
 
 export function sharedStylesheetTag(prefix) {
-  return `<link rel="stylesheet" href="${versionedSharedAsset(prefix, SHARED_SITE_SHELL.stylesheetPath)}">`;
+  return `<link rel="stylesheet" href="${versionedSharedAsset(prefix, SHARED_SITE_SHELL.stylesheetPath)}">\n    <link rel="stylesheet" href="${prefix}assets/studio.css?v=${SITE_SHELL_VERSION}">`;
 }
 
 export function sharedScriptTag(prefix) {
-  return `<script src="${versionedSharedAsset(prefix, SHARED_SITE_SHELL.scriptPath)}"></script>`;
+  return `<script src="${versionedSharedAsset(prefix, SHARED_SITE_SHELL.scriptPath)}"></script>\n    <script src="${prefix}assets/studio.js?v=${SITE_SHELL_VERSION}"></script>`;
 }
 
 export function sharedFaviconTag(prefix) {
@@ -44,22 +44,8 @@ export function sharedNav(prefix) {
 
   return `<header class="site-header">
         <nav class="site-nav" aria-label="Primary">
-          <a class="brand nav-brand nav-home-wordmark animated-symbol-scope" href="${prefix}" aria-label="Göther Labs home">
-            <span aria-hidden="true" class="wordmark-mark-wrap">
-              <svg class="animated-reference-geometry live-symbol-svg" viewBox="0 0 64 64" focusable="false">
-                <g class="source-geometry" aria-hidden="true">
-                  <circle class="source-geometry-dot" cx="34.5" cy="34.5" r="3.6" />
-                  <circle class="source-geometry-dot" cx="21" cy="58" r="3.6" />
-                  <circle class="source-geometry-dot" cx="48" cy="58" r="3.6" />
-                </g>
-                <path class="live-trail" d="" />
-                <path class="live-trail" d="" />
-                <path class="live-trail" d="" />
-                <circle class="geometry-dot live-geometry-dot" cx="34.2" cy="28.4" r="3.34" />
-                <circle class="geometry-dot live-geometry-dot" cx="20.9" cy="50.6" r="3.34" />
-                <circle class="geometry-dot live-geometry-dot" cx="47.5" cy="50.6" r="3.34" />
-              </svg>
-            </span>
+          <a class="brand nav-brand nav-home-wordmark" href="${prefix}" aria-label="Göther Labs home">
+            <svg class="gother-emblem" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="7" r="3"/><circle cx="6" cy="25" r="3"/><circle cx="26" cy="25" r="3"/></svg>
             <span class="nav-wordmark-text">Göther Labs</span>
           </a>
           <div class="nav-links">
