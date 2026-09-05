@@ -5,6 +5,7 @@ import { execFile as execFileCallback } from "node:child_process";
 import { promisify } from "node:util";
 import { fileURLToPath } from "node:url";
 import { assertNoSpecialGitEntries } from "./results-source-policy.mjs";
+import { writeStudioFigures } from "./studio-figures.mjs";
 import { articleWithoutTitle, markdownToHtml } from "./result-markdown.mjs";
 import {
   normalizeCopiedRunShell,
@@ -519,9 +520,10 @@ ${visualMarkup}              <div class="result-meta">
 async function writeIndex(results) {
   const cards = results.map(resultCard).join("\n\n");
   const body = `        <section class="hero compact-hero page-hero">
-          <h1 class="page-title">Results for evaluated technical improvement.</h1>
+          <h1 class="page-title">Research, in the open.</h1>
           <p class="intro results-hero-intro">
-            Public technical results where the problem, evaluation contract, and accepted improvement can be inspected together.
+            Five studies. The problem, the result, and the evidence behind it.
+            <a class="studio-link" href="../rtl-optimization/#public-evidence">Explore the three RTL/PPA cases <span aria-hidden="true">↗</span></a>
           </p>
         </section>
 
@@ -3255,15 +3257,20 @@ async function syncFeaturedResult(results) {
 
   const homePath = path.join(SITE_ROOT, "index.html");
   const html = await fs.readFile(homePath, "utf8");
-  const marker = /(<span data-result-metric="accepted_sum_radii">)[\s\S]*?(<\/span>)/;
-  if (!marker.test(html)) {
-    throw new Error("Missing homepage accepted_sum_radii publication marker.");
-  }
+  const marker = /(<span data-result-metric="accepted_sum_radii"[^>]*>)[\s\S]*?(<\/span>)/;
+  // The homepage may link to the study without publishing its numerical metric.
 
-  const updated = html.replace(
+  let updated = html.replace(
     marker,
-    (_match, open, close) => `${open}Exact 26-circle packing · strict certificate ${exactValue.slice(0, 20)}…${close}`,
+    () => `<span data-result-metric="accepted_sum_radii" data-value="${escapeHtml(exactValue)}">View exact certificate ↗</span>`,
   );
+  if (updated.includes("<!-- studio-packing:start -->")) {
+    const { studioPackingFigure } = await import("./studio-packing.mjs");
+    updated = updated.replace(
+      /<!-- studio-packing:start -->[\s\S]*?<!-- studio-packing:end -->/,
+      `<!-- studio-packing:start -->\n${await studioPackingFigure(SITE_ROOT)}\n            <!-- studio-packing:end -->`,
+    );
+  }
   await fs.writeFile(homePath, updated, "utf8");
 }
 
@@ -3314,6 +3321,7 @@ async function main() {
   }
   await syncFeaturedResult(results);
   await writeSitemap(results);
+  await writeStudioFigures(SITE_ROOT);
   console.log(`Synced ${results.length} result(s) from ${path.relative(SITE_ROOT, RESULTS_ROOT)}`);
 }
 

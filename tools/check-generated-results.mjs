@@ -12,7 +12,7 @@ const scriptPath = fileURLToPath(import.meta.url);
 const scriptDirectory = path.dirname(scriptPath);
 const defaultSiteRoot = path.resolve(scriptDirectory, "..");
 const expectedRepository = "Gother-Labs/gother-labs-results";
-const generatedPaths = ["index.html", "sitemap.xml", "results"];
+const generatedPaths = ["index.html", "sitemap.xml", "results", "assets/research"];
 
 function relativePath(root, target) {
   return path.relative(root, target).split(path.sep).join("/");
@@ -264,6 +264,7 @@ async function generateCleanTree(siteRoot, resultsRoot, lock) {
   const generatedRoot = path.join(temporaryRoot, "site");
   await fs.mkdir(generatedRoot, { recursive: true });
   await fs.copyFile(path.join(siteRoot, "index.html"), path.join(generatedRoot, "index.html"));
+  await fs.cp(path.join(siteRoot, "assets", "rtl-source"), path.join(generatedRoot, "assets", "rtl-source"), { recursive: true });
 
   for (const slug of lock.curated_detail_slugs) {
     const curatedDetail = path.join(siteRoot, "results", slug, "index.html");

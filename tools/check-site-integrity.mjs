@@ -635,8 +635,9 @@ async function validateHomepageClaim(siteRoot, failures) {
     fs.readFile(metricsPath, "utf8").then(JSON.parse),
   ]);
   const exact = metrics.exact_accepted_sum_radii;
-  const featured = home.match(/<span\s+data-result-metric="accepted_sum_radii"[^>]*>([\s\S]*?)<\/span>/)?.[1] ?? "";
-  if (typeof exact !== "string" || !featured.includes(exact.slice(0, 20))) {
+  const featured = home.match(/<span\s+data-result-metric="accepted_sum_radii"([^>]*)>([\s\S]*?)<\/span>/);
+  const storedValue = featured?.[1].match(/data-value="([^"]+)"/)?.[1];
+  if (featured && (typeof exact !== "string" || (storedValue !== undefined ? storedValue !== exact : !featured[2].includes(exact.slice(0, 20))))) {
     failures.push("/: featured Circle Packing claim does not match the published exact metric");
   }
   if (/last proof/i.test(home)) {

@@ -15,7 +15,8 @@
     <meta name="twitter:image" content="https://www.gotherlabs.com/assets/og-image.png">
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="../../assets/gother-mark.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../../styles.css?v=rtl-audit-v2">
+    <link rel="stylesheet" href="../../styles.css?v=editorial-v8">
+    <link rel="stylesheet" href="../../assets/studio.css?v=editorial-v8">
   </head>
   <body class="result-ledger-page result-rcpsp-page">
     <a class="skip-link" href="#site-main">Skip to content</a>
@@ -23,26 +24,10 @@
       <header class="site-header">
         <nav class="site-nav" aria-label="Primary">
           <a class="brand nav-brand nav-home-wordmark animated-symbol-scope" href="../../" aria-label="Göther Labs home">
-            <span aria-hidden="true" class="wordmark-mark-wrap">
-              <svg class="animated-reference-geometry live-symbol-svg" viewBox="0 0 64 64" focusable="false">
-                <g class="source-geometry" aria-hidden="true">
-                  <circle class="source-geometry-dot" cx="34.5" cy="34.5" r="3.6" />
-                  <circle class="source-geometry-dot" cx="21" cy="58" r="3.6" />
-                  <circle class="source-geometry-dot" cx="48" cy="58" r="3.6" />
-                </g>
-                <path class="live-trail" d="" /><path class="live-trail" d="" /><path class="live-trail" d="" />
-                <circle class="geometry-dot live-geometry-dot" cx="34.2" cy="28.4" r="3.34" />
-                <circle class="geometry-dot live-geometry-dot" cx="20.9" cy="50.6" r="3.34" />
-                <circle class="geometry-dot live-geometry-dot" cx="47.5" cy="50.6" r="3.34" />
-              </svg>
-            </span>
+            <span class="wordmark-mark-wrap" aria-hidden="true"><svg class="animated-reference-geometry live-symbol-svg" viewBox="6 18 56 56" focusable="false"><g class="source-geometry"><circle class="source-geometry-dot" cx="34.5" cy="34.5" r="3.6"/><circle class="source-geometry-dot" cx="21" cy="58" r="3.6"/><circle class="source-geometry-dot" cx="48" cy="58" r="3.6"/></g><path class="live-trail" d=""/><path class="live-trail" d=""/><path class="live-trail" d=""/><circle class="geometry-dot live-geometry-dot" cx="34.5" cy="34.5" r="3.6"/><circle class="geometry-dot live-geometry-dot" cx="21" cy="58" r="3.6"/><circle class="geometry-dot live-geometry-dot" cx="48" cy="58" r="3.6"/></svg></span>
             <span class="nav-wordmark-text">Göther Labs</span>
           </a>
-          <div class="nav-links">
-            <a href="../../results/">Results</a>
-            <a href="../../company/">Company</a>
-            <a href="../../contact/">Contact</a>
-          </div>
+          <div class="nav-links"><a href="../../results/">Results</a><a href="../../company/">Company</a><a href="../../contact/">Contact</a></div>
         </nav>
       </header>
 
@@ -106,12 +91,12 @@
               <div class="formula-block"><div class="formula-math"><em>C</em><sub>max</sub>(S) = max<sub>i</sub> F<sub>i</sub></div><span class="equation-number">(1)</span></div>
 
               <figure class="result-ledger-figure" id="fig-1">
-                <img src="./assets/schedule-network.svg" alt="RCPSP precedence network and Gantt schedule readout">
+                <img src="../../assets/research/rcpsp-schedule-network.svg?v=paper-v2" alt="RCPSP precedence network and Gantt schedule readout">
                 <figcaption>Figure 1. The candidate ranks eligible activities; the fixed evaluator places each selected activity at its earliest feasible start.</figcaption>
               </figure>
 
               <figure class="result-ledger-figure" id="fig-2">
-                <img src="./assets/resource-load.svg?v=baseline-v2" alt="Overlaid renewable-resource loads for baseline and Evölther 2.0 on j3025_9">
+                <img src="../../assets/research/rcpsp-resource-load.svg?v=paper-v2" alt="Overlaid renewable-resource loads for baseline and Evölther 2.0 on j3025_9">
                 <figcaption>Figure 2. Actual resource-load comparison for j3025_9. Baseline appears in grey and Evölther 2.0 in blue on the same time axis; all four renewable resources remain within their unchanged capacities.</figcaption>
               </figure>
 
@@ -174,14 +159,14 @@
               <h3>4. Results</h3>
               <p>The accepted history contains three directly comparable checkpoints. Figure 3 shows the score progression without forcing the two Evölther systems onto one synthetic generation axis.</p>
               <figure class="result-ledger-figure" id="fig-3">
-                <img src="./assets/objective-curve.svg" alt="Accepted RCPSP score progression from baseline through Evölther and Evölther 2.0">
+                <img src="../../assets/research/rcpsp-objective-curve.svg?v=paper-v2" alt="Accepted RCPSP score progression from baseline through Evölther and Evölther 2.0">
                 <figcaption>Figure 3. Accepted-checkpoint progression under one unchanged, lower-is-better objective.</figcaption>
               </figure>
 
               <p>Evölther first reduced the objective by 15.55%. Evölther 2.0 then removed another 2.0 score points from that incumbent, producing a further 16.37% reduction. Because the evaluation contract did not change, the three checkpoints can be compared directly.</p>
 
               <figure class="result-ledger-figure" id="fig-4-detail">
-                <img src="./assets/benchmark-comparison.svg" alt="RCPSP benchmark comparison for baseline, Evölther, and Evölther 2.0">
+                <img src="../../assets/research/rcpsp-benchmark-comparison.svg?v=paper-v2" alt="RCPSP benchmark comparison for baseline, Evölther, and Evölther 2.0">
                 <figcaption>Figure 4. The current score is 29.37% below baseline and 16.37% below the previous public incumbent.</figcaption>
               </figure>
 
@@ -203,27 +188,27 @@
               <p class="result-instance-readout"><strong>j3025_9</strong><span>Baseline 112</span><span>Evölther 2.0 92</span><span>Optimum 84</span><em>71.4% of the baseline gap removed</em></p>
 
               <figure class="result-ledger-figure rcpsp-task-comparison" id="fig-5">
-                <img src="./assets/instance-comparison.svg?v=baseline-v3" alt="Overlaid task-level schedule comparison from baseline to Evölther 2.0 for PSPLIB instance j3025_9">
+                <img src="../../assets/research/rcpsp-instance-comparison.svg?v=paper-v2" alt="Overlaid task-level schedule comparison from baseline to Evölther 2.0 for PSPLIB instance j3025_9">
                 <figcaption>Figure 5. Overlaid baseline-to-Evölther 2.0 comparison for j3025_9. Grey and blue bars share the same task row and time axis, exposing the compression from makespan 112 to 92 against optimum 84.</figcaption>
               </figure>
 
               <p>Because both schedules are superimposed, movement is visible directly: blue to the left of grey means Evölther 2.0 places that activity earlier. The new policy starts J4 before J3, brings much of the middle dependency chain forward, and moves the terminal J29–J31 sequence substantially earlier. The evaluator applies exactly the same precedence and resource-capacity checks to both schedules.</p>
 
               <figure class="result-ledger-figure" id="fig-6">
-                <img src="./assets/portfolio-instance-deltas.svg?v=baseline-v1" alt="Ordered makespan change for all 80 instances comparing Evölther 2.0 with baseline">
+                <img src="../../assets/research/rcpsp-portfolio-instance-deltas.svg?v=paper-v2" alt="Ordered makespan change for all 80 instances comparing Evölther 2.0 with baseline">
                 <figcaption>Figure 6. Instance-by-instance makespan change against baseline. The ordered marks retain all 35 improvements, 27 ties, and 18 regressions rather than presenting only an aggregate score.</figcaption>
               </figure>
 
               <p>The distribution makes the boundary of the result visible. Evölther 2.0 does not dominate every schedule: most regressions are one or two time units, while the improvement side contains several reductions of eight to ten units and the 20-unit reduction on <code>j3025_9</code>. Those asymmetric changes produce the lower portfolio mean and tail score. <a href="./artifacts/portfolio-comparison.json">Inspect all 80 instance outcomes</a>.</p>
 
               <figure class="result-ledger-figure" id="fig-7">
-                <img src="./assets/gap-readout.svg" alt="Current Evölther 2.0 RCPSP gap diagnostics">
+                <img src="../../assets/research/rcpsp-gap-readout.svg?v=paper-v2" alt="Current Evölther 2.0 RCPSP gap diagnostics">
                 <figcaption>Figure 7. Aggregate and tail diagnostics for the current accepted candidate.</figcaption>
               </figure>
 
               <p>Figure 7 separates the acceptance score from its underlying diagnostics. The current mean makespan is 5.01% above proven optimum, while the worst single residual gap is 17.11%. Figure 8 then keeps the eight largest residual gaps visible, including their current makespan and proven optimum.</p>
               <figure class="result-ledger-figure" id="fig-8">
-                <img src="./assets/tail-gap-ladder.svg" alt="Eight largest residual RCPSP gaps for the current candidate">
+                <img src="../../assets/research/rcpsp-tail-gap-ladder.svg?v=paper-v2" alt="Eight largest residual RCPSP gaps for the current candidate">
                 <figcaption>Figure 8. Worst-instance tail behavior for Evölther 2.0 on the frozen portfolio.</figcaption>
               </figure>
 
@@ -244,7 +229,8 @@
 
       <footer class="site-footer"><p>© <span id="year">2026</span> Göther Labs</p></footer>
     </div>
-    <script src="./diff-viewer.js?v=rtl-audit-v2"></script>
-    <script src="../../scripts.js?v=rtl-audit-v2"></script>
+    <script src="./diff-viewer.js?v=editorial-v8"></script>
+    <script src="../../scripts.js?v=editorial-v8"></script>
+    <script src="../../assets/studio.js?v=editorial-v8"></script>
   </body>
 </html>

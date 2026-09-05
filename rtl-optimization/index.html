@@ -21,8 +21,9 @@
     <meta name="twitter:image" content="https://www.gotherlabs.com/assets/og-image.png">
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="../assets/gother-mark.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="../styles.css?v=rtl-audit-v2">
-    <link rel="stylesheet" href="./page.css?v=rtl-pilot-v5">
+    <link rel="stylesheet" href="../styles.css?v=editorial-v8">
+    <link rel="stylesheet" href="./page.css?v=rtl-editorial-v1">
+    <link rel="stylesheet" href="../assets/studio.css?v=editorial-v8">
   </head>
   <body class="rtl-page">
     <a class="skip-link" href="#site-main">Skip to content</a>
@@ -30,28 +31,10 @@
       <header class="site-header">
         <nav class="site-nav" aria-label="Primary">
           <a class="brand nav-brand nav-home-wordmark animated-symbol-scope" href="../" aria-label="Göther Labs home">
-            <span aria-hidden="true" class="wordmark-mark-wrap">
-              <svg class="animated-reference-geometry live-symbol-svg" viewBox="0 0 64 64" focusable="false">
-                <g class="source-geometry" aria-hidden="true">
-                  <circle class="source-geometry-dot" cx="34.5" cy="34.5" r="3.6" />
-                  <circle class="source-geometry-dot" cx="21" cy="58" r="3.6" />
-                  <circle class="source-geometry-dot" cx="48" cy="58" r="3.6" />
-                </g>
-                <path class="live-trail" d="" />
-                <path class="live-trail" d="" />
-                <path class="live-trail" d="" />
-                <circle class="geometry-dot live-geometry-dot" cx="34.2" cy="28.4" r="3.34" />
-                <circle class="geometry-dot live-geometry-dot" cx="20.9" cy="50.6" r="3.34" />
-                <circle class="geometry-dot live-geometry-dot" cx="47.5" cy="50.6" r="3.34" />
-              </svg>
-            </span>
+            <span class="wordmark-mark-wrap" aria-hidden="true"><svg class="animated-reference-geometry live-symbol-svg" viewBox="6 18 56 56" focusable="false"><g class="source-geometry"><circle class="source-geometry-dot" cx="34.5" cy="34.5" r="3.6"/><circle class="source-geometry-dot" cx="21" cy="58" r="3.6"/><circle class="source-geometry-dot" cx="48" cy="58" r="3.6"/></g><path class="live-trail" d=""/><path class="live-trail" d=""/><path class="live-trail" d=""/><circle class="geometry-dot live-geometry-dot" cx="34.5" cy="34.5" r="3.6"/><circle class="geometry-dot live-geometry-dot" cx="21" cy="58" r="3.6"/><circle class="geometry-dot live-geometry-dot" cx="48" cy="58" r="3.6"/></svg></span>
             <span class="nav-wordmark-text">Göther Labs</span>
           </a>
-          <div class="nav-links">
-            <a href="../results/">Results</a>
-            <a href="../company/">Company</a>
-            <a href="../contact/">Contact</a>
-          </div>
+          <div class="nav-links"><a href="../results/">Results</a><a href="../company/">Company</a><a href="../contact/">Contact</a></div>
         </nav>
       </header>
 
@@ -61,8 +44,8 @@
             <p class="rtl-kicker">Verified RTL/PPA optimization</p>
             <h1 id="rtl-title">Push your RTL further.</h1>
             <p class="rtl-hero-intro">
-              Turn a trusted RTL baseline into a leaner, faster implementation, with
-              correctness preserved at every step.
+              Explore a better implementation of one owned RTL block in your flow.
+              Every accepted change must pass the agreed functional and formal checks.
             </p>
             <div class="rtl-actions" role="group" aria-label="RTL pilot actions">
               <a
@@ -209,26 +192,10 @@
         <section class="rtl-section rtl-proof-section" id="public-evidence" aria-labelledby="proof-title">
           <div class="rtl-section-heading rtl-section-heading--wide">
             <p class="rtl-kicker">From baseline to candidate</p>
-            <h2 id="proof-title">Watch the implementation evolve.</h2>
+            <h2 id="proof-title">Inspect the published cases.</h2>
             <p>
-              Preserve the external behavior, reorganize the internal structure, remove
-              unnecessary cost, and prove the result before it advances.
-            </p>
-          </div>
-
-          <div class="rtl-chip-evolution" data-rtl-chip-evolution>
-            <canvas data-rtl-chip-canvas aria-hidden="true"></canvas>
-            <div class="rtl-chip-evolution-head" aria-hidden="true">
-              <span>Conceptual module transformation</span>
-              <strong data-rtl-chip-phase>Map structure</strong>
-            </div>
-            <div class="rtl-chip-evolution-foot" aria-hidden="true">
-              <span>Functional boundary held constant</span>
-              <span>Analyze → transform → verify</span>
-            </div>
-            <p class="rtl-chip-evolution-description">
-              Conceptual visualization: the module interface remains fixed while internal
-              structures are analyzed, removed, merged, rerouted, and verified.
+              Three bounded RTL studies, each with its implementation changes,
+              evaluation flow and evidence. Read each result within its stated limits.
             </p>
           </div>
 
@@ -344,6 +311,11 @@
               The first conversation should establish the function, target, current flow,
               correctness stack, primary objective, confidentiality boundary, and evaluation window.
             </p>
+            <ol class="rtl-next-steps">
+              <li><strong>Check the fit.</strong> Send a short description of the block and the improvement you need.</li>
+              <li><strong>Agree the work.</strong> Before evaluation begins, we agree the scope, budget, schedule and handling of confidential material.</li>
+              <li><strong>Evaluate and review.</strong> Receive the change and its evidence, or a documented no-improvement finding. Your team decides what to adopt.</li>
+            </ol>
           </div>
           <div class="rtl-start-action">
             <a
@@ -360,7 +332,7 @@
       </footer>
     </div>
 
-    <script src="../scripts.js?v=rtl-audit-v2"></script>
-    <script src="./page.js?v=rtl-chip-evolution-v1"></script>
+    <script src="../scripts.js?v=editorial-v8"></script>
+    <script src="../assets/studio.js?v=editorial-v8"></script>
   </body>
 </html>

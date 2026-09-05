@@ -534,6 +534,11 @@ function initializeThreeBodySystem(symbolScope) {
   requestAnimationFrame(frame);
 
   function frame(now) {
+    if (document.hidden || reducedMotionQuery.matches) {
+      lastFrameTime = now;
+      requestAnimationFrame(frame);
+      return;
+    }
     const elapsedSeconds = Math.min((now - lastFrameTime) / 1000, 0.05);
     lastFrameTime = now;
 

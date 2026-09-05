@@ -1,0 +1,36 @@
+{
+  "repository": "https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study",
+  "commit": "7ee35dcf022d4ed590a55731ea643f17c648a8d1",
+  "files": [
+    {
+      "file": "sha1-clouds.csv",
+      "source": "cases/sha1/report/latex/generated/seed-clouds.csv",
+      "sha256": "986f44ad9616fbe6ac75bacad166c080ddeb259a223a8ed1f08bee7e9d597c6a"
+    },
+    {
+      "file": "sha1-intervals.csv",
+      "source": "cases/sha1/report/latex/generated/executive-ci.csv",
+      "sha256": "9444aa0f98f2991cd6835c74335dcf696c70bcfcf85a1ecd5cfe498ffb2e24d6"
+    },
+    {
+      "file": "int8-matvec-clouds.csv",
+      "source": "cases/int8-matvec/report/latex/generated/pair-clouds.csv",
+      "sha256": "fe6bb2d0ca7ddfae3beb22a5b1a667acc6ba717627e324b4bf91a3a85d5bdaec"
+    },
+    {
+      "file": "int8-matvec-intervals.csv",
+      "source": "cases/int8-matvec/report/latex/generated/executive-ci.csv",
+      "sha256": "b1a823e0147ba8cf50c600d6ebcb5f6322310baa419235436edff2cc5f594c56"
+    },
+    {
+      "file": "mlkem-cbd-clouds.csv",
+      "source": "cases/mlkem-cbd/report/latex/generated/pair-clouds.csv",
+      "sha256": "5f5850397abdb21deefa324cb8926a3a25e557d7a1ecc2827b4f6703693852a5"
+    },
+    {
+      "file": "mlkem-cbd-intervals.csv",
+      "source": "cases/mlkem-cbd/report/latex/generated/executive-ci.csv",
+      "sha256": "d8d776300444eaf7f7defe49883323d84f10601623a63cc4ae0a1f8cf99f9423"
+    }
+  ]
+}
