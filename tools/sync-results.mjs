@@ -3256,14 +3256,14 @@ async function syncFeaturedResult(results) {
 
   const homePath = path.join(SITE_ROOT, "index.html");
   const html = await fs.readFile(homePath, "utf8");
-  const marker = /(<span data-result-metric="accepted_sum_radii">)[\s\S]*?(<\/span>)/;
+  const marker = /(<span data-result-metric="accepted_sum_radii"[^>]*>)[\s\S]*?(<\/span>)/;
   if (!marker.test(html)) {
     throw new Error("Missing homepage accepted_sum_radii publication marker.");
   }
 
   let updated = html.replace(
     marker,
-    (_match, open, close) => `${open}Sum of radii ${exactValue.slice(0, 20)}…${close}`,
+    () => `<span data-result-metric="accepted_sum_radii" data-value="${escapeHtml(exactValue)}">View exact certificate ↗</span>`,
   );
   if (updated.includes("<!-- studio-packing:start -->")) {
     const { studioPackingFigure } = await import("./studio-packing.mjs");
