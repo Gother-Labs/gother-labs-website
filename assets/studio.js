@@ -37,7 +37,7 @@
         cloud.alt = `${button.textContent}: 64 baseline and optimized measurement pairs across area, timing, active power and composite, with paired estimates and 95% confidence intervals. Right is better.`;
         study.querySelector('[data-rtl-pool]').textContent = result.pool;
         study.querySelector('[data-rtl-normalization]').textContent = result.reference;
-        study.querySelector('[data-rtl-source]').href = `https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/tree/7ee35dcf022d4ed590a55731ea643f17c648a8d1/cases/${result.slug}`;
+        study.closest('.studio-offer').querySelector('[data-rtl-source]').href = `https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/tree/7ee35dcf022d4ed590a55731ea643f17c648a8d1/cases/${result.slug}`;
       });
     });
   }

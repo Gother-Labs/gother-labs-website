@@ -15,8 +15,8 @@
     <meta name="twitter:image" content="https://www.gotherlabs.com/assets/og-image.png">
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="./assets/gother-mark.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="./styles.css?v=editorial-v5">
-    <link rel="stylesheet" href="./assets/studio.css?v=editorial-v5">
+    <link rel="stylesheet" href="./styles.css?v=editorial-v6">
+    <link rel="stylesheet" href="./assets/studio.css?v=editorial-v6">
   </head>
   <body class="studio-page">
     <a class="skip-link" href="#site-main">Skip to content</a>
@@ -175,25 +175,23 @@
 <circle class="packing-center" data-center="25" cx="128.710158" cy="369.733157" r="1.7"/></svg>
             <!-- studio-packing:end -->
           </figure>
-          <div class="studio-packing-caption" id="packing-caption"><a class="studio-packing-title" href="./results/circle-packing-26-unit-square/">26 circles. One square. <span aria-hidden="true">↗</span></a><p>78 contacts. <a href="./results/circle-packing-26-unit-square/artifacts/exact.csv"><span data-result-metric="accepted_sum_radii" data-value="2.6359830849176077831865694854434817303966767982744748577457711298607038493344723396767997365079">View exact certificate ↗</span></a></p></div>
+          <div class="studio-packing-caption" id="packing-caption"><a class="studio-link studio-packing-title" href="./results/circle-packing-26-unit-square/">26 circles. One square. <span aria-hidden="true">↗</span></a><p>78 contacts. <a class="studio-link" href="./results/circle-packing-26-unit-square/artifacts/exact.csv"><span data-result-metric="accepted_sum_radii" data-value="2.6359830849176077831865694854434817303966767982744748577457711298607038493344723396767997365079">View exact certificate ↗</span></a></p></div>
         </section>
         <section class="studio-wrap studio-work" id="research" aria-labelledby="work-title">
-          <div class="studio-section-heading"><p class="studio-label">01 / Selected research</p><h2 class="studio-serif" id="work-title">Small changes.<br>Real consequences.</h2><p>Different problems, one discipline: make the improvement measurable and the evidence inspectable.</p></div>
+          <div class="studio-section-heading"><p class="studio-label">01 / Selected research</p><h2 class="studio-serif" id="work-title">Small changes.<br>Real consequences.</h2><p>Different problems, one discipline: make the improvement measurable and the evidence inspectable.</p><a class="studio-link" href="./results/">Explore all five studies <span aria-hidden="true">→</span></a></div>
           <div class="studio-research-list">
             <a class="studio-result" href="./results/quadrature-rule-optimization/"><p class="studio-label">Scientific computing</p><h3>A more accurate approximation.</h3><p>Quadrature rule optimization · 83.37% lower evaluated objective</p><span aria-hidden="true">↗</span></a>
             <a class="studio-result" href="./results/rcpsp-psplib-j30/"><p class="studio-label">Operational planning</p><h3>A better order of operations.</h3><p>PSPLIB J30 scheduling · 5.01% mean gap to optimum</p><span aria-hidden="true">↗</span></a>
             <a class="studio-result" href="./results/qubit-routing-lightsabre/"><p class="studio-label">Quantum compilation</p><h3>Fewer gates. The same circuit.</h3><p>LightSABRE routing benchmark · 12,294 fewer added CNOTs</p><span aria-hidden="true">↗</span></a>
             <a class="studio-result" href="./results/iberian-bess-policy-challenge/"><p class="studio-label">Energy optimization</p><h3>Decisions under real constraints.</h3><p>Iberian BESS policy benchmark · 33.714% lower score</p><span aria-hidden="true">↗</span></a>
-            <a class="studio-link" href="./results/">Explore all five studies <span aria-hidden="true">→</span></a>
           </div>
         </section>
         <section class="studio-offer" aria-labelledby="offer-title"><div class="studio-wrap studio-offer-inner">
-          <div class="studio-offer-copy"><p class="studio-label">02 / Work with Göther</p><h2 class="studio-serif" id="offer-title">Your RTL.<br>More room<br>to improve.</h2><p>One block. Your constraints. A search for better area, timing and power.</p><p class="studio-offer-delivery">You receive the RTL, the patch and the evidence—or a documented no-improvement finding.</p><a class="studio-link" href="./rtl-optimization/">Explore the pilot <span aria-hidden="true">↗</span></a></div>
+          <div class="studio-offer-copy"><p class="studio-label">02 / Work with Göther</p><h2 class="studio-serif" id="offer-title">Your RTL.<br>More room<br>to improve.</h2><p>One block. Your constraints. A search for better area, timing and power.</p><p class="studio-offer-delivery">You receive the RTL, the patch and the evidence—or a documented no-improvement finding.</p><div class="studio-offer-actions"><a class="studio-link" href="./rtl-optimization/">Explore the pilot <span aria-hidden="true">↗</span></a><a class="studio-link" data-rtl-source href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/tree/7ee35dcf022d4ed590a55731ea643f17c648a8d1/cases/mlkem-cbd">Read the case and its limits <span aria-hidden="true">↗</span></a></div></div>
           <div class="studio-rtl-study" data-rtl-study><p class="studio-label">Inside the public RTL/PPA study</p>
             <div class="studio-rtl-tabs" data-rtl-controls hidden aria-label="Published RTL case"><button type="button" data-rtl-case="sha1" aria-pressed="false">SHA-1</button><button type="button" data-rtl-case="int8" aria-pressed="false">INT8 MatVec</button><button type="button" data-rtl-case="mlkem" aria-pressed="true">ML-KEM CBD</button></div>
             <figure class="studio-rtl-cloud"><div class="studio-cloud-legend"><span class="cloud-baseline">Baseline</span><span class="cloud-accepted">Optimized RTL</span><span class="cloud-interval">Paired estimate · 95% CI</span></div><img data-rtl-cloud src="./assets/research/rtl-mlkem-cbd.svg?v=paper-v3" width="600" height="320" alt="ML-KEM CBD: 64 baseline and optimized measurement pairs across area, timing, active power and composite. All four paired estimates improve; every measurement is shown."><figcaption aria-live="polite"><span data-rtl-pool>64 publication pairs · ML-KEM CBD</span><span>Improvement →</span></figcaption></figure>
             <p class="studio-rtl-note"><span data-rtl-normalization>Relative to the baseline geometric aggregate.</span> Each dot is one measurement; vertical spread separates pairs.<br>Academic VTR / PTM 45 nm estimates. Not ASIC signoff or a cross-circuit ranking.</p>
-            <a class="studio-link" data-rtl-source href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/tree/7ee35dcf022d4ed590a55731ea643f17c648a8d1/cases/mlkem-cbd">Read the case and its limits <span aria-hidden="true">↗</span></a>
           </div>
         </div></section>
         <section class="studio-wrap studio-method" aria-labelledby="method-title"><div><p class="studio-label">03 / How we work</p><h2 class="studio-serif" id="method-title">The search is open.<br>The improvement<br>stays with you.</h2></div><ol><li><h3>Define what better means.</h3><p>Agree on the baseline, the constraints and the measure of success before exploring alternatives.</p></li><li><h3>Give the search room.</h3><p>Explore different implementations while keeping the evaluation contract unchanged.</p></li><li><h3>Keep the result in-house.</h3><p>Receive the implementation and its evidence. Your team can inspect, integrate and maintain it in your own flow. You decide what to adopt.</p></li></ol></section>
@@ -201,7 +199,7 @@
       </main>
       <footer class="site-footer"><div class="studio-colophon"><p>© <span id="year">2026</span> Göther Labs</p><div class="studio-colophon-end"><a href="mailto:contact@gotherlabs.com">contact@gotherlabs.com</a><svg class="gother-emblem" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="7" r="3"/><circle cx="6" cy="25" r="3"/><circle cx="26" cy="25" r="3"/></svg></div></div></footer>
     </div>
-    <script src="./scripts.js?v=editorial-v5"></script>
-    <script src="./assets/studio.js?v=editorial-v5"></script>
+    <script src="./scripts.js?v=editorial-v6"></script>
+    <script src="./assets/studio.js?v=editorial-v6"></script>
   </body>
 </html>
