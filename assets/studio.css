@@ -96,7 +96,7 @@ html .site-footer a { font-size: 11px; }
 .studio-packing .packing-center { fill: #000; pointer-events: none; }
 .studio-packing .packing-center.is-selected { fill: #fff; }
 .studio-packing .packing-contacts { opacity: .55; fill: none; stroke: var(--studio-blue); stroke-width: 1; pointer-events: none; transition: opacity .3s ease; }
-.studio-work { display: grid; grid-template-columns: minmax(0, .78fr) minmax(0, 1.4fr); gap: 10%; padding-block: 100px 110px; }
+.studio-work { display: grid; grid-template-columns: minmax(0, .78fr) minmax(0, 1.4fr); gap: 10%; padding-block: 100px 110px; border-top: 1px solid var(--studio-rule); }
 .studio-section-heading h2 { margin-top: 22px; font-size: clamp(38px, 4vw, 64px); line-height: 1.1; }
 .studio-section-heading > p:not(.studio-label) { max-width: 260px; margin-top: 23px; font-size: 13px; line-height: 1.8; color: rgb(0 0 0 / 65%); }
 .studio-research-list { position: relative; min-width: 0; }
@@ -173,7 +173,7 @@ html .page-title { font-family: var(--studio-serif); font-size: clamp(48px, 5vw,
 html .rtl-hero { min-height: 0; padding-block: 75px; }
 html .rtl-hero h1 { font-family: var(--studio-serif); font-weight: 400; }
 html .rtl-action { border-radius: 0; }
-html .rtl-action--primary { background: var(--studio-blue); border-color: var(--studio-blue); color: #fff; }
+
 html .rtl-scope-card { border: 0; padding: 0; background: none; box-shadow: none; }
 html .results-index { display: block; }
 html .results-index .result-card { min-height: 0; overflow: visible; padding-block: 26px; border: 0; border-top: 1px solid var(--studio-rule); border-radius: 0; background: none; box-shadow: none; }
@@ -270,3 +270,10 @@ html .results-index .result-card-storage .bars rect:not(.discharge) { fill: var(
 .studio-section-heading > .studio-link { margin-top: 22px; }
 .studio-offer-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 26px; }
 .studio-offer-actions .studio-link { margin-top: 0; }
+
+.studio-hero-focus { margin-top: 16px; max-width: 420px; color: rgb(0 0 0 / 65%); font-size: 13px; line-height: 1.7; }
+.studio-cloud-scroll { overflow-x: auto; }
+.studio-cloud-scroll img { min-width: 560px; }
+.studio-cloud-scroll:focus-visible { outline: 2px solid var(--studio-blue); outline-offset: 3px; }
+.studio-cloud-hint { color: rgb(0 0 0 / 65%); font-size: 12px; margin: 8px 0; }
+@media (min-width: 1100px) { .studio-cloud-scroll img { min-width: 0; } .studio-cloud-hint { display: none; } }

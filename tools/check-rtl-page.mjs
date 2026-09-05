@@ -35,7 +35,7 @@ async function main() {
 
   requireText(page, "Verified RTL/PPA Optimization | Göther Labs", failures, "page metadata");
   requireText(page, "https://www.gotherlabs.com/rtl-optimization/", failures, "canonical URL");
-  requireText(page, "page.css?v=rtl-pilot-v5", failures, "page stylesheet");
+  requireText(page, "page.css?v=rtl-editorial-v1", failures, "page stylesheet");
   requireText(page, "Push your RTL further.", failures, "hero proposition");
   requireText(page, "See public results", failures, "client-facing evidence action");
   requireText(page, "Inspect the published cases.", failures, "evidence section heading");

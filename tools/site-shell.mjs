@@ -1,6 +1,6 @@
 // Shared primitives for generated shell output and shell validation.
 // Hand-authored HTML remains committed directly; keep this boundary small.
-export const SITE_SHELL_VERSION = "editorial-v7";
+export const SITE_SHELL_VERSION = "editorial-v8";
 
 export const SHARED_SITE_SHELL = Object.freeze({
   version: SITE_SHELL_VERSION,

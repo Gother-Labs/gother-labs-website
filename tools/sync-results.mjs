@@ -523,6 +523,7 @@ async function writeIndex(results) {
           <h1 class="page-title">Research, in the open.</h1>
           <p class="intro results-hero-intro">
             Five studies. The problem, the result, and the evidence behind it.
+            <a class="studio-link" href="../rtl-optimization/#public-evidence">Explore the three RTL/PPA cases <span aria-hidden="true">↗</span></a>
           </p>
         </section>
 

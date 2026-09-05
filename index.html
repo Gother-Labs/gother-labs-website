@@ -15,8 +15,8 @@
     <meta name="twitter:image" content="https://www.gotherlabs.com/assets/og-image.png">
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="./assets/gother-mark.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="./styles.css?v=editorial-v7">
-    <link rel="stylesheet" href="./assets/studio.css?v=editorial-v7">
+    <link rel="stylesheet" href="./styles.css?v=editorial-v8">
+    <link rel="stylesheet" href="./assets/studio.css?v=editorial-v8">
   </head>
   <body class="studio-page">
     <a class="skip-link" href="#site-main">Skip to content</a>
@@ -33,13 +33,14 @@
             <p class="studio-label">Independent algorithmic research</p>
             <h1 id="home-title">Better is<br><em>measurable.</em></h1>
             <p class="studio-hero-intro">We search for stronger algorithms and implementations. Then we put every improvement to the test.</p>
+            <p class="studio-hero-focus">For RTL teams: one block, your implementation flow, and a change your engineers can inspect.</p>
             <div class="studio-hero-actions">
               <a class="studio-link" href="./rtl-optimization/">Explore RTL/PPA optimization <span aria-hidden="true">↗</span></a>
               <a class="studio-link" id="packing-link" href="./results/circle-packing-26-unit-square/">26 circles. One square. <span aria-hidden="true">↗</span></a>
             </div>
           </div>
           <figure class="studio-figure" data-packing-figure aria-describedby="packing-link">
-            <div class="studio-figure-top"><p class="studio-label">Fig. 01 / A question of space</p></div>
+            <div class="studio-figure-top"><p class="studio-label">Fig. 01 / Published circle-packing research</p></div>
             <!-- studio-packing:start -->
 <svg class="studio-packing" viewBox="0 0 500 500" role="img" aria-labelledby="packing-title packing-description">
 <title id="packing-title">The published 26-circle packing</title><desc id="packing-description">Variable-radius circles inside a unit square, drawn from the exact rational certificate. The 58 circle contacts and 20 wall contacts are shown together with the circles.</desc>
@@ -182,15 +183,15 @@
           <div class="studio-research-list">
             <a class="studio-result" href="./results/quadrature-rule-optimization/"><p class="studio-label">Scientific computing</p><h3>A more accurate approximation.</h3><p>Quadrature rule optimization · 83.37% lower evaluated objective</p><span aria-hidden="true">↗</span></a>
             <a class="studio-result" href="./results/rcpsp-psplib-j30/"><p class="studio-label">Operational planning</p><h3>A better order of operations.</h3><p>PSPLIB J30 scheduling · 5.01% mean gap to optimum</p><span aria-hidden="true">↗</span></a>
-            <a class="studio-result" href="./results/qubit-routing-lightsabre/"><p class="studio-label">Quantum compilation</p><h3>Fewer gates. The same circuit.</h3><p>LightSABRE routing benchmark · 12,294 fewer added CNOTs</p><span aria-hidden="true">↗</span></a>
-            <a class="studio-result" href="./results/iberian-bess-policy-challenge/"><p class="studio-label">Energy optimization</p><h3>Decisions under real constraints.</h3><p>Iberian BESS policy benchmark · 33.714% lower score</p><span aria-hidden="true">↗</span></a>
+            <a class="studio-result" href="./results/qubit-routing-lightsabre/"><p class="studio-label">Quantum compilation</p><h3>Fewer added gates. The same computation.</h3><p>LightSABRE routing benchmark · 12,294 fewer added CNOTs</p><span aria-hidden="true">↗</span></a>
+            <a class="studio-result" href="./results/iberian-bess-policy-challenge/"><p class="studio-label">Energy optimization</p><h3>Decisions under real constraints.</h3><p>Iberian BESS policy benchmark · 33.714% lower benchmark score than the baseline</p><span aria-hidden="true">↗</span></a>
           </div>
         </section>
         <section class="studio-offer" aria-labelledby="offer-title"><div class="studio-wrap studio-offer-inner">
           <div class="studio-offer-copy"><p class="studio-label">02 / Work with Göther</p><h2 class="studio-serif" id="offer-title">Your RTL.<br>More room<br>to improve.</h2><p>One block. Your constraints. A search for better area, timing and power.</p><p class="studio-offer-delivery">You receive the RTL, the patch and the evidence—or a documented no-improvement finding.</p><div class="studio-offer-actions"><a class="studio-link" href="./rtl-optimization/">Explore the pilot <span aria-hidden="true">↗</span></a><a class="studio-link" data-rtl-source href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/tree/7ee35dcf022d4ed590a55731ea643f17c648a8d1/cases/mlkem-cbd">Read the case and its limits <span aria-hidden="true">↗</span></a></div></div>
           <div class="studio-rtl-study" data-rtl-study><p class="studio-label">Inside the public RTL/PPA study</p>
             <div class="studio-rtl-tabs" data-rtl-controls hidden aria-label="Published RTL case"><button type="button" data-rtl-case="sha1" aria-pressed="false">SHA-1</button><button type="button" data-rtl-case="int8" aria-pressed="false">INT8 MatVec</button><button type="button" data-rtl-case="mlkem" aria-pressed="true">ML-KEM CBD</button></div>
-            <figure class="studio-rtl-cloud"><div class="studio-cloud-legend"><span class="cloud-baseline">Baseline</span><span class="cloud-accepted">Optimized RTL</span><span class="cloud-interval">Paired estimate · 95% CI</span></div><img data-rtl-cloud src="./assets/research/rtl-mlkem-cbd.svg?v=paper-v3" width="600" height="320" alt="ML-KEM CBD: 64 baseline and optimized measurement pairs across area, timing, active power and composite. All four paired estimates improve; every measurement is shown."><figcaption aria-live="polite"><span data-rtl-pool>64 publication pairs · ML-KEM CBD</span><span>Improvement →</span></figcaption></figure>
+            <figure class="studio-rtl-cloud"><div class="studio-cloud-legend"><span class="cloud-baseline">Baseline</span><span class="cloud-accepted">Optimized RTL</span><span class="cloud-interval">Paired estimate · 95% CI</span></div><div class="studio-cloud-scroll" tabindex="0" role="region" aria-label="RTL measurement plot; scroll horizontally on smaller screens"><img data-rtl-cloud src="./assets/research/rtl-mlkem-cbd.svg?v=paper-v3" width="600" height="320" alt="ML-KEM CBD: 64 baseline and optimized measurement pairs across area, timing, active power and composite. All four paired estimates improve; every measurement is shown."></div><p class="studio-cloud-hint">Swipe or scroll to inspect the full plot.</p><figcaption aria-live="polite"><span data-rtl-pool>64 publication pairs · ML-KEM CBD</span><span>Improvement →</span></figcaption></figure>
             <p class="studio-rtl-note"><span data-rtl-normalization>Relative to the baseline geometric aggregate.</span> Each dot is one measurement; vertical spread separates pairs.<br>Academic VTR / PTM 45 nm estimates. Not ASIC signoff or a cross-circuit ranking.</p>
           </div>
         </div></section>
@@ -199,7 +200,7 @@
       </main>
       <footer class="site-footer"><div class="studio-colophon"><p>© <span id="year">2026</span> Göther Labs</p><div class="studio-colophon-end"><a href="mailto:contact@gotherlabs.com">contact@gotherlabs.com</a><svg class="gother-emblem" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="7" r="3"/><circle cx="6" cy="25" r="3"/><circle cx="26" cy="25" r="3"/></svg></div></div></footer>
     </div>
-    <script src="./scripts.js?v=editorial-v7"></script>
-    <script src="./assets/studio.js?v=editorial-v7"></script>
+    <script src="./scripts.js?v=editorial-v8"></script>
+    <script src="./assets/studio.js?v=editorial-v8"></script>
   </body>
 </html>
