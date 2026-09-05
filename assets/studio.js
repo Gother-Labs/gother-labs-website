@@ -9,32 +9,15 @@
   if (figure) {
     const circles = [...figure.querySelectorAll('[data-circle]')];
     const centers = [...figure.querySelectorAll('[data-center]')];
-    const readout = figure.querySelector('[data-circle-readout]');
-    let selected = 12;
-    figure.querySelectorAll('[data-packing-control]').forEach(el => { el.hidden = false; });
     function select(index) {
-      selected = (index + circles.length) % circles.length;
-      circles.forEach((circle, i) => circle.classList.toggle('is-selected', i === selected));
-      centers.forEach((center, i) => center.classList.toggle('is-selected', i === selected));
-      const circle = circles[selected];
-      readout.textContent = `Circle ${String(selected).padStart(2, '0')} / r = ${Number(circle.dataset.radius).toFixed(6)}`;
+      circles.forEach((circle, i) => circle.classList.toggle('is-selected', i === index));
+      centers.forEach((center, i) => center.classList.toggle('is-selected', i === index));
     }
     circles.forEach((circle, index) => {
       circle.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') select(index); });
       circle.addEventListener('click', () => select(index));
     });
-    figure.querySelector('[data-circle-prev]').addEventListener('click', () => select(selected - 1));
-    figure.querySelector('[data-circle-next]').addEventListener('click', () => select(selected + 1));
-    figure.querySelectorAll('[data-packing-view]').forEach(button => {
-      button.addEventListener('click', () => {
-        figure.dataset.view = button.dataset.packingView;
-        figure.querySelectorAll('[data-packing-view]').forEach(other => other.setAttribute('aria-pressed', String(other === button)));
-        figure.querySelector('[data-packing-description]').textContent = button.dataset.packingView === 'contacts'
-          ? 'The published contact graph: 58 circle contacts and 20 wall contacts.'
-          : '26 circles inside a unit square. All 455 certificate conditions passed.';
-      });
-    });
-    select(selected);
+    select(12);
   }
 
   const study = document.querySelector('[data-rtl-study]');

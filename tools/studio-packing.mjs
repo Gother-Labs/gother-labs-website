@@ -32,7 +32,7 @@ export async function studioPackingFigure(siteRoot) {
   }
   if (contacts.length !== 78) throw new Error("Unexpected published contact count.");
   return `<svg class="studio-packing" viewBox="0 0 500 500" role="img" aria-labelledby="packing-title packing-description">
-<title id="packing-title">The published 26-circle packing</title><desc id="packing-description">Variable-radius circles inside a unit square, drawn from the exact rational certificate. Use the previous and next circle buttons to inspect radii, or show the contact graph.</desc>
+<title id="packing-title">The published 26-circle packing</title><desc id="packing-description">Variable-radius circles inside a unit square, drawn from the exact rational certificate. The 58 circle contacts and 20 wall contacts are shown together with the circles.</desc>
 <rect class="packing-boundary" x="20" y="20" width="460" height="460"/>
 ${circles.join("\n")}
 <g class="packing-contacts">${contacts.join("\n")}</g>

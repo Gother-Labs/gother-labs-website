@@ -15,8 +15,8 @@
     <meta name="twitter:image" content="https://www.gotherlabs.com/assets/og-image.png">
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="./assets/gother-mark.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="./styles.css?v=editorial-v3">
-    <link rel="stylesheet" href="./assets/studio.css?v=editorial-v3">
+    <link rel="stylesheet" href="./styles.css?v=editorial-v4">
+    <link rel="stylesheet" href="./assets/studio.css?v=editorial-v4">
   </head>
   <body class="studio-page">
     <a class="skip-link" href="#site-main">Skip to content</a>
@@ -35,14 +35,13 @@
             <p class="studio-hero-intro">We search for stronger algorithms and implementations. Then we put every improvement to the test.</p>
             <div class="studio-hero-actions">
               <a class="studio-link" href="./rtl-optimization/">Explore RTL/PPA optimization <span aria-hidden="true">↗</span></a>
-              <a class="studio-link studio-link--quiet" href="#research">Discover the research <span aria-hidden="true">↓</span></a>
             </div>
           </div>
-          <figure class="studio-figure" data-packing-figure data-view="packing">
-            <div class="studio-figure-top"><p class="studio-label">Fig. 01 / A question of space</p><div class="studio-view-switch" data-packing-control hidden aria-label="Figure view"><button type="button" data-packing-view="packing" aria-pressed="true">Packing</button><button type="button" data-packing-view="contacts" aria-pressed="false">Contacts</button></div></div>
+          <figure class="studio-figure" data-packing-figure aria-describedby="packing-caption">
+            <div class="studio-figure-top"><p class="studio-label">Fig. 01 / A question of space</p></div>
             <!-- studio-packing:start -->
 <svg class="studio-packing" viewBox="0 0 500 500" role="img" aria-labelledby="packing-title packing-description">
-<title id="packing-title">The published 26-circle packing</title><desc id="packing-description">Variable-radius circles inside a unit square, drawn from the exact rational certificate. Use the previous and next circle buttons to inspect radii, or show the contact graph.</desc>
+<title id="packing-title">The published 26-circle packing</title><desc id="packing-description">Variable-radius circles inside a unit square, drawn from the exact rational certificate. The 58 circle contacts and 20 wall contacts are shown together with the circles.</desc>
 <rect class="packing-boundary" x="20" y="20" width="460" height="460"/>
 <circle class="packing-circle" data-circle="0" data-radius="0.110779012790715890486477374499745228486125297303881232394825720292904940688057239873305559404" cx="70.958346" cy="429.041654" r="50.958346"><title>Circle 0; radius 0.110779</title></circle>
 <circle class="packing-circle" data-circle="1" data-radius="0.0957323293070215966961054284625625657405642181028606726112816098373339354153967070450476434043" cx="165.701074" cy="435.963129" r="44.036871"><title>Circle 1; radius 0.095732</title></circle>
@@ -175,11 +174,9 @@
 <circle class="packing-center" data-center="24" cx="440.933919" cy="59.066081" r="1.7"/>
 <circle class="packing-center" data-center="25" cx="128.710158" cy="369.733157" r="1.7"/></svg>
             <!-- studio-packing:end -->
-            <div class="studio-figure-readout" data-packing-control hidden><span data-circle-readout aria-live="polite" aria-atomic="true">Circle 12 / r = 0.137010</span><div class="studio-circle-navigation"><button type="button" data-circle-prev aria-label="Previous circle">←</button><button type="button" data-circle-next aria-label="Next circle">→</button></div></div>
-            <figcaption><a href="./results/circle-packing-26-unit-square/">26 circles. One square. <span aria-hidden="true">↗</span></a><p data-packing-description>26 circles inside a unit square. All 455 certificate conditions passed.</p><p>Rounded drawing. The exact certificate determines validity.</p></figcaption>
           </figure>
+          <div class="studio-packing-caption" id="packing-caption"><a class="studio-packing-title" href="./results/circle-packing-26-unit-square/">26 circles. One square. <span aria-hidden="true">↗</span></a><p>78 contacts. All 455 certificate conditions passed. <a href="./results/circle-packing-26-unit-square/artifacts/exact.csv"><span data-result-metric="accepted_sum_radii">Sum of radii 2.635983084917607783…</span></a><br>Rounded drawing; the exact certificate determines validity.</p></div>
         </section>
-        <div class="studio-wrap"><div class="studio-intro-line"><p>A fixed test. An open search.</p><p><a href="./results/circle-packing-26-unit-square/artifacts/exact.csv"><span data-result-metric="accepted_sum_radii">Exact 26-circle packing · strict certificate 2.635983084917607783…</span> ↗</a></p></div></div>
         <section class="studio-wrap studio-work" id="research" aria-labelledby="work-title">
           <div class="studio-section-heading"><p class="studio-label">01 / Selected research</p><h2 class="studio-serif" id="work-title">Small changes.<br>Real consequences.</h2><p>Different problems, one discipline: make the improvement measurable and the evidence inspectable.</p></div>
           <div class="studio-research-list">
@@ -204,7 +201,7 @@
       </main>
       <footer class="site-footer"><div class="studio-colophon"><p>© <span id="year">2026</span> Göther Labs</p><div class="studio-colophon-end"><a href="mailto:contact@gotherlabs.com">contact@gotherlabs.com</a><svg class="gother-emblem" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="7" r="3"/><circle cx="6" cy="25" r="3"/><circle cx="26" cy="25" r="3"/></svg></div></div></footer>
     </div>
-    <script src="./scripts.js?v=editorial-v3"></script>
-    <script src="./assets/studio.js?v=editorial-v3"></script>
+    <script src="./scripts.js?v=editorial-v4"></script>
+    <script src="./assets/studio.js?v=editorial-v4"></script>
   </body>
 </html>

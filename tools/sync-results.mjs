@@ -3263,7 +3263,7 @@ async function syncFeaturedResult(results) {
 
   let updated = html.replace(
     marker,
-    (_match, open, close) => `${open}Exact 26-circle packing · strict certificate ${exactValue.slice(0, 20)}…${close}`,
+    (_match, open, close) => `${open}Sum of radii ${exactValue.slice(0, 20)}…${close}`,
   );
   if (updated.includes("<!-- studio-packing:start -->")) {
     const { studioPackingFigure } = await import("./studio-packing.mjs");
