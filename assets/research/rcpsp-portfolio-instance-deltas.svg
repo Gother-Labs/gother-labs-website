@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-label="Ordered makespan change for all 80 PSPLIB J30 instances comparing Evölther 2.0 with baseline">
   <style>
     .bg{fill:#ffffff}.guide{stroke:#dddddd;stroke-width:1}.zero{stroke:#777777;stroke-width:2}.win{fill:none;stroke:#005bff;stroke-width:8;stroke-linecap:round}.tie{fill:none;stroke:#777777;stroke-width:8;stroke-linecap:round}.loss{fill:none;stroke:#000000;stroke-width:8;stroke-linecap:round}.title{fill:#000000;font:600 25px Inter,Arial,sans-serif}.meta{fill:#595959;font:14px Inter,Arial,sans-serif}.axis{fill:#595959;font:12px Inter,Arial,sans-serif}.summary{fill:#222222;font:600 15px Inter,Arial,sans-serif}.accent{fill:#005bff;font:700 16px Inter,Arial,sans-serif}.callout{stroke:#000000;stroke-width:2;fill:none}.calloutText{fill:#000000;font:600 14px Inter,Arial,sans-serif}
-  </style>
+  path.axis,path.grid{fill:none}</style>
   <rect class="bg" width="1200" height="420"/>
   <text class="title" x="84" y="48">Every frozen instance against baseline</text>
   <text class="meta" x="1112" y="48" text-anchor="end">80 instances · ordered by makespan change · lower is better</text>

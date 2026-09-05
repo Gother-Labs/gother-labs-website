@@ -43,10 +43,13 @@ const paperPalette = {
   '#d58b7f':'#000000',
 };
 export function paperFigure(source) {
-  return source.replace('muted red is longer', 'black is longer').replace(/#[\da-f]{6}\b/gi, color => {
+  const themed = source.replace('muted red is longer', 'black is longer').replace(/#[\da-f]{6}\b/gi, color => {
     if (!(color.toLowerCase() in paperPalette)) throw new Error(`Unmapped research figure color: ${color}`);
     return paperPalette[color.toLowerCase()];
   });
+  // Open L-shaped axes otherwise inherit SVG's black fill and close into a
+  // triangle. Scope this to paths: some figures also use .axis for text labels.
+  return themed.replace('</style>', 'path.axis,path.grid{fill:none}</style>');
 }
 
 export async function writeStudioFigures(root = siteRoot, check = false) {

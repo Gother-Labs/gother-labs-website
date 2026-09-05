@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 560" role="img" aria-label="Largest Evölther 2.0 residual RCPSP gaps">
-  <style>.bg{fill:#ffffff}.axis{stroke:#bbbbbb}.grid{stroke:#dddddd}.bar{fill:#005bff}.bar2{fill:#669dff}.muted{fill:#595959;font:13px Inter,Arial,sans-serif}.label{fill:#222222;font:14px Inter,Arial,sans-serif}.title{fill:#000000;font:600 22px Inter,Arial,sans-serif}.value{fill:#000000;font:600 13px Inter,Arial,sans-serif}</style>
+  <style>.bg{fill:#ffffff}.axis{stroke:#bbbbbb}.grid{stroke:#dddddd}.bar{fill:#005bff}.bar2{fill:#669dff}.muted{fill:#595959;font:13px Inter,Arial,sans-serif}.label{fill:#222222;font:14px Inter,Arial,sans-serif}.title{fill:#000000;font:600 22px Inter,Arial,sans-serif}.value{fill:#000000;font:600 13px Inter,Arial,sans-serif}path.axis,path.grid{fill:none}</style>
   <rect class="bg" width="1040" height="560"/><text x="64" y="48" class="title">Tail behavior kept visible</text><text x="976" y="48" class="muted" text-anchor="end">largest Evölther 2.0 residual gaps</text>
   <path class="axis" d="M190 78V462H930"/><path class="grid" d="M396 78V462M602 78V462M808 78V462"/>
   <g transform="translate(0 92)"><text x="64" y="20" class="label">j3025_3</text><rect x="190" y="2" width="704" height="24" class="bar"/><text x="904" y="20" class="value">17.11% · 89 vs 76</text></g>

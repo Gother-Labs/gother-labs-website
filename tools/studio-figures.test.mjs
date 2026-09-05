@@ -8,7 +8,10 @@ test('the paper palette preserves all figure geometry, measurements and outcomes
   for (const file of (await fs.readdir(source)).filter(name => name.endsWith('.svg'))) {
     const original = await fs.readFile(new URL(file, source), 'utf8');
     const themed = paperFigure(original);
-    const withoutPalette = svg => svg.replace(/#[\da-f]{6}\b/gi, '#COLOR').replace('muted red is longer', 'black is longer');
+    const withoutPalette = svg => svg
+      .replace(/#[\da-f]{6}\b/gi, '#COLOR')
+      .replace('muted red is longer', 'black is longer')
+      .replace('path.axis,path.grid{fill:none}', '');
     assert.equal(withoutPalette(themed), withoutPalette(original), file);
     assert.ok(themed.includes('#ffffff'), `${file}: white paper background`);
     assert.ok(!themed.includes('muted red'), `${file}: legend agrees with palette`);
