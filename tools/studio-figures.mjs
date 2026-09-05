@@ -27,7 +27,7 @@ export function rtlCloudFigure(rows, intervals, slug) {
     const high = Number(interval.estimate) + Number(interval.plus);
     return `<text x="0" y="${center + 5}">${label}</text>${points}<g class="estimate"><path d="M${x(low)} ${center}H${x(high)}M${x(low)} ${center-5}V${center+5}M${x(high)} ${center-5}V${center+5}"/><circle cx="${x(interval.estimate)}" cy="${center}" r="3.2"/><title>Paired ${label.toLowerCase()} estimate ${Number(interval.estimate).toFixed(3)}%; 95% CI ${low.toFixed(3)} to ${high.toFixed(3)}%</title></g>`;
   }).join('');
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" role="img" aria-label="${slug}: all 64 baseline and optimized implementation pairs across area, timing, active power and composite; right is better"><style>text{font:13px Inter,Arial,sans-serif;fill:#fff}.grid{stroke:#fff;stroke-opacity:.13}.zero{stroke:#fff;stroke-opacity:.42}.baseline{fill:#fff;fill-opacity:.3}.accepted{fill:#005bff;fill-opacity:.7}.estimate{stroke:#fff;fill:#000;stroke-width:1.4}</style>${grid}${clouds}</svg>\n`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" role="img" aria-label="${slug}: all 64 baseline and optimized implementation pairs across area, timing, active power and composite; right is better"><style>text{font:13px Inter,Arial,sans-serif;fill:#000}.grid{fill:none;stroke:#000;stroke-opacity:.13}.zero{fill:none;stroke:#000;stroke-opacity:.42}.baseline{fill:#000;fill-opacity:.3}.accepted{fill:#005bff;fill-opacity:.7}.estimate{stroke:#000;fill:#fff;stroke-width:1.4}</style>${grid}${clouds}</svg>\n`;
 }
 
 // Presentation copies only. Original published figures stay byte-identical.

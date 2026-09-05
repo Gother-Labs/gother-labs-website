@@ -50,7 +50,7 @@
         const result = cases[button.dataset.rtlCase];
         study.querySelectorAll('[data-rtl-case]').forEach(other => other.setAttribute('aria-pressed', String(other === button)));
         const cloud = study.querySelector('[data-rtl-cloud]');
-        cloud.src = `./assets/research/rtl-${result.slug}.svg`;
+        cloud.src = `./assets/research/rtl-${result.slug}.svg?v=paper-v3`;
         cloud.alt = `${button.textContent}: 64 baseline and optimized measurement pairs across area, timing, active power and composite, with paired estimates and 95% confidence intervals. Right is better.`;
         study.querySelector('[data-rtl-pool]').textContent = result.pool;
         study.querySelector('[data-rtl-normalization]').textContent = result.reference;
@@ -80,9 +80,7 @@
     const pathData = points => points.map((p, i) => `${i ? 'L' : 'M'}${(p.x * scaleX).toFixed(2)} ${(p.y * scaleY).toFixed(2)}`).join(' ');
     const bodies = [...field.querySelectorAll('.orbit-bodies circle')];
     const tails = [...field.querySelectorAll('.orbit-tails path')];
-    const toggle = document.querySelector('[data-orbit-toggle]');
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let paused = motion.matches;
     let time = 0;
     let last = 0;
     let frameId = 0;
@@ -105,12 +103,9 @@
     function updateMotion() {
       cancelAnimationFrame(frameId);
       last = 0;
-      toggle.textContent = paused ? 'Play motion' : 'Pause motion';
-      if (!paused && !document.hidden) frameId = requestAnimationFrame(frame);
+      if (!motion.matches && !document.hidden) frameId = requestAnimationFrame(frame);
     }
-    toggle.hidden = false;
-    toggle.addEventListener('click', () => { paused = !paused; updateMotion(); });
-    motion.addEventListener('change', () => { paused = motion.matches; updateMotion(); });
+    motion.addEventListener('change', updateMotion);
     document.addEventListener('visibilitychange', updateMotion);
     function resizeField() {
       scaleX = field.clientWidth / 1600;
