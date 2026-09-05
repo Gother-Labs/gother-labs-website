@@ -1,6 +1,6 @@
 // Shared primitives for generated shell output and shell validation.
 // Hand-authored HTML remains committed directly; keep this boundary small.
-export const SITE_SHELL_VERSION = "editorial-v1";
+export const SITE_SHELL_VERSION = "editorial-v2";
 
 export const SHARED_SITE_SHELL = Object.freeze({
   version: SITE_SHELL_VERSION,
@@ -44,8 +44,8 @@ export function sharedNav(prefix) {
 
   return `<header class="site-header">
         <nav class="site-nav" aria-label="Primary">
-          <a class="brand nav-brand nav-home-wordmark" href="${prefix}" aria-label="Göther Labs home">
-            <svg class="gother-emblem" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="7" r="3"/><circle cx="6" cy="25" r="3"/><circle cx="26" cy="25" r="3"/></svg>
+          <a class="brand nav-brand nav-home-wordmark animated-symbol-scope" href="${prefix}" aria-label="Göther Labs home">
+            <span class="wordmark-mark-wrap" aria-hidden="true"><svg class="animated-reference-geometry live-symbol-svg" viewBox="6 18 56 56" focusable="false"><g class="source-geometry"><circle class="source-geometry-dot" cx="34.5" cy="34.5" r="3.6"/><circle class="source-geometry-dot" cx="21" cy="58" r="3.6"/><circle class="source-geometry-dot" cx="48" cy="58" r="3.6"/></g><path class="live-trail" d=""/><path class="live-trail" d=""/><path class="live-trail" d=""/><circle class="geometry-dot live-geometry-dot" cx="34.5" cy="34.5" r="3.6"/><circle class="geometry-dot live-geometry-dot" cx="21" cy="58" r="3.6"/><circle class="geometry-dot live-geometry-dot" cx="48" cy="58" r="3.6"/></svg></span>
             <span class="nav-wordmark-text">Göther Labs</span>
           </a>
           <div class="nav-links">

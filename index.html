@@ -15,15 +15,15 @@
     <meta name="twitter:image" content="https://www.gotherlabs.com/assets/og-image.png">
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="./assets/gother-mark.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="./styles.css?v=editorial-v1">
-    <link rel="stylesheet" href="./assets/studio.css?v=editorial-v1">
+    <link rel="stylesheet" href="./styles.css?v=editorial-v2">
+    <link rel="stylesheet" href="./assets/studio.css?v=editorial-v2">
   </head>
   <body class="studio-page">
     <a class="skip-link" href="#site-main">Skip to content</a>
     <div class="page-shell site-shell">
       <header class="site-header">
         <nav class="site-nav" aria-label="Primary">
-          <a class="brand nav-brand nav-home-wordmark" href="./" aria-label="Göther Labs home"><svg class="gother-emblem" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="7" r="3"/><circle cx="6" cy="25" r="3"/><circle cx="26" cy="25" r="3"/></svg><span class="nav-wordmark-text">Göther Labs</span></a>
+          <a class="brand nav-brand nav-home-wordmark animated-symbol-scope" href="./" aria-label="Göther Labs home"><span class="wordmark-mark-wrap" aria-hidden="true"><svg class="animated-reference-geometry live-symbol-svg" viewBox="6 18 56 56" focusable="false"><g class="source-geometry"><circle class="source-geometry-dot" cx="34.5" cy="34.5" r="3.6"/><circle class="source-geometry-dot" cx="21" cy="58" r="3.6"/><circle class="source-geometry-dot" cx="48" cy="58" r="3.6"/></g><path class="live-trail" d=""/><path class="live-trail" d=""/><path class="live-trail" d=""/><circle class="geometry-dot live-geometry-dot" cx="34.5" cy="34.5" r="3.6"/><circle class="geometry-dot live-geometry-dot" cx="21" cy="58" r="3.6"/><circle class="geometry-dot live-geometry-dot" cx="48" cy="58" r="3.6"/></svg></span><span class="nav-wordmark-text">Göther Labs</span></a>
           <div class="nav-links"><a href="./results/">Results</a><a href="./company/">Company</a><a href="./contact/">Contact</a></div>
         </nav>
       </header>
@@ -191,21 +191,20 @@
           </div>
         </section>
         <section class="studio-offer" aria-labelledby="offer-title"><div class="studio-wrap studio-offer-inner">
-          <div class="studio-offer-copy"><p class="studio-label">02 / Work with Göther</p><h2 class="studio-serif" id="offer-title">One block.<br>A better<br>implementation.</h2><p>Our current commercial focus is RTL/PPA optimization. We explore one owned RTL block within your interface, correctness requirements and implementation flow.</p><p style="margin-top: 18px">You receive the RTL, the exact patch and the evidence to assess it—or a documented no-improvement finding.</p><a class="studio-link" href="./rtl-optimization/">Explore the pilot <span aria-hidden="true">↗</span></a></div>
-          <div class="studio-rtl-study" data-rtl-study><p class="studio-label">From the public RTL/PPA study</p>
+          <div class="studio-offer-copy"><p class="studio-label">02 / Work with Göther</p><h2 class="studio-serif" id="offer-title">Your RTL.<br>More room<br>to improve.</h2><p>One block. Your constraints. A search for better area, timing and power.</p><p class="studio-offer-delivery">You receive the RTL, the patch and the evidence—or a documented no-improvement finding.</p><a class="studio-link" href="./rtl-optimization/">Explore the pilot <span aria-hidden="true">↗</span></a></div>
+          <div class="studio-rtl-study" data-rtl-study><p class="studio-label">Inside the public RTL/PPA study</p>
             <div class="studio-rtl-tabs" data-rtl-controls hidden aria-label="Published RTL case"><button type="button" data-rtl-case="sha1" aria-pressed="false">SHA-1</button><button type="button" data-rtl-case="int8" aria-pressed="false">INT8 MatVec</button><button type="button" data-rtl-case="mlkem" aria-pressed="true">ML-KEM CBD</button></div>
-            <div class="studio-rtl-stat" aria-live="polite" aria-atomic="true"><strong data-rtl-gain>−9.7338%</strong><span>composite estimate<br><span data-rtl-case-name>ML-KEM CBD</span></span></div>
-            <div class="studio-comparison" aria-label="Normalized composite score comparison"><div><div class="studio-bar-label"><span>Baseline</span><span>100.0000</span></div><div class="studio-bar"></div></div><div><div class="studio-bar-label"><span>Accepted candidate</span><span data-rtl-score>90.2662</span></div><div class="studio-bar studio-bar--accepted" data-rtl-bar style="width:90.2662%"></div></div></div>
-            <p class="studio-rtl-note">Composite score normalized to baseline = 100; lower is better.<br>Academic VTR / PTM 45 nm estimates. Not ASIC signoff or a cross-circuit performance ranking. Customer results require evaluation in the agreed flow.</p>
-            <a class="studio-link" data-rtl-source href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/tree/v2.2.2/cases/mlkem-cbd">Read the case and its limits <span aria-hidden="true">↗</span></a>
+            <figure class="studio-rtl-cloud"><div class="studio-cloud-legend"><span class="cloud-baseline">Baseline</span><span class="cloud-accepted">Optimized RTL</span><span class="cloud-interval">Paired estimate · 95% CI</span></div><img data-rtl-cloud src="./assets/research/rtl-mlkem-cbd.svg" width="600" height="320" alt="ML-KEM CBD: 64 baseline and optimized measurement pairs across area, timing, active power and composite. All four paired estimates improve; every measurement is shown."><figcaption aria-live="polite"><span data-rtl-pool>64 publication pairs · ML-KEM CBD</span><span>Improvement →</span></figcaption></figure>
+            <p class="studio-rtl-note"><span data-rtl-normalization>Relative to the baseline geometric aggregate.</span> Each dot is one measurement; vertical spread separates pairs.<br>Academic VTR / PTM 45 nm estimates. Not ASIC signoff or a cross-circuit ranking.</p>
+            <a class="studio-link" data-rtl-source href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/tree/7ee35dcf022d4ed590a55731ea643f17c648a8d1/cases/mlkem-cbd">Read the case and its limits <span aria-hidden="true">↗</span></a>
           </div>
         </div></section>
-        <section class="studio-wrap studio-method" aria-labelledby="method-title"><div><p class="studio-label">03 / How we work</p><h2 class="studio-serif" id="method-title">The search is open.<br>The standard is fixed.</h2></div><ol><li><h3>Define what better means.</h3><p>Agree on the baseline, the constraints and the measure of success before exploring alternatives.</p></li><li><h3>Give the search room.</h3><p>Explore different implementations while keeping the evaluation contract unchanged.</p></li><li><h3>Let the evidence decide.</h3><p>Report the improvement, the trade-offs and the limits. Keep the result reproducible and open to scrutiny.</p></li></ol></section>
+        <section class="studio-wrap studio-method" aria-labelledby="method-title"><div><p class="studio-label">03 / How we work</p><h2 class="studio-serif" id="method-title">The search is open.<br>The improvement<br>stays with you.</h2></div><ol><li><h3>Define what better means.</h3><p>Agree on the baseline, the constraints and the measure of success before exploring alternatives.</p></li><li><h3>Give the search room.</h3><p>Explore different implementations while keeping the evaluation contract unchanged.</p></li><li><h3>Keep the result in-house.</h3><p>Receive the implementation and its evidence. Your team can inspect, integrate and maintain it in your own flow. You decide what to adopt.</p></li></ol></section>
 <section class="studio-wrap"><div class="studio-close"><p class="studio-label">Have a system worth improving?</p><a href="./contact/">Let’s find out.<span aria-hidden="true">↗</span></a></div></section>
       </main>
       <footer class="site-footer"><div class="studio-colophon"><p>© <span id="year">2026</span> Göther Labs</p><div class="studio-colophon-end"><a href="mailto:contact@gotherlabs.com">contact@gotherlabs.com</a><svg class="gother-emblem" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="7" r="3"/><circle cx="6" cy="25" r="3"/><circle cx="26" cy="25" r="3"/></svg></div></div></footer>
     </div>
-    <script src="./scripts.js?v=editorial-v1"></script>
-    <script src="./assets/studio.js?v=editorial-v1"></script>
+    <script src="./scripts.js?v=editorial-v2"></script>
+    <script src="./assets/studio.js?v=editorial-v2"></script>
   </body>
 </html>

@@ -5,6 +5,7 @@ import { execFile as execFileCallback } from "node:child_process";
 import { promisify } from "node:util";
 import { fileURLToPath } from "node:url";
 import { assertNoSpecialGitEntries } from "./results-source-policy.mjs";
+import { writeStudioFigures } from "./studio-figures.mjs";
 import { articleWithoutTitle, markdownToHtml } from "./result-markdown.mjs";
 import {
   normalizeCopiedRunShell,
@@ -3321,6 +3322,7 @@ async function main() {
   }
   await syncFeaturedResult(results);
   await writeSitemap(results);
+  await writeStudioFigures(SITE_ROOT);
   console.log(`Synced ${results.length} result(s) from ${path.relative(SITE_ROOT, RESULTS_ROOT)}`);
 }
 
