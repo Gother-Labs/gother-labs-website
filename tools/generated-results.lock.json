@@ -1,7 +1,7 @@
 {
   "schema_version": "generated-results-source/v1",
   "repository": "Gother-Labs/gother-labs-results",
-  "commit": "a8bd77fa7456e77ab5a7bb8118c856746b5ac593",
+  "commit": "aefa9d4c32c298998309ecdcd3b2880ea480bb36",
   "catalog_schema": "results-catalog/v2",
   "curated_detail_slugs": [
     "iberian-bess-policy-challenge",
