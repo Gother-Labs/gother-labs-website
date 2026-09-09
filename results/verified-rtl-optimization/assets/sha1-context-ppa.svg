@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 500" role="img" aria-label="SHA-1 architecture context and paired PPA estimate">
+  <rect width="1120" height="500" fill="white"/>
+  <style>
+    text{font-family:Arial,Helvetica,sans-serif;fill:#111}.title{font-size:24px;font-weight:700}.label{font-size:14px;font-weight:700;letter-spacing:.04em}.body{font-size:15px}.small{font-size:12.5px;fill:#5f5f5f}.box{fill:#fff;stroke:#111;stroke-width:1.8}.hot{fill:#fff;stroke:#005bff;stroke-width:2.5}.line{fill:none;stroke:#111;stroke-width:2}.muted{fill:none;stroke:#c4c4c4;stroke-width:1}.ci{stroke:#005bff;stroke-width:2.2;stroke-linecap:round}.dot{fill:#005bff}.tick{font-size:11px;fill:#686868}
+  </style>
+  <text x="48" y="44" class="title">SHA-1 · where the RTL change sits</text>
+  <text x="620" y="44" class="title">Case-local paired PPA estimate</text>
+  <text x="620" y="68" class="small">64 publication pairs · 95% intervals · case-local scale</text>
+  <path class="muted" d="M575 28V450"/>
+
+  <g transform="translate(48 104)">
+    <rect class="box" x="0" y="58" width="108" height="70" rx="7"/>
+    <text x="54" y="86" text-anchor="middle" class="label">512-bit block</text>
+    <text x="54" y="108" text-anchor="middle" class="small">32-bit I/O</text>
+    <path class="line" d="M108 93H145"/>
+    <rect class="box" x="145" y="48" width="126" height="90" rx="7"/>
+    <text x="208" y="80" text-anchor="middle" class="label">Command + state</text>
+    <text x="208" y="103" text-anchor="middle" class="small">protocol · registers</text>
+    <path class="line" d="M271 93H306"/>
+    <rect class="hot" x="306" y="30" width="166" height="126" rx="7"/>
+    <text x="389" y="64" text-anchor="middle" class="label">80-round engine</text>
+    <text x="389" y="88" text-anchor="middle" class="small">choose / parity / majority</text>
+    <text x="389" y="110" text-anchor="middle" class="small">rotates + additions</text>
+    <text x="389" y="136" text-anchor="middle" class="small">optimized Boolean sharing</text>
+    <path class="line" d="M472 93H507"/>
+    <rect class="hot" x="507" y="58" width="94" height="70" rx="7"/>
+    <text x="554" y="86" text-anchor="middle" class="label">Readout</text>
+    <text x="554" y="108" text-anchor="middle" class="small">A · B · C · D · E</text>
+
+    <text x="0" y="210" class="body">Accepted source change</text>
+    <text x="0" y="238" class="small">Share XOR terms · exploit mutually exclusive choose terms · remove temporary 160-bit readout concatenation.</text>
+    <text x="0" y="270" class="small">Frozen: interface, protocol, cycle behavior, latency, output order.</text>
+  </g>
+
+  <g>
+    <path class="muted" d="M680 110V402M803.3 110V402M926.7 110V402M1050 110V402"/>
+    <text x="680" y="424" class="tick" text-anchor="middle">0%</text><text x="803.3" y="424" class="tick" text-anchor="middle">2%</text><text x="926.7" y="424" class="tick" text-anchor="middle">4%</text><text x="1050" y="424" class="tick" text-anchor="middle">6%</text>
+    <text x="620" y="136" class="body">Area</text><line class="ci" x1="684.9" y1="132" x2="693.0" y2="132"/><line class="ci" x1="684.9" y1="126" x2="684.9" y2="138"/><line class="ci" x1="693.0" y1="126" x2="693.0" y2="138"/><circle class="dot" cx="689.2" cy="132" r="5"/><text x="1068" y="136" class="small" text-anchor="end">0.15%</text>
+    <text x="620" y="206" class="body">Delay</text><line class="ci" x1="966.1" y1="202" x2="1034.6" y2="202"/><line class="ci" x1="966.1" y1="196" x2="966.1" y2="208"/><line class="ci" x1="1034.6" y1="196" x2="1034.6" y2="208"/><circle class="dot" cx="1000.7" cy="202" r="5"/><text x="1068" y="206" class="small" text-anchor="end">5.20%</text>
+    <text x="620" y="276" class="body">Power</text><line class="ci" x1="734.9" y1="272" x2="795.3" y2="272"/><line class="ci" x1="734.9" y1="266" x2="734.9" y2="278"/><line class="ci" x1="795.3" y1="266" x2="795.3" y2="278"/><circle class="dot" cx="765.1" cy="272" r="5"/><text x="1068" y="276" class="small" text-anchor="end">1.38%</text>
+    <text x="620" y="346" class="body">Composite</text><line class="ci" x1="810.7" y1="342" x2="828.6" y2="342"/><line class="ci" x1="810.7" y1="336" x2="810.7" y2="348"/><line class="ci" x1="828.6" y1="336" x2="828.6" y2="348"/><circle class="dot" cx="820.0" cy="342" r="5"/><text x="1068" y="346" class="small" text-anchor="end">2.27%</text>
+  </g>
+  <text x="620" y="462" class="small">Improvement versus frozen baseline. These estimates are not a cross-circuit ranking.</text>
+</svg>

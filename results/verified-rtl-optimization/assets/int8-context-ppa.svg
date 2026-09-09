@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 500" role="img" aria-label="INT8 MatVec architecture context and paired PPA estimate">
+  <rect width="1120" height="500" fill="white"/>
+  <style>
+    text{font-family:Arial,Helvetica,sans-serif;fill:#111}.title{font-size:24px;font-weight:700}.label{font-size:14px;font-weight:700;letter-spacing:.04em}.body{font-size:15px}.small{font-size:12.5px;fill:#5f5f5f}.box{fill:#fff;stroke:#111;stroke-width:1.8}.hot{fill:#fff;stroke:#005bff;stroke-width:2.5}.line{fill:none;stroke:#111;stroke-width:2}.muted{fill:none;stroke:#c4c4c4;stroke-width:1}.ci{stroke:#005bff;stroke-width:2.2;stroke-linecap:round}.dot{fill:#005bff}.tick{font-size:11px;fill:#686868}
+  </style>
+  <text x="48" y="44" class="title">INT8 MatVec · where the RTL change sits</text>
+  <text x="620" y="44" class="title">Case-local paired PPA estimate</text>
+  <text x="620" y="68" class="small">64 held-out pairs · 95% intervals · case-local scale</text>
+  <path class="muted" d="M575 28V450"/>
+
+  <g transform="translate(48 100)">
+    <rect class="box" x="0" y="28" width="110" height="72" rx="7"/>
+    <text x="55" y="56" text-anchor="middle" class="label">4 activations</text>
+    <text x="55" y="79" text-anchor="middle" class="small">signed INT8</text>
+    <rect class="box" x="0" y="126" width="110" height="72" rx="7"/>
+    <text x="55" y="154" text-anchor="middle" class="label">4×4 weights</text>
+    <text x="55" y="177" text-anchor="middle" class="small">signed INT8</text>
+    <path class="line" d="M110 64H158M110 162H158"/>
+    <rect class="box" x="158" y="62" width="132" height="102" rx="7"/>
+    <text x="224" y="94" text-anchor="middle" class="label">16 products</text>
+    <text x="224" y="118" text-anchor="middle" class="small">exact signed 8×8</text>
+    <text x="224" y="140" text-anchor="middle" class="small">16-bit results</text>
+    <path class="line" d="M290 113H328"/>
+    <rect class="hot" x="328" y="46" width="164" height="134" rx="7"/>
+    <text x="410" y="80" text-anchor="middle" class="label">Row reductions</text>
+    <text x="410" y="106" text-anchor="middle" class="small">17-bit pair sums</text>
+    <text x="410" y="128" text-anchor="middle" class="small">18-bit balanced tree</text>
+    <text x="410" y="154" text-anchor="middle" class="small">single final extension</text>
+    <path class="line" d="M492 113H530"/>
+    <rect class="box" x="530" y="78" width="78" height="70" rx="7"/>
+    <text x="569" y="106" text-anchor="middle" class="label">y[0:3]</text>
+    <text x="569" y="129" text-anchor="middle" class="small">INT32</text>
+
+    <text x="0" y="240" class="body">Accepted source change</text>
+    <text x="0" y="268" class="small">Keep exact products narrow, sum them with range-correct widths, and balance the reduction tree before 32-bit extension.</text>
+    <text x="0" y="300" class="small">Frozen: ports, signedness, combinational behavior, overflow semantics, exact dot-product arithmetic.</text>
+  </g>
+
+  <g>
+    <path class="muted" d="M680 110V402M762.2 110V402M844.4 110V402M926.7 110V402M1008.9 110V402"/>
+    <text x="680" y="424" class="tick" text-anchor="middle">0%</text><text x="762.2" y="424" class="tick" text-anchor="middle">4%</text><text x="844.4" y="424" class="tick" text-anchor="middle">8%</text><text x="926.7" y="424" class="tick" text-anchor="middle">12%</text><text x="1008.9" y="424" class="tick" text-anchor="middle">16%</text>
+    <text x="620" y="136" class="body">Area</text><line class="ci" x1="999.3" y1="132" x2="1001.8" y2="132"/><line class="ci" x1="999.3" y1="126" x2="999.3" y2="138"/><line class="ci" x1="1001.8" y1="126" x2="1001.8" y2="138"/><circle class="dot" cx="1000.5" cy="132" r="5"/><text x="1068" y="136" class="small" text-anchor="end">15.5943%</text>
+    <text x="620" y="206" class="body">Delay</text><line class="ci" x1="733.1" y1="202" x2="757.8" y2="202"/><line class="ci" x1="733.1" y1="196" x2="733.1" y2="208"/><line class="ci" x1="757.8" y1="196" x2="757.8" y2="208"/><circle class="dot" cx="745.5" cy="202" r="5"/><text x="1068" y="206" class="small" text-anchor="end">3.1868%</text>
+    <text x="620" y="276" class="body">Power</text><line class="ci" x1="786.1" y1="272" x2="808.5" y2="272"/><line class="ci" x1="786.1" y1="266" x2="786.1" y2="278"/><line class="ci" x1="808.5" y1="266" x2="808.5" y2="278"/><circle class="dot" cx="797.3" cy="272" r="5"/><text x="1068" y="276" class="small" text-anchor="end">5.7081%</text>
+    <text x="620" y="346" class="body">Composite</text><line class="ci" x1="848.5" y1="342" x2="853.6" y2="342"/><line class="ci" x1="848.5" y1="336" x2="848.5" y2="348"/><line class="ci" x1="853.6" y1="336" x2="853.6" y2="348"/><circle class="dot" cx="851.1" cy="342" r="5"/><text x="1068" y="346" class="small" text-anchor="end">8.3230%</text>
+  </g>
+  <text x="620" y="462" class="small">Improvement versus frozen baseline. Academic LUT6 target; no commercial DSP/BRAM model.</text>
+</svg>

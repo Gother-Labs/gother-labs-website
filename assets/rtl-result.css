@@ -263,3 +263,87 @@
     padding-bottom: 0.68rem;
   }
 }
+
+
+/* RTL technical framing v3 */
+.result-verified-rtl-page .rtl-table--ppa-definition {
+  min-width: 58rem;
+}
+
+.result-verified-rtl-page .rtl-table--ppa-definition th:nth-child(1),
+.result-verified-rtl-page .rtl-table--ppa-definition td:nth-child(1) {
+  width: 16%;
+}
+
+.result-verified-rtl-page .rtl-table--ppa-definition th:nth-child(2),
+.result-verified-rtl-page .rtl-table--ppa-definition td:nth-child(2) {
+  width: 42%;
+}
+
+.result-verified-rtl-page .rtl-table--ppa-definition th:nth-child(3),
+.result-verified-rtl-page .rtl-table--ppa-definition td:nth-child(3) {
+  width: 42%;
+}
+
+.result-verified-rtl-page .rtl-maturity-warning {
+  width: min(100%, 68rem);
+  margin: 2.4rem 0 3.4rem;
+  padding: clamp(1.25rem, 2.4vw, 1.8rem) clamp(1.3rem, 2.6vw, 2rem);
+  border: 1px solid var(--line-strong);
+  border-left: 4px solid var(--text);
+  background: color-mix(in srgb, var(--text) 2.5%, var(--bg));
+}
+
+.result-verified-rtl-page .rtl-maturity-warning .rtl-maturity-heading {
+  width: auto;
+  max-width: none;
+  margin: 0 0 0.9rem;
+  font-size: clamp(1.35rem, 1.8vw, 1.7rem);
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+}
+
+.result-verified-rtl-page .rtl-maturity-warning .rtl-maturity-heading::before {
+  display: block;
+  margin-bottom: 0.55rem;
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  content: "WARNING · PUBLIC EVIDENCE SCALE";
+}
+
+.result-verified-rtl-page .rtl-maturity-warning p {
+  width: min(100%, 58rem);
+  max-width: 58rem;
+  margin: 0.7rem 0 0;
+  font-size: 0.98rem;
+  line-height: 1.68;
+}
+
+.result-verified-rtl-page .rtl-maturity-warning p:first-of-type {
+  margin-top: 0;
+  font-size: 1.04rem;
+}
+
+.result-verified-rtl-page .result-markdown-image:has(img[src$="rtl-to-ppa.svg"]),
+.result-verified-rtl-page .result-markdown-image:has(img[src$="-context-ppa.svg"]) {
+  width: min(100%, 72rem);
+}
+
+.result-verified-rtl-page .result-markdown-image:has(img[src$="-context-ppa.svg"]) {
+  margin-top: 1.8rem;
+  margin-bottom: 2.2rem;
+}
+
+@media (max-width: 760px) {
+  .result-verified-rtl-page .rtl-maturity-warning {
+    width: 100%;
+    margin-inline: 0;
+  }
+
+  .result-verified-rtl-page .rtl-table--ppa-definition {
+    min-width: 48rem;
+  }
+}
