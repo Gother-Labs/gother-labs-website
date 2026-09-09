@@ -66,24 +66,29 @@ function verifiedRtlArticleHtml(article, markdownOptions) {
     ["9. Reproducibility and authority", "rtl-repro"],
   ];
   for (const [label, id] of headings) {
-    html = html.replace(`<h2>${label}</h2>`, `<h2 id="${id}">${label}</h2>`);
+    html = html.replace("<h2>" + label + "</h2>", '<h2 id="' + id + '">' + label + "</h2>");
   }
 
   html = html
     .replaceAll("<h3>Correctness gate</h3>", '<h3 class="rtl-correctness-heading">Correctness gate</h3>')
     .replaceAll("<h3>Paired result</h3>", '<h3 class="rtl-paired-heading">Paired result</h3>');
 
-  const toc = `<nav class="rtl-result-toc" aria-label="On this page">
-  <a href="#rtl-regimes">Regimes</a>
-  <a href="#rtl-method">Method</a>
-  <a href="#rtl-sha1">SHA-1</a>
-  <a href="#rtl-matvec">INT8 MatVec</a>
-  <a href="#rtl-mlkem">ML-KEM CBD</a>
-  <a href="#rtl-portfolio">Portfolio</a>
-  <a href="#rtl-assurance">Assurance</a>
-  <a href="#rtl-repro">Reproduce</a>
-</nav>`;
-  html = html.replace('<h2 id="rtl-regimes">1. Three transformation regimes</h2>', `${toc}\\n<h2 id="rtl-regimes">1. Three transformation regimes</h2>`);
+  const toc = [
+    '<nav class="rtl-result-toc" aria-label="On this page">',
+    '  <a href="#rtl-regimes">Regimes</a>',
+    '  <a href="#rtl-method">Method</a>',
+    '  <a href="#rtl-sha1">SHA-1</a>',
+    '  <a href="#rtl-matvec">INT8 MatVec</a>',
+    '  <a href="#rtl-mlkem">ML-KEM CBD</a>',
+    '  <a href="#rtl-portfolio">Portfolio</a>',
+    '  <a href="#rtl-assurance">Assurance</a>',
+    '  <a href="#rtl-repro">Reproduce</a>',
+    '</nav>',
+  ].join("\\n");
+  html = html.replace(
+    '<h2 id="rtl-regimes">1. Three transformation regimes</h2>',
+    toc + '\\n<h2 id="rtl-regimes">1. Three transformation regimes</h2>',
+  );
 
   return html;
 }
