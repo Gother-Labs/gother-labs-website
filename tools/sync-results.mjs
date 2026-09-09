@@ -3108,6 +3108,11 @@ async function writeDetail(result, { preserveRun = false, preserveDetail = false
   const plots = full.artifacts?.plots ?? [];
   const articleAssets = localArticleAssetPaths(article);
   for (const file of [
+    ...[full.artifacts?.baseline_implementation].flat().filter(Boolean),
+    ...[full.artifacts?.accepted_implementation].flat().filter(Boolean),
+    ...[full.artifacts?.patch].flat().filter(Boolean),
+    ...[full.artifacts?.correctness_evidence].flat().filter(Boolean),
+    ...[full.artifacts?.evaluation_evidence].flat().filter(Boolean),
     full.artifacts?.candidate_code,
     full.artifacts?.baseline_diff,
     full.artifacts?.publication_manifest,
