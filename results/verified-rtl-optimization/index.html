@@ -13,6 +13,7 @@
     <meta property="og:image" content="https://www.gotherlabs.com/assets/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://www.gotherlabs.com/assets/og-image.png">
+    <link rel="stylesheet" href="../../assets/rtl-result.css?v=rtl-result-v2">
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="../../assets/gother-mark.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../../styles.css?v=editorial-v8">
@@ -60,25 +61,35 @@
 
         <section class="result-detail result-whitepaper-shell verified-rtl-whitepaper-shell">
           <article class="result-article result-whitepaper verified-rtl-whitepaper">
-<h2>Abstract</h2>
+<h2 id="rtl-abstract">Abstract</h2>
 <p>This portfolio reports three correctness-gated before/after RTL transformations under pinned academic implementation contracts. The cases are intentionally different: SHA-1 simplifies local Boolean and state-readout logic, INT8 MatVec restructures arithmetic widths and the addition tree, and ML-KEM CBD changes the physical representation of sequential state while preserving the same logical state view.</p>
 <p>The result is not a leaderboard and has no pooled portfolio score. Each percentage below is a case-local paired estimate under that circuit's own frozen contract. The portfolio establishes an inspectable evidence pattern: freeze the contract, prove the accepted implementation is valid, measure it against the baseline, and publish the exact technical delta with its limitations.</p>
 <figure class="result-paper-asset result-markdown-image">
   <img src="assets/evidence-contract.svg" alt="Common RTL evidence contract from frozen scope through correctness, paired implementation measurement, and a before/after evidence package.">
   <figcaption>Common RTL evidence contract from frozen scope through correctness, paired implementation measurement, and a before/after evidence package.</figcaption>
 </figure>
-<h2>1. Three transformation regimes</h2>
+<nav class="rtl-result-toc" aria-label="On this page">
+  <a href="#rtl-regimes">Regimes</a>
+  <a href="#rtl-method">Method</a>
+  <a href="#rtl-sha1">SHA-1</a>
+  <a href="#rtl-matvec">INT8 MatVec</a>
+  <a href="#rtl-mlkem">ML-KEM CBD</a>
+  <a href="#rtl-portfolio">Portfolio</a>
+  <a href="#rtl-assurance">Assurance</a>
+  <a href="#rtl-repro">Reproduce</a>
+</nav>
+<h2 id="rtl-regimes">1. Three transformation regimes</h2>
 <p>The value of the portfolio is not that three circuits happened to move by different percentages. It is that the accepted changes operate at three different structural levels of RTL.</p>
 <figure class="result-paper-asset result-markdown-image">
   <img src="assets/transformation-regimes.svg" alt="Three public RTL transformation regimes: Boolean structure, arithmetic structure, and sequential state representation.">
   <figcaption>Three public RTL transformation regimes: Boolean structure, arithmetic structure, and sequential state representation.</figcaption>
 </figure>
-<table>
+<div class="rtl-table-scroll"><table class="rtl-data-table rtl-table--regimes">
   <thead><tr><th>Case</th><th>Structural change</th><th>Correctness boundary</th><th>Case-local composite</th></tr></thead>
   <tbody><tr><td>SHA-1 RTL</td><td>Shared Boolean terms and direct state readout</td><td>Cycle regression, NIST vectors, sequential EQY</td><td><strong>2.27% lower</strong></td></tr><tr><td>INT8 MatVec RTL</td><td>Range-correct intermediate widths and balanced addition tree</td><td>Deterministic simulation, exhaustive combinational equivalence</td><td><strong>8.3230% lower</strong></td></tr><tr><td>ML-KEM CBD RTL</td><td>Fixed 24-bit physical movement plus a two-bit byte phase</td><td>Dual-design regression, sequential induction, logical-state refinement</td><td><strong>9.7338% lower</strong></td></tr></tbody>
-</table>
+</table></div>
 <p>All three public composites use 64 fixed paired implementations and the same equal-weight area-delay-power score form. That common form supports consistent case-local acceptance; it does not make the circuits a cross-case performance ranking.</p>
-<h2>2. Common evaluation methodology</h2>
+<h2 id="rtl-method">2. Common evaluation methodology</h2>
 <p>The evaluation contract is frozen before the accepted implementation is measured. Editable RTL, protected interfaces, functional semantics, formal scope, toolchain, target, metrics, sampling policy, and validity limits belong to the experiment identity.</p>
 <p>A candidate that fails correctness cannot receive a PPA improvement score. Missing, inconclusive, or timed-out required evidence fails closed.</p>
 <p>All current cases use a pinned Linux/amd64 VTR/VPR flow, a homogeneous academic LUT6 architecture, and the PTM 45 nm model at 0.9 V and 85 C. The target does not model commercial DSP slices, BRAM, or ASIC arithmetic cells. Total area, post-route critical-path delay, and active total power are implementation-model estimates, not physical measurements.</p>
@@ -91,7 +102,7 @@ S = \left(r_{area} r_{delay} r_{power}\right)^{1/3},
 </div>
 <p>with the frozen baseline normalized to 1.0 and lower values preferred. Search-visible evidence and the fixed publication sample remain separate under the source case contracts.</p>
 <p>The complete common contract is published in <a href="artifacts/evaluation_contract.md">evaluation_contract.md</a>.</p>
-<h2>3. SHA-1 RTL — Boolean simplification</h2>
+<h2 id="rtl-sha1">3. SHA-1 RTL — Boolean simplification</h2>
 <p>The first case is a stateful SHA-1 compression core with a 32-bit command/data interface and an 80-round compression schedule. SHA-1 is retained here as a legacy compute benchmark, not as a recommended modern security primitive.</p>
 <p>The accepted RTL makes three cycle-equivalent changes: it replaces XOR with OR where the choose-function terms are mutually exclusive, shares XOR terms across the parity and majority logic, and reads the five chaining-state registers directly rather than slicing a temporary 160-bit concatenation.</p>
 <figure class="result-paper-asset result-markdown-image">
@@ -99,16 +110,16 @@ S = \left(r_{area} r_{delay} r_{power}\right)^{1/3},
   <figcaption>SHA-1 before/after transformation showing duplicated Boolean logic becoming shared terms and direct state readout.</figcaption>
 </figure>
 <p>The exact public source delta is <a href="artifacts/patches/sha1.patch">sha1.patch</a>. Stable baseline and accepted implementation identities are listed in <a href="artifacts/baseline-implementations.json">baseline-implementations.json</a> and <a href="artifacts/accepted-implementations.json">accepted-implementations.json</a>.</p>
-<h3>Correctness gate</h3>
+<h3 class="rtl-correctness-heading">Correctness gate</h3>
 <p>The published case includes 129 NIST SHA-1 Short and Long Message cases, deterministic cycle-level protocol regression, and complete two-state sequential EQY equivalence after reset under the declared defined-input contract.</p>
-<h3>Paired result</h3>
-<table>
+<h3 class="rtl-paired-heading">Paired result</h3>
+<div class="rtl-table-scroll"><table class="rtl-data-table rtl-table--paired">
   <thead><tr><th>Metric</th><th>Paired improvement</th><th>95% interval</th></tr></thead>
   <tbody><tr><td>Total area estimate</td><td><strong>0.15%</strong></td><td>0.08% to 0.21%</td></tr><tr><td>Critical-path delay</td><td><strong>5.20%</strong></td><td>4.64% to 5.75%</td></tr><tr><td>Active total power estimate</td><td><strong>1.38%</strong></td><td>0.89% to 1.87%</td></tr><tr><td>Composite PPA</td><td><strong>2.27%</strong></td><td>2.12% to 2.41%</td></tr></tbody>
-</table>
+</table></div>
 <p>The composite improves in all 64 publication pairs. Individual metrics remain statistical readouts rather than a claim that every placement improves identically.</p>
 <p><a href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/blob/v2.2.2/cases/sha1/technical-report.pdf" target="_blank" rel="noreferrer">Case report</a> · <a href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/tree/v2.2.2/cases/sha1" target="_blank" rel="noreferrer">Case source</a> · <a href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/blob/v2.2.2/cases/sha1/verify.py" target="_blank" rel="noreferrer">Verifier</a> · <a href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/releases/download/v2.1.0/sha1-vtr45-full-evidence-v2.tar.gz" target="_blank" rel="noreferrer">Raw evidence archive</a></p>
-<h2>4. INT8 MatVec RTL — Arithmetic restructuring</h2>
+<h2 id="rtl-matvec">4. INT8 MatVec RTL — Arithmetic restructuring</h2>
 <p>The second case is a combinational signed INT8 4x4 matrix-vector datapath. It performs sixteen exact 8x8 multiplications and returns four signed INT32 dot products.</p>
 <p>The baseline extends every product to 32 bits before a wide chained accumulation. The accepted RTL keeps the exact numerical range narrow for longer: signed 16-bit products feed pairwise 17-bit sums, then balanced 18-bit row sums, and only the final value is sign-extended to the 32-bit output interface.</p>
 <figure class="result-paper-asset result-markdown-image">
@@ -116,16 +127,16 @@ S = \left(r_{area} r_{delay} r_{power}\right)^{1/3},
   <figcaption>INT8 MatVec before/after transformation from repeated 32-bit extension and wide accumulation to a balanced range-correct tree.</figcaption>
 </figure>
 <p>The exact public source delta is <a href="artifacts/patches/int8-matvec.patch">int8-matvec.patch</a>.</p>
-<h3>Correctness gate</h3>
+<h3 class="rtl-correctness-heading">Correctness gate</h3>
 <p>The published case includes 151 deterministic signed, extreme, lane, row, and seeded-random simulations plus exhaustive Yosys combinational equivalence for every 160-bit input assignment under the frozen I/O contract. A separate deterministic replay exists for baseline and accepted RTL, but it is project-operated evidence rather than independent third-party reproduction.</p>
-<h3>Paired result</h3>
-<table>
+<h3 class="rtl-paired-heading">Paired result</h3>
+<div class="rtl-table-scroll"><table class="rtl-data-table rtl-table--paired">
   <thead><tr><th>Metric</th><th>Paired improvement</th><th>95% interval</th></tr></thead>
   <tbody><tr><td>Total area estimate</td><td><strong>15.5943%</strong></td><td>15.5355% to 15.6531%</td></tr><tr><td>Critical-path delay</td><td><strong>3.1868%</strong></td><td>2.5843% to 3.7855%</td></tr><tr><td>Active total power estimate</td><td><strong>5.7081%</strong></td><td>5.1622% to 6.2509%</td></tr><tr><td>Composite PPA</td><td><strong>8.3230%</strong></td><td>8.1997% to 8.4462%</td></tr></tbody>
-</table>
+</table></div>
 <p>The target contains no commercial DSP-slice, BRAM, or ASIC MAC-cell model, so the result should not be transferred directly to an implementation flow with those resources.</p>
 <p><a href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/blob/v2.2.2/cases/int8-matvec/technical-report.pdf" target="_blank" rel="noreferrer">Case report</a> · <a href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/tree/v2.2.2/cases/int8-matvec" target="_blank" rel="noreferrer">Case source</a> · <a href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/blob/v2.2.2/cases/int8-matvec/verify.py" target="_blank" rel="noreferrer">Verifier</a> · <a href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/releases/download/v2.0.1/int8-matvec-vtr45-full-evidence-v1.tar.gz" target="_blank" rel="noreferrer">Raw evidence archive</a></p>
-<h2>5. ML-KEM CBD RTL — State representation</h2>
+<h2 id="rtl-mlkem">5. ML-KEM CBD RTL — State representation</h2>
 <p>The third case is a stateful centred-binomial-distribution sampler from the open HOPE-MLKEM implementation. It consumes SHAKE-derived bits and produces the small positive and negative coefficients used as controlled mathematical noise in ML-KEM.</p>
 <p>The baseline physically advances a 1,096-bit state by either 16 or 24 bits depending on eta. The accepted representation always moves the physical state in fixed 24-bit chunks and records the remaining byte offset in a two-bit phase. A logical state view reconstructs the same head observed by the existing coefficient arithmetic.</p>
 <figure class="result-paper-asset result-markdown-image">
@@ -133,35 +144,35 @@ S = \left(r_{area} r_{delay} r_{power}\right)^{1/3},
   <figcaption>ML-KEM CBD before/after transformation from variable wide-state movement to fixed 24-bit movement plus a two-bit phase and logical refinement view.</figcaption>
 </figure>
 <p>The exact public source delta is <a href="artifacts/patches/mlkem-cbd.patch">mlkem-cbd.patch</a>.</p>
-<h3>Correctness gate</h3>
+<h3 class="rtl-correctness-heading">Correctness gate</h3>
 <p>The published case includes lint and hierarchy/interface checks, a 239-cycle dual-design regression with 239 checks across reset, eta 2/3, stalls, reload, and second-load behavior, and complete sequential EQY equivalence using five-step temporal induction after the declared two-cycle reset.</p>
 <p>The five-step induction is not a five-cycle-only test. It establishes the invariant for arbitrary future cycles after reset. The formal setup also exposes a joined 1,096-bit logical-state refinement relation between the new physical representation and the baseline state.</p>
-<h3>Paired result</h3>
-<table>
+<h3 class="rtl-paired-heading">Paired result</h3>
+<div class="rtl-table-scroll"><table class="rtl-data-table rtl-table--paired">
   <thead><tr><th>Metric</th><th>Paired improvement</th><th>95% interval</th></tr></thead>
   <tbody><tr><td>Total area estimate</td><td><strong>15.9083%</strong></td><td>15.5265% to 16.2884%</td></tr><tr><td>Critical-path delay</td><td><strong>6.9920%</strong></td><td>5.4724% to 8.4872%</td></tr><tr><td>Active total power estimate</td><td><strong>5.9621%</strong></td><td>4.0336% to 7.8519%</td></tr><tr><td>Composite PPA</td><td><strong>9.7338%</strong></td><td>9.3331% to 10.1327%</td></tr></tbody>
-</table>
+</table></div>
 <p>The power comparison uses the case's declared deterministic ACE probabilistic activity model. This is not side-channel analysis and does not certify a complete ML-KEM implementation.</p>
 <p><a href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/blob/v2.2.2/cases/mlkem-cbd/technical-report.pdf" target="_blank" rel="noreferrer">Case report</a> · <a href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/tree/v2.2.2/cases/mlkem-cbd" target="_blank" rel="noreferrer">Case source</a> · <a href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/blob/v2.2.2/cases/mlkem-cbd/verify.py" target="_blank" rel="noreferrer">Verifier</a> · <a href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/releases/download/v2.2.0/mlkem-cbd-vtr45-full-evidence-v1.tar.gz" target="_blank" rel="noreferrer">Raw evidence archive</a></p>
-<h2>6. Portfolio readout</h2>
-<table>
+<h2 id="rtl-portfolio">6. Portfolio readout</h2>
+<div class="rtl-table-scroll"><table class="rtl-data-table rtl-table--portfolio">
   <thead><tr><th>Case</th><th>Area</th><th>Delay</th><th>Active power</th><th>Composite</th></tr></thead>
   <tbody><tr><td>SHA-1</td><td>0.15% lower</td><td>5.20% lower</td><td>1.38% lower</td><td>2.27% lower</td></tr><tr><td>INT8 MatVec</td><td>15.5943% lower</td><td>3.1868% lower</td><td>5.7081% lower</td><td>8.3230% lower</td></tr><tr><td>ML-KEM CBD</td><td>15.9083% lower</td><td>6.9920% lower</td><td>5.9621% lower</td><td>9.7338% lower</td></tr></tbody>
-</table>
+</table></div>
 <p>These rows are case-local paired estimates. Do not rank, average, or interpret them as an expected range for another circuit.</p>
 <p>The machine-readable paired readout is published in <a href="artifacts/evaluation.json">evaluation.json</a>, with the Results-facing comparison surface in <a href="artifacts/metrics.json">metrics.json</a>.</p>
-<h2>7. What the portfolio establishes</h2>
+<h2 id="rtl-boundary">7. What the portfolio establishes</h2>
 <p>The public evidence establishes that three distinct RTL transformations were frozen, correctness-gated, measured under declared implementation contracts, and published with inspectable before/after identities and exact source changes.</p>
 <p>The portfolio demonstrates reasoning over local Boolean structure, arithmetic width and tree structure, and sequential physical state representation. It also demonstrates a repeatable evidence boundary: baseline identity, accepted identity, exact patch, correctness evidence, paired implementation evidence, provenance, and a fail-closed verifier path.</p>
 <p>It does not establish that these transformations generalize to another design, that the percentages are comparable across circuits, or that Göther replaces a customer's implementation or signoff authority.</p>
-<h2>8. Evidence and assurance status</h2>
-<table>
+<h2 id="rtl-assurance">8. Evidence and assurance status</h2>
+<div class="rtl-table-scroll"><table class="rtl-data-table rtl-table--assurance">
   <thead><tr><th>Evidence layer</th><th>Public status</th></tr></thead>
   <tbody><tr><td>Compact consistency verifier</td><td>Available and automated</td></tr><tr><td>Hash-addressed raw evidence archive</td><td>Available per case</td></tr><tr><td>Metric re-extraction from archived logs</td><td>Supported by case verifiers</td></tr><tr><td>Fresh EDA rerun by an external organization</td><td><strong>Not claimed</strong></td></tr><tr><td>Accredited certification or signed third-party assurance</td><td><strong>None</strong></td></tr><tr><td>Physical FPGA, ASIC, board, or silicon measurement</td><td><strong>Not claimed</strong></td></tr></tbody>
-</table>
+</table></div>
 <p>The raw verifier checks recorded provenance and re-extracts the published PPA values. It does not rerun the EDA tools. A fresh external reproduction would rebuild the pinned environment and regenerate the implementation evidence independently.</p>
 <p>The public audit protocol is available in <a href="https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/blob/v2.2.2/AUDIT.md" target="_blank" rel="noreferrer">AUDIT.md</a>.</p>
-<h2>9. Reproducibility and authority</h2>
+<h2 id="rtl-repro">9. Reproducibility and authority</h2>
 <p>The quantitative authority for this Result is the reviewed public evidence release <code>v2.2.2</code>, commit <code>8cd8b479488f0693d76c2fab39eabf4bd6f9279c</code>. Later repository changes are not silently promoted into this claim surface.</p>
 <p>From a clean checkout of that release, the compact portfolio verifier is:</p>
 <pre><code class="language-text">python3 verify.py</code></pre>

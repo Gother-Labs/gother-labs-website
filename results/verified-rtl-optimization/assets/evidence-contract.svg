@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" role="img" aria-label="Common evidence contract">
-  <rect width="960" height="420" fill="white"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 420" role="img" aria-label="Common evidence contract">
+  <rect width="1040" height="420" fill="white"/>
   <style>
     text { font-family: Arial, Helvetica, sans-serif; fill:#111; }
     .title { font-size:26px; font-weight:700; }
@@ -32,7 +32,7 @@
   <text x="633" y="58" class="small">area · delay · power</text>
   <text x="633" y="78" class="small">64 paired runs</text>
   <path class="line" d="M770 47 H820"/><path class="bluefill" d="M820 47 l-12 -7 v14 z"/>
-  <rect x="820" y="0" width="92" height="95" rx="8" fill="#005bff"/>
+  <rect x="820" y="0" width="160" height="95" rx="8" fill="#005bff"/>
   <text x="838" y="32" class="label" style="fill:white">EVIDENCE</text>
   <text x="838" y="58" class="small" style="fill:white">before / after</text>
   <text x="838" y="78" class="small" style="fill:white">patch + proof</text>

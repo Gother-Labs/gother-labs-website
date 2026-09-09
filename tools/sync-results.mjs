@@ -186,6 +186,71 @@ function localArticleAssetPaths(article) {
   return [...new Set(paths)];
 }
 
+function verifiedRtlArticleHtml(article, markdownOptions) {
+  let html = markdownToHtml(articleWithoutTitle(article), {}, markdownOptions);
+
+  html = html
+    .replaceAll("<table>", '<div class="rtl-table-scroll"><table class="rtl-data-table">')
+    .replaceAll("</table>", "</table></div>");
+
+  html = html
+    .replace(
+      '<table class="rtl-data-table">\n  <thead><tr><th>Case</th><th>Structural change</th><th>Correctness boundary</th><th>Case-local composite</th></tr></thead>',
+      '<table class="rtl-data-table rtl-table--regimes">\n  <thead><tr><th>Case</th><th>Structural change</th><th>Correctness boundary</th><th>Case-local composite</th></tr></thead>',
+    )
+    .replaceAll(
+      '<table class="rtl-data-table">\n  <thead><tr><th>Metric</th><th>Paired improvement</th><th>95% interval</th></tr></thead>',
+      '<table class="rtl-data-table rtl-table--paired">\n  <thead><tr><th>Metric</th><th>Paired improvement</th><th>95% interval</th></tr></thead>',
+    )
+    .replace(
+      '<table class="rtl-data-table">\n  <thead><tr><th>Case</th><th>Area</th><th>Delay</th><th>Active power</th><th>Composite</th></tr></thead>',
+      '<table class="rtl-data-table rtl-table--portfolio">\n  <thead><tr><th>Case</th><th>Area</th><th>Delay</th><th>Active power</th><th>Composite</th></tr></thead>',
+    )
+    .replace(
+      '<table class="rtl-data-table">\n  <thead><tr><th>Evidence layer</th><th>Public status</th></tr></thead>',
+      '<table class="rtl-data-table rtl-table--assurance">\n  <thead><tr><th>Evidence layer</th><th>Public status</th></tr></thead>',
+    );
+
+  const headings = [
+    ["Abstract", "rtl-abstract"],
+    ["1. Three transformation regimes", "rtl-regimes"],
+    ["2. Common evaluation methodology", "rtl-method"],
+    ["3. SHA-1 RTL — Boolean simplification", "rtl-sha1"],
+    ["4. INT8 MatVec RTL — Arithmetic restructuring", "rtl-matvec"],
+    ["5. ML-KEM CBD RTL — State representation", "rtl-mlkem"],
+    ["6. Portfolio readout", "rtl-portfolio"],
+    ["7. What the portfolio establishes", "rtl-boundary"],
+    ["8. Evidence and assurance status", "rtl-assurance"],
+    ["9. Reproducibility and authority", "rtl-repro"],
+  ];
+  for (const [label, id] of headings) {
+    html = html.replace("<h2>" + label + "</h2>", '<h2 id="' + id + '">' + label + "</h2>");
+  }
+
+  html = html
+    .replaceAll("<h3>Correctness gate</h3>", '<h3 class="rtl-correctness-heading">Correctness gate</h3>')
+    .replaceAll("<h3>Paired result</h3>", '<h3 class="rtl-paired-heading">Paired result</h3>');
+
+  const toc = [
+    '<nav class="rtl-result-toc" aria-label="On this page">',
+    '  <a href="#rtl-regimes">Regimes</a>',
+    '  <a href="#rtl-method">Method</a>',
+    '  <a href="#rtl-sha1">SHA-1</a>',
+    '  <a href="#rtl-matvec">INT8 MatVec</a>',
+    '  <a href="#rtl-mlkem">ML-KEM CBD</a>',
+    '  <a href="#rtl-portfolio">Portfolio</a>',
+    '  <a href="#rtl-assurance">Assurance</a>',
+    '  <a href="#rtl-repro">Reproduce</a>',
+    '</nav>',
+  ].join("\n");
+  html = html.replace(
+    '<h2 id="rtl-regimes">1. Three transformation regimes</h2>',
+    toc + '\n<h2 id="rtl-regimes">1. Three transformation regimes</h2>',
+  );
+
+  return html;
+}
+
 async function alignCopiedRunShell(outputRoot) {
   // Run surfaces are copied from the results repo, so normalize their shared site shell here.
   const runIndexPath = path.join(outputRoot, "run", "index.html");
@@ -3222,7 +3287,7 @@ ${markdownToHtml(articleWithoutTitle(article), circlePackingWhitepaperInserts(fu
 
         <section class="result-detail result-whitepaper-shell verified-rtl-whitepaper-shell">
           <article class="result-article result-whitepaper verified-rtl-whitepaper">
-${markdownToHtml(articleWithoutTitle(article), {}, markdownOptions)}
+${verifiedRtlArticleHtml(article, markdownOptions)}
           </article>
         </section>`
     : `        <section class="hero compact-hero page-hero result-detail-hero">
@@ -3293,7 +3358,9 @@ ${figures}
     <meta name="citation_author" content="Juan José Fernández Morales">
     <meta name="citation_publication_date" content="2026/08/22">
     <meta name="citation_doi" content="10.5281/zenodo.22060172">`
-        : "",
+        : isVerifiedRtlWhitepaper
+          ? '<link rel="stylesheet" href="../../assets/rtl-result.css?v=rtl-result-v2">'
+          : "",
       bodyClass: isQuadratureWhitepaper
         ? "result-quadrature-page"
         : isRcpspWhitepaper
