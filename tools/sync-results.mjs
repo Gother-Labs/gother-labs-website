@@ -195,6 +195,10 @@ function verifiedRtlArticleHtml(article, markdownOptions) {
 
   html = html
     .replace(
+      '<table class="rtl-data-table">\n  <thead><tr><th>Dimension</th><th>Current public measurement</th><th>What it does not mean</th></tr></thead>',
+      '<table class="rtl-data-table rtl-table--ppa-definition">\n  <thead><tr><th>Dimension</th><th>Current public measurement</th><th>What it does not mean</th></tr></thead>',
+    )
+    .replace(
       '<table class="rtl-data-table">\n  <thead><tr><th>Case</th><th>Structural change</th><th>Correctness boundary</th><th>Case-local composite</th></tr></thead>',
       '<table class="rtl-data-table rtl-table--regimes">\n  <thead><tr><th>Case</th><th>Structural change</th><th>Correctness boundary</th><th>Case-local composite</th></tr></thead>',
     )
@@ -213,15 +217,16 @@ function verifiedRtlArticleHtml(article, markdownOptions) {
 
   const headings = [
     ["Abstract", "rtl-abstract"],
-    ["1. Three transformation regimes", "rtl-regimes"],
-    ["2. Common evaluation methodology", "rtl-method"],
-    ["3. SHA-1 RTL — Boolean simplification", "rtl-sha1"],
-    ["4. INT8 MatVec RTL — Arithmetic restructuring", "rtl-matvec"],
-    ["5. ML-KEM CBD RTL — State representation", "rtl-mlkem"],
-    ["6. Portfolio readout", "rtl-portfolio"],
-    ["7. What the portfolio establishes", "rtl-boundary"],
-    ["8. Evidence and assurance status", "rtl-assurance"],
-    ["9. Reproducibility and authority", "rtl-repro"],
+    ["1. Why RTL optimization matters", "rtl-why"],
+    ["2. Three transformation regimes", "rtl-regimes"],
+    ["3. Common evaluation methodology", "rtl-method"],
+    ["4. SHA-1 RTL — Boolean simplification", "rtl-sha1"],
+    ["5. INT8 MatVec RTL — Arithmetic restructuring", "rtl-matvec"],
+    ["6. ML-KEM CBD RTL — State representation", "rtl-mlkem"],
+    ["7. Portfolio readout", "rtl-portfolio"],
+    ["8. What the portfolio establishes", "rtl-boundary"],
+    ["9. Evidence and assurance status", "rtl-assurance"],
+    ["10. Reproducibility and authority", "rtl-repro"],
   ];
   for (const [label, id] of headings) {
     html = html.replace("<h2>" + label + "</h2>", '<h2 id="' + id + '">' + label + "</h2>");
@@ -229,10 +234,12 @@ function verifiedRtlArticleHtml(article, markdownOptions) {
 
   html = html
     .replaceAll("<h3>Correctness gate</h3>", '<h3 class="rtl-correctness-heading">Correctness gate</h3>')
-    .replaceAll("<h3>Paired result</h3>", '<h3 class="rtl-paired-heading">Paired result</h3>');
+    .replaceAll("<h3>Paired result</h3>", '<h3 class="rtl-paired-heading">Paired result</h3>')
+    .replace("<h3>Evidence-scale warning</h3>", '<h3 class="rtl-maturity-heading">Evidence-scale warning</h3>');
 
   const toc = [
     '<nav class="rtl-result-toc" aria-label="On this page">',
+    '  <a href="#rtl-why">RTL & PPA</a>',
     '  <a href="#rtl-regimes">Regimes</a>',
     '  <a href="#rtl-method">Method</a>',
     '  <a href="#rtl-sha1">SHA-1</a>',
@@ -244,8 +251,13 @@ function verifiedRtlArticleHtml(article, markdownOptions) {
     '</nav>',
   ].join("\n");
   html = html.replace(
-    '<h2 id="rtl-regimes">1. Three transformation regimes</h2>',
-    toc + '\n<h2 id="rtl-regimes">1. Three transformation regimes</h2>',
+    '<h2 id="rtl-why">1. Why RTL optimization matters</h2>',
+    toc + '\n<h2 id="rtl-why">1. Why RTL optimization matters</h2>',
+  );
+
+  html = html.replace(
+    /<h3 class="rtl-maturity-heading">Evidence-scale warning<\/h3>([\s\S]*?)(?=<h2 id="rtl-regimes">)/,
+    '<section class="rtl-maturity-warning" aria-label="Current public evidence scale"><h3 class="rtl-maturity-heading">Evidence-scale warning</h3>$1</section>\n',
   );
 
   return html;
@@ -3359,7 +3371,7 @@ ${figures}
     <meta name="citation_publication_date" content="2026/08/22">
     <meta name="citation_doi" content="10.5281/zenodo.22060172">`
         : isVerifiedRtlWhitepaper
-          ? '<link rel="stylesheet" href="../../assets/rtl-result.css?v=rtl-result-v2">'
+          ? '<link rel="stylesheet" href="../../assets/rtl-result.css?v=rtl-result-v3">'
           : "",
       bodyClass: isQuadratureWhitepaper
         ? "result-quadrature-page"
