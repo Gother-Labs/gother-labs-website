@@ -1,0 +1,32 @@
+{
+  "validation_status": "verified-public-portfolio",
+  "comparisons": [
+    {
+      "id": "sha1",
+      "measures": {
+        "area_improvement_pct": 0.15,
+        "delay_improvement_pct": 5.2,
+        "power_improvement_pct": 1.38,
+        "composite_improvement_pct": 2.27
+      }
+    },
+    {
+      "id": "int8-matvec",
+      "measures": {
+        "area_improvement_pct": 15.5943,
+        "delay_improvement_pct": 3.1868,
+        "power_improvement_pct": 5.7081,
+        "composite_improvement_pct": 8.323
+      }
+    },
+    {
+      "id": "mlkem-cbd",
+      "measures": {
+        "area_improvement_pct": 15.9083,
+        "delay_improvement_pct": 6.992,
+        "power_improvement_pct": 5.9621,
+        "composite_improvement_pct": 9.7338
+      }
+    }
+  ]
+}

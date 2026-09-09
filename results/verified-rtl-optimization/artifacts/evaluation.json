@@ -1,0 +1,57 @@
+{
+  "schema_version": "rtl-paired-evaluation-summary/v1",
+  "evidence_release": "v2.2.2",
+  "evidence_commit": "8cd8b479488f0693d76c2fab39eabf4bd6f9279c",
+  "common": {
+    "target": "Academic VTR/VPR homogeneous LUT6 architecture with PTM 45 nm model at 0.9 V and 85 C",
+    "paired_publication_pairs_per_case": 64,
+    "primary_metrics": [
+      "total area estimate",
+      "post-route critical-path delay",
+      "active total power estimate"
+    ],
+    "composite": "Equal-weight geometric mean of paired area, delay, and active-power ratios; lower is better; baseline normalized to 1.0.",
+    "boundary": "Case-local paired estimates only. No cross-circuit ranking, pooled score, or expected customer uplift."
+  },
+  "cases": [
+    {
+      "id": "sha1",
+      "area_improvement_pct": 0.15,
+      "area_ci_pct": [0.08, 0.21],
+      "delay_improvement_pct": 5.2,
+      "delay_ci_pct": [4.64, 5.75],
+      "power_improvement_pct": 1.38,
+      "power_ci_pct": [0.89, 1.87],
+      "composite_improvement_pct": 2.27,
+      "composite_ci_pct": [2.12, 2.41],
+      "power_model": "fixed active trace",
+      "source": "https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/blob/8cd8b479488f0693d76c2fab39eabf4bd6f9279c/cases/sha1/README.md"
+    },
+    {
+      "id": "int8-matvec",
+      "area_improvement_pct": 15.5943,
+      "area_ci_pct": [15.5355, 15.6531],
+      "delay_improvement_pct": 3.1868,
+      "delay_ci_pct": [2.5843, 3.7855],
+      "power_improvement_pct": 5.7081,
+      "power_ci_pct": [5.1622, 6.2509],
+      "composite_improvement_pct": 8.323,
+      "composite_ci_pct": [8.1997, 8.4462],
+      "power_model": "fixed active and idle activity profiles",
+      "source": "https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/blob/8cd8b479488f0693d76c2fab39eabf4bd6f9279c/cases/int8-matvec/README.md"
+    },
+    {
+      "id": "mlkem-cbd",
+      "area_improvement_pct": 15.9083,
+      "area_ci_pct": [15.5265, 16.2884],
+      "delay_improvement_pct": 6.992,
+      "delay_ci_pct": [5.4724, 8.4872],
+      "power_improvement_pct": 5.9621,
+      "power_ci_pct": [4.0336, 7.8519],
+      "composite_improvement_pct": 9.7338,
+      "composite_ci_pct": [9.3331, 10.1327],
+      "power_model": "deterministic ACE probabilistic activity",
+      "source": "https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/blob/8cd8b479488f0693d76c2fab39eabf4bd6f9279c/cases/mlkem-cbd/README.md"
+    }
+  ]
+}

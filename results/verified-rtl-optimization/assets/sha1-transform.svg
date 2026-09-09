@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" role="img" aria-label="SHA-1 transformation">
+  <rect width="960" height="420" fill="white"/>
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill:#111; }
+    .title { font-size:26px; font-weight:700; }
+    .label { font-size:16px; font-weight:700; letter-spacing:.06em; }
+    .body { font-size:18px; }
+    .small { font-size:14px; fill:#5f5f5f; }
+    .box { fill:#fff; stroke:#111; stroke-width:2; }
+    .accent { fill:none; stroke:#005bff; stroke-width:4; }
+    .line { fill:none; stroke:#111; stroke-width:2.5; }
+    .muted { fill:none; stroke:#b9b9b9; stroke-width:2; }
+  </style>
+<text x="48" y="48" class="title">SHA-1 · simplify and share Boolean structure</text>
+<text x="48" y="82" class="small">Cycle-equivalent change under the frozen command interface</text>
+<g transform="translate(60 120)">
+  <text x="0" y="0" class="label">BASELINE</text>
+  <rect class="box" x="0" y="28" width="340" height="170" rx="8"/>
+  <text x="20" y="65" class="body">Separate f2 / f3 logic</text>
+  <path class="muted" d="M36 98 H145 M36 138 H145"/>
+  <rect x="155" y="84" width="88" height="30" fill="#f4f4f4" stroke="#111"/>
+  <rect x="155" y="124" width="88" height="30" fill="#f4f4f4" stroke="#111"/>
+  <text x="176" y="104" class="small">parity</text><text x="168" y="144" class="small">majority</text>
+  <text x="20" y="180" class="small">temporary 160-bit result concatenation</text>
+  <path class="line" d="M375 113 H455"/>
+  <path fill="#005bff" d="M455 113 l-14 -8 v16 z"/>
+  <text x="485" y="0" class="label">ACCEPTED</text>
+  <rect class="box" x="485" y="28" width="340" height="170" rx="8"/>
+  <text x="505" y="65" class="body">Shared XOR terms</text>
+  <path class="accent" d="M520 102 H655"/>
+  <path class="accent" d="M520 136 H655"/>
+  <circle cx="670" cy="119" r="12" fill="#005bff"/>
+  <text x="700" y="124" class="small">shared core</text>
+  <text x="505" y="180" class="small">direct readout from A · B · C · D · E</text>
+</g>
+</svg>

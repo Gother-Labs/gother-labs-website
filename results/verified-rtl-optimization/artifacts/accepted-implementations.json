@@ -1,0 +1,25 @@
+{
+  "schema_version": "rtl-implementation-references/v1",
+  "evidence_release": "v2.2.2",
+  "evidence_commit": "8cd8b479488f0693d76c2fab39eabf4bd6f9279c",
+  "cases": [
+    {
+      "id": "sha1",
+      "path": "cases/sha1/rtl/accepted/sha.v",
+      "sha256": "ea63b97faf69b14409a3077cd3357205c0e044b277d64537b98a4a4773a4f2e7",
+      "url": "https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/blob/8cd8b479488f0693d76c2fab39eabf4bd6f9279c/cases/sha1/rtl/accepted/sha.v"
+    },
+    {
+      "id": "int8-matvec",
+      "path": "cases/int8-matvec/rtl/optimized/int8_matvec_4x4.sv",
+      "sha256": "25327189f78f238e909fa5940afff9e2b000547336cdc614ee9ea9c4633aa11f",
+      "url": "https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/blob/8cd8b479488f0693d76c2fab39eabf4bd6f9279c/cases/int8-matvec/rtl/optimized/int8_matvec_4x4.sv"
+    },
+    {
+      "id": "mlkem-cbd",
+      "path": "cases/mlkem-cbd/rtl/optimized/cbd.v",
+      "sha256": "da0b4e79beb9cf9cc24c3ce949068c3a29316273a6320e283f4201fbd884c9ef",
+      "url": "https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/blob/8cd8b479488f0693d76c2fab39eabf4bd6f9279c/cases/mlkem-cbd/rtl/optimized/cbd.v"
+    }
+  ]
+}

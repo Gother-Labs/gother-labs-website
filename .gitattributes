@@ -1,0 +1,2 @@
+# Preserve byte-exact upstream evidence patches; whitespace is part of their immutable source identity.
+results/verified-rtl-optimization/artifacts/patches/*.patch -whitespace

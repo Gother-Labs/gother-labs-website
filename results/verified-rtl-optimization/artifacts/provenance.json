@@ -1,0 +1,30 @@
+{
+  "schema_version": "result-provenance/v1",
+  "publication_source": "Gother-Labs/gother-labs-results",
+  "canonical_evidence": {
+    "repository": "juan-fernandez-gotherlabs/rtl-optimization-case-study",
+    "release": "v2.2.2",
+    "commit": "8cd8b479488f0693d76c2fab39eabf4bd6f9279c",
+    "annotated_tag_object": "78f36ce06909d6506f632ad87296727298f01579",
+    "reviewed_by_website_claim_ledger": true,
+    "website_reconciliation_date": "2026-08-24"
+  },
+  "authority": {
+    "quantitative_claims": "Pinned release v2.2.2 / commit 8cd8b479488f0693d76c2fab39eabf4bd6f9279c",
+    "later_main_commit": "7ee35dcf022d4ed590a55731ea643f17c648a8d1",
+    "later_main_role": "Editorial alignment only; not used as new quantitative authority for this Result."
+  },
+  "common_sources": [
+    "https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/blob/8cd8b479488f0693d76c2fab39eabf4bd6f9279c/README.md",
+    "https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/blob/8cd8b479488f0693d76c2fab39eabf4bd6f9279c/METHODOLOGY.md",
+    "https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/blob/8cd8b479488f0693d76c2fab39eabf4bd6f9279c/AUDIT.md",
+    "https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/blob/8cd8b479488f0693d76c2fab39eabf4bd6f9279c/THIRD_PARTY_NOTICES.md"
+  ],
+  "claim_boundary": [
+    "No ASIC signoff or commercial-FPGA characterization.",
+    "No physical-board, measured-energy, or manufactured-silicon evidence.",
+    "No guaranteed customer outcome or pooled cross-circuit uplift.",
+    "No accredited certification or signed independent third-party assurance.",
+    "ML-KEM CBD is not side-channel analysis or certification of a complete cryptographic system."
+  ]
+}

@@ -178,6 +178,14 @@ function formatPercent(value) {
   return `${formatMetric(value, { maximumFractionDigits: 3, minimumFractionDigits: 3 })}%`;
 }
 
+function localArticleAssetPaths(article) {
+  const paths = [];
+  for (const match of article.matchAll(/!\[[^\]\n]*\]\((assets\/[^)\s]+)\)/g)) {
+    paths.push(match[1]);
+  }
+  return [...new Set(paths)];
+}
+
 async function alignCopiedRunShell(outputRoot) {
   // Run surfaces are copied from the results repo, so normalize their shared site shell here.
   const runIndexPath = path.join(outputRoot, "run", "index.html");
@@ -463,6 +471,39 @@ ${circles.map(([cx, cy, r]) => `                  <circle cx="${cx}" cy="${cy}" 
               </svg>`;
   }
 
+  if (result.website?.card_visual === "rtl-portfolio") {
+    return `<svg class="result-card-visual result-card-visual--rtl-portfolio" viewBox="0 0 560 330" aria-hidden="true" focusable="false">
+                <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M48 272H512" opacity=".22" />
+                  <path d="M187 56V276M373 56V276" opacity=".16" />
+                  <g transform="translate(56 76)">
+                    <text x="0" y="0" fill="currentColor" stroke="none" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" letter-spacing="1.2">BOOLEAN</text>
+                    <circle cx="30" cy="88" r="20" />
+                    <circle cx="104" cy="62" r="20" />
+                    <path d="M48 80L85 68M48 96L88 126M104 82V126" />
+                    <circle cx="104" cy="142" r="20" stroke="var(--accent)" stroke-width="2.2" />
+                    <path d="M93 142H115M104 131V153" stroke="var(--accent)" stroke-width="2.2" />
+                  </g>
+                  <g transform="translate(210 76)">
+                    <text x="0" y="0" fill="currentColor" stroke="none" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" letter-spacing="1.2">ARITHMETIC</text>
+                    <path d="M12 54H112M22 54V82M52 54V82M82 54V82M112 54V82" />
+                    <path d="M22 82L42 112M52 82L42 112M82 82L102 112M112 82L102 112" />
+                    <path d="M42 112L72 148M102 112L72 148M72 148V176" stroke="var(--accent)" stroke-width="2.2" />
+                    <circle cx="72" cy="148" r="5" fill="var(--accent)" stroke="none" />
+                  </g>
+                  <g transform="translate(396 76)">
+                    <text x="0" y="0" fill="currentColor" stroke="none" font-family="Inter,Arial,sans-serif" font-size="11" font-weight="650" letter-spacing="1.2">STATE</text>
+                    <rect x="0" y="54" width="108" height="42" rx="2" />
+                    <path d="M12 68H94M12 82H94" opacity=".45" />
+                    <path d="M54 96V126" />
+                    <rect x="28" y="126" width="52" height="30" rx="15" stroke="var(--accent)" stroke-width="2.2" />
+                    <text x="54" y="146" text-anchor="middle" fill="var(--accent)" stroke="none" font-family="Inter,Arial,sans-serif" font-size="10" font-weight="700">+ phase</text>
+                    <path d="M54 156V178" stroke="var(--accent)" stroke-width="2.2" />
+                  </g>
+                </g>
+              </svg>`;
+  }
+
   if (result.website?.card_visual !== "quadrature") return "";
 
   return `<svg class="result-card-visual" viewBox="0 0 560 360" aria-hidden="true" focusable="false">
@@ -522,8 +563,7 @@ async function writeIndex(results) {
   const body = `        <section class="hero compact-hero page-hero">
           <h1 class="page-title">Research, in the open.</h1>
           <p class="intro results-hero-intro">
-            Five studies. The problem, the result, and the evidence behind it.
-            <a class="studio-link" href="../rtl-optimization/#public-evidence">Explore the three RTL/PPA cases <span aria-hidden="true">↗</span></a>
+            Six studies. The problem, the result, and the evidence behind it.
           </p>
         </section>
 
@@ -3066,7 +3106,13 @@ async function writeDetail(result, { preserveRun = false, preserveDetail = false
       }
     : {};
   const plots = full.artifacts?.plots ?? [];
+  const articleAssets = localArticleAssetPaths(article);
   for (const file of [
+    ...[full.artifacts?.baseline_implementation].flat().filter(Boolean),
+    ...[full.artifacts?.accepted_implementation].flat().filter(Boolean),
+    ...[full.artifacts?.patch].flat().filter(Boolean),
+    ...[full.artifacts?.correctness_evidence].flat().filter(Boolean),
+    ...[full.artifacts?.evaluation_evidence].flat().filter(Boolean),
     full.artifacts?.candidate_code,
     full.artifacts?.baseline_diff,
     full.artifacts?.publication_manifest,
@@ -3092,6 +3138,7 @@ async function writeDetail(result, { preserveRun = false, preserveDetail = false
     full.artifacts?.schedule_example,
     full.artifacts?.score_trace,
     full.evaluation_contract?.artifact,
+    ...articleAssets,
     ...plots,
     ...(full.artifacts?.tolerance_certificates ?? []),
   ].filter(Boolean)) {
@@ -3121,6 +3168,7 @@ async function writeDetail(result, { preserveRun = false, preserveDetail = false
   const isRcpspWhitepaper = full.slug === "rcpsp-psplib-j30";
   const isQubitRoutingWhitepaper = full.slug === "qubit-routing-lightsabre";
   const isCirclePackingWhitepaper = full.slug === "circle-packing-26-unit-square";
+  const isVerifiedRtlWhitepaper = full.slug === "verified-rtl-optimization";
   const body = isQuadratureWhitepaper
     ? `        <section class="hero compact-hero page-hero result-detail-hero">
           <h1 class="page-title">${escapeHtml(full.title)}</h1>
@@ -3163,6 +3211,18 @@ ${markdownToHtml(articleWithoutTitle(article), qubitRoutingWhitepaperInserts(ful
         <section class="result-detail result-whitepaper-shell circle-packing-whitepaper-shell">
           <article class="result-article result-whitepaper circle-packing-whitepaper">
 ${markdownToHtml(articleWithoutTitle(article), circlePackingWhitepaperInserts(full, evolution, candidateCode, replay, scoreTrace, circlePackingNativeFigures), { ...markdownOptions, staticMath: true })}
+          </article>
+        </section>`
+      : isVerifiedRtlWhitepaper
+        ? `        <section class="hero compact-hero page-hero result-detail-hero verified-rtl-detail-hero">
+          <p class="eyebrow">${escapeHtml(full.domain)}</p>
+          <h1 class="page-title">${escapeHtml(full.title)}</h1>
+          <p class="intro results-hero-intro">${escapeHtml(full.summary)}</p>
+        </section>
+
+        <section class="result-detail result-whitepaper-shell verified-rtl-whitepaper-shell">
+          <article class="result-article result-whitepaper verified-rtl-whitepaper">
+${markdownToHtml(articleWithoutTitle(article), {}, markdownOptions)}
           </article>
         </section>`
     : `        <section class="hero compact-hero page-hero result-detail-hero">
@@ -3242,7 +3302,9 @@ ${figures}
             ? "result-qubit-routing-page"
             : isCirclePackingWhitepaper
               ? "result-circle-packing-page"
-              : "",
+              : isVerifiedRtlWhitepaper
+                ? "result-verified-rtl-page"
+                : "",
     }),
     "utf8",
   );

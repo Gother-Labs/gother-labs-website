@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" role="img" aria-label="ML-KEM CBD transformation">
+  <rect width="960" height="420" fill="white"/>
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill:#111; }
+    .title { font-size:26px; font-weight:700; }
+    .label { font-size:16px; font-weight:700; letter-spacing:.06em; }
+    .body { font-size:18px; }
+    .small { font-size:14px; fill:#5f5f5f; }
+    .box { fill:#fff; stroke:#111; stroke-width:2; }
+    .accent { fill:none; stroke:#005bff; stroke-width:4; }
+    .line { fill:none; stroke:#111; stroke-width:2.5; }
+  </style>
+<text x="48" y="48" class="title">ML-KEM CBD · change physical state, preserve logical state</text>
+<text x="48" y="82" class="small">Sequential representation change with an explicit refinement view</text>
+<g transform="translate(58 118)">
+  <text x="0" y="0" class="label">BASELINE</text>
+  <rect class="box" x="0" y="28" width="355" height="200" rx="8"/>
+  <rect x="26" y="78" width="300" height="52" fill="#f4f4f4" stroke="#111" stroke-width="2"/>
+  <text x="45" y="109" class="body">1,096-bit state</text>
+  <path class="line" d="M50 158 H286"/><path fill="#005bff" d="M286 158 l-14 -8 v16 z"/>
+  <text x="65" y="188" class="small">variable 16-bit / 24-bit movement</text>
+  <path class="line" d="M388 128 H466"/><path fill="#005bff" d="M466 128 l-14 -8 v16 z"/>
+  <text x="500" y="0" class="label">ACCEPTED</text>
+  <rect class="box" x="500" y="28" width="355" height="200" rx="8"/>
+  <rect x="524" y="72" width="250" height="52" fill="#f4f4f4" stroke="#111" stroke-width="2"/>
+  <text x="543" y="103" class="body">1,096-bit physical state</text>
+  <rect x="790" y="72" width="42" height="52" fill="#005bff"/>
+  <text x="799" y="104" style="font:700 16px Arial;fill:white">2b</text>
+  <path class="accent" d="M548 150 H787"/><path fill="#005bff" d="M787 150 l-14 -8 v16 z"/>
+  <text x="546" y="179" class="small">fixed 24-bit physical movement + phase</text>
+  <text x="546" y="205" class="small">logical view reconstructs baseline head</text>
+</g>
+</svg>

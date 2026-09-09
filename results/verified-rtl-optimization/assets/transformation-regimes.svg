@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" role="img" aria-label="Three transformation regimes">
+  <rect width="960" height="420" fill="white"/>
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill:#111; }
+    .title { font-size:26px; font-weight:700; }
+    .label { font-size:16px; font-weight:700; letter-spacing:.06em; }
+    .body { font-size:18px; }
+    .small { font-size:14px; fill:#5f5f5f; }
+    .box { fill:#fff; stroke:#111; stroke-width:2; }
+    .accent { fill:none; stroke:#005bff; stroke-width:4; }
+    .line { fill:none; stroke:#111; stroke-width:2.5; }
+    .muted { fill:none; stroke:#b9b9b9; stroke-width:2; }
+  </style>
+<text x="48" y="48" class="title">Three distinct transformation regimes</text>
+<g transform="translate(48 95)">
+  <rect class="box" x="0" y="0" width="270" height="250" rx="8"/>
+  <text x="20" y="34" class="label">01 · BOOLEAN</text>
+  <text x="20" y="62" class="body">Share logic terms</text>
+  <path class="muted" d="M42 115 H102 M42 155 H102"/>
+  <circle cx="42" cy="115" r="7" fill="#111"/><circle cx="42" cy="155" r="7" fill="#111"/>
+  <circle cx="102" cy="115" r="7" fill="#111"/><circle cx="102" cy="155" r="7" fill="#111"/>
+  <path class="accent" d="M122 135 H215"/>
+  <circle cx="225" cy="135" r="10" fill="#005bff"/>
+  <text x="20" y="218" class="small">SHA-1 · local logic + readout</text>
+  <rect class="box" x="298" y="0" width="270" height="250" rx="8"/>
+  <text x="318" y="34" class="label">02 · ARITHMETIC</text>
+  <text x="318" y="62" class="body">Right-size + balance</text>
+  <circle cx="338" cy="105" r="6" fill="#111"/><circle cx="390" cy="105" r="6" fill="#111"/>
+  <circle cx="448" cy="105" r="6" fill="#111"/><circle cx="500" cy="105" r="6" fill="#111"/>
+  <path class="line" d="M338 111 L365 145 M390 111 L365 145 M448 111 L475 145 M500 111 L475 145"/>
+  <circle cx="365" cy="150" r="7" fill="#005bff"/><circle cx="475" cy="150" r="7" fill="#005bff"/>
+  <path class="accent" d="M365 157 L420 195 M475 157 L420 195"/>
+  <circle cx="420" cy="201" r="9" fill="#005bff"/>
+  <text x="318" y="218" class="small">INT8 MatVec · widths + adder tree</text>
+  <rect class="box" x="596" y="0" width="270" height="250" rx="8"/>
+  <text x="616" y="34" class="label">03 · STATE</text>
+  <text x="616" y="62" class="body">Change representation</text>
+  <rect x="620" y="105" width="170" height="42" fill="#f4f4f4" stroke="#111" stroke-width="2"/>
+  <text x="626" y="130" class="small">1096-bit physical state</text>
+  <rect x="810" y="105" width="34" height="42" fill="#005bff"/>
+  <text x="817" y="131" style="font:700 14px Arial;fill:white">2b</text>
+  <path class="accent" d="M620 165 H790"/>
+  <text x="616" y="194" class="small">fixed movement + phase → same logical view</text>
+  <text x="616" y="218" class="small">ML-KEM CBD · refinement reasoning</text>
+</g>
+</svg>

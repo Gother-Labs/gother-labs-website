@@ -1,0 +1,38 @@
+{
+  "schema_version": "rtl-correctness-summary/v1",
+  "evidence_release": "v2.2.2",
+  "evidence_commit": "8cd8b479488f0693d76c2fab39eabf4bd6f9279c",
+  "cases": [
+    {
+      "id": "sha1",
+      "status": "pass",
+      "functional": [
+        "129 NIST SHA-1 Short and Long Message cases",
+        "deterministic cycle-level command/protocol regression"
+      ],
+      "formal": "Complete two-state sequential EQY equivalence after reset under the declared defined-input contract.",
+      "source": "https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/blob/8cd8b479488f0693d76c2fab39eabf4bd6f9279c/cases/sha1/README.md",
+      "verifier": "https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/blob/8cd8b479488f0693d76c2fab39eabf4bd6f9279c/cases/sha1/verify.py"
+    },
+    {
+      "id": "int8-matvec",
+      "status": "pass",
+      "functional": [
+        "151 deterministic signed, extreme, lane, row, and seeded-random simulations"
+      ],
+      "formal": "Exhaustive Yosys combinational equivalence for every 160-bit input assignment under the declared I/O contract.",
+      "source": "https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/blob/8cd8b479488f0693d76c2fab39eabf4bd6f9279c/cases/int8-matvec/README.md",
+      "verifier": "https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/blob/8cd8b479488f0693d76c2fab39eabf4bd6f9279c/cases/int8-matvec/verify.py"
+    },
+    {
+      "id": "mlkem-cbd",
+      "status": "pass",
+      "functional": [
+        "239-cycle dual-design regression with 239 checks covering reset, eta 2/3, stalls, reload, and second-load behavior"
+      ],
+      "formal": "Complete sequential EQY equivalence using five-step temporal induction after the declared two-cycle reset, with a joined 1,096-bit logical-state refinement view.",
+      "source": "https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/blob/8cd8b479488f0693d76c2fab39eabf4bd6f9279c/cases/mlkem-cbd/README.md",
+      "verifier": "https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/blob/8cd8b479488f0693d76c2fab39eabf4bd6f9279c/cases/mlkem-cbd/verify.py"
+    }
+  ]
+}
