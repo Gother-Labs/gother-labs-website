@@ -12,6 +12,11 @@ function replaceOnce(source, needle, replacement, label) {
   return source.slice(0, first) + replacement + source.slice(first + needle.length);
 }
 
+function ensureReplacement(source, oldText, newText, marker, label) {
+  if (source.includes(marker)) return source;
+  return replaceOnce(source, oldText, newText, label);
+}
+
 const lockPath = "tools/generated-results.lock.json";
 const lock = JSON.parse(await fs.readFile(lockPath, "utf8"));
 lock.commit = RESULTS_SHA;
@@ -19,7 +24,9 @@ await fs.writeFile(lockPath, `${JSON.stringify(lock, null, 2)}\n`, "utf8");
 
 const homePath = "index.html";
 let home = await fs.readFile(homePath, "utf8");
-home = replaceOnce(home, "Explore all five studies", "Explore all six studies", "home study count");
+if (!home.includes("Explore all six studies")) {
+  home = replaceOnce(home, "Explore all five studies", "Explore all six studies", "home study count");
+}
 await fs.writeFile(homePath, home, "utf8");
 
 const syncPath = "tools/sync-results.mjs";
@@ -38,19 +45,44 @@ function localArticleAssetPaths(article) {
   return [...new Set(paths)];
 }
 `;
-sync = replaceOnce(sync, formatPercent, localAssets, "local article asset helper insertion");
+sync = ensureReplacement(
+  sync,
+  formatPercent,
+  localAssets,
+  "function localArticleAssetPaths(article)",
+  "local article asset helper insertion",
+);
 
-sync = replaceOnce(
+sync = ensureReplacement(
   sync,
   "  const plots = full.artifacts?.plots ?? [];\n",
   "  const plots = full.artifacts?.plots ?? [];\n  const articleAssets = localArticleAssetPaths(article);\n",
+  "const articleAssets = localArticleAssetPaths(article);",
   "article asset collection",
 );
-sync = replaceOnce(
+sync = ensureReplacement(
   sync,
   "    ...plots,\n    ...(full.artifacts?.tolerance_certificates ?? []),\n",
   "    ...articleAssets,\n    ...plots,\n    ...(full.artifacts?.tolerance_certificates ?? []),\n",
+  "    ...articleAssets,\n    ...plots,",
   "article asset copy list",
+);
+
+const beforeAfterCopyNeedle = `  for (const file of [
+    full.artifacts?.candidate_code,`;
+const beforeAfterCopyReplacement = `  for (const file of [
+    ...[full.artifacts?.baseline_implementation].flat().filter(Boolean),
+    ...[full.artifacts?.accepted_implementation].flat().filter(Boolean),
+    ...[full.artifacts?.patch].flat().filter(Boolean),
+    ...[full.artifacts?.correctness_evidence].flat().filter(Boolean),
+    ...[full.artifacts?.evaluation_evidence].flat().filter(Boolean),
+    full.artifacts?.candidate_code,`;
+sync = ensureReplacement(
+  sync,
+  beforeAfterCopyNeedle,
+  beforeAfterCopyReplacement,
+  "...[full.artifacts?.baseline_implementation].flat().filter(Boolean)",
+  "before-after artifact copy fields",
 );
 
 const quadratureFallback = `  if (result.website?.card_visual !== "quadrature") return "";
@@ -89,21 +121,30 @@ const rtlCard = `  if (result.website?.card_visual === "rtl-portfolio") {
   }
 
 ${quadratureFallback}`;
-sync = replaceOnce(sync, quadratureFallback, rtlCard, "RTL card visual");
+sync = ensureReplacement(
+  sync,
+  quadratureFallback,
+  rtlCard,
+  `result.website?.card_visual === "rtl-portfolio"`,
+  "RTL card visual",
+);
 
 const indexCopy = `            Five studies. The problem, the result, and the evidence behind it.
             <a class="studio-link" href="../rtl-optimization/#public-evidence">Explore the three RTL/PPA cases <span aria-hidden="true">↗</span></a>`;
-sync = replaceOnce(
-  sync,
-  indexCopy,
-  "            Six studies. The problem, the result, and the evidence behind it.",
-  "results index study count",
-);
+if (!sync.includes("            Six studies. The problem, the result, and the evidence behind it.")) {
+  sync = replaceOnce(
+    sync,
+    indexCopy,
+    "            Six studies. The problem, the result, and the evidence behind it.",
+    "results index study count",
+  );
+}
 
-sync = replaceOnce(
+sync = ensureReplacement(
   sync,
   `  const isCirclePackingWhitepaper = full.slug === "circle-packing-26-unit-square";\n`,
   `  const isCirclePackingWhitepaper = full.slug === "circle-packing-26-unit-square";\n  const isVerifiedRtlWhitepaper = full.slug === "verified-rtl-optimization";\n`,
+  `const isVerifiedRtlWhitepaper = full.slug === "verified-rtl-optimization";`,
   "RTL whitepaper discriminator",
 );
 
@@ -121,7 +162,13 @@ const rtlBody = `      : isVerifiedRtlWhitepaper
           </article>
         </section>\`
 ${genericBodyMarker}`;
-sync = replaceOnce(sync, genericBodyMarker, rtlBody, "RTL whitepaper body");
+sync = ensureReplacement(
+  sync,
+  genericBodyMarker,
+  rtlBody,
+  "verified-rtl-whitepaper-shell",
+  "RTL whitepaper body",
+);
 
 const bodyClassMarker = `            : isCirclePackingWhitepaper
               ? "result-circle-packing-page"
@@ -131,7 +178,13 @@ const bodyClassReplacement = `            : isCirclePackingWhitepaper
               : isVerifiedRtlWhitepaper
                 ? "result-verified-rtl-page"
                 : "",`;
-sync = replaceOnce(sync, bodyClassMarker, bodyClassReplacement, "RTL body class");
+sync = ensureReplacement(
+  sync,
+  bodyClassMarker,
+  bodyClassReplacement,
+  `? "result-verified-rtl-page"`,
+  "RTL body class",
+);
 
 await fs.writeFile(syncPath, sync, "utf8");
 console.log(`Prepared #148 source integration against Results ${RESULTS_SHA}`);
