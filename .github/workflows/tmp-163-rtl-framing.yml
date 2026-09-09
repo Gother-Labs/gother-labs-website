@@ -1,0 +1,60 @@
+name: Temporary #163 RTL technical framing
+
+on:
+  push:
+    branches:
+      - codex/163-rtl-technical-framing
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout website branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          path: website
+          ref: codex/163-rtl-technical-framing
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Checkout canonical Results source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: Gother-Labs/gother-labs-results
+          ref: 9fb50452bc7ee815339f5cf20f9df501591b2d30
+          path: gother-labs-results
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Use release Node.js runtime
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
+        with:
+          node-version-file: website/.node-version
+
+      - name: Patch source and regenerate publication
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd website
+          node tools/tmp-163-rtl-framing.mjs
+          GOTHER_RESULTS_ROOT=../gother-labs-results node tools/sync-results.mjs
+          GOTHER_RESULTS_ROOT=../gother-labs-results node tools/check-result-markdown.mjs
+          git diff --check
+
+      - name: Commit generated branch output
+        shell: bash
+        run: |
+          set -euo pipefail
+          git -C website config user.name "github-actions[bot]"
+          git -C website config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git -C website add -A
+          if git -C website diff --cached --quiet; then
+            echo "No generated changes to commit"
+            exit 0
+          fi
+          git -C website commit -m "feat(results): publish deeper RTL technical framing"
+          git -C website push origin HEAD:codex/163-rtl-technical-framing
