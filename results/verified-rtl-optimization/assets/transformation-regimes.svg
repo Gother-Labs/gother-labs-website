@@ -1,40 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" role="img" aria-label="Three RTL transformations across Boolean logic, arithmetic reduction, and state representation">
-  <rect width="960" height="430" fill="white"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 330" role="img" aria-label="Three RTL before-and-after structural rewrites: SHA-1 Boolean sharing, INT8 MatVec reduction widths, and ML-KEM CBD state movement">
+  <rect width="960" height="330" fill="white"/>
   <style>
-    text{font-family:Arial,Helvetica,sans-serif;fill:#111}.title{font-size:26px;font-weight:700}.case{font-size:18px;font-weight:700}.body{font-size:18px}.small{font-size:14px;fill:#5f5f5f}.box{fill:#fff;stroke:#111;stroke-width:2}.accent{fill:none;stroke:#005bff;stroke-width:4}.line{fill:none;stroke:#111;stroke-width:2.5}.muted{fill:none;stroke:#b9b9b9;stroke-width:2}
+    text{font-family:Arial,Helvetica,sans-serif;fill:#111}.case{font-size:18px;font-weight:700}.small{font-size:14px;fill:#5f5f5f}.mono{font-size:13.5px;font-family:Menlo,Consolas,monospace;fill:#333}.accent{fill:none;stroke:#005bff;stroke-width:4}.line{fill:none;stroke:#111;stroke-width:2.5}.muted{fill:none;stroke:#b9b9b9;stroke-width:1.5}
   </style>
-  <text x="48" y="48" class="title">Three RTL structures, three different rewrites</text>
-  <g transform="translate(48 92)">
-    <rect class="box" x="0" y="0" width="270" height="250" rx="8"/>
-    <text x="20" y="36" class="case">SHA-1</text>
-    <text x="20" y="67" class="body">Shared Boolean structure</text>
-    <path class="muted" d="M42 119H102M42 159H102"/>
-    <circle cx="42" cy="119" r="7" fill="#111"/><circle cx="42" cy="159" r="7" fill="#111"/>
-    <circle cx="102" cy="119" r="7" fill="#111"/><circle cx="102" cy="159" r="7" fill="#111"/>
-    <path class="accent" d="M122 139H215"/>
-    <circle cx="225" cy="139" r="10" fill="#005bff"/>
-    <text x="20" y="222" class="small">shared terms + direct state readout</text>
+  <path class="muted" d="M320 30V292M640 30V292"/>
 
-    <rect class="box" x="298" y="0" width="270" height="250" rx="8"/>
-    <text x="318" y="36" class="case">INT8 MatVec</text>
-    <text x="318" y="67" class="body">Range-correct reduction tree</text>
-    <circle cx="338" cy="109" r="6" fill="#111"/><circle cx="390" cy="109" r="6" fill="#111"/>
-    <circle cx="448" cy="109" r="6" fill="#111"/><circle cx="500" cy="109" r="6" fill="#111"/>
-    <path class="line" d="M338 115L365 149M390 115L365 149M448 115L475 149M500 115L475 149"/>
-    <circle cx="365" cy="154" r="7" fill="#005bff"/><circle cx="475" cy="154" r="7" fill="#005bff"/>
-    <path class="accent" d="M365 161L420 199M475 161L420 199"/>
-    <circle cx="420" cy="205" r="9" fill="#005bff"/>
-    <text x="318" y="222" class="small">16-bit → 17-bit → 18-bit → INT32</text>
+  <g transform="translate(30 34)">
+    <text x="18" y="26" class="case">SHA-1</text>
+    <path class="muted" d="M54 91H114M54 131H114"/>
+    <circle cx="54" cy="91" r="7" fill="#111"/><circle cx="54" cy="131" r="7" fill="#111"/>
+    <circle cx="114" cy="91" r="7" fill="#111"/><circle cx="114" cy="131" r="7" fill="#111"/>
+    <path class="accent" d="M135 111H224"/>
+    <circle cx="236" cy="111" r="10" fill="#005bff"/>
+    <text x="18" y="196" class="mono">duplicated terms → shared terms</text>
+    <text x="18" y="220" class="mono">temporary readout → A·B·C·D·E</text>
+  </g>
 
-    <rect class="box" x="596" y="0" width="270" height="250" rx="8"/>
-    <text x="616" y="36" class="case">ML-KEM CBD</text>
-    <text x="616" y="67" class="body">State representation</text>
-    <rect x="620" y="109" width="170" height="42" fill="#f4f4f4" stroke="#111" stroke-width="2"/>
-    <text x="626" y="135" class="small">1096-bit physical state</text>
-    <rect x="810" y="109" width="34" height="42" fill="#005bff"/>
-    <text x="817" y="135" style="font:700 14px Arial;fill:white">2b</text>
-    <path class="accent" d="M620 169H790"/>
-    <text x="616" y="198" class="small">fixed 24-bit movement + phase</text>
-    <text x="616" y="222" class="small">same logical state view</text>
+  <g transform="translate(342 34)">
+    <text x="18" y="26" class="case">INT8 MatVec</text>
+    <circle cx="54" cy="82" r="6" fill="#111"/><circle cx="106" cy="82" r="6" fill="#111"/>
+    <circle cx="170" cy="82" r="6" fill="#111"/><circle cx="222" cy="82" r="6" fill="#111"/>
+    <path class="line" d="M54 88L80 122M106 88L80 122M170 88L196 122M222 88L196 122"/>
+    <circle cx="80" cy="128" r="7" fill="#005bff"/><circle cx="196" cy="128" r="7" fill="#005bff"/>
+    <path class="accent" d="M80 135L138 174M196 135L138 174"/>
+    <circle cx="138" cy="181" r="9" fill="#005bff"/>
+    <text x="18" y="220" class="mono">16b → 17b pairs → 18b row → 32b</text>
+  </g>
+
+  <g transform="translate(662 34)">
+    <text x="18" y="26" class="case">ML-KEM CBD</text>
+    <rect x="22" y="76" width="176" height="44" fill="#f4f4f4" stroke="#111" stroke-width="2"/>
+    <text x="34" y="103" class="small">1,096-bit physical state</text>
+    <rect x="214" y="76" width="38" height="44" fill="#005bff"/>
+    <text x="222" y="103" style="font:700 14px Arial;fill:white">2b</text>
+    <path class="accent" d="M22 142H198"/>
+    <text x="18" y="196" class="mono">16/24b movement → fixed 24b + phase</text>
+    <text x="18" y="220" class="mono">logical state view preserved</text>
   </g>
 </svg>

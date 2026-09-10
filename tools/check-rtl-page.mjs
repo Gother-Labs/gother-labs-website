@@ -16,9 +16,9 @@ const files = {
 };
 
 const expectedClaims = [
-  { name: "SHA-1 RTL", metric: "2.27%", sourcePath: "/tree/v2.2.2/cases/sha1" },
-  { name: "INT8 MatVec RTL", metric: "8.3230%", sourcePath: "/tree/v2.2.2/cases/int8-matvec" },
-  { name: "ML-KEM CBD RTL", metric: "9.7338%", sourcePath: "/tree/v2.2.2/cases/mlkem-cbd" },
+  { name: "SHA-1 RTL", metric: "2.27%", sourcePath: "../results/verified-rtl-optimization/#rtl-sha1" },
+  { name: "INT8 MatVec RTL", metric: "8.3230%", sourcePath: "../results/verified-rtl-optimization/#rtl-matvec" },
+  { name: "ML-KEM CBD RTL", metric: "9.7338%", sourcePath: "../results/verified-rtl-optimization/#rtl-mlkem" },
 ];
 
 function requireText(source, expected, failures, label) {
@@ -37,7 +37,7 @@ async function main() {
   requireText(page, "https://www.gotherlabs.com/rtl-optimization/", failures, "canonical URL");
   requireText(page, "page.css?v=rtl-editorial-v1", failures, "page stylesheet");
   requireText(page, "Push your RTL further.", failures, "hero proposition");
-  requireText(page, "See public results", failures, "client-facing evidence action");
+  requireText(page, "Read the verified Result", failures, "client-facing evidence action");
   requireText(page, "Inspect the published cases.", failures, "evidence section heading");
   requireText(page, "not ASIC signoff", failures, "evidence boundary");
   requireText(page, "not a cross-circuit performance ranking", failures, "comparison boundary");
@@ -46,7 +46,7 @@ async function main() {
   requireText(page, "functional checks and an agreed formal-equivalence scope", failures, "formal policy");
   requireText(page, "Run the pilot in your implementation flow", failures, "customer authority");
   requireText(page, "Do not attach confidential RTL", failures, "confidentiality prompt");
-  requireText(page, "/tree/v2.2.2#results-at-a-glance", failures, "versioned evidence entry point");
+  requireText(page, "../results/verified-rtl-optimization/", failures, "canonical Results evidence entry point");
 
   for (const { name, metric, sourcePath } of expectedClaims) {
     const sourceIndex = page.indexOf(sourcePath);
@@ -62,7 +62,8 @@ async function main() {
   requireText(style, ".rtl-hero", failures, "RTL page styles");
   requireText(style, "@media (max-width: 720px)", failures, "mobile styles");
   requireText(style, "prefers-reduced-motion", failures, "motion preference");
-  requireText(home, 'href="./rtl-optimization/"', failures, "home entry point");
+  requireText(home, 'href="./rtl-optimization/"', failures, "home commercial entry point");
+  requireText(home, 'href="./results/verified-rtl-optimization/#rtl-mlkem"', failures, "home canonical evidence entry point");
   requireText(contact, 'href="../rtl-optimization/"', failures, "contact entry point");
   requireText(contact, "Start an RTL/PPA enquiry", failures, "direct contact action");
   requireText(sitemap, "https://www.gotherlabs.com/rtl-optimization/", failures, "sitemap");
