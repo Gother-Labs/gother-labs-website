@@ -1,77 +1,66 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 560" role="img" aria-label="RTL to physical implementation and PPA measurement flow">
-  <rect width="1120" height="560" fill="white"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 590" role="img" aria-label="RTL design through physical implementation and PPA measurement">
+  <rect width="1160" height="590" fill="white"/>
   <style>
-    text { font-family: Arial, Helvetica, sans-serif; fill:#111; }
-    .title { font-size:28px; font-weight:700; }
-    .label { font-size:15px; font-weight:700; letter-spacing:.05em; }
-    .body { font-size:16px; }
-    .small { font-size:13px; fill:#5f5f5f; }
-    .box { fill:#fff; stroke:#111; stroke-width:2; }
-    .soft { fill:#f6f7f9; stroke:#bdbdbd; stroke-width:1.4; }
-    .blue { fill:#005bff; }
-    .blueStroke { fill:none; stroke:#005bff; stroke-width:3; }
-    .line { fill:none; stroke:#111; stroke-width:2.2; }
-    .muted { fill:none; stroke:#b8b8b8; stroke-width:1.5; }
+    text{font-family:Arial,Helvetica,sans-serif;fill:#111}.title{font-size:28px;font-weight:700}.stage{font-size:16px;font-weight:700}.body{font-size:16px}.small{font-size:13px;fill:#5f5f5f}.box{fill:#fff;stroke:#111;stroke-width:2}.soft{fill:#f6f7f9;stroke:#bdbdbd;stroke-width:1.4}.blue{fill:#005bff}.blueStroke{fill:none;stroke:#005bff;stroke-width:3}.line{fill:none;stroke:#111;stroke-width:2.2}
   </style>
+  <text x="56" y="50" class="title">RTL structure becomes physical implementation</text>
+  <text x="56" y="80" class="small">The frozen source contract constrains what synthesis and downstream implementation may change.</text>
 
-  <text x="54" y="50" class="title">RTL structure becomes physical implementation</text>
-  <text x="54" y="80" class="small">The source contract constrains what downstream synthesis and implementation are allowed to change.</text>
+  <g transform="translate(56 118)">
+    <rect class="box" x="0" y="0" width="188" height="126" rx="8"/>
+    <text x="18" y="30" class="stage">RTL source</text>
+    <text x="18" y="56" class="small">state · widths · muxes</text>
+    <text x="18" y="78" class="small">sharing · pipelines</text>
+    <text x="18" y="100" class="small">cycle-level protocol</text>
+    <path class="line" d="M188 63H232"/><path class="blue" d="M232 63l-12-7v14z"/>
 
-  <g transform="translate(54 118)">
-    <rect class="box" x="0" y="0" width="180" height="126" rx="8"/>
-    <text x="18" y="28" class="label">RTL SOURCE</text>
-    <text x="18" y="54" class="small">state · widths · muxes</text>
-    <text x="18" y="76" class="small">sharing · pipelines</text>
-    <text x="18" y="98" class="small">cycle-level protocol</text>
-    <path class="line" d="M180 63H222"/><path class="blue" d="M222 63l-12-7v14z"/>
+    <rect class="soft" x="232" y="18" width="148" height="90" rx="8"/>
+    <text x="254" y="49" class="stage">Synthesis</text>
+    <text x="254" y="75" class="small">logic and arithmetic</text>
+    <text x="254" y="95" class="small">canonicalization</text>
+    <path class="line" d="M380 63H424"/><path class="blue" d="M424 63l-12-7v14z"/>
 
-    <rect class="soft" x="222" y="18" width="145" height="90" rx="8"/>
-    <text x="244" y="48" class="label">SYNTHESIS</text>
-    <text x="244" y="74" class="small">logic + arithmetic</text>
-    <text x="244" y="94" class="small">canonicalization</text>
-    <path class="line" d="M367 63H409"/><path class="blue" d="M409 63l-12-7v14z"/>
+    <rect class="soft" x="424" y="18" width="158" height="90" rx="8"/>
+    <text x="446" y="49" class="stage">Technology mapping</text>
+    <text x="446" y="75" class="small">target LUTs or cells</text>
+    <text x="446" y="95" class="small">resource structure</text>
+    <path class="line" d="M582 63H626"/><path class="blue" d="M626 63l-12-7v14z"/>
 
-    <rect class="soft" x="409" y="18" width="145" height="90" rx="8"/>
-    <text x="431" y="48" class="label">MAPPING</text>
-    <text x="431" y="74" class="small">target LUTs / cells</text>
-    <text x="431" y="94" class="small">resource structure</text>
-    <path class="line" d="M554 63H596"/><path class="blue" d="M596 63l-12-7v14z"/>
+    <rect class="soft" x="626" y="18" width="148" height="90" rx="8"/>
+    <text x="648" y="49" class="stage">Placement</text>
+    <text x="648" y="75" class="small">physical locations</text>
+    <text x="648" y="95" class="small">seed-sensitive search</text>
+    <path class="line" d="M774 63H818"/><path class="blue" d="M818 63l-12-7v14z"/>
 
-    <rect class="soft" x="596" y="18" width="145" height="90" rx="8"/>
-    <text x="618" y="48" class="label">PLACEMENT</text>
-    <text x="618" y="74" class="small">physical locations</text>
-    <text x="618" y="94" class="small">seed-sensitive search</text>
-    <path class="line" d="M741 63H783"/><path class="blue" d="M783 63l-12-7v14z"/>
-
-    <rect class="soft" x="783" y="18" width="145" height="90" rx="8"/>
-    <text x="805" y="48" class="label">ROUTING</text>
-    <text x="805" y="74" class="small">wire delay · fanout</text>
-    <text x="805" y="94" class="small">congestion effects</text>
+    <rect class="soft" x="818" y="18" width="148" height="90" rx="8"/>
+    <text x="840" y="49" class="stage">Routing</text>
+    <text x="840" y="75" class="small">wire delay · fanout</text>
+    <text x="840" y="95" class="small">congestion effects</text>
   </g>
 
-  <path class="blueStroke" d="M982 180v66"/><path class="blue" d="M982 254l-7-12h14z"/>
-  <text x="982" y="280" class="label" text-anchor="middle">PPA EXTRACTION</text>
+  <path class="blueStroke" d="M1022 180v66"/><path class="blue" d="M1022 254l-7-12h14z"/>
+  <text x="1022" y="282" class="stage" text-anchor="middle">Implementation measurements</text>
 
-  <g transform="translate(54 334)">
-    <rect class="box" x="0" y="0" width="302" height="126" rx="8"/>
-    <text x="18" y="30" class="label">AREA</text>
-    <text x="18" y="58" class="body">Implementation resource estimate</text>
-    <text x="18" y="84" class="small">Current evidence: VTR total area</text>
-    <text x="18" y="105" class="small">Not ASIC mm² or commercial FPGA characterization</text>
+  <g transform="translate(56 338)">
+    <rect class="box" x="0" y="0" width="320" height="144" rx="8"/>
+    <text x="18" y="31" class="stage">VTR total-area estimate</text>
+    <text x="18" y="60" class="body">Implementation resource estimate</text>
+    <text x="18" y="88" class="small">Measured on the pinned academic architecture.</text>
+    <text x="18" y="111" class="small">Not ASIC die area or commercial-FPGA characterization.</text>
 
-    <rect class="box" x="328" y="0" width="302" height="126" rx="8"/>
-    <text x="346" y="30" class="label">PERFORMANCE</text>
-    <text x="346" y="58" class="body">Post-route critical-path delay</text>
-    <text x="346" y="84" class="small">Lower tcrit supports a higher clock bound</text>
-    <text x="346" y="105" class="small">Not complete-system throughput or latency</text>
+    <rect class="box" x="344" y="0" width="320" height="144" rx="8"/>
+    <text x="362" y="31" class="stage">Post-route critical-path delay</text>
+    <text x="362" y="60" class="body">Timing of the limiting routed path</text>
+    <text x="362" y="88" class="small">Lower tcrit implies a higher implementation clock bound.</text>
+    <text x="362" y="111" class="small">Not complete-system throughput or application latency.</text>
 
-    <rect class="box" x="656" y="0" width="302" height="126" rx="8"/>
-    <text x="674" y="30" class="label">POWER</text>
-    <text x="674" y="58" class="body">Active total-power estimate</text>
-    <text x="674" y="84" class="small">Under the declared activity + PTM45 model</text>
-    <text x="674" y="105" class="small">Not board, thermal, energy, or silicon measurement</text>
+    <rect class="box" x="688" y="0" width="320" height="144" rx="8"/>
+    <text x="706" y="31" class="stage">Active total-power estimate</text>
+    <text x="706" y="60" class="body">Power under the declared activity model</text>
+    <text x="706" y="88" class="small">PTM 45 nm conditions are fixed inside each case.</text>
+    <text x="706" y="111" class="small">Not board, thermal, measured-energy, or silicon evidence.</text>
   </g>
 
-  <text x="54" y="510" class="body">Baseline and accepted RTL use the same frozen target and are compared through matched implementation pairs.</text>
-  <text x="54" y="537" class="small">The paired estimate asks whether the RTL change survives implementation variation rather than whether one favorable run happened to win.</text>
+  <text x="56" y="530" class="body">Baseline and accepted RTL use the same frozen target and matched implementation conditions.</text>
+  <text x="56" y="557" class="small">The paired estimator measures whether the RTL change survives implementation variation, rather than selecting one favorable run.</text>
 </svg>

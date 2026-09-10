@@ -1,45 +1,45 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 500" role="img" aria-label="ML-KEM CBD architecture context and paired PPA estimate">
-  <rect width="1120" height="500" fill="white"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 520" role="img" aria-label="ML-KEM CBD architecture context and paired PPA estimate">
+  <rect width="1240" height="520" fill="white"/>
   <style>
-    text{font-family:Arial,Helvetica,sans-serif;fill:#111}.title{font-size:24px;font-weight:700}.label{font-size:14px;font-weight:700;letter-spacing:.04em}.body{font-size:15px}.small{font-size:12.5px;fill:#5f5f5f}.box{fill:#fff;stroke:#111;stroke-width:1.8}.hot{fill:#fff;stroke:#005bff;stroke-width:2.5}.line{fill:none;stroke:#111;stroke-width:2}.muted{fill:none;stroke:#c4c4c4;stroke-width:1}.ci{stroke:#005bff;stroke-width:2.2;stroke-linecap:round}.dot{fill:#005bff}.tick{font-size:11px;fill:#686868}
+    text{font-family:Arial,Helvetica,sans-serif;fill:#111}.title{font-size:24px;font-weight:700}.node{font-size:14px;font-weight:700}.body{font-size:15px}.small{font-size:12.5px;fill:#5f5f5f}.box{fill:#fff;stroke:#111;stroke-width:1.8}.hot{fill:#fff;stroke:#005bff;stroke-width:2.5}.line{fill:none;stroke:#111;stroke-width:2}.muted{fill:none;stroke:#c4c4c4;stroke-width:1}.ci{stroke:#005bff;stroke-width:2.2;stroke-linecap:round}.dot{fill:#005bff}.tick{font-size:11px;fill:#686868}
   </style>
-  <text x="48" y="44" class="title">ML-KEM CBD · where the RTL change sits</text>
-  <text x="620" y="44" class="title">Case-local paired PPA estimate</text>
-  <text x="620" y="68" class="small">64 prospectively frozen publication pairs · 95% intervals · case-local scale</text>
-  <path class="muted" d="M575 28V450"/>
+  <text x="48" y="44" class="title">ML-KEM CBD state and coefficient path</text>
+  <text x="700" y="44" class="title">Paired implementation estimate</text>
+  <text x="700" y="68" class="small">64 publication pairs · two-sided 95% intervals</text>
+  <path class="muted" d="M655 28V458"/>
 
   <g transform="translate(48 100)">
     <rect class="box" x="0" y="70" width="112" height="74" rx="7"/>
-    <text x="56" y="99" text-anchor="middle" class="label">SHAKE input</text>
+    <text x="56" y="99" text-anchor="middle" class="node">SHAKE input</text>
     <text x="56" y="122" text-anchor="middle" class="small">1,088 bits</text>
-    <path class="line" d="M112 107H150"/>
-    <rect class="hot" x="150" y="44" width="176" height="126" rx="7"/>
-    <text x="238" y="78" text-anchor="middle" class="label">Physical state</text>
-    <text x="238" y="103" text-anchor="middle" class="small">fixed 24-bit movement</text>
-    <text x="238" y="125" text-anchor="middle" class="small">+ two-bit phase</text>
-    <text x="238" y="149" text-anchor="middle" class="small">logical refinement view</text>
-    <path class="line" d="M326 107H364"/>
-    <rect class="box" x="364" y="54" width="148" height="106" rx="7"/>
-    <text x="438" y="86" text-anchor="middle" class="label">CBD arithmetic</text>
-    <text x="438" y="111" text-anchor="middle" class="small">bit-group sums</text>
-    <text x="438" y="133" text-anchor="middle" class="small">coefficient difference</text>
-    <path class="line" d="M512 107H548"/>
-    <rect class="box" x="548" y="70" width="72" height="74" rx="7"/>
-    <text x="584" y="99" text-anchor="middle" class="label">Writes</text>
-    <text x="584" y="122" text-anchor="middle" class="small">4 coeffs</text>
+    <path class="line" d="M112 107H146"/>
+    <rect class="hot" x="146" y="44" width="176" height="126" rx="7"/>
+    <text x="234" y="78" text-anchor="middle" class="node">Physical state</text>
+    <text x="234" y="103" text-anchor="middle" class="small">fixed 24-bit movement</text>
+    <text x="234" y="125" text-anchor="middle" class="small">+ two-bit phase</text>
+    <text x="234" y="149" text-anchor="middle" class="small">logical refinement view</text>
+    <path class="line" d="M322 107H356"/>
+    <rect class="box" x="356" y="54" width="148" height="106" rx="7"/>
+    <text x="430" y="86" text-anchor="middle" class="node">CBD arithmetic</text>
+    <text x="430" y="111" text-anchor="middle" class="small">bit-group sums</text>
+    <text x="430" y="133" text-anchor="middle" class="small">coefficient difference</text>
+    <path class="line" d="M504 107H538"/>
+    <rect class="box" x="538" y="70" width="64" height="74" rx="7"/>
+    <text x="570" y="99" text-anchor="middle" class="node">Writes</text>
+    <text x="570" y="122" text-anchor="middle" class="small">4 coeffs</text>
 
-    <text x="0" y="240" class="body">Accepted source change</text>
-    <text x="0" y="268" class="small">Replace variable 16/24-bit movement of the wide state with fixed 24-bit movement plus a compact phase variable.</text>
-    <text x="0" y="300" class="small">Frozen: reset/load/stall semantics, eta modes, write addresses, termination, outputs, cycle timing.</text>
+    <text x="0" y="222" class="body">The accepted RTL replaces variable 16/24-bit movement of the wide state with</text>
+    <text x="0" y="246" class="body">fixed 24-bit movement plus a compact two-bit phase and a logical refinement view.</text>
+    <text x="0" y="280" class="small">Reset/load/stall behavior, eta modes, write addresses, termination, outputs, and cycle timing remain fixed.</text>
   </g>
 
   <g>
-    <path class="muted" d="M680 110V402M762.2 110V402M844.4 110V402M926.7 110V402M1008.9 110V402"/>
-    <text x="680" y="424" class="tick" text-anchor="middle">0%</text><text x="762.2" y="424" class="tick" text-anchor="middle">4%</text><text x="844.4" y="424" class="tick" text-anchor="middle">8%</text><text x="926.7" y="424" class="tick" text-anchor="middle">12%</text><text x="1008.9" y="424" class="tick" text-anchor="middle">16%</text>
-    <text x="620" y="136" class="body">Area</text><line class="ci" x1="999.2" y1="132" x2="1014.8" y2="132"/><line class="ci" x1="999.2" y1="126" x2="999.2" y2="138"/><line class="ci" x1="1014.8" y1="126" x2="1014.8" y2="138"/><circle class="dot" cx="1007.0" cy="132" r="5"/><text x="1068" y="136" class="small" text-anchor="end">15.9083%</text>
-    <text x="620" y="206" class="body">Delay</text><line class="ci" x1="792.5" y1="202" x2="854.5" y2="202"/><line class="ci" x1="792.5" y1="196" x2="792.5" y2="208"/><line class="ci" x1="854.5" y1="196" x2="854.5" y2="208"/><circle class="dot" cx="823.7" cy="202" r="5"/><text x="1068" y="206" class="small" text-anchor="end">6.9920%</text>
-    <text x="620" y="276" class="body">Power</text><line class="ci" x1="762.9" y1="272" x2="841.4" y2="272"/><line class="ci" x1="762.9" y1="266" x2="762.9" y2="278"/><line class="ci" x1="841.4" y1="266" x2="841.4" y2="278"/><circle class="dot" cx="802.6" cy="272" r="5"/><text x="1068" y="276" class="small" text-anchor="end">5.9621%</text>
-    <text x="620" y="346" class="body">Composite</text><line class="ci" x1="871.8" y1="342" x2="888.3" y2="342"/><line class="ci" x1="871.8" y1="336" x2="871.8" y2="348"/><line class="ci" x1="888.3" y1="336" x2="888.3" y2="348"/><circle class="dot" cx="880.1" cy="342" r="5"/><text x="1068" y="346" class="small" text-anchor="end">9.7338%</text>
+    <path class="muted" d="M790 110V402M870 110V402M950 110V402M1030 110V402M1110 110V402"/>
+    <text x="790" y="424" class="tick" text-anchor="middle">0%</text><text x="870" y="424" class="tick" text-anchor="middle">4%</text><text x="950" y="424" class="tick" text-anchor="middle">8%</text><text x="1030" y="424" class="tick" text-anchor="middle">12%</text><text x="1110" y="424" class="tick" text-anchor="middle">16%</text>
+    <text x="700" y="136" class="body">Area</text><line class="ci" x1="1100.5" y1="132" x2="1115.8" y2="132"/><line class="ci" x1="1100.5" y1="126" x2="1100.5" y2="138"/><line class="ci" x1="1115.8" y1="126" x2="1115.8" y2="138"/><circle class="dot" cx="1108.2" cy="132" r="5"/><text x="1210" y="136" class="small" text-anchor="end">15.9083%</text>
+    <text x="700" y="206" class="body">Delay</text><line class="ci" x1="899.4" y1="202" x2="959.7" y2="202"/><line class="ci" x1="899.4" y1="196" x2="899.4" y2="208"/><line class="ci" x1="959.7" y1="196" x2="959.7" y2="208"/><circle class="dot" cx="929.8" cy="202" r="5"/><text x="1210" y="206" class="small" text-anchor="end">6.9920%</text>
+    <text x="700" y="276" class="body">Power</text><line class="ci" x1="870.7" y1="272" x2="947.0" y2="272"/><line class="ci" x1="870.7" y1="266" x2="870.7" y2="278"/><line class="ci" x1="947.0" y1="266" x2="947.0" y2="278"/><circle class="dot" cx="909.2" cy="272" r="5"/><text x="1210" y="276" class="small" text-anchor="end">5.9621%</text>
+    <text x="700" y="346" class="body">Composite</text><line class="ci" x1="976.7" y1="342" x2="992.7" y2="342"/><line class="ci" x1="976.7" y1="336" x2="976.7" y2="348"/><line class="ci" x1="992.7" y1="336" x2="992.7" y2="348"/><circle class="dot" cx="984.7" cy="342" r="5"/><text x="1210" y="346" class="small" text-anchor="end">9.7338%</text>
   </g>
-  <text x="620" y="462" class="small">Improvement versus frozen baseline. Power uses the declared deterministic ACE activity model.</text>
+  <text x="700" y="458" class="small">Power uses the declared deterministic ACE activity model. Improvement is case-local.</text>
 </svg>

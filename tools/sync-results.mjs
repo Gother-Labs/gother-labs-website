@@ -3371,7 +3371,7 @@ ${figures}
     <meta name="citation_publication_date" content="2026/08/22">
     <meta name="citation_doi" content="10.5281/zenodo.22060172">`
         : isVerifiedRtlWhitepaper
-          ? '<link rel="stylesheet" href="../../assets/rtl-result.css?v=rtl-result-v3">'
+          ? '<link rel="stylesheet" href="../../assets/rtl-result.css?v=rtl-result-v4">'
           : "",
       bodyClass: isQuadratureWhitepaper
         ? "result-quadrature-page"
