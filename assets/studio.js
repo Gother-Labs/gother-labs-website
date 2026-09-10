@@ -23,9 +23,9 @@
   const study = document.querySelector('[data-rtl-study]');
   if (study) {
     const cases = {
-      sha1: { slug: 'sha1', pool: '64 certification seeds · SHA-1', reference: 'Relative to the baseline median.' },
-      int8: { slug: 'int8-matvec', pool: '64 held-out pairs · INT8 MatVec', reference: 'Relative to the baseline geometric aggregate.' },
-      mlkem: { slug: 'mlkem-cbd', pool: '64 publication pairs · ML-KEM CBD', reference: 'Relative to the baseline geometric aggregate.' },
+      sha1: { slug: 'sha1', resultAnchor: 'rtl-sha1', pool: '64 certification seeds · SHA-1', reference: 'Relative to the baseline median.' },
+      int8: { slug: 'int8-matvec', resultAnchor: 'rtl-matvec', pool: '64 held-out pairs · INT8 MatVec', reference: 'Relative to the baseline geometric aggregate.' },
+      mlkem: { slug: 'mlkem-cbd', resultAnchor: 'rtl-mlkem', pool: '64 publication pairs · ML-KEM CBD', reference: 'Relative to the baseline geometric aggregate.' },
     };
     study.querySelector('[data-rtl-controls]').hidden = false;
     study.querySelectorAll('[data-rtl-case]').forEach(button => {
@@ -37,7 +37,7 @@
         cloud.alt = `${button.textContent}: 64 baseline and optimized measurement pairs across area, timing, active power and composite, with paired estimates and 95% confidence intervals. Right is better.`;
         study.querySelector('[data-rtl-pool]').textContent = result.pool;
         study.querySelector('[data-rtl-normalization]').textContent = result.reference;
-        study.closest('.studio-offer').querySelector('[data-rtl-source]').href = `https://github.com/juan-fernandez-gotherlabs/rtl-optimization-case-study/tree/7ee35dcf022d4ed590a55731ea643f17c648a8d1/cases/${result.slug}`;
+        study.closest('.studio-offer').querySelector('[data-rtl-source]').href = `./results/verified-rtl-optimization/#${result.resultAnchor}`;
       });
     });
   }

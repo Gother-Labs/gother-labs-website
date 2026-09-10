@@ -3292,7 +3292,6 @@ ${markdownToHtml(articleWithoutTitle(article), circlePackingWhitepaperInserts(fu
         </section>`
       : isVerifiedRtlWhitepaper
         ? `        <section class="hero compact-hero page-hero result-detail-hero verified-rtl-detail-hero">
-          <p class="eyebrow">${escapeHtml(full.domain)}</p>
           <h1 class="page-title">${escapeHtml(full.title)}</h1>
           <p class="intro results-hero-intro">${escapeHtml(full.summary)}</p>
         </section>

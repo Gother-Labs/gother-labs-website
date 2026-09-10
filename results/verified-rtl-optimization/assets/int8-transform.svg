@@ -1,40 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" role="img" aria-label="INT8 MatVec transformation">
-  <rect width="960" height="420" fill="white"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 350" role="img" aria-label="INT8 MatVec before-and-after RTL rewrite from early 32-bit extension to range-correct 17-bit and 18-bit balanced reduction">
+  <rect width="960" height="350" fill="white"/>
   <style>
-    text { font-family: Arial, Helvetica, sans-serif; fill:#111; }
-    .title { font-size:26px; font-weight:700; }
-    .label { font-size:16px; font-weight:700; letter-spacing:.06em; }
-    .body { font-size:18px; }
-    .small { font-size:14px; fill:#5f5f5f; }
-    .box { fill:#fff; stroke:#111; stroke-width:2; }
-    .accent { fill:none; stroke:#005bff; stroke-width:4; }
-    .line { fill:none; stroke:#111; stroke-width:2.5; }
+    text{font-family:Arial,Helvetica,sans-serif;fill:#111}.rtl{font-size:17px;font-family:Menlo,Consolas,monospace;font-weight:650}.body{font-size:17px}.small{font-size:13.5px;fill:#5f5f5f}.box{fill:#fff;stroke:#111;stroke-width:2}.accent{fill:none;stroke:#005bff;stroke-width:4}.line{fill:none;stroke:#111;stroke-width:2.5}.blue{fill:#005bff}
   </style>
-<text x="48" y="48" class="title">INT8 MatVec · keep arithmetic narrow until the interface</text>
-<text x="48" y="82" class="small">Same exact signed dot products and 32-bit outputs</text>
-<g transform="translate(62 120)">
-  <text x="0" y="0" class="label">BASELINE</text>
-  <rect class="box" x="0" y="28" width="350" height="205" rx="8"/>
-  <text x="18" y="62" class="body">16-bit products → extend each to 32-bit</text>
-  <g transform="translate(34 92)">
-    <rect x="0" y="0" width="46" height="24" fill="#f4f4f4" stroke="#111"/><rect x="66" y="0" width="46" height="24" fill="#f4f4f4" stroke="#111"/>
-    <rect x="132" y="0" width="46" height="24" fill="#f4f4f4" stroke="#111"/><rect x="198" y="0" width="46" height="24" fill="#f4f4f4" stroke="#111"/>
-    <text x="7" y="17" class="small">32b</text><text x="73" y="17" class="small">32b</text><text x="139" y="17" class="small">32b</text><text x="205" y="17" class="small">32b</text>
-    <path class="line" d="M23 28 L57 70 M89 28 L57 70 M155 28 L189 70 M221 28 L189 70"/>
-    <path class="line" d="M57 70 H189"/>
-    <text x="92" y="101" class="small">wide chained accumulation</text>
+  <g transform="translate(58 48)">
+    <text x="0" y="0" class="rtl">RTL₀</text>
+    <rect class="box" x="0" y="24" width="350" height="216" rx="8"/>
+    <text x="18" y="60" class="body">16-bit products → extend each to 32-bit</text>
+    <g transform="translate(34 90)">
+      <rect x="0" y="0" width="46" height="24" fill="#f4f4f4" stroke="#111"/><rect x="66" y="0" width="46" height="24" fill="#f4f4f4" stroke="#111"/>
+      <rect x="132" y="0" width="46" height="24" fill="#f4f4f4" stroke="#111"/><rect x="198" y="0" width="46" height="24" fill="#f4f4f4" stroke="#111"/>
+      <text x="7" y="17" class="small">32b</text><text x="73" y="17" class="small">32b</text><text x="139" y="17" class="small">32b</text><text x="205" y="17" class="small">32b</text>
+      <path class="line" d="M23 28L57 70M89 28L57 70M155 28L189 70M221 28L189 70"/>
+      <path class="line" d="M57 70H189"/>
+      <text x="92" y="102" class="small">wide accumulation</text>
+    </g>
+
+    <path class="line" d="M382 132H458"/><path class="blue" d="M458 132l-14-8v16z"/>
+
+    <text x="490" y="0" class="rtl">RTL₁</text>
+    <rect class="box" x="490" y="24" width="350" height="216" rx="8"/>
+    <text x="508" y="60" class="body">16b → 17b pairs → balanced 18b row</text>
+    <g transform="translate(525 90)">
+      <circle cx="15" cy="10" r="6" fill="#111"/><circle cx="70" cy="10" r="6" fill="#111"/><circle cx="140" cy="10" r="6" fill="#111"/><circle cx="195" cy="10" r="6" fill="#111"/>
+      <path class="line" d="M15 17L43 55M70 17L43 55M140 17L168 55M195 17L168 55"/>
+      <circle cx="43" cy="62" r="8" fill="#005bff"/><circle cx="168" cy="62" r="8" fill="#005bff"/>
+      <path class="accent" d="M43 70L105 112M168 70L105 112"/>
+      <circle cx="105" cy="120" r="10" fill="#005bff"/>
+      <text x="130" y="125" class="small">single 32b extension</text>
+    </g>
   </g>
-  <path class="line" d="M382 130 H458"/><path fill="#005bff" d="M458 130 l-14 -8 v16 z"/>
-  <text x="490" y="0" class="label">ACCEPTED</text>
-  <rect class="box" x="490" y="28" width="350" height="205" rx="8"/>
-  <text x="508" y="62" class="body">16b → 17b pairs → balanced 18b row</text>
-  <g transform="translate(525 92)">
-    <circle cx="15" cy="10" r="6" fill="#111"/><circle cx="70" cy="10" r="6" fill="#111"/><circle cx="140" cy="10" r="6" fill="#111"/><circle cx="195" cy="10" r="6" fill="#111"/>
-    <path class="line" d="M15 17 L43 55 M70 17 L43 55 M140 17 L168 55 M195 17 L168 55"/>
-    <circle cx="43" cy="62" r="8" fill="#005bff"/><circle cx="168" cy="62" r="8" fill="#005bff"/>
-    <path class="accent" d="M43 70 L105 112 M168 70 L105 112"/>
-    <circle cx="105" cy="120" r="10" fill="#005bff"/>
-    <text x="130" y="125" class="small">extend once to 32b</text>
-  </g>
-</g>
+  <text x="58" y="306" class="small">Ports, signedness, overflow semantics, exact dot-product arithmetic, and the 32-bit output contract are unchanged.</text>
 </svg>
