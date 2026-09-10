@@ -13,7 +13,7 @@
     <meta property="og:image" content="https://www.gotherlabs.com/assets/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://www.gotherlabs.com/assets/og-image.png">
-    <link rel="stylesheet" href="../../assets/rtl-result.css?v=rtl-result-v3">
+    <link rel="stylesheet" href="../../assets/rtl-result.css?v=rtl-result-v4">
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" href="../../assets/gother-mark.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../../styles.css?v=editorial-v8">
@@ -87,7 +87,15 @@
   <thead><tr><th>Dimension</th><th>Current public measurement</th><th>What it does not mean</th></tr></thead>
   <tbody><tr><td>Area</td><td>VTR total-area estimate after mapping and implementation on the pinned academic architecture</td><td>ASIC die area or commercial FPGA resource characterization</td></tr><tr><td>Performance</td><td>Post-route critical-path delay; lower delay permits a higher implementation-level clock bound when that path is limiting</td><td>End-to-end application throughput or system latency</td></tr><tr><td>Power</td><td>Active total-power estimate under the case's declared activity model and PTM 45 nm conditions</td><td>Board power, measured energy, thermal behavior, or silicon characterization</td></tr></tbody>
 </table></div>
-<p>Physical implementation is heuristic and seed-sensitive, so a single place-and-route result is a weak comparison. The public cases compare the frozen baseline and accepted RTL through matched implementation pairs, then estimate the case-local ratios and confidence intervals from that paired sample. The purpose of the pairing is to ask whether the source transformation survives implementation variation, not whether one favorable run happened to win.</p>
+<p>For a limiting post-route critical path, the corresponding implementation-level clock bound is approximately</p>
+<div class="formula-block" id="eq-1">
+  <div class="formula-math" role="math">\[
+f_{max}[\mathrm{MHz}] \approx \frac{1000}{t_{crit}[\mathrm{ns}]}
+\]</div>
+  <span class="equation-number">(1)</span>
+</div>
+<p>This relation is a timing interpretation of the routed implementation; it is not a claim about complete-system throughput.</p>
+<p>Physical implementation is heuristic and seed-sensitive, so a single place-and-route result is a weak comparison. The public cases compare the frozen baseline and accepted RTL through matched implementation pairs. The estimator therefore asks whether the source transformation survives implementation variation rather than whether one favorable run happened to win.</p>
 <section class="rtl-maturity-warning" aria-label="Current public evidence scale"><h3 class="rtl-maturity-heading">Evidence-scale warning</h3>
 <p><strong>These are bounded proof-of-method RTL benchmarks, not industrial-scale subsystem results.</strong> They were chosen so that the complete evidence boundary can remain public and inspectable: baseline RTL, accepted RTL, exact patch, functional/formal correctness, paired implementation evidence, provenance, and verifier output.</p>
 <p>That makes the three cases useful evidence that the method works end to end. It does <strong>not</strong> yet establish performance on large multi-module subsystems, memory/interconnect-heavy datapaths, deep pipeline/control interactions, commercial FPGA or ASIC flows, customer-owned production RTL, or manufactured silicon.</p>
@@ -96,14 +104,14 @@
 <h2 id="rtl-regimes">2. Three transformation regimes</h2>
 <p>The value of the portfolio is not that three circuits happened to move by different percentages. It is that the accepted changes operate at three different structural levels of RTL.</p>
 <figure class="result-paper-asset result-markdown-image">
-  <img src="assets/transformation-regimes.svg" alt="Three public RTL transformation regimes: Boolean structure, arithmetic structure, and sequential state representation.">
-  <figcaption>Three public RTL transformation regimes: Boolean structure, arithmetic structure, and sequential state representation.</figcaption>
+  <img src="assets/transformation-regimes.svg" alt="Three public RTL transformations spanning Boolean structure, arithmetic reduction, and sequential state representation.">
+  <figcaption>Three public RTL transformations spanning Boolean structure, arithmetic reduction, and sequential state representation.</figcaption>
 </figure>
 <div class="rtl-table-scroll"><table class="rtl-data-table rtl-table--regimes">
   <thead><tr><th>Case</th><th>Structural change</th><th>Correctness boundary</th><th>Case-local composite</th></tr></thead>
   <tbody><tr><td>SHA-1 RTL</td><td>Shared Boolean terms and direct state readout</td><td>Cycle regression, NIST vectors, sequential EQY</td><td><strong>2.27% lower</strong></td></tr><tr><td>INT8 MatVec RTL</td><td>Range-correct intermediate widths and balanced addition tree</td><td>Deterministic simulation, exhaustive combinational equivalence</td><td><strong>8.3230% lower</strong></td></tr><tr><td>ML-KEM CBD RTL</td><td>Fixed 24-bit physical movement plus a two-bit byte phase</td><td>Dual-design regression, sequential induction, logical-state refinement</td><td><strong>9.7338% lower</strong></td></tr></tbody>
 </table></div>
-<p>All three public composites use 64 fixed paired implementations and the same equal-weight area-delay-power score form. That common form supports consistent case-local acceptance; it does not make the circuits a cross-case performance ranking.</p>
+<p>All three public composites use 64 fixed publication pairs and the same equal-weight area-delay-power score form. That common form supports consistent case-local acceptance; it does not make the circuits a cross-case performance ranking.</p>
 <h2 id="rtl-method">3. Common evaluation methodology</h2>
 <p>The evaluation contract is frozen before the accepted implementation is measured. Editable RTL, protected interfaces, functional semantics, formal scope, toolchain, target, metrics, sampling policy, and validity limits belong to the experiment identity.</p>
 <p>A candidate that fails correctness cannot receive a PPA improvement score. Missing, inconclusive, or timed-out required evidence fails closed.</p>
@@ -112,15 +120,91 @@
   <figcaption>Common RTL evidence contract from frozen scope through correctness, paired implementation measurement, and a before/after evidence package.</figcaption>
 </figure>
 <p>All current cases use a pinned Linux/amd64 VTR/VPR flow, a homogeneous academic LUT6 architecture, and the PTM 45 nm model at 0.9 V and 85 C. The target does not model commercial DSP slices, BRAM, or ASIC arithmetic cells. Total area, post-route critical-path delay, and active total power are implementation-model estimates, not physical measurements.</p>
-<p>The case-local composite is</p>
-<div class="formula-block" id="eq-1">
+<p>For publication pair \(i\) and primary metric \(m\in\{A,D,P\}\), the verifier starts from the accepted and baseline measurements under the same paired implementation condition:</p>
+<div class="formula-block" id="eq-2">
   <div class="formula-math" role="math">\[
-S = \left(r_{area} r_{delay} r_{power}\right)^{1/3},
+r_{m,i}=\frac{x^{(acc)}_{m,i}}{x^{(base)}_{m,i}},
+\qquad
+\ell_{m,i}=\ln r_{m,i}
 \]</div>
-  <span class="equation-number">(1)</span>
+  <span class="equation-number">(2)</span>
 </div>
-<p>with the frozen baseline normalized to 1.0 and lower values preferred. Search-visible evidence and the fixed publication sample remain separate under the source case contracts.</p>
-<p>The complete common contract is published in <a href="artifacts/evaluation_contract.md">evaluation_contract.md</a>.</p>
+<p>Ratio space is directional: \(r&lt;1\) is an improvement, \(r=1\) is parity, and \(r&gt;1\) is a regression. The percentage convention used throughout the Result is</p>
+<div class="formula-block" id="eq-3">
+  <div class="formula-math" role="math">\[
+I(r)=100(1-r)
+\]</div>
+  <span class="equation-number">(3)</span>
+</div>
+<p>The composite is formed inside each pair from the three primary ratios. Equivalently, it is the arithmetic mean in log-ratio space and the geometric mean in ratio space:</p>
+<div class="formula-block" id="eq-4">
+  <div class="formula-math" role="math">\[
+\ell_{C,i}=\frac{\ell_{A,i}+\ell_{D,i}+\ell_{P,i}}{3},
+\qquad
+r_{C,i}=\exp(\ell_{C,i})
+=\left(r_{A,i}r_{D,i}r_{P,i}\right)^{1/3}
+\]</div>
+  <span class="equation-number">(4)</span>
+</div>
+<p>The published point estimate is not obtained by averaging percentage improvements. For each metric, including the composite, the 64 log-ratios are summarized as</p>
+<div class="formula-block" id="eq-5">
+  <div class="formula-math" role="math">\[
+\bar{\ell}_m=\frac{1}{n}\sum_{i=1}^{n}\ell_{m,i},
+\qquad
+s_m=\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}\left(\ell_{m,i}-\bar{\ell}_m\right)^2},
+\qquad
+SE_m=\frac{s_m}{\sqrt{n}},
+\quad n=64
+\]</div>
+  <span class="equation-number">(5)</span>
+</div>
+<p>and transformed back to ratio space:</p>
+<div class="formula-block" id="eq-6">
+  <div class="formula-math" role="math">\[
+\hat r_m=\exp(\bar{\ell}_m),
+\qquad
+\hat I_m=100\left(1-\hat r_m\right)
+\]</div>
+  <span class="equation-number">(6)</span>
+</div>
+<p>The two-sided 95% interval is computed in log space with a Student-t critical value for 63 degrees of freedom,</p>
+<div class="formula-block" id="eq-7">
+  <div class="formula-math" role="math">\[
+L_m=\exp\left(\bar{\ell}_m-t_{0.975,63}SE_m\right),
+\qquad
+U_m=\exp\left(\bar{\ell}_m+t_{0.975,63}SE_m\right),
+\qquad
+t_{0.975,63}=1.9983405425207417
+\]</div>
+  <span class="equation-number">(7)</span>
+</div>
+<p>then reported on the improvement scale as</p>
+<div class="formula-block" id="eq-8">
+  <div class="formula-math" role="math">\[
+CI^{95\%}_{I_m}=\left[100(1-U_m),\;100(1-L_m)\right]
+\]</div>
+  <span class="equation-number">(8)</span>
+</div>
+<p>The acceptance test uses separate one-sided 95% bounds. With \(t_{0.95,63}=1.6694022217068127\), define</p>
+<div class="formula-block" id="eq-9">
+  <div class="formula-math" role="math">\[
+U^{(1)}_C=\exp\left(\bar{\ell}_C+t_{0.95,63}SE_C\right),
+\qquad
+L^{(1)}_m=\exp\left(\bar{\ell}_m-t_{0.95,63}SE_m\right)
+\]</div>
+  <span class="equation-number">(9)</span>
+</div>
+<p>The PPA gate accepts only if the composite upper one-sided bound is below parity and no primary metric is statistically established as a regression under the declared rule:</p>
+<div class="formula-block" id="eq-10">
+  <div class="formula-math" role="math">\[
+U^{(1)}_C&lt;1,
+\qquad
+L^{(1)}_m\leq 1\quad\text{for every }m\in\{A,D,P\}
+\]</div>
+  <span class="equation-number">(10)</span>
+</div>
+<p>These statistical conditions are necessary but not sufficient: structural, functional, formal, route, power, evidence-integrity, and declared validity gates must also pass. Search-visible evidence and the fixed publication sample remain separate under the source case contracts.</p>
+<p>The complete common contract is published in <a href="artifacts/evaluation_contract.md">evaluation_contract.md</a>, and the case verifiers recompute the published statistics directly from the public paired values.</p>
 <h2 id="rtl-sha1">4. SHA-1 RTL — Boolean simplification</h2>
 <p>The first case is a stateful SHA-1 compression core with a 32-bit command/data interface and an 80-round compression schedule. SHA-1 is retained here as a legacy compute benchmark, not as a recommended modern security primitive.</p>
 <figure class="result-paper-asset result-markdown-image">
