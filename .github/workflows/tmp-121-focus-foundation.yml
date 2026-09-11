@@ -30,13 +30,24 @@ jobs:
         with:
           node-version-file: .node-version
 
-      - name: Add universal focus foundation
+      - name: Apply contrast and focus foundations
         run: |
           python3 - <<'PY'
           from pathlib import Path
 
           path = Path("styles.css")
           text = path.read_text()
+
+          replacements = {
+              "  --code-line-no: #7a8490;": "  --code-line-no: #5f6975;",
+              "  --code-builtin: #0a84ff;": "  --code-builtin: #005fba;",
+          }
+          for old, new in replacements.items():
+              if old in text:
+                  text = text.replace(old, new, 1)
+              elif new not in text:
+                  raise SystemExit(f"Expected code color token not found: {old}")
+
           marker = "/* Universal keyboard focus foundation ----------------------------------- */"
           block = r'''
 
@@ -60,21 +71,23 @@ jobs:
           }
           '''
           if marker not in text:
-              path.write_text(text.rstrip() + block + "\n")
+              text = text.rstrip() + block + "\n"
+
+          path.write_text(text)
           PY
 
       - name: Verify accessibility foundations
         run: node --test tools/accessibility-foundations.test.mjs
 
-      - name: Commit focus foundation
+      - name: Commit accessibility foundations
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add styles.css
           if git diff --cached --quiet; then
-            echo "No focus-foundation changes to commit"
+            echo "No accessibility-foundation changes to commit"
             exit 0
           fi
-          git commit -m "fix(a11y): establish universal focus-visible system"
+          git commit -m "fix(a11y): enforce contrast and universal focus system"
           git push origin HEAD:codex/121-contrast-focus-system
