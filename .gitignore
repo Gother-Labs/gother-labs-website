@@ -1,4 +1,7 @@
 .DS_Store
 .playwright-cli/
+node_modules/
+playwright-report/
+test-results/
 _site/
 .gother-pages-artifact-*/
