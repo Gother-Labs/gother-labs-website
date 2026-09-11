@@ -8,6 +8,6 @@
     "test:visual:update": "node tools/build-pages-artifact.mjs --output _site && playwright test --config=playwright.config.mjs --update-snapshots"
   },
   "devDependencies": {
-    "@playwright/test": "1.55.0"
+    "@playwright/test": "1.63.0"
   }
 }
