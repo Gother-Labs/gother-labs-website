@@ -95,6 +95,12 @@ test("editorial studio normal-text colors retain AA contrast on its forced light
   assertRatio("--studio-blue on white", blue, background, 4.5);
   assertRatio("studio muted 62% black on white", compositeBlack(0.62), background, 4.5);
   assertRatio("studio muted-soft 68% black on white", compositeBlack(0.68), background, 4.5);
+
+  const literalTextAlphas = [...studio.matchAll(/color:\s*rgb\(0 0 0 \/ (\d+)%\)/g)].map((match) => Number(match[1]) / 100);
+  assert.ok(literalTextAlphas.length > 0, "expected studio literal muted-text colors to audit");
+  for (const alpha of literalTextAlphas) {
+    assertRatio(`studio literal ${Math.round(alpha * 100)}% black text on white`, compositeBlack(alpha), background, 4.5);
+  }
 });
 
 test("all standard keyboard-focusable controls inherit the universal focus foundation", () => {
