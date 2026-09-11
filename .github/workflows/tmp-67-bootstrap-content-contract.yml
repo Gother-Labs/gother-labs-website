@@ -1,0 +1,53 @@
+name: Temporary #67 generated content contract bootstrap
+
+on:
+  push:
+    branches:
+      - codex/67-generated-content-integrity
+
+concurrency:
+  group: tmp-67-generated-content-contract
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  bootstrap:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: codex/67-generated-content-integrity
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Use release Node.js runtime
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: .node-version
+
+      - name: Run focused checker tests
+        run: node --test tools/check-generated-result-content.test.mjs
+
+      - name: Generate current content-shape contract
+        run: node tools/check-generated-result-content.mjs --update
+
+      - name: Verify generated content contract
+        run: node tools/check-generated-result-content.mjs
+
+      - name: Commit generated content contract
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tools/generated-result-content-contract.json
+          if git diff --cached --quiet; then
+            echo "No content contract changes to commit"
+            exit 0
+          fi
+          git commit -m "test(results): pin generated content shape contract"
+          git push origin HEAD:codex/67-generated-content-integrity
