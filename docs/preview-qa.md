@@ -1,11 +1,12 @@
 # Preview And Visual QA
 
-The website now uses two complementary release-quality layers:
+The website uses three complementary release-quality layers:
 
 1. deterministic structural checks over the exact GitHub Pages artifact;
-2. Playwright browser/visual regression checks over representative public routes.
+2. generated-Result content-shape checks that prevent silent article degradation;
+3. Playwright browser/visual regression checks over representative public routes.
 
-Manual review remains useful for editorial judgment, but it is no longer the only protection against responsive, theme, overflow, asset, console, or interaction regressions.
+Manual review remains useful for editorial judgment, but it is no longer the only protection against responsive, theme, overflow, asset, console, interaction, or generated-content regressions.
 
 ## Preview Server
 
@@ -34,6 +35,7 @@ node --test tools/*.test.mjs
 node tools/check-site-shell.mjs
 node tools/build-pages-artifact.mjs --output _site
 node tools/check-site-integrity.mjs --site-root _site
+node tools/check-generated-result-content.mjs --site-root _site
 node tools/check-rtl-page.mjs
 GOTHER_RESULTS_ROOT=../gother-labs-results node tools/check-results-source-provenance.mjs
 GOTHER_RESULTS_ROOT=../gother-labs-results node tools/sync-results.mjs --check
@@ -43,8 +45,40 @@ git diff --check
 The generated-results check uses the exact source commit in
 `tools/generated-results.lock.json`, creates a clean temporary output tree, and fails on missing,
 stale, or byte-different source-owned generated files and declared artifacts. The Pages builder
-copies only the explicit public tree into `_site`; the integrity checker validates that exact
+copies only the explicit public tree into `_site`; the integrity checkers validate that exact
 deployment artifact.
+
+## Generated Result Content Contract
+
+`tools/generated-result-content-contract.json` records the reviewed structural shape of every public
+Result detail page. For each route it pins:
+
+- the Result article class contract;
+- the ordered `h2`–`h6` heading sequence;
+- figure, table, and image counts;
+- Result-detail section count;
+- artifact links exposed by the article.
+
+`tools/check-generated-result-content.mjs` also fails independently of that snapshot when raw
+Markdown image/link syntax, headings, fences, tables, or an unexpanded `{{visual:...}}` placeholder
+survives into generated HTML. A new public Result page fails until it receives an explicit reviewed
+content-shape contract.
+
+The unit fixture deliberately reproduces the former Qubit-routing failure mode: raw Markdown plus
+missing figure/table/artifact-link primitives must produce route-local diagnostics.
+
+When an intentional Result-content change alters the structural shape, first regenerate the Result
+from its pinned source and inspect the generated diff. Only then update the contract:
+
+```bash
+node tools/check-generated-result-content.mjs --update
+node tools/build-pages-artifact.mjs --output _site
+node tools/check-generated-result-content.mjs --site-root _site
+```
+
+Do not run `--update` merely to make CI green. The update command refuses to bless pages that already
+contain generic malformed-content signals such as raw Markdown residue or a missing Result article,
+hero, whitepaper shell, or heading structure.
 
 ## Automated Browser / Visual Regression
 
@@ -125,6 +159,8 @@ The automated suite covers these representative surfaces:
 
 When `tools/sync-results.mjs` or generated Result files change:
 
+- preserve the supported Markdown/article contract;
+- keep the generated content-shape contract aligned only after reviewing intentional structural changes;
 - keep `styles.css?v=rtl-audit-v2` and `scripts.js?v=rtl-audit-v2` where required;
 - preserve the current wordmark shell and `.nav-links` wrapper;
 - preserve expected `noindex` behavior on copied historical run pages;
@@ -133,9 +169,9 @@ When `tools/sync-results.mjs` or generated Result files change:
 
 ## CI / Evidence
 
-`site-integrity` runs the structural checks and the browser/visual suite in the same required job, so
-a browser regression blocks the existing merge gate rather than creating a parallel advisory check.
-The Pages deployment reuses `site-integrity` before publishing from `main`.
+`site-integrity` runs structural, generated-content, and browser/visual checks in the same required
+job, so any of those regressions blocks the existing merge gate rather than creating a parallel
+advisory check. The Pages deployment reuses `site-integrity` before publishing from `main`.
 
 Do not commit ad-hoc screenshots. The only committed screenshots are the deterministic visual
 regression baselines under `tests/visual/__screenshots__/`. Failure evidence belongs in the CI
