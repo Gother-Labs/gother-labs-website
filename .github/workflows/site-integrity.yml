@@ -85,6 +85,10 @@ jobs:
           GOTHER_RESULTS_ROOT: ../gother-labs-results
         run: node tools/sync-results.mjs --check
 
+      - name: Check browser QA contract
+        working-directory: website
+        run: node tools/check-browser-qa-contract.mjs
+
       - name: Install browser QA dependencies
         working-directory: website
         run: npm ci --ignore-scripts
