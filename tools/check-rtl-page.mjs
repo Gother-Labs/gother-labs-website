@@ -47,6 +47,8 @@ async function main() {
   requireText(page, "Run the pilot in your implementation flow", failures, "customer authority");
   requireText(page, "Do not attach confidential RTL", failures, "confidentiality prompt");
   requireText(page, "../results/verified-rtl-optimization/", failures, "canonical Results evidence entry point");
+  requireText(page, "https://calendar.app.google/Pcy2iSnJ4BL98of76", failures, "RTL scheduling entry point");
+  requireText(page, "Book technical scoping", failures, "RTL scheduling action");
 
   for (const { name, metric, sourcePath } of expectedClaims) {
     const sourceIndex = page.indexOf(sourcePath);
@@ -66,6 +68,8 @@ async function main() {
   requireText(home, 'href="./results/verified-rtl-optimization/#rtl-mlkem"', failures, "home canonical evidence entry point");
   requireText(contact, 'href="../rtl-optimization/"', failures, "contact entry point");
   requireText(contact, "Start an RTL/PPA enquiry", failures, "direct contact action");
+  requireText(contact, "https://calendar.app.google/Pcy2iSnJ4BL98of76", failures, "contact scheduling entry point");
+  requireText(contact, "Book 30-minute technical scoping", failures, "contact scheduling action");
   requireText(sitemap, "https://www.gotherlabs.com/rtl-optimization/", failures, "sitemap");
   requireText(ledger, "Reviewed release: `v2.2.2`", failures, "claim ledger release");
   requireText(
