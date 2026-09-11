@@ -1,0 +1,80 @@
+name: Temporary #121 focus foundation bootstrap
+
+on:
+  push:
+    branches:
+      - codex/121-contrast-focus-system
+
+concurrency:
+  group: tmp-121-focus-foundation
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  bootstrap:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: codex/121-contrast-focus-system
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Use release Node.js runtime
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: .node-version
+
+      - name: Add universal focus foundation
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path("styles.css")
+          text = path.read_text()
+          marker = "/* Universal keyboard focus foundation ----------------------------------- */"
+          block = r'''
+
+          /* Universal keyboard focus foundation ----------------------------------- */
+          :where(
+            a[href],
+            area[href],
+            button,
+            input:not([type="hidden"]),
+            select,
+            textarea,
+            summary,
+            [contenteditable="true"],
+            [role="button"],
+            [role="link"],
+            [role="tab"],
+            [tabindex]:not([tabindex="-1"])
+          ):focus-visible {
+            outline: 3px solid var(--focus-ring) !important;
+            outline-offset: 3px !important;
+          }
+          '''
+          if marker not in text:
+              path.write_text(text.rstrip() + block + "\n")
+          PY
+
+      - name: Verify accessibility foundations
+        run: node --test tools/accessibility-foundations.test.mjs
+
+      - name: Commit focus foundation
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add styles.css
+          if git diff --cached --quiet; then
+            echo "No focus-foundation changes to commit"
+            exit 0
+          fi
+          git commit -m "fix(a11y): establish universal focus-visible system"
+          git push origin HEAD:codex/121-contrast-focus-system
