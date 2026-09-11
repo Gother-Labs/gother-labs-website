@@ -1,0 +1,163 @@
+{
+  "schema_version": "generated-result-content-contract/v1",
+  "routes": {
+    "results/circle-packing-26-unit-square/index.html": {
+      "article_classes": [
+        "circle-packing-whitepaper",
+        "result-article",
+        "result-whitepaper"
+      ],
+      "headings": [
+        "h2:Evidence history · claims become narrower as evidence becomes stronger",
+        "h3:Evölther search baseline"
+      ],
+      "figures": 0,
+      "tables": 0,
+      "images": 0,
+      "artifact_hrefs": [],
+      "detail_sections": 1
+    },
+    "results/iberian-bess-policy-challenge/index.html": {
+      "article_classes": [
+        "bess-whitepaper",
+        "result-article",
+        "result-whitepaper"
+      ],
+      "headings": [
+        "h2:Abstract",
+        "h2:1. Problem formulation",
+        "h2:2. Optimizer team readout",
+        "h2:3. Evaluation contract",
+        "h2:4. Commercial baseline result",
+        "h2:5. Accepted policy",
+        "h2:6. Tail behavior",
+        "h2:7. Limitations",
+        "h2:8. Reproducibility"
+      ],
+      "figures": 9,
+      "tables": 4,
+      "images": 0,
+      "artifact_hrefs": [
+        "./artifacts/accepted_candidate.py"
+      ],
+      "detail_sections": 1
+    },
+    "results/quadrature-rule-optimization/index.html": {
+      "article_classes": [
+        "result-article",
+        "result-whitepaper"
+      ],
+      "headings": [
+        "h2:Abstract",
+        "h2:1. Problem formulation",
+        "h2:2. Evaluation contract",
+        "h3:Run baseline",
+        "h2:3. Accepted candidate",
+        "h3:Candidate construction",
+        "h2:4. Results",
+        "h2:5. Limitations",
+        "h2:6. Reproducibility"
+      ],
+      "figures": 11,
+      "tables": 3,
+      "images": 0,
+      "artifact_hrefs": [
+        "./artifacts/accepted_candidate.py"
+      ],
+      "detail_sections": 1
+    },
+    "results/qubit-routing-lightsabre/index.html": {
+      "article_classes": [
+        "qubit-routing-whitepaper",
+        "result-article",
+        "result-whitepaper"
+      ],
+      "headings": [
+        "h2:Abstract",
+        "h2:1. Problem formulation",
+        "h2:2. Evaluation contract",
+        "h2:3. Accepted candidate",
+        "h2:4. Results",
+        "h2:5. Limitations",
+        "h2:6. Reproducibility"
+      ],
+      "figures": 9,
+      "tables": 2,
+      "images": 0,
+      "artifact_hrefs": [
+        "./artifacts/accepted_candidate.rs"
+      ],
+      "detail_sections": 1
+    },
+    "results/rcpsp-psplib-j30/index.html": {
+      "article_classes": [
+        "rcpsp-whitepaper",
+        "result-article",
+        "result-whitepaper"
+      ],
+      "headings": [
+        "h2:Technical report",
+        "h3:Abstract",
+        "h3:1. Problem formulation",
+        "h3:2. Benchmark and evaluation contract",
+        "h3:3. Accepted candidate",
+        "h4:Why these weights?",
+        "h3:4. Results",
+        "h3:5. Limitations",
+        "h3:6. Reproducibility"
+      ],
+      "figures": 12,
+      "tables": 3,
+      "images": 8,
+      "artifact_hrefs": [
+        "./artifacts/ablation.json",
+        "./artifacts/accepted_candidate.py",
+        "./artifacts/baseline-to-evolther-2.diff",
+        "./artifacts/evaluation_contract.md",
+        "./artifacts/portfolio-comparison.json"
+      ],
+      "detail_sections": 1
+    },
+    "results/verified-rtl-optimization/index.html": {
+      "article_classes": [
+        "result-article",
+        "result-whitepaper",
+        "verified-rtl-whitepaper"
+      ],
+      "headings": [
+        "h2:Abstract",
+        "h2:1. Why RTL optimization matters",
+        "h3:Evidence-scale warning",
+        "h2:2. Three transformation regimes",
+        "h2:3. Common evaluation methodology",
+        "h2:4. SHA-1 RTL — Boolean simplification",
+        "h3:Correctness gate",
+        "h3:Paired result",
+        "h2:5. INT8 MatVec RTL — Arithmetic restructuring",
+        "h3:Correctness gate",
+        "h3:Paired result",
+        "h2:6. ML-KEM CBD RTL — State representation",
+        "h3:Correctness gate",
+        "h3:Paired result",
+        "h2:7. Portfolio readout",
+        "h2:8. What the portfolio establishes",
+        "h2:9. Evidence and assurance status",
+        "h2:10. Reproducibility and authority"
+      ],
+      "figures": 9,
+      "tables": 7,
+      "images": 9,
+      "artifact_hrefs": [
+        "artifacts/accepted-implementations.json",
+        "artifacts/baseline-implementations.json",
+        "artifacts/evaluation.json",
+        "artifacts/evaluation_contract.md",
+        "artifacts/metrics.json",
+        "artifacts/patches/int8-matvec.patch",
+        "artifacts/patches/mlkem-cbd.patch",
+        "artifacts/patches/sha1.patch"
+      ],
+      "detail_sections": 1
+    }
+  }
+}
