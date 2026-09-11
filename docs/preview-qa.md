@@ -1,28 +1,29 @@
-# Preview And Visual QA Checklist
+# Preview And Visual QA
 
-Use this checklist before opening PRs that can affect shared navigation, the site shell, responsive layout, generated result pages, or route-level metadata. The workflow stays intentionally lightweight: structural checks first, then targeted browser review.
+The website now uses two complementary release-quality layers:
+
+1. deterministic structural checks over the exact GitHub Pages artifact;
+2. Playwright browser/visual regression checks over representative public routes.
+
+Manual review remains useful for editorial judgment, but it is no longer the only protection against responsive, theme, overflow, asset, console, or interaction regressions.
 
 ## Preview Server
 
-For most static route checks:
-
-```bash
-python3 -m http.server 4173
-```
-
-For GitHub Pages-style custom 404 behavior:
+For repository-source previews:
 
 ```bash
 node tools/preview.mjs
 ```
 
-If port `4173` is already in use, pass another port:
+For the exact Pages artifact used by the browser suite:
 
 ```bash
-node tools/preview.mjs 4174
+node tools/build-pages-artifact.mjs --output _site
+GOTHER_SITE_ROOT=_site node tools/preview.mjs
 ```
 
-Use the same server for the whole QA pass so screenshots and observations are comparable.
+If port `4173` is already in use, pass another port as the first argument.
+Unknown routes are served with `404.html` and an HTTP 404 status.
 
 ## Structural Checks
 
@@ -41,76 +42,102 @@ git diff --check
 
 The generated-results check uses the exact source commit in
 `tools/generated-results.lock.json`, creates a clean temporary output tree, and fails on missing,
-stale, or byte-different source-owned generated files and declared artifacts. The same lock lists
-the rich detail pages, historical run surfaces, and support assets that are intentionally curated
-in the website repository; the checker seeds only those explicit paths before generation. It does
-not modify the checkout. A mismatched/dirty source, tracked symlink, Git submodule, or locked commit
-that is not reachable from the fetched Results `origin/main` fails before the catalog or artifacts
-are consumed. The Pages builder copies only the explicit public tree into `_site`; the integrity
-checker then validates every HTML file in that exact deployment artifact.
+stale, or byte-different source-owned generated files and declared artifacts. The Pages builder
+copies only the explicit public tree into `_site`; the integrity checker validates that exact
+deployment artifact.
 
-When intentionally advancing or repairing generated results, first check out the locked commit in
-the sibling repository and run:
+## Automated Browser / Visual Regression
+
+Install the pinned dependency and Chromium runtime once:
 
 ```bash
-GOTHER_RESULTS_ROOT=../gother-labs-results node tools/sync-results.mjs
+npm ci
+npx playwright install chromium
 ```
 
-Then review the generated diff before committing and rerun the complete command set above.
-Shell-sensitive changes should not introduce unrelated editorial changes.
+Run the browser suite:
 
-The pull-request workflow runs this same set. The Pages workflow reuses it as a required `verify`
-job and only deploys from `main`, so a push or manual deployment cannot upload the static tree after
-a failed gate or from another ref.
+```bash
+npm run test:visual
+```
+
+The suite builds `_site`, serves that exact artifact with `tools/preview.mjs`, and exercises the
+representative route matrix under pinned Chromium.
+
+The committed visual baselines cover:
+
+- desktop light: `1440 × 900`;
+- laptop dark: `1280 × 800`;
+- mobile light + reduced motion: `390 × 844`;
+- mobile dark + reduced motion: `390 × 844`.
+
+A separate normal-motion browser smoke test exercises the Home RTL case selector and the live
+commercial scheduling actions without taking an unstable animation screenshot.
+
+For every screenshot route, the suite also fails closed on:
+
+- uncaught page exceptions;
+- browser console errors;
+- failing or missing same-origin resources;
+- broken `<img>` assets;
+- document-level horizontal overflow;
+- missing or reordered `Results / Company / Contact` navigation.
+
+The route matrix includes Home, Company, Contact, the RTL/PPA pilot, Results index, multiple Result
+rendering surfaces, historical run surfaces, Evölther, and the custom 404 fallback.
+
+On a visual mismatch Playwright emits actual/expected/diff images and a retained trace. CI uploads
+`playwright-report/` and `test-results/visual/` as a short-lived review artifact when the browser gate
+fails.
+
+### Approving an intentional visual change
+
+Do not weaken pixel thresholds or structural assertions to make an intentional change pass. Review
+the browser output first, then explicitly regenerate the baselines:
+
+```bash
+npm run test:visual:update
+npm run test:visual
+```
+
+Commit only the baseline images that correspond to the reviewed visual change.
 
 ## Route Set
 
-Inspect this route set for shell-sensitive PRs:
+The automated suite covers these representative surfaces:
 
 | Route | Purpose |
 | --- | --- |
-| `/` | Home exception: hero wordmark may replace header brand. |
+| `/` | Home and interactive RTL evidence selector. |
 | `/company/` | Standard hand-authored shell page. |
-| `/contact/` | Standard hand-authored shell page and footer behavior. |
-| `/rtl-optimization/` | Hand-authored RTL/PPA pilot page with route-specific styles, evidence links, and responsive proof cards. |
-| `/results/` | Generated results index shell. |
-| `/results/quadrature-rule-optimization/` | Generated result detail page with MathJax exception. |
-| `/results/quadrature-rule-optimization/run/` | Website-owned, noindex historical archive retained across generation. |
-| `/404.html` | Hand-authored custom 404 shell. |
-| `/domains` | Missing-route fallback when using `node tools/preview.mjs`. |
-| `/evolther/` | Experimental page with route-specific shell and responsive behavior. |
-
-If a PR changes RCPSP-specific result rendering, inspect `/results/rcpsp-psplib-j30/` and `/results/rcpsp-psplib-j30/run/` as well.
-
-## Visual Checks
-
-Review each affected route at:
-
-- Desktop: approximately `1440 x 900`.
-- Laptop: approximately `1280 x 800`.
-- Mobile: approximately `390 x 844`.
-
-For each viewport, verify:
-
-- Header navigation is visible, aligned, and ordered `Results`, `Company`, `Contact`.
-- The animated wordmark appears with the expected colored symbol dots where the shared shell uses it.
-- Text does not wrap unexpectedly or overlap adjacent content.
-- There is no horizontal overflow.
-- Footer presence or absence matches the documented shell exceptions.
-- Route-specific diagrams, cards, or visual assets remain legible.
-- Dark and light mode render critical lines, arrows, symbols, and labels with enough contrast when the page supports both modes.
+| `/contact/` | Contact/scheduling surface. |
+| `/rtl-optimization/` | RTL/PPA pilot and booking route. |
+| `/results/` | Generated Results index. |
+| `/results/quadrature-rule-optimization/` | Generated mathematical Result detail. |
+| `/results/quadrature-rule-optimization/run/` | Historical run surface. |
+| `/results/verified-rtl-optimization/` | Rich RTL Result surface. |
+| `/results/rcpsp-psplib-j30/` | Diagram-heavy Result surface. |
+| `/results/rcpsp-psplib-j30/run/` | RCPSP historical run surface. |
+| `/evolther/` | Experimental page with route-specific behavior. |
+| `/domains` | Missing-route request exercising custom 404 behavior. |
 
 ## Generated Results Checks
 
-When `tools/sync-results.mjs` or generated result files change:
+When `tools/sync-results.mjs` or generated Result files change:
 
-- Confirm generated pages keep `styles.css?v=rtl-audit-v2` and `scripts.js?v=rtl-audit-v2`.
-- Confirm generated pages use the current wordmark shell and `.nav-links` wrapper.
-- Confirm copied run pages keep their expected noindex behavior.
-- Confirm generated result diffs are limited to intended shell, metadata, or result-content changes.
+- keep `styles.css?v=rtl-audit-v2` and `scripts.js?v=rtl-audit-v2` where required;
+- preserve the current wordmark shell and `.nav-links` wrapper;
+- preserve expected `noindex` behavior on copied historical run pages;
+- keep generated diffs limited to intended shell, metadata, or Result-content changes;
+- review and update visual baselines only when the visible change is intentional.
 
-## Evidence
+## CI / Evidence
 
-Do not commit screenshots or generated visual reports by default. Attach screenshots to the PR only when they clarify a visual decision, responsive fix, or before/after regression.
+`site-integrity` runs the structural checks and the browser/visual suite in the same required job, so
+a browser regression blocks the existing merge gate rather than creating a parallel advisory check.
+The Pages deployment reuses `site-integrity` before publishing from `main`.
 
-In the PR body, list the structural commands run and the routes/viewport classes spot-checked.
+Do not commit ad-hoc screenshots. The only committed screenshots are the deterministic visual
+regression baselines under `tests/visual/__screenshots__/`. Failure evidence belongs in the CI
+artifact; one-off before/after screenshots can still be attached to a PR when they clarify a visual
+decision.
