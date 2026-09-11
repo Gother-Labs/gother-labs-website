@@ -10,7 +10,7 @@ permissions:
 jobs:
   site-integrity:
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - name: Checkout website
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -84,6 +84,29 @@ jobs:
         env:
           GOTHER_RESULTS_ROOT: ../gother-labs-results
         run: node tools/sync-results.mjs --check
+
+      - name: Install browser QA dependencies
+        working-directory: website
+        run: npm ci --ignore-scripts
+
+      - name: Install pinned Chromium runtime
+        working-directory: website
+        run: npx playwright install --with-deps chromium
+
+      - name: Run browser and visual regression suite
+        working-directory: website
+        run: npm run test:visual
+
+      - name: Upload browser regression evidence on failure
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: browser-visual-regression-${{ github.run_id }}
+          path: |
+            website/playwright-report
+            website/test-results/visual
+          if-no-files-found: ignore
+          retention-days: 7
 
       - name: Check patch whitespace
         working-directory: website
