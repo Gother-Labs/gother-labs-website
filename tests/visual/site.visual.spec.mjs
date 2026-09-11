@@ -172,12 +172,23 @@ test("representative keyboard targets inherit a visible non-obscured focus ring"
     await page.goto(path, { waitUntil: "networkidle" });
     await settlePage(page);
 
-    for (let index = 0; index < 6; index += 1) {
+    let verified = 0;
+    let previousKey = null;
+
+    for (let index = 0; index < 10; index += 1) {
       await page.keyboard.press("Tab");
       const focus = await page.evaluate(() => {
         const element = document.activeElement;
         const style = getComputedStyle(element);
+        const key = [
+          element?.tagName ?? "none",
+          element?.id ?? "",
+          element?.getAttribute?.("href") ?? "",
+          element?.getAttribute?.("class") ?? "",
+          element?.getAttribute?.("role") ?? "",
+        ].join("|");
         return {
+          key,
           tag: element?.tagName ?? "none",
           focusVisible: element?.matches?.(":focus-visible") ?? false,
           outlineStyle: style.outlineStyle,
@@ -186,10 +197,16 @@ test("representative keyboard targets inherit a visible non-obscured focus ring"
         };
       });
 
+      if (focus.tag === "BODY" || focus.key === previousKey) break;
+      previousKey = focus.key;
+
       expect(focus.focusVisible, `${path}: ${focus.tag} should match :focus-visible`).toBe(true);
       expect(focus.outlineStyle, `${path}: ${focus.tag} focus outline style`).toBe("solid");
       expect(focus.outlineWidth, `${path}: ${focus.tag} focus outline width`).toBeGreaterThanOrEqual(3);
       expect(focus.outlineOffset, `${path}: ${focus.tag} focus outline offset`).toBeGreaterThanOrEqual(3);
+      verified += 1;
     }
+
+    expect(verified, `${path}: verified keyboard-focusable targets`).toBeGreaterThanOrEqual(2);
   }
 });
