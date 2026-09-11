@@ -1,0 +1,13 @@
+{
+  "name": "gother-labs-website",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "test:visual": "node tools/build-pages-artifact.mjs --output _site && playwright test --config=playwright.config.mjs",
+    "test:visual:update": "node tools/build-pages-artifact.mjs --output _site && playwright test --config=playwright.config.mjs --update-snapshots"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.55.0"
+  }
+}
