@@ -1,0 +1,48 @@
+name: Temporary #121 trim EOF
+
+on:
+  push:
+    branches:
+      - codex/121-contrast-focus-system
+
+concurrency:
+  group: tmp-121-trim-eof
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  trim:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: codex/121-contrast-focus-system
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Normalize styles EOF
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path('styles.css')
+          path.write_text(path.read_text().rstrip() + '\n')
+          PY
+          git diff --check
+
+      - name: Commit whitespace repair
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add styles.css
+          if git diff --cached --quiet; then
+            echo "No EOF repair required"
+            exit 0
+          fi
+          git commit -m "chore: normalize stylesheet EOF"
+          git push origin HEAD:codex/121-contrast-focus-system
