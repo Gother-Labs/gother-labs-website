@@ -69,7 +69,13 @@ for (const route of routes) {
     const badSameOriginResponses = [];
 
     page.on("console", (message) => {
-      if (message.type() === "error") consoleErrors.push(message.text());
+      if (message.type() !== "error") return;
+      const text = message.text();
+      const expectedNavigation404 =
+        route.status === 404 &&
+        text.includes("Failed to load resource") &&
+        text.includes("404");
+      if (!expectedNavigation404) consoleErrors.push(text);
     });
     page.on("pageerror", (error) => pageErrors.push(error.message));
     page.on("response", (response) => {
