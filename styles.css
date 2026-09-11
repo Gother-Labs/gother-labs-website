@@ -4312,9 +4312,9 @@ a {
   --code-gutter: #eef2f6;
   --code-border: rgba(10, 10, 10, 0.18);
   --code-text: #26313d;
-  --code-line-no: #7a8490;
+  --code-line-no: #5f6975;
   --code-keyword: #005fba;
-  --code-builtin: #0a84ff;
+  --code-builtin: #005fba;
   --code-string: #3f6f9f;
   --code-comment: #68717f;
   --code-constant: #456f9f;
@@ -5891,4 +5891,23 @@ a {
       min-width: 0;
       box-sizing: border-box;
     }
+}
+
+/* Universal keyboard focus foundation ----------------------------------- */
+:where(
+  a[href],
+  area[href],
+  button,
+  input:not([type="hidden"]),
+  select,
+  textarea,
+  summary,
+  [contenteditable="true"],
+  [role="button"],
+  [role="link"],
+  [role="tab"],
+  [tabindex]:not([tabindex="-1"])
+):focus-visible {
+  outline: 3px solid var(--focus-ring) !important;
+  outline-offset: 3px !important;
 }

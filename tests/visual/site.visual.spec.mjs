@@ -156,3 +156,57 @@ test("commercial routes expose scheduling and asynchronous fallback", async ({ p
     /^mailto:contact@gotherlabs\.com/,
   );
 });
+
+test("representative keyboard targets inherit a visible non-obscured focus ring", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "normal-motion-smoke");
+
+  for (const path of [
+    "/",
+    "/company/",
+    "/contact/",
+    "/rtl-optimization/",
+    "/results/",
+    "/results/verified-rtl-optimization/",
+    "/evolther/",
+  ]) {
+    await page.goto(path, { waitUntil: "networkidle" });
+    await settlePage(page);
+
+    let verified = 0;
+    let previousKey = null;
+
+    for (let index = 0; index < 10; index += 1) {
+      await page.keyboard.press("Tab");
+      const focus = await page.evaluate(() => {
+        const element = document.activeElement;
+        const style = getComputedStyle(element);
+        const key = [
+          element?.tagName ?? "none",
+          element?.id ?? "",
+          element?.getAttribute?.("href") ?? "",
+          element?.getAttribute?.("class") ?? "",
+          element?.getAttribute?.("role") ?? "",
+        ].join("|");
+        return {
+          key,
+          tag: element?.tagName ?? "none",
+          focusVisible: element?.matches?.(":focus-visible") ?? false,
+          outlineStyle: style.outlineStyle,
+          outlineWidth: Number.parseFloat(style.outlineWidth),
+          outlineOffset: Number.parseFloat(style.outlineOffset),
+        };
+      });
+
+      if (focus.tag === "BODY" || focus.key === previousKey) break;
+      previousKey = focus.key;
+
+      expect(focus.focusVisible, `${path}: ${focus.tag} should match :focus-visible`).toBe(true);
+      expect(focus.outlineStyle, `${path}: ${focus.tag} focus outline style`).toBe("solid");
+      expect(focus.outlineWidth, `${path}: ${focus.tag} focus outline width`).toBeGreaterThanOrEqual(3);
+      expect(focus.outlineOffset, `${path}: ${focus.tag} focus outline offset`).toBeGreaterThanOrEqual(3);
+      verified += 1;
+    }
+
+    expect(verified, `${path}: verified keyboard-focusable targets`).toBeGreaterThanOrEqual(2);
+  }
+});
