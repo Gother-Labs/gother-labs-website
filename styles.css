@@ -5892,3 +5892,23 @@ a {
       box-sizing: border-box;
     }
 }
+
+/* Universal keyboard focus foundation ----------------------------------- */
+:where(
+  a[href],
+  area[href],
+  button,
+  input:not([type="hidden"]),
+  select,
+  textarea,
+  summary,
+  [contenteditable="true"],
+  [role="button"],
+  [role="link"],
+  [role="tab"],
+  [tabindex]:not([tabindex="-1"])
+):focus-visible {
+  outline: 3px solid var(--focus-ring) !important;
+  outline-offset: 3px !important;
+}
+
