@@ -75,6 +75,10 @@ jobs:
         working-directory: website
         run: node tools/check-site-integrity.mjs --site-root _site
 
+      - name: Check generated result content shape
+        working-directory: website
+        run: node tools/check-generated-result-content.mjs --site-root _site
+
       - name: Check bounded RTL claims
         working-directory: website
         run: node tools/check-rtl-page.mjs
