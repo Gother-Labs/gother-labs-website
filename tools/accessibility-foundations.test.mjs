@@ -76,6 +76,17 @@ test("base text and focus tokens preserve WCAG contrast floors", () => {
   assertRatio("--focus-ring against --text", focus, text, 3.0);
 });
 
+test("result code syntax colors remain readable on code and gutter surfaces", () => {
+  const code = firstBlock(styles, ".result-whitepaper .result-code-figure");
+  const background = hexToRgb(customProperty(code, "--code-bg"));
+  const gutter = hexToRgb(customProperty(code, "--code-gutter"));
+
+  for (const token of ["--code-text", "--code-keyword", "--code-builtin", "--code-string", "--code-comment", "--code-constant"]) {
+    assertRatio(`${token} on --code-bg`, hexToRgb(customProperty(code, token)), background, 4.5);
+  }
+  assertRatio("--code-line-no on --code-gutter", hexToRgb(customProperty(code, "--code-line-no")), gutter, 4.5);
+});
+
 test("editorial studio normal-text colors retain AA contrast on its forced light surface", () => {
   const root = firstBlock(studio, ":root");
   const blue = hexToRgb(customProperty(root, "--studio-blue"));
