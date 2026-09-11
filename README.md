@@ -11,6 +11,8 @@ This repository contains the production static site served through GitHub Pages 
 - `.nojekyll` keeps GitHub Pages serving the site as a plain static tree.
 - `.github/workflows/pages.yml` publishes the validated static tree through the GitHub Pages Actions deployment API.
 
+Publication/release authority is defined in `docs/publication-states.md`. A branch, local checkout, generated file, or passing PR is not production by itself; production is the exact merged `main` SHA whose Pages `verify` and `deploy` jobs both succeed.
+
 ## Repository shape
 
 - Root: publishable site files and deployment metadata such as `CNAME`, `robots.txt`, and `sitemap.xml`
@@ -65,7 +67,7 @@ closed. The provenance check and synchronizer require a clean checkout at the ex
 They reject tracked symlinks and Git submodules before consuming result entries. Catalog handling
 explicitly accepts `results-catalog/v1` and `results-catalog/v2` and rejects every other version.
 
-Shared site shell maintenance is documented in `docs/site-shell.md`. Preview and visual QA
+Shared site shell maintenance is documented in `docs/site-shell.md`. Publication-state authority is documented in `docs/publication-states.md`. Preview and visual QA
 expectations are documented in `docs/preview-qa.md`. Before opening a PR, run the same release
 commands used by CI:
 
@@ -74,6 +76,7 @@ node --test tools/*.test.mjs
 node tools/check-site-shell.mjs
 node tools/build-pages-artifact.mjs --output _site
 node tools/check-site-integrity.mjs --site-root _site
+node tools/check-generated-result-content.mjs --site-root _site
 node tools/check-rtl-page.mjs
 GOTHER_RESULTS_ROOT=../gother-labs-results node tools/check-results-source-provenance.mjs
 GOTHER_RESULTS_ROOT=../gother-labs-results node tools/sync-results.mjs --check
@@ -85,11 +88,13 @@ checks pass. It uploads only the explicit public allowlist assembled in `_site`;
 documentation, and other maintenance files are not deployed. `check-site-integrity.mjs` validates
 every HTML file in that exact artifact, including local targets and fragments, canonical and Open
 Graph URLs, robots policy, sitemap/indexability parity, heading hierarchy, basic HTML structure,
-and node-bound metric claims on every published result domain. `check-rtl-page.mjs` preserves the
+and node-bound metric claims on every published result domain. `check-generated-result-content.mjs` preserves the reviewed article structure and rejects malformed generated Result content. `check-rtl-page.mjs` preserves the
 separately reviewed RTL claim boundaries. Workflow actions are pinned to immutable commit SHAs,
 Node is fixed by `.node-version`, and the hosted runner is bounded to the Ubuntu 24.04 image line
 (whose patch image remains managed by GitHub). The sole external runtime script, MathJax 3.2.2, is
 version-pinned and checked against an approved SRI digest.
+
+After merge, do not call a release production until the GitHub Pages workflow for that exact merged SHA reports both `verify / site-integrity = PASS` and `deploy = PASS`. Record the merged SHA and Pages run ID when production verification is material to the issue.
 
 ## Local preview
 
@@ -122,3 +127,4 @@ node tools/preview.mjs 4174
 - Treat retained `run/` routes as unlinked, `noindex` historical archives; public entry points must use the canonical result page.
 - Keep internal or experimental helpers under `tools/`, not in the repository root.
 - Keep hand-authored shell changes aligned with `tools/sync-results.mjs` and `docs/site-shell.md`.
+- Never infer production state from a local workspace, branch, generated diff, or open PR; use the latest successfully deployed `main` SHA.
