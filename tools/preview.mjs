@@ -5,7 +5,10 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const SITE_ROOT = path.resolve(__dirname, "..");
+const REPOSITORY_ROOT = path.resolve(__dirname, "..");
+const SITE_ROOT = process.env.GOTHER_SITE_ROOT
+  ? path.resolve(REPOSITORY_ROOT, process.env.GOTHER_SITE_ROOT)
+  : REPOSITORY_ROOT;
 const DEFAULT_PORT = 4173;
 const port = Number(process.env.PORT || process.argv[2] || DEFAULT_PORT);
 
@@ -17,7 +20,7 @@ const MIME_TYPES = new Map([
   [".png", "image/png"],
   [".svg", "image/svg+xml"],
   [".txt", "text/plain; charset=utf-8"],
-  [".webmanifest", "application/manifest+json; charset=utf-8"],
+  [".webmanifest", "application/manifest+json"],
   [".woff2", "font/woff2"],
   [".xml", "application/xml; charset=utf-8"],
 ]);
@@ -125,5 +128,6 @@ const server = http.createServer((request, response) => {
 
 server.listen(port, "127.0.0.1", () => {
   console.log(`Preview server running at http://127.0.0.1:${port}/`);
+  console.log(`Serving ${SITE_ROOT}`);
   console.log("Unknown routes fall back to 404.html with status 404.");
 });
