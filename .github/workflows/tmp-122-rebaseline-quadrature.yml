@@ -1,0 +1,69 @@
+name: Temporary #122 rebaseline Quadrature accessibility
+
+on:
+  push:
+    branches:
+      - codex/122-noncolor-figure-alternatives
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tmp-122-rebaseline-quadrature
+  cancel-in-progress: true
+
+jobs:
+  rebaseline:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: codex/122-noncolor-figure-alternatives
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Use release Node.js runtime
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: .node-version
+
+      - name: Install browser QA dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Install pinned Chromium runtime
+        run: npx playwright install --with-deps chromium
+
+      - name: Rebaseline only the intentional Quadrature accessibility delta
+        run: |
+          npx playwright test tests/visual/site.visual.spec.mjs \
+            --config=playwright.config.mjs \
+            --grep "run-quadrature renders without browser regressions" \
+            --update-snapshots
+          git diff --check
+
+      - name: Commit only reviewed Quadrature baselines
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            tests/visual/__screenshots__/site.visual.spec.mjs/run-quadrature-desktop-light.png \
+            tests/visual/__screenshots__/site.visual.spec.mjs/run-quadrature-laptop-dark.png \
+            tests/visual/__screenshots__/site.visual.spec.mjs/run-quadrature-mobile-light-reduced.png \
+            tests/visual/__screenshots__/site.visual.spec.mjs/run-quadrature-mobile-dark-reduced.png
+          if git diff --cached --quiet; then
+            echo "No reviewed baseline changes to commit"
+            exit 1
+          fi
+          changed="$(git diff --cached --name-only)"
+          expected="$(printf '%s\n' \
+            tests/visual/__screenshots__/site.visual.spec.mjs/run-quadrature-desktop-light.png \
+            tests/visual/__screenshots__/site.visual.spec.mjs/run-quadrature-laptop-dark.png \
+            tests/visual/__screenshots__/site.visual.spec.mjs/run-quadrature-mobile-dark-reduced.png \
+            tests/visual/__screenshots__/site.visual.spec.mjs/run-quadrature-mobile-light-reduced.png | sort)"
+          test "$(printf '%s\n' "$changed" | sort)" = "$expected"
+          git commit -m "test(visual): approve Quadrature non-color accessibility delta"
+          git push origin HEAD:codex/122-noncolor-figure-alternatives
