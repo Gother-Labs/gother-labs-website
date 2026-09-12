@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../../../styles.css?v=editorial-v8">
     <link rel="stylesheet" href="../../../assets/studio.css?v=editorial-v8">
     <link rel="stylesheet" href="./surface.css?v=storage-bess-v6">
+    <link rel="stylesheet" href="./accessibility.css?v=figure-a11y-v1">
   </head>
   <body class="storage-run-page">
     <div class="page-shell site-shell">
@@ -99,7 +100,8 @@
               </div>
               <a href="../artifacts/dispatch_trace.json">dispatch_trace.json</a>
             </div>
-            <svg id="dispatch-chart" viewBox="0 0 900 430" role="img" aria-label="Dispatch trace chart"></svg>
+            <svg id="dispatch-chart" viewBox="0 0 900 430" role="img" aria-label="Dispatch trace chart" aria-describedby="dispatch-chart-summary"></svg>
+            <p class="storage-visually-hidden" id="dispatch-chart-summary">The selected frozen 24-hour scenario uses a solid price line, a dashed state-of-charge line, dashed-border charge bars below the zero-dispatch axis, and solid-border discharge bars above it. Profit and uplift are scenario-level replay values. This offline benchmark excludes intraday, reserves, imbalance, taxes, grid and portfolio effects.</p>
           </div>
 
           <div class="storage-run-panel storage-run-panel--score">
@@ -107,7 +109,8 @@
               <h2>Score trace</h2>
               <a href="../artifacts/score-trace.json">score-trace.json</a>
             </div>
-            <svg id="score-chart" viewBox="0 0 620 260" role="img" aria-label="Score trace"></svg>
+            <svg id="score-chart" viewBox="0 0 620 260" role="img" aria-label="Score trace" aria-describedby="score-chart-summary"></svg>
+            <p class="storage-visually-hidden" id="score-chart-summary">Every published checkpoint is labelled numerically and the accepted endpoint uses a larger outlined marker, so the result does not depend on color alone. Lower score is better. The score is the frozen weighted benchmark objective, not a live-trading or production-performance claim.</p>
           </div>
 
           <div class="storage-run-panel storage-run-panel--code">

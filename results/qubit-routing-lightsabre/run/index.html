@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../../../styles.css?v=editorial-v8">
     <link rel="stylesheet" href="../../../assets/studio.css?v=editorial-v8">
     <link rel="stylesheet" href="./surface.css?v=qubit-routing-v27">
+    <link rel="stylesheet" href="./accessibility.css?v=figure-a11y-v1">
   </head>
   <body class="qubit-run-page">
     <div class="page-shell site-shell">
@@ -87,15 +88,18 @@
                   <h2 class="qubit-run-section-title" id="qubit-run-visual-title">Weighted CNOT reduction</h2>
                   <span class="qubit-run-stage-label" id="score-label">public trace</span>
                 </div>
-                <svg class="qubit-run-score-svg" id="score-svg" viewBox="0 0 460 250" role="img" aria-label="Animated weighted CNOT reduction trace"></svg>
+                <svg class="qubit-run-score-svg" id="score-svg" viewBox="0 0 460 250" role="img" aria-label="Animated weighted CNOT reduction trace" aria-describedby="qubit-score-summary"></svg>
+                <p class="qubit-run-visually-hidden" id="qubit-score-summary">Scored candidates are dots and the best-so-far path is a solid line. The baseline marker is a solid circle while accepted markers use a dashed ring, so identity does not depend on color. The positive readout represents lower added-CNOT objective on the frozen public routing portfolio; it is not a hardware-runtime claim.</p>
               </div>
 
               <div class="qubit-run-card qubit-run-card--circuit">
-                <svg class="qubit-run-circuit-svg" id="circuit-svg" viewBox="0 0 640 330" role="img" aria-label="Animated qubit routing circuit"></svg>
+                <svg class="qubit-run-circuit-svg" id="circuit-svg" viewBox="0 0 640 330" role="img" aria-label="Animated qubit routing circuit" aria-describedby="qubit-circuit-summary"></svg>
+                <p class="qubit-run-visually-hidden" id="qubit-circuit-summary">CNOT and SWAP operations use different geometric gate symbols and text labels; the animation is a representative routing-case replay rather than a hardware timing trace.</p>
               </div>
 
               <div class="qubit-run-card">
-                <svg class="qubit-run-topology-svg" id="topology-svg" viewBox="0 0 460 250" role="img" aria-label="Animated topology split"></svg>
+                <svg class="qubit-run-topology-svg" id="topology-svg" viewBox="0 0 460 250" role="img" aria-label="Animated topology split" aria-describedby="qubit-topology-summary"></svg>
+                <p class="qubit-run-visually-hidden" id="qubit-topology-summary">Topology rows are text-labelled Q20, Willow and Heron-FEZ and report added-CNOT counts directly. Lower added-CNOT count is better; row identity and values remain readable without color.</p>
               </div>
             </aside>
           </div>

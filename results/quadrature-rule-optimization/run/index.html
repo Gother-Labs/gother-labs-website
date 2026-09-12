@@ -13,6 +13,7 @@
     <link rel="icon" href="../../../assets/gother-mark.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../../../styles.css?v=editorial-v8">
     <link rel="stylesheet" href="./surface.css?v=quadrature-trace-v24">
+    <link rel="stylesheet" href="./accessibility.css?v=figure-a11y-v1">
     <link rel="stylesheet" href="../../../assets/studio.css?v=editorial-v8">
   </head>
   <body class="quadrature-surface-page">
@@ -40,8 +41,8 @@
               <p class="eyebrow">Result Replay</p>
               <p class="quadrature-summary-text">
                 Curated replay of the public trace. Code changes stay on the left; objective, rule
-                geometry, and residual behavior stay on the right using the same grey, blue, and white
-                language as the whitepaper.
+                geometry, and residual behavior stay on the right using the same published geometry,
+                labels, and values as the whitepaper.
               </p>
               <a class="quadrature-summary-link" href="../#fig-6">
                 Open Figure 6: acceptance objective
@@ -101,8 +102,11 @@
                   class="quadrature-score-svg"
                   id="score-mini-svg"
                   viewBox="0 0 460 250"
+                  role="img"
                   aria-label="Best-so-far acceptance objective"
+                  aria-describedby="quadrature-score-summary"
                 ></svg>
+                <p class="quadrature-visually-hidden" id="quadrature-score-summary">The replay plots scored candidates as dots and retained best-so-far as a line, with a solid baseline ring, a dashed accepted ring, a filled current marker, numeric axes and labels. Lower objective is better under this frozen acceptance contract; it is not a universal measure of integration quality.</p>
               </div>
 
               <div class="quadrature-rule">
@@ -110,11 +114,15 @@
                   class="quadrature-rule-svg"
                   id="rule-svg"
                   viewBox="0 0 420 190"
+                  role="img"
                   aria-label="Current quadrature rule in node-position and weight coordinates"
+                  aria-describedby="quadrature-rule-summary"
                 ></svg>
+                <p class="quadrature-visually-hidden" id="quadrature-rule-summary">The current five-node rule is encoded by node position on the horizontal axis, weight on the vertical axis, stems, markers and numeric axes rather than color alone. This is a bounded benchmark on the fixed public one-dimensional analytic suite.</p>
               </div>
 
-              <div class="quadrature-integrands" id="integrands-grid"></div>
+              <div class="quadrature-integrands" id="integrands-grid" role="group" aria-describedby="quadrature-integrands-summary"></div>
+              <p class="quadrature-visually-hidden" id="quadrature-integrands-summary">Each integrand panel is text-labelled and shows the function curve together with the current rule samples and residual behavior. Panel identity and numerical interpretation come from labels, geometry and axes in addition to color.</p>
             </aside>
           </div>
         </section>

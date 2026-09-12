@@ -1,0 +1,22 @@
+.qubit-run-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Baseline and accepted checkpoints remain distinct in grayscale. */
+.qubit-run-baseline-ring {
+  stroke-dasharray: none;
+}
+
+.qubit-run-accepted-ring,
+.qubit-run-step-marker.is-accepted {
+  stroke-dasharray: 2 2;
+  stroke-width: 2.2;
+}

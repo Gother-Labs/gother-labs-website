@@ -1379,9 +1379,10 @@ function objectiveCurveFigure(evolution) {
 }
 
 function paperAssetFigure({ src, caption, number }) {
-  return `<figure class="result-paper-asset" id="fig-${number}">
-          <img src="./${escapeHtml(src)}" alt="">
-          <figcaption>Figure ${number}. ${formatPaperCaption(caption)}</figcaption>
+  const captionId = `fig-${number}-caption`;
+  return `<figure class="result-paper-asset" id="fig-${number}" role="group" aria-labelledby="${captionId}">
+          <img src="./${escapeHtml(src)}" alt="" aria-hidden="true">
+          <figcaption id="${captionId}">Figure ${number}. ${formatPaperCaption(caption)}</figcaption>
         </figure>`;
 }
 
