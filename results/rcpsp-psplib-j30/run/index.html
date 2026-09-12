@@ -96,8 +96,11 @@
                   class="rcpsp-score-svg"
                   id="score-mini-svg"
                   viewBox="0 0 460 250"
+                  role="img"
                   aria-label="Best-so-far RCPSP acceptance objective"
+                  aria-describedby="rcpsp-score-summary"
                 ></svg>
+                <p class="rcpsp-visually-hidden" id="rcpsp-score-summary">Candidate dots and the best-so-far line are accompanied by numeric axes and distinct baseline, current and accepted markers. Lower score is better under the frozen 80-instance PSPLIB J30 contract, and feasibility is mandatory.</p>
               </div>
 
               <div class="rcpsp-schedule-card">
@@ -105,8 +108,11 @@
                   class="rcpsp-dispatch-svg"
                   id="dispatch-svg"
                   viewBox="0 0 460 500"
+                  role="img"
                   aria-label="Animated Gantt and resource view for the current checkpoint"
+                  aria-describedby="rcpsp-dispatch-summary"
                 ></svg>
+                <p class="rcpsp-visually-hidden" id="rcpsp-dispatch-summary">The checkpoint view uses task labels, lane position, makespan markers and hatched excess regions in addition to color. It is a deterministic representative schedule and resource replay under the frozen evaluation contract.</p>
               </div>
 
               <div class="rcpsp-schedule-card">
@@ -114,8 +120,11 @@
                   class="rcpsp-schedule-svg"
                   id="schedule-svg"
                   viewBox="0 0 460 320"
+                  role="img"
                   aria-label="Animated portfolio gap view for the current checkpoint"
+                  aria-describedby="rcpsp-gap-summary"
                 ></svg>
+                <p class="rcpsp-visually-hidden" id="rcpsp-gap-summary">Portfolio rows carry instance labels, baseline and current markers, numeric gaps and a dashed accepted guide, so the comparison remains interpretable without color. The public result covers the frozen 80-instance PSPLIB J30 subset, not all RCPSP instances.</p>
               </div>
             </aside>
           </div>
