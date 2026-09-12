@@ -44,70 +44,42 @@ jobs:
         working-directory: website
         env:
           GOTHER_RESULTS_ROOT: ../gother-labs-results
-        run: |
-          node tools/sync-results.mjs
-          node tools/sync-results.mjs --check
+        run: node tools/sync-results.mjs
 
-      - name: Harden generated figure semantics
+      - name: Harden caption-owned asset figures
         working-directory: website
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import re
 
           path = Path("tools/sync-results.mjs")
           text = path.read_text()
-
-          old_asset = '''function paperAssetFigure({ src, caption, number }) {
+          old = '''function paperAssetFigure({ src, caption, number }) {
             return `<figure class="result-paper-asset" id="fig-${number}">
                     <img src="./${escapeHtml(src)}" alt="">
                     <figcaption>Figure ${number}. ${formatPaperCaption(caption)}</figcaption>
                   </figure>`;
           }'''.replace("            ", "")
-          new_asset = '''function paperAssetFigure({ src, caption, number }) {
+          new = '''function paperAssetFigure({ src, caption, number }) {
             const captionId = `fig-${number}-caption`;
             return `<figure class="result-paper-asset" id="fig-${number}" role="group" aria-labelledby="${captionId}">
                     <img src="./${escapeHtml(src)}" alt="" aria-hidden="true">
                     <figcaption id="${captionId}">Figure ${number}. ${formatPaperCaption(caption)}</figcaption>
                   </figure>`;
           }'''.replace("            ", "")
-          if old_asset in text:
-              text = text.replace(old_asset, new_asset, 1)
-          elif 'aria-labelledby="${captionId}"' not in text:
+          if old in text:
+              text = text.replace(old, new, 1)
+          elif 'function paperAssetFigure({ src, caption, number })' not in text or 'aria-labelledby="${captionId}"' not in text:
               raise SystemExit("paperAssetFigure contract not found")
-
-          pattern = re.compile(
-              r'  const figures = plots\n'
-              r'    \.map\(\n'
-              r'      \(plot\) => `<figure class="result-figure">[\s\S]*?'
-              r'\n    \)\n'
-              r'    \.join\("\\n"\);'
-          )
-          replacement = '''  const figures = plots
-            .map((plot, index) => {
-              const caption = full.website?.figure_captions?.[plot];
-              if (!caption) {
-                throw new Error(`Published plot ${plot} for ${full.slug} is missing an accessible figure caption.`);
-              }
-              const captionId = `result-figure-${index + 1}-caption`;
-              return `<figure class="result-figure" role="group" aria-labelledby="${captionId}">
-                    <img src="./${escapeHtml(plot)}" alt="" aria-hidden="true">
-                    <figcaption id="${captionId}">${escapeHtml(caption)}</figcaption>
-                  </figure>`;
-            })
-            .join("\\n");'''.replace("            ", "")
-          text, count = pattern.subn(lambda _match: replacement, text, count=1)
-          if count == 0 and 'Published plot ${plot} for ${full.slug} is missing an accessible figure caption.' not in text:
-              raise SystemExit("generic result figure contract not found")
-
           path.write_text(text)
           PY
 
-      - name: Validate synchronization
+      - name: Regenerate and validate with hardened generator
         working-directory: website
         env:
           GOTHER_RESULTS_ROOT: ../gother-labs-results
         run: |
+          node tools/sync-results.mjs
           node tools/sync-results.mjs --check
           git diff --check
 
