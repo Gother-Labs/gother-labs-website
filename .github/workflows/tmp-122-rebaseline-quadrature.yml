@@ -38,6 +38,7 @@ jobs:
 
       - name: Rebaseline only the intentional Quadrature accessibility delta
         run: |
+          node tools/build-pages-artifact.mjs --output _site
           npx playwright test tests/visual/site.visual.spec.mjs \
             --config=playwright.config.mjs \
             --grep "run-quadrature renders without browser regressions" \
