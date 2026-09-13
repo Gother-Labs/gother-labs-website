@@ -1,4 +1,4 @@
-name: Temporary #123 responsive table semantics
+name: Temporary 123 responsive table semantics
 
 on:
   push:
@@ -8,10 +8,6 @@ on:
 permissions:
   contents: write
 
-concurrency:
-  group: tmp-123-table-semantics
-  cancel-in-progress: true
-
 jobs:
   implement:
     if: github.actor != 'github-actions[bot]'
@@ -19,7 +15,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Checkout website branch
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           ref: codex/123-responsive-table-semantics
           path: website
@@ -27,7 +23,7 @@ jobs:
           persist-credentials: true
 
       - name: Checkout pinned Results source
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           repository: Gother-Labs/gother-labs-results
           ref: 58b70d546969a1a4b8f37fa3c77fddafe0cd96d4
@@ -36,238 +32,15 @@ jobs:
           persist-credentials: false
 
       - name: Use release Node.js runtime
-        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
         with:
           node-version-file: website/.node-version
 
-      - name: Implement semantic table contract
+      - name: Apply table semantics
         working-directory: website
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          import re
+        run: python3 tools/tmp-123-apply.py
 
-          sync = Path("tools/sync-results.mjs")
-          text = sync.read_text()
-
-          new_paper_table = r'''function paperTable({ caption, headers, rows, className = "" }) {
-            const figureClass = ["result-paper-table", className].filter(Boolean).join(" ");
-            const captionId = caption?.match(/^Table\s+(\d+)/)?.[1];
-            if (!captionId) {
-              throw new Error(`paperTable caption must begin with a stable Table N identifier: ${caption}`);
-            }
-            const tableId = `table-${captionId}`;
-            const captionDomId = `${tableId}-caption`;
-            const columnHeaders = headers
-              .map(
-                (header, index) =>
-                  `                  <th scope="col" id="${tableId}-col-${index + 1}">${escapeHtml(header)}</th>`,
-              )
-              .join("\n");
-            const bodyRows = rows
-              .map((row, rowIndex) => {
-                const rowHeaderId = `${tableId}-row-${rowIndex + 1}`;
-                const cells = row
-                  .map((cell, cellIndex) => {
-                    const columnHeaderId = `${tableId}-col-${cellIndex + 1}`;
-                    if (cellIndex === 0) {
-                      return `                  <th class="result-row-header" scope="row" id="${rowHeaderId}" headers="${columnHeaderId}">${cell}</th>`;
-                    }
-                    return `                  <td headers="${rowHeaderId} ${columnHeaderId}">${cell}</td>`;
-                  })
-                  .join("\n");
-                return `                <tr>\n${cells}\n                </tr>`;
-              })
-              .join("\n");
-            return `<figure class="${figureClass}" id="${tableId}">
-                    <div class="result-table-wrap" role="region" aria-labelledby="${captionDomId}" tabindex="0">
-                      <table class="result-table" aria-labelledby="${captionDomId}">
-                        <thead>
-                          <tr>
-          ${columnHeaders}
-                          </tr>
-                        </thead>
-                        <tbody>
-          ${bodyRows}
-                        </tbody>
-                      </table>
-                    </div>
-                    <figcaption id="${captionDomId}">${formatPaperCaption(caption)}</figcaption>
-                  </figure>`;
-          }'''.replace("            ", "")
-
-          pattern = re.compile(
-              r'function paperTable\(\{ caption, headers, rows, className = "" \}\) \{[\s\S]*?\n\}\n\n(?=function )'
-          )
-          text, count = pattern.subn(lambda _: new_paper_table + "\n\n", text, count=1)
-          if count != 1:
-              raise SystemExit(f"paperTable replacement count={count}")
-
-          old_wrap = '.replaceAll("<table>", \'<div class="rtl-table-scroll"><table class="rtl-data-table">\')'
-          new_wrap = '.replaceAll(\'<table class="result-markdown-table">\', \'<div class="rtl-table-scroll"><table class="rtl-data-table">\')'
-          if old_wrap not in text:
-              raise SystemExit("RTL Markdown table wrapper contract not found")
-          text = text.replace(old_wrap, new_wrap, 1)
-          sync.write_text(text)
-
-          markdown = Path("tools/result-markdown.mjs")
-          text = markdown.read_text()
-          marker = "  let equationIndex = 0;"
-          if marker not in text:
-              raise SystemExit("Markdown table counter insertion point not found")
-          text = text.replace(marker, marker + "\n  let tableIndex = 0;", 1)
-
-          old_table = '''      chunks.push(`<table>\n  <thead><tr>${headers.map((cell) => `<th>${renderInline(cell, lineNumber)}</th>`).join("")}</tr></thead>\n  <tbody>${rows.map((row) => `<tr>${row.cells.map((cell) => `<td>${renderInline(cell, row.lineNumber)}</td>`).join("")}</tr>`).join("")}</tbody>\n</table>`);'''
-          new_table = '''      tableIndex += 1;
-          const tableId = `md-table-${tableIndex}`;
-          const renderedHeaders = headers
-            .map(
-              (cell, columnIndex) =>
-                `<th scope="col" id="${tableId}-col-${columnIndex + 1}">${renderInline(cell, lineNumber)}</th>`,
-            )
-            .join("");
-          const renderedRows = rows
-            .map((row, rowIndex) => {
-              const rowHeaderId = `${tableId}-row-${rowIndex + 1}`;
-              return `<tr>${row.cells
-                .map((cell, columnIndex) => {
-                  const columnHeaderId = `${tableId}-col-${columnIndex + 1}`;
-                  if (columnIndex === 0) {
-                    return `<th class="result-row-header" scope="row" id="${rowHeaderId}" headers="${columnHeaderId}">${renderInline(cell, row.lineNumber)}</th>`;
-                  }
-                  return `<td headers="${rowHeaderId} ${columnHeaderId}">${renderInline(cell, row.lineNumber)}</td>`;
-                })
-                .join("")}</tr>`;
-            })
-            .join("");
-          chunks.push(`<table class="result-markdown-table">\n  <thead><tr>${renderedHeaders}</tr></thead>\n  <tbody>${renderedRows}</tbody>\n</table>`);'''
-          if old_table not in text:
-              raise SystemExit("Markdown table renderer contract not found")
-          text = text.replace(old_table, new_table, 1)
-          markdown.write_text(text)
-
-          test_path = Path("tools/result-markdown.test.mjs")
-          text = test_path.read_text()
-          old_assert = '  assert.match(html, /<table>/);'
-          new_assert = '''  assert.match(html, /<table class="result-markdown-table">/);
-            assert.match(html, /<th scope="col" id="md-table-1-col-1">Kind<\\/th>/);
-            assert.match(html, /<th class="result-row-header" scope="row" id="md-table-1-row-1" headers="md-table-1-col-1">Link<\\/th>/);
-            assert.match(html, /<td headers="md-table-1-row-1 md-table-1-col-2">/);'''.replace("            ", "")
-          if old_assert not in text:
-              raise SystemExit("Markdown test assertion insertion point not found")
-          text = text.replace(old_assert, new_assert, 1)
-          test_path.write_text(text)
-
-          css = Path("styles.css")
-          css_text = css.read_text()
-          css_patch = r'''
-
-/* #123: responsive Result tables keep native table semantics. */
-.result-table th.result-row-header {
-  color: var(--muted-soft);
-  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
-  font-size: 0.95rem;
-  font-weight: 400;
-  letter-spacing: normal;
-  text-transform: none;
-}
-
-.result-whitepaper .result-table th.result-row-header {
-  font-size: 0.88rem;
-}
-
-.result-contract-table .result-table th.result-row-header {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1rem;
-}
-
-.result-table-wrap[role="region"] {
-  max-width: 100%;
-  overscroll-behavior-inline: contain;
-  scrollbar-width: thin;
-}
-
-@media (max-width: 820px) {
-  .bess-whitepaper .bess-contract-table .result-table,
-  .bess-whitepaper .bess-scenario-table .result-table,
-  .bess-whitepaper .bess-robustness-table .result-table,
-  .bess-whitepaper .bess-customer-readout-table .result-table {
-    display: table;
-    width: 100%;
-    min-width: 42rem;
-  }
-
-  .bess-whitepaper .bess-contract-table .result-table thead,
-  .bess-whitepaper .bess-scenario-table .result-table thead,
-  .bess-whitepaper .bess-robustness-table .result-table thead,
-  .bess-whitepaper .bess-customer-readout-table .result-table thead {
-    display: table-header-group;
-  }
-
-  .bess-whitepaper .bess-contract-table .result-table tbody,
-  .bess-whitepaper .bess-scenario-table .result-table tbody,
-  .bess-whitepaper .bess-robustness-table .result-table tbody,
-  .bess-whitepaper .bess-customer-readout-table .result-table tbody {
-    display: table-row-group;
-  }
-
-  .bess-whitepaper .bess-contract-table .result-table tr,
-  .bess-whitepaper .bess-scenario-table .result-table tr,
-  .bess-whitepaper .bess-robustness-table .result-table tr,
-  .bess-whitepaper .bess-customer-readout-table .result-table tr {
-    display: table-row;
-    width: auto;
-    padding: 0;
-  }
-
-  .bess-whitepaper .bess-contract-table .result-table th,
-  .bess-whitepaper .bess-contract-table .result-table td,
-  .bess-whitepaper .bess-scenario-table .result-table th,
-  .bess-whitepaper .bess-scenario-table .result-table td,
-  .bess-whitepaper .bess-robustness-table .result-table th,
-  .bess-whitepaper .bess-robustness-table .result-table td,
-  .bess-whitepaper .bess-customer-readout-table .result-table th,
-  .bess-whitepaper .bess-customer-readout-table .result-table td {
-    display: table-cell;
-    width: auto;
-    margin: 0;
-    padding: 0.62rem 0.7rem 0.62rem 0;
-    border-bottom: 1px solid var(--line);
-    vertical-align: top;
-  }
-
-  .bess-whitepaper .bess-contract-table .result-table td::before,
-  .bess-whitepaper .bess-scenario-table .result-table td::before,
-  .bess-whitepaper .bess-robustness-table .result-table td::before,
-  .bess-whitepaper .bess-customer-readout-table .result-table td::before {
-    display: none;
-    content: none;
-  }
-}
-'''
-          if "#123: responsive Result tables keep native table semantics." in css_text:
-              raise SystemExit("#123 CSS patch already present")
-          css.write_text(css_text.rstrip() + css_patch + "\n")
-
-          rtl_css = Path("assets/rtl-result.css")
-          rtl_text = rtl_css.read_text()
-          rtl_patch = r'''
-
-/* #123: body row headers match data-cell typography while retaining rowheader semantics. */
-.result-verified-rtl-page .rtl-data-table th.result-row-header {
-  color: var(--text);
-  font-size: inherit;
-  font-weight: 500;
-  letter-spacing: 0;
-  text-transform: none;
-}
-'''
-          if "#123: body row headers match data-cell typography" in rtl_text:
-              raise SystemExit("#123 RTL row-header patch already present")
-          rtl_css.write_text(rtl_text.rstrip() + rtl_patch + "\n")
-          PY
-
-      - name: Regenerate source-owned Results
+      - name: Regenerate and validate Results
         working-directory: website
         env:
           GOTHER_RESULTS_ROOT: ../gother-labs-results
