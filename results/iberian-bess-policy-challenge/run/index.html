@@ -10,7 +10,7 @@
     <link rel="icon" href="../../../assets/gother-mark.svg" type="image/svg+xml">
     <link rel="stylesheet" href="../../../styles.css?v=editorial-v8">
     <link rel="stylesheet" href="../../../assets/studio.css?v=editorial-v8">
-    <link rel="stylesheet" href="./surface.css?v=storage-bess-v6">
+    <link rel="stylesheet" href="./surface.css?v=storage-bess-v7">
     <link rel="stylesheet" href="./accessibility.css?v=figure-a11y-v1">
   </head>
   <body class="storage-run-page">
@@ -54,18 +54,9 @@
                 to replayable evidence.
               </p>
               <dl class="storage-run-evidence">
-                <div>
-                  <dt>Artifact set</dt>
-                  <dd>public bundle</dd>
-                </div>
-                <div>
-                  <dt>Replay status</dt>
-                  <dd>valid</dd>
-                </div>
-                <div>
-                  <dt>Constraint breaches</dt>
-                  <dd>0</dd>
-                </div>
+                <div><dt>Artifact set</dt><dd>public bundle</dd></div>
+                <div><dt>Replay status</dt><dd>valid</dd></div>
+                <div><dt>Constraint breaches</dt><dd>0</dd></div>
               </dl>
             </div>
           </div>
@@ -84,10 +75,11 @@
           <div class="storage-run-panel storage-run-panel--metrics">
             <p class="eyebrow">Reported Comparison</p>
             <div class="storage-run-metrics" id="metric-cards"></div>
-            <label class="storage-run-selector">
-              <span>Scenario</span>
-              <select id="scenario-select"></select>
+            <label class="storage-run-selector" for="scenario-select">
+              <span id="scenario-selector-label">Scenario</span>
+              <select id="scenario-select" aria-labelledby="scenario-selector-label" aria-controls="selected-scenario-summary scenario-hourly-data"></select>
             </label>
+            <p id="scenario-live" class="storage-visually-hidden" aria-live="polite" aria-atomic="true"></p>
           </div>
         </section>
 
@@ -113,6 +105,35 @@
             <p class="storage-visually-hidden" id="score-chart-summary">Every published checkpoint is labelled numerically and the accepted endpoint uses a larger outlined marker, so the result does not depend on color alone. Lower score is better. The score is the frozen weighted benchmark objective, not a live-trading or production-performance claim.</p>
           </div>
 
+          <div class="storage-run-panel storage-run-panel--data" id="selected-scenario-data">
+            <div class="storage-run-panel-head">
+              <div>
+                <p class="eyebrow">Textual replay</p>
+                <h2 id="scenario-data-title">Selected scenario data</h2>
+              </div>
+              <a href="../artifacts/dispatch_trace.json">raw dispatch data</a>
+            </div>
+            <p class="storage-run-data-intro">The summary and hourly table below are generated from the same frozen scenario object as the dispatch SVG.</p>
+            <dl class="storage-run-scenario-summary" id="selected-scenario-summary" aria-labelledby="scenario-data-title"></dl>
+            <div class="storage-run-data-table-wrap" role="region" aria-labelledby="hourly-data-title" tabindex="0">
+              <h3 id="hourly-data-title">24-hour dispatch data</h3>
+              <table class="storage-run-data-table" id="scenario-hourly-data">
+                <thead>
+                  <tr>
+                    <th scope="col">Hour</th>
+                    <th scope="col">Price (€/MWh)</th>
+                    <th scope="col">Charge (MW)</th>
+                    <th scope="col">Discharge (MW)</th>
+                    <th scope="col">Net action (MW)</th>
+                    <th scope="col">SOC (MWh)</th>
+                  </tr>
+                </thead>
+                <tbody id="scenario-hourly-rows"></tbody>
+              </table>
+            </div>
+            <p class="storage-run-data-note">Positive net action means discharge; negative means charge. This remains an offline day-ahead benchmark and excludes intraday, reserves, imbalance, taxes, grid and portfolio effects.</p>
+          </div>
+
           <div class="storage-run-panel storage-run-panel--code">
             <div class="storage-run-panel-head">
               <h2>Accepted policy</h2>
@@ -124,17 +145,14 @@
             <pre><code id="candidate-code"></code></pre>
           </div>
         </section>
-
       </main>
 
-      <footer class="site-footer">
-        <p>© <span id="year">2026</span> Göther Labs</p>
-      </footer>
+      <footer class="site-footer"><p>© <span id="year">2026</span> Göther Labs</p></footer>
     </div>
 
     <script src="../../../scripts.js?v=editorial-v8"></script>
     <script src="../../../assets/studio.js?v=editorial-v8"></script>
     <script src="./surface-data.js?v=storage-bess-v1"></script>
-    <script src="./surface.js?v=storage-bess-v2"></script>
+    <script src="./surface.js?v=storage-bess-v3"></script>
   </body>
 </html>

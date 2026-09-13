@@ -29,3 +29,144 @@
   stroke: var(--text);
   stroke-width: 1.6;
 }
+
+/* #34 / website #124: the selected replay data is a first-class textual surface. */
+.storage-run-panel--data {
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
+
+.storage-run-panel--data + .storage-run-panel--code {
+  grid-column: 1 / -1;
+  grid-row: 3;
+}
+
+.storage-run-data-intro,
+.storage-run-data-note {
+  max-width: 76ch;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.storage-run-data-intro {
+  margin: -0.15rem 0 1rem;
+}
+
+.storage-run-data-note {
+  margin: 0.85rem 0 0;
+}
+
+.storage-run-scenario-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0 0 1.15rem;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.storage-run-scenario-summary div {
+  min-width: 0;
+  padding: 0.72rem 0.78rem;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.storage-run-scenario-summary dt {
+  color: var(--muted);
+  font-size: 0.66rem;
+  font-weight: 720;
+  line-height: 1.35;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.storage-run-scenario-summary dd {
+  margin: 0.22rem 0 0;
+  overflow-wrap: anywhere;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.4;
+}
+
+.storage-run-data-table-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  padding-bottom: 0.3rem;
+  scrollbar-width: thin;
+}
+
+.storage-run-data-table-wrap h3 {
+  margin: 0 0 0.7rem;
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.storage-run-data-table {
+  width: 100%;
+  min-width: 48rem;
+  border-collapse: collapse;
+  border-block: 1px solid var(--line);
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+.storage-run-data-table th,
+.storage-run-data-table td {
+  padding: 0.52rem 0.65rem;
+  border-bottom: 1px solid var(--line);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.storage-run-data-table th:first-child,
+.storage-run-data-table td:first-child {
+  padding-left: 0;
+  text-align: left;
+}
+
+.storage-run-data-table th:last-child,
+.storage-run-data-table td:last-child {
+  padding-right: 0;
+}
+
+.storage-run-data-table thead th {
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.storage-run-data-table tbody th,
+.storage-run-data-table tbody td {
+  color: var(--text);
+  font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.8rem;
+  font-weight: 400;
+}
+
+.storage-run-data-table tbody tr:last-child th,
+.storage-run-data-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+@media (max-width: 920px) {
+  .storage-run-panel--data,
+  .storage-run-panel--data + .storage-run-panel--code {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .storage-run-scenario-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .storage-run-scenario-summary {
+    grid-template-columns: 1fr;
+  }
+}
