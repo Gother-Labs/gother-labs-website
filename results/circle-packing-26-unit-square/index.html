@@ -136,39 +136,39 @@
 </div>
 <p>whenever <span class="static-math" role="math">r<sub>i</sub>+r<sub>j</sub>-τ&gt;0</span>. Consequently, a larger score at <span class="static-math" role="math">10<sup>-6</sup></span> cannot be presented as an improvement over a strict <span class="static-math" role="math">τ=0</span> witness. It solves a different numerical contract.</p>
 <figure class="result-paper-table circle-packing-tolerance-table" id="table-1">
-          <div class="result-table-wrap">
-            <table class="result-table">
+          <div class="result-table-wrap" role="region" aria-labelledby="table-1-caption" tabindex="0">
+            <table class="result-table" aria-labelledby="table-1-caption">
               <thead>
                 <tr>
-                  <th>Contract</th>
-                  <th>Evölther 2.0 score</th>
-                  <th>Zero-tolerance recheck</th>
-                  <th>Manifested-corpus rank</th>
+                  <th scope="col" id="table-1-col-1">Contract</th>
+                  <th scope="col" id="table-1-col-2">Evölther 2.0 score</th>
+                  <th scope="col" id="table-1-col-3">Zero-tolerance recheck</th>
+                  <th scope="col" id="table-1-col-4">Manifested-corpus rank</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>τ = 10⁻⁶</td>
-                  <td>2.63599872089287514</td>
-                  <td>fails</td>
-                  <td>#1 among valid complete witnesses</td>
+                  <th class="result-row-header" scope="row" id="table-1-row-1" headers="table-1-col-1">τ = 10⁻⁶</th>
+                  <td headers="table-1-row-1 table-1-col-2">2.63599872089287514</td>
+                  <td headers="table-1-row-1 table-1-col-3">fails</td>
+                  <td headers="table-1-row-1 table-1-col-4">#1 among valid complete witnesses</td>
                 </tr>
                 <tr>
-                  <td>τ = 10⁻¹⁰</td>
-                  <td>2.63598308647338795</td>
-                  <td>fails</td>
-                  <td>#1 among valid complete witnesses</td>
+                  <th class="result-row-header" scope="row" id="table-1-row-2" headers="table-1-col-1">τ = 10⁻¹⁰</th>
+                  <td headers="table-1-row-2 table-1-col-2">2.63598308647338795</td>
+                  <td headers="table-1-row-2 table-1-col-3">fails</td>
+                  <td headers="table-1-row-2 table-1-col-4">#1 among valid complete witnesses</td>
                 </tr>
                 <tr>
-                  <td>τ = 0</td>
-                  <td>2.635983084917607783…</td>
-                  <td>passes</td>
-                  <td>#1 among strict complete witnesses</td>
+                  <th class="result-row-header" scope="row" id="table-1-row-3" headers="table-1-col-1">τ = 0</th>
+                  <td headers="table-1-row-3 table-1-col-2">2.635983084917607783…</td>
+                  <td headers="table-1-row-3 table-1-col-3">passes</td>
+                  <td headers="table-1-row-3 table-1-col-4">#1 among strict complete witnesses</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <figcaption>Table 1. Three separate optimization contracts. Scores are comparable only within a row's tolerance.</figcaption>
+          <figcaption id="table-1-caption">Table 1. Three separate optimization contracts. Scores are comparable only within a row's tolerance.</figcaption>
         </figure>
 <p>The relaxed certificates consume their declared tolerance and fail when rechecked at zero. The strict CSV was formed by rounding a high-precision contact root to 90 decimal places and reducing every radius by approximately <span class="static-math" role="math">10<sup>-75</sup></span>. That tiny inward movement turns the serialized decimal geometry into an exact feasible rational lower bound.</p>
           <figure class="result-ledger-figure circle-packing-canonical-figure " id="fig-2">
@@ -474,39 +474,39 @@
         </figure>
 <p>The strict certificate passes 455/455 decisions. Its smallest zero-tolerance wall gap is approximately <span class="static-math" role="math">1.0×10<sup>-75</sup></span>, and its smallest squared pair gap is approximately <span class="static-math" role="math">6.46×10<sup>-76</sup></span>. Square roots are used only for readable diagnostics, never for pass/fail.</p>
 <figure class="result-paper-table" id="table-2">
-          <div class="result-table-wrap">
-            <table class="result-table">
+          <div class="result-table-wrap" role="region" aria-labelledby="table-2-caption" tabindex="0">
+            <table class="result-table" aria-labelledby="table-2-caption">
               <thead>
                 <tr>
-                  <th>Quantity</th>
-                  <th>Certified value</th>
+                  <th scope="col" id="table-2-col-1">Quantity</th>
+                  <th scope="col" id="table-2-col-2">Certified value</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Exact total radius</td>
-                  <td>2.635983084917607783186569485443481730396676798274…</td>
+                  <th class="result-row-header" scope="row" id="table-2-row-1" headers="table-2-col-1">Exact total radius</th>
+                  <td headers="table-2-row-1 table-2-col-2">2.635983084917607783186569485443481730396676798274…</td>
                 </tr>
                 <tr>
-                  <td>Wall / pair / positivity decisions</td>
-                  <td>104 / 325 / 26 — all pass</td>
+                  <th class="result-row-header" scope="row" id="table-2-row-2" headers="table-2-col-1">Wall / pair / positivity decisions</th>
+                  <td headers="table-2-row-2 table-2-col-2">104 / 325 / 26 — all pass</td>
                 </tr>
                 <tr>
-                  <td>Minimum wall gap</td>
-                  <td>+1.0000000000000015957 × 10⁻⁷⁵</td>
+                  <th class="result-row-header" scope="row" id="table-2-row-3" headers="table-2-col-1">Minimum wall gap</th>
+                  <td headers="table-2-row-3 table-2-col-2">+1.0000000000000015957 × 10⁻⁷⁵</td>
                 </tr>
                 <tr>
-                  <td>Minimum squared pair gap</td>
-                  <td>+6.4628891171277475 × 10⁻⁷⁶</td>
+                  <th class="result-row-header" scope="row" id="table-2-row-4" headers="table-2-col-1">Minimum squared pair gap</th>
+                  <td headers="table-2-row-4 table-2-col-2">+6.4628891171277475 × 10⁻⁷⁶</td>
                 </tr>
                 <tr>
-                  <td>Decision arithmetic</td>
-                  <td>exact rationals</td>
+                  <th class="result-row-header" scope="row" id="table-2-row-5" headers="table-2-col-1">Decision arithmetic</th>
+                  <td headers="table-2-row-5 table-2-col-2">exact rationals</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <figcaption>Table 2. Strict finite-decimal witness under the zero-tolerance contract.</figcaption>
+          <figcaption id="table-2-caption">Table 2. Strict finite-decimal witness under the zero-tolerance contract.</figcaption>
         </figure>
 <h2>4. From a feasible CSV to a local theorem</h2>
 <p>Exact feasibility proves that one serialized witness is valid. The stronger mathematical result concerns the nearby real contact root. The strict witness identifies 78 active constraints—58 circle-circle contacts and 20 wall contacts—which match the 78 variables.</p>
@@ -668,40 +668,40 @@
 <p><strong>Step 3 — certify stationarity.</strong> A second rational Krawczyk calculation encloses the KKT multipliers. All 78 multipliers are positive, with the smallest greater than 0.0208256021.</p>
 <p><strong>Step 4 — conclude locally.</strong> Because the active gradients form a basis, the active gaps are local coordinates. With positive multipliers, every nonzero feasible nearby gap direction strictly decreases the total radius. Therefore <span class="static-math" role="math">x<sup>*</sup></span> is a strict local maximum.</p>
 <figure class="result-paper-table" id="table-3">
-          <div class="result-table-wrap">
-            <table class="result-table">
+          <div class="result-table-wrap" role="region" aria-labelledby="table-3-caption" tabindex="0">
+            <table class="result-table" aria-labelledby="table-3-caption">
               <thead>
                 <tr>
-                  <th>Certificate stage</th>
-                  <th>Verified bound</th>
-                  <th>Consequence</th>
+                  <th scope="col" id="table-3-col-1">Certificate stage</th>
+                  <th scope="col" id="table-3-col-2">Verified bound</th>
+                  <th scope="col" id="table-3-col-3">Consequence</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Primal Krawczyk</td>
-                  <td>inclusion ratio &lt; 8.552 × 10⁻¹⁵</td>
-                  <td>one unique regular root</td>
+                  <th class="result-row-header" scope="row" id="table-3-row-1" headers="table-3-col-1">Primal Krawczyk</th>
+                  <td headers="table-3-row-1 table-3-col-2">inclusion ratio &lt; 8.552 × 10⁻¹⁵</td>
+                  <td headers="table-3-row-1 table-3-col-3">one unique regular root</td>
                 </tr>
                 <tr>
-                  <td>Inactive constraints</td>
-                  <td>minimum gap &gt; 0.0071877548</td>
-                  <td>all 351 remain strict</td>
+                  <th class="result-row-header" scope="row" id="table-3-row-2" headers="table-3-col-1">Inactive constraints</th>
+                  <td headers="table-3-row-2 table-3-col-2">minimum gap &gt; 0.0071877548</td>
+                  <td headers="table-3-row-2 table-3-col-3">all 351 remain strict</td>
                 </tr>
                 <tr>
-                  <td>Dual Krawczyk</td>
-                  <td>minimum multiplier &gt; 0.0208256021</td>
-                  <td>all 78 multipliers positive</td>
+                  <th class="result-row-header" scope="row" id="table-3-row-3" headers="table-3-col-1">Dual Krawczyk</th>
+                  <td headers="table-3-row-3 table-3-col-2">minimum multiplier &gt; 0.0208256021</td>
+                  <td headers="table-3-row-3 table-3-col-3">all 78 multipliers positive</td>
                 </tr>
                 <tr>
-                  <td>Local coordinate argument</td>
-                  <td>full-rank active gradients</td>
-                  <td>strict local maximum</td>
+                  <th class="result-row-header" scope="row" id="table-3-row-4" headers="table-3-col-1">Local coordinate argument</th>
+                  <td headers="table-3-row-4 table-3-col-2">full-rank active gradients</td>
+                  <td headers="table-3-row-4 table-3-col-3">strict local maximum</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <figcaption>Table 3. Rational interval proof obligations for the nearby real 78-contact root.</figcaption>
+          <figcaption id="table-3-caption">Table 3. Rational interval proof obligations for the nearby real 78-contact root.</figcaption>
         </figure>
 <p>The real root is enclosed between 2.6359830849176077831865694854434817303966767982744 and 2.6359830849176077831865694854434817303966767982745 in total radius. It lies slightly above the deliberately shrunken CSV witness; the two objects should not be conflated.</p>
 <h2>5. What changed from the earlier result</h2>
