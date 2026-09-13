@@ -38,7 +38,9 @@ jobs:
 
       - name: Apply table semantics
         working-directory: website
-        run: python3 tools/tmp-123-apply.py
+        run: |
+          python3 tools/tmp-123-apply.py
+          sed -i -e '${/^$/d;}' styles.css assets/rtl-result.css
 
       - name: Regenerate and validate Results
         working-directory: website
