@@ -116,6 +116,7 @@ export function markdownToHtml(markdown, inserts = {}, options = {}) {
   let inCode = false;
   let inFormula = false;
   let equationIndex = 0;
+  let tableIndex = 0;
 
   const renderInline = (value, lineNumber) =>
     inlineMarkdown(value, sourceName, lineNumber, { staticMath: options.staticMath });
@@ -260,9 +261,31 @@ export function markdownToHtml(markdown, inserts = {}, options = {}) {
         rows.push({ cells, lineNumber: tableCursor + 1 });
         tableCursor += 1;
       }
-      chunks.push(`<table>
-  <thead><tr>${headers.map((cell) => `<th>${renderInline(cell, lineNumber)}</th>`).join("")}</tr></thead>
-  <tbody>${rows.map((row) => `<tr>${row.cells.map((cell) => `<td>${renderInline(cell, row.lineNumber)}</td>`).join("")}</tr>`).join("")}</tbody>
+      tableIndex += 1;
+      const tableId = `md-table-${tableIndex}`;
+      const renderedHeaders = headers
+        .map(
+          (cell, columnIndex) =>
+            `<th scope="col" id="${tableId}-col-${columnIndex + 1}">${renderInline(cell, lineNumber)}</th>`,
+        )
+        .join("");
+      const renderedRows = rows
+        .map((row, rowIndex) => {
+          const rowHeaderId = `${tableId}-row-${rowIndex + 1}`;
+          return `<tr>${row.cells
+            .map((cell, columnIndex) => {
+              const columnHeaderId = `${tableId}-col-${columnIndex + 1}`;
+              if (columnIndex === 0) {
+                return `<th class="result-row-header" scope="row" id="${rowHeaderId}" headers="${columnHeaderId}">${renderInline(cell, row.lineNumber)}</th>`;
+              }
+              return `<td headers="${rowHeaderId} ${columnHeaderId}">${renderInline(cell, row.lineNumber)}</td>`;
+            })
+            .join("")}</tr>`;
+        })
+        .join("");
+      chunks.push(`<table class="result-markdown-table">
+  <thead><tr>${renderedHeaders}</tr></thead>
+  <tbody>${renderedRows}</tbody>
 </table>`);
       index = tableCursor - 1;
       continue;

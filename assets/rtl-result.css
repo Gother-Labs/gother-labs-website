@@ -406,3 +406,12 @@
     font-size: 0.74rem;
   }
 }
+
+/* #123: body row headers match data-cell typography while retaining rowheader semantics. */
+.result-verified-rtl-page .rtl-data-table th.result-row-header {
+  color: var(--text);
+  font-size: inherit;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}

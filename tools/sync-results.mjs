@@ -190,7 +190,7 @@ function verifiedRtlArticleHtml(article, markdownOptions) {
   let html = markdownToHtml(articleWithoutTitle(article), {}, markdownOptions);
 
   html = html
-    .replaceAll("<table>", '<div class="rtl-table-scroll"><table class="rtl-data-table">')
+    .replaceAll('<table class="result-markdown-table">', '<div class="rtl-table-scroll"><table class="rtl-data-table">')
     .replaceAll("</table>", "</table></div>");
 
   html = html
@@ -956,27 +956,46 @@ ${rows
 function paperTable({ caption, headers, rows, className = "" }) {
   const figureClass = ["result-paper-table", className].filter(Boolean).join(" ");
   const captionId = caption?.match(/^Table\s+(\d+)/)?.[1];
-  const idAttribute = captionId ? ` id="table-${captionId}"` : "";
-  return `<figure class="${figureClass}"${idAttribute}>
-          <div class="result-table-wrap">
-            <table class="result-table">
+  if (!captionId) {
+    throw new Error(`paperTable caption must begin with a stable Table N identifier: ${caption}`);
+  }
+  const tableId = `table-${captionId}`;
+  const captionDomId = `${tableId}-caption`;
+  const columnHeaders = headers
+    .map(
+      (header, index) =>
+        `                  <th scope="col" id="${tableId}-col-${index + 1}">${escapeHtml(header)}</th>`,
+    )
+    .join("\n");
+  const bodyRows = rows
+    .map((row, rowIndex) => {
+      const rowHeaderId = `${tableId}-row-${rowIndex + 1}`;
+      const cells = row
+        .map((cell, cellIndex) => {
+          const columnHeaderId = `${tableId}-col-${cellIndex + 1}`;
+          if (cellIndex === 0) {
+            return `                  <th class="result-row-header" scope="row" id="${rowHeaderId}" headers="${columnHeaderId}">${cell}</th>`;
+          }
+          return `                  <td headers="${rowHeaderId} ${columnHeaderId}">${cell}</td>`;
+        })
+        .join("\n");
+      return `                <tr>\n${cells}\n                </tr>`;
+    })
+    .join("\n");
+  return `<figure class="${figureClass}" id="${tableId}">
+          <div class="result-table-wrap" role="region" aria-labelledby="${captionDomId}" tabindex="0">
+            <table class="result-table" aria-labelledby="${captionDomId}">
               <thead>
                 <tr>
-${headers.map((header) => `                  <th>${escapeHtml(header)}</th>`).join("\n")}
+${columnHeaders}
                 </tr>
               </thead>
               <tbody>
-${rows
-  .map(
-    (row) => `                <tr>
-${row.map((cell) => `                  <td>${cell}</td>`).join("\n")}
-                </tr>`,
-  )
-  .join("\n")}
+${bodyRows}
               </tbody>
             </table>
           </div>
-          ${caption ? `<figcaption>${escapeHtml(caption)}</figcaption>` : ""}
+          <figcaption id="${captionDomId}">${formatPaperCaption(caption)}</figcaption>
         </figure>`;
 }
 

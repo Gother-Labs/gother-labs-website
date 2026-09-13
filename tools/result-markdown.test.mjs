@@ -35,7 +35,10 @@ $$
 
   assert.match(html, /<h2>Contract<\/h2>/);
   assert.match(html, /<ul>/);
-  assert.match(html, /<table>/);
+  assert.match(html, /<table class="result-markdown-table">/);
+  assert.match(html, /<th scope="col" id="md-table-1-col-1">Kind<\/th>/);
+  assert.match(html, /<th class="result-row-header" scope="row" id="md-table-1-row-1" headers="md-table-1-col-1">Link<\/th>/);
+  assert.match(html, /<td headers="md-table-1-row-1 md-table-1-col-2">/);
   assert.match(html, /href="artifacts\/metrics\.json"/);
   assert.match(html, /target="_blank" rel="noreferrer"/);
   assert.match(html, /class="language-js"/);
