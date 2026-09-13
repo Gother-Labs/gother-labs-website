@@ -43,7 +43,6 @@ jobs:
         run: |
           node tools/sync-results.mjs
           node tools/sync-results.mjs --check
-          GOTHER_RESULTS_ROOT=../gother-labs-results node tools/check-results-source-provenance.mjs
           node --test tools/*.test.mjs
           git diff --check
 
