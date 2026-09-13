@@ -5994,3 +5994,14 @@ a {
     content: none;
   }
 }
+
+@media (max-width: 820px) {
+  /* #123: remove legacy BESS pseudo-labels once native header semantics are retained. */
+  .bess-whitepaper .bess-contract-table .result-table td:nth-child(n)::before,
+  .bess-whitepaper .bess-scenario-table .result-table td:nth-child(n)::before,
+  .bess-whitepaper .bess-robustness-table .result-table td:nth-child(n)::before,
+  .bess-whitepaper .bess-customer-readout-table .result-table td:nth-child(n)::before {
+    display: none !important;
+    content: none !important;
+  }
+}
