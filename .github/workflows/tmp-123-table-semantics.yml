@@ -22,46 +22,35 @@ jobs:
           fetch-depth: 0
           persist-credentials: true
 
-      - name: Checkout pinned Results source
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-        with:
-          repository: Gother-Labs/gother-labs-results
-          ref: 58b70d546969a1a4b8f37fa3c77fddafe0cd96d4
-          path: gother-labs-results
-          fetch-depth: 1
-          persist-credentials: false
-
       - name: Use release Node.js runtime
         uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38
         with:
           node-version-file: website/.node-version
 
-      - name: Apply table semantics
+      - name: Normalize curated Result tables
         working-directory: website
-        run: |
-          python3 tools/tmp-123-apply.py
-          sed -i -e '${/^$/d;}' styles.css assets/rtl-result.css
+        run: python3 tools/tmp-123-curated.py
 
-      - name: Regenerate and validate Results
+      - name: Validate semantic contracts
         working-directory: website
-        env:
-          GOTHER_RESULTS_ROOT: ../gother-labs-results
         run: |
-          node tools/sync-results.mjs
-          node tools/sync-results.mjs --check
           node --test tools/*.test.mjs
           git diff --check
 
-      - name: Commit implementation
+      - name: Commit curated Result tables
         working-directory: website
         run: |
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add styles.css assets/rtl-result.css tools/sync-results.mjs tools/result-markdown.mjs tools/result-markdown.test.mjs results
+          git add \
+            results/iberian-bess-policy-challenge/index.html \
+            results/quadrature-rule-optimization/index.html \
+            results/qubit-routing-lightsabre/index.html \
+            results/rcpsp-psplib-j30/index.html
           if git diff --cached --quiet; then
-            echo "No #123 implementation changes to commit"
+            echo "No curated #123 table changes to commit"
             exit 1
           fi
-          git commit -m "fix(a11y): preserve responsive table semantics"
+          git commit -m "fix(a11y): bind curated Result table headers"
           git push origin HEAD:codex/123-responsive-table-semantics
