@@ -306,39 +306,19 @@
 <p>The contract is deliberately narrow: 24 public circuits are crossed with three frozen topology targets, producing 72 deterministic routing evaluations. A candidate is accepted only if every case routes validly and the replayed score matches within tolerance \(10^{-6}\). The objective is added CNOT count versus LightSABRE, expressed as the lower-is-better score \(-\Delta_{\mathrm{wCNOT}}\).</p>
 <p>The three targets are Q20, Willow, and Heron-FEZ. In this report those names identify frozen coupling graphs: the physical adjacency constraint on which each logical two-qubit interaction must be routed.</p>
 <figure class="result-paper-table result-contract-table qubit-routing-target-table" id="table-1">
-          <div class="result-table-wrap">
-            <table class="result-table">
+          <div class="result-table-wrap" role="region" aria-labelledby="table-1-caption" tabindex="0">
+            <table class="result-table" aria-labelledby="table-1-caption">
               <thead>
-                <tr>
-                  <th>Target</th>
-                  <th>Topology type</th>
-                  <th>Circuits</th>
-                  <th>Role in this report</th>
-                </tr>
+                <tr><th scope="col" id="table-1-col-1">Target</th><th scope="col" id="table-1-col-2">Topology type</th><th scope="col" id="table-1-col-3">Circuits</th><th scope="col" id="table-1-col-4">Role in this report</th></tr>
               </thead>
               <tbody>
-                <tr>
-                  <td><span class="result-nowrap">Q20</span></td>
-                  <td>Small 20-qubit coupling graph.</td>
-                  <td>24</td>
-                  <td>Checks routing pressure when physical room is limited.</td>
-                </tr>
-                <tr>
-                  <td><span class="result-nowrap">Willow</span></td>
-                  <td>Large sparse device-style coupling graph.</td>
-                  <td>24</td>
-                  <td>Checks layout and lookahead on a wider target.</td>
-                </tr>
-                <tr>
-                  <td><span class="result-nowrap">Heron-FEZ</span></td>
-                  <td>Large sparse device-style coupling graph in a different family.</td>
-                  <td>24</td>
-                  <td>Checks transfer across a separate adjacency family.</td>
-                </tr>
+                <tr><th class="result-row-header" scope="row" id="table-1-row-1" headers="table-1-col-1"><span class="result-nowrap">Q20</span></th><td headers="table-1-row-1 table-1-col-2">Small 20-qubit coupling graph.</td><td headers="table-1-row-1 table-1-col-3">24</td><td headers="table-1-row-1 table-1-col-4">Checks routing pressure when physical room is limited.</td></tr>
+                <tr><th class="result-row-header" scope="row" id="table-1-row-2" headers="table-1-col-1"><span class="result-nowrap">Willow</span></th><td headers="table-1-row-2 table-1-col-2">Large sparse device-style coupling graph.</td><td headers="table-1-row-2 table-1-col-3">24</td><td headers="table-1-row-2 table-1-col-4">Checks layout and lookahead on a wider target.</td></tr>
+                <tr><th class="result-row-header" scope="row" id="table-1-row-3" headers="table-1-col-1"><span class="result-nowrap">Heron-FEZ</span></th><td headers="table-1-row-3 table-1-col-2">Large sparse device-style coupling graph in a different family.</td><td headers="table-1-row-3 table-1-col-3">24</td><td headers="table-1-row-3 table-1-col-4">Checks transfer across a separate adjacency family.</td></tr>
               </tbody>
             </table>
           </div>
-          <figcaption>Table 1. Topology targets used by the frozen routing contract. These labels are benchmark coupling graphs, not hardware-performance claims.</figcaption>
+          <figcaption id="table-1-caption">Table 1. Topology targets used by the frozen routing contract. These labels are benchmark coupling graphs, not hardware-performance claims.</figcaption>
         </figure>
 <p>The governed score is:</p>
 <div class="formula-block" id="eq-1">
@@ -648,39 +628,19 @@ J(p) = -\Delta_{\mathrm{wCNOT}}(p),
           <figcaption>Figure 4. Objective trace for the curated public chain. Faint points are scored candidates from the sanitized telemetry trace, the solid line is retained best-so-far weighted CNOT reduction, and rings mark baseline and accepted. 57 lower outlier candidates are clipped at the bottom of the plot.</figcaption>
         </figure>
 <figure class="result-paper-table" id="table-2">
-          <div class="result-table-wrap">
-            <table class="result-table">
+          <div class="result-table-wrap" role="region" aria-labelledby="table-2-caption" tabindex="0">
+            <table class="result-table" aria-labelledby="table-2-caption">
               <thead>
-                <tr>
-                  <th>Metric</th>
-                  <th>Baseline</th>
-                  <th>Accepted</th>
-                  <th>Change</th>
-                </tr>
+                <tr><th scope="col" id="table-2-col-1">Metric</th><th scope="col" id="table-2-col-2">Baseline</th><th scope="col" id="table-2-col-3">Accepted</th><th scope="col" id="table-2-col-4">Change</th></tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Weighted CNOT reduction</td>
-                  <td>8,938.8</td>
-                  <td>11,506.2</td>
-                  <td>+2,567.4</td>
-                </tr>
-                <tr>
-                  <td>Aggregate added CNOTs</td>
-                  <td>308,076</td>
-                  <td>295,782</td>
-                  <td>12,294 fewer</td>
-                </tr>
-                <tr>
-                  <td>Case outcome</td>
-                  <td>reference</td>
-                  <td>31 / 6 / 35</td>
-                  <td>wins / ties / losses</td>
-                </tr>
+                <tr><th class="result-row-header" scope="row" id="table-2-row-1" headers="table-2-col-1">Weighted CNOT reduction</th><td headers="table-2-row-1 table-2-col-2">8,938.8</td><td headers="table-2-row-1 table-2-col-3">11,506.2</td><td headers="table-2-row-1 table-2-col-4">+2,567.4</td></tr>
+                <tr><th class="result-row-header" scope="row" id="table-2-row-2" headers="table-2-col-1">Aggregate added CNOTs</th><td headers="table-2-row-2 table-2-col-2">308,076</td><td headers="table-2-row-2 table-2-col-3">295,782</td><td headers="table-2-row-2 table-2-col-4">12,294 fewer</td></tr>
+                <tr><th class="result-row-header" scope="row" id="table-2-row-3" headers="table-2-col-1">Case outcome</th><td headers="table-2-row-3 table-2-col-2">reference</td><td headers="table-2-row-3 table-2-col-3">31 / 6 / 35</td><td headers="table-2-row-3 table-2-col-4">wins / ties / losses</td></tr>
               </tbody>
             </table>
           </div>
-          <figcaption>Table 2. Reported comparison for the curated public qubit-routing chain.</figcaption>
+          <figcaption id="table-2-caption">Table 2. Reported comparison for the curated public qubit-routing chain.</figcaption>
         </figure>
 <figure class="result-primer-card result-paper-figure qubit-routing-inline-figure qubit-routing-topology-figure" id="fig-5">
           <svg class="result-primer-svg qubit-routing-paper-svg" viewBox="0 0 560 276" role="img" aria-label="Per topology added CNOT comparison.">

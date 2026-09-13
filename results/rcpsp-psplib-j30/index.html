@@ -105,14 +105,14 @@
               <h3>2. Benchmark and evaluation contract</h3>
               <p>The public portfolio contains 80 frozen PSPLIB J30 single-mode instances: parameters 1, 7, 13, 19, 25, 31, 37, and 43 crossed with instances 1 through 10. Each instance contains 32 jobs including dummy source and sink activities, renewable-resource capacities, precedence arcs, and a proven optimal makespan.</p>
               <figure class="result-paper-table" id="table-1">
-                <div class="result-table-wrap"><table class="result-table"><thead><tr><th>Field</th><th>Public contract</th></tr></thead><tbody>
-                  <tr><td>Dataset</td><td>PSPLIB J30 single-mode RCPSP</td></tr>
-                  <tr><td>Portfolio</td><td>80 frozen instances</td></tr>
-                  <tr><td>Reference</td><td>Proven optimal makespan for every instance</td></tr>
-                  <tr><td>Objective</td><td><code>mean_gap_pct + 0.35 × p95_gap_pct + feasibility_penalty</code></td></tr>
-                  <tr><td>Direction</td><td>Lower is better; feasibility penalty must remain zero</td></tr>
+                <div class="result-table-wrap" role="region" aria-labelledby="table-1-caption" tabindex="0"><table class="result-table" aria-labelledby="table-1-caption"><thead><tr><th scope="col" id="table-1-col-1">Field</th><th scope="col" id="table-1-col-2">Public contract</th></tr></thead><tbody>
+                  <tr><th class="result-row-header" scope="row" id="table-1-row-1" headers="table-1-col-1">Dataset</th><td headers="table-1-row-1 table-1-col-2">PSPLIB J30 single-mode RCPSP</td></tr>
+                  <tr><th class="result-row-header" scope="row" id="table-1-row-2" headers="table-1-col-1">Portfolio</th><td headers="table-1-row-2 table-1-col-2">80 frozen instances</td></tr>
+                  <tr><th class="result-row-header" scope="row" id="table-1-row-3" headers="table-1-col-1">Reference</th><td headers="table-1-row-3 table-1-col-2">Proven optimal makespan for every instance</td></tr>
+                  <tr><th class="result-row-header" scope="row" id="table-1-row-4" headers="table-1-col-1">Objective</th><td headers="table-1-row-4 table-1-col-2"><code>mean_gap_pct + 0.35 × p95_gap_pct + feasibility_penalty</code></td></tr>
+                  <tr><th class="result-row-header" scope="row" id="table-1-row-5" headers="table-1-col-1">Direction</th><td headers="table-1-row-5 table-1-col-2">Lower is better; feasibility penalty must remain zero</td></tr>
                 </tbody></table></div>
-                <figcaption>Table 1. Frozen benchmark surface shared by the baseline, Evölther, and Evölther 2.0.</figcaption>
+                <figcaption id="table-1-caption">Table 1. Frozen benchmark surface shared by the baseline, Evölther, and Evölther 2.0.</figcaption>
               </figure>
               <p>For instance <em>k</em>, the gap is the candidate makespan minus the proven optimum, divided by that optimum. The accepted objective combines mean portfolio quality with a 35% weighting on the 95th-percentile gap. A candidate must also return finite priorities, choose only eligible activities, schedule every activity exactly once, respect all precedences, and remain within every resource capacity.</p>
 
@@ -138,21 +138,21 @@
                 <div><span>Remove downstream critical path</span><strong>15.132</strong><small>+5.023 score</small></div>
               </div>
               <figure class="result-paper-table rcpsp-ablation-table" id="table-ablation">
-                <div class="result-table-wrap"><table class="result-table"><thead><tr><th>Signal removed</th><th>Weight</th><th>Score without it</th><th>Δ score</th></tr></thead><tbody>
-                  <tr><td>Earliest feasible start</td><td>−13.252</td><td>15.417</td><td>+5.309</td></tr>
-                  <tr><td>Downstream critical path</td><td>+3.336</td><td>15.132</td><td>+5.023</td></tr>
-                  <tr><td>Transitive successors</td><td>+3.337</td><td>12.159</td><td>+2.050</td></tr>
-                  <tr><td>Weighted demand</td><td>+2.451</td><td>12.139</td><td>+2.031</td></tr>
-                  <tr><td>Resource wait</td><td>+1.057</td><td>11.664</td><td>+1.555</td></tr>
-                  <tr><td>Precedence wait</td><td>−0.308</td><td>11.267</td><td>+1.159</td></tr>
-                  <tr><td>Bottleneck ratio</td><td>+3.348</td><td>10.870</td><td>+0.762</td></tr>
-                  <tr><td>Successor work</td><td>−0.209</td><td>10.860</td><td>+0.752</td></tr>
-                  <tr><td>Duration</td><td>+0.187</td><td>10.731</td><td>+0.623</td></tr>
-                  <tr><td>Resource pressure</td><td>−0.701</td><td>10.651</td><td>+0.543</td></tr>
-                  <tr><td>Direct successors</td><td>−0.093</td><td>10.521</td><td>+0.412</td></tr>
-                  <tr><td>Projected finish</td><td>−0.018</td><td>10.174</td><td>+0.066</td></tr>
+                <div class="result-table-wrap" role="region" aria-labelledby="table-ablation-caption" tabindex="0"><table class="result-table" aria-labelledby="table-ablation-caption"><thead><tr><th scope="col" id="table-ablation-col-1">Signal removed</th><th scope="col" id="table-ablation-col-2">Weight</th><th scope="col" id="table-ablation-col-3">Score without it</th><th scope="col" id="table-ablation-col-4">Δ score</th></tr></thead><tbody>
+                  <tr><th class="result-row-header" scope="row" id="table-ablation-row-1" headers="table-ablation-col-1">Earliest feasible start</th><td headers="table-ablation-row-1 table-ablation-col-2">−13.252</td><td headers="table-ablation-row-1 table-ablation-col-3">15.417</td><td headers="table-ablation-row-1 table-ablation-col-4">+5.309</td></tr>
+                  <tr><th class="result-row-header" scope="row" id="table-ablation-row-2" headers="table-ablation-col-1">Downstream critical path</th><td headers="table-ablation-row-2 table-ablation-col-2">+3.336</td><td headers="table-ablation-row-2 table-ablation-col-3">15.132</td><td headers="table-ablation-row-2 table-ablation-col-4">+5.023</td></tr>
+                  <tr><th class="result-row-header" scope="row" id="table-ablation-row-3" headers="table-ablation-col-1">Transitive successors</th><td headers="table-ablation-row-3 table-ablation-col-2">+3.337</td><td headers="table-ablation-row-3 table-ablation-col-3">12.159</td><td headers="table-ablation-row-3 table-ablation-col-4">+2.050</td></tr>
+                  <tr><th class="result-row-header" scope="row" id="table-ablation-row-4" headers="table-ablation-col-1">Weighted demand</th><td headers="table-ablation-row-4 table-ablation-col-2">+2.451</td><td headers="table-ablation-row-4 table-ablation-col-3">12.139</td><td headers="table-ablation-row-4 table-ablation-col-4">+2.031</td></tr>
+                  <tr><th class="result-row-header" scope="row" id="table-ablation-row-5" headers="table-ablation-col-1">Resource wait</th><td headers="table-ablation-row-5 table-ablation-col-2">+1.057</td><td headers="table-ablation-row-5 table-ablation-col-3">11.664</td><td headers="table-ablation-row-5 table-ablation-col-4">+1.555</td></tr>
+                  <tr><th class="result-row-header" scope="row" id="table-ablation-row-6" headers="table-ablation-col-1">Precedence wait</th><td headers="table-ablation-row-6 table-ablation-col-2">−0.308</td><td headers="table-ablation-row-6 table-ablation-col-3">11.267</td><td headers="table-ablation-row-6 table-ablation-col-4">+1.159</td></tr>
+                  <tr><th class="result-row-header" scope="row" id="table-ablation-row-7" headers="table-ablation-col-1">Bottleneck ratio</th><td headers="table-ablation-row-7 table-ablation-col-2">+3.348</td><td headers="table-ablation-row-7 table-ablation-col-3">10.870</td><td headers="table-ablation-row-7 table-ablation-col-4">+0.762</td></tr>
+                  <tr><th class="result-row-header" scope="row" id="table-ablation-row-8" headers="table-ablation-col-1">Successor work</th><td headers="table-ablation-row-8 table-ablation-col-2">−0.209</td><td headers="table-ablation-row-8 table-ablation-col-3">10.860</td><td headers="table-ablation-row-8 table-ablation-col-4">+0.752</td></tr>
+                  <tr><th class="result-row-header" scope="row" id="table-ablation-row-9" headers="table-ablation-col-1">Duration</th><td headers="table-ablation-row-9 table-ablation-col-2">+0.187</td><td headers="table-ablation-row-9 table-ablation-col-3">10.731</td><td headers="table-ablation-row-9 table-ablation-col-4">+0.623</td></tr>
+                  <tr><th class="result-row-header" scope="row" id="table-ablation-row-10" headers="table-ablation-col-1">Resource pressure</th><td headers="table-ablation-row-10 table-ablation-col-2">−0.701</td><td headers="table-ablation-row-10 table-ablation-col-3">10.651</td><td headers="table-ablation-row-10 table-ablation-col-4">+0.543</td></tr>
+                  <tr><th class="result-row-header" scope="row" id="table-ablation-row-11" headers="table-ablation-col-1">Direct successors</th><td headers="table-ablation-row-11 table-ablation-col-2">−0.093</td><td headers="table-ablation-row-11 table-ablation-col-3">10.521</td><td headers="table-ablation-row-11 table-ablation-col-4">+0.412</td></tr>
+                  <tr><th class="result-row-header" scope="row" id="table-ablation-row-12" headers="table-ablation-col-1">Projected finish</th><td headers="table-ablation-row-12 table-ablation-col-2">−0.018</td><td headers="table-ablation-row-12 table-ablation-col-3">10.174</td><td headers="table-ablation-row-12 table-ablation-col-4">+0.066</td></tr>
                 </tbody></table></div>
-                <figcaption>Table 2. Leave-one-feature-out replay. Positive Δ means the score worsens when that signal is removed; lower is better. Full policy score: 10.108.</figcaption>
+                <figcaption id="table-ablation-caption">Table 2. Leave-one-feature-out replay. Positive Δ means the score worsens when that signal is removed; lower is better. Full policy score: 10.108.</figcaption>
               </figure>
               <p>The ablation identifies contribution, not isolated causality: several signals are correlated and their numeric scales differ. It nevertheless shows that feasible-start timing and downstream critical-path structure are the two load-bearing components. The remaining features refine resource contention, successor unlocking, and tie behavior around that core.</p>
 
@@ -173,14 +173,14 @@
               <p>The gain is not produced by sacrificing the difficult tail. Mean gap falls from 6.04% to 5.01%, while the 95th-percentile gap falls from 17.28% to 14.57%. The exact-optimum count rises from 19 to 27 schedules, and feasibility remains 80 out of 80.</p>
 
               <figure class="result-paper-table" id="table-3">
-                <div class="result-table-wrap"><table class="result-table"><thead><tr><th>Metric</th><th>Baseline</th><th>Evölther</th><th>Evölther 2.0</th></tr></thead><tbody>
-                  <tr><td>Acceptance score</td><td>14.312</td><td>12.087</td><td>10.108</td></tr>
-                  <tr><td>Mean gap</td><td>7.13%</td><td>6.04%</td><td>5.01%</td></tr>
-                  <tr><td>P95 gap</td><td>20.52%</td><td>17.28%</td><td>14.57%</td></tr>
-                  <tr><td>Exact optima</td><td>23 / 80</td><td>19 / 80</td><td>27 / 80</td></tr>
-                  <tr><td>Validated schedules</td><td>80 / 80</td><td>80 / 80</td><td>80 / 80</td></tr>
+                <div class="result-table-wrap" role="region" aria-labelledby="table-3-caption" tabindex="0"><table class="result-table" aria-labelledby="table-3-caption"><thead><tr><th scope="col" id="table-3-col-1">Metric</th><th scope="col" id="table-3-col-2">Baseline</th><th scope="col" id="table-3-col-3">Evölther</th><th scope="col" id="table-3-col-4">Evölther 2.0</th></tr></thead><tbody>
+                  <tr><th class="result-row-header" scope="row" id="table-3-row-1" headers="table-3-col-1">Acceptance score</th><td headers="table-3-row-1 table-3-col-2">14.312</td><td headers="table-3-row-1 table-3-col-3">12.087</td><td headers="table-3-row-1 table-3-col-4">10.108</td></tr>
+                  <tr><th class="result-row-header" scope="row" id="table-3-row-2" headers="table-3-col-1">Mean gap</th><td headers="table-3-row-2 table-3-col-2">7.13%</td><td headers="table-3-row-2 table-3-col-3">6.04%</td><td headers="table-3-row-2 table-3-col-4">5.01%</td></tr>
+                  <tr><th class="result-row-header" scope="row" id="table-3-row-3" headers="table-3-col-1">P95 gap</th><td headers="table-3-row-3 table-3-col-2">20.52%</td><td headers="table-3-row-3 table-3-col-3">17.28%</td><td headers="table-3-row-3 table-3-col-4">14.57%</td></tr>
+                  <tr><th class="result-row-header" scope="row" id="table-3-row-4" headers="table-3-col-1">Exact optima</th><td headers="table-3-row-4 table-3-col-2">23 / 80</td><td headers="table-3-row-4 table-3-col-3">19 / 80</td><td headers="table-3-row-4 table-3-col-4">27 / 80</td></tr>
+                  <tr><th class="result-row-header" scope="row" id="table-3-row-5" headers="table-3-col-1">Validated schedules</th><td headers="table-3-row-5 table-3-col-2">80 / 80</td><td headers="table-3-row-5 table-3-col-3">80 / 80</td><td headers="table-3-row-5 table-3-col-4">80 / 80</td></tr>
                 </tbody></table></div>
-                <figcaption>Table 3. Current portfolio metrics. Lower score and gap values are better.</figcaption>
+                <figcaption id="table-3-caption">Table 3. Current portfolio metrics. Lower score and gap values are better.</figcaption>
               </figure>
 
               <p>Against the baseline, Evölther 2.0 wins on 35 portfolio instances, ties on 27, and loses on 18. The accepted claim is therefore portfolio-level improvement rather than universal instance dominance. The clearest compression example is <code>j3025_9</code>, where the new ordering shortens makespan from 112 to 92 against a proven optimum of 84.</p>

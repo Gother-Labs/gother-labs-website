@@ -162,81 +162,40 @@
 <h2>2. Optimizer team readout</h2>
 <p>This result is designed to answer the questions a battery optimizer team will ask before trusting a challenger: whether the baseline is explicit, whether the improvement survives replay, whether weak cases remain visible, and whether the evidence is tied to public artifacts.</p>
 <figure class="result-paper-table result-contract-table bess-customer-readout-table" id="table-1">
-          <div class="result-table-wrap">
-            <table class="result-table">
+          <div class="result-table-wrap" role="region" aria-labelledby="table-1-caption" tabindex="0">
+            <table class="result-table" aria-labelledby="table-1-caption">
               <thead>
-                <tr>
-                  <th>Buyer question</th>
-                  <th>Published evidence</th>
-                  <th>Why it matters</th>
-                </tr>
+                <tr><th scope="col" id="table-1-col-1">Buyer question</th><th scope="col" id="table-1-col-2">Published evidence</th><th scope="col" id="table-1-col-3">Why it matters</th></tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Can it improve a named commercial baseline?</td>
-                  <td>72.544 → 48.087 score, 33.714% relative reduction, €20.20/day mean gross uplift</td>
-                  <td>The claim is anchored to the quantile dispatch baseline, not to the perfect-foresight oracle.</td>
-                </tr>
-                <tr>
-                  <td>Does the candidate stay feasible?</td>
-                  <td>0 constraint breaches, exact replay status, terminal SOC and simultaneous-power checks</td>
-                  <td>A challenger is only useful if it cannot win by breaking dispatch or battery constraints.</td>
-                </tr>
-                <tr>
-                  <td>Are weak cases still visible?</td>
-                  <td>8 frozen scenarios across 3 splits, including stress-tail rows and zero-uplift cases</td>
-                  <td>The aggregate result does not hide flat or weaker days that an optimizer team will want to inspect.</td>
-                </tr>
-                <tr>
-                  <td>Can the result be replayed from artifacts?</td>
-                  <td>accepted_candidate.py, comparison rows, dispatch trace, score trace, and replay checks</td>
-                  <td>The public asset is an auditable benchmark surface, not a slide-only performance claim.</td>
-                </tr>
+                <tr><th class="result-row-header" scope="row" id="table-1-row-1" headers="table-1-col-1">Can it improve a named commercial baseline?</th><td headers="table-1-row-1 table-1-col-2">72.544 → 48.087 score, 33.714% relative reduction, €20.20/day mean gross uplift</td><td headers="table-1-row-1 table-1-col-3">The claim is anchored to the quantile dispatch baseline, not to the perfect-foresight oracle.</td></tr>
+                <tr><th class="result-row-header" scope="row" id="table-1-row-2" headers="table-1-col-1">Does the candidate stay feasible?</th><td headers="table-1-row-2 table-1-col-2">0 constraint breaches, exact replay status, terminal SOC and simultaneous-power checks</td><td headers="table-1-row-2 table-1-col-3">A challenger is only useful if it cannot win by breaking dispatch or battery constraints.</td></tr>
+                <tr><th class="result-row-header" scope="row" id="table-1-row-3" headers="table-1-col-1">Are weak cases still visible?</th><td headers="table-1-row-3 table-1-col-2">8 frozen scenarios across 3 splits, including stress-tail rows and zero-uplift cases</td><td headers="table-1-row-3 table-1-col-3">The aggregate result does not hide flat or weaker days that an optimizer team will want to inspect.</td></tr>
+                <tr><th class="result-row-header" scope="row" id="table-1-row-4" headers="table-1-col-1">Can the result be replayed from artifacts?</th><td headers="table-1-row-4 table-1-col-2">accepted_candidate.py, comparison rows, dispatch trace, score trace, and replay checks</td><td headers="table-1-row-4 table-1-col-3">The public asset is an auditable benchmark surface, not a slide-only performance claim.</td></tr>
               </tbody>
             </table>
           </div>
-          <figcaption>Table 1. Buyer-facing readout for optimizer teams reviewing the Iberian BESS challenger.</figcaption>
+          <figcaption id="table-1-caption">Table 1. Buyer-facing readout for optimizer teams reviewing the Iberian BESS challenger.</figcaption>
         </figure>
 <h2>3. Evaluation contract</h2>
 <p>The public benchmark is the Iberian BESS Policy Challenge v0.1. It compares the accepted policy against commercial baselines and a perfect-foresight LP upper bound. The oracle is not a sales baseline; it is the remaining headroom under the same simplified physical model.</p>
 <figure class="result-paper-table result-contract-table bess-contract-table" id="table-2">
-          <div class="result-table-wrap">
-            <table class="result-table">
+          <div class="result-table-wrap" role="region" aria-labelledby="table-2-caption" tabindex="0">
+            <table class="result-table" aria-labelledby="table-2-caption">
               <thead>
-                <tr>
-                  <th>Field</th>
-                  <th>Public contract</th>
-                </tr>
+                <tr><th scope="col" id="table-2-col-1">Field</th><th scope="col" id="table-2-col-2">Public contract</th></tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Market scope</td>
-                  <td>OMIE day-ahead · Iberia · 24 hourly decisions</td>
-                </tr>
-                <tr>
-                  <td>Asset</td>
-                  <td>single 1 MW / 4 MWh battery</td>
-                </tr>
-                <tr>
-                  <td>Scenario coverage</td>
-                  <td>8 frozen scenarios across development, public-test, and stress-tail splits</td>
-                </tr>
-                <tr>
-                  <td>Primary comparison</td>
-                  <td><code>quantile_dispatch_baseline</code></td>
-                </tr>
-                <tr>
-                  <td>Oracle role</td>
-                  <td><code>perfect_foresight_lp_upper_bound</code> is an upper-bound diagnostic, not the commercial baseline</td>
-                </tr>
-                <tr>
-                  <td>Guardrails</td>
-                  <td>terminal SOC, feasibility, simultaneous power, split coverage, and zero constraint breaches</td>
-                </tr>
+                <tr><th class="result-row-header" scope="row" id="table-2-row-1" headers="table-2-col-1">Market scope</th><td headers="table-2-row-1 table-2-col-2">OMIE day-ahead · Iberia · 24 hourly decisions</td></tr>
+                <tr><th class="result-row-header" scope="row" id="table-2-row-2" headers="table-2-col-1">Asset</th><td headers="table-2-row-2 table-2-col-2">single 1 MW / 4 MWh battery</td></tr>
+                <tr><th class="result-row-header" scope="row" id="table-2-row-3" headers="table-2-col-1">Scenario coverage</th><td headers="table-2-row-3 table-2-col-2">8 frozen scenarios across development, public-test, and stress-tail splits</td></tr>
+                <tr><th class="result-row-header" scope="row" id="table-2-row-4" headers="table-2-col-1">Primary comparison</th><td headers="table-2-row-4 table-2-col-2"><code>quantile_dispatch_baseline</code></td></tr>
+                <tr><th class="result-row-header" scope="row" id="table-2-row-5" headers="table-2-col-1">Oracle role</th><td headers="table-2-row-5 table-2-col-2"><code>perfect_foresight_lp_upper_bound</code> is an upper-bound diagnostic, not the commercial baseline</td></tr>
+                <tr><th class="result-row-header" scope="row" id="table-2-row-6" headers="table-2-col-1">Guardrails</th><td headers="table-2-row-6 table-2-col-2">terminal SOC, feasibility, simultaneous power, split coverage, and zero constraint breaches</td></tr>
               </tbody>
             </table>
           </div>
-          <figcaption>Table 2. Frozen public contract used for the Iberian BESS result.</figcaption>
+          <figcaption id="table-2-caption">Table 2. Frozen public contract used for the Iberian BESS result.</figcaption>
         </figure>
 <h2>4. Commercial baseline result</h2>
 <p>The seed quantile baseline scored 72.544043. The accepted policy portfolio scored 48.086813, a reduction of 24.45723 score units (33.71363%).</p>
@@ -286,96 +245,24 @@
           <figcaption>Figure 2. Commercial and risk readout for the accepted policy. The page leads with the primary baseline uplift and keeps oracle regret and constraints in the same evidence block.</figcaption>
         </figure>
 <figure class="result-paper-table bess-scenario-table" id="table-3">
-          <div class="result-table-wrap">
-            <table class="result-table">
+          <div class="result-table-wrap" role="region" aria-labelledby="table-3-caption" tabindex="0">
+            <table class="result-table" aria-labelledby="table-3-caption">
               <thead>
-                <tr>
-                  <th>Scenario</th>
-                  <th>Split</th>
-                  <th>Shape</th>
-                  <th>Uplift</th>
-                  <th>Regret</th>
-                  <th>Oracle capture</th>
-                  <th>Health</th>
-                </tr>
+                <tr><th scope="col" id="table-3-col-1">Scenario</th><th scope="col" id="table-3-col-2">Split</th><th scope="col" id="table-3-col-3">Shape</th><th scope="col" id="table-3-col-4">Uplift</th><th scope="col" id="table-3-col-5">Regret</th><th scope="col" id="table-3-col-6">Oracle capture</th><th scope="col" id="table-3-col-7">Health</th></tr>
               </thead>
               <tbody>
-                <tr>
-                  <td><code>omie_20240115</code></td>
-                  <td>development</td>
-                  <td>winter, medium_spread</td>
-                  <td>€43.10</td>
-                  <td>€27.75</td>
-                  <td>74.930%</td>
-                  <td>clean</td>
-                </tr>
-                <tr>
-                  <td><code>omie_20240415</code></td>
-                  <td>development</td>
-                  <td>spring, near_zero_or_negative_prices, low_spread</td>
-                  <td>€17.72</td>
-                  <td>€6.33</td>
-                  <td>90.708%</td>
-                  <td>clean</td>
-                </tr>
-                <tr>
-                  <td><code>omie_20240715</code></td>
-                  <td>development</td>
-                  <td>summer, high_spread</td>
-                  <td>€0.00</td>
-                  <td>€61.55</td>
-                  <td>83.919%</td>
-                  <td>clean</td>
-                </tr>
-                <tr>
-                  <td><code>omie_20241015</code></td>
-                  <td>public_test</td>
-                  <td>autumn, medium_spread</td>
-                  <td>€20.32</td>
-                  <td>€20.96</td>
-                  <td>87.600%</td>
-                  <td>clean</td>
-                </tr>
-                <tr>
-                  <td><code>omie_20250115</code></td>
-                  <td>stress_tail</td>
-                  <td>winter, extreme_price_spike, high_spread</td>
-                  <td>€0.00</td>
-                  <td>€11.18</td>
-                  <td>95.843%</td>
-                  <td>clean</td>
-                </tr>
-                <tr>
-                  <td><code>omie_20250415</code></td>
-                  <td>public_test</td>
-                  <td>spring, near_zero_or_negative_prices, low_spread</td>
-                  <td>€28.27</td>
-                  <td>€25.47</td>
-                  <td>84.965%</td>
-                  <td>clean</td>
-                </tr>
-                <tr>
-                  <td><code>omie_20250715</code></td>
-                  <td>public_test</td>
-                  <td>summer, high_spread</td>
-                  <td>€17.19</td>
-                  <td>€45.55</td>
-                  <td>86.833%</td>
-                  <td>clean</td>
-                </tr>
-                <tr>
-                  <td><code>omie_20250915</code></td>
-                  <td>stress_tail</td>
-                  <td>late_summer, high_spread</td>
-                  <td>€34.99</td>
-                  <td>€21.78</td>
-                  <td>94.959%</td>
-                  <td>clean</td>
-                </tr>
+                <tr><th class="result-row-header" scope="row" id="table-3-row-1" headers="table-3-col-1"><code>omie_20240115</code></th><td headers="table-3-row-1 table-3-col-2">development</td><td headers="table-3-row-1 table-3-col-3">winter, medium_spread</td><td headers="table-3-row-1 table-3-col-4">€43.10</td><td headers="table-3-row-1 table-3-col-5">€27.75</td><td headers="table-3-row-1 table-3-col-6">74.930%</td><td headers="table-3-row-1 table-3-col-7">clean</td></tr>
+                <tr><th class="result-row-header" scope="row" id="table-3-row-2" headers="table-3-col-1"><code>omie_20240415</code></th><td headers="table-3-row-2 table-3-col-2">development</td><td headers="table-3-row-2 table-3-col-3">spring, near_zero_or_negative_prices, low_spread</td><td headers="table-3-row-2 table-3-col-4">€17.72</td><td headers="table-3-row-2 table-3-col-5">€6.33</td><td headers="table-3-row-2 table-3-col-6">90.708%</td><td headers="table-3-row-2 table-3-col-7">clean</td></tr>
+                <tr><th class="result-row-header" scope="row" id="table-3-row-3" headers="table-3-col-1"><code>omie_20240715</code></th><td headers="table-3-row-3 table-3-col-2">development</td><td headers="table-3-row-3 table-3-col-3">summer, high_spread</td><td headers="table-3-row-3 table-3-col-4">€0.00</td><td headers="table-3-row-3 table-3-col-5">€61.55</td><td headers="table-3-row-3 table-3-col-6">83.919%</td><td headers="table-3-row-3 table-3-col-7">clean</td></tr>
+                <tr><th class="result-row-header" scope="row" id="table-3-row-4" headers="table-3-col-1"><code>omie_20241015</code></th><td headers="table-3-row-4 table-3-col-2">public_test</td><td headers="table-3-row-4 table-3-col-3">autumn, medium_spread</td><td headers="table-3-row-4 table-3-col-4">€20.32</td><td headers="table-3-row-4 table-3-col-5">€20.96</td><td headers="table-3-row-4 table-3-col-6">87.600%</td><td headers="table-3-row-4 table-3-col-7">clean</td></tr>
+                <tr><th class="result-row-header" scope="row" id="table-3-row-5" headers="table-3-col-1"><code>omie_20250115</code></th><td headers="table-3-row-5 table-3-col-2">stress_tail</td><td headers="table-3-row-5 table-3-col-3">winter, extreme_price_spike, high_spread</td><td headers="table-3-row-5 table-3-col-4">€0.00</td><td headers="table-3-row-5 table-3-col-5">€11.18</td><td headers="table-3-row-5 table-3-col-6">95.843%</td><td headers="table-3-row-5 table-3-col-7">clean</td></tr>
+                <tr><th class="result-row-header" scope="row" id="table-3-row-6" headers="table-3-col-1"><code>omie_20250415</code></th><td headers="table-3-row-6 table-3-col-2">public_test</td><td headers="table-3-row-6 table-3-col-3">spring, near_zero_or_negative_prices, low_spread</td><td headers="table-3-row-6 table-3-col-4">€28.27</td><td headers="table-3-row-6 table-3-col-5">€25.47</td><td headers="table-3-row-6 table-3-col-6">84.965%</td><td headers="table-3-row-6 table-3-col-7">clean</td></tr>
+                <tr><th class="result-row-header" scope="row" id="table-3-row-7" headers="table-3-col-1"><code>omie_20250715</code></th><td headers="table-3-row-7 table-3-col-2">public_test</td><td headers="table-3-row-7 table-3-col-3">summer, high_spread</td><td headers="table-3-row-7 table-3-col-4">€17.19</td><td headers="table-3-row-7 table-3-col-5">€45.55</td><td headers="table-3-row-7 table-3-col-6">86.833%</td><td headers="table-3-row-7 table-3-col-7">clean</td></tr>
+                <tr><th class="result-row-header" scope="row" id="table-3-row-8" headers="table-3-col-1"><code>omie_20250915</code></th><td headers="table-3-row-8 table-3-col-2">stress_tail</td><td headers="table-3-row-8 table-3-col-3">late_summer, high_spread</td><td headers="table-3-row-8 table-3-col-4">€34.99</td><td headers="table-3-row-8 table-3-col-5">€21.78</td><td headers="table-3-row-8 table-3-col-6">94.959%</td><td headers="table-3-row-8 table-3-col-7">clean</td></tr>
               </tbody>
             </table>
           </div>
-          <figcaption>Table 3. Scenario-level evidence. Zero uplift cases are retained because they are part of the public benchmark contract.</figcaption>
+          <figcaption id="table-3-caption">Table 3. Scenario-level evidence. Zero uplift cases are retained because they are part of the public benchmark contract.</figcaption>
         </figure>
 <h2>5. Accepted policy</h2>
 <p>The accepted policy is a small deterministic portfolio. It evaluates several valid dispatch heuristics on the same daily price horizon and selects the highest-margin valid plan. This is intentionally simple: the benchmark point is not to replace a client optimizer, but to show that an offline policy challenger can find auditable improvement candidates under a fixed contract.</p>
@@ -524,45 +411,21 @@
           <figcaption>Figure 4. Stress-tail dispatch trace readout for the 1 MW / 4 MWh battery. The visualization is backed by the public dispatch_trace.json artifact and keeps the weak-case row visible.</figcaption>
         </figure>
 <figure class="result-paper-table bess-robustness-table" id="table-4">
-          <div class="result-table-wrap">
-            <table class="result-table">
+          <div class="result-table-wrap" role="region" aria-labelledby="table-4-caption" tabindex="0">
+            <table class="result-table" aria-labelledby="table-4-caption">
               <thead>
-                <tr>
-                  <th>Check</th>
-                  <th>Result</th>
-                  <th>Why it matters</th>
-                </tr>
+                <tr><th scope="col" id="table-4-col-1">Check</th><th scope="col" id="table-4-col-2">Result</th><th scope="col" id="table-4-col-3">Why it matters</th></tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Exact replay</td>
-                  <td>pass</td>
-                  <td>The accepted candidate reproduces the published score from the checked-in artifact.</td>
-                </tr>
-                <tr>
-                  <td>Constraint breaches</td>
-                  <td>0</td>
-                  <td>No scenario is allowed to win by violating battery or dispatch constraints.</td>
-                </tr>
-                <tr>
-                  <td>Baseline shortfall</td>
-                  <td>€0.00</td>
-                  <td>The public aggregate does not hide a penalty against the primary comparison baseline.</td>
-                </tr>
-                <tr>
-                  <td>Forecast-error smoke</td>
-                  <td>valid</td>
-                  <td>A deterministic 8% perturbation suite is included as a realism smoke, separate from the perfect-foresight claim.</td>
-                </tr>
-                <tr>
-                  <td>Worst smoke cost</td>
-                  <td>€12.67</td>
-                  <td>Largest positive cost observed in the small forecast-error smoke subset.</td>
-                </tr>
+                <tr><th class="result-row-header" scope="row" id="table-4-row-1" headers="table-4-col-1">Exact replay</th><td headers="table-4-row-1 table-4-col-2">pass</td><td headers="table-4-row-1 table-4-col-3">The accepted candidate reproduces the published score from the checked-in artifact.</td></tr>
+                <tr><th class="result-row-header" scope="row" id="table-4-row-2" headers="table-4-col-1">Constraint breaches</th><td headers="table-4-row-2 table-4-col-2">0</td><td headers="table-4-row-2 table-4-col-3">No scenario is allowed to win by violating battery or dispatch constraints.</td></tr>
+                <tr><th class="result-row-header" scope="row" id="table-4-row-3" headers="table-4-col-1">Baseline shortfall</th><td headers="table-4-row-3 table-4-col-2">€0.00</td><td headers="table-4-row-3 table-4-col-3">The public aggregate does not hide a penalty against the primary comparison baseline.</td></tr>
+                <tr><th class="result-row-header" scope="row" id="table-4-row-4" headers="table-4-col-1">Forecast-error smoke</th><td headers="table-4-row-4 table-4-col-2">valid</td><td headers="table-4-row-4 table-4-col-3">A deterministic 8% perturbation suite is included as a realism smoke, separate from the perfect-foresight claim.</td></tr>
+                <tr><th class="result-row-header" scope="row" id="table-4-row-5" headers="table-4-col-1">Worst smoke cost</th><td headers="table-4-row-5 table-4-col-2">€12.67</td><td headers="table-4-row-5 table-4-col-3">Largest positive cost observed in the small forecast-error smoke subset.</td></tr>
               </tbody>
             </table>
           </div>
-          <figcaption>Table 4. Replay and robustness checks published with the result bundle.</figcaption>
+          <figcaption id="table-4-caption">Table 4. Replay and robustness checks published with the result bundle.</figcaption>
         </figure>
 <h2>7. Limitations</h2>
 <p>This is an offline day-ahead benchmark over frozen scenarios. It is not production trading, not a live bidding system, not an official market benchmark, and does not model intraday, reserves, imbalance settlement, taxes, grid constraints, or portfolio effects.</p>
