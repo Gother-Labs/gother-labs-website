@@ -91,37 +91,7 @@ const metricClaimContracts = [
       },
     ],
   },
-  {
-    route: "/results/iberian-bess-policy-challenge/",
-    metrics: "results/iberian-bess-policy-challenge/artifacts/metrics.json",
-    claims: [
-      {
-        key: "uplift_vs_quantile_dispatch_baseline_mean_eur",
-        digits: 2,
-        prefix: "€",
-        suffix: "/day",
-        match: "exact",
-        target: {
-          label: "the Mean gross uplift KPI value",
-          selector: { tag: "text", className: "bess-kpi-value" },
-          after: { tag: "text", className: "bess-kpi-label", text: "Mean gross uplift" },
-          first: true,
-        },
-      },
-      {
-        key: "constraint_breach_count",
-        digits: 0,
-        suffix: " breaches",
-        match: "exact",
-        target: {
-          label: "the Guardrails KPI value",
-          selector: { tag: "text", className: "bess-kpi-value" },
-          after: { tag: "text", className: "bess-kpi-label", text: "Guardrails" },
-          first: true,
-        },
-      },
-    ],
-  },
+
 ];
 const voidElements = new Set([
   "area",

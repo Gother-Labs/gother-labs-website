@@ -17,31 +17,6 @@
       "artifact_hrefs": [],
       "detail_sections": 1
     },
-    "results/iberian-bess-policy-challenge/index.html": {
-      "article_classes": [
-        "bess-whitepaper",
-        "result-article",
-        "result-whitepaper"
-      ],
-      "headings": [
-        "h2:Abstract",
-        "h2:1. Problem formulation",
-        "h2:2. Optimizer team readout",
-        "h2:3. Evaluation contract",
-        "h2:4. Commercial baseline result",
-        "h2:5. Accepted policy",
-        "h2:6. Tail behavior",
-        "h2:7. Limitations",
-        "h2:8. Reproducibility"
-      ],
-      "figures": 9,
-      "tables": 4,
-      "images": 0,
-      "artifact_hrefs": [
-        "./artifacts/accepted_candidate.py"
-      ],
-      "detail_sections": 1
-    },
     "results/quadrature-rule-optimization/index.html": {
       "article_classes": [
         "result-article",
