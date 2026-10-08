@@ -16,20 +16,6 @@ function describedBy(html, ...ids) {
   }
 }
 
-test("BESS replay distinguishes evidence without color and exposes material caveats", () => {
-  const html = read("results/iberian-bess-policy-challenge/run/index.html");
-  const baseCss = read("results/iberian-bess-policy-challenge/run/surface.css");
-  const a11yCss = read("results/iberian-bess-policy-challenge/run/accessibility.css");
-
-  describedBy(html, "dispatch-chart-summary", "score-chart-summary");
-  assert.match(html, /dashed-border charge bars below the zero-dispatch axis/i);
-  assert.match(html, /offline benchmark excludes intraday, reserves, imbalance, taxes, grid and portfolio effects/i);
-  assert.match(baseCss, /\.storage-soc-line[\s\S]*?stroke-dasharray:\s*7 8/);
-  assert.match(a11yCss, /\.storage-charge-bar[\s\S]*?stroke-dasharray:\s*2 2/);
-  assert.match(a11yCss, /\.storage-discharge-bar[\s\S]*?stroke-dasharray:\s*none/);
-  assert.match(a11yCss, /\.storage-score-dot--accepted[\s\S]*?stroke-width:\s*1\.6/);
-});
-
 test("Qubit replay uses marker geometry and text in addition to color", () => {
   const html = read("results/qubit-routing-lightsabre/run/index.html");
   const css = read("results/qubit-routing-lightsabre/run/accessibility.css");

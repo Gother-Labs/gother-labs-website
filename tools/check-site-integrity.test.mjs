@@ -60,7 +60,6 @@ async function publicationFixture(t) {
     "/results/quadrature-rule-optimization/",
     "/results/rcpsp-psplib-j30/",
     "/results/qubit-routing-lightsabre/",
-    "/results/iberian-bess-policy-challenge/",
   ];
   const exactCircleMetric = "2.123456789012345678901";
   await fs.writeFile(
@@ -99,17 +98,7 @@ async function publicationFixture(t) {
         <aside>Audit copy retains 12,294 and 72 public routing cases.</aside>`,
       metrics: { added_cnot_reduction_vs_lightsabre: 12294, total_cases: 72 },
     },
-    {
-      route: "/results/iberian-bess-policy-challenge/",
-      body: `<h1>BESS</h1><svg>
-        <g><text class="bess-kpi-label">Mean gross uplift</text><text class="bess-kpi-value">€20.20/day</text></g>
-        <g><text class="bess-kpi-label">Guardrails</text><text class="bess-kpi-value">0 breaches</text></g>
-        </svg><aside>Audit copy retains €20.20/day and 0 breaches.</aside>`,
-      metrics: {
-        uplift_vs_quantile_dispatch_baseline_mean_eur: 20.197299,
-        constraint_breach_count: 0,
-      },
-    },
+
   ];
 
   for (const claimPage of claimPages) {
@@ -286,20 +275,7 @@ test("binds metric claims to their public fields instead of matching decoy copy"
       to: "across 7 public routing cases",
       key: "total_cases",
     },
-    {
-      name: "BESS mean uplift",
-      file: "results/iberian-bess-policy-challenge/index.html",
-      from: '<text class="bess-kpi-value">€20.20/day</text>',
-      to: '<text class="bess-kpi-value">€99.99/day</text>',
-      key: "uplift_vs_quantile_dispatch_baseline_mean_eur",
-    },
-    {
-      name: "BESS guardrail count",
-      file: "results/iberian-bess-policy-challenge/index.html",
-      from: '<text class="bess-kpi-value">0 breaches</text>',
-      to: '<text class="bess-kpi-value">9 breaches</text>',
-      key: "constraint_breach_count",
-    },
+
   ];
 
   for (const mutation of mutations) {

@@ -210,3 +210,23 @@ test("representative keyboard targets inherit a visible non-obscured focus ring"
     expect(verified, `${path}: verified keyboard-focusable targets`).toBeGreaterThanOrEqual(2);
   }
 });
+
+test("retired BESS entry points and artifacts are no longer published", async ({ page }, testInfo) => {
+  test.skip(testInfo.project.name !== "normal-motion-smoke");
+
+  for (const route of ["/", "/results/"]) {
+    await page.goto(route, { waitUntil: "networkidle" });
+    await expect(page.locator('a[href*="iberian-bess-policy-challenge"], a[href*="bess-policy-challenger"]')).toHaveCount(0);
+  }
+
+  for (const route of [
+    "/evolther/bess-policy-challenger/",
+    "/results/iberian-bess-policy-challenge/",
+    "/results/iberian-bess-policy-challenge/run/",
+    "/results/iberian-bess-policy-challenge/artifacts/accepted_candidate.py",
+  ]) {
+    const response = await page.goto(route, { waitUntil: "networkidle" });
+    expect(response?.status(), `${route}: retired document status`).toBe(404);
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
+  }
+});

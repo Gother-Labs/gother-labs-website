@@ -2,10 +2,6 @@ import { expect, test } from "@playwright/test";
 
 const cases = [
   {
-    path: "/results/iberian-bess-policy-challenge/run/",
-    selectors: ["#dispatch-chart", "#score-chart"],
-  },
-  {
     path: "/results/qubit-routing-lightsabre/run/",
     selectors: ["#score-svg", "#circuit-svg", "#topology-svg"],
   },

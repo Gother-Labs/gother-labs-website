@@ -2,11 +2,6 @@ import { expect, test } from "@playwright/test";
 
 const REPRESENTATIVE_TABLES = [
   {
-    path: "/results/iberian-bess-policy-challenge/",
-    selector: ".bess-whitepaper .result-paper-table .result-table",
-    minimumTables: 4,
-  },
-  {
     path: "/results/quadrature-rule-optimization/",
     selector: ".result-whitepaper .result-paper-table .result-table",
     minimumTables: 3,
@@ -89,56 +84,3 @@ for (const surface of REPRESENTATIVE_TABLES) {
     }
   });
 }
-
-test("BESS mobile tables retain native display semantics and contain horizontal overflow", async ({ page }, testInfo) => {
-  test.skip(testInfo.project.name !== "normal-motion-smoke");
-
-  await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("/results/iberian-bess-policy-challenge/", { waitUntil: "networkidle" });
-
-  const overflow = await page.evaluate(
-    () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
-  );
-  expect(overflow, "BESS page must not overflow the mobile viewport").toBeLessThanOrEqual(1);
-
-  const tables = page.locator(".bess-whitepaper .result-paper-table .result-table");
-  expect(await tables.count()).toBeGreaterThanOrEqual(4);
-
-  for (let index = 0; index < (await tables.count()); index += 1) {
-    const table = tables.nth(index);
-    const display = await table.evaluate((element) => {
-      const thead = element.querySelector("thead");
-      const tbody = element.querySelector("tbody");
-      const row = element.querySelector("tbody tr");
-      const cell = element.querySelector("tbody th, tbody td");
-      const before = element.querySelector("tbody td");
-      const wrap = element.closest(".result-table-wrap");
-      return {
-        table: getComputedStyle(element).display,
-        thead: getComputedStyle(thead).display,
-        tbody: getComputedStyle(tbody).display,
-        row: getComputedStyle(row).display,
-        cell: getComputedStyle(cell).display,
-        pseudo: before ? getComputedStyle(before, "::before").content : "none",
-        wrapOverflowX: getComputedStyle(wrap).overflowX,
-        wrapScrollWidth: wrap.scrollWidth,
-        wrapClientWidth: wrap.clientWidth,
-        regionRole: wrap.getAttribute("role"),
-        regionLabelledBy: wrap.getAttribute("aria-labelledby"),
-        regionTabIndex: wrap.getAttribute("tabindex"),
-      };
-    });
-
-    expect(display.table).toBe("table");
-    expect(display.thead).toBe("table-header-group");
-    expect(display.tbody).toBe("table-row-group");
-    expect(display.row).toBe("table-row");
-    expect(display.cell).toBe("table-cell");
-    expect(["none", "normal", '""']).toContain(display.pseudo);
-    expect(["auto", "scroll"]).toContain(display.wrapOverflowX);
-    expect(display.regionRole).toBe("region");
-    expect(display.regionLabelledBy).not.toBeNull();
-    expect(display.regionTabIndex).toBe("0");
-    expect(display.wrapScrollWidth).toBeGreaterThanOrEqual(display.wrapClientWidth);
-  }
-});

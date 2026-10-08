@@ -1,10 +1,9 @@
 {
   "schema_version": "generated-results-source/v1",
   "repository": "Gother-Labs/gother-labs-results",
-  "commit": "58b70d546969a1a4b8f37fa3c77fddafe0cd96d4",
+  "commit": "e93c4c10b911a0e6fc4c4a4903f5700d3401016f",
   "catalog_schema": "results-catalog/v2",
   "curated_detail_slugs": [
-    "iberian-bess-policy-challenge",
     "quadrature-rule-optimization",
     "qubit-routing-lightsabre",
     "rcpsp-psplib-j30"
